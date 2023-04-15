@@ -1,0 +1,57 @@
+.ui.modal {
+	text-align: center;
+	position: relative;
+	height: auto;
+
+	.ui.loader:not(.inverted) {
+		&::before {
+			border-color: rgba(255, 255, 255, 0.15);
+		}
+
+		&::after {
+			border-color: #767676 transparent transparent;
+		}
+	}
+
+	> .header {
+		background-color: white;
+		// text-transform: uppercase;
+		// border: 0;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+
+	> .content:not(:last-child) {
+		padding-bottom: 0;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+
+	> .actions {
+		// border: 0;
+		text-align: center;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		background-color: transparent;
+
+		.ui.button:first-child {
+			margin-left: 0;
+		}
+	}
+
+	.ui.message {
+		text-align: left;
+		width: max-content;
+		margin-right: auto;
+		margin-left: auto;
+		max-width: 100%;
+	}
+
+	.ui.form label {
+		text-align: left;
+	}
+}
+
+.ui.popup.over-header {
+	z-index: 1001;
+}

@@ -1,0 +1,150 @@
+.article {
+	.certification {
+		height: rem(35px);
+		width: rem(35px);
+		margin-right: 0.5em;
+	}
+
+	.table .certification {
+		margin: 0 auto;
+	}
+
+	.btn-descr {
+		margin-bottom: 1.5rem;
+	}
+}
+
+.btn-descr {
+	margin-bottom: 1rem;
+}
+
+.pokemon.article {
+	.percent {
+		font-size: 0.9em;
+	}
+
+	.ui.label {
+		margin-left: 0.5em;
+		margin-right: 0.5em;
+	}
+
+	.col-sprite {
+		flex-grow: 0;
+		padding: 0 0.25em 0.5em;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	section {
+		margin-bottom: 2.5em;
+		padding: 0;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.ui.form.form-propose-team:not(:last-child) {
+		margin-bottom: 1em;
+	}
+}
+
+.tier-article {
+	// .container > .framed + .ui.button {
+	// 	margin-bottom: 1rem;
+	// }
+
+	.container>.ui.button {
+		margin-bottom: 1rem;
+		vertical-align: bottom;
+	}
+}
+
+.user .img-profile {
+	max-width: 100%;
+	max-height: rem(225px);
+	border-radius: 0.28571429rem;
+}
+
+.type.article {
+	.container>.button {
+		vertical-align: initial;
+	}
+
+	.btn-descr {
+		vertical-align: initial;
+	}
+}
+
+.team.article {
+
+	.btn-wrapper>.btn,
+	.btn-wrapper>.ui.button {
+		margin-right: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.tag-zone {
+		margin-bottom: 1.5rem;
+		text-align: center;
+
+		>* {
+			margin-right: 0;
+			margin-bottom: 0.5rem;
+			vertical-align: middle;
+
+			&:not(:first-child) {
+				margin-left: 0.5rem;
+			}
+		}
+	}
+
+	.ui.label {
+		font-size: 1rem;
+	}
+
+	// .ui.label.team-tag {
+	// 	margin-bottom: 0;
+	// }
+
+	.sprites-wrapper {
+		.sprite {
+			margin-bottom: 0.5rem;
+		}
+	}
+
+	@media (min-width: $s) {
+		.update-date {
+			margin-top: -1rem;
+		}
+	}
+
+	.export-wrapper {
+		margin-bottom: 0.5rem;
+	}
+
+	p.description.framed {
+		max-height: 50vh;
+		overflow: auto;
+	}
+}
+
+// @media (min-width: $s) {
+// 	.team.article article,
+// 	.ui.form.form-propose-team,
+// 	.form-propose-team-page .sign-tab,
+// 	.form-propose-team-page > .container > .description.framed {
+// 		max-width: 800px;
+// 		margin-left: auto;
+// 		margin-right: auto;
+// 	}
+// }
+
+@media (min-width: $xl) {
+
+	.team.article article,
+	.ui.form.form-propose-team {
+		max-width: 100%;
+	}
+}

@@ -1,0 +1,279 @@
+footer {
+    background: url('/images/pokeball-footer.png') no-repeat left bottom;
+    background-color: black;
+    padding-top: 2.5rem;
+    padding-bottom: 1.875rem;
+    text-align: center;
+    position: relative;
+
+    .brand img {
+        vertical-align: middle;
+        width: 15.625rem;
+        margin-bottom: 2rem;
+    }
+
+    .dark-mode-checkbox.ui.toggle.checkbox {
+        cursor: pointer;
+
+        label {
+            color: white;
+        }
+    }
+
+    .navbar .navbar-nav {
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        flex-wrap: wrap;
+        margin-bottom: .9375rem;
+
+        .nav-item {
+            width: 100%;
+            background: url('/images/picto/pokeball-white.png') no-repeat left center;
+            background-size: 1.25rem;
+            padding-left: 2.5rem;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+
+            &:hover,
+            &:focus,
+            &:active {
+                background-image: url('/images/picto/pokeball-orange.png');
+
+                .nav-link {
+                    color: $orange;
+                }
+            }
+
+            .nav-link {
+                color: white;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .footer-bottom {
+        color: white;
+        text-align: center;
+        font-size: 0.85em;
+
+        a {
+            color: white;
+            transition: all 0.3s;
+            text-decoration: none;
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: $orange;
+            }
+        }
+    }
+
+    margin-bottom: rem(76px);
+
+    .footer-responsive {
+        position: fixed;
+        z-index: 997;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: $light-grey;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+        min-width: 100%;
+        white-space: nowrap;
+        box-shadow: 0 -3px 3px -3px rgba(0, 0, 0, 0.3);
+        height: rem(76px);
+        text-align: center;
+        display: block;
+        /* ScrollBar */
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+
+        /* Firefox and  Chrome */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .navbar-nav {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            min-width: 100%;
+
+            .nav-item,
+            .menu .item {
+                display: inline-flex;
+                text-align: center;
+                justify-content: flex-end;
+                align-items: center;
+                flex-direction: column;
+                font-size: 1rem;
+                height: rem(76px);
+                min-width: rem(70px);
+                color: $grey;
+                vertical-align: middle;
+
+                .nav-link {
+                    padding: 0.5rem 1rem 0.25rem;
+                }
+
+                i.icon:not(.caret),
+                svg {
+                    display: block;
+                    margin-top: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom: 0.25rem;
+                    transition: all .3s;
+                }
+
+                i.icon:not(.caret) {
+                    color: $grey;
+                    font-size: 2rem;
+                    line-height: 1;
+                }
+
+                svg {
+                    fill: $grey;
+                    max-height: rem(38px);
+                    max-width: rem(52px);
+                }
+
+                i.icon.caret {
+                    margin: 0;
+                    width: 0.5em;
+                }
+
+                .nav-link.active,
+                .nav-link:hover,
+                .nav-link:focus,
+                .nav-link:active {
+                    color: $orange;
+
+                    >span>i.icon,
+                    >i.icon {
+                        color: $orange;
+                    }
+
+                    >span>svg,
+                    >svg {
+                        fill: $orange;
+                    }
+                }
+
+                .ui.dropdown {
+                    position: static;
+                }
+            }
+
+            .ui.dropdown .menu {
+                left: 0;
+                right: 0;
+                bottom: calc(100% - 1px);
+                padding-bottom: 1px;
+                text-align: center;
+                min-width: 0 !important;
+                z-index: 998;
+                overflow: auto;
+                box-shadow: 0 -3px 3px -3px rgba(0, 0, 0, 0.3);
+
+                .item {
+                    height: rem(68px);
+                    min-width: rem(58px);
+                    background-color: white;
+                    padding: 0.5rem 1rem 0.25rem !important;
+
+                    &.active,
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        font-weight: normal;
+                        color: $orange;
+
+                        >i.icon:not(.caret) {
+                            color: $orange;
+                        }
+
+                        >svg {
+                            fill: $orange;
+                        }
+                    }
+                }
+
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+
+                /* Firefox */
+                // Chrome
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $xs) {
+    footer {
+        .navbar .navbar-nav {
+            flex-direction: row;
+
+            .nav-item {
+                width: 50%;
+            }
+        }
+    }
+}
+
+@media (min-width: $s) {
+    footer {
+        .navbar .navbar-nav .nav-item {
+            width: 33.3333333%;
+        }
+    }
+}
+
+@media (min-width: $l) {
+    footer {
+        margin-bottom: 0;
+
+        .footer-responsive {
+            display: none;
+        }
+    }
+}
+
+@media (min-width: $xl) {
+    footer {
+        >.container {
+            display: flex;
+            align-items: center;
+        }
+
+        .dark-mode-toggle-wrapper {
+            text-align: right;
+            margin-right: 7rem;
+        }
+
+        .brand img {
+            margin-bottom: 1rem;
+        }
+
+        .footer-content {
+            padding-left: 4.375rem;
+            flex-grow: 1;
+
+            .navbar .navbar-nav {
+                flex-grow: 1;
+            }
+        }
+    }
+}

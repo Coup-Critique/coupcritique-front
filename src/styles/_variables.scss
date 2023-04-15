@@ -1,0 +1,125 @@
+@use "sass:math";
+
+/* Variables */
+// ui colors
+$grey: #767676;
+$blue: #4571e6;
+$red: #db2828;
+$green: #21ba45;
+$teal: #00b5ad;
+$olive: #b5cc18;
+$yellow: #fbbd08;
+$purple: #a333c8;
+// site color
+$orange: #ef6e33;
+$light-grey: #f5f5f5;
+$grey: #707070;
+
+// dark mode
+$dark-body: #1c1d1f; // normal
+$dark-element: #2f3136; // lighten
+$dark-input: $dark-element; // darken
+$darker: black; // very dark
+
+// breakpoints
+$xl: 1200px;
+$l: 992px;
+$m: 768px;
+$s: 576px;
+$xs: 448px;
+
+// font
+$font-color: #212529;
+$font-family: 'hind', $font-family-sans-serif;
+$font-family-base: $font-family;
+$headings-font-family: 'poppins', $font-family-sans-serif;
+
+$font-size: 16px;
+$font-size-base: $font-size;
+$responsive-font-size: 12px;
+
+// weight
+$thin: 100;
+$extralight: 200;
+$light-weight: 300;
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+$extrabold: 800;
+$blackbold: 900;
+
+$border-radius: 0.3125rem;
+$input-btn-focus-width: 0;
+$input-btn-focus-box-shadow: none;
+
+$header-breakpoint: 1375px;
+$header-height: 138px;
+
+/** Functions */
+@function rem($size) {
+	@return  math.div($size, $font-size) * 1rem;
+}
+
+@function get-breakpoints($key: 'xs') {
+	@if $key== 'xs' {
+		@return $xs;
+	} @else {
+		@return map-get($grid-breakpoints, $key);
+	}
+}
+
+@function get-container-breakpoints($key: 'xl') {
+	@return map-get($container-max-widths, $key);
+}
+
+@function str-replace($str, $search, $replace: '') {
+	$i: str-index($str, $search);
+
+	@if $i {
+		@return str-slice($str, 1, $i - 1) + $replace +
+			str-replace(str-slice($str, $i + str-length($search)), $search, $replace);
+	}
+
+	@return $str;
+}
+
+@mixin generate-unit-style($attr, $min: 0, $max: 5, $step: 1, $unit: 'em') {
+	$i: $min;
+
+	@while $i <=$max {
+		.#{$attr}-#{str-replace(#{$i}, '.', '_')}#{$unit} {
+			#{$attr}: #{$i}#{$unit} !important;
+		}
+
+		$i: $i + $step;
+	}
+}
+
+@mixin generate-dict-style($attr, $dict) {
+	@each $name, $value in $dict {
+		.#{$attr}-#{$name} {
+			#{$attr}: #{$value} !important;
+		}
+	}
+}
+
+// font-size-[$min: 1, $max: 2.5, $step: 0.25]
+@include generate-unit-style('font-size', 0.75, 2.5, 0.25, 'em');
+// font-size-[$min: 2, $max: 5, $step: 1]
+@include generate-unit-style('font-size', 2, 5, 1, 'rem');
+// font-weight-regular
+@include generate-dict-style(
+	'font-weight',
+	(
+		'thin': $thin,
+		'extralight': $extralight,
+		'light': $light-weight,
+		'regular': $regular,
+		'medium': $medium,
+		'semibold': $semibold,
+		'bold': $bold,
+		'extrabold': $extrabold,
+		'blackbold': $blackbold,
+	)
+);

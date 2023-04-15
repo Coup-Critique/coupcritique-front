@@ -1,0 +1,172 @@
+@media (max-width: $xl) {
+	.table-wrapper {
+		overflow: auto hidden;
+		max-width: 100%;
+	}
+}
+
+.table-sticky {
+	position: relative;
+
+	thead {
+		position: sticky;
+		top: 0;
+		z-index: 1;
+	}
+	@media (min-width: $header-breakpoint) {
+		thead {
+			top: $header-height;
+		}
+	}
+}
+
+.table-wrapper + .table-wrapper table.table {
+	thead tr {
+		th:first-child {
+			border-radius: 0;
+		}
+		th:last-child {
+			border-radius: 0;
+		}
+	}
+}
+
+table.table {
+	margin-bottom: 0;
+
+	thead tr {
+		background-color: $orange;
+		color: white;
+
+		th {
+			border: 0;
+			font-weight: 500;
+		}
+
+		th:first-child {
+			border-radius: $border-radius 0 0 0;
+		}
+		th:last-child {
+			border-radius: 0 $border-radius 0 0;
+		}
+		th:first-child:last-child {
+			border-radius: $border-radius $border-radius 0 0;
+		}
+	}
+
+	&.basic {
+		thead tr {
+			background-color: transparent;
+			color: #212529;
+		}
+	}
+
+	tr.tr-clickable {
+		cursor: pointer;
+		.td-action {
+			cursor: default;
+		}
+	}
+
+	tr.not-in {
+		background-color: rgba(0, 0, 0, 0.05);
+	}
+
+	th,
+	td {
+		text-align: center;
+		vertical-align: middle;
+	}
+
+	td.text-break {
+		min-width: 10rem;
+	}
+
+	td.list {
+		padding-bottom: 0.25em;
+	}
+
+	.td-max {
+		width: 100%;
+	}
+
+	.td-stat {
+		width: 5.25rem;
+	}
+
+	&.table-stat {
+		border: 0;
+
+		thead tr {
+			background-color: transparent;
+			color: inherit;
+
+			th {
+				font-weight: 600;
+			}
+		}
+
+		th,
+		td {
+			border: 0;
+		}
+	}
+
+	&.table-inst-stat {
+		.progress {
+			width: 6.25rem;
+		}
+	}
+}
+
+table.table.sortable {
+	thead th.sortable {
+		cursor: pointer;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background: rgba(0, 0, 0, 0.05);
+		}
+
+		&:after {
+			content: '\f0dc';
+			display: inline-block;
+			transition: all 0.1s;
+			font-weight: $regular;
+			height: 1em;
+			width: auto;
+			margin: 0 0 0 0.5em;
+			font-family: Icons;
+		}
+
+		&.ascending:after {
+			content: '\f0d8';
+		}
+
+		&.descending:after {
+			content: '\f0d7';
+		}
+	}
+}
+
+@media screen and (max-width: $xl) {
+	table.table td.list.nowrap {
+		white-space: normal;
+	}
+}
+@media screen and (max-width: $s) {
+	table.table.stackable {
+		display: block;
+		thead,
+		th {
+			display: none;
+		}
+		tbody,
+		tr,
+		td {
+			display: block;
+			border: 0;
+		}
+	}
+}

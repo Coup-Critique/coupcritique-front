@@ -1,0 +1,503 @@
+.home {
+	h2 {
+		font-weight: $bold;
+		font-size: 2em;
+		margin-bottom: 3.125rem;
+	}
+
+	.container {
+		width: 1400px;
+		max-width: 100%;
+	}
+
+	.banner-title-home {
+		background: url('/images/backgrounds/bandeau-home.jpg') no-repeat center;
+		background-size: cover;
+		color: white;
+		padding-bottom: 0;
+
+		.title-col {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			h1 {
+				position: relative;
+				font-size: 1.5rem;
+				font-weight: $regular;
+				line-height: 1.5;
+				margin-bottom: rem(45px);
+
+				p {
+					font-size: 1.5rem;
+				}
+
+				strong {
+					display: block;
+					font-size: 4.375rem;
+					margin-bottom: 1.25rem;
+				}
+			}
+		}
+
+		.image-col {
+			padding-top: 3.125rem;
+			position: relative;
+			z-index: 2;
+
+			img {
+				margin-right: 0;
+				margin-bottom: -4.375rem;
+			}
+		}
+
+		.field.main-search {
+			width: 32.8125rem;
+			max-width: 100%;
+
+			input {
+				&::placeholder {
+					/* Chrome, Firefox, Opera, Safari 10.1+ */
+					color: white !important;
+					opacity: 1;
+					/* Firefox */
+				}
+
+				&:-ms-input-placeholder {
+					/* Internet Explorer 10-11 */
+					color: white !important;
+				}
+
+				&::-ms-input-placeholder {
+					/* Microsoft Edge */
+					color: white !important;
+				}
+			}
+		}
+	}
+
+	.down-arrow-wrapper {
+		text-align: right;
+		margin-top: 3rem;
+
+		i.icon {
+			margin-left: -15px;
+			transform: translateX(50%);
+			cursor: pointer;
+			position: relative;
+
+			&:hover {
+				animation: vMove 1.3s linear 0s infinite;
+			}
+		}
+	}
+
+	.section-ads {
+		padding: 0;
+		background-color: $light-grey;
+
+		// .ads-row {
+		// 	margin-bottom: 0;
+		// 	.ad-wrapper > div[data-ref='vm-preloader'] {
+		// 		padding-top: 15px;
+		// 		padding-bottom: 15px;
+		// 	}
+		// }
+	}
+
+	// .section-tournament + .section-ads {
+	// 	background-color: $light-grey;
+	// }
+
+	.section-teams {
+		overflow: hidden;
+		padding: 0;
+		// background: linear-gradient(to right, $light-grey, $light-grey 50%, white 50%);
+
+		.propose-team {
+			background-color: $light-grey;
+			padding: 1.875rem;
+			margin-bottom: 1.875rem;
+
+			&::after {
+				content: '';
+				display: block;
+				height: 0;
+				width: 0;
+				border-bottom: 3.125rem solid transparent;
+				border-left: 100vw solid $light-grey;
+				position: absolute;
+				left: 0;
+				bottom: -3.125rem;
+				z-index: 1;
+			}
+
+			.img-wrapper {
+				margin-bottom: 1.25em;
+			}
+
+			h2 {
+				padding: 0 1.875rem;
+				margin-left: -1.875rem;
+				margin-right: -1.875rem;
+				margin-bottom: 0.5rem;
+				text-align: center;
+				font-size: 1.75em;
+				position: relative;
+				z-index: 2;
+
+				a {
+					color: white;
+
+					&:hover,
+					&:focus,
+					&:active {
+						color: $blue;
+					}
+
+					// &::before {
+					// 	content: '';
+					// 	position: absolute;
+					// 	top: 0;
+					// 	left: 0;
+					// 	right: 0;
+					// 	bottom: 0;
+					// }
+
+					// &::after {
+					// 	content: '';
+					// 	position: absolute;
+					// 	left: calc(50% + 9.125rem);
+					// 	bottom: -0.625rem;
+					// 	background: url('/images/picto/plus.png') $red no-repeat center center;
+					// 	border-radius: 100%;
+					// 	height: 2.5rem;
+					// 	width: 2.5rem;
+					// 	transform: rotate(0deg);
+					// 	transition: all 0s;
+					// }
+
+					// &:hover,
+					// &:focus,
+					// &:active {
+					// 	&:after {
+					// 		transform: rotate(180deg);
+					// 		transition: all 0.3s;
+					// 	}
+					// }
+				}
+			}
+		}
+
+		.find-team {
+			// position: relative;
+			padding-top: 3.5rem;
+			padding-bottom: 2.75rem;
+			// z-index: 1;
+			// transform: skewX(-25deg);
+			background-color: white;
+
+			.content {
+				// transform: skewX(25deg);
+				// padding-left: 3.125rem;
+				text-align: center;
+			}
+
+			h2 {
+				margin-bottom: 0.5rem;
+
+				a {
+					color: $body-color;
+
+					&:hover,
+					&:focus,
+					&:active {
+						color: $blue;
+						text-decoration: none;
+					}
+				}
+			}
+
+			.pictures {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				margin-bottom: 1.25em;
+
+				.picture {
+					padding: 1.25rem;
+					width: calc(33.33333% - 1.25rem);
+					min-width: 250px;
+
+					img {
+						max-height: 12.5rem;
+						width: auto;
+					}
+				}
+			}
+		}
+	}
+
+	.section-tournament {
+		background: url('/images/backgrounds/bandeau-tournois.jpg') no-repeat center;
+		background-size: cover;
+		color: white;
+
+		.container {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+		}
+
+		h2 {
+			margin-bottom: 0;
+		}
+
+		.btn {
+			font-size: 1.25em;
+			font-weight: $semibold;
+		}
+
+		.btn-light {
+
+			&:hover,
+			&:focus,
+			&:active {
+				background-color: darken($blue, 10);
+			}
+		}
+	}
+
+	.section-news {
+		text-align: center;
+		// background: url('/images/backgrounds/bandeau-team.jpg') no-repeat center;
+		// background-size: cover;
+		// background-color: $light-grey;
+		// color: white;
+
+		// .ui.card.actuality-teaser {
+		// 	color: white;
+		// 	background-color: rgba(0, 0, 0, 0.4);
+		// 	.date {
+		// 		color: white;
+		// 	}
+		// }
+	}
+
+	.section-weekly-team {
+		padding: 3em 0 1.75em;
+		text-align: center;
+		background: url('/images/backgrounds/bandeau-team.jpg') no-repeat center;
+		background-size: cover;
+		color: white;
+
+		h2 {
+			position: relative;
+			padding-top: 3.125rem;
+			margin-bottom: 1rem;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 3.125rem;
+				background: url('/images/picto/3-stars.png') no-repeat center top;
+			}
+		}
+
+		.tier {
+			display: inline-block;
+			margin-bottom: 0.5em;
+		}
+
+		.ui.label.yellow {
+			background-color: #fba731 !important;
+		}
+
+		.ui.loader {
+			margin-bottom: 1.5em;
+		}
+
+		.top-team {
+			>h3 {
+				margin-bottom: 1em;
+			}
+
+			p {
+				margin-bottom: 1em;
+			}
+		}
+	}
+
+	.section-usage {
+		background: $light-grey url('/images/fond-guide-strat.png') no-repeat right bottom;
+		padding: 4em 0;
+
+		.usages {
+			h2 {
+				text-align: center;
+				margin-bottom: 3.125rem;
+			}
+
+			.usage {
+				.img-wrapper {
+					height: 250px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+
+					img {
+						max-height: 250px;
+					}
+				}
+
+				h3 {
+					margin-bottom: 0.75rem;
+					// height: 62px;
+					display: inline-flex;
+					justify-content: center;
+					align-items: center;
+				}
+
+				h4,
+				.no-result {
+					height: 58px;
+					display: inline-flex;
+					justify-content: center;
+					align-items: center;
+					margin-bottom: 0.5rem;
+				}
+			}
+		}
+
+		h2 {
+			margin-bottom: 2.75rem;
+		}
+
+		h3 {
+			font-weight: $semibold;
+			margin-bottom: 1.5rem;
+		}
+
+		.ui.list.flex {
+			margin-bottom: 2.75rem;
+		}
+	}
+}
+
+@media (max-width: $xs - 1px) {
+	.home .banner-title-home .title-col h1 strong {
+		font-size: 3.375rem;
+	}
+}
+
+@media (max-width: $xl - 1) {
+	.home .section-usage .row>.col-xl-7 {
+		margin-bottom: 2.5rem;
+	}
+
+	.home .down-arrow-wrapper {
+		text-align: center;
+
+		i.icon {
+			margin: 0;
+			transform: translateX(0);
+		}
+	}
+
+	.home .banner-title-home .image-col img {
+		display: none;
+	}
+}
+
+@media (min-width: $xl) {
+	.home .section-teams .propose-team {
+		padding-bottom: 1.875rem;
+		margin-bottom: 0;
+
+		&::after {
+			content: none;
+		}
+	}
+
+	.home .banner-title-home {
+		padding: 0;
+	}
+}
+
+@media (min-width: 1550px) {
+	.home .section-teams {
+		background: linear-gradient(to right, $light-grey, $light-grey 50%, white 50%);
+
+		.propose-team {
+			padding-top: 3.125rem;
+
+			&::after {
+				content: none;
+			}
+
+			.img-wrapper {
+				margin-left: -6.25rem;
+			}
+
+			.btn,
+			p {
+				margin-left: -6.25rem;
+			}
+
+			p {
+				padding: 0 20%;
+			}
+
+			h2 {
+				margin-right: 0;
+				z-index: 0;
+
+				a {
+					margin-left: -6.25rem;
+
+					// &::after {
+					// 	left: calc(50% + 6.625rem);
+					// }
+				}
+			}
+		}
+
+		.find-team {
+			position: relative;
+			z-index: 1;
+			transform: skewX(-25deg);
+			left: -6.25rem;
+
+			.content {
+				transform: skewX(25deg);
+				padding-left: 3.125rem;
+				text-align: center;
+			}
+		}
+	}
+}
+
+@keyframes vMove {
+	0% {
+		top: 0;
+	}
+
+	25% {
+		top: 10px;
+	}
+
+	50% {
+		top: 0;
+	}
+
+	75% {
+		top: -10px;
+	}
+
+	100% {
+		top: 0;
+	}
+}

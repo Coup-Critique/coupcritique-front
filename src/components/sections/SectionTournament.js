@@ -1,0 +1,61 @@
+// modules
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Loader } from 'semantic-ui-react';
+// hooks
+import useFetch from '../../hooks/useFetch';
+import TournamentTeaser from '../elements/TournamentTeaser';
+// components
+
+function SectionTournament() {
+	const ssrData = useSelector(state => state.ssrData);
+	const [result, load, loading] = useFetch();
+	const [tournaments, setTournaments] = useState(ssrData?.tournaments || []);
+
+	useEffect(() => {
+		if (!tournaments.length) {
+			load({ url: `tournaments?maxLength=3` });
+		}
+	}, []);
+
+	useEffect(() => {
+		if (result && result.success) {
+			setTournaments(result.tournaments);
+		}
+	}, [result]);
+
+	if (!tournaments.length && !loading) return null;
+	return (
+		<section className="section-news">
+			<div className="ui container">
+				<h2>
+					<Link to="/entity/tournaments">Tournois</Link>
+				</h2>
+				<div className="mb-4">
+					{loading ? (
+						<Loader active inline="centered" inverted />
+					) : (
+						<div className="row">
+							{tournaments.map(tournament => (
+								<div
+									key={tournament.id}
+									className="col-12 col-lg-4 d-flex flex-column"
+								>
+									<TournamentTeaser
+										tournament={tournament}
+										btnProps={{ color: 'blue', inverted: true }}
+									/>
+								</div>
+							))}
+						</div>
+					)}
+				</div>
+				<Link to="/entity/tournaments" className="btn btn-light">
+					Voir tous les tournois
+				</Link>
+			</div>
+		</section>
+	);
+}
+export default SectionTournament;
