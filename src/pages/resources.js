@@ -6,7 +6,7 @@ import { makeClassName } from '@/functions';
 import useFetch from '@/hooks/useFetch';
 import Resource from '@/components/elements/Resource';
 import FormResource from '@/components/forms/FormResource';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import SectionAds from '@/components/sections/SectionAds';
 
 const ResourcesPage = () => {

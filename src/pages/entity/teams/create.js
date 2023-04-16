@@ -6,7 +6,7 @@ import { Icon, Loader } from 'semantic-ui-react';
 import useFetch from '@/hooks/useFetch';
 // components
 import FormTeam from '@/components/forms/FormTeam';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import SignPanel from '../../SignPanel';
 import GoBackButton from '../../GoBackButton';
 // reducers

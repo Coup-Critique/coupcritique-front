@@ -5,7 +5,7 @@ import { objectToGETparams } from '@/functions';
 import useFetch from '@/hooks/useFetch';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import FormSearch from '@/components/forms/FormSearch';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import TableUser from '@/components/table/TableUser';
 // components
 

@@ -7,7 +7,7 @@ import useFetch, { FILE_TYPE } from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import MultiImageField from '@/components/fields/MultiImageField';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import PaginationPrettier from '../../PaginationPrettier';
 // components
 

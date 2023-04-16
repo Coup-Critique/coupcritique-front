@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { PUT } from '@/constants/methods';
 import useFetch from '@/hooks/useFetch';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import { Message, Form, Button } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { addMessage } from '@/reducers/messages';

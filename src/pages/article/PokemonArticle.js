@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Loader, Menu, Popup } from 'semantic-ui-react';
 // components
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import ArtPokemon from '@/components/elements/ArtPokemon';
 import TableStat from '@/components/table/TableStat';
 import TableTeam from '@/components/table/TableTeam';

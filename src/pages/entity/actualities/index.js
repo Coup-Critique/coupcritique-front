@@ -7,7 +7,7 @@ import useDarkMode from '@/hooks/useDarkMode';
 import useFetch from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
 import ActualityTeaser from '@/components/elements/ActualityTeaser';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import PaginationPrettier from '../../PaginationPrettier';
 import { setActualityTags } from '@/reducers/actuality_tags';
 import useActions from '@/hooks/useActions';

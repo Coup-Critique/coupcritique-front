@@ -7,7 +7,7 @@ import useActions from '@/hooks/useActions';
 // components
 import FormSearch from '@/components/forms/FormSearch';
 import RadioFilterForm from '@/components/forms/RadioFilterForm';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import TableTeam from '@/components/table/TableTeam';
 import useFetch from '@/hooks/useFetch';
 import { setTiers as setTiersAction } from '@/reducers/tiers';

@@ -10,7 +10,7 @@ import TableItem from '@/components/table/TableItem';
 import TableType from '@/components/table/TableType';
 // functions
 import useFetch from '@/hooks/useFetch';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import TableUser from '@/components/table/TableUser';
 import TableTier from '@/components/table/TableTier';
 import { useSelector } from 'react-redux';

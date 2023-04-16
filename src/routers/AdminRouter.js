@@ -3,10 +3,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { Loader } from 'semantic-ui-react';
-// import AdminHome from '@/pages/admin/AdminHome';
-import AdminTeams from '@/pages/admin/AdminTeams';
-import AdminUsers from '@/pages/admin/AdminUsers';
-import AdminDrive from '@/pages/admin/AdminDrive';
+import AdminTeams from '@/pages/admin/teams';
+import AdminUsers from '@/pages/admin/users';
+import AdminDrive from '@/pages/admin/drive';
 
 const AdminRouter = () => {
 	const user = useSelector(state => state.user);

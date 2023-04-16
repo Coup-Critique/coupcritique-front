@@ -5,7 +5,7 @@ import SectionAds from '@/components/sections/SectionAds';
 import useFetch from '@/hooks/useFetch';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { setNotifAction } from '@/reducers/notifs';

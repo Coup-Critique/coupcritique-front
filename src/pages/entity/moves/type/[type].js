@@ -8,7 +8,7 @@ import useFetch from '@/hooks/useFetch';
 // functions
 import { formateName } from '@/functions';
 // components
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import GenSelector from '../../GenSelector';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import { setSsrDataAction } from '@/reducers/ssrData';

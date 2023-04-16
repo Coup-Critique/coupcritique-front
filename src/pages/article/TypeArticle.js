@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Button, Loader, Segment } from 'semantic-ui-react';
 // components
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import GoBackButton from '../../GoBackButton';
 import TablePokemon from '@/components/table/TablePokemon';
 // hooks

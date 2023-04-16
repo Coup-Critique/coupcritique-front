@@ -1,0 +1,11 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /search/
+Disallow: /admin/
+Disallow: /user
+Disallow: /user/
+Disallow: /entity/users
+Disallow: /entity/teams/favorites
+Disallow: /entity/teams/*/update
+Disallow: /entity/actualities/*/update

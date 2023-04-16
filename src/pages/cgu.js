@@ -1,6 +1,6 @@
 // modules
 import React from 'react';
-import PageWrapper from '../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 // components
 
 const CGU = () => (

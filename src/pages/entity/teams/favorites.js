@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import { Loader } from 'semantic-ui-react';
 import GoBackButton from '../../GoBackButton';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import TableTeam from '@/components/table/TableTeam';
 import SectionAds from '@/components/sections/SectionAds';
 import useTableFetch from '@/hooks/useTableFetch';

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Description from '@/components/elements/Description';
 // components
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import TablePokemonTierUsage from '@/components/table/TablePokemonTierUsage';
 import TablePokemon from '@/components/table/TablePokemon';
 import Resource from '@/components/elements/Resource';

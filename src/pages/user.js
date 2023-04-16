@@ -6,7 +6,7 @@ import { Redirect } from 'react-router';
 // components
 import FormPassword from '@/components/forms/FormPassword';
 import FormUpdateUser from '@/components/forms/FormUpdateUser';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import TableTeam from '@/components/table/TableTeam';
 // hooks
 import useFetch from '@/hooks/useFetch';

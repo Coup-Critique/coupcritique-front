@@ -5,7 +5,7 @@ import { Redirect, useHistory } from 'react-router';
 import { Loader } from 'semantic-ui-react';
 // components
 import FormGuide from '@/components/forms/FormGuide';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import useFetch from '@/hooks/useFetch';
 
 //reducers

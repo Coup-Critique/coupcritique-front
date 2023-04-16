@@ -10,18 +10,18 @@ import { capitalize } from '@/functions';
 // constants
 import { entities, entitiesTranslation, entitiesWithGen } from '@/constants/entities';
 // components
-import PageWrapper from '../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import TablePokemon from '@/components/table/TablePokemon';
 import TableMove from '@/components/table/TableMove';
 import TableAbility from '@/components/table/TableAbility';
 import TableItem from '@/components/table/TableItem';
 // import TableType from '@/components/table/TableType';
 // import TableUser from '@/components/table/TableUser';
-import TierList from '@/pages/list/TierList';
-import GenSelector from '../GenSelector';
-import TypeList from '@/pages/list/TypeList';
+import TierList from '@/pages/entity/tiers';
+import TypeList from '@/pages/entity/types';
+import GenSelector from '@/components/GenSelector';
+import MetaData from '@/components/MetaData';
 import useStoreQuery from '@/hooks/useStoreQuery';
-import MetaData from '../MetaData';
 
 const ListRouter = () => {
 	const history = useHistory();

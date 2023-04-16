@@ -6,7 +6,7 @@ import Slider from 'react-slick';
 import { Button } from 'semantic-ui-react';
 import { formatDate } from '@/functions';
 // components
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import GoBackButton from '../../GoBackButton';
 import useFetch from '@/hooks/useFetch';
 import { DELETE } from '@/constants/methods';

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
-import PageWrapper from '../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 // components
 
 const Page404 = () => (

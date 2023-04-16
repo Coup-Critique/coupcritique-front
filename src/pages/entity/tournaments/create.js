@@ -5,7 +5,7 @@ import { Redirect, useHistory } from 'react-router';
 import { Loader } from 'semantic-ui-react';
 // components
 import FormTournament from '@/components/forms/FormTournament';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 
 const TournamentFormPage = ({ result = {}, update = false }) => {
 	const history = useHistory();

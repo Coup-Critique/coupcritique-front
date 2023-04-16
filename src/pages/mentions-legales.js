@@ -1,6 +1,6 @@
 // modules
 import React from 'react';
-import PageWrapper from '../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 // components
 
 // TODO utiliser du css pour split l'email et la cacher aux robots

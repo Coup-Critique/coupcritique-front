@@ -6,7 +6,7 @@ import useFetch from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
 import Video from '@/components/elements/Video';
 import FormVideo from '@/components/forms/FormVideo';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import PaginationPrettier from '../../PaginationPrettier';
 import { setVideoTags } from '@/reducers/video_tags';
 import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSelectField';

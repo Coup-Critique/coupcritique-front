@@ -2,7 +2,7 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import Profile from '@/components/elements/Profile';
-import PageWrapper from '../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 // components
 
 const Thanks = () => {

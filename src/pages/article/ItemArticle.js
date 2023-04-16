@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loader } from 'semantic-ui-react';
 // components
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import ArtItem from '@/components/elements/ArtItem';
 import GoBackButton from '../../GoBackButton';
 import useFetch from '@/hooks/useFetch';

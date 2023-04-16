@@ -5,7 +5,7 @@ import { Loader } from 'semantic-ui-react';
 import { formateName } from '@/functions';
 // components
 import GoBackButton from '../../GoBackButton';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import useFetch from '@/hooks/useFetch';
 import Description from '@/components/elements/Description';
 import Type from '@/components/elements/Type';

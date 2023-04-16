@@ -9,7 +9,7 @@ import Description from '@/components/elements/Description';
 import GenSelector from '../../GenSelector';
 // components
 import GoBackButton from '../../GoBackButton';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
 import useStoreQuery from '@/hooks/useStoreQuery';
 

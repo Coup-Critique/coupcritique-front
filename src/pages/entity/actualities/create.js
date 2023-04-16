@@ -5,7 +5,7 @@ import { Redirect, useHistory } from 'react-router';
 import { Loader } from 'semantic-ui-react';
 // components
 import FormActuality from '@/components/forms/FormActuality';
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import useFetch from '@/hooks/useFetch';
 import { setActualityTags } from '@/reducers/actuality_tags';
 

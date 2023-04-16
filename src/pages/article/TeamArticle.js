@@ -6,7 +6,7 @@ import { Button } from 'semantic-ui-react';
 // constants
 import { INSTANCES_KEYS } from '@/constants/team';
 // components
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import Profile from '@/components/elements/Profile';
 import Tier from '@/components/elements/Tier';
 import Tag from '@/components/elements/Tag';

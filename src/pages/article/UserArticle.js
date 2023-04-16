@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Icon, Loader } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 // components
-import PageWrapper from '../../PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 import TableTeam from '@/components/table/TableTeam';
 import UserBanButton from '@/components/actions/UserBanButton';
 import UserModoButton from '@/components/actions/UserModoButton';
