@@ -6,7 +6,7 @@ import { Button, Modal, Tab } from 'semantic-ui-react';
 import FormSignIn from './forms/FormSignIn';
 import FormSignUp from './forms/FormSignUp';
 import FormForgottenPassword from './forms/FormForgottenPassword';
-import useDarkMode, { DARK_MODE_KEY } from '../hooks/useDarkMode';
+import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
 
 function SignPanel({ isModal = false }) {
 	const [darkMode] = useDarkMode();

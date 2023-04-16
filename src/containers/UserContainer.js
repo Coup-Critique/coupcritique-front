@@ -3,7 +3,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Loader } from 'semantic-ui-react';
 // components
-import useGetEntity from '../hooks/useGetEntity';
+import useGetEntity from '@/hooks/useGetEntity';
 
 const UserContainer = ({ Component, ...props }) => {
 	const { id } = useParams();

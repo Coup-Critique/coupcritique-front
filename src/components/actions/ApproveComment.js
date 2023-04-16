@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Icon, Loader } from 'semantic-ui-react';
 // custom
-import useFetch from '../../hooks/useFetch';
-import { PUT } from '../../constants/methods';
+import useFetch from '@/hooks/useFetch';
+import { PUT } from '@/constants/methods';
 
 const ApproveComment = ({ comment, handleUpdate, baseEntity }) => {
 	const user = useSelector(state => state.user);

@@ -1,6 +1,6 @@
 // modules
 import React from 'react';
-import { capitalize } from '../../functions';
+import { capitalize } from '@/functions';
 
 const Spread = ({ nature, evs }) => (
 	<span className="spread">

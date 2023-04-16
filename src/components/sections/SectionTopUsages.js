@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Icon, Loader } from 'semantic-ui-react';
-import useFetch from '../../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 // functions
-import TierUsage from '../elements/TierUsage';
-import Video from '../elements/Video';
-import GuideTeaserEnhanced from '../elements/GuideTeaserEnhanced';
+import TierUsage from '@/components/elements/TierUsage';
+import Video from '@/components/elements/Video';
+import GuideTeaserEnhanced from '@/components/elements/GuideTeaserEnhanced';
 import { useSelector } from 'react-redux';
 
 const SectionTopUsages = () => {

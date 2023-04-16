@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeClassName } from '../../functions';
+import { makeClassName } from '@/functions';
 import ProgressBarStat from '../ProgressBarStat';
 
 const calcStat = (stat, instance, oldGen) => {

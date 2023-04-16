@@ -1,7 +1,7 @@
 // modules
 import React, { useState } from 'react';
-import { makeClassName } from '../../functions';
-import useDarkMode from '../../hooks/useDarkMode';
+import { makeClassName } from '@/functions';
+import useDarkMode from '@/hooks/useDarkMode';
 
 const ShowdownIconHoverable = ({ linkProps, className, hoverColor = 'orange' }) => {
 	const [hover, setHover] = useState(false);

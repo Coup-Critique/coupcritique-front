@@ -1,7 +1,7 @@
 // modules
 import React from 'react';
-import { IMG_VERSION } from '../../constants/img';
-import { formatFileName } from '../../functions';
+import { IMG_VERSION } from '@/constants/img';
+import { formatFileName } from '@/functions';
 
 const Category = ({ category }) => (
 	<div className="d-inline-block">

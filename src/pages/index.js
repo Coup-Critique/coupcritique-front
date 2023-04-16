@@ -2,17 +2,17 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
-import useDarkMode from '../../hooks/useDarkMode';
+import useDarkMode from '@/hooks/useDarkMode';
 import Ad from '../Ad';
 // components
-import MainSearch from '../forms/MainSearch';
+import MainSearch from '@/components/forms/MainSearch';
 import MetaData from '../MetaData';
 import ScrollReveal from '../ScrollReveal';
-import SectionActuality from '../sections/SectionActuality';
-import SectionAdsHome from '../sections/SectionAdsHome';
-import SectionTeams from '../sections/SectionTeams';
-import SectionTopUsages from '../sections/SectionTopUsages';
-import SectionWeeklyTeam from '../sections/SectionWeeklyTeam';
+import SectionActuality from '@/components/sections/SectionActuality';
+import SectionAdsHome from '@/components/sections/SectionAdsHome';
+import SectionTeams from '@/components/sections/SectionTeams';
+import SectionTopUsages from '@/components/sections/SectionTopUsages';
+import SectionWeeklyTeam from '@/components/sections/SectionWeeklyTeam';
 
 // use default meta tags
 const Home = () => {

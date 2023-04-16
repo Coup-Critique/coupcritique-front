@@ -4,28 +4,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
 // constants
-import { INSTANCES_KEYS } from '../../../constants/team';
+import { INSTANCES_KEYS } from '@/constants/team';
 // components
 import PageWrapper from '../../PageWrapper';
-import Profile from '../../elements/Profile';
-import Tier from '../../elements/Tier';
-import Tag from '../../elements/Tag';
-import PokemonInstance from '../../elements/PokemonInstance';
-import Export from '../../actions/Export';
-import Certification from '../../elements/Certification';
-import CertificationButton from '../../actions/CertificationButton';
-import TeamBanButton from '../../actions/TeamBanButton';
-import DeleteAction from '../../actions/DeleteAction';
-import Favorite from '../../actions/Favorite';
-import SpritePokemon from '../../elements/SpritePokemon';
+import Profile from '@/components/elements/Profile';
+import Tier from '@/components/elements/Tier';
+import Tag from '@/components/elements/Tag';
+import PokemonInstance from '@/components/elements/PokemonInstance';
+import Export from '@/components/actions/Export';
+import Certification from '@/components/elements/Certification';
+import CertificationButton from '@/components/actions/CertificationButton';
+import TeamBanButton from '@/components/actions/TeamBanButton';
+import DeleteAction from '@/components/actions/DeleteAction';
+import Favorite from '@/components/actions/Favorite';
+import SpritePokemon from '@/components/elements/SpritePokemon';
 import GoBackButton from '../../GoBackButton';
-import TeamTopButton from '../../actions/TeamTopButton';
-import { addMessage } from '../../../reducers/messages';
+import TeamTopButton from '@/components/actions/TeamTopButton';
+import { addMessage } from '@/reducers/messages';
 // import ScrollReveal from '../../ScrollReveal';
-import SectionAds from '../../sections/SectionAds';
-import { formatDate, formatFileName } from '../../../functions';
+import SectionAds from '@/components/sections/SectionAds';
+import { formatDate, formatFileName } from '@/functions';
 import CommentArea from '../../CommentArea';
-import Replay from '../../elements/Replay';
+import Replay from '@/components/elements/Replay';
 
 const TeamArticle = ({ result }) => {
 	const dispatch = useDispatch();

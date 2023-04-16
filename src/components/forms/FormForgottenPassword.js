@@ -2,10 +2,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Form, Button, Message } from 'semantic-ui-react';
 // hooks
-import useFetch from '../../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 // constants
-import { EMAIL_REGEX } from '../../constants';
-import { POST } from '../../constants/methods';
+import { EMAIL_REGEX } from '@/constants';
+import { POST } from '@/constants/methods';
 
 const FormForgottenPassword = ({ triggerHeight }) => {
 	const [result, load, loading] = useFetch();

@@ -2,13 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // actions
-import { setToken, setRefreshToken, setUser } from '../reducers/user';
+import { setToken, setRefreshToken, setUser } from '@/reducers/user';
 // hooks
 import useLocalStorage from './useLocalStorage';
 import useLogout from './useLogout';
 import { JSON_TYPE, manageFetch } from './useFetch';
-import { POST } from '../constants/methods';
-import { addMessage, removeMessage } from '../reducers/messages';
+import { POST } from '@/constants/methods';
+import { addMessage, removeMessage } from '@/reducers/messages';
 import { Loader } from 'semantic-ui-react';
 
 const useRefreshToken = result => {

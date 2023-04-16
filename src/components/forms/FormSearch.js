@@ -1,7 +1,7 @@
 // modules
 import React, { useState, useEffect } from 'react';
 import { Form } from 'semantic-ui-react';
-import { makeClassName } from '../../functions';
+import { makeClassName } from '@/functions';
 
 // Can't be real form because it can be contain in another form
 const FormSearch = ({

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Icon, Popup } from 'semantic-ui-react';
-import { copyToClipboard, makeClassName } from '../../functions/index';
-import useDarkMode, { DARK_MODE_KEY } from '../../hooks/useDarkMode';
+import { copyToClipboard, makeClassName } from '@/functions/index';
+import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
 
 const TIMEOUT_LENGTH = 2000; // en milliseconde
 

@@ -1,9 +1,9 @@
 // modules
 import { useEffect, useState } from 'react';
-import { objectToGETparams } from '../functions';
+import { objectToGETparams } from '@/functions';
 // components
 import useStoreQuery from './useStoreQuery';
-import { ASC, DESC } from '../components/table/Table';
+import { ASC, DESC } from '@/components/table/Table';
 import useFetch from './useFetch';
 
 /**

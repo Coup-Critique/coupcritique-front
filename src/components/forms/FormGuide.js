@@ -1,19 +1,19 @@
 // modules
 import React, { useState, useEffect } from 'react';
-import useFetch, { FILE_TYPE } from '../../hooks/useFetch';
+import useFetch, { FILE_TYPE } from '@/hooks/useFetch';
 
 // components
 import { Button, Header, Form, Segment, Message, Icon } from 'semantic-ui-react';
-import { POST, PUT } from '../../constants/methods';
+import { POST, PUT } from '@/constants/methods';
 import { useDispatch } from 'react-redux';
-import { addMessage } from '../../reducers/messages';
-import MultiImageField from '../fields/MultiImageField';
+import { addMessage } from '@/reducers/messages';
+import MultiImageField from '@/components/fields/MultiImageField';
 import Wysiwyg from '../Wysiwyg';
-import TagsField from '../fields/TagsField';
-import { buildFieldsMessage } from '../../functions';
-import TiersField from '../fields/TiersField';
+import TagsField from '@/components/fields/TagsField';
+import { buildFieldsMessage } from '@/functions';
+import TiersField from '@/components/fields/TiersField';
 import { useHistory } from 'react-router-dom';
-import useSaveToStorage from '../../hooks/useSaveToStorage';
+import useSaveToStorage from '@/hooks/useSaveToStorage';
 
 const FormGuide = ({ handleSubmited, guide = {}, tags = [], tiers, loadingTiers }) => {
 	const dispatch = useDispatch();

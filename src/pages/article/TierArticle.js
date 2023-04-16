@@ -1,14 +1,14 @@
 // modules
 import React, { useEffect, useState } from 'react';
-import Description from '../../elements/Description';
+import Description from '@/components/elements/Description';
 // components
 import PageWrapper from '../../PageWrapper';
-import TablePokemonTierUsage from '../../table/TablePokemonTierUsage';
-import TablePokemon from '../../table/TablePokemon';
-import Resource from '../../elements/Resource';
+import TablePokemonTierUsage from '@/components/table/TablePokemonTierUsage';
+import TablePokemon from '@/components/table/TablePokemon';
+import Resource from '@/components/elements/Resource';
 import GenSelector from '../../GenSelector';
 import GoBackButton from '../../GoBackButton';
-import useStoreQuery from '../../../hooks/useStoreQuery';
+import useStoreQuery from '@/hooks/useStoreQuery';
 import { Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 

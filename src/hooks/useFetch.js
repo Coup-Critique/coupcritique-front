@@ -3,9 +3,9 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // custom
 import useRefreshToken from './useRefreshToken';
-import { addMessage } from '../reducers/messages';
-import { buildFormData } from '../functions';
-import { GET } from '../constants/methods';
+import { addMessage } from '@/reducers/messages';
+import { buildFormData } from '@/functions';
+import { GET } from '@/constants/methods';
 
 export const JSON_TYPE = 'application/json';
 export const FILE_TYPE = 'multipart/form-data';

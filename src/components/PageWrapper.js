@@ -1,6 +1,6 @@
 // modules
 import React from 'react';
-import { makeClassName } from '../functions';
+import { makeClassName } from '@/functions';
 import Ad from './Ad';
 import MetaData from './MetaData';
 

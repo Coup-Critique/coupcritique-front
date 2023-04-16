@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Popup } from 'semantic-ui-react';
-import { formateName } from '../../functions';
+import { formateName } from '@/functions';
 
 const Item = ({ item, noPopup = false }) =>
 	noPopup || !item.description ? (

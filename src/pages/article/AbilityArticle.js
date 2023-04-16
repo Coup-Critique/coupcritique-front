@@ -2,16 +2,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loader } from 'semantic-ui-react';
-import { formateName } from '../../../functions';
+import { formateName } from '@/functions';
 // hooks
-import useFetch from '../../../hooks/useFetch';
-import Description from '../../elements/Description';
+import useFetch from '@/hooks/useFetch';
+import Description from '@/components/elements/Description';
 import GenSelector from '../../GenSelector';
 // components
 import GoBackButton from '../../GoBackButton';
 import PageWrapper from '../../PageWrapper';
-import TablePokemonWithUsages from '../../table/TablePokemonWithUsages';
-import useStoreQuery from '../../../hooks/useStoreQuery';
+import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
+import useStoreQuery from '@/hooks/useStoreQuery';
 
 const AbilityArticle = ({ result }) => {
 	const { id } = useParams();

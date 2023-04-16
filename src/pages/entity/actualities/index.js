@@ -3,18 +3,18 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Form, Loader } from 'semantic-ui-react';
-import useDarkMode from '../../../hooks/useDarkMode';
-import useFetch from '../../../hooks/useFetch';
-import usePager from '../../../hooks/usePager';
-import ActualityTeaser from '../../elements/ActualityTeaser';
+import useDarkMode from '@/hooks/useDarkMode';
+import useFetch from '@/hooks/useFetch';
+import usePager from '@/hooks/usePager';
+import ActualityTeaser from '@/components/elements/ActualityTeaser';
 import PageWrapper from '../../PageWrapper';
 import PaginationPrettier from '../../PaginationPrettier';
-import { setActualityTags } from '../../../reducers/actuality_tags';
-import useActions from '../../../hooks/useActions';
-import { objectToGETparams } from '../../../functions';
-import DropdownMultipleSelectField from '../../fields/DropdownMultipleSelectField';
-import useStoreQuery from '../../../hooks/useStoreQuery';
-import SectionAds from '../../sections/SectionAds';
+import { setActualityTags } from '@/reducers/actuality_tags';
+import useActions from '@/hooks/useActions';
+import { objectToGETparams } from '@/functions';
+import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSelectField';
+import useStoreQuery from '@/hooks/useStoreQuery';
+import SectionAds from '@/components/sections/SectionAds';
 
 const ActualityList = () => {
 	const dispatch = useDispatch();

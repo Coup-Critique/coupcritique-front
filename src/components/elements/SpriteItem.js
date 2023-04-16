@@ -2,8 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Popup } from 'semantic-ui-react';
-import { IMG_VERSION, SPRITE_ITM } from '../../constants/img';
-import { formatFileName } from '../../functions';
+import { IMG_VERSION, SPRITE_ITM } from '@/constants/img';
+import { formatFileName } from '@/functions';
 
 const SpriteItem = ({ item, noPopup = false }) =>
 	noPopup || !item.description ? (

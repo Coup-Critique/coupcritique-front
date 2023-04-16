@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router';
 import { Loader } from 'semantic-ui-react';
 // components
-import FormTournament from '../../forms/FormTournament';
+import FormTournament from '@/components/forms/FormTournament';
 import PageWrapper from '../../PageWrapper';
 
 const TournamentFormPage = ({ result = {}, update = false }) => {

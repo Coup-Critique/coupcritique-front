@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Icon } from 'semantic-ui-react';
-import useDarkMode from '../hooks/useDarkMode';
+import useDarkMode from '@/hooks/useDarkMode';
 
 const GoBackButton = ({ callback, defaultUrl }) => {
 	const history = useHistory();

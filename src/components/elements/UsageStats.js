@@ -5,8 +5,8 @@ import { Divider, Tab } from 'semantic-ui-react';
 import Move from './Move';
 import SpritePokemon from './SpritePokemon';
 import SpriteItem from './SpriteItem';
-import { formatNumbers } from '../../functions';
-import useFetch from '../../hooks/useFetch';
+import { formatNumbers } from '@/functions';
+import useFetch from '@/hooks/useFetch';
 import Ability from './Ability';
 import Spread from './Spread';
 

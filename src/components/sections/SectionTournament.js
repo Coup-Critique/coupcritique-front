@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Loader } from 'semantic-ui-react';
 // hooks
-import useFetch from '../../hooks/useFetch';
-import TournamentTeaser from '../elements/TournamentTeaser';
+import useFetch from '@/hooks/useFetch';
+import TournamentTeaser from '@/components/elements/TournamentTeaser';
 // components
 
 function SectionTournament() {

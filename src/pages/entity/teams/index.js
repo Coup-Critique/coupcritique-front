@@ -3,19 +3,19 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Form, Loader, Segment } from 'semantic-ui-react';
-import useActions from '../../../hooks/useActions';
+import useActions from '@/hooks/useActions';
 // components
-import FormSearch from '../../forms/FormSearch';
-import RadioFilterForm from '../../forms/RadioFilterForm';
+import FormSearch from '@/components/forms/FormSearch';
+import RadioFilterForm from '@/components/forms/RadioFilterForm';
 import PageWrapper from '../../PageWrapper';
-import TableTeam from '../../table/TableTeam';
-import useFetch from '../../../hooks/useFetch';
-import { setTiers as setTiersAction } from '../../../reducers/tiers';
-import { setTags as setTagsAction } from '../../../reducers/tags';
-import TiersField from '../../fields/TiersField';
-import DropdownMultipleSelectField from '../../fields/DropdownMultipleSelectField';
-import SectionAds from '../../sections/SectionAds';
-import useTableFetch from '../../../hooks/useTableFetch';
+import TableTeam from '@/components/table/TableTeam';
+import useFetch from '@/hooks/useFetch';
+import { setTiers as setTiersAction } from '@/reducers/tiers';
+import { setTags as setTagsAction } from '@/reducers/tags';
+import TiersField from '@/components/fields/TiersField';
+import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSelectField';
+import SectionAds from '@/components/sections/SectionAds';
+import useTableFetch from '@/hooks/useTableFetch';
 
 const TeamList = () => {
 	const dispatch = useDispatch();

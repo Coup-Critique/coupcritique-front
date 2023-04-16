@@ -3,19 +3,19 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loader } from 'semantic-ui-react';
 // components
-import TablePokemon from '../../table/TablePokemon';
-import TableAbility from '../../table/TableAbility';
-import TableMove from '../../table/TableMove';
-import TableItem from '../../table/TableItem';
-import TableType from '../../table/TableType';
+import TablePokemon from '@/components/table/TablePokemon';
+import TableAbility from '@/components/table/TableAbility';
+import TableMove from '@/components/table/TableMove';
+import TableItem from '@/components/table/TableItem';
+import TableType from '@/components/table/TableType';
 // functions
-import useFetch from '../../../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 import PageWrapper from '../../PageWrapper';
-import TableUser from '../../table/TableUser';
-import TableTier from '../../table/TableTier';
+import TableUser from '@/components/table/TableUser';
+import TableTier from '@/components/table/TableTier';
 import { useSelector } from 'react-redux';
 import GenSelector from '../../GenSelector';
-import SectionAds from '../../sections/SectionAds';
+import SectionAds from '@/components/sections/SectionAds';
 
 const SearchResult = ({ isUser = false }) => {
 	const gen = useSelector(state => state.gen);

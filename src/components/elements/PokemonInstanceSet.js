@@ -5,15 +5,15 @@ import SpriteItem from './SpriteItem';
 import Ability from './Ability';
 import Move from './Move';
 import Item from './Item';
-import Export from '../actions/Export';
+import Export from '@/components/actions/Export';
 import { Button } from 'semantic-ui-react';
-import FormPokemonSet from '../forms/FormPokemonSet';
+import FormPokemonSet from '@/components/forms/FormPokemonSet';
 import { useSelector } from 'react-redux';
-import useFetch from '../../hooks/useFetch';
-import { DELETE } from '../../constants/methods';
+import useFetch from '@/hooks/useFetch';
+import { DELETE } from '@/constants/methods';
 import DescriptionJsoned from './DescriptionJsoned';
 import IconType from './IconType';
-import { capitalize } from '../../functions';
+import { capitalize } from '@/functions';
 
 const natureKeys = ['atk', 'def', 'spa', 'spd', 'spe'];
 

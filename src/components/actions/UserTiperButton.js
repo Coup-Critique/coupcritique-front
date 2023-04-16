@@ -1,8 +1,8 @@
 // modules
 import React, { useEffect } from 'react';
 import { Button, Label, Loader } from 'semantic-ui-react';
-import { PUT } from '../../constants/methods';
-import useFetch from '../../hooks/useFetch';
+import { PUT } from '@/constants/methods';
+import useFetch from '@/hooks/useFetch';
 
 const UserTiperButton = ({ user, isIcon = false, handleTiper }) => {
 	const [result, load, loading] = useFetch();

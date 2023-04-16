@@ -4,14 +4,14 @@ import { Icon, Loader } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 // components
 import PageWrapper from '../../PageWrapper';
-import TableTeam from '../../table/TableTeam';
-import UserBanButton from '../../actions/UserBanButton';
-import UserModoButton from '../../actions/UserModoButton';
+import TableTeam from '@/components/table/TableTeam';
+import UserBanButton from '@/components/actions/UserBanButton';
+import UserModoButton from '@/components/actions/UserModoButton';
 // constant
-import { MONTHS } from '../../../constants';
+import { MONTHS } from '@/constants';
 import GoBackButton from '../../GoBackButton';
-import useTableFetch from '../../../hooks/useTableFetch';
-import UserTiperButton from '../../actions/UserTiperButton';
+import useTableFetch from '@/hooks/useTableFetch';
+import UserTiperButton from '@/components/actions/UserTiperButton';
 
 const UserArticle = ({ result = {} }) => {
 	const ownUser = useSelector(state => state.user);

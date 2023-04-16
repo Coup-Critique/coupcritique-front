@@ -4,31 +4,31 @@ import { Form, Button, Message } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 import { Koffing } from 'koffing/dist/koffing';
 // components
-import TagsField from '../fields/TagsField';
-import InstanceField from '../fields/InstanceField';
-import ReplaysField from '../fields/ReplaysField';
-import TiersField from '../fields/TiersField';
+import TagsField from '@/components/fields/TagsField';
+import InstanceField from '@/components/fields/InstanceField';
+import ReplaysField from '@/components/fields/ReplaysField';
+import TiersField from '@/components/fields/TiersField';
 // reducer
 import formTeamReducer, {
 	removeTeamInstancesAction,
 	setTeamAction,
 	setTeamInstancesAction,
 	setTeamValueAction,
-} from '../../reducers/state/formTeamReducer';
+} from '@/reducers/state/formTeamReducer';
 // hooks
-import useFetch from '../../hooks/useFetch';
-import useActions from '../../hooks/useActions';
+import useFetch from '@/hooks/useFetch';
+import useActions from '@/hooks/useActions';
 // functions
 import {
 	buildFieldsMessage,
 	parseKoffingInstance,
 	scrollToTopAnimate,
-} from '../../functions';
+} from '@/functions';
 // constants
-import { POST, PUT } from '../../constants/methods';
-import { INSTANCES_KEYS } from '../../constants/team';
-import gens from '../../constants/gens.json';
-import useSaveToStorage from '../../hooks/useSaveToStorage';
+import { POST, PUT } from '@/constants/methods';
+import { INSTANCES_KEYS } from '@/constants/team';
+import gens from '@/constants/gens.json';
+import useSaveToStorage from '@/hooks/useSaveToStorage';
 
 const lastGen = gens.length && gens[0] ? gens[0].value : 1;
 

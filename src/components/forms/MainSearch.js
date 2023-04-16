@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 // components
 import { Form, Label, Loader, Search } from 'semantic-ui-react';
 // reducers
-import { setChosenSearch } from '../../reducers/search';
+import { setChosenSearch } from '@/reducers/search';
 // hooks
-import useFetch from '../../hooks/useFetch';
-import useDarkMode, { DARK_MODE_KEY } from '../../hooks/useDarkMode';
-import { formateName } from '../../functions';
-import { NUMBER_OF_PREVIEWS } from '../../constants/index';
+import useFetch from '@/hooks/useFetch';
+import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
+import { formateName } from '@/functions';
+import { NUMBER_OF_PREVIEWS } from '@/constants/index';
 
 const MainSearch = ({
 	messageGiven,

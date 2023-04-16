@@ -4,18 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import { Button } from 'semantic-ui-react';
-import { formatDate } from '../../../functions';
+import { formatDate } from '@/functions';
 // components
 import PageWrapper from '../../PageWrapper';
 import GoBackButton from '../../GoBackButton';
-import useFetch from '../../../hooks/useFetch';
-import { DELETE } from '../../../constants/methods';
+import useFetch from '@/hooks/useFetch';
+import { DELETE } from '@/constants/methods';
 import { useHistory } from 'react-router-dom';
-import { addMessage } from '../../../reducers/messages';
+import { addMessage } from '@/reducers/messages';
 import ScrollReveal from '../../ScrollReveal';
-import Tag from '../../elements/Tag';
+import Tag from '@/components/elements/Tag';
 import CommentArea from '../../CommentArea';
-import SectionAds from '../../sections/SectionAds';
+import SectionAds from '@/components/sections/SectionAds';
 
 const defaultGoBack = '/entity/actualities/';
 const ActualityArticle = ({ result }) => {

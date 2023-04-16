@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { makeClassName } from '../functions';
+import { makeClassName } from '@/functions';
 
 // Venatus Ad, no more used
 const Ad = ({ vmId, displayed = true, className, style }) => {

@@ -5,7 +5,7 @@ import ArtPokemon from './ArtPokemon';
 import SpriteItem from './SpriteItem';
 import Type from './Type';
 import Ability from './Ability';
-import TableInstanceStat from '../table/TableInstanceStat';
+import TableInstanceStat from '@/components/table/TableInstanceStat';
 import Move from './Move';
 import Pokemon from './Pokemon';
 import Item from './Item';

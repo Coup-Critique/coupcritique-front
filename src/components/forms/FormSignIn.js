@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Button, Message } from 'semantic-ui-react';
 // actions
-import { setUser } from '../../reducers/user';
+import { setUser } from '@/reducers/user';
 // hooks
-import useFetch from '../../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 // const
-import { POST } from '../../constants/methods';
-import { addMessage } from '../../reducers/messages';
+import { POST } from '@/constants/methods';
+import { addMessage } from '@/reducers/messages';
 
 const FormSignIn = ({ triggerHeight }) => {
 	const dispatch = useDispatch();

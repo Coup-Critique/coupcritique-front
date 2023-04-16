@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory, useLocation } from 'react-router-dom';
 import { Loader } from 'semantic-ui-react';
 // components
-import PokemonArticle from '../pages/article/PokemonArticle';
+import PokemonArticle from '@/pages/article/PokemonArticle';
 // hooks
-import useFetch from '../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 // constants
-import { setGenAction } from '../reducers/gen';
+import { setGenAction } from '@/reducers/gen';
 
 const PokemonByNameContainer = props => {
 	const dispatch = useDispatch();

@@ -1,8 +1,8 @@
 // modules
 import React, { useState } from 'react';
 import { Icon } from 'semantic-ui-react';
-import DeleteAction from '../actions/DeleteAction';
-import FormResource from '../forms/FormResource';
+import DeleteAction from '@/components/actions/DeleteAction';
+import FormResource from '@/components/forms/FormResource';
 import Tier from './Tier';
 
 const Resource = ({

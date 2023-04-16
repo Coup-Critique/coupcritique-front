@@ -1,9 +1,9 @@
 // modules
 import React, { useEffect, useState } from 'react';
 import { Button } from 'semantic-ui-react';
-import { isToday } from '../../functions';
-import useFetch from '../../hooks/useFetch';
-import ModalConfirm from '../../modals/ModalConfirm';
+import { isToday } from '@/functions';
+import useFetch from '@/hooks/useFetch';
+import ModalConfirm from '@/components/modals/ModalConfirm';
 
 const TeamTopButton = ({ team /* isIcon = false */ }) => {
 	const [result, load, loading] = useFetch();

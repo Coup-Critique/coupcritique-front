@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Button, Icon, Loader } from 'semantic-ui-react';
-import { DELETE } from '../../constants/methods';
-import useFetch from '../../hooks/useFetch';
+import { DELETE } from '@/constants/methods';
+import useFetch from '@/hooks/useFetch';
 
 // Special icon
 const DeletePicture = ({ user, handleDelete, ...props }) => {

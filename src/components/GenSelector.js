@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button, Dropdown, Icon, Label } from 'semantic-ui-react';
-import gens from '../constants/gens.json';
-import { setGenAction } from '../reducers/gen';
+import gens from '@/constants/gens.json';
+import { setGenAction } from '@/reducers/gen';
 
 const genOptions = gens.map(({ value, name }) => ({
 	key: value,

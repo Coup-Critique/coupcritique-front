@@ -3,15 +3,15 @@ import React, { useState, useCallback, useEffect, useReducer } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Icon, Label, Message } from 'semantic-ui-react';
 // actions
-import { setUser, setUserPicture } from '../../reducers/user';
+import { setUser, setUserPicture } from '@/reducers/user';
 // hooks
-import useFetch, { FILE_TYPE } from '../../hooks/useFetch';
+import useFetch, { FILE_TYPE } from '@/hooks/useFetch';
 // functions
-import { buildFieldsMessage } from '../../functions';
+import { buildFieldsMessage } from '@/functions';
 // constants
-import { EMAIL_REGEX } from '../../constants';
-import { POST, PUT } from '../../constants/methods';
-import FileField from '../fields/FileField';
+import { EMAIL_REGEX } from '@/constants';
+import { POST, PUT } from '@/constants/methods';
+import FileField from '@/components/fields/FileField';
 
 const initFormUser = ({ username, email, discord_name, showdown_name }) => ({
 	username,

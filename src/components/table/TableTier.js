@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useTableSorter from '../../hooks/useTableSorter';
+import useTableSorter from '@/hooks/useTableSorter';
 import { TableBase } from './Table';
 
 /**

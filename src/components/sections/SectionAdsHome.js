@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { makeClassName } from '../../functions';
+import { makeClassName } from '@/functions';
 
 const initAd = () => {
 	(window.adsbygoogle = window.adsbygoogle || []).push({});

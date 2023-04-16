@@ -1,15 +1,15 @@
 import React from 'react';
-import Notification from '../../elements/Notification';
+import Notification from '@/components/elements/Notification';
 import { Loader } from 'semantic-ui-react';
-import SectionAds from '../../sections/SectionAds';
-import useFetch from '../../hooks/useFetch';
+import SectionAds from '@/components/sections/SectionAds';
+import useFetch from '@/hooks/useFetch';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import PageWrapper from '../../PageWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { setNotifAction } from '../../reducers/notifs';
-import usePager from '../../hooks/usePager';
+import { setNotifAction } from '@/reducers/notifs';
+import usePager from '@/hooks/usePager';
 import PaginationPrettier from '../../PaginationPrettier';
 
 const NotificationList = () => {

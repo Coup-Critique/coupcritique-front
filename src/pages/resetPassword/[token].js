@@ -1,15 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
-import { PUT } from '../../../constants/methods';
-import useFetch from '../../../hooks/useFetch';
+import { PUT } from '@/constants/methods';
+import useFetch from '@/hooks/useFetch';
 import PageWrapper from '../../PageWrapper';
 import { Message, Form, Button } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
-import { addMessage } from '../../../reducers/messages';
+import { addMessage } from '@/reducers/messages';
 
 const ResetForgottenPassword = () => {
 	const dispatch = useDispatch();
-	const { renewPasswordToken } = useParams();
+	const { token } = useParams();
 	const [result, load] = useFetch();
 	const [success, setSuccess] = useState(true);
 	const [new_password, setNewPassword] = useState('');
@@ -17,7 +17,7 @@ const ResetForgottenPassword = () => {
 	const [message, setMessage] = useState({});
 
 	useEffect(() => {
-		load({ url: `check-renew-password-token/${renewPasswordToken}` });
+		load({ url: `check-renew-password-token/${token}` });
 	}, []);
 
 	function checkValues() {
@@ -39,7 +39,7 @@ const ResetForgottenPassword = () => {
 					url: 'update-forgotten-password',
 					method: PUT,
 					body: {
-						renewPasswordToken,
+						token,
 						new_password,
 					},
 				});

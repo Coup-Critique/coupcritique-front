@@ -5,15 +5,15 @@ import { Button, Loader, Segment } from 'semantic-ui-react';
 // components
 import PageWrapper from '../../PageWrapper';
 import GoBackButton from '../../GoBackButton';
-import TablePokemon from '../../table/TablePokemon';
+import TablePokemon from '@/components/table/TablePokemon';
 // hooks
-import useFetch from '../../../hooks/useFetch';
-import Description from '../../elements/Description';
+import useFetch from '@/hooks/useFetch';
+import Description from '@/components/elements/Description';
 import GenSelector from '../../GenSelector';
-import useStoreQuery from '../../../hooks/useStoreQuery';
-import { formatFileName } from '../../../functions';
-import WeaknessesPopup from '../../elements/WeaknessesPopup';
-import EfficienciesPopup from '../../elements/EfficienciesPopup';
+import useStoreQuery from '@/hooks/useStoreQuery';
+import { formatFileName } from '@/functions';
+import WeaknessesPopup from '@/components/elements/WeaknessesPopup';
+import EfficienciesPopup from '@/components/elements/EfficienciesPopup';
 
 const TypeArticle = ({ result }) => {
 	const { id } = useParams();

@@ -4,18 +4,18 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
 // hooks
-import useFetch from '../../../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 // functions
-import { formateName } from '../../../functions';
+import { formateName } from '@/functions';
 // components
 import PageWrapper from '../../PageWrapper';
 import GenSelector from '../../GenSelector';
-import useStoreQuery from '../../../hooks/useStoreQuery';
-import { setSsrDataAction } from '../../../reducers/ssrData';
-import { setGenAction } from '../../../reducers/gen';
+import useStoreQuery from '@/hooks/useStoreQuery';
+import { setSsrDataAction } from '@/reducers/ssrData';
+import { setGenAction } from '@/reducers/gen';
 import GoBackButton from '../../GoBackButton';
-import SectionAds from '../../sections/SectionAds';
-import TableMoveUsage from '../../table/TableMoveUsage';
+import SectionAds from '@/components/sections/SectionAds';
+import TableMoveUsage from '@/components/table/TableMoveUsage';
 
 const MovePool = () => {
 	const dispatch = useDispatch();

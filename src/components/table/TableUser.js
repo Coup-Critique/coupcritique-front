@@ -4,17 +4,17 @@ import { TableBase } from './Table';
 import { Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 // custom
-import Profile from '../elements/Profile';
-import useTableSorter from '../../hooks/useTableSorter';
-import UserBanButton from '../actions/UserBanButton';
-import UserModoButton from '../actions/UserModoButton';
-import HistoryPopup from '../actions/HistoryPopup';
-import { formatDate } from '../../functions';
-import DeletePicture from '../actions/DeletePicture';
+import Profile from '@/components/elements/Profile';
+import useTableSorter from '@/hooks/useTableSorter';
+import UserBanButton from '@/components/actions/UserBanButton';
+import UserModoButton from '@/components/actions/UserModoButton';
+import HistoryPopup from '@/components/actions/HistoryPopup';
+import { formatDate } from '@/functions';
+import DeletePicture from '@/components/actions/DeletePicture';
 import { useSelector } from 'react-redux';
-import usePager from '../../hooks/usePager';
+import usePager from '@/hooks/usePager';
 import PaginationPrettier from '../PaginationPrettier';
-import UserTiperButton from '../actions/UserTiperButton';
+import UserTiperButton from '@/components/actions/UserTiperButton';
 
 const TableUser = ({
 	users = [],

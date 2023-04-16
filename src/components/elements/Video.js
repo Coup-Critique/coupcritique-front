@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Loader } from 'semantic-ui-react';
-import { DELETE } from '../../constants/methods';
-import { formatDate, makeClassName } from '../../functions';
-import useFetch from '../../hooks/useFetch';
-import FormVideo from '../forms/FormVideo';
+import { DELETE } from '@/constants/methods';
+import { formatDate, makeClassName } from '@/functions';
+import useFetch from '@/hooks/useFetch';
+import FormVideo from '@/components/forms/FormVideo';
 import ScrollReveal from '../ScrollReveal';
 import VideoEmbed from './VideoEmbed';
 import Tag from './Tag';

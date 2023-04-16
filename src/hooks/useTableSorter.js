@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ASC, DESC } from '../components/table/Table';
+import { ASC, DESC } from '@/components/table/Table';
 
 /**
  * @param {*} v1

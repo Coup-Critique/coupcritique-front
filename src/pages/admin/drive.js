@@ -1,12 +1,12 @@
 // modules
 import React, { useEffect, useState } from 'react';
 import { Icon, Loader, Popup, Segment } from 'semantic-ui-react';
-import { DELETE, POST } from '../../../constants/methods';
-import { copyToClipboard } from '../../../functions';
-import useFetch, { FILE_TYPE } from '../../../hooks/useFetch';
-import usePager from '../../../hooks/usePager';
-import useStoreQuery from '../../../hooks/useStoreQuery';
-import MultiImageField from '../../fields/MultiImageField';
+import { DELETE, POST } from '@/constants/methods';
+import { copyToClipboard } from '@/functions';
+import useFetch, { FILE_TYPE } from '@/hooks/useFetch';
+import usePager from '@/hooks/usePager';
+import useStoreQuery from '@/hooks/useStoreQuery';
+import MultiImageField from '@/components/fields/MultiImageField';
 import PageWrapper from '../../PageWrapper';
 import PaginationPrettier from '../../PaginationPrettier';
 // components

@@ -4,14 +4,14 @@ import { useParams } from 'react-router-dom';
 import { Loader } from 'semantic-ui-react';
 // components
 import PageWrapper from '../../PageWrapper';
-import ArtItem from '../../elements/ArtItem';
+import ArtItem from '@/components/elements/ArtItem';
 import GoBackButton from '../../GoBackButton';
-import useFetch from '../../../hooks/useFetch';
-import { formateName, formatFileName } from '../../../functions';
-import Description from '../../elements/Description';
-import TablePokemonWithUsages from '../../table/TablePokemonWithUsages';
+import useFetch from '@/hooks/useFetch';
+import { formateName, formatFileName } from '@/functions';
+import Description from '@/components/elements/Description';
+import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
 import GenSelector from '../../GenSelector';
-import useStoreQuery from '../../../hooks/useStoreQuery';
+import useStoreQuery from '@/hooks/useStoreQuery';
 
 const ItemArticle = ({ result }) => {
 	const { id } = useParams();

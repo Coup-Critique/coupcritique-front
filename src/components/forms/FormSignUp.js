@@ -3,13 +3,13 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Form, Button, Message, Label, Icon, Checkbox } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 // hooks
-import useFetch from '../../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 // functions
-import { buildFieldsMessage, makeClassName } from '../../functions';
+import { buildFieldsMessage, makeClassName } from '@/functions';
 // constants
-import { EMAIL_REGEX } from '../../constants';
-import { POST } from '../../constants/methods';
-import { addMessage } from '../../reducers/messages';
+import { EMAIL_REGEX } from '@/constants';
+import { POST } from '@/constants/methods';
+import { addMessage } from '@/reducers/messages';
 import { Link } from 'react-router-dom';
 
 const FormSignUp = ({ triggerHeight }) => {

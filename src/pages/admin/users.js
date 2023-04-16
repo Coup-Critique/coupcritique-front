@@ -1,12 +1,12 @@
 // modules
 import React, { useEffect, useState } from 'react';
 import { Loader } from 'semantic-ui-react';
-import { objectToGETparams } from '../../../functions';
-import useFetch from '../../../hooks/useFetch';
-import useStoreQuery from '../../../hooks/useStoreQuery';
-import FormSearch from '../../forms/FormSearch';
+import { objectToGETparams } from '@/functions';
+import useFetch from '@/hooks/useFetch';
+import useStoreQuery from '@/hooks/useStoreQuery';
+import FormSearch from '@/components/forms/FormSearch';
 import PageWrapper from '../../PageWrapper';
-import TableUser from '../../table/TableUser';
+import TableUser from '@/components/table/TableUser';
 // components
 
 const AdminUsers = () => {

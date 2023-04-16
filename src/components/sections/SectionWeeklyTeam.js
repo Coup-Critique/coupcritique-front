@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Loader } from 'semantic-ui-react';
 // hooks
-import useFetch from '../../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 // components
-import PokemonInstanceTeaser from '../elements/PokemonInstanceTeaser';
+import PokemonInstanceTeaser from '@/components/elements/PokemonInstanceTeaser';
 // const
-import { INSTANCES_KEYS } from '../../constants/team';
-import Tier from '../elements/Tier';
+import { INSTANCES_KEYS } from '@/constants/team';
+import Tier from '@/components/elements/Tier';
 import { useSelector } from 'react-redux';
 
 function SectionWeeklyTeam() {

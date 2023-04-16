@@ -5,8 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import useFetch from './useFetch';
 import useLocalStorage from './useLocalStorage';
 // actions
-import { setUser, setLoadingUser, setUserPicture } from '../reducers/user';
-import { setNotifAction } from '../reducers/notifs';
+import { setUser, setLoadingUser, setUserPicture } from '@/reducers/user';
+import { setNotifAction } from '@/reducers/notifs';
 
 // Scroll to top after each route change
 const useManageToken = () => {

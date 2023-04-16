@@ -3,12 +3,12 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Button, Message } from 'semantic-ui-react';
 // actions
-import { setToken } from '../../reducers/user';
+import { setToken } from '@/reducers/user';
 // hooks
-import useFetch from '../../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 // functions
-import { buildFieldsMessage } from '../../functions';
-import { PUT } from '../../constants/methods';
+import { buildFieldsMessage } from '@/functions';
+import { PUT } from '@/constants/methods';
 
 const FormPassword = () => {
 	const dispatch = useDispatch();

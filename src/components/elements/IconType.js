@@ -1,8 +1,8 @@
 // modules
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { IMG_VERSION } from '../../constants/img';
-import { formatFileName, makeClassName } from '../../functions';
+import { IMG_VERSION } from '@/constants/img';
+import { formatFileName, makeClassName } from '@/functions';
 
 const IconType = ({ type, className, tera = false }) => (
 	<Link

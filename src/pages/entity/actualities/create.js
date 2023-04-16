@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router';
 import { Loader } from 'semantic-ui-react';
 // components
-import FormActuality from '../../forms/FormActuality';
+import FormActuality from '@/components/forms/FormActuality';
 import PageWrapper from '../../PageWrapper';
-import useFetch from '../../../hooks/useFetch';
-import { setActualityTags } from '../../../reducers/actuality_tags';
+import useFetch from '@/hooks/useFetch';
+import { setActualityTags } from '@/reducers/actuality_tags';
 
 const ActualityFormPage = ({ result = {}, update = false }) => {
 	const dispatch = useDispatch();

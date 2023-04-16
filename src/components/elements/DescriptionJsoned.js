@@ -1,7 +1,7 @@
 // modules
 import React, { Fragment } from 'react';
 import { Icon } from 'semantic-ui-react';
-import { makeClassName } from '../../functions';
+import { makeClassName } from '@/functions';
 // custom
 import Ability from './Ability';
 import Move from './Move';

@@ -5,9 +5,9 @@ import { Redirect } from 'react-router';
 import { Loader } from 'semantic-ui-react';
 import GoBackButton from '../../GoBackButton';
 import PageWrapper from '../../PageWrapper';
-import TableTeam from '../../table/TableTeam';
-import SectionAds from '../../sections/SectionAds';
-import useTableFetch from '../../../hooks/useTableFetch';
+import TableTeam from '@/components/table/TableTeam';
+import SectionAds from '@/components/sections/SectionAds';
+import useTableFetch from '@/hooks/useTableFetch';
 
 const ListFavoriteTeam = () => {
 	const user = useSelector(state => state.user);

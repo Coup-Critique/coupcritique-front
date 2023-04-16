@@ -1,8 +1,8 @@
 // module
 import React from 'react';
-import usePager from '../../hooks/usePager';
-import useTableSorter from '../../hooks/useTableSorter';
-import Ability from '../elements/Ability';
+import usePager from '@/hooks/usePager';
+import useTableSorter from '@/hooks/useTableSorter';
+import Ability from '@/components/elements/Ability';
 import PaginationPrettier from '../PaginationPrettier';
 import { TableBase, colorOddRows } from './Table';
 

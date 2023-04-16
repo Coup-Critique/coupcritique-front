@@ -2,8 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
-import { entityToEntities } from '../../constants/entities';
-import { makeClassName } from '../../functions';
+import { entityToEntities } from '@/constants/entities';
+import { makeClassName } from '@/functions';
 import ScrollReveal from '../ScrollReveal';
 import Profile from './Profile';
 

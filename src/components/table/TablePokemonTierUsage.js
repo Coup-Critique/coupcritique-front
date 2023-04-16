@@ -1,13 +1,13 @@
 // module
 import React from 'react';
 import { TableBase } from './Table';
-import SpritePokemon from '../elements/SpritePokemon';
-import Pokemon from '../elements/Pokemon';
-import Type from '../elements/Type';
-import Ability from '../elements/Ability';
-import Tier from '../elements/Tier';
-import { formatNumbers } from '../../functions';
-import useTableSorter from '../../hooks/useTableSorter';
+import SpritePokemon from '@/components/elements/SpritePokemon';
+import Pokemon from '@/components/elements/Pokemon';
+import Type from '@/components/elements/Type';
+import Ability from '@/components/elements/Ability';
+import Tier from '@/components/elements/Tier';
+import { formatNumbers } from '@/functions';
+import useTableSorter from '@/hooks/useTableSorter';
 
 const TablePokemonTierUsage = ({ usages = [], setUsages, tier, query, updateQuery }) => {
 	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter(

@@ -1,5 +1,5 @@
 import React from 'react';
-import Type from '../../elements/Type';
+import Type from '@/components/elements/Type';
 
 const TypeList = ({ types = [] }) => (
 	<div className="list-type">

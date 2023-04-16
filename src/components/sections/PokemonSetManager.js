@@ -3,10 +3,10 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Icon, Loader, Tab } from 'semantic-ui-react';
 // custom
-import PokemonInstanceSet from '../elements/PokemonInstanceSet';
-import FormPokemonSet from '../forms/FormPokemonSet';
-import useFetch from '../../hooks/useFetch';
-import { setTiers } from '../../reducers/tiers';
+import PokemonInstanceSet from '@/components/elements/PokemonInstanceSet';
+import FormPokemonSet from '@/components/forms/FormPokemonSet';
+import useFetch from '@/hooks/useFetch';
+import { setTiers } from '@/reducers/tiers';
 
 const PokemonSetManager = ({ pokemon, sets = [] }) => {
 	const dispatch = useDispatch();

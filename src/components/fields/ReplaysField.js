@@ -2,7 +2,7 @@
 import React from 'react';
 import { Form, Button, Label } from 'semantic-ui-react';
 // constants
-import { REPLAY_URL } from '../../constants/index';
+import { REPLAY_URL } from '@/constants/index';
 
 // prettier-ignore
 export const urlToUri = url => url

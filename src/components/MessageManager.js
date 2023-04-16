@@ -1,7 +1,7 @@
 // modules
 import React, { useEffect, useReducer } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeMessage } from '../reducers/messages';
+import { removeMessage } from '@/reducers/messages';
 
 const ADD = 'ADD';
 const REMOVE = 'REMOVE';

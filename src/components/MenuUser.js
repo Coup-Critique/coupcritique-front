@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { Dropdown, Loader } from 'semantic-ui-react';
-import useLogout from '../hooks/useLogout';
+import useLogout from '@/hooks/useLogout';
 import Profile from './elements/Profile';
 import DarkModeToggle from './fields/DarkModeToggle';
 import SignPanel from './SignPanel';

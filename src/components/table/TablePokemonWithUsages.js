@@ -1,14 +1,14 @@
 // module
 import React from 'react';
 import { TableBase, colorOddRows } from './Table';
-import SpritePokemon from '../elements/SpritePokemon';
-import Pokemon from '../elements/Pokemon';
-import Type from '../elements/Type';
-import Tier from '../elements/Tier';
-import useTableSorter from '../../hooks/useTableSorter';
-import { formatNumbers } from '../../functions';
+import SpritePokemon from '@/components/elements/SpritePokemon';
+import Pokemon from '@/components/elements/Pokemon';
+import Type from '@/components/elements/Type';
+import Tier from '@/components/elements/Tier';
+import useTableSorter from '@/hooks/useTableSorter';
+import { formatNumbers } from '@/functions';
 import PaginationPrettier from '../PaginationPrettier';
-import usePager from '../../hooks/usePager';
+import usePager from '@/hooks/usePager';
 
 const TablePokemonWithUsages = ({
 	pokemons = [],

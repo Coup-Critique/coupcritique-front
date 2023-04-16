@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FormField, Label } from 'semantic-ui-react';
-import { megaBytesToBits } from '../../functions';
+import { megaBytesToBits } from '@/functions';
 
 /**
  * @prop {string|undefined} name

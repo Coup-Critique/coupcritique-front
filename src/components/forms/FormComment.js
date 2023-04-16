@@ -8,12 +8,12 @@ import {
 	Comment as SemanticComment,
 	Icon,
 } from 'semantic-ui-react';
-import { POST, PUT } from '../../constants/methods';
-import { buildFieldsMessage } from '../../functions';
-import { formatDate } from '../../functions';
-import useFetch from '../../hooks/useFetch';
-import Comment from '../elements/Comment';
-import Profile from '../elements/Profile';
+import { POST, PUT } from '@/constants/methods';
+import { buildFieldsMessage } from '@/functions';
+import { formatDate } from '@/functions';
+import useFetch from '@/hooks/useFetch';
+import Comment from '@/components/elements/Comment';
+import Profile from '@/components/elements/Profile';
 
 // don't keep useless datas
 const clearComment = ({ id, content, date_creation }) => ({ id, content, date_creation });

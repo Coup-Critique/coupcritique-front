@@ -1,9 +1,9 @@
 // modules
 import React, { useEffect, useState } from 'react';
 import { Form, Button, Message, Icon } from 'semantic-ui-react';
-import { PUT } from '../../constants/methods';
-import { buildFieldsMessage } from '../../functions';
-import useFetch from '../../hooks/useFetch';
+import { PUT } from '@/constants/methods';
+import { buildFieldsMessage } from '@/functions';
+import useFetch from '@/hooks/useFetch';
 
 const FormDescription = ({
 	handleUpdate,

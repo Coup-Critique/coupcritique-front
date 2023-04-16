@@ -3,17 +3,17 @@ import React, { useState, useEffect, useReducer, useCallback } from 'react';
 import { Form, Button, Message } from 'semantic-ui-react';
 import { Koffing } from 'koffing/dist/koffing';
 // hooks
-import useFetch from '../../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 // functions
-import { buildFieldsMessage, parseKoffingInstance } from '../../functions';
+import { buildFieldsMessage, parseKoffingInstance } from '@/functions';
 // constants
-import { POST, PUT } from '../../constants/methods';
+import { POST, PUT } from '@/constants/methods';
 import { getDefaultTier } from './FormTeam';
-import usePrevious from '../../hooks/usePrevious';
-import TiersField from '../fields/TiersField';
+import usePrevious from '@/hooks/usePrevious';
+import TiersField from '@/components/fields/TiersField';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useLocalStorage from '@/hooks/useLocalStorage';
 
 const joinEntities = (list, key) =>
 	list.reduce((str, el) => (str ? `${str} / ${el[key].name}` : el[key].name), '');

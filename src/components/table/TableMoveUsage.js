@@ -1,14 +1,14 @@
 // module
 import React from 'react';
 import { TableBase, colorOddRows } from './Table';
-import Type from '../elements/Type';
-import Tier from '../elements/Tier';
-import useTableSorter from '../../hooks/useTableSorter';
-import { formateName, formatNumbers } from '../../functions';
+import Type from '@/components/elements/Type';
+import Tier from '@/components/elements/Tier';
+import useTableSorter from '@/hooks/useTableSorter';
+import { formateName, formatNumbers } from '@/functions';
 import PaginationPrettier from '../PaginationPrettier';
-import usePager from '../../hooks/usePager';
+import usePager from '@/hooks/usePager';
 import { Link } from 'react-router-dom';
-import Category from '../elements/Category';
+import Category from '@/components/elements/Category';
 
 const TableMoveUsage = ({
 	tier,

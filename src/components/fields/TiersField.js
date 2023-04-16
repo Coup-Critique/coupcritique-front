@@ -1,8 +1,8 @@
 // modules
 import React, { useState } from 'react';
 import { Dropdown, FormField, FormInput, Icon, Label } from 'semantic-ui-react';
-import gens from '../../constants/gens.json';
-import { makeClassName } from '../../functions';
+import gens from '@/constants/gens.json';
+import { makeClassName } from '@/functions';
 
 const lastGen = gens.length && gens[0] ? gens[0].value : 1;
 const TiersField = ({

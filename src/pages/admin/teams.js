@@ -3,16 +3,16 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { Button, Form, Loader } from 'semantic-ui-react';
-import useActions from '../../../hooks/useActions';
+import useActions from '@/hooks/useActions';
 // components
-import useFetch from '../../../hooks/useFetch';
-import TiersField from '../../fields/TiersField';
-import RadioFilterForm from '../../forms/RadioFilterForm';
+import useFetch from '@/hooks/useFetch';
+import TiersField from '@/components/fields/TiersField';
+import RadioFilterForm from '@/components/forms/RadioFilterForm';
 import PageWrapper from '../../PageWrapper';
-import TableTeam from '../../table/TableTeam';
-import { setTiers as setTiersAction } from '../../../reducers/tiers';
-import FormSearch from '../../forms/FormSearch';
-import useTableFetch from '../../../hooks/useTableFetch';
+import TableTeam from '@/components/table/TableTeam';
+import { setTiers as setTiersAction } from '@/reducers/tiers';
+import FormSearch from '@/components/forms/FormSearch';
+import useTableFetch from '@/hooks/useTableFetch';
 
 const AdminTeams = () => {
 	const dispatch = useDispatch();

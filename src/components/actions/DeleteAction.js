@@ -2,9 +2,9 @@
 import React, { useEffect } from 'react';
 import { Button, Icon, Loader } from 'semantic-ui-react';
 // custom
-import useFetch from '../../hooks/useFetch';
-import { DELETE } from '../../constants/methods';
-import ModalConfirm from '../../modals/ModalConfirm';
+import useFetch from '@/hooks/useFetch';
+import { DELETE } from '@/constants/methods';
+import ModalConfirm from '@/components/modals/ModalConfirm';
 
 const DeleteAction = ({ url, callback, isIcon = false, confirmProps }) => {
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();

@@ -1,8 +1,8 @@
 // modules
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { IMG_VERSION, SPRITE_PKM } from '../../constants/img';
-import { formatFileName, makeClassName } from '../../functions';
+import { IMG_VERSION, SPRITE_PKM } from '@/constants/img';
+import { formatFileName, makeClassName } from '@/functions';
 
 const SpritePokemonImg = ({ pokemon, ...props }) => (
 	<img

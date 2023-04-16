@@ -2,12 +2,12 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Loader, Accordion, Label, Segment } from 'semantic-ui-react';
-import { makeClassName } from '../../../functions';
-import useFetch from '../../../hooks/useFetch';
-import Resource from '../../elements/Resource';
-import FormResource from '../../forms/FormResource';
+import { makeClassName } from '@/functions';
+import useFetch from '@/hooks/useFetch';
+import Resource from '@/components/elements/Resource';
+import FormResource from '@/components/forms/FormResource';
 import PageWrapper from '../../PageWrapper';
-import SectionAds from '../../sections/SectionAds';
+import SectionAds from '@/components/sections/SectionAds';
 
 const ResourcesPage = () => {
 	const user = useSelector(state => state.user);

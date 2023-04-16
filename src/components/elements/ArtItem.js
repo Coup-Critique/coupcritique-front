@@ -1,8 +1,8 @@
 // modules
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ART_ITM, IMG_VERSION } from '../../constants/img';
-import { formatFileName } from '../../functions';
+import { ART_ITM, IMG_VERSION } from '@/constants/img';
+import { formatFileName } from '@/functions';
 
 // Not exportable
 const ArtItemImgTag = item => (

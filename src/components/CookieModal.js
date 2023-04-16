@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { makeClassName } from '../functions';
-import { getCookie, setCookie } from '../functions/cookie';
-import useActions from '../hooks/useActions';
-import { setCookieAction } from '../reducers/cookie';
+import { makeClassName } from '@/functions';
+import { getCookie, setCookie } from '@/functions/cookie';
+import useActions from '@/hooks/useActions';
+import { setCookieAction } from '@/reducers/cookie';
 
 const CookieModal = () => {
 	const dispatch = useDispatch();

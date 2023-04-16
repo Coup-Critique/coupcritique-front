@@ -1,6 +1,6 @@
 import React from 'react';
-import useTableSorter from '../../hooks/useTableSorter';
-import Type from '../elements/Type';
+import useTableSorter from '@/hooks/useTableSorter';
+import Type from '@/components/elements/Type';
 import { TableBase } from './Table';
 
 /**

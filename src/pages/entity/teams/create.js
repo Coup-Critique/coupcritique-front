@@ -3,18 +3,18 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Icon, Loader } from 'semantic-ui-react';
 // hooks
-import useFetch from '../../../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 // components
-import FormTeam from '../../forms/FormTeam';
+import FormTeam from '@/components/forms/FormTeam';
 import PageWrapper from '../../PageWrapper';
 import SignPanel from '../../SignPanel';
 import GoBackButton from '../../GoBackButton';
 // reducers
-import { setTiers } from '../../../reducers/tiers';
-import { setTags } from '../../../reducers/tags';
+import { setTiers } from '@/reducers/tiers';
+import { setTags } from '@/reducers/tags';
 import { Link, useLocation } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-import useLocalStorage from '../../../hooks/useLocalStorage';
+import useLocalStorage from '@/hooks/useLocalStorage';
 
 const defaultGoBack = "/entity/teams/";
 const ProposeTeam = ({ result = {}, update = false }) => {

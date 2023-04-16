@@ -2,7 +2,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Icon, Label, FormField, Message } from 'semantic-ui-react';
-import { makeClassName } from '../../functions';
+import { makeClassName } from '@/functions';
 
 const TagsField = ({
 	label = 'Catégories\u00A0:',

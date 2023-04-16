@@ -1,6 +1,6 @@
 import React from 'react';
 import { Checkbox } from 'semantic-ui-react';
-import useDarkMode from '../../hooks/useDarkMode';
+import useDarkMode from '@/hooks/useDarkMode';
 
 const DarkModeToggle = () => {
 	const [darkMode, setDarkMode] = useDarkMode();

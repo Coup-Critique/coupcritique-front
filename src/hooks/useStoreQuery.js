@@ -1,13 +1,13 @@
 import { useEffect, useReducer } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-// import { saveQuery } from '../reducers/queries';
-import { objectToGETparams } from '../functions';
+// import { saveQuery } from '@/reducers/queries';
+import { objectToGETparams } from '@/functions';
 import queryReducer, {
 	setQueryAction,
 	setQueryParamAction,
 	updateQueryAction,
-} from '../reducers/state/queryReducer';
+} from '@/reducers/state/queryReducer';
 import useActions from './useActions';
 
 const parseUrlQuery = queryParams =>

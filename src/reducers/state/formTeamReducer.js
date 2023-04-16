@@ -1,4 +1,4 @@
-import { INSTANCES_KEYS } from '../../constants/team';
+import { INSTANCES_KEYS } from '@/constants/team';
 
 export const SET_TEAM = 'SET_TEAM';
 export const SET_VALUE = 'SET_VALUE';

@@ -4,13 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router';
 import { Loader } from 'semantic-ui-react';
 // components
-import FormGuide from '../../forms/FormGuide';
+import FormGuide from '@/components/forms/FormGuide';
 import PageWrapper from '../../PageWrapper';
-import useFetch from '../../../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 
 //reducers
-import { setGuideTags } from '../../../reducers/guide_tags';
-import { setTiers } from '../../../reducers/tiers';
+import { setGuideTags } from '@/reducers/guide_tags';
+import { setTiers } from '@/reducers/tiers';
 
 const GuideFormPage = ({ result = {}, update = false }) => {
 	const dispatch = useDispatch();

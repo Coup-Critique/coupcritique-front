@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form, Message } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 // components
-import TiersField from '../fields/TiersField';
-import useFetch from '../../hooks/useFetch';
-import { addMessage } from '../../reducers/messages';
-import { setTiers } from '../../reducers/tiers';
-import { POST, PUT } from '../../constants/methods';
-import { buildFieldsMessage } from '../../functions';
+import TiersField from '@/components/fields/TiersField';
+import useFetch from '@/hooks/useFetch';
+import { addMessage } from '@/reducers/messages';
+import { setTiers } from '@/reducers/tiers';
+import { POST, PUT } from '@/constants/methods';
+import { buildFieldsMessage } from '@/functions';
 
 const FormResource = ({ handleCancel, handleSubmited, resource = {} }) => {
 	const dispatch = useDispatch();

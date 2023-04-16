@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Icon } from 'semantic-ui-react';
-import FormDescription from '../forms/FormDescription';
+import FormDescription from '@/components/forms/FormDescription';
 import DescriptionJsoned from './DescriptionJsoned';
 
 const Description = ({ entity, json = false, ...props }) => {

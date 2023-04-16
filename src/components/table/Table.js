@@ -1,6 +1,6 @@
 // module
 import React from 'react';
-import { makeClassName } from '../../functions';
+import { makeClassName } from '@/functions';
 
 export const ASC = 'ascending';
 export const DESC = 'descending';

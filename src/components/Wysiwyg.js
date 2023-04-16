@@ -2,9 +2,9 @@
 import React, { useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 //  custom
-import useDarkMode from '../hooks/useDarkMode';
+import useDarkMode from '@/hooks/useDarkMode';
 import { Segment } from 'semantic-ui-react';
-import { makeClassName } from '../functions';
+import { makeClassName } from '@/functions';
 
 const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) => {
 	const darkMode = useDarkMode();

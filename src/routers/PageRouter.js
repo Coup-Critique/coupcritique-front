@@ -2,7 +2,7 @@
 import React, { Fragment } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 // hooks
-import useResetScroll from '../../hooks/useResetScroll';
+import useResetScroll from '@/hooks/useResetScroll';
 // components
 // import ErrorBoundary from '../ErrorBoundary';
 import Header from '../Header';
@@ -10,30 +10,30 @@ import Footer from '../Footer';
 import EntityRouter from './EntityRouter';
 import ListRouter from './ListRouter';
 import AdminRouter from './AdminRouter';
-import Page404 from '../pages/Page404';
-import Home from '../pages/Home';
-import TeamList from '../pages/list/TeamList';
-import SearchResult from '../pages/list/SearchResult';
-import ProposeTeam from '../pages/form/ProposeTeam';
-import UserFormPage from '../pages/form/UserFormPage';
-import ResetForgottenPassword from '../pages/form/ResetForgottenPassword';
-import FavoriteTeam from '../pages/list/ListFavoriteTeam';
-import VideoList from '../pages/list/VideoList';
-import ResourcesPage from '../pages/list/ResourcesPage';
-import ActualityFormPage from '../pages/form/ActualityFormPage';
-import ActualityList from '../pages/list/ActualityList';
-import GuideFormPage from '../pages/form/GuideFormPage';
-import GuideList from '../pages/list/GuideList';
-import TournamentFormPage from '../pages/form/TournamentFormPage';
-import TournamentList from '../pages/list/TournamentList';
-import LegalNotices from '../pages/LegalNotices';
-import Thanks from '../pages/Thanks';
-import CGU from '../pages/CGU';
-import TopWeek from '../pages/article/TopWeek';
-import PokemonByNameContainer from '../../containers/PokemonByNameContainer';
-import MovePool from '../pages/list/MovePool';
-import NotificationList from '../pages/list/NotificationList';
-import MoveByType from '../pages/list/MoveByType';
+import Page404 from '@/pages/Page404';
+import Home from '@/pages/Home';
+import TeamList from '@/pages/list/TeamList';
+import SearchResult from '@/pages/list/SearchResult';
+import ProposeTeam from '@/pages/form/ProposeTeam';
+import UserFormPage from '@/pages/form/UserFormPage';
+import ResetForgottenPassword from '@/pages/resetPassword/[token]';
+import FavoriteTeam from '@/pages/list/ListFavoriteTeam';
+import VideoList from '@/pages/list/VideoList';
+import ResourcesPage from '@/pages/list/ResourcesPage';
+import ActualityFormPage from '@/pages/form/ActualityFormPage';
+import ActualityList from '@/pages/list/ActualityList';
+import GuideFormPage from '@/pages/form/GuideFormPage';
+import GuideList from '@/pages/list/GuideList';
+import TournamentFormPage from '@/pages/form/TournamentFormPage';
+import TournamentList from '@/pages/list/TournamentList';
+import LegalNotices from '@/pages/LegalNotices';
+import Thanks from '@/pages/Thanks';
+import CGU from '@/pages/CGU';
+import TopWeek from '@/pages/article/TopWeek';
+import PokemonByNameContainer from '@/containers/PokemonByNameContainer';
+import MovePool from '@/pages/list/MovePool';
+import NotificationList from '@/pages/list/NotificationList';
+import MoveByType from '@/pages/list/MoveByType';
 
 function PageRouter() {
 	useResetScroll();
@@ -100,7 +100,10 @@ function PageRouter() {
 					<Route path="/entity/:type/:id">
 						<EntityRouter />
 					</Route>
-					<Route path={'/search/:isuser?/:string'} exact>
+					<Route path={'/search/user/:string'} exact>
+						<SearchResult />
+					</Route>
+					<Route path={'/search/:string'} exact>
 						<SearchResult />
 					</Route>
 					<Route path="/videos" exact>
@@ -109,7 +112,7 @@ function PageRouter() {
 					<Route path="/resources" exact>
 						<ResourcesPage />
 					</Route>
-					<Route path="/resetPassword/:renewPasswordToken" exact>
+					<Route path="/resetPassword/:token" exact>
 						<ResetForgottenPassword />
 					</Route>
 					<Route path="/admin">

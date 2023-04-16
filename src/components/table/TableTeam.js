@@ -5,25 +5,25 @@ import { Link, useHistory } from 'react-router-dom';
 import { Icon, Label, Popup } from 'semantic-ui-react';
 // components
 import { TableBase, colorOddRows, DESC, ASC } from './Table';
-import SpritePokemon from '../elements/SpritePokemon';
-import Profile from '../elements/Profile';
-import Tag from '../elements/Tag';
-import Tier from '../elements/Tier';
+import SpritePokemon from '@/components/elements/SpritePokemon';
+import Profile from '@/components/elements/Profile';
+import Tag from '@/components/elements/Tag';
+import Tier from '@/components/elements/Tier';
 // reducers
-import Certification from '../elements/Certification';
-import CertificationButton from '../actions/CertificationButton';
-import TeamBanButton from '../actions/TeamBanButton';
-import HistoryPopup from '../actions/HistoryPopup';
+import Certification from '@/components/elements/Certification';
+import CertificationButton from '@/components/actions/CertificationButton';
+import TeamBanButton from '@/components/actions/TeamBanButton';
+import HistoryPopup from '@/components/actions/HistoryPopup';
 // functions
-import { formatDate, makeClassName } from '../../functions';
+import { formatDate, makeClassName } from '@/functions';
 // const
-import { INSTANCES_KEYS } from '../../constants/team';
-import Favorite from '../actions/Favorite';
+import { INSTANCES_KEYS } from '@/constants/team';
+import Favorite from '@/components/actions/Favorite';
 import PaginationPrettier from '../PaginationPrettier';
-import useClick from '../../hooks/useClick';
-import useDarkMode, { DARK_MODE_KEY } from '../../hooks/useDarkMode';
-import DeleteAction from '../actions/DeleteAction';
-import SectionAds from '../sections/SectionAds';
+import useClick from '@/hooks/useClick';
+import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
+import DeleteAction from '@/components/actions/DeleteAction';
+import SectionAds from '@/components/sections/SectionAds';
 
 const TableTeam = ({
 	teams = [],

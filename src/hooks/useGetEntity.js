@@ -5,9 +5,9 @@ import { useHistory } from 'react-router-dom';
 // hooks
 import useFetch from './useFetch';
 // constants
-import { reloadOnSsr } from '../constants/entities';
-import { setGenAction } from '../reducers/gen';
-import { setSsrDataAction } from '../reducers/ssrData';
+import { reloadOnSsr } from '@/constants/entities';
+import { setGenAction } from '@/reducers/gen';
+import { setSsrDataAction } from '@/reducers/ssrData';
 
 /**
  * @param {number|string} id

@@ -1,14 +1,14 @@
 // modules
 import React, { useState, useEffect } from 'react';
-import useFetch from '../../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 
 // components
 import { Button, Form, Message } from 'semantic-ui-react';
-import { POST, PUT } from '../../constants/methods';
+import { POST, PUT } from '@/constants/methods';
 import { useDispatch } from 'react-redux';
-import { addMessage } from '../../reducers/messages';
-import { formatUrlIntoYoutubeEmbed } from '../../functions';
-import TagsField from '../fields/TagsField';
+import { addMessage } from '@/reducers/messages';
+import { formatUrlIntoYoutubeEmbed } from '@/functions';
+import TagsField from '@/components/fields/TagsField';
 
 const youtubeWatchRegex = /^https:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)$/;
 const youtubeBeRegex = /^https:\/\/youtu.be\/([a-zA-Z0-9_-]+)$/;

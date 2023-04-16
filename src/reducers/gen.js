@@ -1,4 +1,4 @@
-import gens from '../constants/gens.json';
+import gens from '@/constants/gens.json';
 
 export const SET_GEN = 'setGen';
 

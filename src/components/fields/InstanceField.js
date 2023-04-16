@@ -1,7 +1,7 @@
 // modules
 import React from 'react';
 import { FormTextArea } from 'semantic-ui-react';
-import PokemonInstance from '../elements/PokemonInstance';
+import PokemonInstance from '@/components/elements/PokemonInstance';
 
 const InstanceField = ({ instance, tier, onChange, message = {}, required, gen }) => (
 	<div className="instance-field">

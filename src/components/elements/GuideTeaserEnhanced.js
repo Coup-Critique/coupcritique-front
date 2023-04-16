@@ -1,7 +1,7 @@
 // modules
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { formatDate } from '../../functions';
+import { formatDate } from '@/functions';
 import ScrollReveal from '../ScrollReveal';
 import Tag from './Tag';
 

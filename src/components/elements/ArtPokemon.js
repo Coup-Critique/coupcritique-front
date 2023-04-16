@@ -2,9 +2,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Loader } from 'semantic-ui-react';
-import { DEFAULT_POKEMON_PICTURE } from '../../constants';
-import { ART_ITM, ART_PKM, IMG_VERSION } from '../../constants/img';
-import { formatFileName } from '../../functions';
+import { DEFAULT_POKEMON_PICTURE } from '@/constants';
+import { ART_ITM, ART_PKM, IMG_VERSION } from '@/constants/img';
+import { formatFileName } from '@/functions';
 
 const getImgPath = (name, half) =>
 	`/images/pokemons/${half ? '220px/' : ''}${name.toLowerCase()}.png?ver=${IMG_VERSION}`;

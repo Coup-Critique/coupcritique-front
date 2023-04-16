@@ -1,4 +1,4 @@
-import { makeTimeId } from '../functions';
+import { makeTimeId } from '@/functions';
 
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';

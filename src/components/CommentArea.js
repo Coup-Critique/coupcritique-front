@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, CommentGroup, Header, Loader } from 'semantic-ui-react';
-import useFetch from '../hooks/useFetch';
-import usePager from '../hooks/usePager';
-import useStoreQuery from '../hooks/useStoreQuery';
+import useFetch from '@/hooks/useFetch';
+import usePager from '@/hooks/usePager';
+import useStoreQuery from '@/hooks/useStoreQuery';
 import Comment from './elements/Comment';
 import FormComment from './forms/FormComment';
 import PaginationPrettier from './PaginationPrettier';

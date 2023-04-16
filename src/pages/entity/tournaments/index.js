@@ -4,13 +4,13 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Loader } from 'semantic-ui-react';
 // components
-import useDarkMode from '../../../hooks/useDarkMode';
-import useFetch from '../../../hooks/useFetch';
-import usePager from '../../../hooks/usePager';
-import TournamentTeaser from '../../elements/TournamentTeaser';
+import useDarkMode from '@/hooks/useDarkMode';
+import useFetch from '@/hooks/useFetch';
+import usePager from '@/hooks/usePager';
+import TournamentTeaser from '@/components/elements/TournamentTeaser';
 import PageWrapper from '../../PageWrapper';
 import PaginationPrettier from '../../PaginationPrettier';
-import SectionAds from '../../sections/SectionAds';
+import SectionAds from '@/components/sections/SectionAds';
 
 const TournamentList = () => {
 	const { user, ssrData } = useSelector(state => state);

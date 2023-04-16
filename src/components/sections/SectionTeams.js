@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
-import useDarkMode from '../../hooks/useDarkMode';
+import useDarkMode from '@/hooks/useDarkMode';
 import ScrollReveal from '../ScrollReveal';
-import gens from '../../constants/gens.json';
+import gens from '@/constants/gens.json';
 
 const defaultGen = gens.length && gens[0] ? gens[0].value : 1;
 

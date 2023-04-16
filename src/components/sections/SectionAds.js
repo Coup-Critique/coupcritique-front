@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import useDarkMode from '../../hooks/useDarkMode';
+import useDarkMode from '@/hooks/useDarkMode';
 // import Ad from '../Ad';
 
 const initAd = () => {

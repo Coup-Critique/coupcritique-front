@@ -10,37 +10,37 @@ import {
 	useLocation,
 } from 'react-router-dom';
 // components
-import PokemonArticle from '../pages/article/PokemonArticle';
-import TeamArticle from '../pages/article/TeamArticle';
-import MoveArticle from '../pages/article/MoveArticle';
-import TypeArticle from '../pages/article/TypeArticle';
-import AbilityArticle from '../pages/article/AbilityArticle';
-import ItemArticle from '../pages/article/ItemArticle';
-import TierArticle from '../pages/article/TierArticle';
-import UserArticle from '../pages/article/UserArticle';
-import ActualityArticle from '../pages/article/ActualityArticle';
-import ProposeTeam from '../pages/form/ProposeTeam';
-import ActualityFormPage from '../pages/form/ActualityFormPage';
-import GuideArticle from '../pages/article/GuideArticle';
-import GuideFormPage from '../pages/form/GuideFormPage';
-import TournamentArticle from '../pages/article/TournamentArticle';
-import TournamentFormPage from '../pages/form/TournamentFormPage';
+import PokemonArticle from '@/pages/article/PokemonArticle';
+import TeamArticle from '@/pages/article/TeamArticle';
+import MoveArticle from '@/pages/article/MoveArticle';
+import TypeArticle from '@/pages/article/TypeArticle';
+import AbilityArticle from '@/pages/article/AbilityArticle';
+import ItemArticle from '@/pages/article/ItemArticle';
+import TierArticle from '@/pages/article/TierArticle';
+import UserArticle from '@/pages/article/UserArticle';
+import ActualityArticle from '@/pages/article/ActualityArticle';
+import ProposeTeam from '@/pages/form/ProposeTeam';
+import ActualityFormPage from '@/pages/form/ActualityFormPage';
+import GuideArticle from '@/pages/article/GuideArticle';
+import GuideFormPage from '@/pages/form/GuideFormPage';
+import TournamentArticle from '@/pages/article/TournamentArticle';
+import TournamentFormPage from '@/pages/form/TournamentFormPage';
 // hooks
-import useFetch from '../../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 // constants
-import { entities, entitiesToEntity, checkNotif } from '../../constants/entities';
-import { setNotifAction } from '../../reducers/notifs';
-import PokemonContainer from '../../containers/PokemonContainer';
-import TeamContainer from '../../containers/TeamContainer';
-import TypeContainer from '../../containers/TypeContainer';
-import MoveContainer from '../../containers/MoveContainer';
-import AbilityContainer from '../../containers/AbilityContainer';
-import ItemContainer from '../../containers/ItemContainer';
-import ActualityContainer from '../../containers/ActualityContainer';
-import GuideContainer from '../../containers/GuideContainer';
-import TournamentContainer from '../../containers/TournamentContainer';
-import TierContainer from '../../containers/TierContainer';
-import UserContainer from '../../containers/UserContainer';
+import { entities, entitiesToEntity, checkNotif } from '@/constants/entities';
+import { setNotifAction } from '@/reducers/notifs';
+import PokemonContainer from '@/containers/PokemonContainer';
+import TeamContainer from '@/containers/TeamContainer';
+import TypeContainer from '@/containers/TypeContainer';
+import MoveContainer from '@/containers/MoveContainer';
+import AbilityContainer from '@/containers/AbilityContainer';
+import ItemContainer from '@/containers/ItemContainer';
+import ActualityContainer from '@/containers/ActualityContainer';
+import GuideContainer from '@/containers/GuideContainer';
+import TournamentContainer from '@/containers/TournamentContainer';
+import TierContainer from '@/containers/TierContainer';
+import UserContainer from '@/containers/UserContainer';
 
 const EntityRouter = () => {
 	const dispatch = useDispatch();

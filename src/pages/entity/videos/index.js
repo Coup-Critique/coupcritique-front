@@ -2,16 +2,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Dropdown, Form, Loader } from 'semantic-ui-react';
-import useFetch from '../../../hooks/useFetch';
-import usePager from '../../../hooks/usePager';
-import Video from '../../elements/Video';
-import FormVideo from '../../forms/FormVideo';
+import useFetch from '@/hooks/useFetch';
+import usePager from '@/hooks/usePager';
+import Video from '@/components/elements/Video';
+import FormVideo from '@/components/forms/FormVideo';
 import PageWrapper from '../../PageWrapper';
 import PaginationPrettier from '../../PaginationPrettier';
-import { setVideoTags } from '../../../reducers/video_tags';
-import DropdownMultipleSelectField from '../../fields/DropdownMultipleSelectField';
-import { objectToGETparams } from '../../../functions';
-import SectionAds from '../../sections/SectionAds';
+import { setVideoTags } from '@/reducers/video_tags';
+import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSelectField';
+import { objectToGETparams } from '@/functions';
+import SectionAds from '@/components/sections/SectionAds';
 
 const VideoList = () => {
 	const dispatch = useDispatch();

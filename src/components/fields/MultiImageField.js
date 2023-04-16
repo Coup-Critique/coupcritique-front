@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FormField, Icon, Label, Segment } from 'semantic-ui-react';
-import { megaBytesToBits } from '../../functions';
+import { megaBytesToBits } from '@/functions';
 
 const MultiImageField = ({
 	name = 'images',

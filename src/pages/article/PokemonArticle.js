@@ -3,27 +3,27 @@ import React, { useEffect, useState } from 'react';
 import { Button, Loader, Menu, Popup } from 'semantic-ui-react';
 // components
 import PageWrapper from '../../PageWrapper';
-import ArtPokemon from '../../elements/ArtPokemon';
-import TableStat from '../../table/TableStat';
-import TableTeam from '../../table/TableTeam';
-import Tier from '../../elements/Tier';
-import Type from '../../elements/Type';
-import Ability from '../../elements/Ability';
-import SpritePokemon from '../../elements/SpritePokemon';
-import PokemonSetManager from '../../sections/PokemonSetManager';
-import EvolutionTree from '../../elements/EvolutionTree';
-import WeaknessesPopup from '../../elements/WeaknessesPopup';
-import Description from '../../elements/Description';
+import ArtPokemon from '@/components/elements/ArtPokemon';
+import TableStat from '@/components/table/TableStat';
+import TableTeam from '@/components/table/TableTeam';
+import Tier from '@/components/elements/Tier';
+import Type from '@/components/elements/Type';
+import Ability from '@/components/elements/Ability';
+import SpritePokemon from '@/components/elements/SpritePokemon';
+import PokemonSetManager from '@/components/sections/PokemonSetManager';
+import EvolutionTree from '@/components/elements/EvolutionTree';
+import WeaknessesPopup from '@/components/elements/WeaknessesPopup';
+import Description from '@/components/elements/Description';
 // functions
-import useDarkMode, { DARK_MODE_KEY } from '../../../hooks/useDarkMode';
-import { formateName, formatFileName, formatNumbers } from '../../../functions';
-import UsageStats from '../../elements/UsageStats';
+import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
+import { formateName, formatFileName, formatNumbers } from '@/functions';
+import UsageStats from '@/components/elements/UsageStats';
 import GenSelector from '../../GenSelector';
 import { useSelector } from 'react-redux';
 import GoBackButton from '../../GoBackButton';
 import { Link, useHistory } from 'react-router-dom';
-import SectionAds from '../../sections/SectionAds';
-import useTableFetch from '../../../hooks/useTableFetch';
+import SectionAds from '@/components/sections/SectionAds';
+import useTableFetch from '@/hooks/useTableFetch';
 
 const PokemonArticle = ({ result }) => {
 	const history = useHistory();

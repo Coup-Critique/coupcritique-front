@@ -4,23 +4,23 @@ import { useParams, useHistory, Switch, Route, Redirect } from 'react-router-dom
 import { useSelector } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
 // hooks
-import useFetch from '../../hooks/useFetch';
+import useFetch from '@/hooks/useFetch';
 // functions
-import { capitalize } from '../../functions';
+import { capitalize } from '@/functions';
 // constants
-import { entities, entitiesTranslation, entitiesWithGen } from '../../constants/entities';
+import { entities, entitiesTranslation, entitiesWithGen } from '@/constants/entities';
 // components
 import PageWrapper from '../PageWrapper';
-import TablePokemon from '../table/TablePokemon';
-import TableMove from '../table/TableMove';
-import TableAbility from '../table/TableAbility';
-import TableItem from '../table/TableItem';
-// import TableType from '../../table/TableType';
-// import TableUser from '../../table/TableUser';
-import TierList from '../pages/list/TierList';
+import TablePokemon from '@/components/table/TablePokemon';
+import TableMove from '@/components/table/TableMove';
+import TableAbility from '@/components/table/TableAbility';
+import TableItem from '@/components/table/TableItem';
+// import TableType from '@/components/table/TableType';
+// import TableUser from '@/components/table/TableUser';
+import TierList from '@/pages/list/TierList';
 import GenSelector from '../GenSelector';
-import TypeList from '../pages/list/TypeList';
-import useStoreQuery from '../../hooks/useStoreQuery';
+import TypeList from '@/pages/list/TypeList';
+import useStoreQuery from '@/hooks/useStoreQuery';
 import MetaData from '../MetaData';
 
 const ListRouter = () => {

@@ -4,19 +4,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Header, Grid, Button, Icon, Loader } from 'semantic-ui-react';
 import { Redirect } from 'react-router';
 // components
-import FormPassword from '../../forms/FormPassword';
-import FormUpdateUser from '../../forms/FormUpdateUser';
+import FormPassword from '@/components/forms/FormPassword';
+import FormUpdateUser from '@/components/forms/FormUpdateUser';
 import PageWrapper from '../../PageWrapper';
-import TableTeam from '../../table/TableTeam';
+import TableTeam from '@/components/table/TableTeam';
 // hooks
-import useFetch from '../../../hooks/useFetch';
-import useLogout from '../../../hooks/useLogout';
+import useFetch from '@/hooks/useFetch';
+import useLogout from '@/hooks/useLogout';
 // reducers
-import { addMessage } from '../../../reducers/messages';
+import { addMessage } from '@/reducers/messages';
 import GoBackButton from '../../GoBackButton';
-import useTableFetch from '../../../hooks/useTableFetch';
-import { setNotifAction } from '../../../reducers/notifs';
-import ModalConfirm from '../../modals/ModalConfirm';
+import useTableFetch from '@/hooks/useTableFetch';
+import { setNotifAction } from '@/reducers/notifs';
+import ModalConfirm from '@/components/modals/ModalConfirm';
 
 const UserFormPage = () => {
 	const dispatch = useDispatch();

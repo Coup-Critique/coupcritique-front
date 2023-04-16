@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setDarkModeAction } from '../reducers/darkMode';
+import { setDarkModeAction } from '@/reducers/darkMode';
 import useActions from './useActions';
 import usePrevious from './usePrevious';
 import useLocalStorage from './useLocalStorage';

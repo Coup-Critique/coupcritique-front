@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Tier from '../../elements/Tier';
+import Tier from '@/components/elements/Tier';
 import { Card } from 'semantic-ui-react';
 import ScrollReveal from '../../ScrollReveal';
-import SectionAds from '../../sections/SectionAds';
-import { ART_ITM } from '../../../constants/img';
+import SectionAds from '@/components/sections/SectionAds';
+import { ART_ITM } from '@/constants/img';
 
 const TierList = ({ tiers = [] }) => (
 	<>

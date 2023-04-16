@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Icon, Loader } from 'semantic-ui-react';
 // custom
-import useFetch from '../../hooks/useFetch';
-import { PUT } from '../../constants/methods';
+import useFetch from '@/hooks/useFetch';
+import { PUT } from '@/constants/methods';
 
 const Favorite = ({ team, isIcon = false, size = 'large' }) => {
 	const [isFavorite, setIsFavorite] = useState(false);

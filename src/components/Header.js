@@ -6,7 +6,7 @@ import { Icon, Button, IconGroup } from 'semantic-ui-react';
 // components
 import MainSearch from './forms/MainSearch';
 // hooks
-import useDarkMode from '../hooks/useDarkMode';
+import useDarkMode from '@/hooks/useDarkMode';
 import ShowdownIconHoverable from './actions/ShowdownIconHoverable';
 import MenuNavBar from './MenuNavBar';
 import MenuUser from './MenuUser';

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { makeClassName } from '../functions';
+import { makeClassName } from '@/functions';
 
 const ScrollReveal = ({
 	Tag = 'div',

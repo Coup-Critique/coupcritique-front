@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import { Comment as SemanticComment, Icon } from 'semantic-ui-react';
 // custom
 import Profile, { ProfileBadge } from './Profile';
-import FormComment from '../forms/FormComment';
-import ApproveComment from '../actions/ApproveComment';
-import { formatDate } from '../../functions';
-import DeleteAction from '../actions/DeleteAction';
+import FormComment from '@/components/forms/FormComment';
+import ApproveComment from '@/components/actions/ApproveComment';
+import { formatDate } from '@/functions';
+import DeleteAction from '@/components/actions/DeleteAction';
 
 const Comment = ({ comment, isReply = false, handleUpdate, baseEntity }) => {
 	const user = useSelector(state => state.user);
