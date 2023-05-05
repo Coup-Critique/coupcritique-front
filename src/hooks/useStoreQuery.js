@@ -12,15 +12,17 @@ import useActions from '@/hooks/useActions';
 
 const parseUrlQuery = queryParams =>
 	queryParams
-		.substring(1) // removes "?"
-		.split('&')
-		.reduce((paramsObject, param) => {
-			const [key, value] = param.split('=');
-			if (key && value) {
-				paramsObject[key] = decodeURIComponent(value);
-			}
-			return paramsObject;
-		}, {});
+		? queryParams
+				.substring(1) // removes "?"
+				.split('&')
+				.reduce((paramsObject, param) => {
+					const [key, value] = param.split('=');
+					if (key && value) {
+						paramsObject[key] = decodeURIComponent(value);
+					}
+					return paramsObject;
+				}, {})
+		: null;
 
 /**
  *

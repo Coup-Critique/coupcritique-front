@@ -1,6 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import Header from '@/components/Header';
 import Script from 'next/script';
+import PwaButton from '@/components/PwaButton';
 
 const title = 'Coup Critique | Votre référence en stratégie Pokémon';
 const description =
@@ -42,9 +42,8 @@ export default function Document() {
 				<Script src="/scripts/matomo.js" />
 			</Head>
 			<body>
-				<Header />
 				<Main />
-				<Footer />
+				<PwaButton/>
 				<NextScript />
 				<Script
 					async

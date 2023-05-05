@@ -1,6 +1,7 @@
 export const STORAGE_KEY = 'CoupCritiqueStorage';
 
 const getStoredItem = (key = STORAGE_KEY) => {
+	if (typeof window === 'undefined') return null;
 	try {
 		return JSON.parse(localStorage.getItem(key));
 	} catch (error) {
@@ -10,6 +11,7 @@ const getStoredItem = (key = STORAGE_KEY) => {
 };
 
 const setItemToStorage = (value, key = STORAGE_KEY) => {
+	if (typeof window === 'undefined') return;
 	try {
 		localStorage.setItem(
 			key,

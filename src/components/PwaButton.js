@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Icon } from 'semantic-ui-react';
 
 const PwaButton = () => (
-	<div id="pwa-popup" style="display: none;">
+	<div id="pwa-popup" style={{ display: 'none' }}>
 		<div class="inner-pwa-popup">
 			<div class="logo-zone">
 				<div class="app-icon">
