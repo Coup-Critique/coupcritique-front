@@ -1,6 +1,6 @@
 // modules
 import React from 'react';
-import SpritePokemon from './SpritePokemon';
+import SpritePokemon from '@/components/elements/SpritePokemon';
 
 const EvolutionTree = ({ pokemon }) =>
 	(!!pokemon.preEvo || pokemon.evolutions.length > 0) && (

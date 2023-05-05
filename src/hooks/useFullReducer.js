@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
-import useActions from './useActions';
-import useSelectors from './useSelectors';
+import useActions from '@/hooks/useActions';
+import useSelectors from '@/hooks/useSelectors';
 
 /** Use it when you need actions and selectors */
 const useFullReducer = (

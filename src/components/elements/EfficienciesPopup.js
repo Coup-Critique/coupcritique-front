@@ -1,5 +1,5 @@
 import React from 'react';
-import Type from './Type';
+import Type from '@/components/elements/Type';
 
 const EfficienciesPopup = ({ efficiencies }) => {
 	const noEffectTypes = efficiencies.filter(efficiency => efficiency.ratio === 0);

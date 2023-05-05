@@ -4,14 +4,14 @@ import { useParams } from 'react-router-dom';
 import { Loader } from 'semantic-ui-react';
 import { formateName } from '@/functions';
 // components
-import GoBackButton from '../../GoBackButton';
+import GoBackButton from '@/components/GoBackButton';
 import PageWrapper from '@/components/PageWrapper';
 import useFetch from '@/hooks/useFetch';
 import Description from '@/components/elements/Description';
 import Type from '@/components/elements/Type';
 import Category from '@/components/elements/Category';
 import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
-import GenSelector from '../../GenSelector';
+import GenSelector from '@/components/GenSelector';
 import useStoreQuery from '@/hooks/useStoreQuery';
 
 // TODO corriger le problem d'importarion des learns

@@ -1,5 +1,5 @@
 import React from 'react';
-import ProgressBarStat from '../ProgressBarStat';
+import ProgressBarStat from '@/components/ProgressBarStat';
 
 const TableStat = ({ pokemon }) => (
 	<table className="table table-stat table-sm">

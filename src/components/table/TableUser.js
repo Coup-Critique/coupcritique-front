@@ -1,6 +1,6 @@
 // module
 import React from 'react';
-import { TableBase } from './Table';
+import { TableBase } from '@/components/table/Table';
 import { Label } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 // custom
@@ -13,7 +13,7 @@ import { formatDate } from '@/functions';
 import DeletePicture from '@/components/actions/DeletePicture';
 import { useSelector } from 'react-redux';
 import usePager from '@/hooks/usePager';
-import PaginationPrettier from '../PaginationPrettier';
+import PaginationPrettier from '@/components/PaginationPrettier';
 import UserTiperButton from '@/components/actions/UserTiperButton';
 
 const TableUser = ({

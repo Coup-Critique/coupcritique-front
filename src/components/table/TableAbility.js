@@ -3,8 +3,8 @@ import React from 'react';
 import usePager from '@/hooks/usePager';
 import useTableSorter from '@/hooks/useTableSorter';
 import Ability from '@/components/elements/Ability';
-import PaginationPrettier from '../PaginationPrettier';
-import { TableBase, colorOddRows } from './Table';
+import PaginationPrettier from '@/components/PaginationPrettier';
+import { TableBase, colorOddRows } from '@/components/table/Table';
 
 const TableAbility = ({
 	abilities = [],

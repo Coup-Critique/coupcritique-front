@@ -1,11 +1,11 @@
 // module
 import React from 'react';
-import { TableBase, colorOddRows } from './Table';
+import { TableBase, colorOddRows } from '@/components/table/Table';
 import SpriteItem from '@/components/elements/SpriteItem';
 import Item from '@/components/elements/Item';
 import useTableSorter from '@/hooks/useTableSorter';
 import usePager from '@/hooks/usePager';
-import PaginationPrettier from '../PaginationPrettier';
+import PaginationPrettier from '@/components/PaginationPrettier';
 
 const TableItem = ({ items = [], setItems, query, updateQuery, setQueryParam }) => {
 	const [table, page, nbPages, handlePage] = usePager(100, items, query, setQueryParam);

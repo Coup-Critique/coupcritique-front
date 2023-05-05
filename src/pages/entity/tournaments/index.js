@@ -9,7 +9,7 @@ import useFetch from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
 import TournamentTeaser from '@/components/elements/TournamentTeaser';
 import PageWrapper from '@/components/PageWrapper';
-import PaginationPrettier from '../../PaginationPrettier';
+import PaginationPrettier from '@/components/PaginationPrettier';
 import SectionAds from '@/components/sections/SectionAds';
 
 const TournamentList = () => {

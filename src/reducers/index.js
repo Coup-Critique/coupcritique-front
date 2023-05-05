@@ -1,20 +1,20 @@
 // modules
 import { combineReducers } from 'redux';
 // reducers
-import user from './user';
-import gen from './gen';
-import messages from './messages';
-import tiers from './tiers';
-import tags from './tags';
-import guide_tags from './guide_tags';
-import search from './search';
-import darkMode from './darkMode';
-import queries from './queries';
-import ssrData from './ssrData';
-import notifs from './notifs';
-import cookie from './cookie';
-import video_tags from './video_tags';
-import actuality_tags from './actuality_tags';
+import user from '@/reducers/user';
+import gen from '@/reducers/gen';
+import messages from '@/reducers/messages';
+import tiers from '@/reducers/tiers';
+import tags from '@/reducers/tags';
+import guide_tags from '@/reducers/guide_tags';
+import search from '@/reducers/search';
+import darkMode from '@/reducers/darkMode';
+import queries from '@/reducers/queries';
+import ssrData from '@/reducers/ssrData';
+import notifs from '@/reducers/notifs';
+import cookie from '@/reducers/cookie';
+import video_tags from '@/reducers/video_tags';
+import actuality_tags from '@/reducers/actuality_tags';
 
 const serverSide = (state = 'client') => state;
 

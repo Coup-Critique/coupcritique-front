@@ -2,8 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { formatDate } from '@/functions';
-import ScrollReveal from '../ScrollReveal';
-import Tag from './Tag';
+import ScrollReveal from '@/components/ScrollReveal';
+import Tag from '@/components/elements/Tag';
 
 const GuideTeaserEnhanced = ({ guide }) => (
 	<ScrollReveal className="row guide-teaser-enhanced mb-3" animation="zoomIn" earlier>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Icon } from 'semantic-ui-react';
-import PageWrapper from './PageWrapper';
+import PageWrapper from '@/components/PageWrapper';
 
 class ErrorBoundary extends Component {
 	constructor(props) {

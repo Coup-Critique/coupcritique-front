@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // custom
-import useRefreshToken from './useRefreshToken';
+import useRefreshToken from '@/hooks/useRefreshToken';
 import { addMessage } from '@/reducers/messages';
 import { buildFormData } from '@/functions';
 import { GET } from '@/constants/methods';

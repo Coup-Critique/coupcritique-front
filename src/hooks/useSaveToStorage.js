@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import useLocalStorage from './useLocalStorage';
+import useLocalStorage from '@/hooks/useLocalStorage';
 
 const useSaveToStorage = (entity, callbackEntity) => {
 	const { pathname } = useLocation();

@@ -8,7 +8,7 @@ import usePager from '@/hooks/usePager';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import MultiImageField from '@/components/fields/MultiImageField';
 import PageWrapper from '@/components/PageWrapper';
-import PaginationPrettier from '../../PaginationPrettier';
+import PaginationPrettier from '@/components/PaginationPrettier';
 // components
 
 const AdminDrive = () => {

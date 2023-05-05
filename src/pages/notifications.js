@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { setNotifAction } from '@/reducers/notifs';
 import usePager from '@/hooks/usePager';
-import PaginationPrettier from '../../PaginationPrettier';
+import PaginationPrettier from '@/components/PaginationPrettier';
 
 const NotificationList = () => {
 	const dispatch = useDispatch();

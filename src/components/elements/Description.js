@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Icon } from 'semantic-ui-react';
 import FormDescription from '@/components/forms/FormDescription';
-import DescriptionJsoned from './DescriptionJsoned';
+import DescriptionJsoned from '@/components/elements/DescriptionJsoned';
 
 const Description = ({ entity, json = false, ...props }) => {
 	const [updating, setUpdating] = useState(false);

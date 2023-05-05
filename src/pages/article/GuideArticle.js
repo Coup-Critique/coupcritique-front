@@ -7,14 +7,14 @@ import { Button } from 'semantic-ui-react';
 import { formatDate } from '@/functions';
 // components
 import PageWrapper from '@/components/PageWrapper';
-import GoBackButton from '../../GoBackButton';
+import GoBackButton from '@/components/GoBackButton';
 import useFetch from '@/hooks/useFetch';
 import { DELETE } from '@/constants/methods';
 import { useHistory } from 'react-router-dom';
 import { addMessage } from '@/reducers/messages';
 import Tag from '@/components/elements/Tag';
-import ScrollReveal from '../../ScrollReveal';
-import CommentArea from '../../CommentArea';
+import ScrollReveal from '@/components/ScrollReveal';
+import CommentArea from '@/components/CommentArea';
 import SectionAds from '@/components/sections/SectionAds';
 
 const defaultGoBack = "/entity/guides/";

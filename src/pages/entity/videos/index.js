@@ -7,7 +7,7 @@ import usePager from '@/hooks/usePager';
 import Video from '@/components/elements/Video';
 import FormVideo from '@/components/forms/FormVideo';
 import PageWrapper from '@/components/PageWrapper';
-import PaginationPrettier from '../../PaginationPrettier';
+import PaginationPrettier from '@/components/PaginationPrettier';
 import { setVideoTags } from '@/reducers/video_tags';
 import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSelectField';
 import { objectToGETparams } from '@/functions';

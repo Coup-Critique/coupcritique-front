@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import { Loader } from 'semantic-ui-react';
-import GoBackButton from '../../GoBackButton';
+import GoBackButton from '@/components/GoBackButton';
 import PageWrapper from '@/components/PageWrapper';
 import TableTeam from '@/components/table/TableTeam';
 import SectionAds from '@/components/sections/SectionAds';

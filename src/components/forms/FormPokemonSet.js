@@ -8,7 +8,7 @@ import useFetch from '@/hooks/useFetch';
 import { buildFieldsMessage, parseKoffingInstance } from '@/functions';
 // constants
 import { POST, PUT } from '@/constants/methods';
-import { getDefaultTier } from './FormTeam';
+import { getDefaultTier } from '@/components/forms/FormTeam';
 import usePrevious from '@/hooks/usePrevious';
 import TiersField from '@/components/fields/TiersField';
 import { useSelector } from 'react-redux';

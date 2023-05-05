@@ -1,13 +1,13 @@
 // module
 import React from 'react';
-import { TableBase, colorOddRows } from './Table';
+import { TableBase, colorOddRows } from '@/components/table/Table';
 import { formateName } from '@/functions';
 import Type from '@/components/elements/Type';
 import Category from '@/components/elements/Category';
 import { Link } from 'react-router-dom';
 import useTableSorter from '@/hooks/useTableSorter';
 import usePager from '@/hooks/usePager';
-import PaginationPrettier from '../PaginationPrettier';
+import PaginationPrettier from '@/components/PaginationPrettier';
 import SectionAds from '@/components/sections/SectionAds';
 
 const TableMove = ({ moves = [], setMoves, query, updateQuery, setQueryParam }) => {

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Icon } from 'semantic-ui-react';
 import DeleteAction from '@/components/actions/DeleteAction';
 import FormResource from '@/components/forms/FormResource';
-import Tier from './Tier';
+import Tier from '@/components/elements/Tier';
 
 const Resource = ({
 	resource,

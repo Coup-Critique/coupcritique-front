@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeUser } from '@/reducers/user';
 import { addMessage } from '@/reducers/messages';
-import { STORAGE_KEY } from './useLocalStorage';
+import { STORAGE_KEY } from '@/hooks/useLocalStorage';
 import { setNotifAction } from '@/reducers/notifs';
 
 const useLogout = () => {

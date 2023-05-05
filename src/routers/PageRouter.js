@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 // hooks
 import useResetScroll from '@/hooks/useResetScroll';
 // components
-// import ErrorBoundary from '../ErrorBoundary';
+// import ErrorBoundary from '@/components/ErrorBoundary';
 import EntityRouter from '@/routers/EntityRouter';
 import ListRouter from '@/routers/ListRouter';
 import AdminRouter from '@/routers/AdminRouter';

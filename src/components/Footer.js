@@ -1,8 +1,8 @@
 // modules
 import React from 'react';
 import { Link } from 'react-router-dom';
-import DarkModeToggle from './fields/DarkModeToggle';
-import MenuNavBar from './MenuNavBar';
+import DarkModeToggle from '@/components/fields/DarkModeToggle';
+import MenuNavBar from '@/components/MenuNavBar';
 
 const Footer = () => (
 	<footer>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeClassName } from '@/functions';
-import ProgressBarStat from '../ProgressBarStat';
+import ProgressBarStat from '@/components/ProgressBarStat';
 
 const calcStat = (stat, instance, oldGen) => {
 	if (stat === 'hp') {

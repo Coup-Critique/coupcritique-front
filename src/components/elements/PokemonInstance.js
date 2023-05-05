@@ -1,15 +1,15 @@
 // modules
 import React from 'react';
 // components
-import ArtPokemon from './ArtPokemon';
-import SpriteItem from './SpriteItem';
-import Type from './Type';
-import Ability from './Ability';
+import ArtPokemon from '@/components/elements/ArtPokemon';
+import SpriteItem from '@/components/elements/SpriteItem';
+import Type from '@/components/elements/Type';
+import Ability from '@/components/elements/Ability';
 import TableInstanceStat from '@/components/table/TableInstanceStat';
-import Move from './Move';
-import Pokemon from './Pokemon';
-import Item from './Item';
-import IconType from './IconType';
+import Move from '@/components/elements/Move';
+import Pokemon from '@/components/elements/Pokemon';
+import Item from '@/components/elements/Item';
+import IconType from '@/components/elements/IconType';
 
 const PokemonInstance = ({ instance, gen, tier, noDescription = false }) => (
 	<div className="pokemon-instance flex-grow-1">

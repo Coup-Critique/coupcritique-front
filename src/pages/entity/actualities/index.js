@@ -8,7 +8,7 @@ import useFetch from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
 import ActualityTeaser from '@/components/elements/ActualityTeaser';
 import PageWrapper from '@/components/PageWrapper';
-import PaginationPrettier from '../../PaginationPrettier';
+import PaginationPrettier from '@/components/PaginationPrettier';
 import { setActualityTags } from '@/reducers/actuality_tags';
 import useActions from '@/hooks/useActions';
 import { objectToGETparams } from '@/functions';

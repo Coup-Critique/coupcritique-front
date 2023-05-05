@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { addMessage } from '@/reducers/messages';
 import MultiImageField from '@/components/fields/MultiImageField';
 import { Link } from 'react-router-dom';
-import Wysiwyg from '../Wysiwyg';
+import Wysiwyg from '@/Wysiwyg';
 import { buildFieldsMessage } from '@/functions';
 import TagsField from '@/components/fields/TagsField';
 import useSaveToStorage from '@/hooks/useSaveToStorage';

@@ -8,7 +8,7 @@ import queryReducer, {
 	setQueryParamAction,
 	updateQueryAction,
 } from '@/reducers/state/queryReducer';
-import useActions from './useActions';
+import useActions from '@/hooks/useActions';
 
 const parseUrlQuery = queryParams =>
 	queryParams

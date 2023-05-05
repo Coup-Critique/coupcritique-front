@@ -2,13 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { Divider, Tab } from 'semantic-ui-react';
 // components
-import Move from './Move';
-import SpritePokemon from './SpritePokemon';
-import SpriteItem from './SpriteItem';
+import Move from '@/components/elements/Move';
+import SpritePokemon from '@/components/elements/SpritePokemon';
+import SpriteItem from '@/components/elements/SpriteItem';
 import { formatNumbers } from '@/functions';
 import useFetch from '@/hooks/useFetch';
-import Ability from './Ability';
-import Spread from './Spread';
+import Ability from '@/components/elements/Ability';
+import Spread from '@/components/elements/Spread';
 
 const UsageStats = ({ usages = [] }) => {
 	const [currentUsage, setCurrentUsage] = useState(0);

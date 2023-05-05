@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { Loader } from "semantic-ui-react"
-import useFetch from "../../../hooks/useFetch"
-import TeamArticle from "./TeamArticle"
+import useFetch from '@/hooks/useFetch'
+import TeamArticle from '@/pages/article/TeamArticle'
 
 const TopWeek = () => {
   const [result, load, loading] = useFetch()

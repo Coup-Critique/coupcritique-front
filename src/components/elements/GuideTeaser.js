@@ -3,8 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'semantic-ui-react';
 import { formatDate } from '@/functions';
-import ScrollReveal from '../ScrollReveal';
-import Tag from './Tag';
+import ScrollReveal from '@/components/ScrollReveal';
+import Tag from '@/components/elements/Tag';
 
 const GuideTeaser = ({ guide, TitleAs = 'h3', btnProps = {} }) => (
 	<ScrollReveal className="ui card actuality-teaser" animation="zoomIn" earlier>

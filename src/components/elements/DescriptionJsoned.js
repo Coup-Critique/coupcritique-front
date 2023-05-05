@@ -3,11 +3,11 @@ import React, { Fragment } from 'react';
 import { Icon } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';
 // custom
-import Ability from './Ability';
-import Move from './Move';
-import SpriteItem from './SpriteItem';
-import SpritePokemon from './SpritePokemon';
-import Type from './Type';
+import Ability from '@/components/elements/Ability';
+import Move from '@/components/elements/Move';
+import SpriteItem from '@/components/elements/SpriteItem';
+import SpritePokemon from '@/components/elements/SpritePokemon';
+import Type from '@/components/elements/Type';
 
 const regex = /\[[^\]^\s]*:[^\]]*\]|\n/g;
 const DescriptionJsoned = ({ description, json, className, handleUpdate }) => {

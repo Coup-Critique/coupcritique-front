@@ -18,13 +18,13 @@ import TeamBanButton from '@/components/actions/TeamBanButton';
 import DeleteAction from '@/components/actions/DeleteAction';
 import Favorite from '@/components/actions/Favorite';
 import SpritePokemon from '@/components/elements/SpritePokemon';
-import GoBackButton from '../../GoBackButton';
+import GoBackButton from '@/components/GoBackButton';
 import TeamTopButton from '@/components/actions/TeamTopButton';
 import { addMessage } from '@/reducers/messages';
-// import ScrollReveal from '../../ScrollReveal';
+// import ScrollReveal from '@/components/ScrollReveal';
 import SectionAds from '@/components/sections/SectionAds';
 import { formatDate, formatFileName } from '@/functions';
-import CommentArea from '../../CommentArea';
+import CommentArea from '@/components/CommentArea';
 import Replay from '@/components/elements/Replay';
 
 const TeamArticle = ({ result }) => {

@@ -13,7 +13,7 @@ import useFetch from '@/hooks/useFetch';
 import useLogout from '@/hooks/useLogout';
 // reducers
 import { addMessage } from '@/reducers/messages';
-import GoBackButton from '../../GoBackButton';
+import GoBackButton from '@/components/GoBackButton';
 import useTableFetch from '@/hooks/useTableFetch';
 import { setNotifAction } from '@/reducers/notifs';
 import ModalConfirm from '@/components/modals/ModalConfirm';

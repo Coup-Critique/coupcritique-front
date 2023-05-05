@@ -7,8 +7,8 @@ import useFetch from '@/hooks/useFetch';
 // components
 import FormTeam from '@/components/forms/FormTeam';
 import PageWrapper from '@/components/PageWrapper';
-import SignPanel from '../../SignPanel';
-import GoBackButton from '../../GoBackButton';
+import SignPanel from '@/components/SignPanel';
+import GoBackButton from '@/components/GoBackButton';
 // reducers
 import { setTiers } from '@/reducers/tiers';
 import { setTags } from '@/reducers/tags';

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Tier from '@/components/elements/Tier';
 import { Card } from 'semantic-ui-react';
-import ScrollReveal from '../../ScrollReveal';
+import ScrollReveal from '@/components/ScrollReveal';
 import SectionAds from '@/components/sections/SectionAds';
 import { ART_ITM } from '@/constants/img';
 

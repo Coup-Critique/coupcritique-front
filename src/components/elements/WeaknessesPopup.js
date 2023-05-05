@@ -1,5 +1,5 @@
 import React from 'react';
-import Type from './Type';
+import Type from '@/components/elements/Type';
 
 const WeaknessesPopup = ({ weaknesses }) => {
 	const immuneTypes = weaknesses.filter(weakness => weakness.ratio === 0);

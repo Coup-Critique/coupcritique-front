@@ -1,9 +1,9 @@
 // modules
 import React, { useRef } from 'react';
-import ArtPokemon from './ArtPokemon';
-import Type from './Type';
-import Pokemon from './Pokemon';
-import ScrollReveal from '../ScrollReveal';
+import ArtPokemon from '@/components/elements/ArtPokemon';
+import Type from '@/components/elements/Type';
+import Pokemon from '@/components/elements/Pokemon';
+import ScrollReveal from '@/components/ScrollReveal';
 
 const PokemonInstanceTeaser = ({ instance }) => {
 	const ref = useRef();

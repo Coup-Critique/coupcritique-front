@@ -4,12 +4,12 @@ import { Link, useParams } from 'react-router-dom';
 import { Button, Loader, Segment } from 'semantic-ui-react';
 // components
 import PageWrapper from '@/components/PageWrapper';
-import GoBackButton from '../../GoBackButton';
+import GoBackButton from '@/components/GoBackButton';
 import TablePokemon from '@/components/table/TablePokemon';
 // hooks
 import useFetch from '@/hooks/useFetch';
 import Description from '@/components/elements/Description';
-import GenSelector from '../../GenSelector';
+import GenSelector from '@/components/GenSelector';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import { formatFileName } from '@/functions';
 import WeaknessesPopup from '@/components/elements/WeaknessesPopup';

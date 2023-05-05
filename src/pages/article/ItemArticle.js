@@ -5,12 +5,12 @@ import { Loader } from 'semantic-ui-react';
 // components
 import PageWrapper from '@/components/PageWrapper';
 import ArtItem from '@/components/elements/ArtItem';
-import GoBackButton from '../../GoBackButton';
+import GoBackButton from '@/components/GoBackButton';
 import useFetch from '@/hooks/useFetch';
 import { formateName, formatFileName } from '@/functions';
 import Description from '@/components/elements/Description';
 import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
-import GenSelector from '../../GenSelector';
+import GenSelector from '@/components/GenSelector';
 import useStoreQuery from '@/hooks/useStoreQuery';
 
 const ItemArticle = ({ result }) => {

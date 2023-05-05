@@ -9,11 +9,11 @@ import useFetch from '@/hooks/useFetch';
 import { formateName } from '@/functions';
 // components
 import PageWrapper from '@/components/PageWrapper';
-import GenSelector from '../../GenSelector';
+import GenSelector from '@/components/GenSelector';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import { setSsrDataAction } from '@/reducers/ssrData';
 import { setGenAction } from '@/reducers/gen';
-import GoBackButton from '../../GoBackButton';
+import GoBackButton from '@/components/GoBackButton';
 import SectionAds from '@/components/sections/SectionAds';
 import TableMoveUsage from '@/components/table/TableMoveUsage';
 

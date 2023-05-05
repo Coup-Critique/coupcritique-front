@@ -6,9 +6,9 @@ import { formateName } from '@/functions';
 // hooks
 import useFetch from '@/hooks/useFetch';
 import Description from '@/components/elements/Description';
-import GenSelector from '../../GenSelector';
+import GenSelector from '@/components/GenSelector';
 // components
-import GoBackButton from '../../GoBackButton';
+import GoBackButton from '@/components/GoBackButton';
 import PageWrapper from '@/components/PageWrapper';
 import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
 import useStoreQuery from '@/hooks/useStoreQuery';

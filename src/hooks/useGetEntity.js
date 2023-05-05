@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 // hooks
-import useFetch from './useFetch';
+import useFetch from '@/hooks/useFetch';
 // constants
 import { reloadOnSsr } from '@/constants/entities';
 import { setGenAction } from '@/reducers/gen';

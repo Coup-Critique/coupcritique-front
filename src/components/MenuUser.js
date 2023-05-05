@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { Dropdown, Loader } from 'semantic-ui-react';
 import useLogout from '@/hooks/useLogout';
-import Profile from './elements/Profile';
-import DarkModeToggle from './fields/DarkModeToggle';
-import SignPanel from './SignPanel';
+import Profile from '@/components/elements/Profile';
+import DarkModeToggle from '@/components/fields/DarkModeToggle';
+import SignPanel from '@/components/SignPanel';
 
 const MenuUser = () => {
 	const logout = useLogout();

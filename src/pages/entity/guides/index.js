@@ -7,7 +7,7 @@ import useFetch from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
 import GuideTeaser from '@/components/elements/GuideTeaser';
 import PageWrapper from '@/components/PageWrapper';
-import PaginationPrettier from '../../PaginationPrettier';
+import PaginationPrettier from '@/components/PaginationPrettier';
 import useActions from '@/hooks/useActions';
 import { setGuideTags } from '@/reducers/guide_tags';
 import { objectToGETparams } from '@/functions';

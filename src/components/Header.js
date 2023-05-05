@@ -4,13 +4,13 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Icon, Button, IconGroup } from 'semantic-ui-react';
 // components
-import MainSearch from './forms/MainSearch';
+import MainSearch from '@/components/forms/MainSearch';
 // hooks
 import useDarkMode from '@/hooks/useDarkMode';
-import ShowdownIconHoverable from './actions/ShowdownIconHoverable';
-import MenuNavBar from './MenuNavBar';
-import MenuUser from './MenuUser';
-import CopyMail from './actions/CopyMail';
+import ShowdownIconHoverable from '@/components/actions/ShowdownIconHoverable';
+import MenuNavBar from '@/components/MenuNavBar';
+import MenuUser from '@/components/MenuUser';
+import CopyMail from '@/components/actions/CopyMail';
 
 function Header() {
 	const { user, notifs } = useSelector(state => state);

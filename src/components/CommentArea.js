@@ -4,9 +4,9 @@ import { Button, CommentGroup, Header, Loader } from 'semantic-ui-react';
 import useFetch from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
 import useStoreQuery from '@/hooks/useStoreQuery';
-import Comment from './elements/Comment';
-import FormComment from './forms/FormComment';
-import PaginationPrettier from './PaginationPrettier';
+import Comment from '@/components/elements/Comment';
+import FormComment from '@/components/forms/FormComment';
+import PaginationPrettier from '@/components/PaginationPrettier';
 
 const CommentArea = ({ entity, entityName }) => {
 	const user = useSelector(state => state.user);

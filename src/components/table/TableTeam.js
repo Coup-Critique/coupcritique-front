@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { Icon, Label, Popup } from 'semantic-ui-react';
 // components
-import { TableBase, colorOddRows, DESC, ASC } from './Table';
+import { TableBase, colorOddRows, DESC, ASC } from '@/components/table/Table';
 import SpritePokemon from '@/components/elements/SpritePokemon';
 import Profile from '@/components/elements/Profile';
 import Tag from '@/components/elements/Tag';
@@ -19,7 +19,7 @@ import { formatDate, makeClassName } from '@/functions';
 // const
 import { INSTANCES_KEYS } from '@/constants/team';
 import Favorite from '@/components/actions/Favorite';
-import PaginationPrettier from '../PaginationPrettier';
+import PaginationPrettier from '@/components/PaginationPrettier';
 import useClick from '@/hooks/useClick';
 import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
 import DeleteAction from '@/components/actions/DeleteAction';

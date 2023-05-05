@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDarkModeAction } from '@/reducers/darkMode';
-import useActions from './useActions';
-import usePrevious from './usePrevious';
-import useLocalStorage from './useLocalStorage';
+import useActions from '@/hooks/useActions';
+import usePrevious from '@/hooks/usePrevious';
+import useLocalStorage from '@/hooks/useLocalStorage';
 import { singletonHook } from 'react-singleton-hook';
 
 export const DARK_MODE_KEY = 'dark-mode';

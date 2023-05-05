@@ -2,13 +2,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Loader } from 'semantic-ui-react';
 // components
-import ArtPokemon from './ArtPokemon';
+import ArtPokemon from '@/components/elements/ArtPokemon';
 // hooks
 import useFetch from '@/hooks/useFetch';
 // functions
 import { formateName, formatNumbers, objectToGETparams } from '@/functions';
 import { Link } from 'react-router-dom';
-import ScrollReveal from '../ScrollReveal';
+import ScrollReveal from '@/components/ScrollReveal';
 import { ART_ITM } from '@/constants/img';
 
 const TierUsage = ({ name, params = {} }) => {

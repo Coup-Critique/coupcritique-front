@@ -1,18 +1,18 @@
 // modules
 import React, { useEffect, useMemo, useState } from 'react';
-// components
-import SpriteItem from './SpriteItem';
-import Ability from './Ability';
-import Move from './Move';
-import Item from './Item';
-import Export from '@/components/actions/Export';
-import { Button } from 'semantic-ui-react';
-import FormPokemonSet from '@/components/forms/FormPokemonSet';
 import { useSelector } from 'react-redux';
+import { Button } from 'semantic-ui-react';
+// components
+import SpriteItem from '@/components/elements/SpriteItem';
+import Ability from '@/components/elements/Ability';
+import Move from '@/components/elements/Move';
+import Item from '@/components/elements/Item';
+import Export from '@/components/actions/Export';
+import FormPokemonSet from '@/components/forms/FormPokemonSet';
+import DescriptionJsoned from '@/components/elements/DescriptionJsoned';
+import IconType from '@/components/elements/IconType';
 import useFetch from '@/hooks/useFetch';
 import { DELETE } from '@/constants/methods';
-import DescriptionJsoned from './DescriptionJsoned';
-import IconType from './IconType';
 import { capitalize } from '@/functions';
 
 const natureKeys = ['atk', 'def', 'spa', 'spd', 'spe'];

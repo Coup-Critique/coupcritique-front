@@ -2,8 +2,8 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // hooks
-import useFetch from './useFetch';
-import useLocalStorage from './useLocalStorage';
+import useFetch from '@/hooks/useFetch';
+import useLocalStorage from '@/hooks/useLocalStorage';
 // actions
 import { setUser, setLoadingUser, setUserPicture } from '@/reducers/user';
 import { setNotifAction } from '@/reducers/notifs';

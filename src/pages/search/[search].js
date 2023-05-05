@@ -14,7 +14,7 @@ import PageWrapper from '@/components/PageWrapper';
 import TableUser from '@/components/table/TableUser';
 import TableTier from '@/components/table/TableTier';
 import { useSelector } from 'react-redux';
-import GenSelector from '../../GenSelector';
+import GenSelector from '@/components/GenSelector';
 import SectionAds from '@/components/sections/SectionAds';
 
 const SearchResult = ({ isUser = false }) => {

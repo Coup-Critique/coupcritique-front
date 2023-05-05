@@ -3,11 +3,11 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
-import Ad from '../Ad';
+import Ad from '@/components/Ad';
 // components
 import MainSearch from '@/components/forms/MainSearch';
-import MetaData from '../MetaData';
-import ScrollReveal from '../ScrollReveal';
+import MetaData from '@/components/MetaData';
+import ScrollReveal from '@/components/ScrollReveal';
 import SectionActuality from '@/components/sections/SectionActuality';
 import SectionAdsHome from '@/components/sections/SectionAdsHome';
 import SectionTeams from '@/components/sections/SectionTeams';

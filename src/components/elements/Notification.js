@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 import { entityToEntities } from '@/constants/entities';
 import { makeClassName } from '@/functions';
-import ScrollReveal from '../ScrollReveal';
-import Profile from './Profile';
+import ScrollReveal from '@/components/ScrollReveal';
+import Profile from '@/components/elements/Profile';
 
 const Notification = ({ notification }) => {
 	const link = `/entity/${entityToEntities[notification.entityName]}/${

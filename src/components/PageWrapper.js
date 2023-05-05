@@ -1,8 +1,8 @@
 // modules
 import React from 'react';
 import { makeClassName } from '@/functions';
-import Ad from './Ad';
-import MetaData from './MetaData';
+import Ad from '@/components/Ad';
+import MetaData from '@/components/MetaData';
 
 const PageWrapper = ({
 	title,
