@@ -33,6 +33,8 @@ const useManageToken = () => {
 			} else if (user.loading) {
 				dispatch(setLoadingUser(false));
 			}
+		} else if (user.loading) {
+			dispatch(setLoadingUser(false));
 		}
 	}, []);
 
