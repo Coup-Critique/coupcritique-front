@@ -113,9 +113,8 @@ const TournamentArticle = ({ result }) => {
 						))}
 					</div>
 				)}
-				<p className="date">
-					{tournament.user.username} - {formatDate(tournament.date_creation)}
-				</p>
+				{/* not display the author */}
+				<p className="date">{formatDate(tournament.date_creation)}</p>
 				<div
 					className="description framed wysiwyg-result"
 					dangerouslySetInnerHTML={{

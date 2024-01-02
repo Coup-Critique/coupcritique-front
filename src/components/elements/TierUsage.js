@@ -1,14 +1,12 @@
 // modules
 import React, { useEffect, useRef, useState } from 'react';
 import { Loader } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 // components
 import ArtPokemon from '@/components/elements/ArtPokemon';
-// hooks
-import useFetch from '@/hooks/useFetch';
-// functions
-import { formateName, formatNumbers, objectToGETparams } from '@/functions';
-import { Link } from 'react-router-dom';
 import ScrollReveal from '@/components/ScrollReveal';
+import useFetch from '@/hooks/useFetch';
+import { formateName, formatNumbers, objectToGETparams } from '@/functions';
 import { ART_ITM } from '@/constants/img';
 
 const TierUsage = ({ name, params = {} }) => {
@@ -29,29 +27,32 @@ const TierUsage = ({ name, params = {} }) => {
 	}, [resultUsage]);
 
 	if (loading) return <Loader inline active />;
+	if (!tier) return null;
 	if (!usage) {
 		return (
-			<div className="usage">
+			<ScrollReveal className="usage" animation="zoomIn" earlier outterRef={ref}>
 				<div className="img-wrapper">
 					<img
-						src="/images/picto/circle-question-solid.svg"
-						alt="Pokémon encore inconnu"
-						title="Pokémon encore inconnu"
+						src={`/images/tiers/${tier.gen}-${
+							tier.shortName || tier.name
+						}.png`}
+						onError={e => {
+							e.target.onerror = null;
+							e.target.src = '/images/picto/circle-question-solid.svg';
+						}}
+						alt={tier.name}
 						className="art-pokemon img-fluid unknown"
 						width={ART_ITM}
 						height={ART_ITM}
+						ref={ref}
 					/>
 				</div>
 				<h3>
-					{tier ? (
-						<Link to={`/entity/tiers/${tier.id}`}>Top {tier.name}</Link>
-					) : (
-						<>Top {name}</>
-					)}
+					<Link to={`/entity/tiers/${tier.id}`}>{tier.name}</Link>
 				</h3>
 				<div className="no-result">Aucun résultat disponible.</div>
-				<div>&nbsp;</div>
-			</div>
+				<div className="percent">&nbsp;</div>
+			</ScrollReveal>
 		);
 	}
 	return (

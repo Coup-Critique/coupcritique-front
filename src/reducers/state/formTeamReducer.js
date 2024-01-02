@@ -27,7 +27,9 @@ const formTeamReducer = (team, action) => {
 
 		case REMOVE_INSTANCES:
 			const nextTeams = Object.assign({}, team);
-			INSTANCES_KEYS.forEach(key => delete nextTeams[key]);
+			INSTANCES_KEYS.forEach(key => {
+				nextTeams[key] = { description: team[key]?.description };
+			});
 			return nextTeams || team;
 
 		case SET_TEAM:

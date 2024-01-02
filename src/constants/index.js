@@ -1,4 +1,3 @@
-export const API_URL = 'http://localhost:8000';
 export const ROLE_ADMIN = 'ROLE_ADMIN';
 export const ROLE_MODO = 'ROLE_MODO';
 export const REPLAY_URL = 'https://replay.pokemonshowdown.com/';

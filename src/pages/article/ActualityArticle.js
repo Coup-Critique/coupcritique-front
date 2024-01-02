@@ -1,21 +1,20 @@
 // modules
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import Slider from 'react-slick';
+import { Link, useHistory } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
-import { formatDate } from '@/functions';
+import Slider from 'react-slick';
 // components
 import PageWrapper from '@/components/PageWrapper';
 import GoBackButton from '@/components/GoBackButton';
-import useFetch from '@/hooks/useFetch';
-import { DELETE } from '@/constants/methods';
-import { useHistory } from 'react-router-dom';
-import { addMessage } from '@/reducers/messages';
 import ScrollReveal from '@/components/ScrollReveal';
 import Tag from '@/components/elements/Tag';
 import CommentArea from '@/components/CommentArea';
 import SectionAds from '@/components/sections/SectionAds';
+import Author from '@/components/elements/Author';
+import useFetch from '@/hooks/useFetch';
+import { DELETE } from '@/constants/methods';
+import { addMessage } from '@/reducers/messages';
 
 const defaultGoBack = '/entity/actualities/';
 const ActualityArticle = ({ result }) => {
@@ -111,9 +110,7 @@ const ActualityArticle = ({ result }) => {
 						))}
 					</div>
 				)}
-				<p className="date">
-					{actuality.user.username} - {formatDate(actuality.date_creation)}
-				</p>
+				<Author entity={actuality} />
 				<div
 					className="description framed wysiwyg-result"
 					dangerouslySetInnerHTML={{

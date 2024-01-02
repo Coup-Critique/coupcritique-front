@@ -72,11 +72,11 @@ const FormTournament = ({ handleSubmited, tournament = {} }) => {
 		}
 	};
 
-	const handleUploadImages = (files = images) => {
+	const handleUploadImages = (body = images) => {
 		uploadImages({
 			url: `tournaments/${result.tournament.id}/images`,
 			method: POST,
-			body: { files },
+			body,
 			contentType: FILE_TYPE,
 		});
 	};

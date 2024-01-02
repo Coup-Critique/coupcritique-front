@@ -7,6 +7,7 @@ import SpriteItem from '@/components/elements/SpriteItem';
 import Ability from '@/components/elements/Ability';
 import Move from '@/components/elements/Move';
 import Item from '@/components/elements/Item';
+import Author from '@/components/elements/Author';
 import Export from '@/components/actions/Export';
 import FormPokemonSet from '@/components/forms/FormPokemonSet';
 import DescriptionJsoned from '@/components/elements/DescriptionJsoned';
@@ -278,6 +279,7 @@ const PokemonInstanceSet = ({ pokemonSet, tiers, handleUpdate, handleRemove, gen
 							json={pokemonSet.contentJson}
 						/>
 					)}
+					<Author entity={pokemonSet} />
 				</>
 			)}
 			{user.is_modo && !!tiers && !displayForm && (

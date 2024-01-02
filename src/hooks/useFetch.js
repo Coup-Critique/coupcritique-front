@@ -101,7 +101,10 @@ export const manageFetch = async (url, params) => {
 	let response = null;
 	try {
 		// console.log('request', `/api/${url}`, params);
-		const response = await fetch(`/api/${url}`, params);
+		const response = await fetch(
+			process.env.NEXT_PUBLIC_API_URL + `/api/${url}`,
+			params
+		);
 		// console.log('response', response);
 		const responseJson = await response.json();
 		// console.log('responseJson',responseJson);
@@ -130,9 +133,9 @@ export const manageError = error => {
 	}
 
 	if (
-		error.message === 'Invalid JWT Token'
-		|| error.message === 'Expired JWT Token'
-		|| error.message === "Une exception d'authentification s'est produite."
+		error.message === 'Invalid JWT Token' ||
+		error.message === 'Expired JWT Token' ||
+		error.message === "Une exception d'authentification s'est produite."
 	) {
 		// Throw error to refreshToken
 		throw error;

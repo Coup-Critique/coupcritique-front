@@ -94,8 +94,8 @@ const MovePool = () => {
 				</>
 			}
 			metatitle={
-				`Liste des capacités de `
-				+ (pokemon ? pokemon.nom || formateName(pokemon.name) : '')
+				`Liste des capacités de ` +
+				(pokemon ? pokemon.nom || formateName(pokemon.name) : '')
 			}
 			metadescription={`Accédez la liste des des capacités de ${
 				pokemon ? pokemon.nom || formateName(pokemon.name) : ''
@@ -105,7 +105,7 @@ const MovePool = () => {
 			<GoBackButton defaultUrl={`/entity/pokemon/${id}`} />
 			<GenSelector
 				availableGens={resultPokemon?.availableGens}
-				redirectOnChange={`/entity/pokemon/${id}`}
+				redirectOnChange={`/entity/moves/pokemon/`}
 			/>
 			<SectionAds className="mt-4" />
 			<div id="pagination-scroll-ref">
@@ -121,6 +121,12 @@ const MovePool = () => {
 						updateQuery={updateQuery}
 						setQueryParam={setQueryParam}
 					/>
+				) : !pokemon?.tier || pokemon.tier.name === 'Untiered' ? (
+					<p>
+						Ce Pokémon n'est pas disponible dans cette génération, veuillez
+						sélectionner une autre génération pour obtenir la liste de ces
+						capacités.
+					</p>
 				) : (
 					<p>Aucune capacité trouvée.</p>
 				)}

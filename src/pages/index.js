@@ -3,7 +3,6 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
-import Ad from '@/components/Ad';
 // components
 import MainSearch from '@/components/forms/MainSearch';
 import MetaData from '@/components/MetaData';

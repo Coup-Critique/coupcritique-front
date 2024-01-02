@@ -75,7 +75,7 @@ const ProposeTeam = ({ result = {}, update = false }) => {
 			</div>
 			{!update && (
 				<p className="description framed">
-					<b>Vous ne pouvez proposer qu'une seule équipe à la fois</b>, alors
+					<b>Vous ne pouvez proposer qu'une seule équipe par tier à la fois</b>, alors
 					choisissez-la bien. Une fois celle-ci définie comme certifiée ou non,
 					vous pourrez de nouveau en publier une.
 					<br />

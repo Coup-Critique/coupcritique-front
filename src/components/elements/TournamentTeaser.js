@@ -42,10 +42,7 @@ const TournamentTeaser = ({ tournament, TitleAs = 'h3', btnProps = {} }) => (
 					))}
 				</div>
 			)}
-			<p className="date mb-3">
-				{tournament.user && tournament.user.username + ' - '}{' '}
-				{formatDate(tournament.date_creation)}
-			</p>
+			<p className="date mb-3">{formatDate(tournament.date_creation)}</p>
 			{!!tournament.shortDescription && (
 				<p className="short-description">{tournament.shortDescription}</p>
 			)}

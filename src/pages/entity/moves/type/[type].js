@@ -93,15 +93,15 @@ const MoveByType = () => {
 				'Liste des capacités du type ' + (type ? type.nom || type.name : '')
 			}
 			metadescription={
-				'Accédez la liste des des capacités du type '
-				+ (type ? type.nom || type.name : '')
+				'Accédez la liste des des capacités du type ' +
+				(type ? type.nom || type.name : '')
 			}
 			more
 		>
 			<GoBackButton defaultUrl={`/entity/types/${id}`} />
 			<GenSelector
 				availableGens={resultType?.availableGens}
-				redirectOnChange={`/entity/types/${id}`}
+				redirectOnChange={`/entity/types/`}
 			/>
 			<SectionAds className="mt-4" />
 			<div id="pagination-scroll-ref">

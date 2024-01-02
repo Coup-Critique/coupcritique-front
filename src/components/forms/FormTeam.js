@@ -1,7 +1,7 @@
 // modules
-import React, { useState, useCallback, useEffect, useReducer, useMemo } from 'react';
-import { Form, Button, Message } from 'semantic-ui-react';
+import { useState, useCallback, useEffect, useReducer, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Form, Button, Message } from 'semantic-ui-react';
 import { Koffing } from 'koffing/dist/koffing';
 // components
 import TagsField from '@/components/fields/TagsField';
@@ -69,9 +69,9 @@ const FormTeam = ({ tiers = {}, tags = [], loadingTiers = false, defaultValue })
 	const [exportChecked, setExportChecked] = useState(!!defaultValue);
 	const [success, setSuccess] = useState(true);
 	const [message, setMessage] = useState({});
-	const [fromStorage, setFromStorage] = useState(false);
+	// const [fromStorage, setFromStorage] = useState(false);
 	const saveStorage = stored => {
-		setFromStorage(true);
+		// setFromStorage(true);
 		setTeam(initTeam(stored, tiers));
 	};
 	const [voidStorage] = useSaveToStorage(team, saveStorage);
@@ -115,6 +115,7 @@ const FormTeam = ({ tiers = {}, tags = [], loadingTiers = false, defaultValue })
 				setMessage({ form: resultTeam.message });
 			}
 			if (resultTeam.success) {
+				dispatch(removeSsrDataAction('team'));
 				voidStorage();
 				if (defaultValue && defaultValue.id) {
 					history.replace('/entity/teams/' + resultTeam.team.id);
@@ -125,21 +126,47 @@ const FormTeam = ({ tiers = {}, tags = [], loadingTiers = false, defaultValue })
 		}
 	}, [resultTeam]);
 
+	const testDVExport = () => {
+		return (
+			!defaultValue ||
+			(!defaultValue.certified &&
+				(defaultValue.tier.id !== team.tier.id ||
+					defaultValue.export !== team.export))
+		);
+	};
 	useEffect(() => {
-		if (team.tier && exportChecked && !defaultValue) setExportChecked(false);
+		if (team.tier && exportChecked && testDVExport()) {
+			setExportChecked(false);
+		}
 	}, [team.tier]);
-
 	useEffect(() => {
-		if (team.export && exportChecked && !defaultValue) setExportChecked(false);
+		if (team.export && exportChecked && testDVExport()) {
+			setExportChecked(false);
+		}
 	}, [team.export]);
+
+	const mergeTeamPokemons = () => {
+		const nextTeams = { ...team };
+		INSTANCES_KEYS.forEach(key => {
+			if (pokemons[key]) {
+				nextTeams[key] = { ...team[key], ...pokemons[key] };
+			} else {
+				nextTeams[key] = null;
+			}
+		});
+		return nextTeams;
+	};
 
 	useEffect(() => {
 		if (Object.keys(pokemons).length) {
 			if (!!team.gen && !!team.tier) {
 				loadExport({
-					url: 'teams/export?gen=' + team.gen,
-					method: POST,
-					body: { ...pokemons, ...team },
+					url:
+						'teams/export' +
+						(team.id ? `/${team.id}` : '') +
+						`?gen=${team.gen}`,
+					method: team.id ? PUT : POST,
+					body: mergeTeamPokemons(),
 				});
 			} else {
 				scrollToTopAnimate();
@@ -218,9 +245,9 @@ const FormTeam = ({ tiers = {}, tags = [], loadingTiers = false, defaultValue })
 				const parsedExport = Koffing.parse(team.export);
 				e.preventDefault();
 				if (
-					parsedExport.teams
-					&& parsedExport.teams[0]
-					&& parsedExport.teams[0].pokemon
+					parsedExport.teams &&
+					parsedExport.teams[0] &&
+					parsedExport.teams[0].pokemon
 				) {
 					setPokemons(
 						parsedExport.teams[0].pokemon.reduce((pokemons, pokemon, i) => {
@@ -270,7 +297,7 @@ const FormTeam = ({ tiers = {}, tags = [], loadingTiers = false, defaultValue })
 				currentGen={team.gen}
 				handleChange={handleTier}
 				required
-				disabled={!!defaultValue}
+				disabled={!!defaultValue && defaultValue.certified}
 				message={message.tier}
 				lockOldOfficial
 			/>
@@ -307,34 +334,25 @@ const FormTeam = ({ tiers = {}, tags = [], loadingTiers = false, defaultValue })
 				error={typeof message.export === 'string' && message.export}
 				rows="6"
 				required
-				disabled={!!defaultValue}
+				disabled={!!defaultValue && defaultValue.certified}
 			/>
-			{message.export
-				&& Array.isArray(message.export)
-				&& message.export.map((e, i) => <Message key={i} error content={e} />)}
-			{exportChecked && (
-				<>
-					{INSTANCES_KEYS.map(
-						// prettier-ignore
-						(key) => !!team[key] && (
-							<InstanceField
-								key={key}
-								instance={team[key]}
-								tier={tier}
-								onChange={(e, input) =>
-									handleChangeObject(e, input, key)
-								}
-								gen={team.gen}
-								required
-								message={message[key]}
-							/>
-						)
-					)}
-					<p>
-						<em>L'export d'une équipe publiée ne peut plus être modifié.</em>
-					</p>
-				</>
-			)}
+			{message.export &&
+				Array.isArray(message.export) &&
+				message.export.map((e, i) => <Message key={i} error content={e} />)}
+			{
+				// prettier-ignore
+				exportChecked && INSTANCES_KEYS.map( key => !!team[key] && (
+					<InstanceField
+						key={key}
+						instance={team[key]}
+						tier={tier}
+						onChange={(e, input) => handleChangeObject(e, input, key)}
+						gen={team.gen}
+						required
+						message={message[key]}
+					/>
+				))
+			}
 			<Message success content={message.form} />
 			<Message error content={message.form} />
 			<div className="text-center">
@@ -344,7 +362,7 @@ const FormTeam = ({ tiers = {}, tags = [], loadingTiers = false, defaultValue })
 						type="submit"
 						disabled={loadingTeam}
 						icon={defaultValue ? 'save' : undefined}
-						content={defaultValue ? 'Enregistrer' : 'Publier'}
+						content={defaultValue ? 'Valider' : 'Publier'}
 					/>
 				) : (
 					<Button

@@ -8,6 +8,7 @@
 .slick-slider {
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
+
 	.image {
 		padding-left: 0.5rem;
 		padding-right: 0.5rem;
@@ -25,6 +26,7 @@
 		color: $grey;
 		font-size: 1rem;
 	}
+
 	li.slick-active button::before {
 		color: $grey;
 	}
@@ -33,22 +35,26 @@
 .slick-arrow {
 	width: 2.5rem;
 	height: 2.5rem;
+
 	&:before {
 		font-size: 2.5rem;
 		color: $grey;
 		opacity: 0.25;
 		transition: all 0.3s;
+
 		&:hover,
 		&:focus {
 			color: $orange;
 			opacity: 1;
 		}
 	}
+
 	&.slick-prev {
 		-webkit-transform: translate(-50%, -50%);
 		-ms-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
 	}
+
 	&.slick-next {
 		-webkit-transform: translate(50%, -50%);
 		-ms-transform: translate(50%, -50%);
@@ -64,14 +70,16 @@
 
 .tox .tox-menu.tox-collection {
 	max-height: 400px !important;
+
 	@media (max-height: 560px) {
 		max-height: calc(100vh - 160px) !important;
 	}
 }
 
 .adsbygoogle {
-	display: 'block';
+	display: block;
 	max-width: 100%;
+	min-width: 250px;
 	margin: 0 auto;
 	text-align: center;
 
@@ -80,6 +88,7 @@
 		margin-right: 0;
 		text-align: right;
 	}
+
 	&.left {
 		margin-left: 0;
 		margin-right: auto;
@@ -92,6 +101,7 @@
 }
 
 @media (min-width: $header-breakpoint) {
+
 	.vm-skin.vm-skin-left,
 	.vm-skin.vm-skin-right {
 		top: $header-height !important;

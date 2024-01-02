@@ -1,5 +1,7 @@
 // modules
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import { Button, Loader, Menu, Popup } from 'semantic-ui-react';
 // components
 import PageWrapper from '@/components/PageWrapper';
@@ -14,22 +16,47 @@ import PokemonSetManager from '@/components/sections/PokemonSetManager';
 import EvolutionTree from '@/components/elements/EvolutionTree';
 import WeaknessesPopup from '@/components/elements/WeaknessesPopup';
 import Description from '@/components/elements/Description';
-// functions
-import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
-import { formateName, formatFileName, formatNumbers } from '@/functions';
 import UsageStats from '@/components/elements/UsageStats';
 import GenSelector from '@/components/GenSelector';
-import { useSelector } from 'react-redux';
 import GoBackButton from '@/components/GoBackButton';
-import { Link, useHistory } from 'react-router-dom';
 import SectionAds from '@/components/sections/SectionAds';
+// functions
 import useTableFetch from '@/hooks/useTableFetch';
+import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
+import { formateName, formatFileName, formatNumbers } from '@/functions';
+
+const flatForms = (pokemon, children = null) => {
+	if (!pokemon.forms.length) return [];
+	let forms = pokemon.forms
+		.map(form => (form ? (form.forms.length ? flatForms(form) : form) : children))
+		.flat();
+	forms.unshift(pokemon);
+	return forms;
+};
+
+const makeForms = (pokemon, children = null) => {
+	let forms = flatForms(pokemon, children);
+	if (pokemon.base_form) {
+		forms = makeForms(pokemon.base_form, forms.length ? forms : pokemon);
+	}
+	return forms;
+};
+
+const getMainUsage = result => {
+	if (!result?.usages) return null;
+	const refTier = result.pokemon.tier.parent
+		? result.pokemon.tier.parent
+		: result.pokemon.tier;
+	return result.usages.find(usage => usage.tier.id === refTier.id);
+};
 
 const PokemonArticle = ({ result }) => {
 	const history = useHistory();
 	const gen = useSelector(state => state.gen);
 	const [darkMode] = useDarkMode();
 	const [pokemon, setPokemon] = useState((result && result.pokemon) || null);
+	const [forms, setForms] = useState(result?.pokemon ? makeForms(result.pokemon) : []);
+	const [usage, setUsage] = useState(getMainUsage(result));
 
 	const {
 		table: teams,
@@ -50,8 +77,10 @@ const PokemonArticle = ({ result }) => {
 	});
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result && result.pokemon && (!pokemon || result.pokemon.id != pokemon.id)) {
 			setPokemon(result.pokemon);
+			setForms(makeForms(result.pokemon));
+			setUsage(getMainUsage(result));
 		}
 	}, [result.pokemon]);
 
@@ -59,18 +88,6 @@ const PokemonArticle = ({ result }) => {
 
 	if (!pokemon || !pokemon.id) return null;
 	const { usages, weaknesses, pokemonSets } = result;
-	const refTier = pokemon.tier.parent ? pokemon.tier.parent : pokemon.tier;
-	const usage = usages ? usages.find(usage => usage.tier.id === refTier.id) : null;
-	let forms;
-	if (pokemon.base_form) {
-		forms = pokemon.base_form.forms
-			.map(form => form || pokemon)
-			.concat(pokemon.forms);
-		forms.unshift(pokemon.base_form);
-	} else {
-		forms = pokemon.forms.slice();
-		forms.unshift(pokemon);
-	}
 	const name = pokemon.nom || formateName(pokemon.name);
 	return (
 		<PageWrapper
@@ -79,9 +96,9 @@ const PokemonArticle = ({ result }) => {
 			title={`Fiche stratégique de ${name}`}
 			metatitle={`Fiche stratégique de : ${name}`}
 			metadescription={
-				`Regarder la fiche stratégique du Pokémon ${name}`
-				+ (pokemon.tier.name !== 'Untiered' ? ' en ' + pokemon.tier.name : '')
-				+ ". Vous y retrouverez ces statisques d'utilisations dans les tiers dans lesquels il est jouable, ainsi que différent set avec lesquels le jouer. Vous pourrez aussi y consulter les équipe certifiées l'incluant, partagée sur le site."
+				`Regarder la fiche stratégique du Pokémon ${name}` +
+				(pokemon.tier.name !== 'Untiered' ? ' en ' + pokemon.tier.name : '') +
+				". Vous y retrouverez ces statisques d'utilisations dans les tiers dans lesquels il est jouable, ainsi que différent set avec lesquels le jouer. Vous pourrez aussi y consulter les équipe certifiées l'incluant, partagée sur le site."
 			}
 			metaimage={`pokemons/${formatFileName(pokemon.name)}.png`}
 		>
@@ -196,9 +213,9 @@ const PokemonArticle = ({ result }) => {
 						</div>
 					)} */}
 					<EvolutionTree pokemon={pokemon} />
-					{!pokemon.preEvo
-						&& pokemon.evolutions.length < 1
-						&& !!pokemon.base_form && (
+					{!pokemon.preEvo &&
+						pokemon.evolutions.length < 1 &&
+						!!pokemon.base_form && (
 							<EvolutionTree pokemon={pokemon.base_form} />
 						)}
 				</div>

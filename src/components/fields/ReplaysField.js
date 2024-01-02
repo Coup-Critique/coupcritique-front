@@ -1,6 +1,6 @@
 // modules
 import React from 'react';
-import { Form, Button, Label } from 'semantic-ui-react';
+import { Form, Button, Label, Icon } from 'semantic-ui-react';
 // constants
 import { REPLAY_URL } from '@/constants/index';
 
@@ -29,6 +29,13 @@ const ReplaysField = ({ name = 'replays', value, message, handleChange }) => {
 		handleChange(name, replays);
 	};
 
+	const removeReplay = (e, i) => {
+		e.preventDefault();
+		const replays = value.slice();
+		replays.splice(i, 1);
+		handleChange(name, replays);
+	};
+
 	return (
 		<Form.Field>
 			<label>Replays</label>
@@ -43,6 +50,9 @@ const ReplaysField = ({ name = 'replays', value, message, handleChange }) => {
 					value={replay ? replay.uri : ''}
 					error={message}
 				>
+					<Label onClick={removeReplay}>
+						<Icon name="trash" color="red" link />
+					</Label>
 					<Label className="input-ui-label-text d-none d-xs-block">
 						{REPLAY_URL}
 					</Label>

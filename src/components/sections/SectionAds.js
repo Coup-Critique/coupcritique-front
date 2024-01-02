@@ -1,46 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import useDarkMode from '@/hooks/useDarkMode';
-// import Ad from '@/components/Ad';
-
-const initAd = () => {
-	(window.adsbygoogle = window.adsbygoogle || []).push({});
-};
+import useDoubleAdds from '@/hooks/useDoubleAdds';
 
 const SectionAds = () => {
-	const { googleAds } = useSelector(state => state.cookie);
 	const [darkMode] = useDarkMode();
-	const ref1 = useRef();
-	const ref2 = useRef();
-	const [display1, setDisplay1] = useState(true);
-	const [display2, setDisplay2] = useState(true);
-
-	useEffect(() => {
-		if (googleAds) {
-			if (!display1) {
-				setDisplay1(true);
-			}
-			if (!display2) {
-				setDisplay2(true);
-			}
-			try {
-				initAd();
-				initAd();
-				setTimeout(checkDisplay, 3000);
-			} catch (e) {
-				console.error(e);
-			}
-		}
-	}, [darkMode, googleAds]);
-
-	const checkDisplay = () => {
-		if (ref1.current && !ref1.current.hasChildNodes()) {
-			setDisplay1(false);
-		}
-		if (ref2.current && !ref2.current.hasChildNodes()) {
-			setDisplay2(false);
-		}
-	};
+	const { googleAds } = useSelector(state => state.cookie);
+	const { ref1, ref2, display1, display2 } = useDoubleAdds(darkMode);
 
 	if (!googleAds) return null;
 	return (

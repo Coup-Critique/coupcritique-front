@@ -3,10 +3,12 @@ import React, { Fragment } from 'react';
 import { Icon } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';
 // custom
-import Ability from '@/components/elements/Ability';
-import Move from '@/components/elements/Move';
-import SpriteItem from '@/components/elements/SpriteItem';
+import Pokemon from '@/components/elements/Pokemon';
 import SpritePokemon from '@/components/elements/SpritePokemon';
+import Item from '@/components/elements/Item';
+import SpriteItem from '@/components/elements/SpriteItem';
+import Move from '@/components/elements/Move';
+import Ability from '@/components/elements/Ability';
 import Type from '@/components/elements/Type';
 
 const regex = /\[[^\]^\s]*:[^\]]*\]|\n/g;
@@ -20,10 +22,26 @@ const DescriptionJsoned = ({ description, json, className, handleUpdate }) => {
 		// eslint-disable-next-line default-case
 		switch (value.entity) {
 			case 'Pokemon':
-				acc[key] = <SpritePokemon pokemon={value} />;
+				if (value.displayName) {
+					acc[key] = (
+						<>
+							<Pokemon pokemon={value} /> <SpritePokemon pokemon={value} />
+						</>
+					);
+				} else {
+					acc[key] = <SpritePokemon pokemon={value} />;
+				}
 				break;
 			case 'Item':
-				acc[key] = <SpriteItem item={value} />;
+				if (value.displayName) {
+					acc[key] = (
+						<>
+							<Item item={value} /> <SpriteItem item={value} />
+						</>
+					);
+				} else {
+					acc[key] = <SpriteItem item={value} />;
+				}
 				break;
 			case 'Ability':
 				acc[key] = <Ability ability={value} />;

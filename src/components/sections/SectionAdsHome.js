@@ -1,46 +1,11 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { useRef } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { makeClassName } from '@/functions';
+import useDoubleAdds from '@/hooks/useDoubleAdds';
 
-const initAd = () => {
-	(window.adsbygoogle = window.adsbygoogle || []).push({});
-};
-
-const SectionAds = () => {
+const SectionAdsHome = () => {
 	const { googleAds } = useSelector(state => state.cookie);
-	const ref1 = useRef();
-	const ref2 = useRef();
-	const [display1, setDisplay1] = useState(true);
-	const [display2, setDisplay2] = useState(true);
-
-	useEffect(() => {
-		if (googleAds) {
-			if (!display1) {
-				setDisplay1(true);
-			}
-			if (!display2) {
-				setDisplay2(true);
-			}
-			try {
-				initAd();
-				initAd();
-				setTimeout(checkDisplay, 3000);
-			} catch (e) {
-				console.error(e);
-			}
-		}
-	}, [googleAds]);
-
-	const checkDisplay = () => {
-		if (ref1.current && !ref1.current.hasChildNodes()) {
-			setDisplay1(false);
-		}
-		if (ref2.current && !ref2.current.hasChildNodes()) {
-			setDisplay2(false);
-		}
-	};
+	const { ref1, ref2, display1, display2 } = useDoubleAdds();
 
 	if (!googleAds) return null;
 	return (
@@ -77,4 +42,4 @@ const AdSense = ({ alignRight, alignLeft, adRef, display }) => (
 	></ins>
 );
 
-export default React.memo(SectionAds, () => true);
+export default React.memo(SectionAdsHome, () => true);

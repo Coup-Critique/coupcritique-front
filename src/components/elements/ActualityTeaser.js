@@ -5,6 +5,7 @@ import { Card, Button } from 'semantic-ui-react';
 import { formatDate } from '@/functions';
 import ScrollReveal from '@/components/ScrollReveal';
 import Tag from '@/components/elements/Tag';
+import Author from '@/components/elements/Author';
 
 const ActualityTeaser = ({ actuality, TitleAs = 'h3', btnProps = {} }) => (
 	<ScrollReveal className="ui card actuality-teaser" animation="zoomIn" earlier>
@@ -40,10 +41,7 @@ const ActualityTeaser = ({ actuality, TitleAs = 'h3', btnProps = {} }) => (
 					))}
 				</div>
 			)}
-			<p className="date mb-3">
-				{actuality.user && actuality.user.username + ' - '}{' '}
-				{formatDate(actuality.date_creation)}
-			</p>
+			<Author entity={actuality} />
 			{!!actuality.shortDescription && (
 				<p className="short-description">{actuality.shortDescription}</p>
 			)}

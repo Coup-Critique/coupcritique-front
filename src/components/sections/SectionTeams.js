@@ -4,6 +4,7 @@ import { Icon } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
 import ScrollReveal from '@/components/ScrollReveal';
 import gens from '@/constants/gens.json';
+import { IMG_VERSION } from '@/constants/img';
 
 const defaultGen = gens.length && gens[0] ? gens[0].value : 1;
 
@@ -59,7 +60,7 @@ const SectionTeams = ({ sectionRef }) => {
 											Tag="img"
 											className="img-fluid"
 											animation="zoomIn"
-											src="/images/ho.png"
+											src={`/images/ho.png?ver=${IMG_VERSION}`}
 											alt="Tag : Hyper Offense"
 											width="236"
 											height="200"
@@ -75,7 +76,7 @@ const SectionTeams = ({ sectionRef }) => {
 											Tag="img"
 											className="img-fluid"
 											animation="zoomIn"
-											src="/images/ou.png"
+											src={`/images/ou.png?ver=${IMG_VERSION}`}
 											alt="Tier : OverUsed"
 											width="230"
 											height="200"
@@ -91,7 +92,7 @@ const SectionTeams = ({ sectionRef }) => {
 											Tag="img"
 											className="img-fluid"
 											animation="zoomIn"
-											src="/images/vgc.png"
+											src={`/images/vgc.png?ver=${IMG_VERSION}`}
 											alt="Tier : VGC"
 											width="236"
 											height="200"

@@ -37,7 +37,7 @@ textarea {
 .ui.form {
 	font-size: 1em;
 
-	.field > label {
+	.field>label {
 		font-size: 1em;
 	}
 
@@ -68,6 +68,7 @@ textarea {
 		}
 
 		@media (max-width: 1200px) {
+
 			label,
 			label:first-child {
 				width: 100%;
@@ -81,34 +82,46 @@ textarea {
 		padding: 0.67857143em 1em;
 	}
 
-	> .ui.dropdown,
-	.ui.segment > .ui.dropdown {
+	>.ui.dropdown,
+	.ui.segment>.ui.dropdown {
 		width: 100%;
 	}
 
-	.ui.input.icon.labeled > i.icon {
+	.ui.input.icon.labeled>i.icon {
 		right: 2.666em;
 	}
 
-	.ui.input.labeled.right > .ui.label {
+	.ui.input.labeled.right>.ui.label {
 		border-radius: 0 $border-radius $border-radius 0;
 	}
-	.ui.dropdown.active .ui.input.labeled.right > .ui.label {
+
+	.ui.input.labeled.left>.ui.label+.ui.label {
+		border-radius: 0;
+
+		+input {
+			border-radius: 0 $border-radius $border-radius 0;
+		}
+	}
+
+	.ui.dropdown.active .ui.input.labeled.right>.ui.label {
 		border-radius: 0 $border-radius 0 0;
 	}
 
-	.ui.input.labeled > .ui.label:not(.basic) {
+	.ui.input.labeled>.ui.label:not(.basic) {
 		padding-top: 0.95em;
 
 		i.icon {
 			color: white;
 			opacity: 1;
 		}
+
 		&.close {
 			opacity: 0.75;
+
 			&:hover {
 				opacity: 1;
 			}
+
 			i.icon {
 				color: white;
 				text-shadow: none;
@@ -136,18 +149,22 @@ textarea {
 .ui.form.inline-composed,
 .ui.form .inline-composed {
 	display: flex;
+
 	.field {
 		margin-bottom: 0;
 	}
+
 	.ui.button {
 		line-height: 1;
 	}
-	> .field:first-child > .ui,
-	> .field:first-child > select,
-	> .field:first-child > input {
+
+	>.field:first-child>.ui,
+	>.field:first-child>select,
+	>.field:first-child>input {
 		border-radius: 0.28571429rem 0 0 0.28571429rem;
 	}
-	> .ui.button:last-child {
+
+	>.ui.button:last-child {
 		border-radius: 0 0.28571429rem 0.28571429rem 0;
 	}
 }
@@ -226,6 +243,7 @@ textarea {
 
 .field select {
 	position: relative;
+
 	&::after {
 		content: '\f0d7';
 		font-family: 'Dropdown';
@@ -281,6 +299,7 @@ textarea {
 		&:focus,
 		&:active {
 			background-color: $orange !important;
+
 			&.main {
 				background-color: $red !important;
 			}
@@ -288,6 +307,7 @@ textarea {
 
 		&.selected {
 			background-color: $orange !important;
+
 			&.main {
 				background-color: $red !important;
 			}
@@ -296,6 +316,7 @@ textarea {
 			&:focus,
 			&:active {
 				background-color: $orange !important;
+
 				&.main {
 					background-color: $red !important;
 				}
@@ -312,7 +333,8 @@ textarea {
 .ui.form.radio-filter-form {
 	.fields {
 		margin-bottom: 0.5rem;
-		> label {
+
+		>label {
 			font-size: 1rem;
 			margin-bottom: 0.5rem;
 		}

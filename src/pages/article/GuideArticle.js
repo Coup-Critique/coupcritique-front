@@ -1,23 +1,22 @@
 // modules
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Slider from 'react-slick';
 import { Button } from 'semantic-ui-react';
-import { formatDate } from '@/functions';
 // components
 import PageWrapper from '@/components/PageWrapper';
 import GoBackButton from '@/components/GoBackButton';
 import useFetch from '@/hooks/useFetch';
-import { DELETE } from '@/constants/methods';
-import { useHistory } from 'react-router-dom';
-import { addMessage } from '@/reducers/messages';
 import Tag from '@/components/elements/Tag';
 import ScrollReveal from '@/components/ScrollReveal';
 import CommentArea from '@/components/CommentArea';
 import SectionAds from '@/components/sections/SectionAds';
+import Author from '@/components/elements/Author';
+import { DELETE } from '@/constants/methods';
+import { addMessage } from '@/reducers/messages';
 
-const defaultGoBack = "/entity/guides/";
+const defaultGoBack = '/entity/guides/';
 const GuideArticle = ({ result }) => {
 	const history = useHistory();
 	const dispatch = useDispatch();
@@ -108,9 +107,7 @@ const GuideArticle = ({ result }) => {
 						))}
 					</div>
 				)}
-				<p className="date">
-					{guide.user.username} - {formatDate(guide.date_creation)}
-				</p>
+				<Author entity={guide} />
 				<div
 					className="description framed wysiwyg-result"
 					dangerouslySetInnerHTML={{

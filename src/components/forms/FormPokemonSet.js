@@ -28,8 +28,8 @@ const flatDoctrineCollection = list => {
 const initSet = ({ ...pokemonSet }, tiers, gen) => {
 	if (!pokemonSet.tier) {
 		if (
-			pokemonSet.instance.pokemon.tier
-			&& pokemonSet.instance.pokemon.tier.playable
+			pokemonSet.instance.pokemon.tier &&
+			pokemonSet.instance.pokemon.tier.playable
 		) {
 			pokemonSet.tier = pokemonSet.instance.pokemon.tier;
 		} else {
@@ -246,9 +246,9 @@ const FormPokemonSet = ({
 			const parsedExport = Koffing.parse(pokemonSet.export);
 			e.preventDefault();
 			if (
-				parsedExport.teams
-				&& parsedExport.teams[0]
-				&& parsedExport.teams[0].pokemon
+				parsedExport.teams &&
+				parsedExport.teams[0] &&
+				parsedExport.teams[0].pokemon
 			) {
 				if (parsedExport.teams[0].pokemon > 1) {
 					setMessage({
@@ -307,7 +307,7 @@ const FormPokemonSet = ({
 				label="Tier du set"
 				fixedGen={gen}
 				tiers={tiers}
-				currentTier={pokemonSet.tier ? pokemonSet.tier.id : 0}
+				value={pokemonSet.tier ? pokemonSet.tier.id : 0}
 				onChange={handleTier}
 				required
 				message={message.tier}
@@ -328,9 +328,9 @@ const FormPokemonSet = ({
 				rows="9"
 				required
 			/>
-			{message.export
-				&& Array.isArray(message.export)
-				&& message.export.map((e, i) => <Message key={i} error content={e} />)}
+			{message.export &&
+				Array.isArray(message.export) &&
+				message.export.map((e, i) => <Message key={i} error content={e} />)}
 			{exportChecked && (
 				<>
 					<p className="font-medium font-italic">

@@ -78,9 +78,9 @@ export const formatDate = date => date.split('-').reverse().join('/');
 export const isToday = someDate => {
 	const today = new Date();
 	return (
-		someDate.getDate() == today.getDate()
-		&& someDate.getMonth() == today.getMonth()
-		&& someDate.getFullYear() == today.getFullYear()
+		someDate.getDate() == today.getDate() &&
+		someDate.getMonth() == today.getMonth() &&
+		someDate.getFullYear() == today.getFullYear()
 	);
 };
 
@@ -135,7 +135,7 @@ export const copyToClipboard = content =>
 
 export const parseKoffingInstance = instance => {
 	instance.pokemon = instance.name;
-	instance.tera = instance.teratype;
+	instance.tera = instance.teraType;
 	if (instance.evs) {
 		Object.entries(instance.evs).forEach(
 			([key, value]) => (instance[key + '_ev'] = value)

@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
 	useParams,
@@ -72,7 +72,9 @@ const EntityRouter = () => {
 				<PokemonContainer Component={PokemonArticle} />
 			</Route>
 			<Route path="/entity/teams/:id/update">
-				<TeamContainer Component={ProposeTeam} update={true} />
+				<Sample>
+					<TeamContainer Component={ProposeTeam} update={true} />
+				</Sample>
 			</Route>
 			<Route path="/entity/teams/:id">
 				<TeamContainer Component={TeamArticle} />
@@ -96,19 +98,25 @@ const EntityRouter = () => {
 				<UserContainer Component={UserArticle} />
 			</Route>
 			<Route path="/entity/actualities/:id/update">
-				<ActualityContainer Component={ActualityFormPage} update={true} />
+				<Sample>
+					<ActualityContainer Component={ActualityFormPage} update={true} />
+				</Sample>
 			</Route>
 			<Route path="/entity/actualities/:id">
 				<ActualityContainer Component={ActualityArticle} />
 			</Route>
 			<Route path="/entity/guides/:id/update">
-				<GuideContainer Component={GuideFormPage} update={true} />
+				<Sample>
+					<GuideContainer Component={GuideFormPage} update={true} />
+				</Sample>
 			</Route>
 			<Route path="/entity/guides/:id">
 				<GuideContainer Component={GuideArticle} />
 			</Route>
 			<Route path="/entity/tournaments/:id/update">
-				<TournamentContainer Component={TournamentFormPage} update={true} />
+				<Sample>
+					<TournamentContainer Component={TournamentFormPage} update={true} />
+				</Sample>
 			</Route>
 			<Route path="/entity/tournaments/:id">
 				<TournamentContainer Component={TournamentArticle} />
@@ -120,4 +128,8 @@ const EntityRouter = () => {
 		</Switch>
 	);
 };
+
+// When there is the same child between 2 routes
+const Sample = ({ children }) => children;
+
 export default EntityRouter;
