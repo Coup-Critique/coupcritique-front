@@ -6,13 +6,13 @@ export default function Document() {
 	return (
 		<Html lang="fr">
 			<Head>
-				<meta charset="UTF-8" />
+				<meta charSet="UTF-8" />
 				<meta name="MobileOptimized" content="width" />
 				<link rel="icon" href="/favicon.ico" />
 				<link
 					rel="manifest"
 					href="/manifest.json"
-					crossorigin="use-crendentials"
+					crossOrigin="use-crendentials"
 				/>
 				<link rel="apple-touch-icon" href="/logo192.png" />
 				<Script src="/scripts/matomo.js" />

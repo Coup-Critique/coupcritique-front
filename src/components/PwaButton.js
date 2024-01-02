@@ -3,16 +3,16 @@ import { Button, Icon } from 'semantic-ui-react';
 
 const PwaButton = () => (
 	<div id="pwa-popup" style={{ display: 'none' }}>
-		<div class="inner-pwa-popup">
-			<div class="logo-zone">
-				<div class="app-icon">
+		<div className="inner-pwa-popup">
+			<div className="logo-zone">
+				<div className="app-icon">
 					<img
-						class="img-fluid"
+						className="img-fluid"
 						alt="CoupCritique"
 						src="/images/coupcritique-72.png"
 					/>
 				</div>
-				<span class="brand-text">CoupCritique</span>
+				<span className="brand-text">CoupCritique</span>
 			</div>
 			<Button
 				id="pwa-button"
@@ -20,9 +20,9 @@ const PwaButton = () => (
 				color="orange"
 				icon="home"
 				content="Ajouter à l'écran d'accueil"
-				class="ui button icon orange text-uppercase"
+				className="ui button icon orange text-uppercase"
 			/>
-			<div class="blank-block">
+			<div className="blank-block">
 				{/*  only for justify content space between  */}
 			</div>
 			<Icon id="pwa-close" name="x" link color="grey" />
