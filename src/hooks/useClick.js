@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 /* eslint-disable default-case */
 const useClick = to => {
-	const history = useHistory();
+	const router = useRouter();
 	const [stopClick, setStopClick] = useState(false);
 
 	const handleClick = e => {
@@ -23,7 +23,7 @@ const useClick = to => {
 		if (e.ctrlKey) {
 			window.open(to, '_blank');
 		} else {
-			history.push(to);
+			router.push(to);
 		}
 	};
 

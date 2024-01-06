@@ -1,7 +1,7 @@
 // modules
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Loader } from 'semantic-ui-react';
 // hooks
 import useFetch from '@/hooks/useFetch';
@@ -20,7 +20,7 @@ function SectionTournament() {
 	}, []);
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result?.success) {
 			setTournaments(result.tournaments);
 		}
 	}, [result]);
@@ -30,7 +30,7 @@ function SectionTournament() {
 		<section className="section-news">
 			<div className="ui container">
 				<h2>
-					<Link to="/entity/tournaments">Tournois</Link>
+					<Link href="/entity/tournaments">Tournois</Link>
 				</h2>
 				<div className="mb-4">
 					{loading ? (
@@ -51,7 +51,7 @@ function SectionTournament() {
 						</div>
 					)}
 				</div>
-				<Link to="/entity/tournaments" className="btn btn-light">
+				<Link href="/entity/tournaments" className="btn btn-light">
 					Voir tous les tournois
 				</Link>
 			</div>

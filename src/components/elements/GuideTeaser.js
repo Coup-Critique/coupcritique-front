@@ -1,6 +1,6 @@
 // modules
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Card, Button } from 'semantic-ui-react';
 import { formatDate } from '@/functions';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -11,10 +11,10 @@ const GuideTeaser = ({ guide, TitleAs = 'h3', btnProps = {} }) => (
 	<ScrollReveal className="ui card actuality-teaser" animation="zoomIn" earlier>
 		<Card.Content>
 			<TitleAs className="text-center">
-				<Link to={`/entity/guides/${guide.id}`}>{guide.title}</Link>
+				<Link href={`/entity/guides/${guide.id}`}>{guide.title}</Link>
 			</TitleAs>
 			<div className="image mb-3">
-				<Link to={`/entity/guides/${guide.id}`}>
+				<Link href={`/entity/guides/${guide.id}`}>
 					<img
 						className="img-fluid d-block"
 						src={
@@ -45,7 +45,7 @@ const GuideTeaser = ({ guide, TitleAs = 'h3', btnProps = {} }) => (
 			)}
 		</Card.Content>
 		<Card.Content>
-			<Button color="red" {...btnProps} as={Link} to={`/entity/guides/${guide.id}`}>
+			<Button color="red" {...btnProps} as={Link} href={`/entity/guides/${guide.id}`}>
 				Lire la suite
 			</Button>
 		</Card.Content>

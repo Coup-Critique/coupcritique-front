@@ -1,7 +1,7 @@
 // modules
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { Button, Dropdown, Icon, Label } from 'semantic-ui-react';
 import gens from '@/constants/gens.json';
 import { setGenAction } from '@/reducers/gen';
@@ -14,7 +14,7 @@ const genOptions = gens.map(({ value, name }) => ({
 
 const GenSelector = ({ availableGens, redirectOnChange }) => {
 	const dispatch = useDispatch();
-	const history = useHistory();
+	const router = useRouter();
 	const gen = useSelector(state => state.gen);
 	const [options, setOptions] = useState(genOptions);
 	const genIndex = genOptions.length - gen;
@@ -29,7 +29,7 @@ const GenSelector = ({ availableGens, redirectOnChange }) => {
 
 	const onChange = (e, { value }) =>
 		redirectOnChange
-			? history.push(redirectOnChange + availableGens[value])
+			? router.push(redirectOnChange + availableGens[value])
 			: dispatch(setGenAction(value));
 
 	return (

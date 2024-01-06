@@ -1,6 +1,7 @@
 // modules
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import { useGetParam } from '@/hooks/useGetParams';
 import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
 // hooks
@@ -19,9 +20,10 @@ import TableMove from '@/components/table/TableMove';
 
 const MoveByType = () => {
 	const dispatch = useDispatch();
-	const history = useHistory();
-	const { id } = useParams();
-	const { ssrData, user, gen } = useSelector(state => state);
+	const router = useRouter();
+	const id = useGetParam('id');
+	const ssrData = useSelector(state => state.ssrData);
+	const gen = useSelector(state => state.gen);
 	const [resultType, loadType, loadingType] = useFetch();
 	const [result, load, loading] = useFetch();
 	const [type, setType] = useState();
@@ -40,21 +42,17 @@ const MoveByType = () => {
 		}
 	}, [id]);
 
-	// TODO Listen to gen change
-
 	useEffect(() => {
-		if (isNaN(id)) return history.push('/404');
+		if (isNaN(id)) return router.push('/404');
 		// gen comes from id
-		if (!user.loading && (!ssrEntity || ssrEntity.id != id)) {
+		if (!ssrEntity || ssrEntity.id != id) {
 			loadType({ url: `types/${id}` });
 		}
-	}, [id, user.loading, user.id]);
+	}, [id]);
 
 	useEffect(() => {
-		if (!user.loading) {
-			load({ url: `moves/type/${id}` });
-		}
-	}, [id, gen, user, user.loading]);
+		load({ url: `moves/type/${id}` });
+	}, [id, gen]);
 
 	useEffect(() => {
 		if (resultType) {
@@ -64,13 +62,13 @@ const MoveByType = () => {
 					dispatch(setGenAction(resultType.gen));
 				}
 			} else if (resultType.message === 'Mauvais identifiant') {
-				history.push('/404');
+				router.push('/404');
 			}
 		}
 	}, [resultType]);
 
 	useEffect(() => {
-		if (result && result.moves) {
+		if (result?.moves) {
 			setTable(result.moves);
 		}
 	}, [result]);
@@ -105,7 +103,7 @@ const MoveByType = () => {
 			/>
 			<SectionAds className="mt-4" />
 			<div id="pagination-scroll-ref">
-				{loading || loadingType || user.loading ? (
+				{loading || loadingType ? (
 					<Loader active inline="centered" />
 				) : table.length ? (
 					<TableMove

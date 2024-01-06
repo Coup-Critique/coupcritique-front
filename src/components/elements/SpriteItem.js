@@ -1,6 +1,6 @@
 // modules
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Popup } from 'semantic-ui-react';
 import { IMG_VERSION, SPRITE_ITM } from '@/constants/img';
 import { formatFileName } from '@/functions';
@@ -8,7 +8,7 @@ import { formatFileName } from '@/functions';
 const SpriteItem = ({ item, noPopup = false }) =>
 	noPopup || !item.description ? (
 		<Link
-			to={`/entity/items/${item.id}`}
+			href={`/entity/items/${item.id}`}
 			className="sprite"
 			title={item.nom || item.name}
 		>
@@ -24,7 +24,7 @@ const SpriteItem = ({ item, noPopup = false }) =>
 			offset="5px"
 			content={(item.nom || item.name) + ' : ' + item.description.split('\n')[0]}
 			trigger={
-				<Link to={`/entity/items/${item.id}`} className="sprite">
+				<Link href={`/entity/items/${item.id}`} className="sprite">
 					<InnerImg item={item} />
 				</Link>
 			}

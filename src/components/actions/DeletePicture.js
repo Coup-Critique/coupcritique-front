@@ -8,7 +8,7 @@ const DeletePicture = ({ user, handleDelete, ...props }) => {
 	const [result, load, loading] = useFetch();
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result?.
 			handleDelete('picture', null);
 		}
 	}, [result]);

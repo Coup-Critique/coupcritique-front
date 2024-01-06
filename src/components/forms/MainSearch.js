@@ -1,6 +1,6 @@
 // modules
 import React, { useState, useEffect, useMemo } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 // components
 import { Form, Label, Loader, Search } from 'semantic-ui-react';
@@ -20,7 +20,7 @@ const MainSearch = ({
 	isUserSearch = false,
 	styleClass = '',
 }) => {
-	const history = useHistory();
+	const router = useRouter();
 	const dispatch = useDispatch();
 	const [result, load, loading] = useFetch(false);
 	const [darkMode] = useDarkMode();
@@ -42,7 +42,7 @@ const MainSearch = ({
 		if (!isUserSearch) dispatch(setChosenSearch(title));
 
 		setString(title);
-		history.push(`/entity/${entity}/${id}`);
+		router.push(`/entity/${entity}/${id}`);
 	};
 
 	const handleOnChange = (e, { value }) => {
@@ -96,7 +96,7 @@ const MainSearch = ({
 				setMessage('Votre recherche doit faire au moins 2 caractères.');
 			} else {
 				if (!isUserSearch) dispatch(setChosenSearch(string));
-				history.push(pageResultUrl + encodeURIComponent(string || chosen_search));
+				router.push(pageResultUrl + encodeURIComponent(string || chosen_search));
 			}
 		}
 	};

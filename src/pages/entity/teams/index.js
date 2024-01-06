@@ -1,7 +1,7 @@
 // modules
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button, Form, Loader, Segment } from 'semantic-ui-react';
 import useActions from '@/hooks/useActions';
 // components
@@ -19,7 +19,8 @@ import useTableFetch from '@/hooks/useTableFetch';
 
 const TeamList = () => {
 	const dispatch = useDispatch();
-	const { tiers, tags } = useSelector(state => state);
+	const tiers = useSelector(state => state.tiers);
+	const tags = useSelector(state => state.tags);
 	const filterRef = useRef();
 	const searchRef = useRef();
 
@@ -135,7 +136,7 @@ const TeamList = () => {
 			<div className="btn-wrapper text-center mb-4">
 				<Button
 					as={Link}
-					to="/entity/teams/create"
+					href="/entity/teams/create"
 					icon="plus"
 					color="orange"
 					content="Proposer une équipe"

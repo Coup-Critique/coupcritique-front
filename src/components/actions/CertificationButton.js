@@ -8,7 +8,7 @@ const CertificationButton = ({ isIcon = false, team = {}, handleCertif }) => {
 	const [result, load, loading] = useFetch();
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result?.success) {
 			if (handleCertif) {
 				handleCertif('certified', result.certified);
 			}

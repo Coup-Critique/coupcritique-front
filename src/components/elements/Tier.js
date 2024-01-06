@@ -1,7 +1,7 @@
 // modules
 import React from 'react';
 import { Label } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { makeClassName } from '@/functions';
 
 const Tier = ({
@@ -17,7 +17,7 @@ const Tier = ({
 	let Wrapper = noLink ? 'span' : Link;
 	return (
 		<Wrapper
-			to={`/entity/tiers/${tier.id}`}
+			href={`/entity/tiers/${tier.id}`}
 			className={makeClassName('tier', 'd-inline-block', className)}
 			title=""
 		>

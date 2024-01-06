@@ -1,6 +1,6 @@
 // modules
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { IMG_VERSION, SPRITE_PKM } from '@/constants/img';
 import { formatFileName, makeClassName } from '@/functions';
 
@@ -21,7 +21,7 @@ const SpritePokemonImg = ({ pokemon, ...props }) => (
 const SpritePokemon = ({ pokemon, isLink = true, className }) =>
 	isLink ? (
 		<Link
-			to={`/entity/pokemons/${pokemon.id}`}
+			href={`/entity/pokemons/${pokemon.id}`}
 			className={makeClassName('sprite', className)}
 			title={pokemon.nom || pokemon.name}
 		>

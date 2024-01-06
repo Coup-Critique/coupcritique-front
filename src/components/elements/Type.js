@@ -1,11 +1,11 @@
 // modules
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { IMG_VERSION } from '@/constants/img';
 import { formatFileName, makeClassName } from '@/functions';
 
 const Type = ({ type, className }) => (
-	<Link to={`/entity/types/${type.id}`} className={makeClassName('type', className)}>
+	<Link href={`/entity/types/${type.id}`} className={makeClassName('type', className)}>
 		<img
 			src={`/images/types/${formatFileName(type.name)}.png?ver=${IMG_VERSION}`}
 			onError={e => {

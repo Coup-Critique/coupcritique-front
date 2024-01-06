@@ -1,7 +1,7 @@
 // modules
 import React, { useEffect, useRef, useState } from 'react';
 import { Loader } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 // components
 import ArtPokemon from '@/components/elements/ArtPokemon';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -48,7 +48,7 @@ const TierUsage = ({ name, params = {} }) => {
 					/>
 				</div>
 				<h3>
-					<Link to={`/entity/tiers/${tier.id}`}>{tier.name}</Link>
+					<Link href={`/entity/tiers/${tier.id}`}>{tier.name}</Link>
 				</h3>
 				<div className="no-result">Aucun résultat disponible.</div>
 				<div className="percent">&nbsp;</div>
@@ -61,7 +61,7 @@ const TierUsage = ({ name, params = {} }) => {
 				<ArtPokemon pokemon={usage.pokemon} half imgRef={ref} />
 			</div>
 			<h3>
-				<Link to={`/entity/tiers/${tier.id}`}>{tier.name}</Link>
+				<Link href={`/entity/tiers/${tier.id}`}>{tier.name}</Link>
 			</h3>
 			<h4>{usage.pokemon.nom || formateName(usage.pokemon.name)}</h4>
 			<em className="percent">{formatNumbers(usage.percent, 3)}&nbsp;%</em>

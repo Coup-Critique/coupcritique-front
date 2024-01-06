@@ -8,7 +8,7 @@ import { POST, PUT } from '@/constants/methods';
 import { useDispatch } from 'react-redux';
 import { addMessage } from '@/reducers/messages';
 import MultiImageField from '@/components/fields/MultiImageField';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Wysiwyg from '@/components/Wysiwyg';
 import { buildFieldsMessage } from '@/functions';
 import useSaveToStorage from '@/hooks/useSaveToStorage';
@@ -146,7 +146,7 @@ const FormTournament = ({ handleSubmited, tournament = {} }) => {
 				/>
 				<Button
 					as={Link}
-					to={'/entity/tournaments/' + (tournament.id || '')}
+					href={'/entity/tournaments/' + (tournament.id || '')}
 					color="grey"
 					content="Annuler"
 				/>

@@ -10,7 +10,7 @@ import { buildFieldsMessage, makeClassName } from '@/functions';
 import { EMAIL_REGEX } from '@/constants';
 import { POST } from '@/constants/methods';
 import { addMessage } from '@/reducers/messages';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const FormSignUp = ({ triggerHeight }) => {
 	const dispatch = useDispatch();
@@ -182,7 +182,7 @@ const FormSignUp = ({ triggerHeight }) => {
 					/>
 					<label htmlFor="cguAccepted" onClick={handleCgu}>
 						J’ai pris connaissance des{' '}
-						<Link to="/cgu">conditions générales d'utilisation</Link> du site
+						<Link href="/cgu">conditions générales d'utilisation</Link> du site
 						coupcritique.fr
 					</label>
 				</div>
@@ -208,7 +208,7 @@ const FormSignUp = ({ triggerHeight }) => {
 				personnelles afin de vous permettre d’accéder aux services du site. Vous
 				disposez de différents droits sur vos données, pour en savoir plus,
 				consultez notre{' '}
-				<Link to="/mentions-legales#privacy-policy">
+				<Link href="/mentions-legales#privacy-policy">
 					Politique de protection des données.
 				</Link>
 			</p>

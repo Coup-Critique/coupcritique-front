@@ -10,7 +10,9 @@ import { setTiers } from '@/reducers/tiers';
 
 const PokemonSetManager = ({ pokemon, sets = [] }) => {
 	const dispatch = useDispatch();
-	const { user, tiers, gen } = useSelector(state => state);
+	const user = useSelector(state => state.user);
+	const tiers = useSelector(state => state.tiers);
+	const gen = useSelector(state => state.gen);
 	const [result, load, loading] = useFetch(false);
 	const [resultTiers, loadTiers, loadingTiers] = useFetch();
 	const [displayForm, setDisplayForm] = useState(false);
@@ -26,7 +28,7 @@ const PokemonSetManager = ({ pokemon, sets = [] }) => {
 	}, []);
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result?.success) {
 			setPokemonSets(result.pokemonSets);
 		}
 	}, [result]);
@@ -67,8 +69,8 @@ const PokemonSetManager = ({ pokemon, sets = [] }) => {
 	};
 
 	const findTier = tierId =>
-		tiers[gen].find(tier => tier.id == tierId)
-		|| tiers[0].find(tier => tier.id == tierId);
+		tiers[gen].find(tier => tier.id == tierId) ||
+		tiers[0].find(tier => tier.id == tierId);
 
 	const panes = useMemo(() => {
 		if (!Object.keys(tiers).length) return [];

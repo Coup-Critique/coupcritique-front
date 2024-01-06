@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+import { redirect } from 'next/navigation';
+import { useGetParam } from '@/hooks/useGetParams';
 import { PUT } from '@/constants/methods';
 import useFetch from '@/hooks/useFetch';
 import PageWrapper from '@/components/PageWrapper';
@@ -9,7 +10,7 @@ import { addMessage } from '@/reducers/messages';
 
 const ResetForgottenPassword = () => {
 	const dispatch = useDispatch();
-	const { token } = useParams();
+	const token = useGetParam('token');
 	const [result, load] = useFetch();
 	const [success, setSuccess] = useState(true);
 	const [new_password, setNewPassword] = useState('');
@@ -51,19 +52,22 @@ const ResetForgottenPassword = () => {
 	useEffect(() => {
 		if (result) {
 			setSuccess(result.success);
-			if (result.redirect) dispatch(addMessage(result.messageRenewPassword, true));
+			if (result.redirect) {
+				dispatch(addMessage(result.messageRenewPassword, true));
+				redirect('/');
+			}
 		}
 	}, [result]);
 
 	return (
 		<PageWrapper title={'Mot de passe oublié'} className="page-reset-password">
-			{result
-				&& (!result.success ? (
+			{result &&
+				(!result.success ? (
 					<p
 						className="text-center"
 						dangerouslySetInnerHTML={{ __html: result.messageRenewPassword }}
 					/>
-				) : !result.redirect ? (
+				) : (
 					<Form error={!success} success={success} onSubmit={onSubmit}>
 						<Form.Input
 							name="new_password"
@@ -90,8 +94,6 @@ const ResetForgottenPassword = () => {
 							</Button>
 						</div>
 					</Form>
-				) : (
-					<Redirect to="/" />
 				))}
 		</PageWrapper>
 	);

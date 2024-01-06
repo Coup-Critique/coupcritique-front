@@ -1,6 +1,6 @@
 // modules
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Card, Button } from 'semantic-ui-react';
 import { formatDate } from '@/functions';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -10,12 +10,12 @@ const TournamentTeaser = ({ tournament, TitleAs = 'h3', btnProps = {} }) => (
 	<ScrollReveal className="ui card actuality-teaser" animation="zoomIn" earlier>
 		<Card.Content>
 			<TitleAs className="text-center">
-				<Link to={`/entity/tournaments/${tournament.id}`}>
+				<Link href={`/entity/tournaments/${tournament.id}`}>
 					{tournament.title}
 				</Link>
 			</TitleAs>
 			<div className="image mb-3">
-				<Link to={`/entity/tournaments/${tournament.id}`}>
+				<Link href={`/entity/tournaments/${tournament.id}`}>
 					<img
 						className="img-fluid d-block"
 						src={
@@ -52,7 +52,7 @@ const TournamentTeaser = ({ tournament, TitleAs = 'h3', btnProps = {} }) => (
 				color="red"
 				{...btnProps}
 				as={Link}
-				to={`/entity/tournaments/${tournament.id}`}
+				href={`/entity/tournaments/${tournament.id}`}
 			>
 				Lire la suite
 			</Button>

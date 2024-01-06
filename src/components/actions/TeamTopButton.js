@@ -10,7 +10,7 @@ const TeamTopButton = ({ team /* isIcon = false */ }) => {
 	const [topWeek, setTopWeek] = useState(team.top_week);
 
 	useEffect(() => {
-		if (result && result.team) {
+		if (result?.
 			setTopWeek(result.team.top_week);
 		}
 	}, [result]);

@@ -1,6 +1,6 @@
 // modules
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
 // components
@@ -74,7 +74,7 @@ const Home = () => {
 					<div>
 						<h2>Participer aux prochains tournois</h2>
 					</div>
-					<Link to="/entity/tournaments" className="btn btn-light">
+					<Link href="/entity/tournaments" className="btn btn-light">
 						Voir les tournois
 					</Link>
 				</div>

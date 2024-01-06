@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import Link from 'next/link';
+import ActiveLink from '@/components/ActiveLink';
 import { Dropdown, Loader } from 'semantic-ui-react';
 import useLogout from '@/hooks/useLogout';
 import Profile from '@/components/elements/Profile';
@@ -9,7 +10,8 @@ import SignPanel from '@/components/SignPanel';
 
 const MenuUser = () => {
 	const logout = useLogout();
-	const { user, notifs } = useSelector(state => state);
+	const user = useSelector(state => state.user);
+	const notifs = useSelector(state => state.notifs);
 	const [open, setOpen] = useState(false);
 
 	if (user.loading) return <Loader inline active />;
@@ -53,26 +55,26 @@ const MenuUser = () => {
 				<Dropdown.Item className="position-relative">
 					<DarkModeToggle />
 				</Dropdown.Item>
-				<NavLink exact role="option" className="item" to="/user">
+				<ActiveLink exact role="option" className="item" href="/user">
 					Mon Compte
-				</NavLink>
-				<NavLink
+				</ActiveLink>
+				<ActiveLink
 					exact
 					role="option"
 					className="item position-relative"
-					to="/notifications"
+					href="/notifications"
 				>
 					Mes Notifications {!!notifs && <span className="text-orange">*</span>}
-				</NavLink>
-				<NavLink
+				</ActiveLink>
+				<ActiveLink
 					exact
 					role="option"
 					className="item"
-					to="/entity/teams/favorites"
+					href="/entity/teams/favorites"
 				>
 					Mes Favoris
-				</NavLink>
-				<Link to="/" role="option" className="item red" onClick={logout}>
+				</ActiveLink>
+				<Link href="/" role="option" className="item red" onClick={logout}>
 					Déconnexion
 				</Link>
 			</Dropdown.Menu>

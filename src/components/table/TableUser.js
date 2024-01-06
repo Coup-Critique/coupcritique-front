@@ -2,7 +2,7 @@
 import React from 'react';
 import { TableBase } from '@/components/table/Table';
 import { Label } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 // custom
 import Profile from '@/components/elements/Profile';
 import useTableSorter from '@/hooks/useTableSorter';
@@ -83,18 +83,18 @@ const TableUser = ({
 								<Profile user={user} hideName />
 							</td>
 							<td className="text-break">
-								<Link to={`/entity/users/${user.id}`}>
+								<Link href={`/entity/users/${user.id}`}>
 									{user.username}
 								</Link>
 							</td>
 							{isModo && ownUser.is_admin && <td>{user.email}</td>}
 							<td className="text-break">
-								<Link to={`/entity/users/${user.id}`}>
+								<Link href={`/entity/users/${user.id}`}>
 									{user.discord_name}
 								</Link>
 							</td>
 							<td className="text-break">
-								<Link to={`/entity/users/${user.id}`}>
+								<Link href={`/entity/users/${user.id}`}>
 									{user.showdown_name}
 								</Link>
 							</td>

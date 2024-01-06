@@ -24,7 +24,7 @@ class ErrorBoundary extends Component {
 
 	handleGoBack() {
 		this.clearError();
-		this.props.history.goBack();
+		this.props.router.back();
 	}
 
 	render() {

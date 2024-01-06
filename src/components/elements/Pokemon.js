@@ -1,10 +1,10 @@
 // modules
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { formateName } from '@/functions';
 
 const Pokemon = ({ pokemon }) => (
-	<Link to={`/entity/pokemons/${pokemon.id}`}>
+	<Link href={`/entity/pokemons/${pokemon.id}`}>
 		{pokemon.nom || formateName(pokemon.name)}
 	</Link>
 );

@@ -8,7 +8,7 @@ const UserTiperButton = ({ user, isIcon = false, handleTiper }) => {
 	const [result, load, loading] = useFetch();
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result?.success) {
 			handleTiper('is_tiper', result.is_tiper);
 		}
 	}, [result]);

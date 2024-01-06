@@ -1,8 +1,8 @@
 // modules
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router';
 import { Loader } from 'semantic-ui-react';
+//
 import GoBackButton from '@/components/GoBackButton';
 import PageWrapper from '@/components/PageWrapper';
 import TableTeam from '@/components/table/TableTeam';
@@ -32,7 +32,7 @@ const ListFavoriteTeam = () => {
 	}, [user.loading]);
 
 	if (!user.loading && !user.id) {
-		return <Redirect to="/" />;
+		return redirect('/');
 	}
 
 	return (

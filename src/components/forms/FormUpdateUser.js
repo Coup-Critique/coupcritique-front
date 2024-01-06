@@ -174,7 +174,7 @@ const FormUpdateUser = () => {
 				<input />
 			</Form.Input>
 			{/* <blockquote>
-                <Link to="/cgu">Conditions générales d'utilisations</Link> acceptées
+                <Link href="/cgu">Conditions générales d'utilisations</Link> acceptées
                 le&nbsp;: {user.cguDate}
             </blockquote> */}
 			<Message success content={message.form} />

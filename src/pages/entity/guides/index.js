@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button, Form, Loader } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
 import useFetch from '@/hooks/useFetch';
@@ -19,7 +19,9 @@ import SectionAds from '@/components/sections/SectionAds';
 const GuideList = () => {
 	const dispatch = useDispatch();
 	const [darkMode] = useDarkMode();
-	const { user, ssrData, guide_tags } = useSelector(state => state);
+	const user = useSelector(state => state.user);
+	const ssrData = useSelector(state => state.ssrData);
+	const guide_tags = useSelector(state => state.guide_tags);
 	const [result, load, loading] = useFetch();
 	const [guides, setGuides] = useState(ssrData?.guides || []);
 	const [table, page, nbPages, handlePage] = usePager(12, guides);
@@ -37,7 +39,7 @@ const GuideList = () => {
 	}, [query]);
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result?.success) {
 			setGuides(result.guides);
 		}
 	}, [result]);
@@ -70,7 +72,7 @@ const GuideList = () => {
 			{user.is_modo && (
 				<Button
 					as={Link}
-					to="/entity/guides/create"
+					href="/entity/guides/create"
 					color="blue"
 					content="Ajouter un guide"
 					icon="plus"

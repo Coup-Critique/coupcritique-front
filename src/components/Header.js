@@ -1,7 +1,7 @@
 // modules
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Icon, Button, IconGroup } from 'semantic-ui-react';
 // components
 import MainSearch from '@/components/forms/MainSearch';
@@ -13,14 +13,15 @@ import MenuUser from '@/components/MenuUser';
 import CopyMail from '@/components/actions/CopyMail';
 
 function Header() {
-	const { user, notifs } = useSelector(state => state);
+	const user = useSelector(state => state.user);
+	const notifs = useSelector(state => state.notifs);
 	const [darkMode] = useDarkMode();
 
 	return (
 		<header>
 			<div className="header-top">
 				<div className="container-fluid">
-					<Link to="/" className="brand">
+					<Link href="/" className="brand">
 						<img
 							src={`/images/coupcritique${darkMode ? '-white' : ''}.svg`}
 							alt="Logo de Coup Critique"
@@ -57,7 +58,7 @@ function Header() {
 							/>
 							<div className="d-flex pl-3 pr-4">
 								{!!user.id && (
-									<Link to="/notifications" className="nav-link mr-2">
+									<Link href="/notifications" className="nav-link mr-2">
 										<IconGroup>
 											<Icon name="bell" className="m-0" />
 											{!!notifs && (

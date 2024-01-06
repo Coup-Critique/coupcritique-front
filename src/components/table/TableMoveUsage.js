@@ -7,7 +7,7 @@ import useTableSorter from '@/hooks/useTableSorter';
 import { formateName, formatNumbers } from '@/functions';
 import PaginationPrettier from '@/components/PaginationPrettier';
 import usePager from '@/hooks/usePager';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Category from '@/components/elements/Category';
 
 const TableMoveUsage = ({
@@ -82,7 +82,7 @@ const TableMoveUsage = ({
 					{table.map((move, i) => (
 						<tr key={i} /* className={colorOddRows(i)} */>
 							<td>
-								<Link to={`/entity/moves/${move.id}`}>
+								<Link href={`/entity/moves/${move.id}`}>
 									{move.nom || formateName(move.name)}
 								</Link>
 							</td>

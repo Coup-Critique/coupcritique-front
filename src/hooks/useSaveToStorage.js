@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import useLocalStorage from '@/hooks/useLocalStorage';
 
 const useSaveToStorage = (entity, callbackEntity) => {

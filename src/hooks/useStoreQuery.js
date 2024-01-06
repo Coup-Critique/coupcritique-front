@@ -1,6 +1,7 @@
 import { useEffect, useReducer } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 // import { saveQuery } from '@/reducers/queries';
 import { objectToGETparams } from '@/functions';
 import queryReducer, {
@@ -33,14 +34,12 @@ const parseUrlQuery = queryParams =>
  */
 const useStoreQuery = (saveQueryToStore = false, defaultValues = { page: 1 }) => {
 	// const dispatch = useDispatch();
-	const location = useLocation();
-	const history = useHistory();
-	// const storedQuery = useSelector(state => state.queries[location.pathname] || {});
-	const { search } = useLocation();
-	const urlQuery = parseUrlQuery(search);
+	const router = useRouter();
+	// const storedQuery = useSelector(state => state.queries[router.pathname] || {});
+	// const urlQuery = useSearchParams();
 	const [query, dispatchQuery] = useReducer(queryReducer, {
 		...defaultValues,
-		...urlQuery,
+		// ...urlQuery,
 		// ...storedQuery,
 	});
 	const [setQuery, updateQuery, setQueryParam] = useActions(dispatchQuery, [
@@ -50,12 +49,12 @@ const useStoreQuery = (saveQueryToStore = false, defaultValues = { page: 1 }) =>
 	]);
 
 	useEffect(() => {
-		if (location.search || Object.keys(query).length > 1 || query.page != 1) {
-			history.replace(location.pathname + objectToGETparams(query));
-		}
+		// if (Object.keys(query).length > 1 || query.page != 1) {
+		// 	router.replace(router.pathname + objectToGETparams(query));
+		// }
 		// return () => {
 		// 	if (saveQueryToStore) {
-		// 		dispatch(saveQuery(location.pathname, query));
+		// 		dispatch(saveQuery(router.pathname, query));
 		// 	}
 		// };
 	}, [query]);

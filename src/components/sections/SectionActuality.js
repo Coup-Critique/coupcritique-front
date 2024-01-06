@@ -1,7 +1,7 @@
 // modules
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Loader } from 'semantic-ui-react';
 // hooks
 import useFetch from '@/hooks/useFetch';
@@ -20,7 +20,7 @@ function SectionActuality() {
 	}, []);
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result?.success) {
 			setActualities(result.actualities);
 		}
 	}, [result]);
@@ -30,7 +30,7 @@ function SectionActuality() {
 		<section className="section-news">
 			<div className="ui container">
 				<h2>
-					<Link to="/entity/actualities">Actualités</Link>
+					<Link href="/entity/actualities">Actualités</Link>
 				</h2>
 				<div className="mb-4">
 					{loading ? (
@@ -51,7 +51,7 @@ function SectionActuality() {
 						</div>
 					)}
 				</div>
-				<Link to="/entity/actualities" className="btn btn-light">
+				<Link href="/entity/actualities" className="btn btn-light">
 					Voir toutes les actualités
 				</Link>
 			</div>

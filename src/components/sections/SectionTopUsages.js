@@ -1,6 +1,6 @@
 // modules
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button, Icon, Loader } from 'semantic-ui-react';
 import useFetch from '@/hooks/useFetch';
 // functions
@@ -26,7 +26,7 @@ const SectionTopUsages = () => {
 	}, []);
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result?.success) {
 			setVideo(result.videos[0]);
 		}
 	}, [result]);
@@ -61,7 +61,7 @@ const SectionTopUsages = () => {
 							</div>
 						</div>
 						<Link
-							to={`/entity/tiers`}
+							href={`/entity/tiers`}
 							className="btn btn-red team-button btn-icon"
 						>
 							<Icon name="chart bar" />
@@ -79,7 +79,7 @@ const SectionTopUsages = () => {
 										<GuideTeaserEnhanced guide={guide} />
 										<Button
 											as={Link}
-											to="/entity/guides"
+											href="/entity/guides"
 											content="Voir les guides stratégiques"
 											color="red"
 											icon="book"
@@ -92,7 +92,7 @@ const SectionTopUsages = () => {
 										<Video key={video.id} video={video} short />
 										<Button
 											as={Link}
-											to="/videos"
+											href="/videos"
 											content="Voir les vidéos"
 											color="red"
 											icon="youtube"

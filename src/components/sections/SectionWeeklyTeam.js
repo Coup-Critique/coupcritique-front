@@ -1,6 +1,6 @@
 // modules
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Loader } from 'semantic-ui-react';
 // hooks
 import useFetch from '@/hooks/useFetch';
@@ -23,7 +23,7 @@ function SectionWeeklyTeam() {
 	}, []);
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result?.success) {
 			setTeam(result.team);
 		}
 	}, [result]);
@@ -39,9 +39,9 @@ function SectionWeeklyTeam() {
 						<>
 							<Tier tier={team.tier} color="yellow" size="large" />
 							<h3 className="h4">
-								<Link to={`/entity/teams/${team.id}`}>{team.name}</Link>
+								<Link href={`/entity/teams/${team.id}`}>{team.name}</Link>
 								&nbsp;par&nbsp;
-								<Link to={`/entity/users/${team.user.id}`}>
+								<Link href={`/entity/users/${team.user.id}`}>
 									<em>{team.user.username}</em>
 								</Link>
 							</h3>
@@ -56,7 +56,7 @@ function SectionWeeklyTeam() {
 											<PokemonInstanceTeaser instance={team[key]} />
 											<Link 
 												className="extended-link" 
-												to={`/entity/teams/${team.id}`}
+												href={`/entity/teams/${team.id}`}
 											>
 												<span className="sr-only">
 													{team.name}
@@ -74,7 +74,7 @@ function SectionWeeklyTeam() {
 				<div className="btn-wrapper">
 					{!!team && (
 						<Link
-							to={`/entity/teams/${team.id}`}
+							href={`/entity/teams/${team.id}`}
 							className="btn btn-red team-button btn-icon"
 						>
 							<img
@@ -89,7 +89,7 @@ function SectionWeeklyTeam() {
 							Voir l'équipe
 						</Link>
 					)}
-					<Link to="/entity/teams?certified=1" className="btn btn-red btn-icon">
+					<Link href="/entity/teams?certified=1" className="btn btn-red btn-icon">
 						<img
 							// src={`/images/picto/star-${darkMode ? 'white' : 'black'}.png`}
 							src={`/images/picto/star-white.png`}

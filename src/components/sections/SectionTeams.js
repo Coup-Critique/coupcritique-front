@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -17,7 +17,7 @@ const SectionTeams = ({ sectionRef }) => {
 				<div className="row">
 					<div className="col-12 col-xl-5 propose-team text-center">
 						<h2>
-							<Link to="/entity/teams/create">Proposer une équipe</Link>
+							<Link href="/entity/teams/create">Proposer une équipe</Link>
 						</h2>
 						<p>
 							Partager vos équipes à la communauté pour avoir des avis
@@ -37,7 +37,7 @@ const SectionTeams = ({ sectionRef }) => {
 							/>
 						</div>
 						<Link
-							to="/entity/teams/create"
+							href="/entity/teams/create"
 							className="btn btn-red team-button btn-icon"
 						>
 							<Icon name="add circle" />
@@ -47,13 +47,13 @@ const SectionTeams = ({ sectionRef }) => {
 					<div className="col-12 col-xl-7 find-team">
 						<div className="content">
 							<h2>
-								<Link to="/entity/teams">Trouver une équipe</Link>
+								<Link href="/entity/teams">Trouver une équipe</Link>
 							</h2>
 							<p>Chercher une équipe par style de jeu, tier ou Pokémon</p>
 							<div className="pictures">
 								<div className="picture">
 									<Link
-										to={`/entity/teams?tags=1`}
+										href={`/entity/teams?tags=1`}
 										title="équipes Hyper Offense"
 									>
 										<ScrollReveal
@@ -69,7 +69,7 @@ const SectionTeams = ({ sectionRef }) => {
 								</div>
 								<div className="picture">
 									<Link
-										to={`/entity/teams?tier=168&gen=${defaultGen}`}
+										href={`/entity/teams?tier=168&gen=${defaultGen}`}
 										title="équipes OverUsed"
 									>
 										<ScrollReveal
@@ -85,7 +85,7 @@ const SectionTeams = ({ sectionRef }) => {
 								</div>
 								<div className="picture">
 									<Link
-										to={`/entity/teams?tier=176&gen=${defaultGen}`}
+										href={`/entity/teams?tier=176&gen=${defaultGen}`}
 										title="équipes"
 									>
 										<ScrollReveal
@@ -101,7 +101,7 @@ const SectionTeams = ({ sectionRef }) => {
 								</div>
 							</div>
 							<Link
-								to={`/entity/teams`}
+								href={`/entity/teams`}
 								className="btn btn-red team-button btn-icon"
 							>
 								<Icon name="search" />

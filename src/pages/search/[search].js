@@ -1,6 +1,6 @@
 // modules
 import React, { useState, useEffect, Fragment } from 'react';
-import { useParams } from 'react-router-dom';
+import { useGetParam } from '@/hooks/useGetParams';
 import { Loader } from 'semantic-ui-react';
 // components
 import TablePokemon from '@/components/table/TablePokemon';
@@ -19,7 +19,7 @@ import SectionAds from '@/components/sections/SectionAds';
 
 const SearchResult = ({ isUser = false }) => {
 	const gen = useSelector(state => state.gen);
-	const { search } = useParams();
+	const search = useGetParam('search');
 	const [pokemons, setPokemons] = useState();
 	const [abilities, setAbilities] = useState();
 	const [moves, setMoves] = useState();
@@ -44,7 +44,7 @@ const SearchResult = ({ isUser = false }) => {
 	}, [search, gen, isUser]);
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result?.success) {
 			setPokemons(result.pokemons);
 			setAbilities(result.abilities);
 			setMoves(result.moves);
@@ -71,39 +71,39 @@ const SearchResult = ({ isUser = false }) => {
 					<Loader active inline="centered" />
 				) : (
 					<Fragment>
-						{(pokemons && pokemons.length) ||
-						(abilities && abilities.length) ||
-						(moves && moves.length) ||
-						(items && items.length) ||
-						(types && types.length) ||
-						(tiers && tiers.length) ||
-						(users && users.length) ? (
+						{pokemons?.length ||
+						abilities?.length ||
+						moves?.length ||
+						items?.length ||
+						types?.length ||
+						tiers?.length ||
+						users?.length ? (
 							<Fragment>
-								{types && types.length > 0 && (
+								{types?.length > 0 && (
 									<TableType types={types} setTypes={setTypes} />
 								)}
-								{users && users.length > 0 && (
+								{users?.length > 0 && (
 									<TableUser users={users} setUsers={setUsers} />
 								)}
-								{tiers && tiers.length > 0 && (
+								{tiers?.length > 0 && (
 									<TableTier tiers={tiers} setTiers={setTiers} />
 								)}
-								{pokemons && pokemons.length > 0 && (
+								{pokemons?.length > 0 && (
 									<TablePokemon
 										pokemons={pokemons}
 										setPokemons={setPokemons}
 									/>
 								)}
-								{abilities && abilities.length > 0 && (
+								{abilities?.length > 0 && (
 									<TableAbility
 										abilities={abilities}
 										setAbilities={setAbilities}
 									/>
 								)}
-								{moves && moves.length > 0 && (
+								{moves?.length > 0 && (
 									<TableMove moves={moves} setMoves={setMoves} />
 								)}
-								{items && items.length > 0 && (
+								{items?.length > 0 && (
 									<TableItem items={items} setItems={setItems} />
 								)}
 							</Fragment>

@@ -8,7 +8,7 @@ const UserModoButton = ({ user, handleModo, isIcon = false }) => {
 	const [result, load, loading] = useFetch();
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result?.
 			if (handleModo) {
 				handleModo('is_modo', result.is_modo);
 			}

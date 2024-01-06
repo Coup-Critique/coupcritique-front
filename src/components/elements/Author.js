@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { formatDate } from '@/functions';
 
 const Author = ({ entity }) =>
 	entity.user ? (
-		<Link className="date d-block mb-3" to={`/entity/users/${entity.user.id}`}>
+		<Link className="date d-block mb-3" href={`/entity/users/${entity.user.id}`}>
 			{!!entity.user && entity.user.username + ' - '}{' '}
 			{!!entity.date_creation &&
 				formatDate(entity.update_date || entity.date_creation)}

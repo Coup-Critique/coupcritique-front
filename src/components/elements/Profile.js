@@ -1,6 +1,6 @@
 // modules
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';
 
@@ -50,7 +50,7 @@ const Profile = ({
 			{!noBadge && !hideName && <ProfileBadge user={user} />}
 			{!noLink && (
 				<Link
-					to={`/entity/users/${user.id}`}
+					href={`/entity/users/${user.id}`}
 					className="extended-link text-break"
 					title={hideName ? user.username : undefined}
 				>

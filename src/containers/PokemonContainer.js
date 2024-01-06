@@ -1,12 +1,12 @@
 // modules
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useSearchParams } from 'next/navigation';
 import { Loader } from 'semantic-ui-react';
 // components
 import useGetEntity from '@/hooks/useGetEntity';
+import { useGetParam } from '@/hooks/useGetParams';
 
-const PokemonContainer = ({ Component,...props }) => {
-	const { id } = useParams();
+const PokemonContainer = ({ Component, ...props }) => {
+	const id = useGetParam('id');
 	const [result, loading] = useGetEntity(id, 'pokemon', 'pokemons');
 
 	if (loading) {

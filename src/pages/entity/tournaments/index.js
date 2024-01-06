@@ -1,7 +1,7 @@
 // modules
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button, Loader } from 'semantic-ui-react';
 // components
 import useDarkMode from '@/hooks/useDarkMode';
@@ -13,7 +13,8 @@ import PaginationPrettier from '@/components/PaginationPrettier';
 import SectionAds from '@/components/sections/SectionAds';
 
 const TournamentList = () => {
-	const { user, ssrData } = useSelector(state => state);
+	const user = useSelector(state => state.user);
+	const ssrData = useSelector(state => state.ssrData);
 	const [darkMode] = useDarkMode();
 	const [result, load, loading] = useFetch();
 	const [tournaments, setTournaments] = useState(ssrData?.tournaments || []);
@@ -27,7 +28,7 @@ const TournamentList = () => {
 	}, []);
 
 	useEffect(() => {
-		if (result && result.success) setTournaments(result.tournaments);
+		if (result?.success) setTournaments(result.tournaments);
 	}, [result]);
 
 	const handleLoad = () => load({ url: 'tournaments' });
@@ -41,7 +42,7 @@ const TournamentList = () => {
 			{user.is_modo && (
 				<Button
 					as={Link}
-					to="/entity/tournaments/create"
+					href="/entity/tournaments/create"
 					color="blue"
 					content="Ajouter un tournoi"
 					icon="plus"

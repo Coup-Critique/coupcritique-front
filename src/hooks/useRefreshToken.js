@@ -14,7 +14,8 @@ import { Loader } from 'semantic-ui-react';
 const useRefreshToken = result => {
 	const dispatch = useDispatch();
 	const logout = useLogout();
-	const { user, messages } = useSelector(state => state);
+	const user = useSelector(state => state.user);
+	const messages = useSelector(state => state.messages);
 	const { getStoredItem, setItemToStorage } = useLocalStorage();
 	const [orderRemoveMessage, setOrderRemoveMessage] = useState(false);
 
@@ -62,7 +63,7 @@ const useRefreshToken = result => {
 
 	// Listen for result.token/refreshToken update from any request if user is logged
 	useEffect(() => {
-		if (user.token && result && result.success && result.token) {
+		if (user.token && result?.success && result.token) {
 			if (result.refresh_token) {
 				dispatch(setRefreshToken(result.refresh_token));
 			}

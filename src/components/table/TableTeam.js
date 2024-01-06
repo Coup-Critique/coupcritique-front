@@ -1,7 +1,8 @@
 // module
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { Icon, Label, Popup } from 'semantic-ui-react';
 // components
 import { TableBase, colorOddRows, DESC, ASC } from '@/components/table/Table';
@@ -137,11 +138,11 @@ const RowTeam = ({
 	className,
 	isUserConnected,
 }) => {
-	const history = useHistory();
+	const router = useRouter();
 	const linkTo = `/entity/teams/${team.id}`;
 	const [handleClick, handleStopClick] = useClick(linkTo);
 
-	const handleModify = e => history.push(`/entity/teams/${team.id}/update`);
+	const handleModify = e => router.push(`/entity/teams/${team.id}/update`);
 
 	const handleValue = (name, value) => handleUpdate(index, { ...team, [name]: value });
 
@@ -172,7 +173,7 @@ const RowTeam = ({
 			)}
 			<td>{formatDate(team.date_creation)}</td>
 			<td className="text-left text-break">
-				<Link to={linkTo}>{team.name}</Link>
+				<Link href={linkTo}>{team.name}</Link>
 			</td>
 			<td className="list nowrap">
 				{team.tags.length > 2 ? (

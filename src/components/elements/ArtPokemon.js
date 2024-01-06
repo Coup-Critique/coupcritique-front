@@ -1,6 +1,6 @@
 // modules
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Loader } from 'semantic-ui-react';
 import { DEFAULT_POKEMON_PICTURE } from '@/constants';
 import { ART_ITM, ART_PKM, IMG_VERSION } from '@/constants/img';
@@ -59,7 +59,7 @@ const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
 
 const ArtPokemon = ({ linked, ...props }) =>
 	linked ? (
-		<Link to={`/entity/pokemons/${props.pokemon.id}`}>
+		<Link href={`/entity/pokemons/${props.pokemon.id}`}>
 			<ArtPokemonImg {...props} />
 			<span className="sr-only">{props.pokemon.nom || props.pokemon.name}</span>
 		</Link>

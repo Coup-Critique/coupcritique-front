@@ -1,6 +1,6 @@
 // modules
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ART_ITM, IMG_VERSION } from '@/constants/img';
 import { formatFileName } from '@/functions';
 
@@ -21,7 +21,7 @@ const ArtItemImgTag = item => (
 
 const ArtItem = ({ item, linked = false }) =>
 	linked ? (
-		<Link to={`/entity/items/${item.id}`}>
+		<Link href={`/entity/items/${item.id}`}>
 			<ArtItemImgTag {...item} />
 			<span className="sr-only">{item.nom || item.name}</span>
 		</Link>

@@ -1,8 +1,8 @@
 // modules
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Header, Grid, Button, Icon, Loader } from 'semantic-ui-react';
-import { Redirect } from 'react-router';
+import { redirect } from 'next/navigation';
 // components
 import FormPassword from '@/components/forms/FormPassword';
 import FormUpdateUser from '@/components/forms/FormUpdateUser';
@@ -17,12 +17,16 @@ import GoBackButton from '@/components/GoBackButton';
 import useTableFetch from '@/hooks/useTableFetch';
 import { setNotifAction } from '@/reducers/notifs';
 import ModalConfirm from '@/components/modals/ModalConfirm';
+import useNotifChecker from '@/hooks/useNotifChecker';
+import { useGetParam } from '@/hooks/useGetParams';
 
+// Own User
 const UserFormPage = () => {
 	const dispatch = useDispatch();
 	const logout = useLogout();
+	const id = useGetParam('id');
+	useNotifChecker('user', id);
 	const user = useSelector(state => state.user);
-	const [resultNotif, loadNotif] = useFetch();
 	const [resDelete, deleteUser, loadingDelete] = useFetch();
 
 	const {
@@ -39,20 +43,6 @@ const UserFormPage = () => {
 	});
 
 	useEffect(() => {
-		if (user.id) {
-			loadNotif({ url: `notifications/view/user/${user.id}` });
-		}
-	}, [user.loading, user.id]);
-
-	useEffect(() => {
-		if (resultNotif) {
-			if (resultNotif.success) {
-				dispatch(setNotifAction(resultNotif.count));
-			}
-		}
-	}, [resultNotif]);
-
-	useEffect(() => {
 		if (resDelete && resDelete.success) {
 			dispatch(addMessage(resDelete.message, true));
 			logout();
@@ -66,7 +56,7 @@ const UserFormPage = () => {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id) {
-		return <Redirect to="/" />;
+		redirect('/');
 	}
 	return (
 		<PageWrapper title="Compte utilisateur" nofollow>

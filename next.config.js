@@ -1,12 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	async rewrites() {
-		return [
-			{
-				source: '/:any*',
-				destination: '/',
-			},
-		];
+	// async rewrites() {
+	// 	return [
+	// 		{
+	// 			source: '/:any*',
+	// 			destination: '/',
+	// 		},
+	// 	];
+	// },
+	webpack: config => {
+		config.resolve.fallback = { fs: false };
+		return config;
 	},
 };
 

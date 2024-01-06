@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import useTableSorter from '@/hooks/useTableSorter';
 import { TableBase } from '@/components/table/Table';
 
@@ -25,7 +25,7 @@ const TableTier = ({ tiers = [], setTiers }) => {
 				{tiers.map((tier, i) => (
 					<tr key={i}>
 						<td>
-							<Link to={`/entity/tiers/${tier.id}`}>{tier.name}</Link>
+							<Link href={`/entity/tiers/${tier.id}`}>{tier.name}</Link>
 						</td>
 					</tr>
 				))}

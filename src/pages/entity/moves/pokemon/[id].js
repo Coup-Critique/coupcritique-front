@@ -1,6 +1,7 @@
 // modules
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import { useGetParam } from '@/hooks/useGetParams';
 import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
 // hooks
@@ -19,9 +20,11 @@ import TableMoveUsage from '@/components/table/TableMoveUsage';
 
 const MovePool = () => {
 	const dispatch = useDispatch();
-	const history = useHistory();
-	const { id } = useParams();
-	const { ssrData, user, gen } = useSelector(state => state);
+	const router = useRouter();
+	const id = useGetParam('id');
+	// const user = useSelector(state => state.user);
+	const ssrData = useSelector(state => state.ssrData);
+	const gen = useSelector(state => state.gen);
 	const [resultPokemon, loadPokemon, loadingPokemon] = useFetch();
 	const [result, load, loading] = useFetch();
 	const [pokemon, setPokemon] = useState();
@@ -41,22 +44,22 @@ const MovePool = () => {
 	}, [id]);
 
 	useEffect(() => {
-		if (isNaN(id)) return history.push('/404');
+		if (isNaN(id)) return router.push('/404');
 		// gen comes from id
-		if (!user.loading) {
-			if (ssrEntity && ssrEntity.id == id) {
-				setPokemon(ssrEntity);
-			} else {
-				loadPokemon({ url: `pokemons/${id}` });
-			}
+		// if (!user.loading) {
+		if (ssrEntity && ssrEntity.id == id) {
+			setPokemon(ssrEntity);
+		} else {
+			loadPokemon({ url: `pokemons/${id}` });
 		}
-	}, [id, user.loading, user.id]);
+		// }
+	}, [id /* , user.loading, user.id */]);
 
 	useEffect(() => {
-		if (!user.loading) {
-			load({ url: `moves/pokemon/${id}` });
-		}
-	}, [id, gen, user, user.loading]);
+		// if (!user.loading) {
+		load({ url: `moves/pokemon/${id}` });
+		// }
+	}, [id, gen /* , user, user.loading */]);
 
 	useEffect(() => {
 		if (resultPokemon) {
@@ -66,13 +69,13 @@ const MovePool = () => {
 					dispatch(setGenAction(resultPokemon.gen));
 				}
 			} else if (resultPokemon.message === 'Mauvais identifiant') {
-				history.push('/404');
+				router.push('/404');
 			}
 		}
 	}, [resultPokemon]);
 
 	useEffect(() => {
-		if (result && result.moves) {
+		if (result?.moves) {
 			setTable(result.moves);
 		}
 	}, [result]);
@@ -109,7 +112,7 @@ const MovePool = () => {
 			/>
 			<SectionAds className="mt-4" />
 			<div id="pagination-scroll-ref">
-				{loading || loadingPokemon || user.loading ? (
+				{loading || loadingPokemon ? (
 					<Loader active inline="centered" />
 				) : table.length ? (
 					<TableMoveUsage

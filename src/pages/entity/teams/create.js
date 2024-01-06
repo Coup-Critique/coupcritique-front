@@ -2,8 +2,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Icon, Loader } from 'semantic-ui-react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { redirect } from 'next/navigation';
 // hooks
 import useFetch from '@/hooks/useFetch';
+import useLocalStorage from '@/hooks/useLocalStorage';
 // components
 import FormTeam from '@/components/forms/FormTeam';
 import PageWrapper from '@/components/PageWrapper';
@@ -12,16 +16,15 @@ import GoBackButton from '@/components/GoBackButton';
 // reducers
 import { setTiers } from '@/reducers/tiers';
 import { setTags } from '@/reducers/tags';
-import { Link, useLocation } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
-import useLocalStorage from '@/hooks/useLocalStorage';
 
-const defaultGoBack = "/entity/teams/";
-const ProposeTeam = ({ result = {}, update = false }) => {
+const defaultGoBack = '/entity/teams/';
+const TeamFormPage = ({ result = {}, update = false }) => {
 	const dispatch = useDispatch();
-	const { pathname } = useLocation();
+	const { pathname } = useRouter();
 	const { setItemToStorage } = useLocalStorage();
-	const { user, tiers, tags } = useSelector(state => state);
+	const user = useSelector(state => state.user);
+	const tiers = useSelector(state => state.tiers);
+	const tags = useSelector(state => state.tags);
 	const [resultTiers, loadTiers, loadingTiers] = useFetch();
 	const [resultTags, loadTags, loadingTags] = useFetch();
 
@@ -47,13 +50,13 @@ const ProposeTeam = ({ result = {}, update = false }) => {
 	}, [resultTags]);
 
 	if (
-		update
-		&& result
-		&& result.team
-		&& result.team.user.id !== user.id
-		&& !user.is_modo
+		update &&
+		result &&
+		result.team &&
+		result.team.user.id !== user.id &&
+		!user.is_modo
 	) {
-		return <Redirect to={defaultGoBack} />;
+		redirect(defaultGoBack);
 	}
 
 	return (
@@ -75,9 +78,9 @@ const ProposeTeam = ({ result = {}, update = false }) => {
 			</div>
 			{!update && (
 				<p className="description framed">
-					<b>Vous ne pouvez proposer qu'une seule équipe par tier à la fois</b>, alors
-					choisissez-la bien. Une fois celle-ci définie comme certifiée ou non,
-					vous pourrez de nouveau en publier une.
+					<b>Vous ne pouvez proposer qu'une seule équipe par tier à la fois</b>,
+					alors choisissez-la bien. Une fois celle-ci définie comme certifiée ou
+					non, vous pourrez de nouveau en publier une.
 					<br />
 					<br />
 					La Team Strat de Coup Critique fait tout ce qu'elle peut pour
@@ -97,8 +100,8 @@ const ProposeTeam = ({ result = {}, update = false }) => {
 						<Icon name="discord" className="m-0" /> Discord
 					</a>{' '}
 					pour qu'ils voient avec lui si l'équipe peut être publiée avec le
-					compte <Link to="/entity/users/6029">Sample Team</Link> et si elle en
-					vaut la peine.
+					compte <Link href="/entity/users/6029">Sample Team</Link> et si elle
+					en vaut la peine.
 				</p>
 			)}
 			{user.loading ? (
@@ -116,4 +119,4 @@ const ProposeTeam = ({ result = {}, update = false }) => {
 		</PageWrapper>
 	);
 };
-export default ProposeTeam;
+export default TeamFormPage;

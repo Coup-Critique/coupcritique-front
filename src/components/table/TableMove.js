@@ -4,7 +4,7 @@ import { TableBase, colorOddRows } from '@/components/table/Table';
 import { formateName } from '@/functions';
 import Type from '@/components/elements/Type';
 import Category from '@/components/elements/Category';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import useTableSorter from '@/hooks/useTableSorter';
 import usePager from '@/hooks/usePager';
 import PaginationPrettier from '@/components/PaginationPrettier';
@@ -53,7 +53,7 @@ const TableMove = ({ moves = [], setMoves, query, updateQuery, setQueryParam }) 
 					{table.map((move, i) => (
 						<tr key={i} /* className={colorOddRows(i)} */>
 							<td>
-								<Link to={`/entity/moves/${move.id}`}>
+								<Link href={`/entity/moves/${move.id}`}>
 									{move.nom || formateName(move.name)}
 								</Link>
 							</td>

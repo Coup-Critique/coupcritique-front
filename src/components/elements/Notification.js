@@ -1,6 +1,6 @@
 // modules
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 import { entityToEntities } from '@/constants/entities';
 import { makeClassName } from '@/functions';
@@ -60,14 +60,14 @@ const Notification = ({ notification }) => {
 							height={32}
 						/>
 					)}
-					<Link to={link} className="extended-link">
+					<Link href={link} className="extended-link">
 						{notification.subject || ''}
 					</Link>
 				</div>
 			)}
 			{!!notification.content && (
 				<p className="content">
-					<Link to={link} className="extended-link">
+					<Link href={link} className="extended-link">
 						{notification.content}
 					</Link>
 				</p>

@@ -1,6 +1,6 @@
 // modules
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { formatDate } from '@/functions';
 import ScrollReveal from '@/components/ScrollReveal';
 import Tag from '@/components/elements/Tag';
@@ -8,7 +8,7 @@ import Tag from '@/components/elements/Tag';
 const GuideTeaserEnhanced = ({ guide }) => (
 	<ScrollReveal className="row guide-teaser-enhanced mb-3" animation="zoomIn" earlier>
 		<div className="col-12 col-lg-6">
-			<Link to={`/entity/guides/${guide.id}`}>
+			<Link href={`/entity/guides/${guide.id}`}>
 				<img
 					className="img-fluid d-block mb-2"
 					src={
@@ -28,7 +28,7 @@ const GuideTeaserEnhanced = ({ guide }) => (
 		</div>
 		<div className="col-12 col-lg-6">
 			<h4>
-				<Link to={`/entity/guides/${guide.id}`}>{guide.title}</Link>
+				<Link href={`/entity/guides/${guide.id}`}>{guide.title}</Link>
 			</h4>
 			<p className="description">{guide.shortDescription}</p>
 			<h5>

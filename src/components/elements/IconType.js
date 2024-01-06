@@ -1,12 +1,12 @@
 // modules
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { IMG_VERSION } from '@/constants/img';
 import { formatFileName, makeClassName } from '@/functions';
 
 const IconType = ({ type, className, tera = false }) => (
 	<Link
-		to={`/entity/types/${type.id}`}
+		href={`/entity/types/${type.id}`}
 		className={makeClassName('icon-type', tera && 'tera', className)}
 		title={type.nom || type.name}
 	>

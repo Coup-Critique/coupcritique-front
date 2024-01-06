@@ -1,7 +1,7 @@
 // modules
 import React, { useState, useEffect, useReducer, useCallback } from 'react';
 import { Form, Button, Message } from 'semantic-ui-react';
-import { Koffing } from 'koffing/dist/koffing';
+import { Koffing } from 'koffing';
 // hooks
 import useFetch from '@/hooks/useFetch';
 // functions
@@ -12,7 +12,7 @@ import { getDefaultTier } from '@/components/forms/FormTeam';
 import usePrevious from '@/hooks/usePrevious';
 import TiersField from '@/components/fields/TiersField';
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import useLocalStorage from '@/hooks/useLocalStorage';
 
 const joinEntities = (list, key) =>

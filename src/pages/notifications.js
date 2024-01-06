@@ -1,16 +1,15 @@
-import React from 'react';
-import Notification from '@/components/elements/Notification';
+import React, { useState,useEffect } from 'react';
 import { Loader } from 'semantic-ui-react';
-import SectionAds from '@/components/sections/SectionAds';
-import useFetch from '@/hooks/useFetch';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import PageWrapper from '@/components/PageWrapper';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { setNotifAction } from '@/reducers/notifs';
-import usePager from '@/hooks/usePager';
+import { redirect } from 'next/navigation';
+// 
+import Notification from '@/components/elements/Notification';
+import SectionAds from '@/components/sections/SectionAds';
+import PageWrapper from '@/components/PageWrapper';
 import PaginationPrettier from '@/components/PaginationPrettier';
+import usePager from '@/hooks/usePager';
+import useFetch from '@/hooks/useFetch';
+import { setNotifAction } from '@/reducers/notifs';
 
 const NotificationList = () => {
 	const dispatch = useDispatch();
@@ -29,7 +28,7 @@ const NotificationList = () => {
 	}, [user, user.loading]);
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result?.success) {
 			setNotifications(result.notifications);
 			dispatch(setNotifAction(result.count));
 		}
@@ -42,7 +41,7 @@ const NotificationList = () => {
 	}, [resultPast]);
 
 	if (!user.loading && !user.id) {
-		return <Redirect to="/404" />;
+		redirect('/404');
 	}
 	return (
 		<PageWrapper title="Vos notifications">

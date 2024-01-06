@@ -1,28 +1,28 @@
 // modules
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, useHistory } from 'react-router';
+import { redirect } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { Loader } from 'semantic-ui-react';
 // components
 import FormGuide from '@/components/forms/FormGuide';
 import PageWrapper from '@/components/PageWrapper';
 import useFetch from '@/hooks/useFetch';
-
 //reducers
 import { setGuideTags } from '@/reducers/guide_tags';
 import { setTiers } from '@/reducers/tiers';
 
 const GuideFormPage = ({ result = {}, update = false }) => {
 	const dispatch = useDispatch();
-	const history = useHistory();
-
-	const { user, guide_tags } = useSelector(state => state);
+	const router = useRouter();
+	const user = useSelector(state => state.user);
+	const guide_tags = useSelector(state => state.guide_tags);
 	const tiers = useSelector(state => state.tiers);
 	const [resultTags, loadTags] = useFetch();
 	const [resultTiers, loadTiers, loadingTiers] = useFetch();
 
 	const goBack = () => {
-		history.replace(update ? `/entity/guides/${result.guide.id}` : '/entity/guides');
+		router.replace(update ? `/entity/guides/${result.guide.id}` : '/entity/guides');
 	};
 
 	useEffect(() => {
@@ -47,7 +47,7 @@ const GuideFormPage = ({ result = {}, update = false }) => {
 	}, [resultTags]);
 
 	if (!user.loading && !user.is_modo) {
-		return <Redirect to="/404" />;
+		return redirect('/404');
 	}
 
 	return (
@@ -61,7 +61,7 @@ const GuideFormPage = ({ result = {}, update = false }) => {
 			{user.loading ? (
 				<Loader active={true} inline="centered" />
 			) : !user.token ? (
-				<Redirect to="/404" />
+				redirect('/404')
 			) : (
 				<FormGuide
 					guide={result.guide}

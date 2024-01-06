@@ -1,7 +1,7 @@
 // modules
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 // hooks
 import useFetch from '@/hooks/useFetch';
 // constants
@@ -17,8 +17,9 @@ import { setSsrDataAction } from '@/reducers/ssrData';
  */
 const useGetEntity = (id, key, loadUrl) => {
 	const dispatch = useDispatch();
-	const { ssrData, user, gen } = useSelector(state => state);
-	const history = useHistory();
+	const ssrData = useSelector(state => state.ssrData);
+	const gen = useSelector(state => state.gen);
+	const router = useRouter();
 	const [result, load, loading] = useFetch();
 	const ssrEntity = ssrData && ssrData[key];
 	const entityLoaded = !!ssrEntity && ssrEntity.id == id;
@@ -36,10 +37,10 @@ const useGetEntity = (id, key, loadUrl) => {
 
 	useEffect(() => {
 		// gen comes from id
-		if (!user.loading && (!entityLoaded || reloadOnSsr[key])) {
+		if (!entityLoaded || reloadOnSsr[key]) {
 			load({ url: `${loadUrl}/${id}` });
 		}
-	}, [id, user.loading, user.id]);
+	}, [id]);
 
 	useEffect(() => {
 		if (result) {
@@ -48,13 +49,13 @@ const useGetEntity = (id, key, loadUrl) => {
 					dispatch(setGenAction(result.gen));
 				}
 			} else if (result.message === 'Mauvais identifiant') {
-				history.push('/404');
+				router.push('/404');
 			}
 		}
 	}, [result]);
 
 	return [
-		result && result.success ? result : entityLoaded ? ssrData : null,
+		result?.success ? result : entityLoaded ? ssrData : null,
 		loading && !entityLoaded,
 	];
 };

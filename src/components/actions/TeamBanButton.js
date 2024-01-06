@@ -8,7 +8,7 @@ const TeamBanButton = ({ team, isIcon = false, handleBan }) => {
 	const [result, load, loading] = useFetch();
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result?.success) {
 			handleBan('banned', result.banned);
 		}
 	}, [result]);

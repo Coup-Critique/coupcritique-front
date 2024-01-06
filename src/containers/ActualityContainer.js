@@ -1,13 +1,13 @@
 // modules
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useGetParam } from '@/hooks/useGetParams';
 import { Loader } from 'semantic-ui-react';
 // components
-import useGetEntity from '@/hooks/useGetEntity';
+import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
 
 const ActualityContainer = ({ Component, ...props}) => {
-	const { id } = useParams();
-	const [result, loading] = useGetEntity(id, 'actuality', 'actualities');
+	const id = useGetParam('id');
+	const [result, loading] = useGetEntityWithUser(id, 'actuality', 'actualities');
 
 	if (loading) {
 		return <Loader active inline="centered" />;

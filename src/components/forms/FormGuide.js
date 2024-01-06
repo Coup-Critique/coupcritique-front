@@ -12,12 +12,12 @@ import Wysiwyg from '@/components/Wysiwyg';
 import TagsField from '@/components/fields/TagsField';
 import { buildFieldsMessage } from '@/functions';
 import TiersField from '@/components/fields/TiersField';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import useSaveToStorage from '@/hooks/useSaveToStorage';
 
 const FormGuide = ({ handleSubmited, guide = {}, tags = [], tiers, loadingTiers }) => {
 	const dispatch = useDispatch();
-	const history = useHistory();
+	const router = useRouter();
 	const [form, setForm] = useState(guide);
 	const [success, setSuccess] = useState(true);
 	const [message, setMessage] = useState('');
@@ -107,7 +107,7 @@ const FormGuide = ({ handleSubmited, guide = {}, tags = [], tiers, loadingTiers 
 
 	const handleCancel = e => {
 		e.preventDefault();
-		history.replace('entity/guides/' + (guide.id || ''));
+		router.replace('entity/guides/' + (guide.id || ''));
 	};
 
 	const onSubmit = e => {

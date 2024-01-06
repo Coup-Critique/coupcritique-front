@@ -1,7 +1,7 @@
 // modules
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Comment as SemanticComment, Icon } from 'semantic-ui-react';
 // custom
 import Profile, { ProfileBadge } from '@/components/elements/Profile';
@@ -81,7 +81,7 @@ const Comment = ({ comment, isReply = false, handleUpdate, baseEntity }) => {
 					<SemanticComment.Content className="clearfix flex-grow-1">
 						<SemanticComment.Author
 							as={Link}
-							to={`/entity/users/${comment.user.id}`}
+							href={`/entity/users/${comment.user.id}`}
 						>
 							<ProfileBadge user={comment.user} />
 							{comment.user.username}

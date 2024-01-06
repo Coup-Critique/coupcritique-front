@@ -1,8 +1,8 @@
 // modules
 import { useState, useCallback, useEffect, useReducer, useMemo } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { Form, Button, Message } from 'semantic-ui-react';
-import { Koffing } from 'koffing/dist/koffing';
+import { Koffing } from 'koffing';
 // components
 import TagsField from '@/components/fields/TagsField';
 import InstanceField from '@/components/fields/InstanceField';
@@ -52,7 +52,7 @@ const initTeam = (defaultValue, tiers) => {
 };
 
 const FormTeam = ({ tiers = {}, tags = [], loadingTiers = false, defaultValue }) => {
-	const history = useHistory();
+	const router = useRouter();
 	const [resultExport, loadExport, loadingExport] = useFetch();
 	const [resultTeam, loadTeam, loadingTeam] = useFetch();
 	const [team, dispatchTeam] = useReducer(
@@ -118,9 +118,9 @@ const FormTeam = ({ tiers = {}, tags = [], loadingTiers = false, defaultValue })
 				dispatch(removeSsrDataAction('team'));
 				voidStorage();
 				if (defaultValue && defaultValue.id) {
-					history.replace('/entity/teams/' + resultTeam.team.id);
+					router.replace('/entity/teams/' + resultTeam.team.id);
 				} else {
-					history.push('/entity/teams/' + resultTeam.team.id);
+					router.push('/entity/teams/' + resultTeam.team.id);
 				}
 			}
 		}

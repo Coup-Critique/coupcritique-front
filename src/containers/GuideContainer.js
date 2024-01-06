@@ -1,13 +1,13 @@
 // modules
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useGetParam } from '@/hooks/useGetParams';
 import { Loader } from 'semantic-ui-react';
 // components
-import useGetEntity from '@/hooks/useGetEntity';
+import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
 
 const GuideContainer = ({ Component, ...props }) => {
-	const { id } = useParams();
-	const [result, loading] = useGetEntity(id, 'guide', 'guides');
+	const id = useGetParam('id');
+	const [result, loading] = useGetEntityWithUser(id, 'guide', 'guides');
 
 	if (loading) {
 		return <Loader active inline="centered" />;

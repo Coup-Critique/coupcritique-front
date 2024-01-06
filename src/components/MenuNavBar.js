@@ -1,7 +1,7 @@
 // modules
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import ActiveLink from '@/components/ActiveLink';
 import { Dropdown, Icon } from 'semantic-ui-react';
 import PokemonSVG from '@/svg/PokemonSVG';
 import TeamSVG from '@/svg/TeamSVG';
@@ -18,13 +18,13 @@ import LinkSVG from '@/svg/LinkSVG';
 import TierSVG from '@/svg/TierSVG';
 
 function MenuNavBar({ iconized = false }) {
-	const { user } = useSelector(state => state);
+	const user = useSelector(state => state.user);
 	return (
 		<ul className="navbar-nav">
 			<li className="nav-item">
-				<NavLink to="/entity/teams" className="nav-link">
+				<ActiveLink href="/entity/teams" className="nav-link">
 					{iconized && <TeamSVG />} Équipes
-				</NavLink>
+				</ActiveLink>
 			</li>
 			<li className="nav-item">
 				<Dropdown
@@ -51,8 +51,8 @@ function MenuNavBar({ iconized = false }) {
 									'Pokémon'
 								)
 							}
-							as={NavLink}
-							to="/entity/pokemons"
+							as={ActiveLink}
+							href="/entity/pokemons"
 						/>
 						<Dropdown.Item
 							content={
@@ -64,8 +64,8 @@ function MenuNavBar({ iconized = false }) {
 									'Tiers'
 								)
 							}
-							as={NavLink}
-							to="/entity/tiers"
+							as={ActiveLink}
+							href="/entity/tiers"
 						/>
 						<Dropdown.Item
 							content={
@@ -77,8 +77,8 @@ function MenuNavBar({ iconized = false }) {
 									'Capacités'
 								)
 							}
-							as={NavLink}
-							to="/entity/moves"
+							as={ActiveLink}
+							href="/entity/moves"
 						/>
 						<Dropdown.Item
 							content={
@@ -90,8 +90,8 @@ function MenuNavBar({ iconized = false }) {
 									'Types'
 								)
 							}
-							as={NavLink}
-							to="/entity/types"
+							as={ActiveLink}
+							href="/entity/types"
 						/>
 						<Dropdown.Item
 							content={
@@ -103,8 +103,8 @@ function MenuNavBar({ iconized = false }) {
 									'Talents'
 								)
 							}
-							as={NavLink}
-							to="/entity/abilities"
+							as={ActiveLink}
+							href="/entity/abilities"
 						/>
 						<Dropdown.Item
 							content={
@@ -116,8 +116,8 @@ function MenuNavBar({ iconized = false }) {
 									'Objets'
 								)
 							}
-							as={NavLink}
-							to="/entity/items"
+							as={ActiveLink}
+							href="/entity/items"
 						/>
 					</Dropdown.Menu>
 				</Dropdown>
@@ -148,8 +148,8 @@ function MenuNavBar({ iconized = false }) {
 									'Actualités'
 								)
 							}
-							as={NavLink}
-							to="/entity/actualities"
+							as={ActiveLink}
+							href="/entity/actualities"
 						/>
 						<Dropdown.Item
 							content={
@@ -161,8 +161,8 @@ function MenuNavBar({ iconized = false }) {
 									'Guides'
 								)
 							}
-							as={NavLink}
-							to="/entity/guides"
+							as={ActiveLink}
+							href="/entity/guides"
 						/>
 						<Dropdown.Item
 							className="d-lg-none"
@@ -175,8 +175,8 @@ function MenuNavBar({ iconized = false }) {
 									'Tournois'
 								)
 							}
-							as={NavLink}
-							to="/entity/tournaments"
+							as={ActiveLink}
+							href="/entity/tournaments"
 						/>
 						<Dropdown.Item
 							content={
@@ -188,8 +188,8 @@ function MenuNavBar({ iconized = false }) {
 									'Liens utiles'
 								)
 							}
-							as={NavLink}
-							to="/resources"
+							as={ActiveLink}
+							href="/resources"
 						/>
 						<Dropdown.Item
 							content={
@@ -201,21 +201,21 @@ function MenuNavBar({ iconized = false }) {
 									'Vidéos'
 								)
 							}
-							as={NavLink}
-							to="/videos"
+							as={ActiveLink}
+							href="/videos"
 						/>
 					</Dropdown.Menu>
 				</Dropdown>
 			</li>
 			<li className="nav-item d-none d-lg-block">
-				<NavLink to="/entity/actualities" className="nav-link">
+				<ActiveLink href="/entity/actualities" className="nav-link">
 					{iconized && <ActualitySVG />} Actualités
-				</NavLink>
+				</ActiveLink>
 			</li>
 			<li className="nav-item d-none d-lg-block">
-				<NavLink to="/entity/tournaments" className="nav-link">
+				<ActiveLink href="/entity/tournaments" className="nav-link">
 					{iconized && <Icon name="sitemap" />} Tournois
-				</NavLink>
+				</ActiveLink>
 			</li>
 			{user.is_modo === true && (
 				<li className="nav-item">
@@ -243,8 +243,8 @@ function MenuNavBar({ iconized = false }) {
 										'Équipes'
 									)
 								}
-								as={NavLink}
-								to="/admin/teams"
+								as={ActiveLink}
+								href="/admin/teams"
 							/>
 							<Dropdown.Item
 								content={
@@ -256,8 +256,8 @@ function MenuNavBar({ iconized = false }) {
 										'Utilisateurs'
 									)
 								}
-								as={NavLink}
-								to="/admin/users"
+								as={ActiveLink}
+								href="/admin/users"
 							/>
 							<Dropdown.Item
 								content={
@@ -269,8 +269,8 @@ function MenuNavBar({ iconized = false }) {
 										'Drive'
 									)
 								}
-								as={NavLink}
-								to="/admin/drive"
+								as={ActiveLink}
+								href="/admin/drive"
 							/>
 						</Dropdown.Menu>
 					</Dropdown>

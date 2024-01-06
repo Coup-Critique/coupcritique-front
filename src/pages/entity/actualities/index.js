@@ -1,7 +1,7 @@
 // modules
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button, Form, Loader } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
 import useFetch from '@/hooks/useFetch';
@@ -18,7 +18,9 @@ import SectionAds from '@/components/sections/SectionAds';
 
 const ActualityList = () => {
 	const dispatch = useDispatch();
-	const { user, ssrData, actuality_tags } = useSelector(state => state);
+	const user = useSelector(state => state.user);
+	const ssrData = useSelector(state => state.ssrData);
+	const actuality_tags = useSelector(state => state.actuality_tags);
 	const [darkMode] = useDarkMode();
 	const [result, load, loading] = useFetch();
 	const [actualities, setActualities] = useState(ssrData?.actualities || []);
@@ -37,7 +39,7 @@ const ActualityList = () => {
 	}, [query.tags]);
 
 	useEffect(() => {
-		if (result && result.success) {
+		if (result?.success) {
 			setActualities(result.actualities);
 		}
 	}, [result]);
@@ -71,7 +73,7 @@ const ActualityList = () => {
 			{user.is_modo && (
 				<Button
 					as={Link}
-					to="/entity/actualities/create"
+					href="/entity/actualities/create"
 					color="blue"
 					content="Ajouter une actualité"
 					icon="plus"
