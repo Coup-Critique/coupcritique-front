@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { Helmet } from 'react-helmet';
 
 // 2 description conditions for helmet functionment

@@ -1,30 +1,20 @@
 // modules
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { Loader } from 'semantic-ui-react';
-// hooks
-import useFetch from '@/hooks/useFetch';
 // components
 import PageWrapper from '@/components/PageWrapper';
 import TablePokemon from '@/components/table/TablePokemon';
 import GenSelector from '@/components/GenSelector';
 import useStoreQuery from '@/hooks/useStoreQuery';
+import useFetchListByGen from '@/hooks/useFetchListByGen';
+import { manageFetch } from '@/hooks/useFetch';
 
-const PokemonList = () => {
-	const gen = useSelector(state => state.gen);
-	const [result, load, loading] = useFetch();
-	const [pokemons, setPokemons] = useState([]);
+const PokemonList = props => {
+	const [pokemons, setPokemons, loading] = useFetchListByGen(
+		'pokemons',
+		props.pokemons
+	);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
-
-	useEffect(() => {
-		load({ url: `pokemons?gen=${gen}` });
-	}, [gen]);
-
-	useEffect(() => {
-		if (result?.pokemons) {
-			setPokemons(result.pokemons);
-		}
-	}, [result]);
 
 	return (
 		<PageWrapper
@@ -52,4 +42,16 @@ const PokemonList = () => {
 		</PageWrapper>
 	);
 };
+
+export const getStaticProps = async () => {
+	try {
+		const response = await manageFetch(`pokemons`);
+		const pokemons = response.pokemons || [];
+		return { props: { pokemons } };
+	} catch (e) {
+		console.error(e);
+		return { props: { pokemons: [] } };
+	}
+};
+
 export default PokemonList;

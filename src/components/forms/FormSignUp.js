@@ -1,5 +1,5 @@
 // modules
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Form, Button, Message, Label, Icon, Checkbox } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 // hooks

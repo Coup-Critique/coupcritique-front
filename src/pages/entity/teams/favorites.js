@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
 //
@@ -8,6 +8,7 @@ import PageWrapper from '@/components/PageWrapper';
 import TableTeam from '@/components/table/TableTeam';
 import SectionAds from '@/components/sections/SectionAds';
 import useTableFetch from '@/hooks/useTableFetch';
+import Page404 from '@/pages/404';
 
 const ListFavoriteTeam = () => {
 	const user = useSelector(state => state.user);
@@ -31,10 +32,12 @@ const ListFavoriteTeam = () => {
 		}
 	}, [user.loading]);
 
-	if (!user.loading && !user.id) {
-		return redirect('/');
+	if (user.loading) {
+		return <Loader active={true} inline="centered" />;
 	}
-
+	if (!user.id) {
+		return <Page404 />;
+	}
 	return (
 		<PageWrapper title={'Liste des équipes en favoris'} nofollow more>
 			<div className="mb-3">

@@ -1,5 +1,5 @@
 // modules
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import ArtPokemon from '@/components/elements/ArtPokemon';
 import Type from '@/components/elements/Type';
 import Pokemon from '@/components/elements/Pokemon';

@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { Icon } from 'semantic-ui-react';
 import Profile from '@/components/elements/Profile';
 import PageWrapper from '@/components/PageWrapper';
@@ -22,9 +22,6 @@ const Thanks = () => {
 					communauté autour.
 				</p>
 				<ul>
-					{/* <li>
-                <Profile user={}/>
-			</li> */}
 					<li>
 						<a
 							href="https://www.youtube.com/c/RedEmptionBj"
@@ -65,9 +62,6 @@ const Thanks = () => {
 					maintenir le site.
 				</p>
 				<ul>
-					{/* <li>
-                <Profile user={}/>
-			</li> */}
 					<li>
 						<a
 							href="https://github.com/GeoDaz"
@@ -95,15 +89,9 @@ const Thanks = () => {
 				</h4>
 				<p> D'avoir designé le site ainsi que sa charte graphique et son logo.</p>
 				<ul>
-					{/* <li>
-                <Profile user={}/>
-			</li> */}
 					<li>
-						<a
-							href="https://www.auralyz.fr/"
-							target="_blank"
-							// rel="nofollow noreferrer"
-						>
+						{/* eslint-disable-next-line react/jsx-no-target-blank */}
+						<a href="https://www.auralyz.fr/" target="_blank">
 							<Icon name="world" /> Site internet&nbsp;: www.auralyz.fr
 						</a>
 					</li>
@@ -122,7 +110,8 @@ const Thanks = () => {
 							target="_blank"
 							rel="nofollow noreferrer"
 						>
-							<Icon name="instagram" color="pink" /> Instagram&nbsp;: @auralyz.design
+							<Icon name="instagram" color="pink" /> Instagram&nbsp;:
+							@auralyz.design
 						</a>
 					</li>
 				</ul>
@@ -136,9 +125,6 @@ const Thanks = () => {
 					maintenance du site aurait été infaisable.
 				</p>
 				<ul>
-					{/* <li>
-                <Profile user={}/>
-			</li> */}
 					<li>
 						<a
 							href="https://github.com/ii02735"

@@ -1,9 +1,7 @@
 // modules
-import React, { useEffect, useState } from 'react';
-import { Loader } from 'semantic-ui-react';
+import { useEffect, useState } from 'react';
 import { formateName } from '@/functions';
 // hooks
-import useFetch from '@/hooks/useFetch';
 import Description from '@/components/elements/Description';
 import GenSelector from '@/components/GenSelector';
 // components
@@ -11,32 +9,11 @@ import GoBackButton from '@/components/GoBackButton';
 import PageWrapper from '@/components/PageWrapper';
 import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
 import useStoreQuery from '@/hooks/useStoreQuery';
-import { useGetParam } from '@/hooks/useGetParams';
 
-const AbilityArticle = ({ result }) => {
-	const id = useGetParam('id');
-	const [resultPokemons, load, loading] = useFetch();
-	const [ability, setAbility] = useState((result?.ability) || null);
-	const [pokemons, setPokemons] = useState((result?.pokemons) || []);
+const AbilityArticle = props => {
+	const [ability, setAbility] = useState(props.ability || null);
+	const [pokemons, setPokemons] = useState(props.pokemons || []);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery();
-
-	useEffect(() => {
-		if (!result.pokemons) {
-			load({ url: `pokemons/ability/${id}` });
-		}
-	}, [id]);
-
-	useEffect(() => {
-		if (result?.success) {
-			setAbility(result.ability);
-		}
-	}, [result]);
-
-	useEffect(() => {
-		if (resultPokemons && resultPokemons.success) {
-			setPokemons(resultPokemons.pokemons);
-		}
-	}, [resultPokemons]);
 
 	if (!ability || !ability.id) return null;
 	return (
@@ -49,7 +26,7 @@ const AbilityArticle = ({ result }) => {
 		>
 			<GoBackButton />
 			<GenSelector
-				availableGens={result.availableGens}
+				availableGens={props.availableGens}
 				redirectOnChange={'/entity/abilities/'}
 			/>
 			<Description
@@ -59,19 +36,15 @@ const AbilityArticle = ({ result }) => {
 				handleUpdate={setAbility}
 			/>
 			<div id="pagination-scroll-ref">
-				{loading ? (
-					<Loader active inline="centered" />
-				) : (
-					pokemons.length > 0 && (
-						<TablePokemonWithUsages
-							pokemons={pokemons}
-							setPokemons={setPokemons}
-							usageKey="usageAbility"
-							query={query}
-							updateQuery={updateQuery}
-							setQueryParam={setQueryParam}
-						/>
-					)
+				{pokemons.length > 0 && (
+					<TablePokemonWithUsages
+						pokemons={pokemons}
+						setPokemons={setPokemons}
+						usageKey="usageAbility"
+						query={query}
+						updateQuery={updateQuery}
+						setQueryParam={setQueryParam}
+					/>
 				)}
 			</div>
 		</PageWrapper>

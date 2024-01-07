@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import SpritePokemon from '@/components/elements/SpritePokemon';
 
 const EvolutionTree = ({ pokemon }) =>

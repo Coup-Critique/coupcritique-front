@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Loader } from 'semantic-ui-react';
 import useFetch from '@/hooks/useFetch';
 import TeamArticle from '@/components/article/TeamArticle';

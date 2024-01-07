@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Loader } from 'semantic-ui-react';
 import { DELETE } from '@/constants/methods';

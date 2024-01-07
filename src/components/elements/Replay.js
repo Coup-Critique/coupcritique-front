@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { REPLAY_URL } from '@/constants';
 
 const Replay = ({ uri }) => (

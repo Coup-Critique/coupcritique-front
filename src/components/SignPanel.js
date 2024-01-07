@@ -1,5 +1,5 @@
 // modules
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 // components
 import { Button, Modal, Tab } from 'semantic-ui-react';

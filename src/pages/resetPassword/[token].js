@@ -1,15 +1,17 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { redirect } from 'next/navigation';
+import { useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { Message, Form, Button } from 'semantic-ui-react';
+//
 import { useGetParam } from '@/hooks/useGetParams';
 import { PUT } from '@/constants/methods';
 import useFetch from '@/hooks/useFetch';
 import PageWrapper from '@/components/PageWrapper';
-import { Message, Form, Button } from 'semantic-ui-react';
-import { useDispatch } from 'react-redux';
 import { addMessage } from '@/reducers/messages';
 
 const ResetForgottenPassword = () => {
 	const dispatch = useDispatch();
+	const router = useRouter();
 	const token = useGetParam('token');
 	const [result, load] = useFetch();
 	const [success, setSuccess] = useState(true);
@@ -54,7 +56,7 @@ const ResetForgottenPassword = () => {
 			setSuccess(result.success);
 			if (result.redirect) {
 				dispatch(addMessage(result.messageRenewPassword, true));
-				redirect('/');
+				router.push('/');
 			}
 		}
 	}, [result]);

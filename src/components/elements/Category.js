@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { IMG_VERSION } from '@/constants/img';
 import { formatFileName } from '@/functions';
 

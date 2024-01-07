@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import Link from 'next/link';
 import { formatDate } from '@/functions';
 import ScrollReveal from '@/components/ScrollReveal';

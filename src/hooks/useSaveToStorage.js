@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import useLocalStorage from '@/hooks/useLocalStorage';
 
 const useSaveToStorage = (entity, callbackEntity) => {
-	const { pathname } = useLocation();
+	const { pathname } = useRouter();
 	const { getStoredItem, setItemToStorage } = useLocalStorage();
 
 	useEffect(() => {

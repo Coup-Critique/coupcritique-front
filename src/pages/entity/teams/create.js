@@ -1,21 +1,19 @@
 // modules
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Icon, Loader } from 'semantic-ui-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { redirect } from 'next/navigation';
-// hooks
+// components
 import useFetch from '@/hooks/useFetch';
 import useLocalStorage from '@/hooks/useLocalStorage';
-// components
 import FormTeam from '@/components/forms/FormTeam';
 import PageWrapper from '@/components/PageWrapper';
 import SignPanel from '@/components/SignPanel';
 import GoBackButton from '@/components/GoBackButton';
-// reducers
 import { setTiers } from '@/reducers/tiers';
 import { setTags } from '@/reducers/tags';
+import Page404 from '@/pages/404';
 
 const defaultGoBack = '/entity/teams/';
 const TeamFormPage = ({ result = {}, update = false }) => {
@@ -49,6 +47,9 @@ const TeamFormPage = ({ result = {}, update = false }) => {
 		}
 	}, [resultTags]);
 
+	if (user.loading) {
+		return <Loader active={true} inline="centered" />;
+	}
 	if (
 		update &&
 		result &&
@@ -56,9 +57,8 @@ const TeamFormPage = ({ result = {}, update = false }) => {
 		result.team.user.id !== user.id &&
 		!user.is_modo
 	) {
-		redirect(defaultGoBack);
+		return <Page404 />;
 	}
-
 	return (
 		<PageWrapper
 			title={

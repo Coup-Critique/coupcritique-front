@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { useGetParam } from '@/hooks/useGetParams';
 import { Loader } from 'semantic-ui-react';
 // components

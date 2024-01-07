@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Button, Icon, Loader } from 'semantic-ui-react';
 import { PUT } from '@/constants/methods';
 import useFetch from '@/hooks/useFetch';
@@ -8,7 +8,7 @@ const UserModoButton = ({ user, handleModo, isIcon = false }) => {
 	const [result, load, loading] = useFetch();
 
 	useEffect(() => {
-		if (result?.
+		if (result?.success) {
 			if (handleModo) {
 				handleModo('is_modo', result.is_modo);
 			}

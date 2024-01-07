@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Link from 'next/link';
 import { makeClassName } from '@/functions';
 import { getCookie, setCookie } from '@/functions/cookie';
 import useActions from '@/hooks/useActions';
@@ -68,12 +69,12 @@ const CookieModal = () => {
 							<p className="mb-3 mb-xl-0 text-grey">
 								Bonjour, pour le bon fonctionnement du site et le lecteur
 								youtube nous utilisons des cookies.{' '}
-								<a
+								<Link
 									href="/mentions-legales#privacy-policy"
 									className="half-font-size"
 								>
 									Voir notre politique de confidentialité
-								</a>
+								</Link>
 							</p>
 						</div>
 						<div className="col-xl-6 text-center text-xl-right">
@@ -136,11 +137,11 @@ const CookieModal = () => {
 							consultation sur coupcritique.fr.
 							<br />
 							<br />
-							<a href="/mentions-legales#privacy-policy">
+							<Link href="/mentions-legales#privacy-policy">
 								Consultez nos conditions générales d'utilisation pour en
 								savoir plus sur notre politique de confidentialité et de
 								données personnelles.
-							</a>
+							</Link>
 							<br />
 							En autorisant ces services tiers, vous acceptez le dépôt et la
 							lecture de cookies et l'utilisation de technologies de suivi

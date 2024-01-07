@@ -1,4 +1,4 @@
-import React from 'react';
+
 import ProgressBarStat from '@/components/ProgressBarStat';
 
 const TableStat = ({ pokemon }) => (

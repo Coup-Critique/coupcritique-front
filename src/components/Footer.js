@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import Link from 'next/link';
 import DarkModeToggle from '@/components/fields/DarkModeToggle';
 import MenuNavBar from '@/components/MenuNavBar';

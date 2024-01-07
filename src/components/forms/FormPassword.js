@@ -1,5 +1,5 @@
 // modules
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Button, Message } from 'semantic-ui-react';
 // actions

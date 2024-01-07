@@ -1,18 +1,17 @@
 // modules
-import React, { useState, useEffect } from 'react';
-import useFetch, { FILE_TYPE } from '@/hooks/useFetch';
-
-// components
-import { Button, Form, Message } from 'semantic-ui-react';
-import { POST, PUT } from '@/constants/methods';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addMessage } from '@/reducers/messages';
-import MultiImageField from '@/components/fields/MultiImageField';
+import { Button, Form, Message } from 'semantic-ui-react';
 import Link from 'next/link';
-import Wysiwyg from '@/Wysiwyg';
-import { buildFieldsMessage } from '@/functions';
+// components
+import Wysiwyg from '@/components/Wysiwyg';
+import MultiImageField from '@/components/fields/MultiImageField';
 import TagsField from '@/components/fields/TagsField';
+import useFetch, { FILE_TYPE } from '@/hooks/useFetch';
 import useSaveToStorage from '@/hooks/useSaveToStorage';
+import { POST, PUT } from '@/constants/methods';
+import { addMessage } from '@/reducers/messages';
+import { buildFieldsMessage } from '@/functions';
 
 const FormActuality = ({ handleSubmited, actuality = {}, tags = [] }) => {
 	const dispatch = useDispatch();

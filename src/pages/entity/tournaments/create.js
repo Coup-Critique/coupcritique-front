@@ -1,10 +1,10 @@
 // modules
-import React from 'react';
+
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { redirect } from 'next/navigation';
 import { Loader } from 'semantic-ui-react';
 // components
+import Page404 from '@/pages/404';
 import FormTournament from '@/components/forms/FormTournament';
 import PageWrapper from '@/components/PageWrapper';
 
@@ -18,10 +18,12 @@ const TournamentFormPage = ({ result = {}, update = false }) => {
 		);
 	};
 
-	if (!user.loading && !user.is_modo) {
-		return redirect('/404');
+	if (user.loading) {
+		return <Loader active={true} inline="centered" />;
 	}
-
+	if (!user.id || !user.is_modo) {
+		return <Page404 />;
+	}
 	return (
 		<PageWrapper
 			title={
@@ -32,13 +34,7 @@ const TournamentFormPage = ({ result = {}, update = false }) => {
 			}
 			nofollow
 		>
-			{user.loading ? (
-				<Loader active={true} inline="centered" />
-			) : !user.token ? (
-				redirect('/404')
-			) : (
-				<FormTournament tournament={result.tournament} handleSubmited={goBack} />
-			)}
+			<FormTournament tournament={result.tournament} handleSubmited={goBack} />
 		</PageWrapper>
 	);
 };

@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { Icon } from 'semantic-ui-react';
 import { IMG_VERSION } from '@/constants/img';
 import { makeClassName } from '@/functions';

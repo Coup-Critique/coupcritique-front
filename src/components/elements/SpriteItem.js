@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import Link from 'next/link';
 import { Popup } from 'semantic-ui-react';
 import { IMG_VERSION, SPRITE_ITM } from '@/constants/img';

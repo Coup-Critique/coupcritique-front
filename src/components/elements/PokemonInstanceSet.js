@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button } from 'semantic-ui-react';
 // components

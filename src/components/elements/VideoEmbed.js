@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 
 const VideoEmbed = ({ url, cookie = false }) => {
 	let trueUrl = url;

@@ -1,14 +1,14 @@
 // modules
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { redirect } from 'next/navigation';
 import { Loader } from 'semantic-ui-react';
 // components
 import FormActuality from '@/components/forms/FormActuality';
 import PageWrapper from '@/components/PageWrapper';
 import useFetch from '@/hooks/useFetch';
 import { setActualityTags } from '@/reducers/actuality_tags';
+import Page404 from '@/pages/404';
 
 const ActualityFormPage = ({ result = {}, update = false }) => {
 	const dispatch = useDispatch();
@@ -35,10 +35,12 @@ const ActualityFormPage = ({ result = {}, update = false }) => {
 		}
 	}, [resultTags]);
 
-	if (!user.loading && !user.is_modo) {
-		return redirect('/404');
+	if (user.loading) {
+		return <Loader active={true} inline="centered" />;
 	}
-
+	if (!user.id || !user.is_modo) {
+		return <Page404 />;
+	}
 	return (
 		<PageWrapper
 			title={
@@ -49,17 +51,11 @@ const ActualityFormPage = ({ result = {}, update = false }) => {
 			}
 			nofollow
 		>
-			{user.loading ? (
-				<Loader active={true} inline="centered" />
-			) : !user.token ? (
-				redirect('/404')
-			) : (
-				<FormActuality
-					actuality={result.actuality}
-					tags={actuality_tags}
-					handleSubmited={goBack}
-				/>
-			)}
+			<FormActuality
+				actuality={result.actuality}
+				tags={actuality_tags}
+				handleSubmited={goBack}
+			/>
 		</PageWrapper>
 	);
 };

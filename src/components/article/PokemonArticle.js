@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -26,39 +26,15 @@ import useTableFetch from '@/hooks/useTableFetch';
 import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
 import { formateName, formatFileName, formatNumbers } from '@/functions';
 
-const flatForms = (pokemon, children = null) => {
-	if (!pokemon.forms.length) return [];
-	let forms = pokemon.forms
-		.map(form => (form ? (form.forms.length ? flatForms(form) : form) : children))
-		.flat();
-	forms.unshift(pokemon);
-	return forms;
-};
-
-const makeForms = (pokemon, children = null) => {
-	let forms = flatForms(pokemon, children);
-	if (pokemon.base_form) {
-		forms = makeForms(pokemon.base_form, forms.length ? forms : pokemon);
-	}
-	return forms;
-};
-
-const getMainUsage = result => {
-	if (!result?.usages) return null;
-	const refTier = result.pokemon.tier.parent
-		? result.pokemon.tier.parent
-		: result.pokemon.tier;
-	return result.usages.find(usage => usage.tier.id === refTier.id);
-};
-
-const PokemonArticle = ({ result }) => {
+const PokemonArticle = props => {
 	const router = useRouter();
 	const gen = useSelector(state => state.gen);
 	const [darkMode] = useDarkMode();
-	const [pokemon, setPokemon] = useState((result?.pokemon) || null);
-	const [forms, setForms] = useState(result?.pokemon ? makeForms(result.pokemon) : []);
-	const [usage, setUsage] = useState(getMainUsage(result));
+	const [pokemon, setPokemon] = useState(props.pokemon || null);
+	// prettier-ignore
+	const { usage, usages, availableGens, weaknesses, pokemonSets, forms, mainPokemon } = props;
 
+	// prettier-ignore
 	const {
 		table: teams,
 		setTable: setTeams,
@@ -68,27 +44,17 @@ const PokemonArticle = ({ result }) => {
 		query: teamsQuery,
 		handlePage: handleTeamsPage,
 		handleSort: handleTeamsSort,
-	} = useTableFetch('teams', {
-		loadUrl: result.pokemon
-			? `teams/certified/pokemons/${
-					result.inherit ? result.pokemon.base_form.id : result.pokemon.id
-			  }`
-			: null,
-		saveQueryToStore: false,
-	});
-
-	useEffect(() => {
-		if (result?.pokemon && (!pokemon || result.pokemon.id != pokemon.id)) {
-			setPokemon(result.pokemon);
-			setForms(makeForms(result.pokemon));
-			setUsage(getMainUsage(result));
+	} = useTableFetch(
+		'teams', 
+		{ 
+			loadUrl: pokemon ? `teams/certified/pokemons/${mainPokemon.id}` : null,
+			saveQueryToStore: false,
 		}
-	}, [result.pokemon]);
+	);
 
 	const handleChangeForm = (e, { name: id }) => router.push(`/entity/pokemons/${id}`);
 
 	if (!pokemon || !pokemon.id) return null;
-	const { usages, weaknesses, pokemonSets } = result;
 	const name = pokemon.nom || formateName(pokemon.name);
 	return (
 		<PageWrapper
@@ -105,7 +71,7 @@ const PokemonArticle = ({ result }) => {
 		>
 			<GoBackButton />
 			<GenSelector
-				availableGens={result.availableGens}
+				availableGens={availableGens}
 				redirectOnChange={'/entity/pokemons/'}
 			/>
 			{forms.length > 1 && (
@@ -181,38 +147,6 @@ const PokemonArticle = ({ result }) => {
 							/>
 						</div>
 					)}
-					{/* {!!pokemon.base_form && (
-						<div className="mb-3-not-last">
-							<div className="font-weight-medium">Autres formes&nbsp;:</div>
-							<div className="row mx-0">
-								<div className="col col-sprite">
-									<SpritePokemon pokemon={pokemon.base_form} />
-								</div>
-								{pokemon.base_form.forms.length > 0
-									&& pokemon.base_form.forms.map(form =>
-										form ? (
-											<div key={form.id} className="col col-sprite">
-												<SpritePokemon pokemon={form} />
-											</div>
-										) : null
-									)}
-							</div>
-						</div>
-					)} */}
-					{/* {pokemon.forms.length > 0 && (
-						<div className="mb-3-not-last">
-							<div className="font-weight-medium">Autres formes&nbsp;:</div>
-							<div className="row mx-0">
-								{pokemon.forms.map(form =>
-									form ? (
-										<div key={form.id} className="col col-sprite">
-											<SpritePokemon pokemon={form} />
-										</div>
-									) : null
-								)}
-							</div>
-						</div>
-					)} */}
 					<EvolutionTree pokemon={pokemon} />
 					{!pokemon.preEvo &&
 						pokemon.evolutions.length < 1 &&
@@ -246,10 +180,7 @@ const PokemonArticle = ({ result }) => {
 			</section>
 			<section>
 				<h2>Sets stratégiques de {name}</h2>
-				<PokemonSetManager
-					pokemon={result.inherit ? pokemon.base_form : pokemon}
-					sets={pokemonSets}
-				/>
+				<PokemonSetManager pokemon={mainPokemon} sets={pokemonSets} />
 			</section>
 			<SectionAds />
 			<section id="pagination-scroll-ref">

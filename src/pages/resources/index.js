@@ -1,5 +1,5 @@
 // module
-import React, { useEffect, useState, Fragment } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Loader, Accordion, Label, Segment } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';

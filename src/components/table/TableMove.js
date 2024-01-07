@@ -1,5 +1,5 @@
 // module
-import React from 'react';
+
 import { TableBase, colorOddRows } from '@/components/table/Table';
 import { formateName } from '@/functions';
 import Type from '@/components/elements/Type';

@@ -1,5 +1,5 @@
 // modules
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { Icon } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';
 // custom

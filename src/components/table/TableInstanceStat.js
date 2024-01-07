@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { makeClassName } from '@/functions';
 import ProgressBarStat from '@/components/ProgressBarStat';
 

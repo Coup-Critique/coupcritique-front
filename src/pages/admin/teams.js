@@ -1,7 +1,6 @@
 // modules
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Loader } from 'semantic-ui-react';
 import useActions from '@/hooks/useActions';
 // components
@@ -13,9 +12,11 @@ import TableTeam from '@/components/table/TableTeam';
 import { setTiers as setTiersAction } from '@/reducers/tiers';
 import FormSearch from '@/components/forms/FormSearch';
 import useTableFetch from '@/hooks/useTableFetch';
+import Page404 from '@/pages/404';
 
 const AdminTeams = () => {
 	const dispatch = useDispatch();
+	const user = useSelector(state => state.user);
 	const tiers = useSelector(state => state.tiers);
 	const filterRef = useRef();
 	const searchRef = useRef();
@@ -95,6 +96,12 @@ const AdminTeams = () => {
 		[setCheckedTier, setCheckedGen]
 	);
 
+	if (user.loading) {
+		return <Loader active={true} inline="centered" />;
+	}
+	if (!user.id || !user.is_modo) {
+		return <Page404 />;
+	}
 	return (
 		<PageWrapper title="Équipe" className="team-list" more nofollow>
 			<RadioFilterForm

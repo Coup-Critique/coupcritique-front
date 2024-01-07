@@ -1,5 +1,5 @@
 // module
-import React from 'react';
+
 import { TableBase } from '@/components/table/Table';
 import { Label } from 'semantic-ui-react';
 import Link from 'next/link';

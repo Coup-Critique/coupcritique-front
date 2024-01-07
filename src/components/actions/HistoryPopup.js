@@ -1,5 +1,4 @@
 // modules
-import React from 'react';
 import { Label, Popup } from 'semantic-ui-react';
 
 const HistoryPopup = ({ history }) =>

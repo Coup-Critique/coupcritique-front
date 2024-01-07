@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'next/link';
 import { useGetParam } from '@/hooks/useGetParams';
 import { Button, Loader, Segment } from 'semantic-ui-react';

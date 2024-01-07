@@ -1,5 +1,5 @@
 // module
-import React from 'react';
+
 import { TableBase, colorOddRows } from '@/components/table/Table';
 import Type from '@/components/elements/Type';
 import Tier from '@/components/elements/Tier';

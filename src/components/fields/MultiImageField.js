@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FormField, Icon, Label, Segment } from 'semantic-ui-react';
 import { megaBytesToBits } from '@/functions';
 

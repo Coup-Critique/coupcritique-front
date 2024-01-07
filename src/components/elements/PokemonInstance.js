@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 // components
 import ArtPokemon from '@/components/elements/ArtPokemon';
 import SpriteItem from '@/components/elements/SpriteItem';

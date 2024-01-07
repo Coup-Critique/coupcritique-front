@@ -1,15 +1,18 @@
 // modules
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
-import { objectToGETparams } from '@/functions';
+//
 import useFetch from '@/hooks/useFetch';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import FormSearch from '@/components/forms/FormSearch';
 import PageWrapper from '@/components/PageWrapper';
 import TableUser from '@/components/table/TableUser';
+import Page404 from '@/pages/404';
 // components
 
 const AdminUsers = () => {
+	const user = useSelector(state => state.user);
 	const [result, load, loading] = useFetch();
 	const [table, setTable] = useState([]);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
@@ -32,6 +35,12 @@ const AdminUsers = () => {
 		setQueryParam('search', search);
 	};
 
+	if (user.loading) {
+		return <Loader active={true} inline="centered" />;
+	}
+	if (!user.id || !user.is_modo) {
+		return <Page404 />;
+	}
 	return (
 		<PageWrapper title="Utilisateurs" more nofollow>
 			<div className="list-filter">

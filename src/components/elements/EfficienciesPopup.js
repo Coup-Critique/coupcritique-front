@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Type from '@/components/elements/Type';
 
 const EfficienciesPopup = ({ efficiencies }) => {

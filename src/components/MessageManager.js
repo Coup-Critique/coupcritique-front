@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeMessage } from '@/reducers/messages';
 

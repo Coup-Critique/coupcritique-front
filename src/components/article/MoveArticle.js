@@ -1,44 +1,21 @@
 // modules
-import React, { useEffect, useState } from 'react';
-import { Loader } from 'semantic-ui-react';
+import { useState } from 'react';
 import { formateName } from '@/functions';
 // components
 import GoBackButton from '@/components/GoBackButton';
 import PageWrapper from '@/components/PageWrapper';
-import useFetch from '@/hooks/useFetch';
 import Description from '@/components/elements/Description';
 import Type from '@/components/elements/Type';
 import Category from '@/components/elements/Category';
 import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
 import GenSelector from '@/components/GenSelector';
 import useStoreQuery from '@/hooks/useStoreQuery';
-import { useGetParam } from '@/hooks/useGetParams';
 
 // TODO corriger le problem d'importarion des learns
-const MoveArticle = ({ result }) => {
-	const id = useGetParam('id');
-	const [resultPokemons, load, loading] = useFetch();
-	const [move, setMove] = useState((result?.move) || null);
-	const [pokemons, setPokemons] = useState((result?.pokemons) || []);
+const MoveArticle = props => {
+	const [move, setMove] = useState(props.move || null);
+	const [pokemons, setPokemons] = useState(props.pokemons || []);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery();
-
-	useEffect(() => {
-		if (!result.pokemons) {
-			load({ url: `pokemons/move/${id}` });
-		}
-	}, [id]);
-
-	useEffect(() => {
-		if (result?.success) {
-			setMove(result.move);
-		}
-	}, [result]);
-
-	useEffect(() => {
-		if (resultPokemons && resultPokemons.success) {
-			setPokemons(resultPokemons.pokemons);
-		}
-	}, [resultPokemons]);
 
 	if (!move || !move.id) return null;
 	return (
@@ -50,7 +27,7 @@ const MoveArticle = ({ result }) => {
 		>
 			<GoBackButton />
 			<GenSelector
-				availableGens={result.availableGens}
+				availableGens={props.availableGens}
 				redirectOnChange={'/entity/moves/'}
 			/>
 			<div className="d-flex flex-wrap mb-4 justify-content-center">
@@ -96,19 +73,15 @@ const MoveArticle = ({ result }) => {
 				handleUpdate={setMove}
 			/>
 			<div id="pagination-scroll-ref">
-				{loading ? (
-					<Loader active inline="centered" />
-				) : (
-					pokemons.length > 0 && (
-						<TablePokemonWithUsages
-							pokemons={pokemons}
-							setPokemons={setPokemons}
-							usageKey="usageMove"
-							query={query}
-							updateQuery={updateQuery}
-							setQueryParam={setQueryParam}
-						/>
-					)
+				{pokemons.length > 0 && (
+					<TablePokemonWithUsages
+						pokemons={pokemons}
+						setPokemons={setPokemons}
+						usageKey="usageMove"
+						query={query}
+						updateQuery={updateQuery}
+						setQueryParam={setQueryParam}
+					/>
 				)}
 			</div>
 		</PageWrapper>

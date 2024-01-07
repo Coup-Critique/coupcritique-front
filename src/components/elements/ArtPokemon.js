@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Loader } from 'semantic-ui-react';
 import { DEFAULT_POKEMON_PICTURE } from '@/constants';

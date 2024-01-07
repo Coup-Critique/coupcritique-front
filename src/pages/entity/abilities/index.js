@@ -1,30 +1,19 @@
 // modules
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
-// hooks
 // components
 import PageWrapper from '@/components/PageWrapper';
 import TableAbility from '@/components/table/TableAbility';
 import GenSelector from '@/components/GenSelector';
-import useFetch from '@/hooks/useFetch';
+import { manageFetch } from '@/hooks/useFetch';
+import useFetchListByGen from '@/hooks/useFetchListByGen';
 import useStoreQuery from '@/hooks/useStoreQuery';
 
-const AbilitiesList = () => {
-	const gen = useSelector(state => state.gen);
-	const [result, load, loading] = useFetch();
-	const [abilities, setAbilities] = useState([]);
+const AbilitiesList = props => {
+	const [abilities, setAbilities, loading] = useFetchListByGen(
+		'abilities',
+		props.abilities
+	);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
-
-	useEffect(() => {
-		load({ url: `abilities?gen=${gen}` });
-	}, [gen]);
-
-	useEffect(() => {
-		if (result?.abilities) {
-			setAbilities(result.abilities);
-		}
-	}, [result]);
 
 	return (
 		<PageWrapper
@@ -52,4 +41,16 @@ const AbilitiesList = () => {
 		</PageWrapper>
 	);
 };
+
+export const getStaticProps = async () => {
+	try {
+		const response = await manageFetch(`abilities`);
+		const abilities = response.abilities || [];
+		return { props: { abilities } };
+	} catch (e) {
+		console.error(e);
+		return { props: { abilities: [] } };
+	}
+};
+
 export default AbilitiesList;

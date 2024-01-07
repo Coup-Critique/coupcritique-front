@@ -1,7 +1,6 @@
-import React, { useState,useEffect } from 'react';
+import { useState,useEffect } from 'react';
 import { Loader } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
-import { redirect } from 'next/navigation';
 // 
 import Notification from '@/components/elements/Notification';
 import SectionAds from '@/components/sections/SectionAds';
@@ -10,6 +9,7 @@ import PaginationPrettier from '@/components/PaginationPrettier';
 import usePager from '@/hooks/usePager';
 import useFetch from '@/hooks/useFetch';
 import { setNotifAction } from '@/reducers/notifs';
+import Page404 from './404';
 
 const NotificationList = () => {
 	const dispatch = useDispatch();
@@ -40,8 +40,12 @@ const NotificationList = () => {
 		}
 	}, [resultPast]);
 
-	if (!user.loading && !user.id) {
-		redirect('/404');
+
+	if (user.loading) {
+		return <Loader active={true} inline="centered" />;
+	}
+	if (!user.id) {
+		return <Page404 />;
 	}
 	return (
 		<PageWrapper title="Vos notifications">

@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { Label } from 'semantic-ui-react';
 import Link from 'next/link';
 import { makeClassName } from '@/functions';

@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 
 // export const MAX_STAT = 255; // true max
 export const MAX_STAT = 200; // for design

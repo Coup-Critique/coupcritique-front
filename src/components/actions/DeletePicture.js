@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Button, Icon, Loader } from 'semantic-ui-react';
 import { DELETE } from '@/constants/methods';
 import useFetch from '@/hooks/useFetch';
@@ -8,7 +8,7 @@ const DeletePicture = ({ user, handleDelete, ...props }) => {
 	const [result, load, loading] = useFetch();
 
 	useEffect(() => {
-		if (result?.
+		if (result?.success) {
 			handleDelete('picture', null);
 		}
 	}, [result]);

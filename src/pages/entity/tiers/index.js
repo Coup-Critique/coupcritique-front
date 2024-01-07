@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import { Loader, Card } from 'semantic-ui-react';
@@ -9,6 +9,7 @@ import SectionAds from '@/components/sections/SectionAds';
 import PageWrapper from '@/components/PageWrapper';
 import GenSelector from '@/components/GenSelector';
 import { ART_ITM } from '@/constants/img';
+import useFetch from '@/hooks/useFetch';
 
 const TierList = () => {
 	const gen = useSelector(state => state.gen);

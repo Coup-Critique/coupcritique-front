@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Loader } from 'semantic-ui-react';
 // components
 import PageWrapper from '@/components/PageWrapper';
@@ -13,30 +13,10 @@ import GenSelector from '@/components/GenSelector';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import { useGetParam } from '@/hooks/useGetParams';
 
-const ItemArticle = ({ result }) => {
-	const id = useGetParam('id');
-	const [resultPokemons, load, loading] = useFetch();
-	const [item, setItem] = useState((result?.item) || null);
-	const [pokemons, setPokemons] = useState((result?.pokemons) || []);
+const ItemArticle = props => {
+	const [item, setItem] = useState(props.item || null);
+	const [pokemons, setPokemons] = useState(props.pokemons || []);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery();
-
-	useEffect(() => {
-		if (!result.pokemons) {
-			load({ url: `pokemons/item/${id}` });
-		}
-	}, [id]);
-
-	useEffect(() => {
-		if (result?.success) {
-			setItem(result.item);
-		}
-	}, [result]);
-
-	useEffect(() => {
-		if (resultPokemons && resultPokemons.success) {
-			setPokemons(resultPokemons.pokemons);
-		}
-	}, [resultPokemons]);
 
 	if (!item || !item.id) return null;
 	return (
@@ -50,7 +30,7 @@ const ItemArticle = ({ result }) => {
 			<div className="mb-4">
 				<GoBackButton />
 				<GenSelector
-					availableGens={result.availableGens}
+					availableGens={props.availableGens}
 					redirectOnChange={'/entity/items/'}
 				/>
 				<ArtItem item={item} />
@@ -62,19 +42,15 @@ const ItemArticle = ({ result }) => {
 				handleUpdate={setItem}
 			/>
 			<div id="pagination-scroll-ref">
-				{loading ? (
-					<Loader active inline="centered" />
-				) : (
-					pokemons.length > 0 && (
-						<TablePokemonWithUsages
-							pokemons={pokemons}
-							setPokemons={setPokemons}
-							usageKey="usageItem"
-							query={query}
-							updateQuery={updateQuery}
-							setQueryParam={setQueryParam}
-						/>
-					)
+				{pokemons.length > 0 && (
+					<TablePokemonWithUsages
+						pokemons={pokemons}
+						setPokemons={setPokemons}
+						usageKey="usageItem"
+						query={query}
+						updateQuery={updateQuery}
+						setQueryParam={setQueryParam}
+					/>
 				)}
 			</div>
 		</PageWrapper>

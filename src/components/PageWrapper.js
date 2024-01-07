@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { makeClassName } from '@/functions';
 import MetaData from '@/components/MetaData';
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Icon, TextArea, Popup, Segment, Rail } from 'semantic-ui-react';
 import { copyToClipboard, makeClassName } from '@/functions/index';
 import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';

@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import Link from 'next/link';
 import { ART_ITM, IMG_VERSION } from '@/constants/img';
 import { formatFileName } from '@/functions';

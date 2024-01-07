@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Icon, Loader, Tab } from 'semantic-ui-react';
 // custom

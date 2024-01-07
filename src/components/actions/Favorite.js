@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Icon, Loader } from 'semantic-ui-react';
 // custom
 import useFetch from '@/hooks/useFetch';

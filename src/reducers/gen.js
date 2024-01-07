@@ -1,11 +1,10 @@
-import gens from '@/constants/gens.json';
+import { lastGen } from '@/constants/gens';
 
 export const SET_GEN = 'setGen';
 
 export const setGenAction = gen => ({ type: SET_GEN, gen });
 
-const defaultGen = gens.length && gens[0] ? gens[0].value : 1;
-const genReducer = (state = defaultGen, action) => {
+const genReducer = (state = lastGen, action) => {
 	switch (action.type) {
 		case SET_GEN:
 			return action.gen || state;

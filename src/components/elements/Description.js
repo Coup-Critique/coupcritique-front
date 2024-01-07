@@ -1,5 +1,5 @@
 // modules
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Icon } from 'semantic-ui-react';
 import FormDescription from '@/components/forms/FormDescription';

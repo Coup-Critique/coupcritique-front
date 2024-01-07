@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import useDarkMode from '@/hooks/useDarkMode';
 import useDoubleAdds from '@/hooks/useDoubleAdds';
@@ -57,4 +57,4 @@ const WhiteAdSense = ({ adRef, display }) => (
 	></ins>
 );
 
-export default React.memo(SectionAds, () => true);
+export default memo(SectionAds, () => true);

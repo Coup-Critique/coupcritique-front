@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { makeClassName } from '@/functions';
 import useDoubleAdds from '@/hooks/useDoubleAdds';
@@ -42,4 +42,4 @@ const AdSense = ({ alignRight, alignLeft, adRef, display }) => (
 	></ins>
 );
 
-export default React.memo(SectionAdsHome, () => true);
+export default memo(SectionAdsHome, () => true);

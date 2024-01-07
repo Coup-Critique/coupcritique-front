@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import Link from 'next/link';
 import { IMG_VERSION, SPRITE_PKM } from '@/constants/img';
 import { formatFileName, makeClassName } from '@/functions';

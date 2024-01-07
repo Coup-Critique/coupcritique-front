@@ -1,5 +1,5 @@
 // modules
-import React, { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { useGetParam } from '@/hooks/useGetParams';
 import { Loader } from 'semantic-ui-react';
 // components

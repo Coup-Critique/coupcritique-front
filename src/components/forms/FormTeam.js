@@ -1,5 +1,6 @@
 // modules
 import { useState, useCallback, useEffect, useReducer, useMemo } from 'react';
+import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Form, Button, Message } from 'semantic-ui-react';
 import { Koffing } from 'koffing';
@@ -18,6 +19,7 @@ import formTeamReducer, {
 // hooks
 import useFetch from '@/hooks/useFetch';
 import useActions from '@/hooks/useActions';
+import useSaveToStorage from '@/hooks/useSaveToStorage';
 // functions
 import {
 	buildFieldsMessage,
@@ -27,10 +29,8 @@ import {
 // constants
 import { POST, PUT } from '@/constants/methods';
 import { INSTANCES_KEYS } from '@/constants/team';
-import gens from '@/constants/gens.json';
-import useSaveToStorage from '@/hooks/useSaveToStorage';
-
-const lastGen = gens.length && gens[0] ? gens[0].value : 1;
+import { lastGen } from '@/constants/gens';
+import { removeSsrDataAction } from '@/reducers/ssrData';
 
 export const getDefaultTier = (tiers, gen) => {
 	if (!tiers || !tiers[gen]) return null;
@@ -53,6 +53,7 @@ const initTeam = (defaultValue, tiers) => {
 
 const FormTeam = ({ tiers = {}, tags = [], loadingTiers = false, defaultValue }) => {
 	const router = useRouter();
+	const dispatch = useDispatch();
 	const [resultExport, loadExport, loadingExport] = useFetch();
 	const [resultTeam, loadTeam, loadingTeam] = useFetch();
 	const [team, dispatchTeam] = useReducer(

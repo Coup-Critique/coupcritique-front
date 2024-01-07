@@ -1,5 +1,6 @@
 // modules
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Icon, Loader, Popup, Segment } from 'semantic-ui-react';
 import { DELETE, POST } from '@/constants/methods';
 import { copyToClipboard } from '@/functions';
@@ -9,14 +10,16 @@ import useStoreQuery from '@/hooks/useStoreQuery';
 import MultiImageField from '@/components/fields/MultiImageField';
 import PageWrapper from '@/components/PageWrapper';
 import PaginationPrettier from '@/components/PaginationPrettier';
+import Page404 from '@/pages/404';
 // components
 
 const AdminDrive = () => {
+	const user = useSelector(state => state.user);
 	const [files, setFiles] = useState([]);
-	const [table, page, nbPages, handlePage] = usePager(50, files, query, setQueryParam);
-	const [result, load, loading] = useFetch();
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery();
+	const [result, load, loading] = useFetch();
 	const [resultImages, uploadImages, loadingImages] = useFetch();
+	const [table, page, nbPages, handlePage] = usePager(50, files, query, setQueryParam);
 
 	useEffect(() => {
 		load({ url: 'drive' });
@@ -54,6 +57,12 @@ const AdminDrive = () => {
 		setFiles(newFiles);
 	};
 
+	if (user.loading) {
+		return <Loader active={true} inline="centered" />;
+	}
+	if (!user.id || !user.is_modo) {
+		return <Page404 />;
+	}
 	return (
 		<PageWrapper title="Drive" more nofollow>
 			<MultiImageField

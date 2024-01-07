@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from 'semantic-ui-react';
 import { isToday } from '@/functions';
 import useFetch from '@/hooks/useFetch';
@@ -10,7 +10,7 @@ const TeamTopButton = ({ team /* isIcon = false */ }) => {
 	const [topWeek, setTopWeek] = useState(team.top_week);
 
 	useEffect(() => {
-		if (result?.
+		if (result?.team){
 			setTopWeek(result.team.top_week);
 		}
 	}, [result]);

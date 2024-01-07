@@ -1,5 +1,5 @@
 // module
-import React from 'react';
+
 import { TableBase, colorOddRows } from '@/components/table/Table';
 import SpritePokemon from '@/components/elements/SpritePokemon';
 import Pokemon from '@/components/elements/Pokemon';

@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { useSelector } from 'react-redux';
 import { Icon, Label, FormField, Message } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';

@@ -1,5 +1,5 @@
 // modules
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 //  custom
 import useDarkMode from '@/hooks/useDarkMode';

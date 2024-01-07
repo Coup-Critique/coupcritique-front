@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Divider, Tab } from 'semantic-ui-react';
 // components
 import Move from '@/components/elements/Move';

@@ -1,30 +1,16 @@
 // modules
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
-// hooks
-import useFetch from '@/hooks/useFetch';
 // components
 import PageWrapper from '@/components/PageWrapper';
 import TableMove from '@/components/table/TableMove';
 import GenSelector from '@/components/GenSelector';
 import useStoreQuery from '@/hooks/useStoreQuery';
+import useFetchListByGen from '@/hooks/useFetchListByGen';
+import { manageFetch } from '@/hooks/useFetch';
 
-const MovesList = () => {
-	const gen = useSelector(state => state.gen);
-	const [result, load, loading] = useFetch();
-	const [moves, setMoves] = useState([]);
+const MovesList = props => {
+	const [moves, setMoves, loading] = useFetchListByGen('moves', props.moves);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
-
-	useEffect(() => {
-		load({ url: `moves?gen=${gen}` });
-	}, [gen]);
-
-	useEffect(() => {
-		if (result?.moves) {
-			setMoves(result.moves);
-		}
-	}, [result]);
 
 	return (
 		<PageWrapper
@@ -52,4 +38,16 @@ const MovesList = () => {
 		</PageWrapper>
 	);
 };
+
+export const getStaticProps = async () => {
+	try {
+		const response = await manageFetch(`moves`);
+		const moves = response.moves || [];
+		return { props: { moves } };
+	} catch (e) {
+		console.error(e);
+		return { props: { moves: [] } };
+	}
+};
+
 export default MovesList;

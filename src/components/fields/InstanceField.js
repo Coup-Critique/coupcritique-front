@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { FormTextArea } from 'semantic-ui-react';
 import PokemonInstance from '@/components/elements/PokemonInstance';
 

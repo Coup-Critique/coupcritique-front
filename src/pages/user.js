@@ -1,8 +1,7 @@
 // modules
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Header, Grid, Button, Icon, Loader } from 'semantic-ui-react';
-import { redirect } from 'next/navigation';
 // components
 import FormPassword from '@/components/forms/FormPassword';
 import FormUpdateUser from '@/components/forms/FormUpdateUser';
@@ -15,10 +14,10 @@ import useLogout from '@/hooks/useLogout';
 import { addMessage } from '@/reducers/messages';
 import GoBackButton from '@/components/GoBackButton';
 import useTableFetch from '@/hooks/useTableFetch';
-import { setNotifAction } from '@/reducers/notifs';
 import ModalConfirm from '@/components/modals/ModalConfirm';
 import useNotifChecker from '@/hooks/useNotifChecker';
 import { useGetParam } from '@/hooks/useGetParams';
+import Page404 from '@/pages/404';
 
 // Own User
 const UserFormPage = () => {
@@ -56,7 +55,7 @@ const UserFormPage = () => {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id) {
-		redirect('/');
+		return <Page404 />;
 	}
 	return (
 		<PageWrapper title="Compte utilisateur" nofollow>

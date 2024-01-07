@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { FormField, Label, Dropdown } from 'semantic-ui-react';
 
 // controlled

@@ -1,5 +1,5 @@
 // module
-import React from 'react';
+
 import usePager from '@/hooks/usePager';
 import useTableSorter from '@/hooks/useTableSorter';
 import Ability from '@/components/elements/Ability';

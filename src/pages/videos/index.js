@@ -1,5 +1,5 @@
 // module
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Dropdown, Form, Loader } from 'semantic-ui-react';
 import useFetch from '@/hooks/useFetch';

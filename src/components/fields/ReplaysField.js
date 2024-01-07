@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { Form, Button, Label, Icon } from 'semantic-ui-react';
 // constants
 import { REPLAY_URL } from '@/constants/index';

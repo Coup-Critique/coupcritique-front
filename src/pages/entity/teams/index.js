@@ -1,5 +1,5 @@
 // modules
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { Button, Form, Loader, Segment } from 'semantic-ui-react';

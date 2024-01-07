@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import { Icon, Button, IconGroup } from 'semantic-ui-react';

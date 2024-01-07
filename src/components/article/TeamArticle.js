@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -32,10 +32,10 @@ const TeamArticle = ({ result }) => {
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const user = useSelector(state => state.user);
-	const [team, setTeam] = useState((result?.{});
+	const [team, setTeam] = useState(result?.team || {});
 
 	useEffect(() => {
-		if (result?.{
+		if (result?.success) {
 			setTeam(result.team);
 		}
 	}, [result]);

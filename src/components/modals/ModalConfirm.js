@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 // components
 import { Button, Modal } from 'semantic-ui-react';
 import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';

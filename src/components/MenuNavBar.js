@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { useSelector } from 'react-redux';
 import ActiveLink from '@/components/ActiveLink';
 import { Dropdown, Icon } from 'semantic-ui-react';

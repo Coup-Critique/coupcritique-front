@@ -1,30 +1,18 @@
 // modules
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+
 import { Loader } from 'semantic-ui-react';
 // hooks
-import useFetch from '@/hooks/useFetch';
+import { manageFetch } from '@/hooks/useFetch';
 // components
 import PageWrapper from '@/components/PageWrapper';
 import TableItem from '@/components/table/TableItem';
 import GenSelector from '@/components/GenSelector';
+import useFetchListByGen from '@/hooks/useFetchListByGen';
 import useStoreQuery from '@/hooks/useStoreQuery';
 
-const ItemsList = () => {
-	const gen = useSelector(state => state.gen);
-	const [result, load, loading] = useFetch();
-	const [items, setItems] = useState([]);
+const ItemsList = props => {
+	const [items, setItems, loading] = useFetchListByGen('items', props.items);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
-
-	useEffect(() => {
-		load({ url: `items?gen=${gen}` });
-	}, [gen]);
-
-	useEffect(() => {
-		if (result?.items) {
-			setItems(result.items);
-		}
-	}, [result]);
 
 	return (
 		<PageWrapper
@@ -52,4 +40,16 @@ const ItemsList = () => {
 		</PageWrapper>
 	);
 };
+
+export const getStaticProps = async () => {
+	try {
+		const response = await manageFetch(`items`);
+		const items = response.items || [];
+		return { props: { items } };
+	} catch (e) {
+		console.error(e);
+		return { props: { items: [] } };
+	}
+};
+
 export default ItemsList;

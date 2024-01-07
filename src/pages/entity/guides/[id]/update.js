@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 // components
 import GuideContainer from '@/containers/GuideContainer';
 import GuideFormPage from '@/pages/entity/guides/create';

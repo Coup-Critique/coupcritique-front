@@ -1,5 +1,5 @@
 // module
-import React from 'react';
+
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';

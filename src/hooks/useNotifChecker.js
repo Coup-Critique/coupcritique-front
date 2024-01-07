@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useFetch from './useFetch';
+import { setNotifAction } from '@/reducers/notifs';
 
 const useNotifChecker = (entityName, id) => {
 	const dispatch = useDispatch();

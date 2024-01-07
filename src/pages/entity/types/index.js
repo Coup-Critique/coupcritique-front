@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
 //
@@ -6,6 +6,7 @@ import PageWrapper from '@/components/PageWrapper';
 import SectionAds from '@/components/sections/SectionAds';
 import GenSelector from '@/components/GenSelector';
 import Type from '@/components/elements/Type';
+import useFetch from '@/hooks/useFetch';
 
 const TypeList = () => {
 	const gen = useSelector(state => state.gen);

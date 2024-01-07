@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import { Form, Radio } from 'semantic-ui-react';
 
 const RadioFilterForm = ({ name, label, value, fields, onChange }) => (

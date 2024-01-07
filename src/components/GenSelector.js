@@ -1,9 +1,9 @@
 // modules
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Button, Dropdown, Icon, Label } from 'semantic-ui-react';
-import gens from '@/constants/gens.json';
+import gens from '@/constants/gens';
 import { setGenAction } from '@/reducers/gen';
 
 const genOptions = gens.map(({ value, name }) => ({

@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 import Link from 'next/link';
 import { Card, Button } from 'semantic-ui-react';
 import { formatDate } from '@/functions';

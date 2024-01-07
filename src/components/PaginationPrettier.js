@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Icon, Pagination } from 'semantic-ui-react';
 
 const PaginationPrettier = ({ activePage = 1, ...props }) => (

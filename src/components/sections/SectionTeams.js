@@ -1,12 +1,10 @@
-import React from 'react';
+
 import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
 import ScrollReveal from '@/components/ScrollReveal';
-import gens from '@/constants/gens.json';
+import { lastGen } from '@/constants/gens';
 import { IMG_VERSION } from '@/constants/img';
-
-const defaultGen = gens.length && gens[0] ? gens[0].value : 1;
 
 const SectionTeams = ({ sectionRef }) => {
 	const [darkMode] = useDarkMode();
@@ -69,7 +67,7 @@ const SectionTeams = ({ sectionRef }) => {
 								</div>
 								<div className="picture">
 									<Link
-										href={`/entity/teams?tier=168&gen=${defaultGen}`}
+										href={`/entity/teams?tier=168&gen=${lastGen}`}
 										title="équipes OverUsed"
 									>
 										<ScrollReveal
@@ -85,7 +83,7 @@ const SectionTeams = ({ sectionRef }) => {
 								</div>
 								<div className="picture">
 									<Link
-										href={`/entity/teams?tier=176&gen=${defaultGen}`}
+										href={`/entity/teams?tier=176&gen=${lastGen}`}
 										title="équipes"
 									>
 										<ScrollReveal

@@ -1,5 +1,5 @@
 // modules
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Form, Button, Message } from 'semantic-ui-react';
 // hooks
 import useFetch from '@/hooks/useFetch';

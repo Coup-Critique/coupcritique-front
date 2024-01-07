@@ -1,5 +1,5 @@
 // modules
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Button, Label, Loader } from 'semantic-ui-react';
 import { PUT } from '@/constants/methods';
 import useFetch from '@/hooks/useFetch';
@@ -8,7 +8,7 @@ const UserBanButton = ({ user, isIcon = false, handleBan }) => {
 	const [result, load, loading] = useFetch();
 
 	useEffect(() => {
-		if (result?.
+		if (result?.success) {
 			handleBan('banned', result.banned);
 		}
 	}, [result]);

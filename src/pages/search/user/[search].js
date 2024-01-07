@@ -1,5 +1,5 @@
 // modules
-import React from 'react';
+
 // custom
 import SearchResult from '@/pages/search/[search]';
 

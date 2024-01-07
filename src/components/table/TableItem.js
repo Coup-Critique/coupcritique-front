@@ -1,5 +1,5 @@
 // module
-import React from 'react';
+
 import { TableBase, colorOddRows } from '@/components/table/Table';
 import SpriteItem from '@/components/elements/SpriteItem';
 import Item from '@/components/elements/Item';

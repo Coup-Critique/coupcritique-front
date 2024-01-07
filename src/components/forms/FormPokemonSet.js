@@ -1,19 +1,17 @@
 // modules
-import React, { useState, useEffect, useReducer, useCallback } from 'react';
-import { Form, Button, Message } from 'semantic-ui-react';
-import { Koffing } from 'koffing';
-// hooks
-import useFetch from '@/hooks/useFetch';
-// functions
-import { buildFieldsMessage, parseKoffingInstance } from '@/functions';
-// constants
-import { POST, PUT } from '@/constants/methods';
-import { getDefaultTier } from '@/components/forms/FormTeam';
-import usePrevious from '@/hooks/usePrevious';
-import TiersField from '@/components/fields/TiersField';
+import { useState, useEffect, useReducer, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import { Form, Button, Message } from 'semantic-ui-react';
+import { Koffing } from 'koffing';
+// 
+import TiersField from '@/components/fields/TiersField';
+import usePrevious from '@/hooks/usePrevious';
 import useLocalStorage from '@/hooks/useLocalStorage';
+import useFetch from '@/hooks/useFetch';
+import { buildFieldsMessage, parseKoffingInstance } from '@/functions';
+import { POST, PUT } from '@/constants/methods';
+import { getDefaultTier } from '@/components/forms/FormTeam';
 
 const joinEntities = (list, key) =>
 	list.reduce((str, el) => (str ? `${str} / ${el[key].name}` : el[key].name), '');
@@ -107,7 +105,7 @@ const FormPokemonSet = ({
 	callback,
 	handleCancel,
 }) => {
-	const { pathname } = useLocation();
+	const { pathname } = useRouter();
 	const { getStoredItem, setItemToStorage } = useLocalStorage();
 	const gen = useSelector(state => state.gen);
 	const [resultExport, loadExport, loadingExport] = useFetch();

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Link from 'next/link';
 import useTableSorter from '@/hooks/useTableSorter';
 import { TableBase } from '@/components/table/Table';
