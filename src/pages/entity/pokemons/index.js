@@ -45,7 +45,7 @@ const PokemonList = props => {
 
 export const getStaticProps = async () => {
 	try {
-		const response = await manageFetch(`pokemons`);
+		const response = await manageFetch('pokemons');
 		const pokemons = response.pokemons || [];
 		return { props: { pokemons } };
 	} catch (e) {

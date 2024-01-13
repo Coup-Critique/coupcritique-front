@@ -2,19 +2,23 @@
 
 // components
 import TournamentArticle from '@/components/article/TournamentArticle';
-import TournamentContainer from '@/containers/TournamentContainer';
+import { manageFetch } from '@/hooks/useFetch';
 import useNotifChecker from '@/hooks/useNotifChecker';
-import { useGetParam } from '@/hooks/useGetParams';
 
-const TournamentPage = ({ id }) => {
-	useNotifChecker('tournament', id);
-	return <TournamentContainer Component={TournamentArticle} />;
+const TournamentPage = ({ tournament }) => {
+	useNotifChecker('tournament', tournament.id);
+	return <TournamentArticle tournament={tournament} />;
 };
 
 export async function getServerSideProps({ query }) {
 	const { id } = query;
-
-	return { props: { id } };
+	try {
+		const { tournament } = await manageFetch(`tournaments/${id}`);
+		return { props: { tournament } };
+	} catch (e) {
+		console.error(e);
+		return { props: { item: null } };
+	}
 }
 
 export default TournamentPage;

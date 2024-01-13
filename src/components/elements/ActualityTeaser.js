@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { Card, Button } from 'semantic-ui-react';
-import { formatDate } from '@/functions';
 import ScrollReveal from '@/components/ScrollReveal';
 import Tag from '@/components/elements/Tag';
 import Author from '@/components/elements/Author';
@@ -10,10 +9,7 @@ import Author from '@/components/elements/Author';
 const ActualityTeaser = ({ actuality, TitleAs = 'h3', btnProps = {} }) => (
 	<ScrollReveal className="ui card actuality-teaser" animation="zoomIn" earlier>
 		<Card.Content>
-			<TitleAs className="text-center">
-				<Link href={`/entity/actualities/${actuality.id}`}>{actuality.title}</Link>
-			</TitleAs>
-			<div className="image mb-3">
+			<div className="image mb-4">
 				<Link href={`/entity/actualities/${actuality.id}`}>
 					<img
 						className="img-fluid d-block"
@@ -34,8 +30,13 @@ const ActualityTeaser = ({ actuality, TitleAs = 'h3', btnProps = {} }) => (
 					</span>
 				</Link>
 			</div>
+			<TitleAs>
+				<Link href={`/entity/actualities/${actuality.id}`}>
+					{actuality.title}
+				</Link>
+			</TitleAs>
 			{actuality.tags.length > 0 && (
-				<div className="mb-2 text-center">
+				<div className="mb-2">
 					{actuality.tags.map((tag, i) => (
 						<Tag key={i} tag={tag} />
 					))}
@@ -47,14 +48,13 @@ const ActualityTeaser = ({ actuality, TitleAs = 'h3', btnProps = {} }) => (
 			)}
 		</Card.Content>
 		<Card.Content>
-			<Button
-				color="red"
+			<Link
+				className="underline"
 				{...btnProps}
-				as={Link}
 				href={`/entity/actualities/${actuality.id}`}
 			>
 				Lire la suite
-			</Button>
+			</Link>
 		</Card.Content>
 	</ScrollReveal>
 );

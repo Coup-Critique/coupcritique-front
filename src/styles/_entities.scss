@@ -50,6 +50,7 @@ a.type {
 	// }
 
 	a {
+
 		&:hover,
 		&:focus,
 		&:active {
@@ -82,7 +83,7 @@ a.type {
 
 .ui.label.team-tag,
 .ui.label.tier,
-.tier > .ui.label {
+.tier>.ui.label {
 	vertical-align: middle;
 	padding-top: 0.633em;
 	white-space: nowrap;
@@ -452,7 +453,7 @@ th.table-team-instance {
 			font-size: rem(150px);
 		}
 
-		> a {
+		>a {
 			font-size: 1.15em;
 			display: block;
 			margin-top: 0.5em;
@@ -467,7 +468,7 @@ th.table-team-instance {
 	margin-right: -1em;
 	margin-left: -1em;
 
-	> .ui.card.tier-art {
+	>.ui.card.tier-art {
 		margin: 0 0.5em 1em;
 	}
 }
@@ -475,7 +476,7 @@ th.table-team-instance {
 .ui.card.tier-art {
 	max-width: rem(200px);
 
-	> .image {
+	>.image {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -510,7 +511,7 @@ th.table-team-instance {
 			transition: all 0.3s;
 		}
 
-		> a {
+		>a {
 			transition: color 0s;
 			color: $body-color;
 			display: flex;
@@ -542,7 +543,7 @@ th.table-team-instance {
 				transform: translateY(0);
 			}
 
-			> a {
+			>a {
 				color: white;
 			}
 		}
@@ -577,7 +578,7 @@ th.table-team-instance {
 	}
 }
 
-.team-list .list-filter + div > .pagination-wrapper {
+.team-list .list-filter+div>.pagination-wrapper {
 	padding-top: 0;
 }
 
@@ -593,7 +594,7 @@ th.table-team-instance {
 	flex-wrap: wrap;
 	margin-right: -1em;
 
-	> .ui.segment {
+	>.ui.segment {
 		flex-grow: 1;
 		margin-top: 0;
 		margin-right: 1em;
@@ -614,11 +615,11 @@ th.table-team-instance {
 
 		padding-bottom: 0.5em;
 
-		> .ui.accordion:first-child .title {
+		>.ui.accordion:first-child .title {
 			padding-top: 0;
 		}
 
-		> .ui.label.gen {
+		>.ui.label.gen {
 			font-size: 1.1em;
 			width: 100%;
 			flex-grow: 1;
@@ -672,7 +673,7 @@ ul.resources {
 	flex-wrap: wrap;
 	padding-left: 0;
 
-	> li.resource {
+	>li.resource {
 		margin-right: 3rem;
 		margin-bottom: 1rem;
 	}
@@ -681,7 +682,7 @@ ul.resources {
 li.resource {
 	padding: 0.5em 0;
 
-	> img {
+	>img {
 		vertical-align: middle;
 		margin-right: 0.75em;
 	}
@@ -773,7 +774,7 @@ a.date:focus {
 }
 
 .ui.card.actuality-teaser {
-	padding: 1rem 2rem;
+	padding: 0 2rem 1.5rem;
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
@@ -782,25 +783,26 @@ a.date:focus {
 	border-radius: 3px;
 	background-color: $light-grey;
 	color: #212529;
-	text-align: center;
+	text-align: left;
 
-	> .content {
+	>.content {
 		border-top: 0;
+		padding: 0;
 	}
 
-	> .content:first-child {
+	>.content:first-child {
 		flex-grow: 1;
 	}
 
-	> .content:last-child {
+	>.content:last-child {
 		flex-grow: 0;
-		text-align: center;
+		text-align: left;
 		padding-top: 0;
 	}
 
 	h3 {
 		font-weight: bold;
-		margin-bottom: 1.5rem;
+		margin-bottom: 1.4rem;
 	}
 
 	.image {
@@ -808,22 +810,29 @@ a.date:focus {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		position: relative;
+		overflow: hidden;
+		margin: 0 -2rem;
 	}
 
 	.image img {
-		max-height: rem(250px);
 		height: auto;
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
 	}
 
 	.date {
 		font-size: 0.85rem;
 		font-style: italic;
-		text-align: right;
 		color: $grey;
 	}
 
-	.short-description {
+	.content .short-description {
 		text-align: left;
+		margin-bottom: 1rem;
 	}
 
 	.actuality-link {
@@ -911,6 +920,7 @@ a.date:focus {
 }
 
 @media (max-width: $l) {
+
 	.sprite img,
 	img.sprite {
 		max-width: 2.5rem;
@@ -986,7 +996,7 @@ a.date:focus {
 }
 
 @media (min-width: 1400px) {
-	.actuality-list > .container {
+	.actuality-list>.container {
 		max-width: 1400px;
 	}
 }

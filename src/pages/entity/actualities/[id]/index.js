@@ -2,19 +2,23 @@
 
 // components
 import ActualityArticle from '@/components/article/ActualityArticle';
-import ActualityContainer from '@/containers/ActualityContainer';
+import { manageFetch } from '@/hooks/useFetch';
 import useNotifChecker from '@/hooks/useNotifChecker';
-import { useGetParam } from '@/hooks/useGetParams';
 
-const ActualityPage = ({ id }) => {
-	useNotifChecker('actuality', id);
-	return <ActualityContainer Component={ActualityArticle} />;
+const ActualityPage = ({ actuality }) => {
+	useNotifChecker('actuality', actuality.id);
+	return <ActualityArticle actuality={actuality} />;
 };
 
 export async function getServerSideProps({ query }) {
 	const { id } = query;
-
-	return { props: { id } };
+	try {
+		const { actuality } = await manageFetch(`actualities/${id}`);
+		return { props: { actuality } };
+	} catch (e) {
+		console.error(e);
+		return { props: { item: null } };
+	}
 }
 
 export default ActualityPage;

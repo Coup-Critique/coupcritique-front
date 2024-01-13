@@ -31,7 +31,7 @@ export const setLoadingUser = loading => ({
 	loading,
 });
 
-const reducer = (state = { loading: false }, action) => {
+const reducer = (state = { loading: true }, action) => {
 	let nextState;
 
 	switch (action.type) {

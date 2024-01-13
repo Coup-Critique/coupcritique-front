@@ -18,21 +18,14 @@ import { DELETE } from '@/constants/methods';
 import { addMessage } from '@/reducers/messages';
 
 const defaultGoBack = '/entity/actualities/';
-const ActualityArticle = ({ result }) => {
+const ActualityArticle = ({ actuality }) => {
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
-	const [actuality, setActuality] = useState((result?.actuality) || null);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
 
 	useEffect(() => {
-		if (result?.success) {
-			setActuality(result.actuality);
-		}
-	}, [result]);
-
-	useEffect(() => {
-		if (result.pokemon && result.pokemon.id) {
+		if (resultDelete.success) {
 			dispatch(addMessage(resultDelete.message, true));
 			router.replace(defaultGoBack);
 		}

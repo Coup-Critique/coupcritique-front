@@ -24,10 +24,8 @@ export async function getStaticPaths() {
 export const getStaticProps = async ({ params }) => {
 	const { id } = params;
 	try {
-		const response = await manageFetch(`items/${id}`);
-		const { item, availableGens } = response;
-		const response2 = await manageFetch(`pokemons/item/${id}`);
-		const { pokemons } = response2;
+		const { item, availableGens } = await manageFetch(`items/${id}`);
+		const { pokemons } = await manageFetch(`pokemons/item/${id}`);
 		return { props: { item, pokemons, availableGens } };
 	} catch (e) {
 		console.error(e);

@@ -12,35 +12,18 @@ import GenSelector from '@/components/GenSelector';
 import GoBackButton from '@/components/GoBackButton';
 import useStoreQuery from '@/hooks/useStoreQuery';
 
-const TierArticle = ({ result }) => {
-	const [tier, setTier] = useState();
-	const [pokemons, setPokemons] = useState([]);
-	const [pokemonsTechnically, setPokemonsTechnically] = useState([]);
-	const [pokemonsBl, setPokemonsBl] = useState([]);
-	const [usages, setUsages] = useState([]);
-	const [usagesTechnically, setUsagesTechnically] = useState([]);
+const TierArticle = props => {
+	const [tier, setTier] = useState(props.tier);
+	const [pokemons, setPokemons] = useState(props.pokemons || []);
+	const [pokemonsTechnically, setPokemonsTechnically] = useState(
+		props.pokemonsTechnically || []
+	);
+	const [pokemonsBl, setPokemonsBl] = useState(props.pokemonsBl || []);
+	const [usages, setUsages] = useState(props.usages || []);
+	const [usagesTechnically, setUsagesTechnically] = useState(
+		props.usagesTechnically || []
+	);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
-
-	useEffect(() => {
-		if (result?.tier && result.tier.id) {
-			setTier(result.tier);
-			if (result.pokemons) {
-				setPokemons(result.pokemons);
-			}
-			if (result.pokemonsTechnically) {
-				setPokemonsTechnically(result.pokemonsTechnically);
-			}
-			if (result.pokemonsBl) {
-				setPokemonsBl(result.pokemonsBl);
-			}
-			if (result.usages) {
-				setUsages(result.usages);
-			}
-			if (result.usagesTechnically) {
-				setUsagesTechnically(result.usagesTechnically);
-			}
-		}
-	}, [result]);
 
 	if (!tier) return null;
 	return (
@@ -53,7 +36,7 @@ const TierArticle = ({ result }) => {
 		>
 			<GoBackButton defaultUrl={'/entity/tiers/'} />
 			<GenSelector
-				availableGens={result.availableGens}
+				availableGens={props.availableGens}
 				redirectOnChange={'/entity/tiers/'}
 			/>
 			<Description

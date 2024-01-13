@@ -5,116 +5,45 @@ import { useGetParam } from '@/hooks/useGetParams';
 import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
 // hooks
-import useFetch from '@/hooks/useFetch';
+import useFetch, { manageFetch } from '@/hooks/useFetch';
 // functions
 import { formateName } from '@/functions';
 // components
 import PageWrapper from '@/components/PageWrapper';
 import GenSelector from '@/components/GenSelector';
 import useStoreQuery from '@/hooks/useStoreQuery';
-import { setSsrDataAction } from '@/reducers/ssrData';
-import { setGenAction } from '@/reducers/gen';
 import GoBackButton from '@/components/GoBackButton';
 import SectionAds from '@/components/sections/SectionAds';
 import TableMoveUsage from '@/components/table/TableMoveUsage';
+import gens from '@/constants/gens';
 
-const MovePool = () => {
-	const dispatch = useDispatch();
-	const router = useRouter();
-	const id = useGetParam('id');
-	// const user = useSelector(state => state.user);
-	const ssrData = useSelector(state => state.ssrData);
-	const gen = useSelector(state => state.gen);
-	const [resultPokemon, loadPokemon, loadingPokemon] = useFetch();
-	const [result, load, loading] = useFetch();
-	const [pokemon, setPokemon] = useState();
-	const [table, setTable] = useState([]);
+const MovePool = ({ pokemon, moves, availableGens }) => {
+	const [table, setTable] = useState(moves);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
-	const ssrEntity = ssrData?.pokemon;
 
-	useEffect(() => {
-		// Void ssr on pokemon change
-		if (ssrEntity) {
-			if (ssrEntity.id != id) {
-				dispatch(setSsrDataAction(null));
-			} else if (ssrEntity.gen != gen) {
-				dispatch(setGenAction(ssrEntity.gen));
-			}
-		}
-	}, [id]);
-
-	useEffect(() => {
-		if (isNaN(id)) return router.push('/404');
-		// gen comes from id
-		// if (!user.loading) {
-		if (ssrEntity && ssrEntity.id == id) {
-			setPokemon(ssrEntity);
-		} else {
-			loadPokemon({ url: `pokemons/${id}` });
-		}
-		// }
-	}, [id /* , user.loading, user.id */]);
-
-	useEffect(() => {
-		// if (!user.loading) {
-		load({ url: `moves/pokemon/${id}` });
-		// }
-	}, [id, gen /* , user, user.loading */]);
-
-	useEffect(() => {
-		if (resultPokemon) {
-			if (resultPokemon.success) {
-				setPokemon(resultPokemon.pokemon);
-				if (resultPokemon.gen != gen) {
-					dispatch(setGenAction(resultPokemon.gen));
-				}
-			} else if (resultPokemon.message === 'Mauvais identifiant') {
-				router.push('/404');
-			}
-		}
-	}, [resultPokemon]);
-
-	useEffect(() => {
-		if (result?.moves) {
-			setTable(result.moves);
-		}
-	}, [result]);
-
+	const pokemonName = pokemon.nom || formateName(pokemon.name);
 	return (
 		<PageWrapper
 			title={
 				<>
 					<span>Liste des capacités de </span>
-					{pokemon ? (
-						<span>{pokemon.nom || formateName(pokemon.name)}</span>
-					) : (
-						loadingPokemon && (
-							<span style={{ fontSize: '1rem', verticalAlign: 'middle' }}>
-								<Loader active size="small" inline inverted />
-							</span>
-						)
-					)}
+					{pokemon ? <span>{pokemonName}</span> : null}
 				</>
 			}
-			metatitle={
-				`Liste des capacités de ` +
-				(pokemon ? pokemon.nom || formateName(pokemon.name) : '')
-			}
+			metatitle={`Liste des capacités de ` + (pokemon ? pokemonName : '')}
 			metadescription={`Accédez la liste des des capacités de ${
-				pokemon ? pokemon.nom || formateName(pokemon.name) : ''
+				pokemon ? pokemonName : ''
 			} avec leur taux d'utilisation. Retrouvez rapidement les données des capacités.`}
 			more
 		>
-			<GoBackButton defaultUrl={`/entity/pokemon/${id}`} />
+			<GoBackButton defaultUrl={`/entity/pokemon/${pokemon.id}`} />
 			<GenSelector
-				availableGens={resultPokemon?.availableGens}
+				availableGens={availableGens}
 				redirectOnChange={`/entity/moves/pokemon/`}
 			/>
 			<SectionAds className="mt-4" />
 			<div id="pagination-scroll-ref">
-				{loading || loadingPokemon ? (
-					<Loader active inline="centered" />
-				) : table.length ? (
+				{table.length ? (
 					<TableMoveUsage
 						tier={pokemon?.tier}
 						moves={table}
@@ -137,4 +66,32 @@ const MovePool = () => {
 		</PageWrapper>
 	);
 };
+
+export async function getStaticPaths() {
+	try {
+		const paths = await Promise.all(
+			gens.map(async gen => {
+				const response = await manageFetch(`pokemons?gen=${gen}`);
+				return response.pokemons.map(({ id }) => ({ params: { id } }));
+			})
+		).flat();
+
+		return { paths, fallback: false };
+	} catch {
+		return { paths: [], fallback: true };
+	}
+}
+
+export const getStaticProps = async ({ params }) => {
+	const { id } = params;
+	try {
+		const { moves } = await manageFetch(`moves/pokemon/${id}`);
+		const { pokemon, availableGens } = await manageFetch(`pokemons/${id}`);
+		return { props: { moves, pokemon, availableGens } };
+	} catch (e) {
+		console.error(e);
+		return { props: { pokemon: null } };
+	}
+};
+
 export default MovePool;
