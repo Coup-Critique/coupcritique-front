@@ -4,6 +4,7 @@ import Link from 'next/link';
 import PokemonInstanceTeaser from '@/components/elements/PokemonInstanceTeaser';
 import Tier from '@/components/elements/Tier';
 import { INSTANCES_KEYS } from '@/constants/team';
+import Image from 'next/image';
 
 const SectionWeeklyTeam = ({ team }) => (
 	<section className="section-weekly-team">
@@ -52,7 +53,7 @@ const SectionWeeklyTeam = ({ team }) => (
 						href={`/entity/teams/${team.id}`}
 						className="btn btn-red team-button btn-icon"
 					>
-						<img
+						<Image
 							// src={`/images/picto/pokeball-mini-${
 							// 	darkMode ? 'white' : 'black'
 							// }.png`}
@@ -65,7 +66,7 @@ const SectionWeeklyTeam = ({ team }) => (
 					</Link>
 				)}
 				<Link href="/entity/teams?certified=1" className="btn btn-red btn-icon">
-					<img
+					<Image
 						// src={`/images/picto/star-${darkMode ? 'white' : 'black'}.png`}
 						src={`/images/picto/star-white.png`}
 						alt="étoile"

@@ -41,7 +41,7 @@ export const makeForms = (pokemon, children = null) => {
 export const getMainUsage = (pokemon, usages) => {
 	if (!usages) return null;
 	const refTier = pokemon.tier.parent ? pokemon.tier.parent : pokemon.tier;
-	return usages.find(usage => usage.tier.id === refTier.id);
+	return usages.find(usage => usage.tier.id === refTier.id) || null;
 };
 
 export const getStaticProps = async ({ params }) => {

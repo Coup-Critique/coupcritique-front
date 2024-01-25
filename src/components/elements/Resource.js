@@ -4,6 +4,7 @@ import { Icon } from 'semantic-ui-react';
 import DeleteAction from '@/components/actions/DeleteAction';
 import FormResource from '@/components/forms/FormResource';
 import Tier from '@/components/elements/Tier';
+import Image from 'next/image';
 
 const Resource = ({
 	resource,
@@ -37,9 +38,12 @@ const Resource = ({
 			{!fromTier && resource.tier ? (
 				<Tier tier={resource.tier} displayGen={false} className="mr-2" />
 			) : (
-				<img src="/images/picto/pokeball-red.png" alt="puce pokéball"
-				width={25}
-				height={26} />
+				<Image
+					src="/images/picto/pokeball-red.png"
+					alt="puce pokéball"
+					width={25}
+					height={26}
+				/>
 			)}
 			<a href={resource.url} target="_blank" rel="noreferrer nofollow">
 				{resource.title}

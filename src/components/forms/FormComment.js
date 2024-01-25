@@ -68,9 +68,7 @@ const FormComment = ({
 	return (
 		<SemanticComment>
 			<div className="d-flex">
-				<Profile className="avatar" user={user} hideName 
-							width={65}
-							height={65}/>
+				<Profile className="avatar" user={user} hideName width={65} height={65} />
 				<SemanticComment.Content className="flex-grow-1">
 					<SemanticComment.Author as="span">
 						{user.username}

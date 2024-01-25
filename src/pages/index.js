@@ -13,6 +13,7 @@ import SectionTeams from '@/components/sections/SectionTeams';
 import SectionTopUsages from '@/components/sections/SectionTopUsages';
 import SectionWeeklyTeam from '@/components/sections/SectionWeeklyTeam';
 import { manageFetch } from '@/hooks/useFetch';
+import Image from 'next/image';
 
 // use default meta tags
 const Home = props => {
@@ -57,7 +58,7 @@ const Home = props => {
 						</div>
 						<div className="col-12 col-xl-6 image-col">
 							<ScrollReveal
-								Tag="img"
+								Tag={Image}
 								className="img-fluid"
 								animation="zoomIn"
 								src="/images/keldeo-landorus.png"

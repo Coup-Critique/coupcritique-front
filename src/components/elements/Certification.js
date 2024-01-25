@@ -3,6 +3,7 @@
 import { Icon } from 'semantic-ui-react';
 import { IMG_VERSION } from '@/constants/img';
 import { makeClassName } from '@/functions';
+import Image from 'next/image';
 
 const Certification = ({ team = {}, userId, className, big = false }) => {
 	if (team.banned) {
@@ -17,7 +18,7 @@ const Certification = ({ team = {}, userId, className, big = false }) => {
 	}
 	if (team.certified) {
 		return (
-			<img
+			<Image
 				className={makeClassName('picto certification', className)}
 				src={`/images/picto/certified.svg?ver=${IMG_VERSION}`}
 				alt="certifiée"

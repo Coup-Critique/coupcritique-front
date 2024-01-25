@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Popup } from 'semantic-ui-react';
 import { IMG_VERSION, SPRITE_ITM } from '@/constants/img';
 import { formatFileName } from '@/functions';
+import Image from 'next/image';
 
 const SpriteItem = ({ item, noPopup = false }) =>
 	noPopup || !item.description ? (
@@ -33,7 +34,7 @@ const SpriteItem = ({ item, noPopup = false }) =>
 
 const InnerImg = ({ item }) => (
 	<>
-		<img
+		<Image
 			src={`/images/items/sprites/${formatFileName(
 				item.name
 			)}.png?ver=${IMG_VERSION}`}

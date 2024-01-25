@@ -2,17 +2,23 @@
 
 // components
 import TierArticle from '@/components/article/TierArticle';
-import TierContainer from '@/containers/TierContainer';
+import gens from '@/constants/gens';
 import { manageFetch } from '@/hooks/useFetch';
+import { Loader } from 'semantic-ui-react';
 
-const TierPage = () => <TierContainer Component={TierArticle} />;
+const TierPage = props =>
+	props.tier ? <TierArticle {...props} /> : <Loader active inline="centered" />;
 
 export async function getStaticPaths() {
 	try {
-		const response = await manageFetch(`tiers`);
-		if (!response.tiers) return { paths: [], fallback: true };
-
-		const paths = response.tiers.map(({ id }) => ({ params: { id } }));
+		const paths = await Promise.all(
+			gens.map(async gen => {
+				const response = await manageFetch(`tiers?gen=${gen}`);
+				return response.tiers.map(({ id }) => ({
+					params: { id: id.toString() },
+				}));
+			})
+		).flat();
 		return { paths, fallback: false };
 	} catch {
 		return { paths: [], fallback: true };
@@ -23,24 +29,15 @@ export const getStaticProps = async ({ params }) => {
 	const { id } = params;
 	try {
 		const response = await manageFetch(`tiers/${id}`);
-		const {
-			tier,
-			usages,
-			usagesTechnically,
-			pokemons,
-			pokemonsTechnically,
-			pokemonsBl,
-			availableGens,
-		} = response;
 		return {
 			props: {
-				tier,
-				usages,
-				usagesTechnically,
-				pokemons,
-				pokemonsTechnically,
-				pokemonsBl,
-				availableGens,
+				tier: response.tier,
+				usages: response.usages || null,
+				usagesTechnically: response.usagesTechnically || null,
+				pokemons: response.pokemons || null,
+				pokemonsTechnically: response.pokemonsTechnically || null,
+				pokemonsBl: response.pokemonsBl || null,
+				availableGens: response.availableGens || null,
 			},
 		};
 	} catch (e) {

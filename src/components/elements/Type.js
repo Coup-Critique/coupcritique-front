@@ -3,10 +3,11 @@
 import Link from 'next/link';
 import { IMG_VERSION } from '@/constants/img';
 import { formatFileName, makeClassName } from '@/functions';
+import Image from 'next/image';
 
 const Type = ({ type, className }) => (
 	<Link href={`/entity/types/${type.id}`} className={makeClassName('type', className)}>
-		<img
+		<Image
 			src={`/images/types/${formatFileName(type.name)}.png?ver=${IMG_VERSION}`}
 			onError={e => {
 				e.target.onerror = null;
