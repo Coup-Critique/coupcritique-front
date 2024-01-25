@@ -7,12 +7,12 @@ import useGetEntity from '@/hooks/useGetEntity';
 
 const UserContainer = ({ Component, ...props }) => {
 	const id = useGetParam('id');
-	const [result, loading] = useGetEntity(id, 'user', 'users');
+	const [user, loading] = useGetEntity(id, 'user', 'users', props.user);
 
 	if (loading) {
 		return <Loader active inline="centered" />;
-	} else if (result) {
-		return <Component result={result} {...props} />;
+	} else if (user) {
+		return <Component user={user} {...props} />;
 	} else {
 		return null;
 	}

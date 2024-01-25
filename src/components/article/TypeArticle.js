@@ -19,12 +19,10 @@ import EfficienciesPopup from '@/components/elements/EfficienciesPopup';
 const TypeArticle = ({ result }) => {
 	const id = useGetParam('id');
 	const [resultPokemons, load, loading] = useFetch();
-	const [type, setType] = useState((result?.type) || null);
-	const [weaknesses, setWeaknesses] = useState((result?.weaknesses) || null);
-	const [efficiencies, setEfficiencies] = useState(
-		(result?.efficiencies) || null
-	);
-	const [pokemons, setPokemons] = useState((result?.pokemons) || []);
+	const [type, setType] = useState(result?.type || null);
+	const [weaknesses, setWeaknesses] = useState(result?.weaknesses || null);
+	const [efficiencies, setEfficiencies] = useState(result?.efficiencies || null);
+	const [pokemons, setPokemons] = useState(result?.pokemons || []);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
 
 	useEffect(() => {
@@ -42,7 +40,7 @@ const TypeArticle = ({ result }) => {
 	}, [result]);
 
 	useEffect(() => {
-		if (resultPokemons && resultPokemons.success) {
+		if (resultPokemons?.success) {
 			setPokemons(resultPokemons.pokemons);
 		}
 	}, [resultPokemons]);

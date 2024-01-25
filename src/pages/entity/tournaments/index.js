@@ -5,19 +5,18 @@ import Link from 'next/link';
 import { Button, Loader } from 'semantic-ui-react';
 // components
 import useDarkMode from '@/hooks/useDarkMode';
-import useFetch from '@/hooks/useFetch';
+import useFetch, { manageFetch } from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
 import TournamentTeaser from '@/components/elements/TournamentTeaser';
 import PageWrapper from '@/components/PageWrapper';
 import PaginationPrettier from '@/components/PaginationPrettier';
 import SectionAds from '@/components/sections/SectionAds';
 
-const TournamentList = () => {
+const TournamentList = props => {
 	const user = useSelector(state => state.user);
-	const ssrData = useSelector(state => state.ssrData);
 	const [darkMode] = useDarkMode();
 	const [result, load, loading] = useFetch();
-	const [tournaments, setTournaments] = useState(ssrData?.tournaments || []);
+	const [tournaments, setTournaments] = useState(props.tournaments || []);
 	const [table, page, nbPages, handlePage] = usePager(12, tournaments);
 
 	useEffect(() => {
@@ -89,5 +88,15 @@ const TournamentList = () => {
 		</PageWrapper>
 	);
 };
+
+export async function getServerSideProps() {
+	try {
+		const { tournaments } = await manageFetch(`tournaments`);
+		return { props: { tournaments } };
+	} catch (e) {
+		console.error(e);
+		return { props: { tournaments: null } };
+	}
+}
 
 export default TournamentList;

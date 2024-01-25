@@ -31,10 +31,8 @@ const PokemonInstanceSet = ({ pokemonSet, tiers, handleUpdate, handleRemove, gen
 	}, [pokemonSet]);
 
 	useEffect(() => {
-		if (resultDelete) {
-			if (resultDelete.success) {
-				handleRemove();
-			}
+		if (resultDelete?.success) {
+			handleRemove();
 		}
 	}, [resultDelete]);
 
@@ -198,8 +196,8 @@ const PokemonInstanceSet = ({ pokemonSet, tiers, handleUpdate, handleRemove, gen
 														<span key={i}>
 															<Slash i={i} />{' '}
 															<span>
-																{nature.nom
-																	|| nature.name}{' '}
+																{nature.nom ||
+																	nature.name}{' '}
 																{natureStat(nature)}
 															</span>
 														</span>

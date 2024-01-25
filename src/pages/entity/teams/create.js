@@ -5,7 +5,7 @@ import { Icon, Loader } from 'semantic-ui-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 // components
-import useFetch from '@/hooks/useFetch';
+import { manageFetch } from '@/hooks/useFetch';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import FormTeam from '@/components/forms/FormTeam';
 import PageWrapper from '@/components/PageWrapper';
@@ -16,54 +16,35 @@ import { setTags } from '@/reducers/tags';
 import Page404 from '@/pages/404';
 
 const defaultGoBack = '/entity/teams/';
-const TeamFormPage = ({ result = {}, update = false }) => {
+const TeamFormPage = props => {
 	const dispatch = useDispatch();
 	const { pathname } = useRouter();
 	const { setItemToStorage } = useLocalStorage();
 	const user = useSelector(state => state.user);
-	const tiers = useSelector(state => state.tiers);
-	const tags = useSelector(state => state.tags);
-	const [resultTiers, loadTiers, loadingTiers] = useFetch();
-	const [resultTags, loadTags, loadingTags] = useFetch();
+	const tiers = useSelector(state => state.tiers || props.tiers);
+	const tags = useSelector(state => state.tags || props.tags);
+	const { team, update = false } = props;
 
 	useEffect(() => {
 		if (!Object.keys(tiers).length) {
-			loadTiers({ url: 'tiers-select' });
+			dispatch(setTiers(props.tiers));
 		}
 		if (!tags.length) {
-			loadTags({ url: 'tags' });
+			dispatch(setTags(props.tags));
 		}
 	}, []);
-
-	useEffect(() => {
-		if (resultTiers && resultTiers.success) {
-			dispatch(setTiers(resultTiers.tiers));
-		}
-	}, [resultTiers]);
-
-	useEffect(() => {
-		if (resultTags && resultTags.success) {
-			dispatch(setTags(resultTags.tags));
-		}
-	}, [resultTags]);
 
 	if (user.loading) {
 		return <Loader active={true} inline="centered" />;
 	}
-	if (
-		update &&
-		result &&
-		result.team &&
-		result.team.user.id !== user.id &&
-		!user.is_modo
-	) {
+	if (update && team && team.user.id !== user.id && !user.is_modo) {
 		return <Page404 />;
 	}
 	return (
 		<PageWrapper
 			title={
 				update
-					? "Modifier l'équipe " + (result.team ? result.team.name : '')
+					? "Modifier l'équipe " + (team ? team.name : '')
 					: 'Proposer une équipe'
 			}
 			metadescription="Proposez des équipes Pokémon stratégiques à la communauté, échangez avec d'autres membres dans les commentaires et ayez peut-être la chance de la voir se faire certifier."
@@ -112,11 +93,22 @@ const TeamFormPage = ({ result = {}, update = false }) => {
 				<FormTeam
 					tiers={tiers}
 					tags={tags}
-					loadingTiers={loadingTiers}
-					defaultValue={result.team}
+					defaultValue={team}
 				/>
 			)}
 		</PageWrapper>
 	);
 };
+
+export async function getServerSideProps() {
+	try {
+		const { tags } = await manageFetch(`tags`);
+		const { tiers } = await manageFetch('tiers-select');
+		return { props: { tags, tiers } };
+	} catch (e) {
+		console.error(e);
+		return { props: {} };
+	}
+}
+
 export default TeamFormPage;

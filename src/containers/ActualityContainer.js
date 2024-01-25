@@ -5,14 +5,19 @@ import { Loader } from 'semantic-ui-react';
 // components
 import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
 
-const ActualityContainer = ({ Component, ...props}) => {
+const ActualityContainer = ({ Component, ...props }) => {
 	const id = useGetParam('id');
-	const [result, loading] = useGetEntityWithUser(id, 'actuality', 'actualities');
+	const [actuality, loading] = useGetEntityWithUser(
+		id,
+		'actuality',
+		'actualities',
+		props.actuality
+	);
 
 	if (loading) {
 		return <Loader active inline="centered" />;
-	} else if (result) {
-		return <Component result={result} {...props} />;
+	} else if (actuality) {
+		return <Component {...props} actuality={actuality} />;
 	} else {
 		return null;
 	}

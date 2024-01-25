@@ -5,7 +5,6 @@ const { useSearchParams } = require('next/navigation');
 export const useGetParam = key => {
 	const { query } = useRouter();
 	const params = useSearchParams();
-	console.log(query, params);
 	if (query[key]) {
 		return query[key];
 	}

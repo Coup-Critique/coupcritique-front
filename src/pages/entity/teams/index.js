@@ -71,13 +71,13 @@ const TeamList = () => {
 	}, [query.tags]);
 
 	useEffect(() => {
-		if (resultTiers && resultTiers.success) {
+		if (resultTiers?.success) {
 			setTiers(resultTiers.tiers);
 		}
 	}, [resultTiers]);
 
 	useEffect(() => {
-		if (resultTags && resultTags.success) {
+		if (resultTags?.success) {
 			setTags(resultTags.tags);
 		}
 	}, [resultTags]);

@@ -15,10 +15,8 @@ const useNotifChecker = (entityName, id) => {
 	}, [entityName, user.id]);
 
 	useEffect(() => {
-		if (resultNotif) {
-			if (resultNotif.success) {
-				dispatch(setNotifAction(resultNotif.count));
-			}
+		if (resultNotif?.success) {
+			dispatch(setNotifAction(resultNotif.count));
 		}
 	}, [resultNotif]);
 };

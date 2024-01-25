@@ -180,7 +180,11 @@ const PokemonArticle = props => {
 			</section>
 			<section>
 				<h2>Sets stratégiques de {name}</h2>
-				<PokemonSetManager pokemon={mainPokemon} sets={pokemonSets} />
+				<PokemonSetManager
+					pokemon={mainPokemon}
+					pokemonSets={pokemonSets}
+					tiers={props.tiers}
+				/>
 			</section>
 			<SectionAds />
 			<section id="pagination-scroll-ref">

@@ -22,7 +22,7 @@ const GuideArticle = ({ result }) => {
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
-	const [guide, setGuide] = useState((result?.guide) || null);
+	const [guide, setGuide] = useState(result?.guide || null);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
 
 	useEffect(() => {
@@ -32,7 +32,7 @@ const GuideArticle = ({ result }) => {
 	}, [result]);
 
 	useEffect(() => {
-		if (resultDelete && resultDelete.success) {
+		if (resultDelete?.success) {
 			dispatch(addMessage(resultDelete.message, true));
 			router.replace(defaultGoBack);
 		}

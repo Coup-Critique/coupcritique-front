@@ -12,7 +12,7 @@ const ActualityTeaser = ({ actuality, TitleAs = 'h3', btnProps = {} }) => (
 			<div className="image mb-4">
 				<Link href={`/entity/actualities/${actuality.id}`}>
 					<img
-						className="img-fluid d-block"
+						className="img-fluid"
 						src={
 							actuality.images && actuality.images.length
 								? `/images/actualities/375px/${actuality.images[0]}`

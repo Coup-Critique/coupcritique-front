@@ -28,7 +28,7 @@ const CommentArea = ({ entity, entityName }) => {
 	}, [entity.id, user.loading]);
 
 	useEffect(() => {
-		if (resultComments && resultComments.success) {
+		if (resultComments?.success) {
 			setComments(resultComments.comments);
 		}
 	}, [resultComments]);
@@ -59,8 +59,8 @@ const CommentArea = ({ entity, entityName }) => {
 			<Header as="h2" dividing>
 				Commentaires
 			</Header>
-			{!!user.token
-				&& (addComment ? (
+			{!!user.token &&
+				(addComment ? (
 					<FormComment
 						baseEntity={entityName}
 						entityId={entity.id}

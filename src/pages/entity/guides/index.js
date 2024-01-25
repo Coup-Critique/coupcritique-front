@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { Button, Form, Loader } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
-import useFetch from '@/hooks/useFetch';
+import useFetch, { manageFetch } from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
 import GuideTeaser from '@/components/elements/GuideTeaser';
 import PageWrapper from '@/components/PageWrapper';
@@ -16,14 +16,13 @@ import FormSearch from '@/components/forms/FormSearch';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import SectionAds from '@/components/sections/SectionAds';
 
-const GuideList = () => {
+const GuideList = props => {
 	const dispatch = useDispatch();
 	const [darkMode] = useDarkMode();
 	const user = useSelector(state => state.user);
-	const ssrData = useSelector(state => state.ssrData);
-	const guide_tags = useSelector(state => state.guide_tags);
+	const guide_tags = useSelector(state => state.guide_tags || props.tags);
 	const [result, load, loading] = useFetch();
-	const [guides, setGuides] = useState(ssrData?.guides || []);
+	const [guides, setGuides] = useState(props.guides || []);
 	const [table, page, nbPages, handlePage] = usePager(12, guides);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
 	const [resultTags, loadTags, loadingTags] = useFetch();
@@ -31,6 +30,12 @@ const GuideList = () => {
 	const [checkedTags, setCheckedTags] = useState(
 		query.tags ? (Array.isArray(query.tags) ? query.tags : query.tags.split(',')) : []
 	);
+
+	useEffect(() => {
+		if (props.tags?.length) {
+			setTags(props.tags);
+		}
+	}, []);
 
 	useEffect(() => {
 		if (!guides.length || Object.keys(query).length > 1) {
@@ -43,18 +48,6 @@ const GuideList = () => {
 			setGuides(result.guides);
 		}
 	}, [result]);
-
-	useEffect(() => {
-		if (!guide_tags.length) {
-			loadTags({ url: 'guide_tags' });
-		}
-	}, []);
-
-	useEffect(() => {
-		if (resultTags && resultTags.success) {
-			setTags(resultTags.tags);
-		}
-	}, [resultTags]);
 
 	const handleSubmitFilters = e => {
 		e.preventDefault();
@@ -81,21 +74,16 @@ const GuideList = () => {
 			)}
 			<SectionAds />
 			<Form onSubmit={handleSubmitFilters} className="mb-4">
-				{loadingTags ? (
-					<Loader active inline="centered" />
-				) : (
-					<DropdownMultipleSelectField
-						label="Catégories"
-						name="tags"
-						className="flex-grow-1"
-						options={guide_tags}
-						value={checkedTags}
-						onChange={(e, { value }) => setCheckedTags(value)}
-					/>
-				)}
+				<DropdownMultipleSelectField
+					label="Catégories"
+					name="tags"
+					className="flex-grow-1"
+					options={guide_tags}
+					value={checkedTags}
+					onChange={(e, { value }) => setCheckedTags(value)}
+				/>
 				<Button color="orange" content="Valider le filtre" type="submit" />
 			</Form>
-			{/* </Segment> */}
 			<div className="list-filter">
 				<FormSearch
 					placeholder={
@@ -145,5 +133,16 @@ const GuideList = () => {
 		</PageWrapper>
 	);
 };
+
+export async function getServerSideProps() {
+	try {
+		const { guides } = await manageFetch(`guides`);
+		const { tags } = await manageFetch(`guide_tags`);
+		return { props: { guides, tags } };
+	} catch (e) {
+		console.error(e);
+		return { props: { guides: null } };
+	}
+}
 
 export default GuideList;

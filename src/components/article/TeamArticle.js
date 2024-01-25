@@ -28,17 +28,11 @@ import { formatDate, formatFileName } from '@/functions';
 import CommentArea from '@/components/CommentArea';
 import Replay from '@/components/elements/Replay';
 
-const TeamArticle = ({ result }) => {
+const TeamArticle = props => {
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const user = useSelector(state => state.user);
-	const [team, setTeam] = useState(result?.team || {});
-
-	useEffect(() => {
-		if (result?.success) {
-			setTeam(result.team);
-		}
-	}, [result]);
+	const [team, setTeam] = useState(props.team || {});
 
 	const handleValue = (name, value) => setTeam({ ...team, [name]: value });
 

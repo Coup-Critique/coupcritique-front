@@ -36,7 +36,7 @@ const AdminDrive = () => {
 	}, [result]);
 
 	useEffect(() => {
-		if (resultImages && resultImages.success) {
+		if (resultImages?.success) {
 			load({ url: 'drive' });
 		}
 	}, [resultImages]);
@@ -116,7 +116,7 @@ const ImageCopy = ({ file, handleRemove }) => {
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
 
 	useEffect(() => {
-		if (resultDelete && resultDelete.success) {
+		if (resultDelete?.success) {
 			handleRemove(file.id);
 		}
 	}, [resultDelete]);

@@ -14,7 +14,7 @@ const Item = ({ item, noPopup = false }) =>
 			hoverable
 			wide="very"
 			position="bottom center"
-			offset="5px"
+			className='mt-2'
 			content={item.description.split('\n')[0]}
 			trigger={
 				<Link href={`/entity/items/${item.id}`}>

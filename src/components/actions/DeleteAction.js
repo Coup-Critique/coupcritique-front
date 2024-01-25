@@ -10,10 +10,8 @@ const DeleteAction = ({ url, callback, isIcon = false, confirmProps }) => {
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
 
 	useEffect(() => {
-		if (resultDelete) {
-			if (resultDelete.success) {
-				callback(resultDelete);
-			}
+		if (resultDelete?.success) {
+			callback(resultDelete);
 		}
 	}, [resultDelete]);
 

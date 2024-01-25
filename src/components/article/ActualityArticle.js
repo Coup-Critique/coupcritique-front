@@ -16,16 +16,19 @@ import Author from '@/components/elements/Author';
 import useFetch from '@/hooks/useFetch';
 import { DELETE } from '@/constants/methods';
 import { addMessage } from '@/reducers/messages';
+import { useGetParam } from '@/hooks/useGetParams';
+import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
 
 const defaultGoBack = '/entity/actualities/';
-const ActualityArticle = ({ actuality }) => {
+const ActualityArticle = props => {
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
+	const [actuality, setActuality] = useState(props.actuality || null);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
 
 	useEffect(() => {
-		if (resultDelete.success) {
+		if (resultDelete?.success) {
 			dispatch(addMessage(resultDelete.message, true));
 			router.replace(defaultGoBack);
 		}

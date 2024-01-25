@@ -15,13 +15,12 @@ import { setSsrDataAction } from '@/reducers/ssrData';
  * @param {string} loadUrl
  * @returns {[any[]|null, boolean]}
  */
-const useGetEntity = (id, key, loadUrl) => {
+const useGetEntity = (id, key, loadUrl, ssrEntity) => {
 	const dispatch = useDispatch();
 	const ssrData = useSelector(state => state.ssrData);
 	const gen = useSelector(state => state.gen);
 	const router = useRouter();
 	const [result, load, loading] = useFetch();
-	const ssrEntity = ssrData && ssrData[key];
 	const entityLoaded = !!ssrEntity && ssrEntity.id == id;
 
 	useEffect(() => {
@@ -55,7 +54,7 @@ const useGetEntity = (id, key, loadUrl) => {
 	}, [result]);
 
 	return [
-		result?.success ? result : entityLoaded ? ssrData : null,
+		result?.success ? result[key] : entityLoaded ? ssrEntity : null,
 		loading && !entityLoaded,
 	];
 };

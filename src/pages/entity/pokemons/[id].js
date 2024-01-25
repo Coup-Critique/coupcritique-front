@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 	}
 }
 
-const flatForms = (pokemon, children = null) => {
+export const flatForms = (pokemon, children = null) => {
 	if (!pokemon.forms.length) return [];
 	let forms = pokemon.forms
 		.map(form => (form ? (form.forms.length ? flatForms(form) : form) : children))
@@ -30,7 +30,7 @@ const flatForms = (pokemon, children = null) => {
 	return forms;
 };
 
-const makeForms = (pokemon, children = null) => {
+export const makeForms = (pokemon, children = null) => {
 	let forms = flatForms(pokemon, children);
 	if (pokemon.base_form) {
 		forms = makeForms(pokemon.base_form, forms.length ? forms : pokemon);
@@ -38,7 +38,7 @@ const makeForms = (pokemon, children = null) => {
 	return forms;
 };
 
-const getMainUsage = (pokemon, usages) => {
+export const getMainUsage = (pokemon, usages) => {
 	if (!usages) return null;
 	const refTier = pokemon.tier.parent ? pokemon.tier.parent : pokemon.tier;
 	return usages.find(usage => usage.tier.id === refTier.id);
@@ -48,8 +48,9 @@ export const getStaticProps = async ({ params }) => {
 	const { id } = params;
 	try {
 		const response = await manageFetch(`pokemons/${id}`);
-		const { pokemon, usages, weaknesses, pokemonSets, availableGens, inherit } =
+		const { pokemon, usages, weaknesses, availableGens, inherit } =
 			response;
+		const { tiers } = await manageFetch('tiers-select');
 		return {
 			props: {
 				pokemon,
@@ -58,8 +59,8 @@ export const getStaticProps = async ({ params }) => {
 				weaknesses,
 				usage: getMainUsage(pokemon, usages),
 				usages,
-				pokemonSets,
 				availableGens,
+				tiers,
 			},
 		};
 	} catch (e) {

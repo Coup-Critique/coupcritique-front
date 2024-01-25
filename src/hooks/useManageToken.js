@@ -22,6 +22,7 @@ const useManageToken = () => {
 	// Get User from local storage
 	useEffect(() => {
 		//Component will mount
+		console.log({ user });
 		if (!user.token) {
 			const storedData = getStoredItem();
 			if (storedData) {
@@ -62,7 +63,7 @@ const useManageToken = () => {
 
 	// Check user picture from API
 	useEffect(() => {
-		if (resultUser && resultUser.success) {
+		if (resultUser?.success) {
 			if (resultUser.user && resultUser.user.picture !== user.picture) {
 				dispatch(setUserPicture(resultUser.user.picture));
 			}
@@ -71,10 +72,8 @@ const useManageToken = () => {
 	}, [resultUser]);
 
 	useEffect(() => {
-		if (resultNotif) {
-			if (resultNotif.success) {
-				dispatch(setNotifAction(resultNotif.count));
-			}
+		if (resultNotif?.success) {
+			dispatch(setNotifAction(resultNotif.count));
 		}
 	}, [resultNotif]);
 

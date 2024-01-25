@@ -8,13 +8,13 @@ import Page404 from '@/pages/404';
 import FormTournament from '@/components/forms/FormTournament';
 import PageWrapper from '@/components/PageWrapper';
 
-const TournamentFormPage = ({ result = {}, update = false }) => {
+const TournamentFormPage = ({ tournament, update = false }) => {
 	const router = useRouter();
 	const user = useSelector(state => state.user);
 
 	const goBack = () => {
 		router.replace(
-			update ? `/entity/tournaments/${result.tournament.id}` : '/entity/tournaments'
+			update ? `/entity/tournaments/${tournament.id}` : '/entity/tournaments'
 		);
 	};
 
@@ -28,13 +28,12 @@ const TournamentFormPage = ({ result = {}, update = false }) => {
 		<PageWrapper
 			title={
 				update
-					? 'Modifier le tournoi ' +
-					  (result.tournament ? result.tournament.title : '')
+					? 'Modifier le tournoi ' + (tournament ? tournament.title : '')
 					: 'Ajouter une tournoi'
 			}
 			nofollow
 		>
-			<FormTournament tournament={result.tournament} handleSubmited={goBack} />
+			<FormTournament tournament={tournament} handleSubmited={goBack} />
 		</PageWrapper>
 	);
 };

@@ -6,47 +6,45 @@ import Move from '@/components/elements/Move';
 import SpritePokemon from '@/components/elements/SpritePokemon';
 import SpriteItem from '@/components/elements/SpriteItem';
 import { formatNumbers } from '@/functions';
-import useFetch from '@/hooks/useFetch';
 import Ability from '@/components/elements/Ability';
 import Spread from '@/components/elements/Spread';
 
 const UsageStats = ({ usages = [] }) => {
-	const [currentUsage, setCurrentUsage] = useState(0);
-	const [usagesData, setUsagesData] = useState([]);
-	const [result, load] = useFetch(false);
-	const [loadingIndex, setLoadingIndex] = useState();
+	// const [currentUsage, setCurrentUsage] = useState(0);
+	// const [usagesData, setUsagesData] = useState([]);
+	// const [result, load] = useFetch(false);
+	// const [loadingIndex, setLoadingIndex] = useState();
 
-	useEffect(() => {
-		if (usages.length && !usagesData[currentUsage]) {
-			load({ url: `usages/${usages[currentUsage].id}` });
-			setLoadingIndex(currentUsage);
-		}
-	}, [usages, currentUsage]);
+	// useEffect(() => {
+	// 	if (usages.length && !usagesData[currentUsage]) {
+	// 		load({ url: `usages/${usages[currentUsage].id}` });
+	// 		setLoadingIndex(currentUsage);
+	// 	}
+	// }, [usages, currentUsage]);
 
-	useEffect(() => {
-		if (result) {
-			setLoadingIndex(undefined);
-			if (result.success) {
-				const nextUsagesData = usagesData.slice();
-				nextUsagesData[currentUsage] = result.usage;
-				setUsagesData(nextUsagesData);
-			}
-		}
-	}, [result]);
+	// useEffect(() => {
+	// 	if (result) {
+	// 		setLoadingIndex(undefined);
+	// 		if (result.success) {
+	// 			const nextUsagesData = usagesData.slice();
+	// 			nextUsagesData[currentUsage] = result.usage;
+	// 			setUsagesData(nextUsagesData);
+	// 		}
+	// 	}
+	// }, [result]);
 
 	if (!usages.length) {
 		return <p>Aucune statistique d'utilisation n'est disponible pour ce Pokémon.</p>;
 	}
 	return (
 		<Tab
-			onTabChange={(e, { activeIndex }) => setCurrentUsage(activeIndex)}
-			panes={usages.map((usage, i) => ({
+			// onTabChange={(e, { activeIndex }) => setCurrentUsage(activeIndex)}
+			panes={usages.map(usage => ({
 				menuItem: usage.tier.shortName || usage.tier.name,
 				render: () => (
 					<UsageStatsPane
 						usage={usage}
-						data={usagesData[i]}
-						loading={loadingIndex === i}
+						// loading={loadingIndex === i}
 					/>
 				),
 			}))}
@@ -59,7 +57,7 @@ const UsageStats = ({ usages = [] }) => {
 	);
 };
 
-const UsageStatsPane = ({ usage, data, loading }) => (
+const UsageStatsPane = ({ usage, loading }) => (
 	<Tab.Pane className="usage-tab" loading={loading}>
 		<div className="usage-stat-list">
 			<span className="usage-stat-title">Usage&nbsp;:</span>
@@ -68,67 +66,67 @@ const UsageStatsPane = ({ usage, data, loading }) => (
 			</div>
 		</div>
 		<Divider section />
-		{!!data && (
+		{!!usage && (
 			<>
-				{!!data.usageAbilities && data.usageAbilities.length > 0 && (
+				{!!usage.usageAbilities && usage.usageAbilities.length > 0 && (
 					<>
 						<UsageStat
 							title="Talents"
-							elements={data.usageAbilities}
+							elements={usage.usageAbilities}
 							Element={Ability}
 							keyName="ability"
 						/>
 						<Divider section />
 					</>
 				)}
-				{!!data.usageItems && data.usageItems.length > 0 && (
+				{!!usage.usageItems && usage.usageItems.length > 0 && (
 					<>
 						<UsageStat
 							title="Objets"
-							elements={data.usageItems}
+							elements={usage.usageItems}
 							Element={SpriteItem}
 							keyName="item"
 						/>
 						<Divider section />
 					</>
 				)}
-				{!!data.teamMates && data.teamMates.length > 0 && (
+				{!!usage.teamMates && usage.teamMates.length > 0 && (
 					<>
 						<UsageStat
 							title="Équipiers"
-							elements={data.teamMates}
+							elements={usage.teamMates}
 							Element={SpritePokemon}
 							keyName="pokemon"
 						/>
 						<Divider section />
 					</>
 				)}
-				{/* {!!data.pokemonChecks && data.pokemonChecks.length > 0 && (
+				{/* {!!usage.pokemonChecks && usage.pokemonChecks.length > 0 && (
 					<>
 						<UsageStat
 							title="Contres"
-							elements={data.pokemonChecks}
+							elements={usage.pokemonChecks}
 							Element={SpritePokemon}
 							keyName="pokemon"
 						/>
 						<Divider section />
 					</>
 				)} */}
-				{!!data.usageMoves && data.usageMoves.length > 0 && (
+				{!!usage.usageMoves && usage.usageMoves.length > 0 && (
 					<>
 						<UsageStat
 							title="Capacités"
-							elements={data.usageMoves}
+							elements={usage.usageMoves}
 							Element={Move}
 							keyName="move"
 						/>
 						<Divider section />
 					</>
 				)}
-				{!!data.usageSpreads && data.usageSpreads.length > 0 && (
+				{!!usage.usageSpreads && usage.usageSpreads.length > 0 && (
 					<UsageStat
 						title="Reparts"
-						elements={data.usageSpreads}
+						elements={usage.usageSpreads}
 						Element={Spread}
 					/>
 				)}
