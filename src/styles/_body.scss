@@ -831,6 +831,25 @@ h3,
 		max-width: 100% !important;
 		max-height: 500px !important;
 	}
+
+	blockquote {
+		margin-left: 1rem;
+		border-left: 2px solid $grey;
+		padding-left: 1rem;
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	ul {
+		margin-left: 0.5rem;
+		padding-left: 1.5rem;
+
+		li {
+			list-style-type: disc;
+		}
+	}
 }
 
 .video-wrapper {

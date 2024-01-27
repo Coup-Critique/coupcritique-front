@@ -34,7 +34,9 @@ const PokemonByNameContainer = props => {
 export async function getStaticPaths() {
 	try {
 		const response = await manageFetch(`pokemons?gen=${lastGen}`);
-		const paths = response.pokemons.map(({ name }) => ({ params: { name } }));
+		const paths = response.pokemons.map(({ name }) => ({
+			params: { name: encodeURIComponent(name) },
+		}));
 
 		return { paths, fallback: false };
 	} catch {
@@ -44,11 +46,11 @@ export async function getStaticPaths() {
 
 export const getStaticProps = async ({ params }) => {
 	const { name } = params;
+	// decode uri component ?
 	try {
 		const response = await manageFetch(`pokemon-name/${name}`);
-		const { pokemon, usages, weaknesses, availableGens, inherit } =
-			response;
-			const { tiers } = await manageFetch('tiers-select');
+		const { pokemon, usages, weaknesses, availableGens, inherit } = response;
+		const { tiers } = await manageFetch('tiers-select');
 		return {
 			props: {
 				pokemon,
