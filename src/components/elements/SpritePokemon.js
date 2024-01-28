@@ -7,10 +7,12 @@ import Image from 'next/image';
 
 const SpritePokemonImg = ({ pokemon, ...props }) => (
 	<Image
-		src={`/images/pokemons/sprites/${formatFileName(pokemon.name)}.png?ver=${IMG_VERSION}`}
+		src={`/images/pokemons/sprites/${formatFileName(
+			pokemon.name
+		)}.png?ver=${IMG_VERSION}`}
 		onError={e => {
 			e.target.onerror = null;
-			e.target.src = `/images/items/sprites/unknown.png?ver=${IMG_VERSION}`;
+			e.target.src = `/images/items/sprites/unknown.png`;
 		}}
 		alt={`Pokémon ${pokemon.nom || pokemon.name}`}
 		width={SPRITE_PKM}

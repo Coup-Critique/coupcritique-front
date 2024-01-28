@@ -17,9 +17,7 @@ const IconType = ({ type, className, tera = false }) => (
 			)}.png`}
 			onError={e => {
 				e.target.onerror = null;
-				e.target.src = `/images/types/${
-					tera ? 'tera' : 'icon'
-				}/unknown.png?ver=${IMG_VERSION}`;
+				e.target.src = `/images/types/${tera ? 'tera' : 'icon'}/unknown.png`;
 			}}
 			alt={`Type ${type.nom || type.name}`}
 			className="link"

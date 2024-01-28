@@ -8,7 +8,7 @@ const Category = ({ category }) => (
 	<div className="d-inline-block">
 		<Image
 			className="category"
-			src={`/images/categories/${formatFileName(category)}.png?ver=${IMG_VERSION}`}
+			src={`/images/categories/${formatFileName(category)}.png`}
 			alt={`Catégorie ${category}`}
 			title={category}
 			width="39"

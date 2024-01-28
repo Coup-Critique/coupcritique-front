@@ -22,7 +22,7 @@ const SpriteItem = ({ item, noPopup = false }) =>
 			hoverable
 			wide="very"
 			position="bottom center"
-			className='mt-2'
+			className="mt-2"
 			content={(item.nom || item.name) + ' : ' + item.description.split('\n')[0]}
 			trigger={
 				<Link href={`/entity/items/${item.id}`} className="sprite">
@@ -40,7 +40,7 @@ const InnerImg = ({ item }) => (
 			)}.png?ver=${IMG_VERSION}`}
 			onError={e => {
 				e.target.onerror = null;
-				e.target.src = `/images/items/sprites/unknown.png?ver=${IMG_VERSION}`;
+				e.target.src = `/images/items/sprites/unknown.png`;
 			}}
 			alt={`Objet ${item.nom || item.name}`}
 			className="link"

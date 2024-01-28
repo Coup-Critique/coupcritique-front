@@ -20,7 +20,7 @@ const Certification = ({ team = {}, userId, className, big = false }) => {
 		return (
 			<Image
 				className={makeClassName('picto certification', className)}
-				src={`/images/picto/certified.svg?ver=${IMG_VERSION}`}
+				src={`/images/picto/certified.svg`}
 				alt="certifiée"
 				width="25"
 				height="25"
