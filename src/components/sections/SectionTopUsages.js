@@ -1,8 +1,7 @@
 // modules
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import Link from 'next/link';
-import { Button, Icon, Loader } from 'semantic-ui-react';
-import useFetch from '@/hooks/useFetch';
+import { Button, Icon } from 'semantic-ui-react';
 // functions
 import TierUsage from '@/components/elements/TierUsage';
 import Video from '@/components/elements/Video';
@@ -17,7 +16,7 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 					<div className="row">
 						{usages.map(({ usage, tier }) => (
 							<div
-								key={usage.tier.id}
+								key={tier.id}
 								className="col-12 col-md-4 d-flex justify-content-center mb-4"
 							>
 								<TierUsage usage={usage} tier={tier} />

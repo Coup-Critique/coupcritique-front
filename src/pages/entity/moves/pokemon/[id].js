@@ -1,11 +1,7 @@
 // modules
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { useGetParam } from '@/hooks/useGetParams';
-import { useDispatch, useSelector } from 'react-redux';
-import { Loader } from 'semantic-ui-react';
 // hooks
-import useFetch, { manageFetch } from '@/hooks/useFetch';
+import { manageFetch } from '@/hooks/useFetch';
 // functions
 import { formateName } from '@/functions';
 // components
@@ -17,10 +13,11 @@ import SectionAds from '@/components/sections/SectionAds';
 import TableMoveUsage from '@/components/table/TableMoveUsage';
 import gens from '@/constants/gens';
 
-const MovePool = ({ pokemon, moves, availableGens }) => {
+const MovePool = ({ pokemon, moves = [], availableGens }) => {
 	const [table, setTable] = useState(moves);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
 
+	if (!pokemon) return null;
 	const pokemonName = pokemon.nom || formateName(pokemon.name);
 	return (
 		<PageWrapper

@@ -11,10 +11,11 @@ import TableMove from '@/components/table/TableMove';
 import { manageFetch } from '@/hooks/useFetch';
 import gens from '@/constants/gens';
 
-const MoveByType = ({ type, moves, availableGens }) => {
+const MoveByType = ({ type, moves = [], availableGens }) => {
 	const [table, setTable] = useState(moves);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
 
+	if (!type) return null;
 	return (
 		<PageWrapper
 			title={
