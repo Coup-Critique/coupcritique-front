@@ -112,7 +112,7 @@ export const getStaticProps = async () => {
 		const { tier: ou, usage: usageOu } = responses[4];
 		const { tier: bss, usage: usageBss } = responses[5];
 		const { tier: vgc, usage: usageVgc } = responses[6];
-		const props = { actualities, team, videos, guides, usages: [] };
+		const props = { actualities, team: team || null, videos, guides, usages: [] };
 		if (ou) {
 			props.usages.push({ tier: ou, usage: usageOu });
 		}
