@@ -8,7 +8,9 @@ import { formatFileName } from '@/functions';
 import Image from 'next/image';
 
 const getImgPath = (name, half) =>
-	`/images/pokemons/${half ? '220px/' : ''}${name.toLowerCase()}.png?ver=${IMG_VERSION}`;
+	`/images/pokemons/${
+		half ? '220px/' : ''
+	}${name.toLowerCase()}.png?ver=${IMG_VERSION}`;
 
 const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
 	const unmounted = useRef(false);
@@ -18,7 +20,7 @@ const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
 		getTheRightImage(formatFileName(pokemon.name));
 
 		return () => (unmounted.current = true);
-	}, []);
+	}, [pokemon.name]);
 
 	const getTheRightImage = name => {
 		if (!name) {
