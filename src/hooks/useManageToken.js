@@ -22,7 +22,6 @@ const useManageToken = () => {
 	// Get User from local storage
 	useEffect(() => {
 		//Component will mount
-		console.log({ user });
 		if (!user.token) {
 			const storedData = getStoredItem();
 			if (storedData) {
