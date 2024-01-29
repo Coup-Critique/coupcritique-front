@@ -17,6 +17,7 @@ import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSel
 import SectionAds from '@/components/sections/SectionAds';
 import useTableFetch from '@/hooks/useTableFetch';
 
+const defaultArray = [];
 const TeamList = () => {
 	const dispatch = useDispatch();
 	const tiers = useSelector(state => state.tiers);
@@ -45,7 +46,11 @@ const TeamList = () => {
 	const [checkedTier, setCheckedTier] = useState(query.tier);
 	const [checkedGen, setCheckedGen] = useState(query.gen);
 	const [checkedTags, setCheckedTags] = useState(
-		query.tags ? (Array.isArray(query.tags) ? query.tags : query.tags.split(',')) : []
+		query.tags
+			? Array.isArray(query.tags)
+				? query.tags
+				: query.tags.split(',')
+			: defaultArray
 	);
 	// const [displayFilters, setDisplayFilters] = useState(false);
 
@@ -66,7 +71,7 @@ const TeamList = () => {
 
 	useEffect(() => {
 		if (!query.tags && checkedTags.length) {
-			setCheckedTags([]);
+			setCheckedTags(defaultArray);
 		}
 	}, [query.tags]);
 
@@ -122,7 +127,7 @@ const TeamList = () => {
 		setCertified('');
 		setCheckedTier(undefined);
 		setCheckedGen(undefined);
-		setCheckedTags([]);
+		setCheckedTags(defaultArray);
 		setQuery({ page: 1 });
 	};
 

@@ -9,10 +9,13 @@ import GoBackButton from '@/components/GoBackButton';
 import PageWrapper from '@/components/PageWrapper';
 import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
 import useStoreQuery from '@/hooks/useStoreQuery';
+import useStateProps from '@/hooks/useStateProps';
+import useStateWithGen from '@/hooks/useStateWithGen';
 
+const defaultArray = [];
 const AbilityArticle = props => {
-	const [ability, setAbility] = useState(props.ability || null);
-	const [pokemons, setPokemons] = useState(props.pokemons || []);
+	const [ability, setAbility] = useStateWithGen(props.ability || null);
+	const [pokemons, setPokemons] = useStateProps(props.pokemons || defaultArray);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery();
 
 	if (!ability || !ability.id) return null;

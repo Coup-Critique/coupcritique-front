@@ -15,20 +15,26 @@ import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSel
 import FormSearch from '@/components/forms/FormSearch';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import SectionAds from '@/components/sections/SectionAds';
+import useStateProps from '@/hooks/useStateProps';
 
+const defaultArray = [];
 const GuideList = props => {
 	const dispatch = useDispatch();
 	const [darkMode] = useDarkMode();
 	const user = useSelector(state => state.user);
 	const guide_tags = useSelector(state => state.guide_tags || props.tags);
 	const [result, load, loading] = useFetch();
-	const [guides, setGuides] = useState(props.guides || []);
+	const [guides, setGuides] = useStateProps(props.guides || defaultArray);
 	const [table, page, nbPages, handlePage] = usePager(12, guides);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
 	const [resultTags, loadTags, loadingTags] = useFetch();
 	const [setTags] = useActions(dispatch, [setGuideTags]);
 	const [checkedTags, setCheckedTags] = useState(
-		query.tags ? (Array.isArray(query.tags) ? query.tags : query.tags.split(',')) : []
+		query.tags
+			? Array.isArray(query.tags)
+				? query.tags
+				: query.tags.split(',')
+			: defaultArray
 	);
 
 	useEffect(() => {

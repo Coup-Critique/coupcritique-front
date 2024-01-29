@@ -10,9 +10,10 @@ import SectionAds from '@/components/sections/SectionAds';
 import TableMove from '@/components/table/TableMove';
 import { manageFetch } from '@/hooks/useFetch';
 import gens from '@/constants/gens';
+import useStateProps from '@/hooks/useStateProps';
 
 const MoveByType = ({ type, moves = [], availableGens }) => {
-	const [table, setTable] = useState(moves);
+	const [table, setTable] = useStateProps(moves);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
 
 	if (!type) return null;

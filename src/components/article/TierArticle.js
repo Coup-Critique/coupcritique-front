@@ -11,17 +11,21 @@ import Resource from '@/components/elements/Resource';
 import GenSelector from '@/components/GenSelector';
 import GoBackButton from '@/components/GoBackButton';
 import useStoreQuery from '@/hooks/useStoreQuery';
+import useStateProps from '@/hooks/useStateProps';
+import useStateWithGen from '@/hooks/useStateWithGen';
 
+const defaultArray = [];
 const TierArticle = props => {
-	const [tier, setTier] = useState(props.tier);
-	const [pokemons, setPokemons] = useState(props.pokemons || []);
-	const [pokemonsTechnically, setPokemonsTechnically] = useState(
-		props.pokemonsTechnically || []
+	console.log(props);
+	const [tier, setTier] = useStateWithGen(props.tier);
+	const [pokemons, setPokemons] = useStateProps(props.pokemons || defaultArray);
+	const [pokemonsTechnically, setPokemonsTechnically] = useStateProps(
+		props.pokemonsTechnically || defaultArray
 	);
-	const [pokemonsBl, setPokemonsBl] = useState(props.pokemonsBl || []);
-	const [usages, setUsages] = useState(props.usages || []);
-	const [usagesTechnically, setUsagesTechnically] = useState(
-		props.usagesTechnically || []
+	const [pokemonsBl, setPokemonsBl] = useStateProps(props.pokemonsBl || defaultArray);
+	const [usages, setUsages] = useStateProps(props.usages || defaultArray);
+	const [usagesTechnically, setUsagesTechnically] = useStateProps(
+		props.usagesTechnically || defaultArray
 	);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
 

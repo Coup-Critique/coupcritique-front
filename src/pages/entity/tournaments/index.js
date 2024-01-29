@@ -11,12 +11,16 @@ import TournamentTeaser from '@/components/elements/TournamentTeaser';
 import PageWrapper from '@/components/PageWrapper';
 import PaginationPrettier from '@/components/PaginationPrettier';
 import SectionAds from '@/components/sections/SectionAds';
+import useStateProps from '@/hooks/useStateProps';
 
+const defaultArray = [];
 const TournamentList = props => {
 	const user = useSelector(state => state.user);
 	const [darkMode] = useDarkMode();
 	const [result, load, loading] = useFetch();
-	const [tournaments, setTournaments] = useState(props.tournaments || []);
+	const [tournaments, setTournaments] = useStateProps(
+		props.tournaments || defaultArray
+	);
 	const [table, page, nbPages, handlePage] = usePager(12, tournaments);
 
 	useEffect(() => {

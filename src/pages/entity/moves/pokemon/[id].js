@@ -12,9 +12,10 @@ import GoBackButton from '@/components/GoBackButton';
 import SectionAds from '@/components/sections/SectionAds';
 import TableMoveUsage from '@/components/table/TableMoveUsage';
 import gens from '@/constants/gens';
+import useStateProps from '@/hooks/useStateProps';
 
 const MovePool = ({ pokemon, moves = [], availableGens }) => {
-	const [table, setTable] = useState(moves);
+	const [table, setTable] = useStateProps(moves);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
 
 	if (!pokemon) return null;

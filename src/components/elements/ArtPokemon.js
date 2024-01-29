@@ -7,41 +7,25 @@ import { ART_ITM, ART_PKM, IMG_VERSION } from '@/constants/img';
 import { formatFileName } from '@/functions';
 import Image from 'next/image';
 
-const getImgPath = (name, half) =>
-	`/images/pokemons/${
-		half ? '220px/' : ''
-	}${name.toLowerCase()}.png?ver=${IMG_VERSION}`;
-
 const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
-	const unmounted = useRef(false);
-	const [image, setImage] = useState(getImgPath(formatFileName(pokemon.name, half)));
-
-	useEffect(() => {
-		getTheRightImage(formatFileName(pokemon.name));
-
-		return () => (unmounted.current = true);
-	}, [pokemon.name]);
-
-	const getTheRightImage = name => {
+	const getImgPath = name => {
 		if (!name) {
-			// prevent infinite loop (base case)
-			if (!unmounted.current) {
-				setImage(DEFAULT_POKEMON_PICTURE);
-			}
+			return DEFAULT_POKEMON_PICTURE;
 		} else {
-			const src = getImgPath(name, half);
-			fetch(src).then(res => {
-				if (res.status === 200 && !unmounted.current) {
-					setImage(src);
-				} else {
-					let nextName = name.split('-');
-					nextName.pop();
-					nextName = nextName.join('-');
-					getTheRightImage(nextName);
-				}
-			});
+			return (
+				`/images/pokemons/${half ? '220px/' : ''}` +
+				`${formatFileName(name).toLowerCase()}.png?ver=${IMG_VERSION}`
+			);
 		}
 	};
+
+	const [image, setImage] = useState(getImgPath(pokemon.name));
+
+	useEffect(() => {
+		if (pokemon) {
+			setImage(getImgPath(pokemon.name));
+		}
+	}, [pokemon.name]);
 
 	if (!image) return <Loader active size="big" />;
 	return (

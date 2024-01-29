@@ -27,12 +27,13 @@ import SectionAds from '@/components/sections/SectionAds';
 import { formatDate, formatFileName } from '@/functions';
 import CommentArea from '@/components/CommentArea';
 import Replay from '@/components/elements/Replay';
+import useStateProps from '@/hooks/useStateProps';
 
 const TeamArticle = props => {
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const user = useSelector(state => state.user);
-	const [team, setTeam] = useState(props.team || {});
+	const [team, setTeam] = useStateProps(props.team || {});
 
 	const handleValue = (name, value) => setTeam({ ...team, [name]: value });
 

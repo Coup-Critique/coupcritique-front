@@ -14,10 +14,11 @@ const youtubeWatchRegex = /^https:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]
 const youtubeBeRegex = /^https:\/\/youtu.be\/([a-zA-Z0-9_-]+)$/;
 const youtubeEmbedRegex = /^https:\/\/www.youtube.com\/embed\/([a-zA-Z0-9_-]+)$/;
 
-const FormVideo = ({ handleCancel, handleSubmited, video = {}, tags = [] }) => {
+const defaultArray = [];
+const FormVideo = ({ handleCancel, handleSubmited, video = {}, tags = defaultArray }) => {
 	const dispatch = useDispatch();
 	const [form, setForm] = useState(video);
-	const [selectedTags, setSelectedTags] = useState(video.tags || []);
+	const [selectedTags, setSelectedTags] = useState(video.tags || defaultArray);
 	const [success, setSuccess] = useState(true);
 	const [message, setMessage] = useState('');
 	const [result, load, loading] = useFetch();

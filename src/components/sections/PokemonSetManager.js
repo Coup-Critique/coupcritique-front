@@ -8,6 +8,7 @@ import FormPokemonSet from '@/components/forms/FormPokemonSet';
 import useFetch from '@/hooks/useFetch';
 import { setTiers } from '@/reducers/tiers';
 
+const defaultArray = [];
 const PokemonSetManager = props => {
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
@@ -15,7 +16,7 @@ const PokemonSetManager = props => {
 	const gen = useSelector(state => state.gen);
 	const [result, load, loading] = useFetch(false);
 	const [displayForm, setDisplayForm] = useState(false);
-	const [pokemonSets, setPokemonSets] = useState(props.pokemonSets || []);
+	const [pokemonSets, setPokemonSets] = useState(props.pokemonSets || defaultArray);
 	const { pokemon } = props;
 
 	useEffect(() => {

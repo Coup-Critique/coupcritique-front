@@ -22,7 +22,6 @@ const VideoList = () => {
 	const [result, load, loading] = useFetch();
 	const [videos, setVideos] = useState([]);
 	const [authors, setAuthors] = useState([]);
-
 	const [selectedAuthor, setSelectedAuthor] = useState();
 	const [checkedTags, setCheckedTags] = useState([]);
 	const [table, page, nbPages, handlePage] = usePager(10, videos);
