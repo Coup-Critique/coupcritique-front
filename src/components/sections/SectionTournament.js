@@ -6,12 +6,12 @@ import { Loader } from 'semantic-ui-react';
 // hooks
 import useFetch from '@/hooks/useFetch';
 import TournamentTeaser from '@/components/elements/TournamentTeaser';
-// components
 
+const defaultArray = [];
 function SectionTournament() {
 	const ssrData = useSelector(state => state.ssrData);
 	const [result, load, loading] = useFetch();
-	const [tournaments, setTournaments] = useState(ssrData?.tournaments || []);
+	const [tournaments, setTournaments] = useState(ssrData?.tournaments || defaultArray);
 
 	useEffect(() => {
 		if (!tournaments.length) {

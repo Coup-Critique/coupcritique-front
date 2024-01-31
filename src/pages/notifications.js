@@ -1,7 +1,7 @@
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Loader } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
-// 
+//
 import Notification from '@/components/elements/Notification';
 import SectionAds from '@/components/sections/SectionAds';
 import PageWrapper from '@/components/PageWrapper';
@@ -35,11 +35,10 @@ const NotificationList = () => {
 	}, [result]);
 
 	useEffect(() => {
-		if (resultPast && resultPast.success) {
+		if (resultPast?.success) {
 			setPastNotifs(resultPast.notifications);
 		}
 	}, [resultPast]);
-
 
 	if (user.loading) {
 		return <Loader active={true} inline="centered" />;

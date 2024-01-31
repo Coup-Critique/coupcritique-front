@@ -1,5 +1,4 @@
 // modules
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -18,22 +17,17 @@ import TeamTopButton from '@/components/actions/TeamTopButton';
 import SectionAds from '@/components/sections/SectionAds';
 import CommentArea from '@/components/CommentArea';
 import Replay from '@/components/elements/Replay';
+import TableOneTeam from '../table/TableOneTeam';
+import useStateProps from '@/hooks/useStateProps';
 import { addMessage } from '@/reducers/messages';
 import { formatDate, formatFileName } from '@/functions';
 import { INSTANCES_KEYS } from '@/constants/team';
-import TableOneTeam from '../table/TableOneTeam';
 
-const TeamArticle = ({ result }) => {
+const TeamArticle = props => {
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const user = useSelector(state => state.user);
-	const [team, setTeam] = useState(result?.team || {});
-
-	useEffect(() => {
-		if (result?.success) {
-			setTeam(result.team);
-		}
-	}, [result]);
+	const [team, setTeam] = useStateProps(props.team || {});
 
 	const handleValue = (name, value) => setTeam({ ...team, [name]: value });
 

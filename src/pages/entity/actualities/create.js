@@ -6,34 +6,29 @@ import { Loader } from 'semantic-ui-react';
 // components
 import FormActuality from '@/components/forms/FormActuality';
 import PageWrapper from '@/components/PageWrapper';
-import useFetch from '@/hooks/useFetch';
+import { manageFetch } from '@/hooks/useFetch';
 import { setActualityTags } from '@/reducers/actuality_tags';
 import Page404 from '@/pages/404';
+import useActions from '@/hooks/useActions';
 
-const ActualityFormPage = ({ result = {}, update = false }) => {
+const ActualityFormPage = ({ actuality, tags, update = false }) => {
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const user = useSelector(state => state.user);
-	const actuality_tags = useSelector(state => state.actuality_tags);
-	const [resultTags, loadTags] = useFetch();
-
-	const goBack = () => {
-		router.replace(
-			update ? `/entity/actualities/${result.actuality.id}` : '/entity/actualities'
-		);
-	};
+	const actuality_tags = useSelector(state => state.actuality_tags || tags);
+	const [setTags] = useActions(dispatch, [setActualityTags]);
 
 	useEffect(() => {
-		if (!actuality_tags.length) {
-			loadTags({ url: 'actuality_tags' });
+		if (tags?.length) {
+			setTags(tags);
 		}
 	}, []);
 
-	useEffect(() => {
-		if (resultTags && resultTags.success) {
-			dispatch(setActualityTags(resultTags.tags));
-		}
-	}, [resultTags]);
+	const goBack = () => {
+		router.replace(
+			update ? `/entity/actualities/${actuality.id}` : '/entity/actualities'
+		);
+	};
 
 	if (user.loading) {
 		return <Loader active={true} inline="centered" />;
@@ -45,18 +40,28 @@ const ActualityFormPage = ({ result = {}, update = false }) => {
 		<PageWrapper
 			title={
 				update
-					? "Modifier l'actualité " +
-					  (result.actulity ? result.actulity.title : '')
+					? "Modifier l'actualité " + (actuality ? actuality.title : '')
 					: 'Ajouter une actualité'
 			}
 			nofollow
 		>
 			<FormActuality
-				actuality={result.actuality}
+				actuality={actuality}
 				tags={actuality_tags}
 				handleSubmited={goBack}
 			/>
 		</PageWrapper>
 	);
 };
+
+export async function getServerSideProps() {
+	try {
+		const { tags } = await manageFetch(`actuality_tags`);
+		return { props: { tags } };
+	} catch (e) {
+		console.error(e);
+		return { props: {} };
+	}
+}
+
 export default ActualityFormPage;

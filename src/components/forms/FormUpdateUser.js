@@ -12,6 +12,7 @@ import { buildFieldsMessage } from '@/functions';
 import { EMAIL_REGEX } from '@/constants';
 import { POST, PUT } from '@/constants/methods';
 import FileField from '@/components/fields/FileField';
+import Image from 'next/image';
 
 const initFormUser = ({ username, email, discord_name, showdown_name }) => ({
 	username,
@@ -163,7 +164,7 @@ const FormUpdateUser = () => {
 				labelPosition="left"
 			>
 				<Label basic className="icon">
-					<img
+					<Image
 						className="img-fluid img-icon"
 						src="/images/picto/showdown-export.svg"
 						alt="showdown export icon"

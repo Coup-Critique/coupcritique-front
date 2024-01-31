@@ -60,7 +60,7 @@ const MainSearch = ({
 	};
 
 	const resultToOptions = useMemo(() => {
-		if (!result || !result.success) return null;
+		if (!result?.success) return null;
 		if (!isUserSearch) {
 			const previews = result.previews.reduce((previews, el) => {
 				if (!previews[el.category]) {

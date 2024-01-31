@@ -16,7 +16,7 @@ const Favorite = ({ team, isIcon = false, size = 'large' }) => {
 	}, [team]);
 
 	useEffect(() => {
-		if (resultFavorite && resultFavorite.success) {
+		if (resultFavorite?.success) {
 			setIsFavorite(!isFavorite);
 		}
 	}, [resultFavorite]);

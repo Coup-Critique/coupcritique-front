@@ -25,12 +25,14 @@ import SectionAds from '@/components/sections/SectionAds';
 import useTableFetch from '@/hooks/useTableFetch';
 import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
 import { formateName, formatFileName, formatNumbers } from '@/functions';
+import useStateProps from '@/hooks/useStateProps';
+import useStateWithGen from '@/hooks/useStateWithGen';
 
 const PokemonArticle = props => {
 	const router = useRouter();
 	const gen = useSelector(state => state.gen);
 	const [darkMode] = useDarkMode();
-	const [pokemon, setPokemon] = useState(props.pokemon || null);
+	const [pokemon, setPokemon] = useStateWithGen(props.pokemon || null);
 	// prettier-ignore
 	const { usage, usages, availableGens, weaknesses, pokemonSets, forms, mainPokemon } = props;
 
@@ -180,7 +182,11 @@ const PokemonArticle = props => {
 			</section>
 			<section>
 				<h2>Sets stratégiques de {name}</h2>
-				<PokemonSetManager pokemon={mainPokemon} sets={pokemonSets} />
+				<PokemonSetManager
+					pokemon={mainPokemon}
+					pokemonSets={pokemonSets}
+					tiers={props.tiers}
+				/>
 			</section>
 			<SectionAds />
 			<section id="pagination-scroll-ref">

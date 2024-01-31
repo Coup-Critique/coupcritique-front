@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { Button, Form, Loader } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
-import useFetch from '@/hooks/useFetch';
+import useFetch, { manageFetch } from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
 import ActualityTeaser from '@/components/elements/ActualityTeaser';
 import PageWrapper from '@/components/PageWrapper';
@@ -15,28 +15,35 @@ import { objectToGETparams } from '@/functions';
 import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSelectField';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import SectionAds from '@/components/sections/SectionAds';
+import FormSearch from '@/components/forms/FormSearch';
+import useStateProps from '@/hooks/useStateProps';
 
-const ActualityList = () => {
+const defaultArray = [];
+const ActualityList = props => {
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
-	const ssrData = useSelector(state => state.ssrData);
-	const actuality_tags = useSelector(state => state.actuality_tags);
+	const actuality_tags = useSelector(state => state.actuality_tags || props.tags);
 	const [darkMode] = useDarkMode();
 	const [result, load, loading] = useFetch();
-	const [actualities, setActualities] = useState(ssrData?.actualities || []);
+	const [actualities, setActualities] = useStateProps(props.actualities || defaultArray);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
 	const [table, page, nbPages, handlePage] = usePager(24, actualities);
-	const [resultTags, loadTags, loadingTags] = useFetch();
 	const [setTags] = useActions(dispatch, [setActualityTags]);
 	const [checkedTags, setCheckedTags] = useState(
-		query.tags ? (Array.isArray(query.tags) ? query.tags : query.tags.split(',')) : []
+		query.tags ? (Array.isArray(query.tags) ? query.tags : query.tags.split(',')) : defaultArray
 	);
+
+	useEffect(() => {
+		if (props.tags?.length) {
+			setTags(props.tags);
+		}
+	}, []);
 
 	useEffect(() => {
 		if (!actualities.length || Object.keys(query).length > 1) {
 			handleLoad();
 		}
-	}, [query.tags]);
+	}, [query]);
 
 	useEffect(() => {
 		if (result?.success) {
@@ -44,24 +51,12 @@ const ActualityList = () => {
 		}
 	}, [result]);
 
-	useEffect(() => {
-		if (!actuality_tags.length) {
-			loadTags({ url: 'actuality_tags' });
-		}
-	}, []);
-
-	useEffect(() => {
-		if (resultTags && resultTags.success) {
-			setTags(resultTags.tags);
-		}
-	}, [resultTags]);
-
-	const handleLoad = () => load({ url: 'actualities' + objectToGETparams(query) });
-
 	const handleSubmitFilters = e => {
 		e.preventDefault();
 		setQueryParam('tags', checkedTags);
 	};
+
+	const handleLoad = () => load({ url: 'actualities' + objectToGETparams(query) });
 
 	return (
 		<PageWrapper
@@ -69,7 +64,6 @@ const ActualityList = () => {
 			className="actuality-list"
 			metadescription="Liste d'actualités sur la stratégie Pokémon et la scène compétitive française. Vous y retrouverez des informations sur les événements Smogon ou ceux des formats officiels comme le VGC."
 		>
-			<SectionAds />
 			{user.is_modo && (
 				<Button
 					as={Link}
@@ -80,21 +74,31 @@ const ActualityList = () => {
 					className="mb-4"
 				/>
 			)}
+			<SectionAds />
 			<Form onSubmit={handleSubmitFilters} className="mb-4">
-				{loadingTags ? (
-					<Loader active inline="centered" />
-				) : (
-					<DropdownMultipleSelectField
-						label="Catégories"
-						name="tags"
-						className="flex-grow-1"
-						options={actuality_tags}
-						value={checkedTags}
-						onChange={(e, { value }) => setCheckedTags(value)}
-					/>
-				)}
+				<DropdownMultipleSelectField
+					label="Catégories"
+					name="tags"
+					className="flex-grow-1"
+					options={actuality_tags}
+					value={checkedTags}
+					onChange={(e, { value }) => setCheckedTags(value)}
+				/>
 				<Button color="orange" content="Valider le filtre" type="submit" />
 			</Form>
+			<div className="list-filter">
+				<FormSearch
+					placeholder={
+						"Rechercher par le titre, l'auteur ou le texte d'accroche"
+					}
+					handleSearch={search => setQueryParam('search', search)}
+					defaultValue={query.search}
+				/>
+				<em>
+					&gt; Vous pouvez cumuler les recherches en les séparant par des
+					virgules.
+				</em>
+			</div>
 			{nbPages > 1 && (
 				<PaginationPrettier
 					activePage={page}
@@ -134,5 +138,16 @@ const ActualityList = () => {
 		</PageWrapper>
 	);
 };
+
+export async function getServerSideProps() {
+	try {
+		const { actualities } = await manageFetch(`actualities`);
+		const { tags } = await manageFetch(`actuality_tags`);
+		return { props: { actualities, tags } };
+	} catch (e) {
+		console.error(e);
+		return { props: { actualities: null } };
+	}
+}
 
 export default ActualityList;

@@ -12,10 +12,13 @@ import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
 import GenSelector from '@/components/GenSelector';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import { useGetParam } from '@/hooks/useGetParams';
+import useStateProps from '@/hooks/useStateProps';
+import useStateWithGen from '@/hooks/useStateWithGen';
 
+const defaultArray = [];
 const ItemArticle = props => {
-	const [item, setItem] = useState(props.item || null);
-	const [pokemons, setPokemons] = useState(props.pokemons || []);
+	const [item, setItem] = useStateWithGen(props.item || null);
+	const [pokemons, setPokemons] = useStateProps(props.pokemons || defaultArray);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery();
 
 	if (!item || !item.id) return null;

@@ -16,25 +16,18 @@ import ScrollReveal from '@/components/ScrollReveal';
 import CommentArea from '@/components/CommentArea';
 import Tag from '@/components/elements/Tag';
 import SectionAds from '@/components/sections/SectionAds';
+import useStateProps from '@/hooks/useStateProps';
 
 const defaultGoBack = '/entity/tournaments/';
-const TournamentArticle = ({ result }) => {
+const TournamentArticle = props => {
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
-	const [tournament, setTournament] = useState(
-		result?.tournament?.id ? result.tournament : null
-	);
+	const [tournament, setTournament] = useStateProps(props.tournament || null);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
 
 	useEffect(() => {
-		if (result?.tournament?.id) {
-			setTournament(result.tournament);
-		}
-	}, [result]);
-
-	useEffect(() => {
-		if (resultDelete && resultDelete.success) {
+		if (resultDelete?.success) {
 			dispatch(addMessage(resultDelete.message, true));
 			router.replace(defaultGoBack);
 		}
@@ -43,7 +36,7 @@ const TournamentArticle = ({ result }) => {
 	const handleDelete = e =>
 		loadDelete({ url: `tournaments/${tournament.id}`, method: DELETE });
 
-	if (!tournament) return null;
+	if (!tournament || !tournament.id) return null;
 	return (
 		<PageWrapper
 			title={tournament.title}

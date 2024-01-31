@@ -5,10 +5,11 @@ const sliceTable = (table, page, limit) => {
 	return table.slice(pageIndex, pageIndex + limit);
 };
 
+const defaultArray = [];
 const usePager = (limit, fullTable, query, setQueryParam = null) => {
 	const defaultPage = (query && query.page) || 1;
 	const [table, setTable] = useState(
-		fullTable ? sliceTable(fullTable, defaultPage, limit) : []
+		fullTable ? sliceTable(fullTable, defaultPage, limit) : defaultArray
 	);
 	const [nbPages, setNbPages] = useState(0);
 	const [page, setPage] = useState(defaultPage);

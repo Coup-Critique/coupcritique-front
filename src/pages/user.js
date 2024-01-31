@@ -42,7 +42,7 @@ const UserFormPage = () => {
 	});
 
 	useEffect(() => {
-		if (resDelete && resDelete.success) {
+		if (resDelete?.success) {
 			dispatch(addMessage(resDelete.message, true));
 			logout();
 		}

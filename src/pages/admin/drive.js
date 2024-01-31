@@ -13,9 +13,10 @@ import PaginationPrettier from '@/components/PaginationPrettier';
 import Page404 from '@/pages/404';
 // components
 
+const defaultArray = [];
 const AdminDrive = () => {
 	const user = useSelector(state => state.user);
-	const [files, setFiles] = useState([]);
+	const [files, setFiles] = useState(defaultArray);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery();
 	const [result, load, loading] = useFetch();
 	const [resultImages, uploadImages, loadingImages] = useFetch();
@@ -30,13 +31,13 @@ const AdminDrive = () => {
 			if (result.success) {
 				setFiles(result.files);
 			} else {
-				setFiles([]);
+				setFiles(defaultArray);
 			}
 		}
 	}, [result]);
 
 	useEffect(() => {
-		if (resultImages && resultImages.success) {
+		if (resultImages?.success) {
 			load({ url: 'drive' });
 		}
 	}, [resultImages]);
@@ -116,7 +117,7 @@ const ImageCopy = ({ file, handleRemove }) => {
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
 
 	useEffect(() => {
-		if (resultDelete && resultDelete.success) {
+		if (resultDelete?.success) {
 			handleRemove(file.id);
 		}
 	}, [resultDelete]);

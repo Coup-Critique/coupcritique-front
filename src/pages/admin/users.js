@@ -11,10 +11,11 @@ import TableUser from '@/components/table/TableUser';
 import Page404 from '@/pages/404';
 // components
 
+const defaultArray = [];
 const AdminUsers = () => {
 	const user = useSelector(state => state.user);
 	const [result, load, loading] = useFetch();
-	const [table, setTable] = useState([]);
+	const [table, setTable] = useState(defaultArray);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
 
 	useEffect(() => {
@@ -26,7 +27,7 @@ const AdminUsers = () => {
 			if (result.success) {
 				setTable(result.users);
 			} else {
-				setTable([]);
+				setTable(defaultArray);
 			}
 		}
 	}, [result]);

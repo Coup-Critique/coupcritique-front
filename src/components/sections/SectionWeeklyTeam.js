@@ -1,5 +1,3 @@
-// modules
-import Link from 'next/link';
 import TableOneTeam from '../table/TableOneTeam';
 
 const SectionWeeklyTeam = ({ team }) => (
@@ -7,11 +5,7 @@ const SectionWeeklyTeam = ({ team }) => (
 		<div className="ui container">
 			<h2>Équipe de la semaine</h2>
 			<div className="top-team">
-				{team ? (
-					<TableOneTeam team={team} />
-				) : (
-					<p>Équipe indisponible.</p>
-				)}
+				{team ? <TableOneTeam team={team} /> : <p>Équipe indisponible.</p>}
 			</div>
 		</div>
 	</section>

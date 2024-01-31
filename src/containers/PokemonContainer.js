@@ -5,6 +5,7 @@ import { Loader } from 'semantic-ui-react';
 import useGetEntity from '@/hooks/useGetEntity';
 import { useGetParam } from '@/hooks/useGetParams';
 
+/** @deprecated */
 const PokemonContainer = ({ Component, ...props }) => {
 	const id = useGetParam('id');
 	const [result, loading] = useGetEntity(id, 'pokemon', 'pokemons');

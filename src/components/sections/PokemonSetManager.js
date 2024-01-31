@@ -8,22 +8,23 @@ import FormPokemonSet from '@/components/forms/FormPokemonSet';
 import useFetch from '@/hooks/useFetch';
 import { setTiers } from '@/reducers/tiers';
 
-const PokemonSetManager = ({ pokemon, sets = [] }) => {
+const defaultArray = [];
+const PokemonSetManager = props => {
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
 	const tiers = useSelector(state => state.tiers);
 	const gen = useSelector(state => state.gen);
 	const [result, load, loading] = useFetch(false);
-	const [resultTiers, loadTiers, loadingTiers] = useFetch();
 	const [displayForm, setDisplayForm] = useState(false);
-	const [pokemonSets, setPokemonSets] = useState(sets);
+	const [pokemonSets, setPokemonSets] = useState(props.pokemonSets || defaultArray);
+	const { pokemon } = props;
 
 	useEffect(() => {
 		if (!pokemonSets.length) {
 			load({ url: `pokemon_set/${pokemon.id}` });
 		}
-		if (!Object.keys(tiers).length) {
-			loadTiers({ url: 'tiers-select' });
+		if (!Object.keys(tiers).length && props.tiers) {
+			dispatch(setTiers(props.tiers));
 		}
 	}, []);
 
@@ -32,12 +33,6 @@ const PokemonSetManager = ({ pokemon, sets = [] }) => {
 			setPokemonSets(result.pokemonSets);
 		}
 	}, [result]);
-
-	useEffect(() => {
-		if (resultTiers && resultTiers.success) {
-			dispatch(setTiers(resultTiers.tiers));
-		}
-	}, [resultTiers]);
 
 	const handleAddForm = e => setDisplayForm(!displayForm);
 
@@ -113,7 +108,6 @@ const PokemonSetManager = ({ pokemon, sets = [] }) => {
 				<FormPokemonSet
 					callback={handleAddSet}
 					tiers={tiers}
-					loadingTiers={loadingTiers}
 					pokemonId={pokemon.id}
 					handleCancel={handleAddForm}
 				/>

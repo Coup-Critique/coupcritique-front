@@ -50,7 +50,7 @@ const AdminTeams = () => {
 	}, []);
 
 	useEffect(() => {
-		if (resultTiers && resultTiers.success) {
+		if (resultTiers?.success) {
 			setTiers(resultTiers.tiers);
 		}
 	}, [resultTiers]);

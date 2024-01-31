@@ -10,11 +10,13 @@ import Category from '@/components/elements/Category';
 import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
 import GenSelector from '@/components/GenSelector';
 import useStoreQuery from '@/hooks/useStoreQuery';
+import useStateProps from '@/hooks/useStateProps';
+import useStateWithGen from '@/hooks/useStateWithGen';
 
-// TODO corriger le problem d'importarion des learns
+const defaultArray = [];
 const MoveArticle = props => {
-	const [move, setMove] = useState(props.move || null);
-	const [pokemons, setPokemons] = useState(props.pokemons || []);
+	const [move, setMove] = useStateWithGen(props.move || null);
+	const [pokemons, setPokemons] = useStateProps(props.pokemons || defaultArray);
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery();
 
 	if (!move || !move.id) return null;

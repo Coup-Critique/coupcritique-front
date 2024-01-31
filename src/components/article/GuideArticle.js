@@ -16,13 +16,14 @@ import SectionAds from '@/components/sections/SectionAds';
 import Author from '@/components/elements/Author';
 import { DELETE } from '@/constants/methods';
 import { addMessage } from '@/reducers/messages';
+import useStateProps from '@/hooks/useStateProps';
 
 const defaultGoBack = '/entity/guides/';
 const GuideArticle = ({ result }) => {
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
-	const [guide, setGuide] = useState((result?.guide) || null);
+	const [guide, setGuide] = useStateProps(result?.guide || null);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
 
 	useEffect(() => {
@@ -32,7 +33,7 @@ const GuideArticle = ({ result }) => {
 	}, [result]);
 
 	useEffect(() => {
-		if (resultDelete && resultDelete.success) {
+		if (resultDelete?.success) {
 			dispatch(addMessage(resultDelete.message, true));
 			router.replace(defaultGoBack);
 		}

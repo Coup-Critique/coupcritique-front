@@ -16,7 +16,7 @@ const Ability = ({ ability, noPopup = false }) =>
 			hoverable
 			wide="very"
 			position="bottom center"
-			offset="5px"
+			className='mt-2'
 			content={ability.description.split('\n')[0]}
 			trigger={
 				<Link className="ability" href={`/entity/abilities/${ability.id}`}>

@@ -7,30 +7,26 @@ import useFetch from '@/hooks/useFetch';
 // constants
 import { reloadOnSsr } from '@/constants/entities';
 import { setGenAction } from '@/reducers/gen';
-import { setSsrDataAction } from '@/reducers/ssrData';
 
 /**
+ * @param {object} ssrEntity
  * @param {number|string} id
  * @param {string} key
  * @param {string} loadUrl
  * @returns {[any[]|null, boolean]}
  */
-const useGetEntityWithUser = (id, key, loadUrl) => {
+const useGetEntityWithUser = (id, key, loadUrl, ssrEntity) => {
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
-	const ssrData = useSelector(state => state.ssrData);
 	const gen = useSelector(state => state.gen);
 	const router = useRouter();
 	const [result, load, loading] = useFetch();
-	const ssrEntity = ssrData && ssrData[key];
 	const entityLoaded = !!ssrEntity && ssrEntity.id == id;
 
 	useEffect(() => {
 		// Void ssr on pokemon change
 		if (ssrEntity) {
-			if (ssrEntity.id != id) {
-				dispatch(setSsrDataAction(null));
-			} else if (ssrEntity.gen && ssrEntity.gen != gen) {
+			if (ssrEntity.gen && ssrEntity.gen != gen) {
 				dispatch(setGenAction(ssrEntity.gen));
 			}
 		}
@@ -56,7 +52,7 @@ const useGetEntityWithUser = (id, key, loadUrl) => {
 	}, [result]);
 
 	return [
-		result?.success ? result : entityLoaded ? ssrData : null,
+		result?.success ? result[key] : entityLoaded ? ssrEntity : null,
 		loading && !entityLoaded,
 	];
 };

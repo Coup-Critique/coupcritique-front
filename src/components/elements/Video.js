@@ -29,7 +29,7 @@ const Video = ({
 	}, []);
 
 	useEffect(() => {
-		if (resultDelete && resultDelete.success) {
+		if (resultDelete?.success) {
 			handleLoad();
 		}
 	}, [resultDelete]);
@@ -87,8 +87,8 @@ const Video = ({
 				{video.tags.map((tag, i) => (
 					<Tag key={i} tag={tag} />
 				))}
-				{isAdmin
-					&& (loadingDelete ? (
+				{isAdmin &&
+					(loadingDelete ? (
 						<Loader inline="centered" active size="tiny" />
 					) : (
 						<div>

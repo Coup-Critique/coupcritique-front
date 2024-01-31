@@ -11,10 +11,8 @@ const ApproveComment = ({ comment, handleUpdate, baseEntity }) => {
 	const [resultVote, loadVote, loadingVote] = useFetch();
 
 	useEffect(() => {
-		if (resultVote) {
-			if (resultVote.success) {
-				handleUpdate(resultVote.comment);
-			}
+		if (resultVote?.success) {
+			handleUpdate(resultVote.comment);
 		}
 	}, [resultVote]);
 

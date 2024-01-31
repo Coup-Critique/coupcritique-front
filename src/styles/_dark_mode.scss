@@ -34,6 +34,10 @@
 	background-color: $dark-body;
 	transition: background-color 0.3s;
 
+	p {
+		font-weight: 300;
+	}
+
 	.dark-mode-checkbox.ui.toggle.checkbox label {
 		color: white !important;
 	}
@@ -116,7 +120,7 @@
 		}
 	}
 
-	.ui.labeled.button > .button + .label:not(:hover) {
+	.ui.labeled.button>.button+.label:not(:hover) {
 		color: white !important;
 	}
 
@@ -136,6 +140,7 @@
 	// header
 
 	header {
+
 		.nav-link:hover,
 		.nav-link:focus,
 		.nav-link:active {
@@ -157,7 +162,7 @@
 			color: white !important;
 		}
 
-		> .container-fluid {
+		>.container-fluid {
 			box-shadow: none;
 			background-color: $darker;
 		}
@@ -179,6 +184,7 @@
 		box-shadow: none;
 
 		.navbar-nav {
+
 			.nav-item,
 			.menu .item {
 				color: white;
@@ -197,13 +203,13 @@
 				.nav-link:active {
 					color: $orange;
 
-					> span > i.icon,
-					> i.icon {
+					>span>i.icon,
+					>i.icon {
 						color: $orange;
 					}
 
-					> span > svg,
-					> svg {
+					>span>svg,
+					>svg {
 						fill: $orange;
 					}
 				}
@@ -225,11 +231,11 @@
 					&:active {
 						color: $orange;
 
-						> i.icon:not(.caret) {
+						>i.icon:not(.caret) {
 							color: $orange;
 						}
 
-						> svg {
+						>svg {
 							fill: $orange;
 						}
 					}
@@ -282,6 +288,7 @@
 		}
 
 		.ui.segment.tab {
+
 			input,
 			.ui.form input,
 			.ui.input.labeled .ui.basic.label {
@@ -299,7 +306,7 @@
 	}
 
 	.ui.list.flex {
-		> .item {
+		>.item {
 			border-bottom: 2px solid $dark-body;
 
 			.header a,
@@ -315,7 +322,7 @@
 		}
 	}
 
-	.row.divided > div:not(:first-child)::before {
+	.row.divided>div:not(:first-child)::before {
 		background-color: $dark-body;
 		width: 3px;
 		left: -1.5px;
@@ -438,6 +445,7 @@
 		}
 
 		&.field .menu.transition .header.activable {
+
 			&.active,
 			&:hover,
 			&:focus,
@@ -464,21 +472,21 @@
 			}
 		}
 
-		> .field + .menu {
+		>.field+.menu {
 			border-color: transparent;
 		}
 
-		&.active > .field + .menu {
+		&.active>.field+.menu {
 			border-top: 1px solid black;
 		}
 
-		&.upward.active > .field + .menu {
+		&.upward.active>.field+.menu {
 			border-top: 0;
 			border-bottom: 1px solid black;
 		}
 	}
 
-	.resource-list > .ui.accordion {
+	.resource-list>.ui.accordion {
 		border-right: 1px solid rgba(255, 255, 255, 0.25);
 
 		&:first-child:last-child {
@@ -525,6 +533,7 @@
 			}
 
 			&:not(.active) {
+
 				&:hover,
 				&:focus,
 				&:active {
@@ -546,6 +555,7 @@
 		}
 
 		a {
+
 			&:hover,
 			&:focus,
 			&:active {
@@ -556,6 +566,7 @@
 
 	// Comments
 	.ui.comments .comment {
+
 		.author,
 		.text {
 			color: white;
@@ -594,9 +605,9 @@
 		color: $body-color;
 	}
 
-	.ui.form .inline.field > label,
-	.ui.form .inline.fields .field > label,
-	.ui.form .inline.fields > label {
+	.ui.form .inline.field>label,
+	.ui.form .inline.fields .field>label,
+	.ui.form .inline.fields>label {
 		color: white;
 	}
 
@@ -633,9 +644,9 @@
 		}
 
 		.ui.checkbox label:after,
-		.ui.checkbox input:checked ~ label:after,
-		.ui.checkbox input:focus ~ label:after,
-		.ui.checkbox input:checked:focus ~ label:after {
+		.ui.checkbox input:checked~label:after,
+		.ui.checkbox input:focus~label:after,
+		.ui.checkbox input:checked:focus~label:after {
 			color: white;
 		}
 
@@ -662,7 +673,7 @@
 			}
 		}
 
-		.ui.search > .results {
+		.ui.search>.results {
 			background-color: $dark-input;
 			border-color: $darker;
 			color: white;
@@ -692,8 +703,8 @@
 				}
 			}
 
-			> .message,
-			> .message .header {
+			>.message,
+			>.message .header {
 				color: white;
 			}
 		}
@@ -727,11 +738,11 @@
 		border-color: $dark-element;
 		box-shadow: 0 0 0 0 black;
 
-		> .image {
+		>.image {
 			background-color: rgba(255, 255, 255, 0.075);
 		}
 
-		> .content > a {
+		>.content>a {
 			color: white;
 		}
 	}
@@ -755,7 +766,7 @@
 	}
 
 	.block-picker {
-		> div:last-child {
+		>div:last-child {
 			background-color: $dark-element;
 			box-shadow: $dark-input 0 0 3px 0;
 		}
@@ -763,6 +774,14 @@
 		input {
 			box-shadow: none !important;
 			color: rgba(255, 255, 255, 0.9) !important;
+		}
+	}
+
+	.description.wysiwyg-result {
+		font-weight: 200;
+
+		blockquote {
+			border-left-color: $light-grey;
 		}
 	}
 
@@ -913,12 +932,10 @@
 
 		@media (min-width: 1550px) {
 			.section-teams {
-				background: linear-gradient(
-					to right,
-					$dark-element,
-					$dark-element 50%,
-					$dark-body 50%
-				);
+				background: linear-gradient(to right,
+						$dark-element,
+						$dark-element 50%,
+						$dark-body 50%);
 			}
 		}
 
@@ -973,9 +990,10 @@
 }
 
 .ui.modal.dark-mode {
-	& > .header,
-	& > .content,
-	& > .actions {
+
+	&>.header,
+	&>.content,
+	&>.actions {
 		color: white;
 		border-color: $dark-body;
 		background-color: $dark-element;

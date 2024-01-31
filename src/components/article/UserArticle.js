@@ -12,10 +12,11 @@ import { MONTHS } from '@/constants';
 import GoBackButton from '@/components/GoBackButton';
 import useTableFetch from '@/hooks/useTableFetch';
 import UserTiperButton from '@/components/actions/UserTiperButton';
+import useStateProps from '@/hooks/useStateProps';
 
 const UserArticle = ({ result = {} }) => {
 	const ownUser = useSelector(state => state.user);
-	const [user, setUser] = useState();
+	const [user, setUser] = useStateProps();
 
 	const {
 		table,

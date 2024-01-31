@@ -26,7 +26,7 @@ const FormResource = ({ handleCancel, handleSubmited, resource = {} }) => {
 	}, []);
 
 	useEffect(() => {
-		if (resultTiers && resultTiers.success) {
+		if (resultTiers?.success) {
 			dispatch(setTiers(resultTiers.tiers));
 		}
 	}, [resultTiers]);

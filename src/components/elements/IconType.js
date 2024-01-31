@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { IMG_VERSION } from '@/constants/img';
 import { formatFileName, makeClassName } from '@/functions';
+import Image from 'next/image';
 
 const IconType = ({ type, className, tera = false }) => (
 	<Link
@@ -10,15 +11,13 @@ const IconType = ({ type, className, tera = false }) => (
 		className={makeClassName('icon-type', tera && 'tera', className)}
 		title={type.nom || type.name}
 	>
-		<img
+		<Image
 			src={`/images/types/${tera ? 'tera' : 'icon'}/${formatFileName(
 				type.name
 			)}.png`}
 			onError={e => {
 				e.target.onerror = null;
-				e.target.src = `/images/types/${
-					tera ? 'tera' : 'icon'
-				}/unknown.png?ver=${IMG_VERSION}`;
+				e.target.src = `/images/types/${tera ? 'tera' : 'icon'}/unknown.png`;
 			}}
 			alt={`Type ${type.nom || type.name}`}
 			className="link"

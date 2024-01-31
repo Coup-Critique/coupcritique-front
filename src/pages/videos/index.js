@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Dropdown, Form, Loader } from 'semantic-ui-react';
-import useFetch from '@/hooks/useFetch';
+import useFetch, { manageFetch } from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
 import Video from '@/components/elements/Video';
 import FormVideo from '@/components/forms/FormVideo';
@@ -20,10 +20,8 @@ const VideoList = () => {
 	const [resultTags, loadTags, loadingTags] = useFetch();
 	const [resultAuthors, loadAuthors, loadingAuthors] = useFetch();
 	const [result, load, loading] = useFetch();
-
 	const [videos, setVideos] = useState([]);
 	const [authors, setAuthors] = useState([]);
-
 	const [selectedAuthor, setSelectedAuthor] = useState();
 	const [checkedTags, setCheckedTags] = useState([]);
 	const [table, page, nbPages, handlePage] = usePager(10, videos);
@@ -39,7 +37,7 @@ const VideoList = () => {
 	}, []);
 
 	useEffect(() => {
-		if (resultAuthors && resultAuthors.success) {
+		if (resultAuthors?.success) {
 			let parsedAuthors = resultAuthors.authors.map((author, idx) => {
 				return {
 					key: 'author_' + idx,
@@ -52,7 +50,7 @@ const VideoList = () => {
 	}, [resultAuthors]);
 
 	useEffect(() => {
-		if (resultTags && resultTags.success) {
+		if (resultTags?.success) {
 			dispatch(setVideoTags(resultTags.tags));
 		}
 	}, [resultTags]);
@@ -177,5 +175,15 @@ const VideoList = () => {
 		</PageWrapper>
 	);
 };
+
+export async function getServerSideProps() {
+	try {
+		const { videos } = await manageFetch(`videos`);
+		return { props: { videos } };
+	} catch (e) {
+		console.error(e);
+		return { props: { videos: null } };
+	}
+}
 
 export default VideoList;

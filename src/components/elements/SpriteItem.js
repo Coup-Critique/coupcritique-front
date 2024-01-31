@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Popup } from 'semantic-ui-react';
 import { IMG_VERSION, SPRITE_ITM } from '@/constants/img';
 import { formatFileName } from '@/functions';
+import Image from 'next/image';
 
 const SpriteItem = ({ item, noPopup = false }) =>
 	noPopup || !item.description ? (
@@ -21,7 +22,7 @@ const SpriteItem = ({ item, noPopup = false }) =>
 			hoverable
 			wide="very"
 			position="bottom center"
-			offset="5px"
+			className="mt-2"
 			content={(item.nom || item.name) + ' : ' + item.description.split('\n')[0]}
 			trigger={
 				<Link href={`/entity/items/${item.id}`} className="sprite">
@@ -33,11 +34,13 @@ const SpriteItem = ({ item, noPopup = false }) =>
 
 const InnerImg = ({ item }) => (
 	<>
-		<img
-			src={`/images/items/sprites/${formatFileName(item.name)}.png?ver=${IMG_VERSION}`}
+		<Image
+			src={`/images/items/sprites/${formatFileName(
+				item.name
+			)}.png?ver=${IMG_VERSION}`}
 			onError={e => {
 				e.target.onerror = null;
-				e.target.src = `/images/items/sprites/unknown.png?ver=${IMG_VERSION}`;
+				e.target.src = `/images/items/sprites/unknown.png`;
 			}}
 			alt={`Objet ${item.nom || item.name}`}
 			className="link"

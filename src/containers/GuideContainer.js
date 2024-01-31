@@ -7,7 +7,7 @@ import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
 
 const GuideContainer = ({ Component, ...props }) => {
 	const id = useGetParam('id');
-	const [result, loading] = useGetEntityWithUser(id, 'guide', 'guides');
+	const [result, loading] = useGetEntityWithUser(id, 'guide', 'guides', props.guide);
 
 	if (loading) {
 		return <Loader active inline="centered" />;

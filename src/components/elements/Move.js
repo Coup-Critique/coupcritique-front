@@ -14,7 +14,7 @@ const Move = ({ move }) =>
 				hoverable
 				wide="very"
 				position="bottom center"
-				offset="5px"
+				className='mt-2'
 				content={move.description ? move.description.split('\n')[0] : ''}
 				trigger={
 					<Link href={`/entity/moves/${move.id}`}>{move.nom || move.name}</Link>
@@ -28,7 +28,7 @@ const Move = ({ move }) =>
 			hoverable
 			wide="very"
 			position="bottom center"
-			offset="5px"
+			className='mt-2'
 			content={move.description.split('\n')[0]}
 			trigger={<Link href={`/entity/moves/${move.id}`}>{move.nom || move.name}</Link>}
 		/>

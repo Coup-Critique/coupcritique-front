@@ -5,6 +5,7 @@ import { Loader } from 'semantic-ui-react';
 // components
 import useGetEntity from '@/hooks/useGetEntity';
 
+/** @deprecated */
 const TypeContainer = ({ Component, ...props }) => {
 	const id = useGetParam('id');
 	const [result, loading] = useGetEntity(id, 'type', 'types');
