@@ -30,7 +30,6 @@ const GuideTeaserEnhanced = ({ guide }) => (
 			<h4>
 				<Link href={`/entity/guides/${guide.id}`}>{guide.title}</Link>
 			</h4>
-			<p className="description">{guide.shortDescription}</p>
 			<h5>
 				{guide.user.username} - {formatDate(guide.date_creation)}
 			</h5>

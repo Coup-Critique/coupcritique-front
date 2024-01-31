@@ -16,8 +16,6 @@ import Author from '@/components/elements/Author';
 import useFetch from '@/hooks/useFetch';
 import { DELETE } from '@/constants/methods';
 import { addMessage } from '@/reducers/messages';
-import { useGetParam } from '@/hooks/useGetParams';
-import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
 import useStateProps from '@/hooks/useStateProps';
 
 const defaultGoBack = '/entity/actualities/';

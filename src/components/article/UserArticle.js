@@ -14,9 +14,10 @@ import useTableFetch from '@/hooks/useTableFetch';
 import UserTiperButton from '@/components/actions/UserTiperButton';
 import useStateProps from '@/hooks/useStateProps';
 
-const UserArticle = ({ result = {} }) => {
+const defaultValue = {};
+const UserArticle = props => {
 	const ownUser = useSelector(state => state.user);
-	const [user, setUser] = useStateProps();
+	const [user, setUser] = useStateProps(props.user || defaultValue);
 
 	const {
 		table,
@@ -27,15 +28,13 @@ const UserArticle = ({ result = {} }) => {
 		query,
 		handlePage,
 		handleSort,
-	} = useTableFetch('teams', {
-		loadUrl: user && !user.loading && user.id ? `teams/user/${result.user.id}` : null,
-	});
-
-	useEffect(() => {
-		if (result.user && result.user.id) {
-			setUser(result.user);
-		}
-	}, [result.user]);
+	} = useTableFetch(
+		'teams',
+		{
+			loadUrl: user && !user.loading && user.id ? `teams/user/${user.id}` : null,
+		},
+		props.teams
+	);
 
 	const handleValue = (name, value) => setUser({ ...user, [name]: value });
 
@@ -77,7 +76,7 @@ const UserArticle = ({ result = {} }) => {
 					<h2>{user.username}</h2>
 					<div className="user-info">
 						<p>Membre depuis&nbsp;: {user_date}</p>
-						<p>Nombre de commentaires&nbsp;: {result.nbComments}</p>
+						<p>Nombre de commentaires&nbsp;: {props.nbComments}</p>
 						{!!user.discord_name && <p>Discord&nbsp;: {user.discord_name}</p>}
 						{!!user.showdown_name && (
 							<p>Showdown&nbsp;: {user.showdown_name}</p>
