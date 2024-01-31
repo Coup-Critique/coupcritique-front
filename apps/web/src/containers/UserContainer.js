@@ -3,11 +3,11 @@
 import { useGetParam } from '@/hooks/useGetParams';
 import { Loader } from 'semantic-ui-react';
 // components
-import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
+import useGetEntity from '@/hooks/useGetEntity';
 
 const UserContainer = ({ Component, ...props }) => {
 	const id = useGetParam('id');
-	const [user, loading] = useGetEntityWithUser(id, 'user', 'users', props.user);
+	const [user, loading] = useGetEntity(id, 'user', 'users', props.user);
 
 	if (loading) {
 		return <Loader active inline="centered" />;

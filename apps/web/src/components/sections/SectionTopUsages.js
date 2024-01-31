@@ -32,38 +32,32 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 					</Link>
 				</div>
 				<div className="col-12 col-xl-5">
-					<div className="row">
-						<div className="col-12 col-md-6 col-xl-12">
-							<h2>Dernier guide stratégique</h2>
-							{guides.map(guide => (
-								<div className="mb-4" key={guide.id}>
-									<GuideTeaserEnhanced guide={guide} />
-									<Button
-										as={Link}
-										href="/entity/guides"
-										content="Voir les guides stratégiques"
-										color="red"
-										icon="book"
-									/>
-								</div>
-							))}
+					<h2>Dernier guide stratégique</h2>
+					{guides.map(guide => (
+						<div className="mb-4" key={guide.id}>
+							<GuideTeaserEnhanced guide={guide} />
+							<Button
+								as={Link}
+								href="/entity/guides"
+								content="Voir les guides stratégiques"
+								color="red"
+								icon="book"
+							/>
 						</div>
-						<div className="col-12 col-md-6 col-xl-12">
-							{videos.map(video => (
-								<Fragment key={video.id}>
-									<h3>Dernière vidéo</h3>
-									<Video key={video.id} video={video} short />
-									<Button
-										as={Link}
-										href="/videos"
-										content="Voir les vidéos"
-										color="red"
-										icon="youtube"
-									/>
-								</Fragment>
-							))}
-						</div>
-					</div>
+					))}
+					{videos.map(video => (
+						<Fragment key={video.id}>
+							<h3>Dernière vidéo</h3>
+							<Video key={video.id} video={video} short />
+							<Button
+								as={Link}
+								href="/videos"
+								content="Voir les vidéos"
+								color="red"
+								icon="youtube"
+							/>
+						</Fragment>
+					))}
 				</div>
 			</div>
 		</div>

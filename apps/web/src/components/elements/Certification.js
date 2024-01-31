@@ -27,7 +27,7 @@ const Certification = ({ team = {}, userId, className, big = false }) => {
 			/>
 		);
 	}
-	if (userId && team.certified === false && team.user.id === userId) {
+	if (team.certified === false && team.user.id === userId) {
 		return <b className={makeClassName(big && 'pr-2 text-underline')}>VUE</b>;
 		// return <Icon name="minus circle" color="grey" size="large" />;
 	}
