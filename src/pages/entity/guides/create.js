@@ -33,7 +33,7 @@ const GuideFormPage = props => {
 		}
 	}, []);
 
-	if (user.loading) {
+	if (user.loading || window === undefined) {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id || !user.is_modo) {

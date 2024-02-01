@@ -34,7 +34,7 @@ const TeamFormPage = props => {
 		}
 	}, []);
 
-	if (user.loading) {
+	if (user.loading || window === undefined) {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (update && team && team.user.id !== user.id && !user.is_modo) {
