@@ -1,7 +1,7 @@
 // modules
 import Link from 'next/link';
 // components
-import ActualityTeaser from '@/components/elements/ActualityTeaser';
+import ActualityTeaser from '@/components/teasers/ActualityTeaser';
 
 function SectionActuality({ actualities = [] }) {
 	if (!actualities.length) return null;

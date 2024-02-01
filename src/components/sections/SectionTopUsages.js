@@ -3,9 +3,9 @@ import { Fragment } from 'react';
 import Link from 'next/link';
 import { Button, Icon } from 'semantic-ui-react';
 // functions
-import TierUsage from '@/components/elements/TierUsage';
+import TierUsage from '@/components/teasers/TierUsage';
 import Video from '@/components/elements/Video';
-import GuideTeaserEnhanced from '@/components/elements/GuideTeaserEnhanced';
+import GuideTeaserEnhanced from '@/components/teasers/GuideTeaserEnhanced';
 
 const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 	<section className="section-usage">

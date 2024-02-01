@@ -9,10 +9,10 @@ const useNotifChecker = (entityName, id) => {
 	const [resultNotif, loadNotif] = useFetch();
 
 	useEffect(() => {
-		if (user.id) {
+		if (user.id && id) {
 			loadNotif({ url: `notifications/view/${entityName}/${id}` });
 		}
-	}, [entityName, user.id]);
+	}, [entityName, user.id, id]);
 
 	useEffect(() => {
 		if (resultNotif?.success) {

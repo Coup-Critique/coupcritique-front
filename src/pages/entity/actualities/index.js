@@ -6,7 +6,7 @@ import { Button, Form, Loader } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
 import useFetch, { manageFetch } from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
-import ActualityTeaser from '@/components/elements/ActualityTeaser';
+import ActualityTeaser from '@/components/teasers/ActualityTeaser';
 import PageWrapper from '@/components/PageWrapper';
 import PaginationPrettier from '@/components/PaginationPrettier';
 import { setActualityTags } from '@/reducers/actuality_tags';

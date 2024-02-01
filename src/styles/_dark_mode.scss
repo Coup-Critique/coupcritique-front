@@ -618,7 +618,7 @@
 
 		.field {
 			.ui.input.labeled .ui.label {
-				background-color: $dark-input;
+				background-color: $dark-input !important;
 			}
 
 			.ui.input.labeled.right .ui.label {

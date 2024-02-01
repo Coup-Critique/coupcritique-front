@@ -5,7 +5,11 @@ const SectionWeeklyTeam = ({ team }) => (
 		<div className="ui container">
 			<h2>Équipe de la semaine</h2>
 			<div className="top-team">
-				{team ? <TableOneTeam team={team} /> : <p>Équipe indisponible.</p>}
+				{team ? (
+					<TableOneTeam reverse team={team} />
+				) : (
+					<p>Équipe indisponible.</p>
+				)}
 			</div>
 		</div>
 	</section>

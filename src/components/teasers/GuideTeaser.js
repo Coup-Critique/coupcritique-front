@@ -10,13 +10,10 @@ import Author from '@/components/elements/Author';
 const GuideTeaser = ({ guide, TitleAs = 'h3', btnProps = {} }) => (
 	<ScrollReveal className="ui card actuality-teaser" animation="zoomIn" earlier>
 		<Card.Content>
-			<TitleAs className="text-center">
-				<Link href={`/entity/guides/${guide.id}`}>{guide.title}</Link>
-			</TitleAs>
-			<div className="image mb-3">
+			<div className="image mb-4">
 				<Link href={`/entity/guides/${guide.id}`}>
 					<img
-						className="img-fluid d-block"
+						className="img-fluid"
 						src={
 							guide.images && guide.images.length
 								? `/images/guides/375px/${guide.images[0]}`
@@ -32,8 +29,11 @@ const GuideTeaser = ({ guide, TitleAs = 'h3', btnProps = {} }) => (
 					<span className="sr-only">Illustration du guide : {guide.title}</span>
 				</Link>
 			</div>
+			<TitleAs>
+				<Link href={`/entity/guides/${guide.id}`}>{guide.title}</Link>
+			</TitleAs>
 			{guide.tags.length > 0 && (
-				<div className="mb-2 text-center">
+				<div className="mb-2">
 					{guide.tags.map((guideTag, i) => (
 						<Tag key={i} tag={guideTag} />
 					))}
@@ -45,9 +45,9 @@ const GuideTeaser = ({ guide, TitleAs = 'h3', btnProps = {} }) => (
 			)}
 		</Card.Content>
 		<Card.Content>
-			<Button color="red" {...btnProps} as={Link} href={`/entity/guides/${guide.id}`}>
+			<Link className="underline" {...btnProps} href={`/entity/guides/${guide.id}`}>
 				Lire la suite
-			</Button>
+			</Link>
 		</Card.Content>
 	</ScrollReveal>
 );

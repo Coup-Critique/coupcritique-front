@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Loader } from 'semantic-ui-react';
 // hooks
 import useFetch from '@/hooks/useFetch';
-import TournamentTeaser from '@/components/elements/TournamentTeaser';
+import TournamentTeaser from '@/components/teasers/TournamentTeaser';
 
 const defaultArray = [];
 function SectionTournament() {

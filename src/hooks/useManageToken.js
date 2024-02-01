@@ -14,7 +14,7 @@ const useManageToken = () => {
 	const user = useSelector(state => state.user);
 	const { getStoredItem, setItemToStorage } = useLocalStorage();
 	const [storage, setStorage] = useState(null);
-	const [result, load] = useFetch();
+	const [result, load, loading] = useFetch();
 	const [resultUser, loadUser] = useFetch();
 	const [resultNotif, loadNotif] = useFetch(true);
 	const [interval, saveInterval] = useState(null);
@@ -22,7 +22,7 @@ const useManageToken = () => {
 	// Get User from local storage
 	useEffect(() => {
 		//Component will mount
-		if (!user.token) {
+		if (!user.token && !loading) {
 			const storedData = getStoredItem();
 			if (storedData) {
 				setStorage(storedData);
@@ -36,7 +36,7 @@ const useManageToken = () => {
 		} else if (user.loading) {
 			dispatch(setLoadingUser(false));
 		}
-	}, []);
+	}, [user.loading]);
 
 	// Refresh Token
 	useEffect(() => {
@@ -52,10 +52,8 @@ const useManageToken = () => {
 					dispatch(setUser(storage));
 					loadUser({ url: 'own-user', token: storage.token });
 				}
-			} else {
-				if (user.loading) {
-					dispatch(setLoadingUser(false));
-				}
+			} else if (user.loading) {
+				dispatch(setLoadingUser(false));
 			}
 		}
 	}, [result]);
