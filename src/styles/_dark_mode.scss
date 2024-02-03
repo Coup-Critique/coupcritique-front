@@ -617,7 +617,7 @@
 		}
 
 		.field {
-			.ui.input.labeled .ui.label {
+			.ui.input.labeled .ui.label:not(.red):not(.orange):not(.blue) {
 				background-color: $dark-input !important;
 			}
 

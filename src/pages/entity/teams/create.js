@@ -21,8 +21,8 @@ const TeamFormPage = props => {
 	const { pathname } = useRouter();
 	const { setItemToStorage } = useLocalStorage();
 	const user = useSelector(state => state.user);
-	const tiers = useSelector(state => state.tiers || props.tiers);
-	const tags = useSelector(state => state.tags || props.tags);
+	const tiers = useSelector(state => props.tiers || state.tiers);
+	const tags = useSelector(state => props.tags || state.tags);
 	const { team, update = false } = props;
 
 	useEffect(() => {
@@ -90,11 +90,7 @@ const TeamFormPage = props => {
 			) : !user.token ? (
 				<SignPanel />
 			) : (
-				<FormTeam
-					tiers={tiers}
-					tags={tags}
-					defaultValue={team}
-				/>
+				<FormTeam tiers={tiers} tags={tags} defaultValue={team} />
 			)}
 		</PageWrapper>
 	);

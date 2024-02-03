@@ -16,8 +16,8 @@ const GuideFormPage = props => {
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const user = useSelector(state => state.user);
-	const guide_tags = useSelector(state => state.guide_tags || props.tags);
-	const tiers = useSelector(state => state.tiers || props.tiers);
+	const guide_tags = useSelector(state => props.tags || state.guide_tags);
+	const tiers = useSelector(state => props.tiers || state.tiers);
 	const { guide, update = false } = props;
 
 	const goBack = () => {

@@ -18,7 +18,7 @@ export async function getServerSideProps({ query }) {
 		return { props: { actuality } };
 	} catch (e) {
 		console.error(e);
-		return { props: { item: null } };
+		return { props: { actuality: null } };
 	}
 }
 

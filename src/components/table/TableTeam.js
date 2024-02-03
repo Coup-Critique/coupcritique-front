@@ -207,11 +207,9 @@ const RowTeam = ({
 					team.tags.map((tag, i) => <Tag key={i} tag={tag} />)
 				)}
 			</td>
-			{isUserConnected && (
-				<td className="td-action" title="">
-					<Favorite isIcon team={team} />
-				</td>
-			)}
+			<td className="td-action" title="">
+				<Favorite isIcon team={team} action={isUserConnected} />
+			</td>
 			{deletable && (
 				<td className="td-action" title="">
 					<Icon

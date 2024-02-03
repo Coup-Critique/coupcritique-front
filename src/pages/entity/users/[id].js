@@ -15,7 +15,7 @@ export async function getServerSideProps({ query }) {
 		return { props: { user, nbComments, teams } };
 	} catch (e) {
 		console.error(e);
-		return { props: { item: null } };
+		return { props: { user: null } };
 	}
 }
 

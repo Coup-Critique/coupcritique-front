@@ -32,7 +32,6 @@ const useTableFetch = (entityName, parameters = {}, defaultValue) => {
 			loadUrl !== null &&
 			(!defaultValue || Object.keys(query).length > 1 || query.page > 1)
 		) {
-			console.log({ defaultValue, query });
 			handleLoad();
 		}
 	}, [query, loadUrl]);

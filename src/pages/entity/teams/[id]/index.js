@@ -1,7 +1,6 @@
 import TeamArticle from '@/components/article/TeamArticle';
 import TeamContainer from '@/containers/TeamContainer';
 import useNotifChecker from '@/hooks/useNotifChecker';
-import { useGetParam } from '@/hooks/useGetParams';
 import { manageFetch } from '@/hooks/useFetch';
 
 const TeamPage = ({ team }) => {
@@ -16,7 +15,7 @@ export async function getServerSideProps({ query }) {
 		return { props: { team } };
 	} catch (e) {
 		console.error(e);
-		return { props: { item: null } };
+		return { props: { team: null } };
 	}
 }
 

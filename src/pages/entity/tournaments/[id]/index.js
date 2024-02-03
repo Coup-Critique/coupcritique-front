@@ -18,7 +18,7 @@ export async function getServerSideProps({ query }) {
 		return { props: { tournament } };
 	} catch (e) {
 		console.error(e);
-		return { props: { item: null } };
+		return { props: { tournament: null } };
 	}
 }
 

@@ -9,7 +9,7 @@ import FormSearch from '@/components/forms/FormSearch';
 import RadioFilterForm from '@/components/forms/RadioFilterForm';
 import PageWrapper from '@/components/PageWrapper';
 import TableTeam from '@/components/table/TableTeam';
-import useFetch from '@/hooks/useFetch';
+import { manageFetch } from '@/hooks/useFetch';
 import { setTiers as setTiersAction } from '@/reducers/tiers';
 import { setTags as setTagsAction } from '@/reducers/tags';
 import TiersField from '@/components/fields/TiersField';
@@ -18,10 +18,8 @@ import SectionAds from '@/components/sections/SectionAds';
 import useTableFetch from '@/hooks/useTableFetch';
 
 const defaultArray = [];
-const TeamList = () => {
+const TeamList = props => {
 	const dispatch = useDispatch();
-	const tiers = useSelector(state => state.tiers);
-	const tags = useSelector(state => state.tags);
 	const filterRef = useRef();
 	const searchRef = useRef();
 
@@ -36,15 +34,13 @@ const TeamList = () => {
 		setQueryParam,
 		handlePage,
 		handleSort,
-	} = useTableFetch('teams');
+	} = useTableFetch('teams', { loadUrl: 'teams' }, props.teams);
 
-	const [resultTiers, loadTiers, loadingTiers] = useFetch();
-	const [resultTags, loadTags, loadingTags] = useFetch();
+	const tiers = useSelector(state => props.tiers || state.tiers);
+	const tags = useSelector(state => props.tags || state.tags);
 	const [setTiers, setTags] = useActions(dispatch, [setTiersAction, setTagsAction]);
-
-	const [certified, setCertified] = useState(query.certified);
-	const [checkedTier, setCheckedTier] = useState(query.tier);
 	const [checkedGen, setCheckedGen] = useState(query.gen);
+	const [checkedTier, setCheckedTier] = useState(query.tier);
 	const [checkedTags, setCheckedTags] = useState(
 		query.tags
 			? Array.isArray(query.tags)
@@ -52,14 +48,15 @@ const TeamList = () => {
 				: query.tags.split(',')
 			: defaultArray
 	);
+	const [certified, setCertified] = useState(query.certified);
 	// const [displayFilters, setDisplayFilters] = useState(false);
 
 	useEffect(() => {
-		if (!Object.keys(tiers).length) {
-			loadTiers({ url: 'tiers-select' });
+		if (props.tiers?.length) {
+			setTiers(props.tiers);
 		}
-		if (!tags.length) {
-			loadTags({ url: 'tags' });
+		if (props.tags?.length) {
+			setTags(props.tags);
 		}
 	}, []);
 
@@ -74,18 +71,6 @@ const TeamList = () => {
 			setCheckedTags(defaultArray);
 		}
 	}, [query.tags]);
-
-	useEffect(() => {
-		if (resultTiers?.success) {
-			setTiers(resultTiers.tiers);
-		}
-	}, [resultTiers]);
-
-	useEffect(() => {
-		if (resultTags?.success) {
-			setTags(resultTags.tags);
-		}
-	}, [resultTags]);
 
 	const handleSubmitFilters = e => {
 		e.preventDefault();
@@ -163,33 +148,25 @@ const TeamList = () => {
 			/>
 			<Form onSubmit={handleSubmitFilters} className="list-filter">
 				<div className="d-flex mb-4">
-					{loadingTiers ? (
-						<Loader active inline="centered" />
-					) : (
-						<TiersField
-							label="Tier"
-							tiers={tiers}
-							currentTier={checkedTier}
-							currentGen={checkedGen}
-							handleChange={handleTier}
-							className="flex-grow-1"
-						/>
-					)}
+					<TiersField
+						label="Tier"
+						tiers={tiers}
+						currentTier={checkedTier}
+						currentGen={checkedGen}
+						handleChange={handleTier}
+						className="flex-grow-1"
+					/>
 				</div>
 				<div className="row mb-0">
 					<div className="col-12 col-lg-6 d-flex mb-3 mb-lg-0">
-						{loadingTags ? (
-							<Loader active inline="centered" />
-						) : (
-							<DropdownMultipleSelectField
-								label="Catégories"
-								name="tags"
-								className="flex-grow-1"
-								options={tags}
-								value={checkedTags}
-								onChange={handleTags}
-							/>
-						)}
+						<DropdownMultipleSelectField
+							label="Catégories"
+							name="tags"
+							className="flex-grow-1"
+							options={tags}
+							value={checkedTags}
+							onChange={handleTags}
+						/>
 					</div>
 					<div className="col-12 col-lg-6 d-flex flex-column mb-3 mb-lg-0">
 						<FormSearch
@@ -225,9 +202,7 @@ const TeamList = () => {
 				</div>
 			</Form>
 			<div id="pagination-scroll-ref">
-				{loading ? (
-					<Loader active={loading} inline="centered" />
-				) : table.length > 0 ? (
+				{table.length > 0 ? (
 					<TableTeam
 						teams={table}
 						setTeams={setTable}
@@ -237,6 +212,8 @@ const TeamList = () => {
 						query={query}
 						nbPages={nbPages}
 					/>
+				) : loading ? (
+					<Loader active={loading} inline="centered" />
 				) : (
 					<p>Aucune équipe n'a été trouvée.</p>
 				)}
@@ -244,4 +221,17 @@ const TeamList = () => {
 		</PageWrapper>
 	);
 };
+
+export async function getServerSideProps() {
+	try {
+		const { teams } = await manageFetch(`teams`);
+		const { tags } = await manageFetch(`tags`);
+		const { tiers } = await manageFetch(`tiers-select`);
+		return { props: { teams, tags, tiers } };
+	} catch (e) {
+		console.error(e);
+		return { props: { teams: null } };
+	}
+}
+
 export default TeamList;

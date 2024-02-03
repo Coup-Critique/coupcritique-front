@@ -16,7 +16,6 @@ import useStateWithGen from '@/hooks/useStateWithGen';
 
 const defaultArray = [];
 const TierArticle = props => {
-	console.log(props);
 	const [tier, setTier] = useStateWithGen(props.tier);
 	const [pokemons, setPokemons] = useStateProps(props.pokemons || defaultArray);
 	const [pokemonsTechnically, setPokemonsTechnically] = useStateProps(
