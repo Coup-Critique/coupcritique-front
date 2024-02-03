@@ -13,6 +13,7 @@
 		top: 0;
 		z-index: 1;
 	}
+
 	@media (min-width: $header-breakpoint) {
 		thead {
 			top: $header-height;
@@ -20,11 +21,12 @@
 	}
 }
 
-.table-wrapper + .table-wrapper table.table {
+.table-wrapper+.table-wrapper table.table {
 	thead tr {
 		th:first-child {
 			border-radius: 0;
 		}
+
 		th:last-child {
 			border-radius: 0;
 		}
@@ -32,6 +34,8 @@
 }
 
 table.table {
+	border-collapse: separate;
+	border-spacing: 0;
 	margin-bottom: 0;
 
 	thead tr {
@@ -41,16 +45,42 @@ table.table {
 		th {
 			border: 0;
 			font-weight: 500;
+			white-space: nowrap;
+			text-overflow: ellipsis;
 		}
 
 		th:first-child {
 			border-radius: $border-radius 0 0 0;
 		}
+
 		th:last-child {
 			border-radius: 0 $border-radius 0 0;
 		}
+
 		th:first-child:last-child {
 			border-radius: $border-radius $border-radius 0 0;
+		}
+	}
+
+	tbody tr {
+		td:first-child {
+			border-left: 1px solid $light-grey-bs;
+		}
+
+		td:last-child {
+			border-right: 1px solid $light-grey-bs;
+		}
+	}
+
+	tbody:last-child tr:last-child td {
+		border-bottom: 1px solid $light-grey-bs;
+
+		&:first-child {
+			border-radius: 0 0 0 $border-radius;
+		}
+
+		&:last-child {
+			border-radius: 0 0 $border-radius 0;
 		}
 	}
 
@@ -58,11 +88,24 @@ table.table {
 		thead tr {
 			background-color: transparent;
 			color: #212529;
+
+			th {
+				border-top: 1px solid $light-grey-bs;
+			}
+
+			th:first-child {
+				border-left: 1px solid $light-grey-bs;
+			}
+
+			th:last-child {
+				border-right: 1px solid $light-grey-bs;
+			}
 		}
 	}
 
 	tr.tr-clickable {
 		cursor: pointer;
+
 		.td-action {
 			cursor: default;
 		}
@@ -109,6 +152,15 @@ table.table {
 		th,
 		td {
 			border: 0;
+
+			&:first-child,
+			&:last-child {
+				border: 0;
+			}
+		}
+
+		tbody:last-child tr:last-child td {
+			border-bottom: 0;
 		}
 	}
 
@@ -150,18 +202,21 @@ table.table.sortable {
 	}
 }
 
-@media screen and (max-width: $xl) {
+@media screen and (max-width: $xxl) {
 	table.table td.list.nowrap {
 		white-space: normal;
 	}
 }
+
 @media screen and (max-width: $s) {
 	table.table.stackable {
 		display: block;
+
 		thead,
 		th {
 			display: none;
 		}
+
 		tbody,
 		tr,
 		td {

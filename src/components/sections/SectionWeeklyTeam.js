@@ -6,7 +6,7 @@ const SectionWeeklyTeam = ({ team }) => (
 			<h2>Équipe de la semaine</h2>
 			<div className="top-team">
 				{team ? (
-					<TableOneTeam reverse team={team} />
+					<TableOneTeam reverse team={team} isLink={false} />
 				) : (
 					<p>Équipe indisponible.</p>
 				)}

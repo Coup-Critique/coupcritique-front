@@ -436,7 +436,7 @@ section {
 	&.inverted {
 		color: white;
 		background-color: transparent;
-		border: 1px solid white;
+		border: 1px solid rgba(255, 255, 255, 0.2);
 		box-shadow: none !important;
 		transition: all 0.3s;
 
@@ -871,6 +871,7 @@ h3,
 	background-color: $light-grey;
 	padding: 1em;
 	margin: 1.5em 0;
+	border-radius: $border-radius;
 }
 
 .container>.framed {
@@ -1562,9 +1563,9 @@ ul {
 	}
 }
 
-@media (min-width: 1400px) {
+@media (min-width: $xxl) {
 	.container.more {
-		width: 1400px;
-		max-width: 1400px;
+		width: $xxl;
+		max-width: $xxl;
 	}
 }

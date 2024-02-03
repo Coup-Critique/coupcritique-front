@@ -12,7 +12,7 @@ const UserContainer = ({ Component, ...props }) => {
 	if (loading) {
 		return <Loader active inline="centered" />;
 	} else if (user) {
-		return <Component user={user} {...props} />;
+		return <Component {...props} user={user} />;
 	} else {
 		return null;
 	}

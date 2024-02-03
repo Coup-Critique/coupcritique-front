@@ -61,8 +61,8 @@ const TablePokemon = ({
 					{ key: 'hp', content: 'PV', sortable: true },
 					{ key: 'atk', content: 'Atq', sortable: true },
 					{ key: 'def', content: 'Déf', sortable: true },
-					{ key: 'spa', content: 'Atq\u00A0Spé', sortable: true },
-					{ key: 'spd', content: 'Déf\u00A0Spé', sortable: true },
+					{ key: 'spa', content: 'Ats', sortable: true },
+					{ key: 'spd', content: 'Dfs', sortable: true },
 					{ key: 'spe', content: 'Vit', sortable: true },
 					{ key: 'bst', content: 'BST', sortable: true },
 				]}

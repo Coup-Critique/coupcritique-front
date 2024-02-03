@@ -73,7 +73,7 @@ const CommentArea = ({ entity, entityName }) => {
 						icon="edit"
 						content="Ajouter un commentaire"
 						onClick={handleAddComment}
-						className="mb-2"
+						className="mb-3"
 					/>
 				))}
 			{nbPages > 1 && (

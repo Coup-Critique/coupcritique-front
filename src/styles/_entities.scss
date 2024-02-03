@@ -307,6 +307,7 @@ th.table-team-instance {
 	padding: 0.9375rem;
 	margin-bottom: 2em;
 	overflow: auto;
+	border-radius: $border-radius;
 
 	.type-wrapper {
 		margin-bottom: 1em;
@@ -325,6 +326,7 @@ th.table-team-instance {
 		margin: 2em auto 0;
 		max-height: 50vh;
 		overflow: auto;
+		border-radius: $border-radius;
 	}
 
 	.grid .grid-col-1 {
@@ -609,7 +611,7 @@ th.table-team-instance {
 			min-width: calc(33.33% - 2em);
 		}
 
-		@media (min-width: 1400px) {
+		@media (min-width: $xxl) {
 			min-width: calc(25% - 3em);
 		}
 
@@ -780,7 +782,8 @@ a.date:focus {
 	flex-direction: column;
 	border: 0;
 	box-shadow: none;
-	border-radius: 3px;
+	overflow: hidden;
+	border-radius: $border-radius;
 	background-color: $light-grey;
 	color: #212529;
 	text-align: left;
@@ -995,8 +998,8 @@ a.date:focus {
 	}
 }
 
-@media (min-width: 1400px) {
+@media (min-width: $xxl) {
 	.actuality-list>.container {
-		max-width: 1400px;
+		max-width: $xxl;
 	}
 }

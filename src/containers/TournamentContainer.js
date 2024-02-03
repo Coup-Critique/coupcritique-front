@@ -7,12 +7,17 @@ import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
 
 const TournamentContainer = ({ Component, ...props }) => {
 	const id = useGetParam('id');
-	const [result, loading] = useGetEntityWithUser(id, 'tournament', 'tournaments');
+	const [tournament, loading] = useGetEntityWithUser(
+		id,
+		'tournament',
+		'tournaments',
+		props.tournament
+	);
 
 	if (loading) {
 		return <Loader active inline="centered" />;
-	} else if (result) {
-		return <Component result={result} {...props} />;
+	} else if (tournament) {
+		return <Component {...props} tournament={tournament} />;
 	} else {
 		return null;
 	}

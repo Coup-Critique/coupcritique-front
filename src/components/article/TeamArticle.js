@@ -1,4 +1,5 @@
 // modules
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -10,7 +11,6 @@ import Export from '@/components/actions/Export';
 import CertificationButton from '@/components/actions/CertificationButton';
 import TeamBanButton from '@/components/actions/TeamBanButton';
 import DeleteAction from '@/components/actions/DeleteAction';
-import Favorite from '@/components/actions/Favorite';
 import GoBackButton from '@/components/GoBackButton';
 import TeamTopButton from '@/components/actions/TeamTopButton';
 // import ScrollReveal from '@/components/ScrollReveal';
@@ -23,11 +23,12 @@ import { addMessage } from '@/reducers/messages';
 import { formatDate, formatFileName } from '@/functions';
 import { INSTANCES_KEYS } from '@/constants/team';
 
+const defaultValue = {};
 const TeamArticle = props => {
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const user = useSelector(state => state.user);
-	const [team, setTeam] = useStateProps(props.team || {});
+	const [team, setTeam] = useStateProps(props.team || defaultValue);
 
 	const handleValue = (name, value) => setTeam({ ...team, [name]: value });
 
@@ -38,7 +39,6 @@ const TeamArticle = props => {
 		router.back();
 	};
 
-	const isUserConnected = !user.loading && user.id;
 	if (!team.id) return null;
 	return (
 		<PageWrapper
@@ -49,9 +49,8 @@ const TeamArticle = props => {
 			metaimage={`pokemons/${formatFileName(team.pkm_inst_1.pokemon.name)}.png`}
 		>
 			<GoBackButton defaultUrl="/entity/teams" />
-			<TableOneTeam team={team} userId={user.id} className="mt-3 mb-4" />
+			<TableOneTeam team={team} className="mt-3 mb-4" />
 			<div className="text-center mb-3 btn-wrapper">
-				{isUserConnected && <Favorite team={team} />}
 				{(user.id === team.user.id || user.is_modo === true) && (
 					<Button
 						icon="pencil"

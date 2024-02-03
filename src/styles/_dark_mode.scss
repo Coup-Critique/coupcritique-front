@@ -356,12 +356,20 @@
 		}
 
 		td {
-			border-top-color: rgba(255, 255, 255, 0.2);
+			border-color: rgba(255, 255, 255, 0.2);
+		}
+
+		tbody:last-child tr:last-child td {
+			border-color: rgba(255, 255, 255, 0.2);
 		}
 
 		&.basic {
 			thead tr {
 				color: white;
+
+				th {
+					border-color: rgba(255, 255, 255, 0.2);
+				}
 			}
 		}
 	}

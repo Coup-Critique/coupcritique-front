@@ -94,7 +94,7 @@ const PokemonArticle = props => {
 					))}
 				</Menu>
 			)}
-			<div className="row mb-3">
+			<div className="row">
 				<div className="col-12 col-md-6 col-lg-5 mb-4 vertically-centered">
 					<ArtPokemon pokemon={pokemon} />
 				</div>

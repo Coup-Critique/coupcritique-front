@@ -12,7 +12,7 @@ const TeamContainer = ({ Component, ...props }) => {
 	if (loading) {
 		return <Loader active inline="centered" />;
 	} else if (team) {
-		return <Component team={team} {...props} />;
+		return <Component {...props} team={team} />;
 	} else {
 		return null;
 	}

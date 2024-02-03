@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Profile from '@/components/elements/Profile';
 import Tier from '@/components/elements/Tier';
@@ -7,13 +8,16 @@ import Certification from '@/components/elements/Certification';
 import SpritePokemon from '@/components/elements/SpritePokemon';
 import { INSTANCES_KEYS } from '@/constants/team';
 import { makeClassName } from '@/functions';
+import Favorite from '@/components/actions/Favorite';
 
 // TODO props link > click on team to go to team page
-const TableOneTeam = ({ team, className, userId, isLink }) => {
+const TableOneTeam = ({ team, className, isLink = true }) => {
 	const router = useRouter();
+	const user = useSelector(state => state.user);
+	const isUserConnected = !user.loading && user.id;
 	return (
 		<div
-			className={makeClassName('table-wrapper', className)}
+			className={makeClassName('table-wrapper one-team', className)}
 			onClick={e => router.push(`/entity/teams/${team.id}`)}
 		>
 			<table className="table basic table-pokemon stackable">
@@ -24,6 +28,7 @@ const TableOneTeam = ({ team, className, userId, isLink }) => {
 						<th>Pokémon</th>
 						<th>Tier</th>
 						<th>Catégories</th>
+						<th>Favoris</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -35,15 +40,15 @@ const TableOneTeam = ({ team, className, userId, isLink }) => {
 							<Certification
 								className="img-fluid"
 								team={team}
-								userId={userId}
+								userId={user.id}
 							/>
 						</td>
 						<td className="list nowrap">
 							{
 								// prettier-ignore
 								INSTANCES_KEYS.map(key => !!team[key] && (
-                            <SpritePokemon key={key} pokemon={team[key].pokemon} isLink={!isLink}/>
-                        ))
+									<SpritePokemon key={key} pokemon={team[key].pokemon} isLink={isLink}/>
+								))
 							}
 						</td>
 						<td>
@@ -53,6 +58,9 @@ const TableOneTeam = ({ team, className, userId, isLink }) => {
 							{team.tags.map((tag, i) => (
 								<Tag key={i} tag={tag} />
 							))}
+						</td>
+						<td className="td-action" title="">
+							<Favorite isIcon team={team} action={isUserConnected} />
 						</td>
 					</tr>
 				</tbody>
