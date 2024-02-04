@@ -31,7 +31,8 @@ const Favorite = ({ team, isIcon = false, size = 'large', action = true }) => {
 		}
 	}, [resultFavorite]);
 
-	const handleFavorite = () => {
+	const handleFavorite = e => {
+		e.stopPropagation();
 		loadFavorite({
 			url: `teams/favorite/${team.id}/${!isFavorite}`,
 			method: PUT,

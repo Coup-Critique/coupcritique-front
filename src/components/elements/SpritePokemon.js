@@ -21,8 +21,13 @@ const SpritePokemonImg = ({ pokemon, ...props }) => (
 	/>
 );
 
-const SpritePokemon = ({ pokemon, isLink = true, className }) =>
-	isLink ? (
+const SpritePokemon = ({ pokemon, noLink = false, className }) =>
+	noLink ? (
+		<SpritePokemonImg
+			pokemon={pokemon}
+			className={makeClassName('sprite', className)}
+		/>
+	) : (
 		<Link
 			href={`/entity/pokemons/${pokemon.id}`}
 			className={makeClassName('sprite', className)}
@@ -31,10 +36,5 @@ const SpritePokemon = ({ pokemon, isLink = true, className }) =>
 			<SpritePokemonImg pokemon={pokemon} className="link" />
 			<span className="sr-only">{pokemon.nom || pokemon.name}</span>
 		</Link>
-	) : (
-		<SpritePokemonImg
-			pokemon={pokemon}
-			className={makeClassName('sprite', className)}
-		/>
 	);
 export default SpritePokemon;

@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // hooks
 import useFetch from '@/hooks/useFetch';
-import useLocalStorage from '@/hooks/useLocalStorage';
+import useLocalStorage, { STORAGE_KEY } from '@/hooks/useLocalStorage';
 // actions
-import { setUser, setLoadingUser, setUserPicture } from '@/reducers/user';
+import { setUser, setLoadingUser } from '@/reducers/user';
 import { setNotifAction } from '@/reducers/notifs';
 
 // Scroll to top after each route change

@@ -8,10 +8,9 @@ import useFetch from '@/hooks/useFetch';
 import TournamentTeaser from '@/components/teasers/TournamentTeaser';
 
 const defaultArray = [];
-function SectionTournament() {
-	const ssrData = useSelector(state => state.ssrData);
+function SectionTournament(props) {
 	const [result, load, loading] = useFetch();
-	const [tournaments, setTournaments] = useState(ssrData?.tournaments || defaultArray);
+	const [tournaments, setTournaments] = useState(props.tournaments || defaultArray);
 
 	useEffect(() => {
 		if (!tournaments.length) {

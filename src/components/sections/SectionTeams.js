@@ -1,5 +1,5 @@
-
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Icon } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -8,6 +8,7 @@ import { IMG_VERSION } from '@/constants/img';
 import Image from 'next/image';
 
 const SectionTeams = ({ sectionRef }) => {
+	const router = useRouter();
 	const [darkMode] = useDarkMode();
 
 	return (
@@ -25,7 +26,7 @@ const SectionTeams = ({ sectionRef }) => {
 						<div className="img-wrapper">
 							<ScrollReveal
 								Tag={Image}
-								className="img-fluid"
+								className="img-fluid clickable"
 								animation="zoomIn"
 								src={`/images/propose-team${
 									darkMode ? '-black' : ''
@@ -33,6 +34,7 @@ const SectionTeams = ({ sectionRef }) => {
 								alt="Silhouette de pokemons"
 								width="339"
 								height="236"
+								onClick={e => router.push('/entity/teams/create')}
 							/>
 						</div>
 						<Link

@@ -30,7 +30,6 @@ import {
 import { POST, PUT } from '@/constants/methods';
 import { INSTANCES_KEYS } from '@/constants/team';
 import { lastGen } from '@/constants/gens';
-import { removeSsrDataAction } from '@/reducers/ssrData';
 
 export const getDefaultTier = (tiers, gen) => {
 	if (!tiers || !tiers[gen]) return null;
@@ -116,7 +115,6 @@ const FormTeam = ({ tiers = {}, tags = [], loadingTiers = false, defaultValue })
 				setMessage({ form: resultTeam.message });
 			}
 			if (resultTeam.success) {
-				dispatch(removeSsrDataAction('team'));
 				voidStorage();
 				if (defaultValue && defaultValue.id) {
 					router.replace('/entity/teams/' + resultTeam.team.id);

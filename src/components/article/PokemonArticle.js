@@ -85,7 +85,7 @@ const PokemonArticle = props => {
 							active={form.id === pokemon.id}
 							content={
 								<>
-									<SpritePokemon pokemon={form} isLink={false} />
+									<SpritePokemon pokemon={form} noLink />
 									{form.nom || form.name}
 								</>
 							}

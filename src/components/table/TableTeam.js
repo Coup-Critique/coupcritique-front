@@ -162,7 +162,7 @@ const RowTeam = ({
 				{
 					// prettier-ignore
 					INSTANCES_KEYS.map(key => !!team[key] && (
-						<SpritePokemon key={key} pokemon={team[key].pokemon} isLink={false}/>
+						<SpritePokemon key={key} pokemon={team[key].pokemon} noLink/>
 					))
 				}
 			</td>

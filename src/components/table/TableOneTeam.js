@@ -11,14 +11,18 @@ import { makeClassName } from '@/functions';
 import Favorite from '@/components/actions/Favorite';
 
 // TODO props link > click on team to go to team page
-const TableOneTeam = ({ team, className, isLink = true }) => {
+const TableOneTeam = ({ team, className, isLink = false }) => {
 	const router = useRouter();
 	const user = useSelector(state => state.user);
 	const isUserConnected = !user.loading && user.id;
 	return (
 		<div
-			className={makeClassName('table-wrapper one-team', className)}
-			onClick={e => router.push(`/entity/teams/${team.id}`)}
+			className={makeClassName(
+				'table-wrapper one-team',
+				isLink && 'clickable',
+				className
+			)}
+			onClick={isLink ? e => router.push(`/entity/teams/${team.id}`) : undefined}
 		>
 			<table className="table basic table-pokemon stackable">
 				<thead>
@@ -34,7 +38,11 @@ const TableOneTeam = ({ team, className, isLink = true }) => {
 				<tbody>
 					<tr>
 						<td>
-							<Profile user={team.user} className="justify-content-start" />
+							<Profile
+								user={team.user}
+								className="justify-content-start"
+								noLink={isLink}
+							/>
 						</td>
 						<td>
 							<Certification
@@ -47,12 +55,12 @@ const TableOneTeam = ({ team, className, isLink = true }) => {
 							{
 								// prettier-ignore
 								INSTANCES_KEYS.map(key => !!team[key] && (
-									<SpritePokemon key={key} pokemon={team[key].pokemon} isLink={isLink}/>
+									<SpritePokemon key={key} pokemon={team[key].pokemon} noLink={isLink}/>
 								))
 							}
 						</td>
 						<td>
-							<Tier tier={team.tier} />
+							<Tier tier={team.tier} noLink={isLink} />
 						</td>
 						<td>
 							{team.tags.map((tag, i) => (

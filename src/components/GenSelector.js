@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { Button, Dropdown, Icon, Label } from 'semantic-ui-react';
 import gens from '@/constants/gens';
 import { setGenAction } from '@/reducers/gen';
+import useLocalStorage, { STORAGE_KEY } from '@/hooks/useLocalStorage';
 
 const genOptions = gens.map(({ value, name }) => ({
 	key: value,
@@ -17,7 +18,15 @@ const GenSelector = ({ availableGens, redirectOnChange }) => {
 	const router = useRouter();
 	const gen = useSelector(state => state.gen);
 	const [options, setOptions] = useState(genOptions);
+	const { getStoredItem } = useLocalStorage();
 	const genIndex = genOptions.length - gen;
+
+	useEffect(() => {
+		const storedGen = getStoredItem(STORAGE_KEY + '-gen');
+		if (storedGen != gen) {
+			dispatch(setGenAction(storedGen));
+		}
+	}, []);
 
 	useEffect(() => {
 		if (availableGens) {
@@ -38,9 +47,7 @@ const GenSelector = ({ availableGens, redirectOnChange }) => {
 				<Button as="div" labelPosition="right">
 					<Button color="orange">Génération</Button>
 					<Label as="a" basic color="orange" pointing="left">
-						{options.length > 0 && options[genIndex]
-							? options[genIndex].text
-							: ''}
+						{options[genIndex]?.text || ''}
 						<Icon name="dropdown" className="ml-2" />
 					</Label>
 				</Button>
