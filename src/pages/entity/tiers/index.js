@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { Card, Loader } from 'semantic-ui-react';
 //
 import Tier from '@/components/elements/Tier';
@@ -33,7 +33,7 @@ const TierList = props => {
 								animation="zoomIn"
 							>
 								<Link className="image" href={`/entity/tiers/${tier.id}`}>
-									<Image
+									<img
 										src={`/images/tiers/${tier.gen}-${
 											tier.shortName || tier.name
 										}.png`}

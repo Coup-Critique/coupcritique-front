@@ -5,7 +5,7 @@ import useDarkMode from '@/hooks/useDarkMode';
 import ScrollReveal from '@/components/ScrollReveal';
 import { lastGen } from '@/constants/gens';
 import { IMG_VERSION } from '@/constants/img';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const SectionTeams = ({ sectionRef }) => {
 	const router = useRouter();
@@ -25,7 +25,7 @@ const SectionTeams = ({ sectionRef }) => {
 						</p>
 						<div className="img-wrapper">
 							<ScrollReveal
-								Tag={Image}
+								Tag="img"
 								className="img-fluid clickable"
 								animation="zoomIn"
 								src={`/images/propose-team${
@@ -58,7 +58,7 @@ const SectionTeams = ({ sectionRef }) => {
 										title="équipes Hyper Offense"
 									>
 										<ScrollReveal
-											Tag={Image}
+											Tag="img"
 											className="img-fluid"
 											animation="zoomIn"
 											src={`/images/ho.png?ver=${IMG_VERSION}`}
@@ -74,7 +74,7 @@ const SectionTeams = ({ sectionRef }) => {
 										title="équipes OverUsed"
 									>
 										<ScrollReveal
-											Tag={Image}
+											Tag="img"
 											className="img-fluid"
 											animation="zoomIn"
 											src={`/images/ou.png?ver=${IMG_VERSION}`}
@@ -90,7 +90,7 @@ const SectionTeams = ({ sectionRef }) => {
 										title="équipes"
 									>
 										<ScrollReveal
-											Tag={Image}
+											Tag="img"
 											className="img-fluid"
 											animation="zoomIn"
 											src={`/images/vgc.png?ver=${IMG_VERSION}`}

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import DarkModeToggle from '@/components/fields/DarkModeToggle';
 import MenuNavBar from '@/components/MenuNavBar';
-import Image from 'next/image';
+// // import Image from 'next/image';
 
 const Footer = () => (
 	<footer>
@@ -12,7 +12,7 @@ const Footer = () => (
 		</div>
 		<div className="container">
 			<Link href="/" className="brand">
-				<Image
+				<img
 					src="/images/coupcritique-big-white.svg"
 					alt="Logo de coup critique"
 					width="250"

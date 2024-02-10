@@ -2,11 +2,11 @@
 
 import { IMG_VERSION } from '@/constants/img';
 import { formatFileName } from '@/functions';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const Category = ({ category }) => (
 	<div className="d-inline-block">
-		<Image
+		<img
 			className="category"
 			src={`/images/categories/${formatFileName(category)}.png`}
 			alt={`Catégorie ${category}`}

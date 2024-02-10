@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { makeClassName } from '@/functions';
 import useDarkMode from '@/hooks/useDarkMode';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const ShowdownIconHoverable = ({ linkProps, className, hoverColor = 'orange' }) => {
 	const [hover, setHover] = useState(false);
@@ -14,7 +14,7 @@ const ShowdownIconHoverable = ({ linkProps, className, hoverColor = 'orange' }) 
 			onMouseEnter={() => setHover(true)}
 			onMouseLeave={() => setHover(false)}
 		>
-			<Image
+			<img
 				className={makeClassName('fake-icon', className)}
 				src={`/images/picto/showdown-export-${
 					hover ? hoverColor : darkMode ? 'white' : 'black'

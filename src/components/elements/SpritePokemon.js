@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import { IMG_VERSION, SPRITE_PKM } from '@/constants/img';
 import { formatFileName, makeClassName } from '@/functions';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const SpritePokemonImg = ({ pokemon, ...props }) => (
-	<Image
+	<img
 		src={`/images/pokemons/sprites/${formatFileName(
 			pokemon.name
 		)}.png?ver=${IMG_VERSION}`}
