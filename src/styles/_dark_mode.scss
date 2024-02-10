@@ -90,6 +90,16 @@
 		}
 	}
 
+	.ui.label:not(.red):not(.orange):not(.blue):not(.purple):not(.yellow):not(.green):not(.teal):not(.pink):not(.olive):not(.violet):not(.brown) {
+		background-color: $dark-input !important;
+		color: white;
+	}
+
+	.framed .ui.label:not(.red):not(.orange):not(.blue):not(.purple):not(.yellow):not(.green):not(.teal):not(.pink):not(.olive):not(.violet):not(.brown) {
+		background-color: $dark-body !important;
+		color: white;
+	}
+
 	.ui.label.black {
 		background-color: black !important;
 		border-color: black !important;
@@ -625,10 +635,6 @@
 		}
 
 		.field {
-			.ui.input.labeled .ui.label:not(.red):not(.orange):not(.blue) {
-				background-color: $dark-input !important;
-			}
-
 			.ui.input.labeled.right .ui.label {
 				border-left: 2px solid $dark-body;
 			}

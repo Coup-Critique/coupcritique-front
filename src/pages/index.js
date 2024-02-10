@@ -1,6 +1,5 @@
 // modules
 import { useRef } from 'react';
-import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
 // components
@@ -14,6 +13,7 @@ import SectionTopUsages from '@/components/sections/SectionTopUsages';
 import SectionWeeklyTeam from '@/components/sections/SectionWeeklyTeam';
 import { manageFetch } from '@/hooks/useFetch';
 import Image from 'next/image';
+import SectionCircuitCalendar from '@/components/sections/SectionCircuitCalendar';
 
 // use default meta tags
 const Home = props => {
@@ -71,16 +71,7 @@ const Home = props => {
 				</div>
 			</section>
 			<SectionTeams sectionRef={scrollRef} />
-			<section className="section-tournament">
-				<div className="container">
-					<div>
-						<h2>Participer aux prochains tournois</h2>
-					</div>
-					<Link href="/entity/tournaments" className="btn btn-light">
-						Voir les tournois
-					</Link>
-				</div>
-			</section>
+			<SectionCircuitCalendar calendar={props.calendar} />
 			<SectionAdsHome />
 			<SectionActuality actualities={props.actualities} />
 			<SectionWeeklyTeam team={props.team} />
@@ -104,6 +95,7 @@ export const getStaticProps = async () => {
 			manageFetch(`tiers/usages/top`),
 			manageFetch(`tiers/usages/top?official=true`),
 			manageFetch(`tiers/usages/top?isDouble=true&official=true`),
+			manageFetch(`circuit-tours/calendar`),
 		]);
 		const { actualities } = responses[0];
 		const { team } = responses[1];
@@ -112,7 +104,15 @@ export const getStaticProps = async () => {
 		const { tier: ou, usage: usageOu } = responses[4];
 		const { tier: bss, usage: usageBss } = responses[5];
 		const { tier: vgc, usage: usageVgc } = responses[6];
-		const props = { actualities, team: team || null, videos, guides, usages: [] };
+		const { calendar } = responses[7];
+		const props = {
+			actualities,
+			team: team || null,
+			videos,
+			guides,
+			usages: [],
+			calendar,
+		};
 		if (ou) {
 			props.usages.push({ tier: ou, usage: usageOu });
 		}

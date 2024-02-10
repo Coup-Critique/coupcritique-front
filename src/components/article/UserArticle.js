@@ -8,7 +8,7 @@ import TableTeam from '@/components/table/TableTeam';
 import UserBanButton from '@/components/actions/UserBanButton';
 import UserModoButton from '@/components/actions/UserModoButton';
 // constant
-import { MONTHS } from '@/constants';
+import { MONTHS } from '@/constants/months';
 import GoBackButton from '@/components/GoBackButton';
 import useTableFetch from '@/hooks/useTableFetch';
 import UserTiperButton from '@/components/actions/UserTiperButton';

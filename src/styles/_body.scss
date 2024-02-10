@@ -570,6 +570,10 @@ section {
 	font-weight: 500;
 	font-size: 0.85em;
 
+	&:not(.basic){
+		padding: 0.75em 0.5em 0.5em 0.5em;
+	}
+
 	>a {
 		opacity: 1;
 	}
