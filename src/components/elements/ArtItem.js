@@ -3,11 +3,11 @@
 import Link from 'next/link';
 import { ART_ITM, IMG_VERSION } from '@/constants/img';
 import { formatFileName } from '@/functions';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 // Not exportable
 const ArtItemImgTag = item => (
-	<Image
+	<img
 		src={`/images/items/${formatFileName(item.name)}.png?ver=${IMG_VERSION}`}
 		onError={e => {
 			e.target.onerror = null;

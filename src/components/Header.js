@@ -11,7 +11,7 @@ import ShowdownIconHoverable from '@/components/actions/ShowdownIconHoverable';
 import MenuNavBar from '@/components/MenuNavBar';
 import MenuUser from '@/components/MenuUser';
 import CopyMail from '@/components/actions/CopyMail';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 function Header() {
 	const user = useSelector(state => state.user);
@@ -23,7 +23,7 @@ function Header() {
 			<div className="header-top">
 				<div className="container-fluid">
 					<Link href="/" className="brand">
-						<Image
+						<img
 							src={`/images/coupcritique${darkMode ? '-white' : ''}.svg`}
 							alt="Logo de Coup Critique"
 							// className="d-none d-sm-block"

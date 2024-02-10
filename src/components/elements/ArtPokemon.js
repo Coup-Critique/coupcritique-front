@@ -5,7 +5,7 @@ import { Loader } from 'semantic-ui-react';
 import { DEFAULT_POKEMON_PICTURE } from '@/constants';
 import { ART_ITM, ART_PKM, IMG_VERSION } from '@/constants/img';
 import { formatFileName } from '@/functions';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
 	const getImgPath = name => {
@@ -29,7 +29,7 @@ const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
 
 	if (!image) return <Loader active size="big" />;
 	return (
-		<Image
+		<img
 			src={image}
 			onError={e => {
 				e.target.onerror = null;

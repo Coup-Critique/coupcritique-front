@@ -11,7 +11,7 @@ import { EMAIL_REGEX } from '@/constants';
 import { POST } from '@/constants/methods';
 import { addMessage } from '@/reducers/messages';
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const FormSignUp = ({ triggerHeight }) => {
 	const dispatch = useDispatch();
@@ -128,7 +128,7 @@ const FormSignUp = ({ triggerHeight }) => {
 				maxLength="40"
 			>
 				<Label basic className="icon">
-					<Image
+					<img
 						className="img-fluid img-icon"
 						src="/images/picto/showdown-export.svg"
 						alt="showdown export icon"

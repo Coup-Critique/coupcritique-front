@@ -1,7 +1,7 @@
 // modules
 import { useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 // components
 import ArtPokemon from '@/components/elements/ArtPokemon';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -16,7 +16,7 @@ const TierUsage = ({ usage, tier }) => {
 		return (
 			<ScrollReveal className="usage" animation="zoomIn" earlier outterRef={ref}>
 				<div className="img-wrapper">
-					<Image
+					<img
 						src={`/images/tiers/${tier.gen}-${
 							tier.shortName || tier.name
 						}.png`}

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const Profile = ({
 	user,
@@ -29,7 +29,7 @@ const Profile = ({
 			{user.picture ? (
 				<div className="picture">
 					{/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-					<Image
+					<img
 						src={`/images/users/${big ? '' : '200px/'}${user.picture}`}
 						alt={`Photo de profil de ${user.username}`}
 						onError={e => {

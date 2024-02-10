@@ -6,7 +6,7 @@ import { entityToEntities } from '@/constants/entities';
 import { makeClassName } from '@/functions';
 import ScrollReveal from '@/components/ScrollReveal';
 import Profile from '@/components/elements/Profile';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const Notification = ({ notification }) => {
 	const link = `/entity/${entityToEntities[notification.entityName]}/${
@@ -32,7 +32,7 @@ const Notification = ({ notification }) => {
 					{!!notification.icon
 						&& (notification.icon === 'comment' ? (
 							<div className="fake-icon-circle mr-2">
-								<Image
+								<img
 									className="fake-icon"
 									src={`/images/picto/comment-dark.svg`}
 									alt="icon de commentaire"

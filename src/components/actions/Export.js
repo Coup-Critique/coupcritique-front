@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button, Icon, TextArea, Popup, Segment, Rail } from 'semantic-ui-react';
 import { copyToClipboard, makeClassName } from '@/functions/index';
 import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const TIMEOUT_LENGTH = 2000; // en milliseconde
 
@@ -68,7 +68,7 @@ const Export = ({ content, className }) => {
 							color="blue"
 						>
 							Export
-							<Image
+							<img
 								className="fake-icon right"
 								src="/images/picto/showdown-export-white.svg"
 								alt="showdown export icon"
