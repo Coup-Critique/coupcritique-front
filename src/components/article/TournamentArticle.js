@@ -87,7 +87,7 @@ const TournamentArticle = props => {
 							{tournament.images.map((path, i) => (
 								<div key={i} className="image mb-2">
 									<img
-										src={`/images/tournaments/${path}`}
+										src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/tournaments/${path}`}
 										className="img-fluid"
 										alt="Tournoi"
 										// TODO gerer une taille fixe

@@ -60,7 +60,7 @@ const UserArticle = props => {
 						// eslint-disable-next-line jsx-a11y/img-redundant-alt
 						<img
 							className={'img-fluid img-profile'}
-							src={`/images/users/${user.picture}`}
+							src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/users/${user.picture}`}
 							alt="Photo de profil"
 							onError={e => {
 								e.target.onerror = null;

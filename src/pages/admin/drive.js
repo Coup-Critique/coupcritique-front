@@ -68,7 +68,7 @@ const AdminDrive = () => {
 		<PageWrapper title="Drive" more nofollow>
 			<MultiImageField
 				files={files}
-				dirName="/images/drive/"
+				dirName="/images/uploads/drive/"
 				btnColor="orange"
 				handleChange={handleImages}
 				nbMax={20}
@@ -141,7 +141,7 @@ const ImageCopy = ({ file, handleRemove }) => {
 	};
 
 	const copyPath = e => {
-		copyToClipboard(`https://www.coupcritique.fr/images/drive/${file.filename}`);
+		copyToClipboard(`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/drive/${file.filename}`);
 	};
 
 	const handleDelete = e => {
@@ -169,7 +169,7 @@ const ImageCopy = ({ file, handleRemove }) => {
 						onClick={handleDelete}
 					/>
 					<img
-						src={`/images/drive/${file.filename}`}
+						src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/drive/${file.filename}`}
 						className="img-fluid"
 						alt={file.filename}
 					/>

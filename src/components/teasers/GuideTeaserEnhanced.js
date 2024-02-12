@@ -13,7 +13,7 @@ const GuideTeaserEnhanced = ({ guide }) => (
 					className="img-fluid d-block mb-2"
 					src={
 						guide.images && guide.images.length
-							? `/images/guides/375px/${guide.images[0]}`
+							? `${process.env.NEXT_PUBLIC_API_URL}/images/uploads/guides/375px/${guide.images[0]}`
 							: '/images/default_actuality_colored.jpg'
 					}
 					onError={e => {
