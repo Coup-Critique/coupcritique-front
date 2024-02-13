@@ -109,7 +109,7 @@ const FormTournament = ({ handleSubmited, tournament = {} }) => {
 				message={message.title}
 			/>
 			<MultiImageField
-				dirName="/images/uploads/tournaments/"
+				dirName="tournaments"
 				files={images}
 				defaultImages={form.images}
 				btnColor="orange"

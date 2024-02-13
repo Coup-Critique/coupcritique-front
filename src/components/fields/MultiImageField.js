@@ -114,7 +114,7 @@ const MultiImageField = ({
 						/>
 						<img
 							key={i}
-							src={`${process.env.NEXT_PUBLIC_API_URL}${dirName}${path}`}
+							src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/${dirName}/${path}`}
 							className="img-fluid"
 							alt={`${i} enregistrée`}
 						/>

@@ -68,7 +68,7 @@ const AdminDrive = () => {
 		<PageWrapper title="Drive" more nofollow>
 			<MultiImageField
 				files={files}
-				dirName="/images/uploads/drive/"
+				dirName="drive"
 				btnColor="orange"
 				handleChange={handleImages}
 				nbMax={20}
