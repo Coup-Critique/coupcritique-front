@@ -40,7 +40,6 @@ const TableOneTeam = ({ team, className, isLink = false }) => {
 						<td>
 							<Profile
 								user={team.user}
-								className="justify-content-start"
 								noLink={isLink}
 							/>
 						</td>

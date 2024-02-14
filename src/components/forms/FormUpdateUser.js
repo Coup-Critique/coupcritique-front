@@ -116,7 +116,13 @@ const FormUpdateUser = () => {
 			<FileField
 				name="picture"
 				label="Déposer une photo de profil"
-				defaultImagePath={process.env.NEXT_PUBLIC_API_URL+'/images/uploads/users/' + user.picture}
+				defaultImagePath={
+					user.picture
+						? process.env.NEXT_PUBLIC_API_URL +
+						  '/images/uploads/users/' +
+						  user.picture
+						: undefined
+				}
 				btnColor="orange"
 				callback={handlePicture}
 				imageAlt="Photo de profil"

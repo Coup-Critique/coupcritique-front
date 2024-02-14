@@ -34,9 +34,7 @@ const MenuUser = () => {
 			trigger={
 				<Profile
 					user={user}
-					hideName
 					noLink
-					noBadge
 					iconProps={{ color: 'black' }}
 					height="50"
 					wieght="50"

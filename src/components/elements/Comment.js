@@ -74,7 +74,6 @@ const Comment = ({ comment, isReply = false, handleUpdate, baseEntity }) => {
 						className="avatar"
 						user={comment.user}
 						hideName
-						noBadge
 						width={65}
 						height={65}
 					/>
@@ -83,7 +82,6 @@ const Comment = ({ comment, isReply = false, handleUpdate, baseEntity }) => {
 							as={Link}
 							href={`/entity/users/${comment.user.id}`}
 						>
-							<ProfileBadge user={comment.user} />
 							{comment.user.username}
 						</SemanticComment.Author>
 						<SemanticComment.Metadata>

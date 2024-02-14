@@ -16,43 +16,43 @@ const Profile = ({
 	big = false,
 	width = 50,
 	height = 50,
-}) => (
-	<div
-		className={makeClassName(
-			'profile text-center',
-			hideName && 'hide-name',
-			big && 'big',
-			className
-		)}
-	>
-		<div className="position-relative margin-horizontally-centered" title="">
-			{user.picture ? (
-				<div className="picture">
-					{/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-					<img
-						src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/users/${big ? '' : '200px/'}${user.picture}`}
-						alt={`Photo de profil de ${user.username}`}
-						onError={e => {
-							e.target.onerror = null;
-							e.target.src = `/images/picto/user-circle-solid-${color}.svg`;
-						}}
-						width={width}
-						height={height}
-					/>
-				</div>
-			) : (
-				<Icon
-					name="user circle"
-					className="picture"
-					color={color}
-					{...iconProps}
-				/>
+}) => {
+	const badge = getBadge(user);
+	return (
+		<div
+			className={makeClassName(
+				'profile text-center',
+				hideName && 'hide-name',
+				big && 'big',
+				className
 			)}
-			{!noBadge && !hideName && <ProfileBadge user={user} />}
+		>
+			<div className="position-relative" title="">
+				<div className={makeClassName('picture', badge?.color)}>
+					{user.picture ? (
+						<img
+							/* eslint-disable-next-line jsx-a11y/img-redundant-alt */
+							src={`${
+								process.env.NEXT_PUBLIC_API_URL
+							}/images/uploads/users/${big ? '' : '200px/'}${user.picture}`}
+							alt={`Photo de profil de ${user.username}`}
+							onError={e => {
+								e.target.onerror = null;
+								e.target.src = `/images/picto/user-circle-solid-${color}.svg`;
+							}}
+							width={width}
+							height={height}
+						/>
+					) : (
+						<Icon name="user circle" color={color} {...iconProps} />
+					)}
+				</div>
+				{!noBadge && <Icon className="u-badge" {...badge} />}
+			</div>
 			{!noLink && (
 				<Link
 					href={`/entity/users/${user.id}`}
-					className="extended-link text-break"
+					className="extended-link text-break mt-3"
 					title={hideName ? user.username : undefined}
 				>
 					<span className={hideName ? 'sr-only' : undefined}>
@@ -61,28 +61,27 @@ const Profile = ({
 				</Link>
 			)}
 		</div>
-		{!noLink && !noBadge && hideName && <ProfileBadge user={user} />}
-	</div>
-);
+	);
+};
 
-export const ProfileBadge = ({ user }) => {
+const getBadge = user => {
 	if (user.is_admin) {
-		return <Icon name="chess queen" color="purple" title="administrateur" />;
+		return { name: 'chess queen', color: 'purple', title: 'administrateur' };
 	}
 	if (user.is_modo) {
-		return <Icon name="gem" color="violet" title="modérateur" />;
+		return { name: 'gem', color: 'violet', title: 'modérateur' };
 	}
-	// if (user.is_vip) {
-	// 	return <Icon name="star" color="yellow" title="V.I.P." />;
+	// if (user.is_winner) {
+	// 	return { name:"trophy", color:"yellow", title:"vainqueur", };
 	// }
-	// if (user.is_strategist) {
-	// 	return <Icon name="chess bishop" color="brown" title="stratège" />;
+	// if (user.is_vip) {
+	// 	return { name:"star", color:"yellow", title:"V.I.P.", };
 	// }
 	if (user.is_tiper) {
-		return <Icon name="gratipay" color="red" title="tiper" />;
+		return { name: 'heart', color: 'red', title: 'tiper' };
 	}
 	// if (user.is_subsciber) {
-	// 	return <Icon name="twitch" color="purple" title="sub" />;
+	// 	return { name:"twitch", color:"purple", title:"sub", };
 	// }
 	return null;
 };
