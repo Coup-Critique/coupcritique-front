@@ -147,7 +147,7 @@ const FormGuide = ({ handleSubmited, guide = {}, tags = [], tiers, loadingTiers 
 				message={message.title}
 			/>
 			<MultiImageField
-				dirName="/images/guides/"
+				dirName="guides"
 				files={images}
 				defaultImages={form.images}
 				btnColor="orange"

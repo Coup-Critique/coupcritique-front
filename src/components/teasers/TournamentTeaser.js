@@ -15,7 +15,7 @@ const TournamentTeaser = ({ tournament, TitleAs = 'h3', btnProps = {} }) => (
 						className="img-fluid"
 						src={
 							tournament.images && tournament.images.length
-								? `/images/tournaments/375px/${tournament.images[0]}`
+								? `${process.env.NEXT_PUBLIC_API_URL}/images/uploads/tournaments/375px/${tournament.images[0]}`
 								: '/images/default_actuality_colored.jpg'
 						}
 						onError={e => {

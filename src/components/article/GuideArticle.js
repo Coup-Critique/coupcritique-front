@@ -90,7 +90,7 @@ const GuideArticle = ({ result }) => {
 							{guide.images.map((path, i) => (
 								<div key={i} className="image mb-2">
 									<img
-										src={`/images/guides/${path}`}
+										src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/guides/${path}`}
 										className="img-fluid"
 										alt="Guide"
 										// TODO gerer une taille fixe

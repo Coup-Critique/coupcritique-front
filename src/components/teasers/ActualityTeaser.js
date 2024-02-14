@@ -15,7 +15,7 @@ const ActualityTeaser = ({ actuality, TitleAs = 'h3', btnProps = {} }) => (
 						className="img-fluid"
 						src={
 							actuality.images && actuality.images.length
-								? `/images/actualities/375px/${actuality.images[0]}`
+								? `${process.env.NEXT_PUBLIC_API_URL}/images/uploads/actualities/375px/${actuality.images[0]}`
 								: '/images/default_actuality_colored.jpg'
 						}
 						onError={e => {

@@ -30,7 +30,7 @@ const Profile = ({
 				<div className="picture">
 					{/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
 					<img
-						src={`/images/users/${big ? '' : '200px/'}${user.picture}`}
+						src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/users/${big ? '' : '200px/'}${user.picture}`}
 						alt={`Photo de profil de ${user.username}`}
 						onError={e => {
 							e.target.onerror = null;

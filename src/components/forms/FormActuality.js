@@ -119,7 +119,7 @@ const FormActuality = ({ handleSubmited, actuality = {}, tags = [] }) => {
 				message={message.title}
 			/>
 			<MultiImageField
-				dirName="/images/actualities/"
+				dirName="actualities"
 				files={images}
 				defaultImages={form.images}
 				btnColor="orange"
