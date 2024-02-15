@@ -223,6 +223,9 @@ const TeamList = props => {
 };
 
 export async function getServerSideProps() {
+	// TODO prendre en compte la pagination !
+	// Plus le filtre ne fonctionne plus
+	// Plus il faut se login 2 fois...
 	try {
 		const { teams } = await manageFetch(`teams`);
 		const { tags } = await manageFetch(`tags`);

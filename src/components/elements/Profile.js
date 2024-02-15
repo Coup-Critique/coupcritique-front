@@ -11,7 +11,7 @@ const Profile = ({
 	noLink = false,
 	noBadge = false,
 	className,
-	color = 'grey',
+	// color="grey",
 	iconProps,
 	big = false,
 	width = 50,
@@ -38,16 +38,18 @@ const Profile = ({
 							alt={`Photo de profil de ${user.username}`}
 							onError={e => {
 								e.target.onerror = null;
-								e.target.src = `/images/picto/user-circle-solid-${color}.svg`;
+								e.target.src =
+									'/images/picto/user-circle-solid-white.svg';
+								// e.target.src = `/images/picto/user-circle-solid-${color}.svg`;
 							}}
 							width={width}
 							height={height}
 						/>
 					) : (
-						<Icon name="user circle" color={color} {...iconProps} />
+						<Icon name="user circle" /* color={color} */ {...iconProps} />
 					)}
 				</div>
-				{!noBadge && <Icon className="u-badge" {...badge} />}
+				{!noBadge && badge && <Icon className="u-badge" {...badge} />}
 			</div>
 			{!noLink && (
 				<Link
@@ -71,12 +73,12 @@ const getBadge = user => {
 	if (user.is_modo) {
 		return { name: 'gem', color: 'violet', title: 'modérateur' };
 	}
-	// if (user.is_winner) {
-	// 	return { name:"trophy", color:"yellow", title:"vainqueur", };
-	// }
-	// if (user.is_vip) {
-	// 	return { name:"star", color:"yellow", title:"V.I.P.", };
-	// }
+	if (user.is_winner) {
+		return { name: 'trophy', color: 'gold', title: 'vainqueur' };
+	}
+	if (user.is_content_creator) {
+		return { name:"video camera", color:"purple", title:"créateur de contenu", };
+	}
 	if (user.is_tiper) {
 		return { name: 'heart', color: 'red', title: 'tiper' };
 	}

@@ -6,6 +6,11 @@ export const makeClassName = (...classList) =>
 	classList.reduce((classList, className) => {
 		if (!className) return classList;
 		if (Array.isArray(className)) className = makeClassName(className);
+		if (typeof className === 'object') {
+			Object.entries(className).forEach(([key, value]) => {
+				if (value) classList += ' ' + key;
+			});
+		}
 		if (!classList) return className;
 		return classList + ' ' + className;
 	}, '');

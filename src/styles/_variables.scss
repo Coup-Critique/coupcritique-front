@@ -2,7 +2,7 @@
 
 /* Variables */
 // ui colors
-$grey: #767676;
+// $grey: #767676;
 $blue: #4571e6;
 $red: #db2828;
 $green: #21ba45;
@@ -11,11 +11,13 @@ $olive: #b5cc18;
 $yellow: #fbbd08;
 $purple: #a333c8;
 $violet: #6435c9;
+$pink: #e03997;
 // site color
 $orange: #ef6e33;
 $light-grey: #f5f5f5;
 $light-grey-bs: #dee2e6;
 $grey: #707070;
+$gold: #dba800;
 
 // dark mode
 $dark-body: #1c1d1f; // normal
@@ -61,13 +63,15 @@ $header-height: 138px;
 
 /** Functions */
 @function rem($size) {
-	@return  math.div($size, $font-size) * 1rem;
+	@return math.div($size, $font-size) * 1rem;
 }
 
 @function get-breakpoints($key: 'xs') {
-	@if $key== 'xs' {
+	@if $key=='xs' {
 		@return $xs;
-	} @else {
+	}
+
+	@else {
 		@return map-get($grid-breakpoints, $key);
 	}
 }
@@ -80,8 +84,7 @@ $header-height: 138px;
 	$i: str-index($str, $search);
 
 	@if $i {
-		@return str-slice($str, 1, $i - 1) + $replace +
-			str-replace(str-slice($str, $i + str-length($search)), $search, $replace);
+		@return str-slice($str, 1, $i - 1)+$replace +str-replace(str-slice($str, $i + str-length($search)), $search, $replace);
 	}
 
 	@return $str;
@@ -91,12 +94,17 @@ $header-height: 138px;
 	$i: $min;
 
 	@while $i <=$max {
-		.#{$attr}-#{str-replace(#{$i}, '.', '_')}#{$unit} {
-			#{$attr}: #{$i}#{$unit} !important;
-		}
-
-		$i: $i + $step;
+		.#{$attr}-#{str-replace(#{$i},
+		'.',
+		'_')
 	}
+
+	#{$unit} {
+		#{$attr}: #{$i}#{$unit} !important;
+	}
+
+	$i: $i + $step;
+}
 }
 
 @mixin generate-dict-style($attr, $dict) {
@@ -112,10 +120,8 @@ $header-height: 138px;
 // font-size-[$min: 2, $max: 5, $step: 1]
 @include generate-unit-style('font-size', 2, 5, 1, 'rem');
 // font-weight-regular
-@include generate-dict-style(
-	'font-weight',
-	(
-		'thin': $thin,
+@include generate-dict-style('font-weight',
+	('thin': $thin,
 		'extralight': $extralight,
 		'light': $light-weight,
 		'regular': $regular,
@@ -124,5 +130,4 @@ $header-height: 138px;
 		'bold': $bold,
 		'extrabold': $extrabold,
 		'blackbold': $blackbold,
-	)
-);
+	));

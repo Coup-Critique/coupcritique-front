@@ -374,6 +374,12 @@ th.table-team-instance {
 		margin-right: auto;
 		z-index: 1;
 
+		i.icon.user {
+			font-size: rem(50px);
+			width: rem(50px);
+			height: rem(50px);
+		}
+
 		&.red {
 			box-shadow: 0 0 0 3px $red;
 		}
@@ -400,6 +406,22 @@ th.table-team-instance {
 
 		&.green {
 			box-shadow: 0 0 0 3px $green;
+		}
+
+		&.teal {
+			box-shadow: 0 0 0 3px $teal;
+		}
+
+		&.olive {
+			box-shadow: 0 0 0 3px $olive;
+		}
+
+		&.pink {
+			box-shadow: 0 0 0 3px $pink;
+		}
+
+		&.gold {
+			box-shadow: 0 0 0 3px $gold;
 		}
 
 		&.icon {
@@ -443,7 +465,6 @@ th.table-team-instance {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		color: white !important;
 		border-radius: 100%;
 
 		&::before {
@@ -452,31 +473,58 @@ th.table-team-instance {
 		}
 
 		&.red {
+			color: white !important;
 			background-color: $red;
 		}
 
 		&.orange {
+			color: white !important;
 			background-color: $orange;
 		}
 
 		&.blue {
+			color: white !important;
 			background-color: $blue;
 		}
 
 		&.purple {
+			color: white !important;
 			background-color: $purple;
 		}
 
 		&.violet {
+			color: white !important;
 			background-color: $violet;
 		}
 
 		&.yellow {
+			color: white !important;
 			background-color: $yellow;
 		}
 
 		&.green {
+			color: white !important;
 			background-color: $green;
+		}
+
+		&.teal {
+			color: white !important;
+			background-color: $teal;
+		}
+
+		&.olive {
+			color: white !important;
+			background-color: $olive;
+		}
+
+		&.pink {
+			color: white !important;
+			background-color: $pink;
+		}
+
+		&.gold {
+			color: white !important;
+			background-color: $gold;
 		}
 	}
 
@@ -505,7 +553,7 @@ th.table-team-instance {
 	&.hide-name {
 		display: block;
 
-		i.icon.picture {
+		.picture i.icon.user {
 			margin-bottom: 0.25rem;
 		}
 
@@ -528,16 +576,155 @@ th.table-team-instance {
 			img {
 				height: rem(150px);
 			}
-		}
 
-		i.picture {
-			font-size: rem(150px);
+			i.icon.user {
+				width: rem(150px);
+				height: rem(150px);
+				font-size: rem(150px);
+			}
 		}
 
 		>a {
 			font-size: 1.15em;
 			display: block;
 			margin-top: 0.5em;
+		}
+	}
+}
+
+// Comments
+.ui.comments {
+	max-width: none;
+
+	.comment {
+		margin-top: 0;
+		margin-bottom: 0;
+		padding: 1em 0 1.5em;
+
+		.text {
+			white-space: pre-line;
+		}
+
+		.avatar {
+			width: rem(65px);
+			margin-right: 0.5em;
+
+			.picture {
+				width: rem(65px);
+				height: rem(65px);
+
+				i.icon.user {
+					font-size: rem(65px);
+					width: rem(65px);
+					height: rem(65px);
+				}
+
+				img {
+					width: auto;
+				}
+			}
+		}
+
+		>.avatar~.content {
+			margin-left: 0;
+		}
+
+		.text {
+			word-break: break-word;
+			overflow-wrap: break-word;
+			min-width: 10rem;
+		}
+
+		.field {
+			clear: none;
+		}
+
+		textarea,
+		.field textarea {
+			padding: 0.5em;
+		}
+
+		.actions a:hover,
+		.actions a:focus,
+		.actions a:active {
+			color: $blue;
+		}
+
+		.ui.comments {
+			margin-bottom: 0;
+			padding-bottom: 0;
+			padding-top: 1.75em;
+			padding-left: 4em;
+			margin-left: 0;
+
+			.comment {
+				margin-top: 0;
+				margin-bottom: 0;
+				padding-top: 0;
+				padding-bottom: 1.5em;
+
+				&:last-child {
+					padding-bottom: 0;
+				}
+
+				.avatar {
+					width: rem(50px);
+
+					.picture {
+						width: rem(50px);
+						height: rem(50px);
+
+						&.icon {
+							font-size: rem(50px);
+						}
+					}
+				}
+			}
+		}
+
+		.approval {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			flex-direction: column;
+			margin-right: 0.5em;
+
+			.approval-number {
+				display: inline-block;
+				text-align: center;
+				margin-bottom: 0;
+				font-weight: $bold;
+				color: $grey;
+			}
+
+			i.icon.sort.up,
+			i.icon.sort.down {
+				margin: 0;
+				font-size: 2.5rem;
+				height: 1.25rem;
+				width: 1.5rem;
+				position: relative;
+				overflow: hidden;
+			}
+
+			i.icon.sort.up:before {
+				position: absolute;
+				top: -5px;
+				left: 0;
+				right: 0;
+			}
+
+			i.icon.sort.down:before {
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				right: 0;
+			}
+		}
+
+		.actions {
+			padding-top: 0.75em;
+			font-weight: $semibold;
 		}
 	}
 }
@@ -791,8 +978,10 @@ li.resource {
 		width: 2.5rem;
 		height: 2.5rem;
 
-		&.icon {
+		i.icon.user {
 			font-size: 2.5rem;
+			width: 2.5rem;
+			height: 2.5rem;
 		}
 
 		img {
@@ -817,6 +1006,10 @@ li.resource {
 			display: inline-block;
 
 			.picture {
+				margin-right: 0;
+			}
+
+			i.icon.user {
 				margin-right: 0;
 			}
 		}
