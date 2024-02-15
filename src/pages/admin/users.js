@@ -19,8 +19,12 @@ const AdminUsers = () => {
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
 
 	useEffect(() => {
-		load({ url: 'users/admin' + (query.search ? `?search=${query.search}` : '') });
-	}, [query.search]);
+		if (user.id && user.is_modo) {
+			load({
+				url: 'users/admin' + (query.search ? `?search=${query.search}` : ''),
+			});
+		}
+	}, [query.search, user.id]);
 
 	useEffect(() => {
 		if (result) {

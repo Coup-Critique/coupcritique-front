@@ -1,7 +1,6 @@
 // modules
 
 import { Icon } from 'semantic-ui-react';
-import { IMG_VERSION } from '@/constants/img';
 import { makeClassName } from '@/functions';
 // import Image from 'next/image';
 
@@ -26,6 +25,14 @@ const Certification = ({ team = {}, userId, className, big = false }) => {
 				height="25"
 			/>
 		);
+		// return (
+		// 	<Icon
+		// 		color="green"
+		// 		name="check circle"
+		// 		title="Equipe certifiée"
+		// 		size={big ? 'big' : 'large'}
+		// 	/>
+		// );
 	}
 	if (userId && team.certified === false && team.user.id === userId) {
 		return <b className={makeClassName(big && 'pr-2 text-underline')}>VUE</b>;

@@ -23,8 +23,10 @@ const AdminDrive = () => {
 	const [table, page, nbPages, handlePage] = usePager(50, files, query, setQueryParam);
 
 	useEffect(() => {
-		load({ url: 'drive' });
-	}, []);
+		if (user.id && user.is_modo) {
+			load({ url: 'drive' });
+		}
+	}, [user.id]);
 
 	useEffect(() => {
 		if (result) {
@@ -141,7 +143,9 @@ const ImageCopy = ({ file, handleRemove }) => {
 	};
 
 	const copyPath = e => {
-		copyToClipboard(`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/drive/${file.filename}`);
+		copyToClipboard(
+			`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/drive/${file.filename}`
+		);
 	};
 
 	const handleDelete = e => {

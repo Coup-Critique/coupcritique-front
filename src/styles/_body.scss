@@ -535,6 +535,24 @@ section {
 
 // -->
 
+i.icon.check.circle {
+	position: relative;
+
+	&::before {
+		content: "\f111";
+		color: white;
+		font-size: 0.8em;
+	}
+
+	&::after {
+		content: "\f058";
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+
 .fake-icon {
 	height: 1em;
 	vertical-align: text-bottom;

@@ -36,7 +36,7 @@ const AdminTeams = () => {
 		handlePage,
 		handleSort,
 	} = useTableFetch('teams', {
-		loadUrl: 'teams/state',
+		loadUrl: user.is_modo ? 'teams/state' : null,
 		defaultQuery: { page: 1, state: null },
 	});
 

@@ -49,7 +49,21 @@ const Profile = ({
 						<Icon name="user circle" /* color={color} */ {...iconProps} />
 					)}
 				</div>
-				{!noBadge && badge && <Icon className="u-badge" {...badge} />}
+				{!noBadge && badge && badge.name === 'certified' ? (
+					<img
+						className={makeClassName(
+							'u-badge picto certification',
+							badge.color
+						)}
+						src={`/images/picto/certified-white.svg`}
+						alt="certifiée"
+						title={badge.title}
+						width="10"
+						height="10"
+					/>
+				) : (
+					<Icon className="u-badge" {...badge} />
+				)}
 			</div>
 			{!noLink && (
 				<Link
@@ -83,7 +97,11 @@ const getBadge = user => {
 		return { name: 'star', color: 'blue', title: 'a posté une équipe de la semaine' };
 	}
 	if (user.is_certified) {
-		return { name: 'check', color: 'green', title: 'a posté une équipe certifiée' };
+		return {
+			name: 'certified',
+			color: 'green',
+			title: 'a posté une équipe certifiée',
+		};
 	}
 	if (user.is_tiper) {
 		return { name: 'heart', color: 'red', title: 'tiper' };

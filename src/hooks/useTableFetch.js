@@ -16,11 +16,11 @@ import useFetch from '@/hooks/useFetch';
  * }} parameters
  */
 const defaultArray = [];
-const useTableFetch = (entityName, parameters = {}, defaultValue) => {
+const useTableFetch = (entityName, parameters = {}, defaultValue, nbPagesGiven = 0) => {
 	const { loadUrl, saveQueryToStore = true, defaultQuery } = parameters;
 	const [result, load, loading] = useFetch(false);
 	const [table, setTable] = useState(defaultValue || defaultArray);
-	const [nbPages, setNbPages] = useState(0);
+	const [nbPages, setNbPages] = useState(nbPagesGiven);
 
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(
 		saveQueryToStore,
