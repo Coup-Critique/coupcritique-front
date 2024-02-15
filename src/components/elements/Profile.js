@@ -73,11 +73,17 @@ const getBadge = user => {
 	if (user.is_modo) {
 		return { name: 'gem', color: 'violet', title: 'modérateur' };
 	}
+	if (user.is_content_creator) {
+		return { name: 'video camera', color: 'purple', title: 'créateur de contenu' };
+	}
 	if (user.is_winner) {
 		return { name: 'trophy', color: 'gold', title: 'vainqueur' };
 	}
-	if (user.is_content_creator) {
-		return { name:"video camera", color:"purple", title:"créateur de contenu", };
+	if (user.is_weeker) {
+		return { name: 'star', color: 'blue', title: 'a posté une équipe de la semaine' };
+	}
+	if (user.is_certified) {
+		return { name: 'check', color: 'green', title: 'a posté une équipe certifiée' };
 	}
 	if (user.is_tiper) {
 		return { name: 'heart', color: 'red', title: 'tiper' };
