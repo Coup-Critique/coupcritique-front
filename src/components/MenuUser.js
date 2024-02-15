@@ -35,6 +35,7 @@ const MenuUser = () => {
 				<Profile
 					user={user}
 					noLink
+					hideName
 					iconProps={{ color: 'black' }}
 					height="50"
 					wieght="50"

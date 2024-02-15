@@ -1,3 +1,5 @@
+const camelToKebab = str => str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+
 /**
  * @argument {args} classList of [string, array, false, null, undefined]
  * @returns {string}
@@ -8,7 +10,7 @@ export const makeClassName = (...classList) =>
 		if (Array.isArray(className)) className = makeClassName(className);
 		if (typeof className === 'object') {
 			Object.entries(className).forEach(([key, value]) => {
-				if (value) classList += ' ' + key;
+				if (value) classList += ' ' + camelToKebab(key);
 			});
 		}
 		if (!classList) return className;

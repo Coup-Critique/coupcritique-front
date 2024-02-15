@@ -22,8 +22,7 @@ const Profile = ({
 		<div
 			className={makeClassName(
 				'profile text-center',
-				hideName && 'hide-name',
-				big && 'big',
+				{ hideName, big, noLink },
 				className
 			)}
 		>
@@ -65,7 +64,11 @@ const Profile = ({
 					<Icon className="u-badge" {...badge} />
 				)}
 			</div>
-			{!noLink && (
+			{noLink ? (
+				<span className={hideName ? 'sr-only' : 'd-inline-block text-break mt-3'}>
+					{user.username}
+				</span>
+			) : (
 				<Link
 					href={`/entity/users/${user.id}`}
 					className="extended-link text-break mt-3"
@@ -91,7 +94,7 @@ const getBadge = user => {
 		return { name: 'video camera', color: 'purple', title: 'créateur de contenu' };
 	}
 	if (user.is_winner) {
-		return { name: 'trophy', color: 'gold', title: 'vainqueur' };
+		return { name: 'trophy', color: 'gold', title: 'vainqueur de tournois' };
 	}
 	if (user.is_weeker) {
 		return { name: 'star', color: 'blue', title: 'a posté une équipe de la semaine' };

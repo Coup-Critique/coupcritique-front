@@ -438,18 +438,6 @@ th.table-team-instance {
 			left: 50%;
 			transform: translate(-50%, -50%);
 		}
-
-		&::after {
-			content: '';
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 0;
-			bottom: 0;
-			background-color: $orange;
-			opacity: 0;
-			transition: all 0.3s;
-		}
 	}
 
 	.u-badge {
@@ -532,11 +520,27 @@ th.table-team-instance {
 		padding: rem(3px);
 	}
 
-	&:hover,
-	&:focus,
-	&:active {
+
+
+	&:not(.no-link) {
 		.picture::after {
-			opacity: 0.3;
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			background-color: $orange;
+			opacity: 0;
+			transition: all 0.3s;
+		}
+
+		&:hover,
+		&:focus,
+		&:active {
+			.picture::after {
+				opacity: 0.3;
+			}
 		}
 	}
 
