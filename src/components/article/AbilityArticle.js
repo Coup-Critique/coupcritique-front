@@ -1,6 +1,6 @@
 // modules
 import { useEffect, useState } from 'react';
-import { formateName } from '@/functions';
+import { formateName, getMetaName, getName } from '@/functions';
 // hooks
 import Description from '@/components/elements/Description';
 import GenSelector from '@/components/GenSelector';
@@ -19,13 +19,15 @@ const AbilityArticle = props => {
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery();
 
 	if (!ability || !ability.id) return null;
+	const name = getName(ability);
+	const metaName = getMetaName(ability);
 	return (
 		<PageWrapper
-			title={ability.nom || formateName(ability.name)}
-			metatitle={
-				'Le talent Pokémon : ' + (ability.nom || formateName(ability.name))
+			title={name}
+			metatitle={'Le talent Pokémon : ' + metaName}
+			metadescription={
+				`Visualiser l'utilisation du talent ${metaName}. ` + ability.description
 			}
-			metadescription={ability.description}
 		>
 			<GoBackButton />
 			<GenSelector

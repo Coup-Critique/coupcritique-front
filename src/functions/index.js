@@ -67,6 +67,10 @@ export function formatNumbers(nb, decimals = 2) {
 
 export const formateName = string => string.replace(/[\s-]+/g, ' ');
 
+export const getName = entity => entity.nom || formateName(entity.name);
+export const getMetaName = entity =>
+	(entity.nom ? `${entity.nom} / ` : '') + formateName(entity.name);
+
 // prettier-ignore
 export const formatFileName = string => string
 	.normalize('NFD')

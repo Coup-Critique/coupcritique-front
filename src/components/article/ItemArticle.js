@@ -6,7 +6,7 @@ import PageWrapper from '@/components/PageWrapper';
 import ArtItem from '@/components/elements/ArtItem';
 import GoBackButton from '@/components/GoBackButton';
 import useFetch from '@/hooks/useFetch';
-import { formateName, formatFileName } from '@/functions';
+import { formateName, formatFileName, getMetaName, getName } from '@/functions';
 import Description from '@/components/elements/Description';
 import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
 import GenSelector from '@/components/GenSelector';
@@ -22,12 +22,16 @@ const ItemArticle = props => {
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery();
 
 	if (!item || !item.id) return null;
+	const name = getName(item);
+	const metaName = getMetaName(item);
 	return (
 		<PageWrapper
-			title={item.nom || formateName(item.name)}
+			title={name}
 			className="article"
-			metatitle={"L'objet Pokémon : " + (item.nom || formateName(item.name))}
-			metadescription={item.description}
+			metatitle={"L'objet Pokémon : " + metaName}
+			metadescription={
+				`Visualiser l'utilisation de l'objet ${metaName}. ` + item.description
+			}
 			metaimage={`items/${formatFileName(item.name)}.png`}
 		>
 			<div className="mb-4">

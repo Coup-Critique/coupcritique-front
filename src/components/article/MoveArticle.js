@@ -1,6 +1,6 @@
 // modules
 import { useState } from 'react';
-import { formateName } from '@/functions';
+import { formateName, getMetaName, getName } from '@/functions';
 // components
 import GoBackButton from '@/components/GoBackButton';
 import PageWrapper from '@/components/PageWrapper';
@@ -20,12 +20,16 @@ const MoveArticle = props => {
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery();
 
 	if (!move || !move.id) return null;
+	const name = getName(move);
+	const metaName = getMetaName(move);
 	return (
 		<PageWrapper
-			title={move.nom || formateName(move.name)}
+			title={name}
 			className="article"
-			metatitle={'La capacité Pokémon : ' + (move.nom || formateName(move.name))}
-			metadescription={move.description}
+			metatitle={'La capacité Pokémon : ' + metaName}
+			metadescription={
+				`Visualiser l'utilisation de la capacité ${metaName}. ` + move.description
+			}
 		>
 			<GoBackButton />
 			<GenSelector

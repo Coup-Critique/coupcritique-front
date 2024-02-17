@@ -14,14 +14,14 @@ const PageWrapper = ({
 	nofollow,
 }) => (
 	<article className={className}>
-		{!!metatitle && (
-			<MetaData
-				title={`${metatitle} | Coup Critique Stratégie Pokémon`}
-				description={metadescription}
-				image={metaimage}
-				nofollow={nofollow}
-			/>
-		)}
+		<MetaData
+			title={
+				metatitle ? `${metatitle} | Coup Critique Stratégie Pokémon` : undefined
+			}
+			description={metadescription}
+			image={metaimage}
+			nofollow={nofollow}
+		/>
 		{!!title && (
 			<div className="title-banner">
 				<div className="container">

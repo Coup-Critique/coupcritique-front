@@ -28,11 +28,7 @@ const Home = props => {
 
 	return (
 		<div className="home">
-			<MetaData
-				title="Coup Critique | Votre référence en stratégie Pokémon"
-				description="Le site de référence en stratégie Pokémon française. Vous pourrez y trouver et partager des équipes efficaces en combat classé sur des tiers Smogon comme l'OverUsed ou sur console avec le VGC et le BSS."
-				image="keldeo-landorus.png"
-			/>
+			<MetaData />
 			<section className="banner-title-home">
 				<div className="container">
 					<div className="row">
