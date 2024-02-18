@@ -3,7 +3,7 @@ import { Card } from 'semantic-ui-react';
 
 const CardCircuit = () => {
 	return (
-		<Card>
+		<Card className="padded">
 			<h2>Circuit Compétitif</h2>
 
 			<Link href="/entity/tournaments" className="btn btn-outline">

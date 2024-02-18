@@ -5,7 +5,7 @@ const ScrollReveal = ({
 	Tag = 'div',
 	className,
 	animation,
-	earlier = false,
+	earlier = true,
 	outterRef,
 	...props
 }) => {

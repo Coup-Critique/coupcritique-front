@@ -67,47 +67,51 @@ const Video = ({
 	}
 	return (
 		<ScrollReveal
-			className={makeClassName('video row', short && 'short')}
+			className={makeClassName('video mb-3', short && 'short')}
 			animation="zoomIn"
 			earlier
 		>
-			<div className="col-12 col-lg-6 mb-4">
-				{!wait && <VideoEmbed url={video.url} cookie={cookie.youtube} />}
+			<div className="row mb-3">
+				<div className="col-12 col-lg-6">
+					{!wait && <VideoEmbed url={video.url} cookie={cookie.youtube} />}
+				</div>
+				<div className="col-12 col-lg-6">
+					<h4>
+						<a href={video.url} target="_blank" rel="nofollow noreferrer">
+							{video.title}
+						</a>
+					</h4>
+					<h5>
+						{video.author} - {formatDate(video.date_creation)}
+					</h5>
+					{!short && <p className="description">{video.description}</p>}
+				</div>
 			</div>
-			<div className="col-12 col-lg-6 mb-4">
-				<h4>
-					<a href={video.url} target="_blank" rel="nofollow noreferrer">
-						{video.title}
-					</a>
-				</h4>
-				<h5>
-					{video.author} - {formatDate(video.date_creation)}
-				</h5>
-				{!short && <p className="description">{video.description}</p>}
+			<div>
 				{video.tags.map((tag, i) => (
 					<Tag key={i} tag={tag} />
 				))}
-				{isAdmin &&
-					(loadingDelete ? (
-						<Loader inline="centered" active size="tiny" />
-					) : (
-						<div>
-							<Button
-								color="blue"
-								content={'Modifier'}
-								icon="pencil"
-								onClick={() => handleIsUpdate(true)}
-								className="mr-2"
-							/>
-							<Button
-								color="red"
-								content={'Supprimer'}
-								icon="trash"
-								onClick={handleDelete}
-							/>
-						</div>
-					))}
 			</div>
+			{isAdmin &&
+				(loadingDelete ? (
+					<Loader inline="centered" active size="tiny" />
+				) : (
+					<div>
+						<Button
+							color="blue"
+							content={'Modifier'}
+							icon="pencil"
+							onClick={() => handleIsUpdate(true)}
+							className="mr-2"
+						/>
+						<Button
+							color="red"
+							content={'Supprimer'}
+							icon="trash"
+							onClick={handleDelete}
+						/>
+					</div>
+				))}
 		</ScrollReveal>
 	);
 };

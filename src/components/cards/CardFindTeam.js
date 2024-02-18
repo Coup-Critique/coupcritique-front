@@ -5,7 +5,7 @@ import { lastGen } from '@/constants/gens';
 import { Card } from 'semantic-ui-react';
 
 const CardFindTeam = () => (
-	<Card>
+	<Card className="padded">
 		<div className="d-flex justify-content-between flex-wrap mb-4">
 			<h2 className="mb-0">
 				<Link href="/entity/teams">Trouver une équipe</Link>{' '}
@@ -16,8 +16,8 @@ const CardFindTeam = () => (
 		</div>
 		<p>Chercher une équipe par style de jeu, tier ou Pokémon</p>
 		<div className="row">
-			<div className="col-12 col-md-4">
-				<div className="card">
+			<div className="col-12 col-md-4 col-lg-12 col-xl-4 mb-3 mb-md-0 mb-lg-3 mb-xl-0">
+				<div className="card outline">
 					<Link href={`/entity/teams?tags=1`} title="équipes Hyper Offense">
 						<ScrollReveal
 							Tag="img"
@@ -32,8 +32,8 @@ const CardFindTeam = () => (
 					</Link>
 				</div>
 			</div>
-			<div className="col-12 col-md-4">
-				<div className="card">
+			<div className="col-12 col-md-4 col-lg-12 col-xl-4 mb-3 mb-md-0 mb-lg-3 mb-xl-0">
+				<div className="card outline">
 					<Link
 						href={`/entity/teams?tier=168&gen=${lastGen}`}
 						title="équipes OverUsed"
@@ -51,8 +51,8 @@ const CardFindTeam = () => (
 					</Link>
 				</div>
 			</div>
-			<div className="col-12 col-md-4">
-				<div className="card">
+			<div className="col-12 col-md-4 col-lg-12 col-xl-4 mb-3 mb-md-0 mb-lg-3 mb-xl-0">
+				<div className="card outline">
 					<Link href={`/entity/teams?tier=176&gen=${lastGen}`} title="équipes">
 						<ScrollReveal
 							Tag="img"

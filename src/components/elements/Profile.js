@@ -65,13 +65,13 @@ const Profile = ({
 				)}
 			</div>
 			{noLink ? (
-				<span className={hideName ? 'sr-only' : 'd-inline-block text-break mt-3'}>
+				<span className={hideName ? 'sr-only' : 'd-inline-block text-break mt-2'}>
 					{user.username}
 				</span>
 			) : (
 				<Link
 					href={`/entity/users/${user.id}`}
-					className="extended-link text-break mt-3"
+					className="extended-link text-break mt-2"
 					title={hideName ? user.username : undefined}
 				>
 					<span className={hideName ? 'sr-only' : undefined}>

@@ -24,7 +24,7 @@ const TableOneTeam = ({ team, className, isLink = false }) => {
 			)}
 			onClick={isLink ? e => router.push(`/entity/teams/${team.id}`) : undefined}
 		>
-			<table className="table basic table-pokemon stackable">
+			<table className="table table-one basic table-pokemon stackable">
 				<thead>
 					<tr>
 						<th>Utilisateur</th>
@@ -38,10 +38,7 @@ const TableOneTeam = ({ team, className, isLink = false }) => {
 				<tbody>
 					<tr>
 						<td>
-							<Profile
-								user={team.user}
-								noLink={isLink}
-							/>
+							<Profile user={team.user} noLink={isLink} />
 						</td>
 						<td>
 							<Certification
@@ -61,7 +58,7 @@ const TableOneTeam = ({ team, className, isLink = false }) => {
 						<td>
 							<Tier tier={team.tier} noLink={isLink} />
 						</td>
-						<td>
+						<td className={team.tags?.length > 2 ? 'text-left' : undefined}>
 							{team.tags.map((tag, i) => (
 								<Tag key={i} tag={tag} />
 							))}

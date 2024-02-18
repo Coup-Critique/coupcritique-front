@@ -11,65 +11,95 @@
 	}
 
 	.title-section {
+
 		.grid {
 			display: grid;
-			grid-template-columns: 0.8fr 0.8fr 0.9fr 0.9fr 1.4fr;
-			grid-template-rows: repeat(2, 1fr);
 			grid-gap: 1.25rem;
 
 			.ui.card {
-				padding: 2rem;
-				border-radius: $border-radius;
+				z-index: 1;
 			}
 
 			.one {
-				grid-row: 1/3;
-				grid-column: 1/3;
-				color: white;
-
-				.ui.card {
-					background: url('/images/backgrounds/bandeau-home-v2.jpg') no-repeat center;
-					background-size: cover;
-				}
-
 
 				h1 {
 					position: relative;
-					font-size: 1.5rem;
+					font-size: 1.25rem;
 					font-weight: $regular;
-					line-height: 1.5;
-					margin-bottom: rem(45px);
+					line-height: 1.25;
+					margin-bottom: 2rem;
 
 					p {
-						font-size: 1.5rem;
+						font-size: 1.25rem;
 					}
 
 					strong {
 						display: block;
-						font-size: 4.375rem;
+						font-size: 3rem;
 						margin-bottom: 1.25rem;
 					}
 				}
 
+				@media (min-width: 1800px) {
+					h1 {
+						font-size: 1.5rem;
+						line-height: 1.5;
+
+						p {
+							font-size: 1.5rem;
+						}
+
+						strong {
+							font-size: 4.375rem;
+						}
+
+					}
+				}
+
 				.main-search {
-					margin-bottom: 3.125rem;
+					margin-bottom: 0;
+					background-color: transparentize($dark-element, 0.75);
+					color: white;
+
+					input,
+					i.icon {
+						color: white;
+					}
+				}
+
+				.ui.card {
+					background: url('/images/backgrounds/bandeau-home-v2.jpg') no-repeat center;
+					background-size: cover;
+					overflow: visible;
+					z-index: 2;
 				}
 
 				.main-img {
-					position: absolute;
-					left: rem(-50px);
-					bottom: rem(-80px);
-					transform: scaleX(-1);
+					display: none;
 				}
 			}
 
 			.two {
-				grid-column: 3/6;
+				.ui.card .card>a {
+					display: flex;
+					align-items: flex-end;
+					justify-content: space-between;
+					text-align: right;
+					padding-right: 1rem;
+					padding-bottom: 0.5rem;
+					text-transform: uppercase;
+					font-weight: bold;
+
+					img {
+						margin-left: rem(-10px);
+						margin-bottom: rem(-32px);
+						margin-right: 0.5rem;
+						max-width: 75%;
+					}
+				}
 			}
 
 			.three {
-				grid-column: 3/5;
-
 				.ui.card {
 					overflow: hidden;
 				}
@@ -79,12 +109,72 @@
 					right: rem(-50px);
 					bottom: rem(-25px);
 					transform: scaleX(-1);
+					z-index: -1;
 				}
 			}
 
 			.ui.card {
 				width: 100%;
 				height: 100%;
+			}
+		}
+
+		@media (min-width: $l) {
+			.grid {
+				grid-template-columns: 1fr 1fr;
+
+				.one {
+					.ui.card {
+						padding-bottom: 452px - 40px;
+					}
+
+					.main-img {
+						display: block;
+						position: absolute;
+						left: rem(-50px);
+						bottom: rem(-40px);
+						transform: scaleX(-1);
+						z-index: -1;
+					}
+				}
+			}
+		}
+
+		@media (min-width: $xl) {
+			.grid {
+				grid-template-columns: 0.75fr 1.25fr;
+
+				.one {
+					grid-row: 1/4;
+
+					.ui.card {
+						padding-bottom: 452px - 80px;
+					}
+
+					.main-img {
+						bottom: rem(-80px);
+					}
+				}
+			}
+		}
+
+		@media (min-width: 1500px) {
+			.grid {
+				grid-template-columns: 0.9fr 0.9fr 0.9fr 0.9fr 1.4fr;
+				grid-template-rows: repeat(2, 1fr);
+
+				.one {
+					grid-row: 1/3;
+					grid-column: 1/3;
+				}
+
+				.two {
+					grid-column: 3/6;
+				}
+
+				.three {
+					grid-column: 3/5;
+				}
 			}
 		}
 	}

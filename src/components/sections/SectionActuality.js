@@ -7,7 +7,7 @@ function SectionActuality({ actualities = [] }) {
 	if (!actualities.length) return null;
 	return (
 		<section className="section-news">
-			<div className="ui container">
+			<div className="ui container list">
 				<h2>
 					<Link href="/entity/actualities">Actualités</Link>
 				</h2>

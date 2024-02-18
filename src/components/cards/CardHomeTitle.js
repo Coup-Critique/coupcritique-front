@@ -4,7 +4,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import { Card } from 'semantic-ui-react';
 
 const CardHomeTitle = () => (
-	<Card>
+	<Card className="padded">
 		<h1>
 			<strong className="d-block">Coup Critique</strong>
 			<span className="d-block">
@@ -20,8 +20,8 @@ const CardHomeTitle = () => (
 			animation="zoomIn"
 			src="/images/keldeo-landorus.png"
 			alt="Démétéros et Keldeo"
-			height="522"
-			width="498"
+			height="452"
+			width="431"
 		/>
 	</Card>
 );

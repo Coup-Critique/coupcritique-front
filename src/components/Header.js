@@ -63,7 +63,7 @@ function Header() {
 									styleClass="header-search"
 								/>
 							</div>
-							<div className="d-flex pl-3 pr-4">
+							<div className="d-flex pl-3 pr-4 justify-content-between">
 								{!!user.id && (
 									<Link href="/notifications" className="nav-link mr-2">
 										<IconGroup>

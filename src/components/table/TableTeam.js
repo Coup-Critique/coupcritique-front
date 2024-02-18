@@ -191,7 +191,7 @@ const RowTeam = ({
 							)}
 							trigger={
 								<Label
-									color={'grey'}
+									onClick={e => e.stopPropagation()}
 									className="mb-1 align-top To more-tags-btn"
 									icon="angle down"
 									title="Afficher les tags suivants"

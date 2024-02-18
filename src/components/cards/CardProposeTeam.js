@@ -9,7 +9,7 @@ const CardProposeTeam = () => {
 	const [darkMode] = useDarkMode();
 
 	return (
-		<Card>
+		<Card className="padded">
 			<h2>
 				<Link href="/entity/teams/create">Proposer une équipe</Link>
 			</h2>
@@ -18,9 +18,11 @@ const CardProposeTeam = () => {
 				<br />
 				avoir des avis dessus ou aider les débutants
 			</p>
-			<Link href="/entity/teams/create" className="btn btn-orange">
-				Proposer mon équipe
-			</Link>
+			<div>
+				<Link href="/entity/teams/create" className="btn btn-orange">
+					Proposer mon équipe
+				</Link>
+			</div>
 			<div className="img-wrapper">
 				<ScrollReveal
 					Tag="img"
