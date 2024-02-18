@@ -1,80 +1,37 @@
 // modules
-import { useRef } from 'react';
 import Link from 'next/link';
-import { Icon } from 'semantic-ui-react';
-import useDarkMode from '@/hooks/useDarkMode';
 // components
-import MainSearch from '@/components/forms/MainSearch';
 import MetaData from '@/components/MetaData';
-import ScrollReveal from '@/components/ScrollReveal';
 import SectionActuality from '@/components/sections/SectionActuality';
 import SectionAdsHome from '@/components/sections/SectionAdsHome';
 import SectionTeams from '@/components/sections/SectionTeams';
 import SectionTopUsages from '@/components/sections/SectionTopUsages';
 import SectionWeeklyTeam from '@/components/sections/SectionWeeklyTeam';
 import { manageFetch } from '@/hooks/useFetch';
-// import Image from 'next/image';
+import CardHomeTitle from '@/components/cards/CardHomeTitle';
+import CardFindTeam from '@/components/cards/CardFindTeam';
+import CardProposeTeam from '@/components/cards/CardProposeTeam';
+import CardCircuit from '@/components/cards/CardCircuit';
 
 // use default meta tags
 const Home = props => {
-	const scrollRef = useRef();
-	const [darkMode] = useDarkMode();
-
-	const scrollTo = e => {
-		if (scrollRef.current) {
-			scrollRef.current.scrollIntoView();
-		}
-	};
-
 	return (
 		<div className="home">
 			<MetaData />
-			<section className="banner-title-home">
-				<div className="container">
-					<div className="row">
-						<div className="col-12 col-xl-6 title-col">
-							<h1>
-								<strong>Coup Critique</strong>{' '}
-								<span>
-									Votre référence en stratégie Pokémon française.
-									<br />
-									Trouvez les meilleures équipes de la communauté.
-									{/* TODO plus de texte */}
-								</span>
-							</h1>
-							<MainSearch />
-							<div className="down-arrow-wrapper">
-								<Icon
-									name="angle down"
-									className={darkMode ? 'black' : 'text-white'}
-									size="huge"
-									onClick={scrollTo}
-								/>
-							</div>
-						</div>
-						<div className="col-12 col-xl-6 image-col">
-							<ScrollReveal
-								Tag="img"
-								className="img-fluid"
-								animation="zoomIn"
-								src="/images/keldeo-landorus.png"
-								alt="Démétéros et Keldeo"
-								height="522"
-								width="498"
-							/>
-						</div>
+			<section className="title-section">
+				<div className="grid">
+					<div className="one title-col">
+						<CardHomeTitle />
 					</div>
-				</div>
-			</section>
-			<SectionTeams sectionRef={scrollRef} />
-			<section className="section-tournament">
-				<div className="container">
-					<div>
-						<h2>Participer aux prochains tournois</h2>
+					<div className="two">
+						<CardFindTeam />
 					</div>
-					<Link href="/entity/tournaments" className="btn btn-light">
-						Voir les tournois
-					</Link>
+					<div className="three">
+						<CardProposeTeam />
+					</div>
+					<div className="four">
+						<CardCircuit />
+					</div>
 				</div>
 			</section>
 			<SectionAdsHome />

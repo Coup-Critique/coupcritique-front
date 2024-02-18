@@ -53,8 +53,6 @@ $semibold: 600;
 $bold: 700;
 $extrabold: 800;
 $blackbold: 900;
-
-$border-radius: 0.3125rem;
 $input-btn-focus-width: 0;
 $input-btn-focus-box-shadow: none;
 
@@ -65,6 +63,8 @@ $header-height: 138px;
 @function rem($size) {
 	@return math.div($size, $font-size) * 1rem;
 }
+
+$border-radius: rem(10px);
 
 @function get-breakpoints($key: 'xs') {
 	@if $key=='xs' {

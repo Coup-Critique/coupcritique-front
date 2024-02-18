@@ -49,14 +49,20 @@ function Header() {
 				<div className="header-bottom">
 					<div className="container-fluid">
 						<div className="inner-header-bottom">
-							<MainSearch size="mini" styleClass="header-search" isHeader />
-							<MainSearch
-								pageResultUrl="/search/user/"
-								placeholder="Recherche utilisateur"
-								isUserSearch
-								size="mini"
-								styleClass="header-search"
-							/>
+							<div className="d-flex">
+								<MainSearch
+									size="mini"
+									styleClass="header-search"
+									isHeader
+								/>
+								<MainSearch
+									pageResultUrl="/search/user/"
+									placeholder="Recherche utilisateur"
+									isUserSearch
+									size="mini"
+									styleClass="header-search"
+								/>
+							</div>
 							<div className="d-flex pl-3 pr-4">
 								{!!user.id && (
 									<Link href="/notifications" className="nav-link mr-2">
@@ -107,16 +113,14 @@ function Header() {
 									className="m-0"
 								/>
 							</div>
-							<Button
-								color="orange"
-								className="iconned btn-padding-reduce mb-2 ml-2"
-								as="a"
+							<a
+								className="btn btn-outline-dark btn-padding-reduce mb-2 ml-2"
 								href="https://fr.tipeee.com/redemption/"
 								target="_blank"
 								rel="nofollow noreferrer"
-								icon="heart outline"
-								content="Soutenir"
-							/>
+							>
+								Soutenir
+							</a>
 						</div>
 					</div>
 				</div>

@@ -10,45 +10,92 @@
 		max-width: 100%;
 	}
 
+	.title-section {
+		.grid {
+			display: grid;
+			grid-template-columns: 0.8fr 0.8fr 0.9fr 0.9fr 1.4fr;
+			grid-template-rows: repeat(2, 1fr);
+			grid-gap: 1.25rem;
+
+			.ui.card {
+				padding: 2rem;
+				border-radius: $border-radius;
+			}
+
+			.one {
+				grid-row: 1/3;
+				grid-column: 1/3;
+				color: white;
+
+				.ui.card {
+					background: url('/images/backgrounds/bandeau-home-v2.jpg') no-repeat center;
+					background-size: cover;
+				}
+
+
+				h1 {
+					position: relative;
+					font-size: 1.5rem;
+					font-weight: $regular;
+					line-height: 1.5;
+					margin-bottom: rem(45px);
+
+					p {
+						font-size: 1.5rem;
+					}
+
+					strong {
+						display: block;
+						font-size: 4.375rem;
+						margin-bottom: 1.25rem;
+					}
+				}
+
+				.main-search {
+					margin-bottom: 3.125rem;
+				}
+
+				.main-img {
+					position: absolute;
+					left: rem(-50px);
+					bottom: rem(-80px);
+					transform: scaleX(-1);
+				}
+			}
+
+			.two {
+				grid-column: 3/6;
+			}
+
+			.three {
+				grid-column: 3/5;
+
+				.ui.card {
+					overflow: hidden;
+				}
+
+				.main-img {
+					position: absolute;
+					right: rem(-50px);
+					bottom: rem(-25px);
+					transform: scaleX(-1);
+				}
+			}
+
+			.ui.card {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+
 	.banner-title-home {
-		background: url('/images/backgrounds/bandeau-home.jpg') no-repeat center;
-		background-size: cover;
-		color: white;
 		padding-bottom: 0;
 
 		.title-col {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-
-			h1 {
-				position: relative;
-				font-size: 1.5rem;
-				font-weight: $regular;
-				line-height: 1.5;
-				margin-bottom: rem(45px);
-
-				p {
-					font-size: 1.5rem;
-				}
-
-				strong {
-					display: block;
-					font-size: 4.375rem;
-					margin-bottom: 1.25rem;
-				}
-			}
-		}
-
-		.image-col {
-			padding-top: 3.125rem;
-			position: relative;
-			z-index: 2;
-
-			img {
-				margin-right: 0;
-				margin-bottom: -4.375rem;
-			}
 		}
 
 		.field.main-search {

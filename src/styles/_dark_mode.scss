@@ -70,6 +70,18 @@
 		}
 	}
 
+	.btn-outline-dark {
+		color: white;
+		border-color: white;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: white;
+			color: $dark-element;
+		}
+	}
+
 	.title-banner h1 {
 		color: $dark-body;
 	}
@@ -127,6 +139,10 @@
 	.ui.card {
 		background-color: $dark-element;
 		box-shadow: 0 1px 3px 0 $darker;
+
+		.card {
+			background-color: $dark-body;
+		}
 	}
 
 	.framed {
@@ -152,7 +168,7 @@
 		background-color: $darker;
 		transition: background-color 0.3s;
 		box-shadow: none;
-		border-bottom: 1px solid $darker;
+		border-bottom: 2px solid $darker;
 
 		a {
 			color: white;
@@ -854,40 +870,46 @@
 
 	// Home
 	.home {
-		.banner-title-home {
-			color: $dark-body;
 
-			h1:after {
+		.title-section {
+			background-color: $darker;
+			padding: 4em;
+
+			.ui.card {
 				background-color: $dark-body;
+
+				.card {
+					background-color: $dark-element;
+				}
+			}
+		}
+
+		.field.main-search {
+			input {
+				border-color: transparent;
+				background-color: transparent;
+				color: $body-color;
+
+				&::placeholder {
+					/* Chrome, Firefox, Opera, Safari 10.1+ */
+					color: $body-color !important;
+					opacity: 1;
+					/* Firefox */
+				}
+
+				&:-ms-input-placeholder {
+					/* Internet Explorer 10-11 */
+					color: $body-color !important;
+				}
+
+				&::-ms-input-placeholder {
+					/* Microsoft Edge */
+					color: $body-color !important;
+				}
 			}
 
-			.field.main-search {
-				input {
-					border-color: transparent;
-					background-color: transparent;
-					color: $body-color;
-
-					&::placeholder {
-						/* Chrome, Firefox, Opera, Safari 10.1+ */
-						color: $body-color !important;
-						opacity: 1;
-						/* Firefox */
-					}
-
-					&:-ms-input-placeholder {
-						/* Internet Explorer 10-11 */
-						color: $body-color !important;
-					}
-
-					&::-ms-input-placeholder {
-						/* Microsoft Edge */
-						color: $body-color !important;
-					}
-				}
-
-				.category {
-					border-bottom: solid 1px black;
-				}
+			.category {
+				border-bottom: solid 1px black;
 			}
 		}
 
