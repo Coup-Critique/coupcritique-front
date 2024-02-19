@@ -1,10 +1,7 @@
 // modules
-import Link from 'next/link';
-// components
 import MetaData from '@/components/MetaData';
 import SectionActuality from '@/components/sections/SectionActuality';
 import SectionAdsHome from '@/components/sections/SectionAdsHome';
-import SectionTeams from '@/components/sections/SectionTeams';
 import SectionTopUsages from '@/components/sections/SectionTopUsages';
 import SectionWeeklyTeam from '@/components/sections/SectionWeeklyTeam';
 import { manageFetch } from '@/hooks/useFetch';
@@ -50,18 +47,18 @@ const Home = props => {
 export const getStaticProps = async () => {
 	try {
 		const responses = await Promise.all([
-			manageFetch(`actualities?maxLength=3`),
 			manageFetch(`teams/top`),
-			manageFetch(`videos?maxLength=1`),
-			manageFetch(`guides?maxLength=1`),
+			manageFetch(`actualities?maxLength=3`),
+			manageFetch(`guides?maxLength=3`),
+			manageFetch(`videos?maxLength=2`),
 			manageFetch(`tiers/usages/top`),
 			manageFetch(`tiers/usages/top?official=true`),
 			manageFetch(`tiers/usages/top?isDouble=true&official=true`),
 		]);
-		const { actualities } = responses[0];
-		const { team } = responses[1];
-		const { videos } = responses[2];
-		const { guides } = responses[3];
+		const { team } = responses[0];
+		const { actualities } = responses[1];
+		const { guides } = responses[2];
+		const { videos } = responses[3];
 		const { tier: ou, usage: usageOu } = responses[4];
 		const { tier: bss, usage: usageBss } = responses[5];
 		const { tier: vgc, usage: usageVgc } = responses[6];

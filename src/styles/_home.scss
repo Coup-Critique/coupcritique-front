@@ -11,6 +11,8 @@
 	}
 
 	.title-section {
+		padding: 4em;
+		margin-bottom: 2em;
 
 		.grid {
 			display: grid;
@@ -213,25 +215,21 @@
 		}
 	}
 
-	.down-arrow-wrapper {
-		text-align: right;
-		margin-top: 3rem;
+	.h2-btn {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: flex-end;
+		margin-bottom: 2rem;
+		padding: 0 0.5em;
 
-		i.icon {
-			margin-left: -15px;
-			transform: translateX(50%);
-			cursor: pointer;
-			position: relative;
-
-			&:hover {
-				animation: vMove 1.3s linear 0s infinite;
-			}
+		h2 {
+			margin-bottom: 0;
 		}
 	}
 
 	.section-ads {
 		padding: 0;
-		background-color: $light-grey;
 
 		// .ads-row {
 		// 	margin-bottom: 0;
@@ -242,14 +240,9 @@
 		// }
 	}
 
-	// .section-tournament + .section-ads {
-	// 	background-color: $light-grey;
-	// }
-
 	.section-teams {
 		overflow: hidden;
 		padding: 0;
-		// background: linear-gradient(to right, $light-grey, $light-grey 50%, white 50%);
 
 		.propose-team {
 			background-color: $light-grey;
@@ -405,22 +398,6 @@
 		}
 	}
 
-	.section-news {
-		text-align: center;
-		// background: url('/images/backgrounds/bandeau-team.jpg') no-repeat center;
-		// background-size: cover;
-		// background-color: $light-grey;
-		// color: white;
-
-		// .ui.card.actuality-teaser {
-		// 	color: white;
-		// 	background-color: rgba(0, 0, 0, 0.4);
-		// 	.date {
-		// 		color: white;
-		// 	}
-		// }
-	}
-
 	.section-weekly-team {
 		padding: 2em 0 3em;
 		text-align: center;
@@ -428,10 +405,6 @@
 		background: black;
 		background-size: cover;
 		color: white;
-
-		.ui.container {
-			width: 1140px;
-		}
 
 		h2 {
 			position: relative;
