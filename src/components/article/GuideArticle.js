@@ -48,29 +48,27 @@ const GuideArticle = ({ result }) => {
 			className="actuality article"
 			metadescription={guide.shortDescription}
 			metaimage={guide.images.length > 0 && `guides/${guide.images[0]}`}
+			goingBack={defaultGoBack}
+			action={
+				<div>
+					<Button
+						as={Link}
+						href={`/entity/guides/${guide.id}/update`}
+						color="blue"
+						content="Modifier"
+						icon="pencil"
+						className=""
+					/>
+					<Button
+						loading={loadingDelete}
+						onClick={handleDelete}
+						color="red"
+						content="Supprimer"
+						icon="trash alternate"
+					/>
+				</div>
+			}
 		>
-			<div className="mb-3">
-				<GoBackButton defaultUrl={defaultGoBack} />
-				{user.is_modo && (
-					<>
-						<Button
-							as={Link}
-							href={`/entity/guides/${guide.id}/update`}
-							color="blue"
-							content="Modifier"
-							icon="pencil"
-							className=""
-						/>
-						<Button
-							loading={loadingDelete}
-							onClick={handleDelete}
-							color="red"
-							content="Supprimer"
-							icon="trash alternate"
-						/>
-					</>
-				)}
-			</div>
 			<ScrollReveal animation="zoomIn" earlier>
 				{guide.images.length > 0 && (
 					<div className="slick-wrapper">

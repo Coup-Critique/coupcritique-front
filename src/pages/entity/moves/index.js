@@ -18,8 +18,8 @@ const MovesList = props => {
 			more
 			metatitle="Capacités des Pokémon | Coup Critique Stratégie Pokémon"
 			description="Liste de capacités dans Pokémon. Accédez la liste des Pokémon pouvant apprendre chaque capacité avec son taux d'utilisation. Retrouvez rapidement les données des capacités."
+			action={<GenSelector />}
 		>
-			<GenSelector />
 			<div id="pagination-scroll-ref">
 				{loading ? (
 					<Loader active inline="centered" />

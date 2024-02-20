@@ -45,11 +45,10 @@ const ActualityArticle = props => {
 			metaimage={
 				actuality.images.length > 0 && `actualities/${actuality.images[0]}`
 			}
-		>
-			<div className="mb-3">
-				<GoBackButton defaultUrl="/entity/actualities" />
-				{user.is_modo && (
-					<>
+			goingBack="/entity/actualities"
+			action={
+				user.is_modo && (
+					<div>
 						<Button
 							as={Link}
 							href={`/entity/actualities/${actuality.id}/update`}
@@ -65,9 +64,10 @@ const ActualityArticle = props => {
 							content="Supprimer"
 							icon="trash alternate"
 						/>
-					</>
-				)}
-			</div>
+					</div>
+				)
+			}
+		>
 			<ScrollReveal animation="zoomIn" earlier>
 				{actuality.images.length > 0 && (
 					<div className="slick-wrapper">

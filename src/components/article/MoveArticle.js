@@ -30,12 +30,14 @@ const MoveArticle = props => {
 			metadescription={
 				`Visualiser l'utilisation de la capacité ${metaName}. ` + move.description
 			}
+			goingBack
+			action={
+				<GenSelector
+					availableGens={props.availableGens}
+					redirectOnChange="/entity/moves/"
+				/>
+			}
 		>
-			<GoBackButton />
-			<GenSelector
-				availableGens={props.availableGens}
-				redirectOnChange={'/entity/moves/'}
-			/>
 			<div className="d-flex flex-wrap mb-4 justify-content-center">
 				<div className="pl-4 pr-4">
 					<div className="mb-2">

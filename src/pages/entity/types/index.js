@@ -14,8 +14,8 @@ const TypeList = ({ types }) => (
 			(acc, type) => (acc ? `${acc}, ` : '') + getMetaName(type),
 			''
 		)}. Filtrer les Pokémons par leur type.`}
+		action={<GenSelector />}
 	>
-		<GenSelector />
 		<div id="pagination-scroll-ref">
 			{types && types.length ? (
 				<div className="list-type">

@@ -1,4 +1,3 @@
-
 import { useRouter } from 'next/router';
 import { Button, Icon } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
@@ -16,12 +15,11 @@ const GoBackButton = ({ callback }) => {
 
 	return (
 		<Button
-			className={'iconned mr-2 ' + (darkMode ? 'white' : 'grey')}
+			className={'mr-2 ' + (darkMode ? 'white' : 'grey')}
 			inverted
+			icon="arrow left"
 			onClick={goBack}
-		>
-			<Icon name="arrow left" /> Retour
-		</Button>
+		/>
 	);
 };
 export default GoBackButton;

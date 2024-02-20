@@ -56,7 +56,7 @@ const GenSelector = ({ availableGens, redirectOnChange }) => {
 			name="generations"
 			onChange={onChange}
 			value={gen}
-			className="mb-3 menu-position-right button-triggered"
+			className="menu-position-right button-triggered"
 			upward={false}
 		/>
 	);

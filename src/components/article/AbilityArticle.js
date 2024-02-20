@@ -28,12 +28,14 @@ const AbilityArticle = props => {
 			metadescription={
 				`Visualiser l'utilisation du talent ${metaName}. ` + ability.description
 			}
+			goingBack
+			action={
+				<GenSelector
+					availableGens={props.availableGens}
+					redirectOnChange="/entity/abilities/"
+				/>
+			}
 		>
-			<GoBackButton />
-			<GenSelector
-				availableGens={props.availableGens}
-				redirectOnChange={'/entity/abilities/'}
-			/>
 			<Description
 				entity={ability}
 				keyResult="ability"

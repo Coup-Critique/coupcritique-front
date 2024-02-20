@@ -45,11 +45,10 @@ const TournamentArticle = props => {
 			metaimage={
 				tournament.images.length > 0 && `tournaments/${tournament.images[0]}`
 			}
-		>
-			<div className="mb-3">
-				<GoBackButton defaultUrl={defaultGoBack} />
-				{user.is_modo && (
-					<>
+			goingBack={defaultGoBack}
+			action={
+				user.is_modo && (
+					<div>
 						<Button
 							as={Link}
 							href={`/entity/tournaments/${tournament.id}/update`}
@@ -65,9 +64,10 @@ const TournamentArticle = props => {
 							content="Supprimer"
 							icon="trash alternate"
 						/>
-					</>
-				)}
-			</div>
+					</div>
+				)
+			}
+		>
 			<ScrollReveal animation="zoomIn" earlier>
 				{tournament.images.length > 0 && (
 					<div className="slick-wrapper">

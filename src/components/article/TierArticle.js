@@ -36,12 +36,14 @@ const TierArticle = props => {
 			className="tier-article"
 			metadescription={`Retrouvez la liste des Pokémon du tier ${tier.name}`}
 			metaimage={`tiers/${tier.gen}-${tier.shortName || tier.name}.png`}
+			goingBack="/entity/tiers/"
+			action={
+				<GenSelector
+					availableGens={props.availableGens}
+					redirectOnChange="/entity/tiers/"
+				/>
+			}
 		>
-			<GoBackButton defaultUrl={'/entity/tiers/'} />
-			<GenSelector
-				availableGens={props.availableGens}
-				redirectOnChange={'/entity/tiers/'}
-			/>
 			<Description
 				entity={tier}
 				keyResult="tier"

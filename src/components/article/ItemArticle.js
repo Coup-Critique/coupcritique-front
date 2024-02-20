@@ -33,13 +33,15 @@ const ItemArticle = props => {
 				`Visualiser l'utilisation de l'objet ${metaName}. ` + item.description
 			}
 			metaimage={`items/${formatFileName(item.name)}.png`}
-		>
-			<div className="mb-4">
-				<GoBackButton />
+			goingBack
+			action={
 				<GenSelector
 					availableGens={props.availableGens}
-					redirectOnChange={'/entity/items/'}
+					redirectOnChange="/entity/items/"
 				/>
+			}
+		>
+			<div className="mb-4">
 				<ArtItem item={item} />
 			</div>
 			<Description

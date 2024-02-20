@@ -50,10 +50,8 @@ const UserArticle = props => {
 			title="Profil"
 			metatitle={"Profil de l'utilisateur " + user.username}
 			metaimage={user.picture && `users/${user.picture}`}
+			goingBack
 		>
-			<div className="mb-3">
-				<GoBackButton />
-			</div>
 			<div className="row">
 				<div className="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 mb-4">
 					{user.picture ? (

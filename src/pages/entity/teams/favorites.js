@@ -39,10 +39,7 @@ const ListFavoriteTeam = () => {
 		return <Page404 />;
 	}
 	return (
-		<PageWrapper title={'Liste des équipes en favoris'} nofollow more>
-			<div className="mb-3">
-				<GoBackButton />
-			</div>
+		<PageWrapper title={'Liste des équipes en favoris'} nofollow more goingBack>
 			<SectionAds />
 			<div id="pagination-scroll-ref">
 				{loading ? (

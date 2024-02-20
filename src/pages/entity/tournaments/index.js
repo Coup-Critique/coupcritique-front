@@ -41,17 +41,18 @@ const TournamentList = props => {
 			title="Tous les tournois Pokémon"
 			className="actuality-list"
 			metadescription="Liste des tournois Pokémon de la scène compétitive française et internationale."
+			action={
+				user.is_modo && (
+					<Button
+						as={Link}
+						href="/entity/tournaments/create"
+						color="orange"
+						content="Ajouter un tournoi"
+						icon="plus"
+					/>
+				)
+			}
 		>
-			{user.is_modo && (
-				<Button
-					as={Link}
-					href="/entity/tournaments/create"
-					color="blue"
-					content="Ajouter un tournoi"
-					icon="plus"
-					className="mb-4"
-				/>
-			)}
 			<SectionAds />
 			{nbPages > 1 && (
 				<PaginationPrettier

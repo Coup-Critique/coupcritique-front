@@ -2,11 +2,14 @@
 
 import { makeClassName } from '@/functions';
 import MetaData from '@/components/MetaData';
+import GoBackButton from './GoBackButton';
 
 const PageWrapper = ({
 	title,
 	className,
 	children,
+	action,
+	goingBack = false,
 	more = false,
 	metatitle = title,
 	metadescription,
@@ -22,14 +25,20 @@ const PageWrapper = ({
 			image={metaimage}
 			nofollow={nofollow}
 		/>
-		{!!title && (
-			<div className="title-banner">
-				<div className="container">
-					<h1>{title}</h1>
-				</div>
-			</div>
-		)}
 		<div className={makeClassName('container simple-content', more && 'more')}>
+			{!!title && (
+				<div className="title-banner">
+					<h1>
+						{goingBack && (
+							<GoBackButton
+								defaultUrl={goingBack === true ? undefined : goingBack}
+							/>
+						)}{' '}
+						{title}
+					</h1>
+					{action}
+				</div>
+			)}
 			{children}
 		</div>
 	</article>
