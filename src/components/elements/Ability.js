@@ -1,14 +1,14 @@
 // modules
 
-// import Link from 'next/link';
+import Link from 'next/link';
 import { Popup } from 'semantic-ui-react';
 import { formateName } from '@/functions';
 
 const Ability = ({ ability, noPopup = false }) =>
 	noPopup || !ability.description ? (
-		<a className="ability" href={`/entity/abilities/${ability.id}`}>
+		<Link className="ability" href={`/entity/abilities/${ability.id}`}>
 			{ability.nom || formateName(ability.name)}
-		</a>
+		</Link>
 	) : (
 		<Popup
 			basic
@@ -19,9 +19,9 @@ const Ability = ({ ability, noPopup = false }) =>
 			className='mt-2'
 			content={ability.description.split('\n')[0]}
 			trigger={
-				<a className="ability" href={`/entity/abilities/${ability.id}`}>
+				<Link className="ability" href={`/entity/abilities/${ability.id}`}>
 					{ability.nom || formateName(ability.name)}
-				</a>
+				</Link>
 			}
 		/>
 	);

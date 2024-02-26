@@ -190,7 +190,6 @@ function MenuNavBar({ iconized = false }) {
 							}
 							as={ActiveLink}
 							href="/resources"
-							spa
 						/>
 						<Dropdown.Item
 							content={
@@ -235,7 +234,6 @@ function MenuNavBar({ iconized = false }) {
 					>
 						<Dropdown.Menu>
 							<Dropdown.Item
-								spa
 								content={
 									iconized ? (
 										<>
@@ -249,7 +247,6 @@ function MenuNavBar({ iconized = false }) {
 								href="/admin/teams"
 							/>
 							<Dropdown.Item
-								spa
 								content={
 									iconized ? (
 										<>
@@ -263,7 +260,6 @@ function MenuNavBar({ iconized = false }) {
 								href="/admin/users"
 							/>
 							<Dropdown.Item
-								spa
 								content={
 									iconized ? (
 										<>

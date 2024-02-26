@@ -1,5 +1,6 @@
 // modules
-// import Link from 'next/link';
+
+import Link from 'next/link';
 import { Popup } from 'semantic-ui-react';
 import IconType from '@/components/elements/IconType';
 
@@ -13,9 +14,11 @@ const Move = ({ move }) =>
 				hoverable
 				wide="very"
 				position="bottom center"
-				className="mt-2"
+				className='mt-2'
 				content={move.description ? move.description.split('\n')[0] : ''}
-				trigger={<a href={`/entity/moves/${move.id}`}>{move.nom || move.name}</a>}
+				trigger={
+					<Link href={`/entity/moves/${move.id}`}>{move.nom || move.name}</Link>
+				}
 			/>
 		</div>
 	) : move.description ? (
@@ -25,11 +28,11 @@ const Move = ({ move }) =>
 			hoverable
 			wide="very"
 			position="bottom center"
-			className="mt-2"
+			className='mt-2'
 			content={move.description.split('\n')[0]}
-			trigger={<a href={`/entity/moves/${move.id}`}>{move.nom || move.name}</a>}
+			trigger={<Link href={`/entity/moves/${move.id}`}>{move.nom || move.name}</Link>}
 		/>
 	) : (
-		<a href={`/entity/moves/${move.id}`}>{move.nom || move.name}</a>
+		<Link href={`/entity/moves/${move.id}`}>{move.nom || move.name}</Link>
 	);
 export default Move;

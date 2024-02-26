@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Button, Form, Message } from 'semantic-ui-react';
-// import Link from 'next/link';
+import Link from 'next/link';
 // components
 import Wysiwyg from '@/components/Wysiwyg';
 import MultiImageField from '@/components/fields/MultiImageField';
@@ -163,7 +163,7 @@ const FormActuality = ({ handleSubmited, actuality = {}, tags = [] }) => {
 					disabled={loading}
 				/>
 				<Button
-					as="a"
+					as={Link}
 					href={'/entity/actualities/' + (actuality.id || '')}
 					color="grey"
 					content="Annuler"

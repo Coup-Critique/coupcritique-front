@@ -1,6 +1,7 @@
 // modules
-// import Link from 'next/link';
+
 import { Label } from 'semantic-ui-react';
+import Link from 'next/link';
 import { makeClassName } from '@/functions';
 
 const Tier = ({
@@ -13,7 +14,7 @@ const Tier = ({
 }) => {
 	if (tier.name === 'Untiered') return tier.name;
 
-	let Wrapper = noLink ? 'span' : 'a';
+	let Wrapper = noLink ? 'span' : Link;
 	return (
 		<Wrapper
 			href={`/entity/tiers/${tier.id}`}

@@ -3,14 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { makeClassName } from '@/functions';
 
-const ActiveLink = ({
-	children,
-	spa = false,
-	className,
-	href,
-	exact = false,
-	...props
-}) => {
+const ActiveLink = ({ children, className, href, exact = false, ...props }) => {
 	const { asPath, isReady } = useRouter();
 	const [active, setActive] = useState(false);
 
@@ -28,15 +21,14 @@ const ActiveLink = ({
 		}
 	}, [isReady, props.href]);
 
-	const Tag = spa ? 'a' : Link;
 	return (
-		<Tag
+		<Link
 			href={href}
 			className={makeClassName(active && 'active', className)}
 			{...props}
 		>
 			{children}
-		</Tag>
+		</Link>
 	);
 };
 export default ActiveLink;

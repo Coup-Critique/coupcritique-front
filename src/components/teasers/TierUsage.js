@@ -1,6 +1,6 @@
 // modules
-// import Link from 'next/link';
 import { useRef } from 'react';
+import Link from 'next/link';
 // import Image from 'next/image';
 // components
 import ArtPokemon from '@/components/elements/ArtPokemon';
@@ -32,7 +32,7 @@ const TierUsage = ({ usage, tier }) => {
 					/>
 				</div>
 				<h3>
-					<a href={`/entity/tiers/${tier.id}`}>{tier.name}</a>
+					<Link href={`/entity/tiers/${tier.id}`}>{tier.name}</Link>
 				</h3>
 				<div className="no-result">Aucun résultat disponible.</div>
 				<div className="percent">&nbsp;</div>
@@ -45,7 +45,7 @@ const TierUsage = ({ usage, tier }) => {
 				<ArtPokemon pokemon={usage.pokemon} half imgRef={ref} />
 			</div>
 			<h3>
-				<a href={`/entity/tiers/${tier.id}`}>{tier.name}</a>
+				<Link href={`/entity/tiers/${tier.id}`}>{tier.name}</Link>
 			</h3>
 			<h4>{usage.pokemon.nom || formateName(usage.pokemon.name)}</h4>
 			<em className="percent">{formatNumbers(usage.percent, 3)}&nbsp;%</em>

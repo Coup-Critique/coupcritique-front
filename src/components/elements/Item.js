@@ -1,11 +1,12 @@
 // modules
-// import Link from 'next/link';
+
+import Link from 'next/link';
 import { Popup } from 'semantic-ui-react';
 import { formateName } from '@/functions';
 
 const Item = ({ item, noPopup = false }) =>
 	noPopup || !item.description ? (
-		<a href={`/entity/items/${item.id}`}>{item.nom || formateName(item.name)}</a>
+		<Link href={`/entity/items/${item.id}`}>{item.nom || formateName(item.name)}</Link>
 	) : (
 		<Popup
 			basic
@@ -16,9 +17,9 @@ const Item = ({ item, noPopup = false }) =>
 			className='mt-2'
 			content={item.description.split('\n')[0]}
 			trigger={
-				<a href={`/entity/items/${item.id}`}>
+				<Link href={`/entity/items/${item.id}`}>
 					{item.nom || formateName(item.name)}
-				</a>
+				</Link>
 			}
 		/>
 	);

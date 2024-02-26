@@ -1,12 +1,14 @@
 // module
-// import Link from 'next/link';
-import { TableBase } from '@/components/table/Table';
+
+import { TableBase, colorOddRows } from '@/components/table/Table';
 import Type from '@/components/elements/Type';
-import PaginationPrettier from '@/components/PaginationPrettier';
-import Category from '@/components/elements/Category';
-import { formateName, formatNumbers } from '@/functions';
+import Tier from '@/components/elements/Tier';
 import useTableSorter from '@/hooks/useTableSorter';
+import { formateName, formatNumbers } from '@/functions';
+import PaginationPrettier from '@/components/PaginationPrettier';
 import usePager from '@/hooks/usePager';
+import Link from 'next/link';
+import Category from '@/components/elements/Category';
 
 const TableMoveUsage = ({
 	tier,
@@ -62,8 +64,8 @@ const TableMoveUsage = ({
 					{
 						key: 'percent',
 						content:
-							'Usage ' +
-							(!tier || tier.name === 'Untiered'
+							'Usage '
+							+ (!tier || tier.name === 'Untiered'
 								? '-'
 								: tier.shortName || tier.name),
 						sortable: true,
@@ -80,9 +82,9 @@ const TableMoveUsage = ({
 					{table.map((move, i) => (
 						<tr key={i} /* className={colorOddRows(i)} */>
 							<td>
-								<a href={`/entity/moves/${move.id}`}>
+								<Link href={`/entity/moves/${move.id}`}>
 									{move.nom || formateName(move.name)}
-								</a>
+								</Link>
 							</td>
 							<td>
 								<Type type={move.type} />

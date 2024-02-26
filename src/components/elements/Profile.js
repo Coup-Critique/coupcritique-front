@@ -1,5 +1,6 @@
 // modules
-// import Link from 'next/link';
+
+import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';
 // import Image from 'next/image';
@@ -68,7 +69,7 @@ const Profile = ({
 					{user.username}
 				</span>
 			) : (
-				<a
+				<Link
 					href={`/entity/users/${user.id}`}
 					className="extended-link text-break mt-2"
 					title={hideName ? user.username : undefined}
@@ -76,7 +77,7 @@ const Profile = ({
 					<span className={hideName ? 'sr-only' : undefined}>
 						{user.username}
 					</span>
-				</a>
+				</Link>
 			)}
 		</div>
 	);

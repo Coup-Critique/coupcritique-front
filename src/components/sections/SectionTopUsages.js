@@ -1,6 +1,7 @@
 // modules
-// import Link from 'next/link';
-import { Card } from 'semantic-ui-react';
+import { Fragment } from 'react';
+import Link from 'next/link';
+import { Button, Card, Icon } from 'semantic-ui-react';
 // functions
 import TierUsage from '@/components/teasers/TierUsage';
 import Video from '@/components/elements/Video';
@@ -12,11 +13,11 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 			<div className="ui container">
 				<div className="h2-btn">
 					<h2>
-						<a href="/entity/guides">Guides stratégiques</a>
+						<Link href="/entity/guides">Guides stratégiques</Link>
 					</h2>
-					<a href="/entity/guides" className="btn btn-orange">
+					<Link href="/entity/guides" className="btn btn-orange">
 						Voir tous les guides
-					</a>
+					</Link>
 				</div>
 				<div className="row">
 					{guides.map(guide => (
@@ -49,9 +50,9 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 								))}
 							</div>
 							<div>
-								<a href={`/entity/tiers`} className="btn btn-orange">
+								<Link href={`/entity/tiers`} className="btn btn-orange">
 									Voir les usages
-								</a>
+								</Link>
 							</div>
 						</Card>
 					</div>
@@ -62,9 +63,9 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 								<Video key={video.id} video={video} short />
 							))}
 							<div className="text-center">
-								<a href={`/videos`} className="btn btn-orange">
+								<Link href={`/videos`} className="btn btn-orange">
 									Voir toutes les videos
-								</a>
+								</Link>
 							</div>
 						</Card>
 					</div>

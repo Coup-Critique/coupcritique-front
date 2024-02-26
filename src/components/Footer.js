@@ -11,7 +11,7 @@ const Footer = () => (
 			<MenuNavBar iconized />
 		</div>
 		<div className="container">
-			<a href="/" className="brand">
+			<Link href="/" className="brand">
 				<img
 					src="/images/coupcritique-big-white.svg"
 					alt="Logo de coup critique"
@@ -19,7 +19,7 @@ const Footer = () => (
 					height="170"
 				/>
 				<span className="sr-only">Coup Critique</span>
-			</a>
+			</Link>
 			<div className="footer-content">
 				<div className="dark-mode-toggle-wrapper">
 					<div className="position-relative d-inline-block">
@@ -29,14 +29,14 @@ const Footer = () => (
 				<nav className="navbar menu">
 					<ul className="navbar-nav">
 						<li className="nav-item">
-							<a href="/entity/teams/top" className="nav-link">
+							<Link href="/entity/teams/top" className="nav-link">
 								Équipe de la semaine
-							</a>
+							</Link>
 						</li>
 						<li className="nav-item">
-							<a href="/entity/teams" className="nav-link">
+							<Link href="/entity/teams" className="nav-link">
 								Trouver une équipe
-							</a>
+							</Link>
 						</li>
 						<li className="nav-item">
 							<Link href="/entity/teams/create" className="nav-link">
@@ -44,28 +44,28 @@ const Footer = () => (
 							</Link>
 						</li>
 						<li className="nav-item">
-							<a href="/entity/guides" className="nav-link">
+							<Link href="/entity/guides" className="nav-link">
 								Guides stratégiques
-							</a>
+							</Link>
 						</li>
-
+						{
+							<li className="nav-item">
+								<Link href="/entity/tournaments" className="nav-link">
+									Tournois
+								</Link>
+							</li>
+						}
 						<li className="nav-item">
-							<a href="/entity/tournaments" className="nav-link">
-								Tournois
-							</a>
-						</li>
-						<li className="nav-item">
-							<a href="/entity/actualities" className="nav-link">
+							<Link href="/entity/actualities" className="nav-link">
 								Actualités
-							</a>
+							</Link>
 						</li>
 					</ul>
 				</nav>
 				<div className="footer-bottom">
 					<Link href="/remerciements">Remerciements</Link> -{' '}
 					<Link href="/mentions-legales">Mentions légales</Link> -{' '}
-					<Link href="/cgu">CGU</Link> - Tous droits réservés - Coup Critique
-					2020
+					<Link href="/cgu">CGU</Link> - Tous droits réservés - Coup Critique 2020
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,5 @@
-// import Link from 'next/link';
+
+import Link from 'next/link';
 import useTableSorter from '@/hooks/useTableSorter';
 import { TableBase } from '@/components/table/Table';
 
@@ -24,7 +25,7 @@ const TableTier = ({ tiers = [], setTiers }) => {
 				{tiers.map((tier, i) => (
 					<tr key={i}>
 						<td>
-							<a href={`/entity/tiers/${tier.id}`}>{tier.name}</a>
+							<Link href={`/entity/tiers/${tier.id}`}>{tier.name}</Link>
 						</td>
 					</tr>
 				))}

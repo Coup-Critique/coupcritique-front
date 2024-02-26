@@ -1,9 +1,10 @@
 // module
-// import Link from 'next/link';
-import { TableBase } from '@/components/table/Table';
+
+import { TableBase, colorOddRows } from '@/components/table/Table';
 import { formateName } from '@/functions';
 import Type from '@/components/elements/Type';
 import Category from '@/components/elements/Category';
+import Link from 'next/link';
 import useTableSorter from '@/hooks/useTableSorter';
 import usePager from '@/hooks/usePager';
 import PaginationPrettier from '@/components/PaginationPrettier';
@@ -52,9 +53,9 @@ const TableMove = ({ moves = [], setMoves, query, updateQuery, setQueryParam }) 
 					{table.map((move, i) => (
 						<tr key={i} /* className={colorOddRows(i)} */>
 							<td>
-								<a href={`/entity/moves/${move.id}`}>
+								<Link href={`/entity/moves/${move.id}`}>
 									{move.nom || formateName(move.name)}
-								</a>
+								</Link>
 							</td>
 							<td>
 								<Type type={move.type} />

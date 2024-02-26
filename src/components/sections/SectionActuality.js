@@ -1,5 +1,5 @@
 // modules
-// import Link from 'next/link';
+import Link from 'next/link';
 // components
 import ActualityTeaser from '@/components/teasers/ActualityTeaser';
 
@@ -10,11 +10,11 @@ function SectionActuality({ actualities = [] }) {
 			<div className="ui container list">
 				<div className="h2-btn">
 					<h2>
-						<a href="/entity/actualities">Actualités</a>
+						<Link href="/entity/actualities">Actualités</Link>
 					</h2>
-					<a href="/entity/actualities" className="btn btn-orange">
+					<Link href="/entity/actualities" className="btn btn-orange">
 						Voir toutes les actualités
-					</a>
+					</Link>
 				</div>
 				<div className="row">
 					{actualities.map(actuality => (

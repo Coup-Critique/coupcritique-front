@@ -1,5 +1,6 @@
 // modules
-// import Link from 'next/link';
+
+import Link from 'next/link';
 import { IMG_VERSION, SPRITE_PKM } from '@/constants/img';
 import { formatFileName, makeClassName } from '@/functions';
 // import Image from 'next/image';
@@ -27,13 +28,13 @@ const SpritePokemon = ({ pokemon, noLink = false, className }) =>
 			className={makeClassName('sprite', className)}
 		/>
 	) : (
-		<a
+		<Link
 			href={`/entity/pokemons/${pokemon.id}`}
 			className={makeClassName('sprite', className)}
 			title={pokemon.nom || pokemon.name}
 		>
 			<SpritePokemonImg pokemon={pokemon} className="link" />
 			<span className="sr-only">{pokemon.nom || pokemon.name}</span>
-		</a>
+		</Link>
 	);
 export default SpritePokemon;

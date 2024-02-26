@@ -1,6 +1,6 @@
 // modules
 
-// import Link from 'next/link';
+import Link from 'next/link';
 import { Popup } from 'semantic-ui-react';
 import { IMG_VERSION, SPRITE_ITM } from '@/constants/img';
 import { formatFileName } from '@/functions';
@@ -8,13 +8,13 @@ import { formatFileName } from '@/functions';
 
 const SpriteItem = ({ item, noPopup = false }) =>
 	noPopup || !item.description ? (
-		<a
+		<Link
 			href={`/entity/items/${item.id}`}
 			className="sprite"
 			title={item.nom || item.name}
 		>
 			<InnerImg item={item} />
-		</a>
+		</Link>
 	) : (
 		<Popup
 			basic
@@ -25,9 +25,9 @@ const SpriteItem = ({ item, noPopup = false }) =>
 			className="mt-2"
 			content={(item.nom || item.name) + ' : ' + item.description.split('\n')[0]}
 			trigger={
-				<a href={`/entity/items/${item.id}`} className="sprite">
+				<Link href={`/entity/items/${item.id}`} className="sprite">
 					<InnerImg item={item} />
-				</a>
+				</Link>
 			}
 		/>
 	);
