@@ -77,9 +77,9 @@ a.type {
 // 	max-height: rem(225px);
 // }
 
-// .art-pokemon {
-// 	max-height: rem(300px);
-// }
+.art-pokemon {
+	transition: opacity 0.3s;
+}
 
 .ui.label.team-tag,
 .ui.label.tier,

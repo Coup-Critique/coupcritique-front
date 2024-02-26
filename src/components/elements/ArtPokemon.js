@@ -4,10 +4,13 @@ import Link from 'next/link';
 import { Loader } from 'semantic-ui-react';
 import { DEFAULT_POKEMON_PICTURE } from '@/constants';
 import { ART_ITM, ART_PKM, IMG_VERSION } from '@/constants/img';
-import { formatFileName } from '@/functions';
+import { formatFileName, makeClassName } from '@/functions';
 // import Image from 'next/image';
 
 const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
+	// TODO faire pareil avec les Items, faire un composant commun.
+	const [loading, setLoading] = useState(true);
+
 	const getImgPath = name => {
 		if (!name) {
 			return DEFAULT_POKEMON_PICTURE;
@@ -23,24 +26,32 @@ const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
 
 	useEffect(() => {
 		if (pokemon) {
-			setImage(getImgPath(pokemon.name));
+			const path = getImgPath(pokemon.name);
+			if (path !== image) {
+				setImage(path);
+				setLoading(true);
+			}
 		}
 	}, [pokemon.name]);
 
-	if (!image) return <Loader active size="big" />;
 	return (
-		<img
-			src={image}
-			onError={e => {
-				e.target.onerror = null;
-				e.target.src = '/images/picto/circle-question-solid.svg';
-			}}
-			alt={`Pokémon ${pokemon.nom || pokemon.name}`}
-			className="art-pokemon img-fluid"
-			ref={imgRef}
-			height={half ? ART_ITM : ART_PKM}
-			width={half ? ART_ITM : ART_PKM}
-		/>
+		<div className="position-relative">
+			{loading && <Loader active size="big" />}
+			<img
+				src={image}
+				onError={e => {
+					e.target.onerror = null;
+					e.target.src = '/images/picto/circle-question-solid.svg';
+					setLoading(false);
+				}}
+				onLoad={e => setLoading(false)}
+				alt={`Pokémon ${pokemon.nom || pokemon.name}`}
+				className={makeClassName('art-pokemon img-fluid', loading && 'opacity-0')}
+				ref={imgRef}
+				height={half ? ART_ITM : ART_PKM}
+				width={half ? ART_ITM : ART_PKM}
+			/>
+		</div>
 	);
 };
 
