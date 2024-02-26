@@ -1,4 +1,4 @@
-import Link from 'next/link';
+// import Link from 'next/link';
 import { Card } from 'semantic-ui-react';
 
 const CardCircuit = () => {
@@ -6,9 +6,9 @@ const CardCircuit = () => {
 		<Card className="padded">
 			<h2>Circuit Compétitif</h2>
 
-			<Link href="/entity/tournaments" className="btn btn-outline">
+			<a href="/entity/tournaments" className="btn btn-outline">
 				Détails du circuit
-			</Link>
+			</a>
 		</Card>
 	);
 };

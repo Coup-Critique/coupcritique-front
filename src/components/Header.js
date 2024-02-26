@@ -22,7 +22,7 @@ function Header() {
 		<header>
 			<div className="header-top">
 				<div className="container-fluid">
-					<Link href="/" className="brand">
+					<a href="/" className="brand">
 						<img
 							src={`/images/coupcritique${darkMode ? '-white' : ''}.svg`}
 							alt="Logo de Coup Critique"
@@ -38,7 +38,7 @@ function Header() {
 							className="d-sm-none"
 						/> */}
 						<span className="sr-only">Coup Critique</span>
-					</Link>
+					</a>
 					<div className="navbar-wrapper">
 						<nav className="navbar menu">
 							<MenuNavBar />

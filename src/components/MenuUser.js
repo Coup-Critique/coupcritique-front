@@ -54,10 +54,11 @@ const MenuUser = () => {
 				<Dropdown.Item className="position-relative">
 					<DarkModeToggle />
 				</Dropdown.Item>
-				<ActiveLink exact role="option" className="item" href="/user">
+				<ActiveLink spa exact role="option" className="item" href="/user">
 					Mon Compte
 				</ActiveLink>
 				<ActiveLink
+					spa
 					exact
 					role="option"
 					className="item position-relative"
@@ -66,6 +67,7 @@ const MenuUser = () => {
 					Mes Notifications {!!notifs && <span className="text-orange">*</span>}
 				</ActiveLink>
 				<ActiveLink
+					spa
 					exact
 					role="option"
 					className="item"
@@ -73,9 +75,9 @@ const MenuUser = () => {
 				>
 					Mes Favoris
 				</ActiveLink>
-				<Link href="/" role="option" className="item red" onClick={logout}>
+				<a href="/" role="option" className="item red" onClick={logout}>
 					Déconnexion
-				</Link>
+				</a>
 			</Dropdown.Menu>
 		</Dropdown>
 	);

@@ -1,6 +1,5 @@
 // modules
-
-import Link from 'next/link';
+// import Link from 'next/link';
 import { Card, Button } from 'semantic-ui-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import Tag from '@/components/elements/Tag';
@@ -10,7 +9,7 @@ const ActualityTeaser = ({ actuality, TitleAs = 'h3', btnProps = {} }) => (
 	<ScrollReveal className="ui card actuality-teaser" animation="zoomIn" earlier>
 		<Card.Content>
 			<div className="image mb-4">
-				<Link href={`/entity/actualities/${actuality.id}`}>
+				<a href={`/entity/actualities/${actuality.id}`}>
 					<img
 						className="img-fluid"
 						src={
@@ -28,12 +27,10 @@ const ActualityTeaser = ({ actuality, TitleAs = 'h3', btnProps = {} }) => (
 					<span className="sr-only">
 						Illustration de l'actualité : {actuality.title}
 					</span>
-				</Link>
+				</a>
 			</div>
 			<TitleAs>
-				<Link href={`/entity/actualities/${actuality.id}`}>
-					{actuality.title}
-				</Link>
+				<a href={`/entity/actualities/${actuality.id}`}>{actuality.title}</a>
 			</TitleAs>
 			{actuality.tags.length > 0 && (
 				<div className="mb-2">
@@ -48,13 +45,13 @@ const ActualityTeaser = ({ actuality, TitleAs = 'h3', btnProps = {} }) => (
 			)}
 		</Card.Content>
 		<Card.Content>
-			<Link
+			<a
 				className="underline"
 				{...btnProps}
 				href={`/entity/actualities/${actuality.id}`}
 			>
 				Lire la suite
-			</Link>
+			</a>
 		</Card.Content>
 	</ScrollReveal>
 );

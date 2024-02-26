@@ -1,8 +1,7 @@
 // module
-
+// import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { Icon, Label, Popup } from 'semantic-ui-react';
 // components
 import { TableBase, colorOddRows, DESC, ASC } from '@/components/table/Table';
@@ -173,7 +172,7 @@ const RowTeam = ({
 			)}
 			<td>{formatDate(team.date_creation)}</td>
 			<td className="text-left text-break">
-				<Link href={linkTo}>{team.name}</Link>
+				<a href={linkTo}>{team.name}</a>
 			</td>
 			<td className="list nowrap">
 				{team.tags.length > 2 ? (

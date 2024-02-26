@@ -1,12 +1,12 @@
 // modules
 
-import Link from 'next/link';
+// import Link from 'next/link';
 import { IMG_VERSION } from '@/constants/img';
 import { formatFileName, makeClassName } from '@/functions';
 // import Image from 'next/image';
 
 const IconType = ({ type, className, tera = false }) => (
-	<Link
+	<a
 		href={`/entity/types/${type.id}`}
 		className={makeClassName('icon-type', tera && 'tera', className)}
 		title={type.nom || type.name}
@@ -25,6 +25,6 @@ const IconType = ({ type, className, tera = false }) => (
 			height={tera ? 28 : 20}
 		/>
 		<span className="sr-only">{type.nom || type.name}</span>
-	</Link>
+	</a>
 );
 export default IconType;

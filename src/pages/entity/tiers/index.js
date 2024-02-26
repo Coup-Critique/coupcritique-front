@@ -32,7 +32,7 @@ const TierList = props => {
 								className="ui card tier-art"
 								animation="zoomIn"
 							>
-								<Link className="image" href={`/entity/tiers/${tier.id}`}>
+								<a className="image" href={`/entity/tiers/${tier.id}`}>
 									<img
 										src={`/images/tiers/${tier.gen}-${
 											tier.shortName || tier.name
@@ -42,9 +42,9 @@ const TierList = props => {
 										height={ART_ITM}
 									/>
 									<span className="sr-only">{tier.name}</span>
-								</Link>
+								</a>
 								<Card.Content>
-									<Link href={`/entity/tiers/${tier.id}`}>
+									<a href={`/entity/tiers/${tier.id}`}>
 										<Tier
 											tier={tier}
 											displayGen={false}
@@ -52,7 +52,7 @@ const TierList = props => {
 											noLink
 										/>{' '}
 										<span>{tier.name}</span>
-									</Link>
+									</a>
 								</Card.Content>
 							</ScrollReveal>
 						))}

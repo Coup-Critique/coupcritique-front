@@ -1,7 +1,6 @@
 // modules
-
-import Link from 'next/link';
-import { Card, Button } from 'semantic-ui-react';
+// import Link from 'next/link';
+import { Card } from 'semantic-ui-react';
 import { formatDate } from '@/functions';
 import ScrollReveal from '@/components/ScrollReveal';
 import Tag from '@/components/elements/Tag';
@@ -10,7 +9,7 @@ const TournamentTeaser = ({ tournament, TitleAs = 'h3', btnProps = {} }) => (
 	<ScrollReveal className="ui card actuality-teaser" animation="zoomIn" earlier>
 		<Card.Content>
 			<div className="image mb-4">
-				<Link href={`/entity/tournaments/${tournament.id}`}>
+				<a href={`/entity/tournaments/${tournament.id}`}>
 					<img
 						className="img-fluid"
 						src={
@@ -28,12 +27,10 @@ const TournamentTeaser = ({ tournament, TitleAs = 'h3', btnProps = {} }) => (
 					<span className="sr-only">
 						Illustration du tournoi : {tournament.title}
 					</span>
-				</Link>
+				</a>
 			</div>
 			<TitleAs>
-				<Link href={`/entity/tournaments/${tournament.id}`}>
-					{tournament.title}
-				</Link>
+				<a href={`/entity/tournaments/${tournament.id}`}>{tournament.title}</a>
 			</TitleAs>
 			{tournament.tags.length > 0 && (
 				<div className="mb-2">
@@ -48,13 +45,13 @@ const TournamentTeaser = ({ tournament, TitleAs = 'h3', btnProps = {} }) => (
 			)}
 		</Card.Content>
 		<Card.Content>
-			<Link
+			<a
 				className="underline"
 				{...btnProps}
 				href={`/entity/tournaments/${tournament.id}`}
 			>
 				Lire la suite
-			</Link>
+			</a>
 		</Card.Content>
 	</ScrollReveal>
 );

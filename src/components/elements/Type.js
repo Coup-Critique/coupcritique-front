@@ -1,12 +1,12 @@
 // modules
 
-import Link from 'next/link';
+// import Link from 'next/link';
 import { IMG_VERSION } from '@/constants/img';
 import { formatFileName, makeClassName } from '@/functions';
 // import Image from 'next/image';
 
 const Type = ({ type, className }) => (
-	<Link href={`/entity/types/${type.id}`} className={makeClassName('type', className)}>
+	<q href={`/entity/types/${type.id}`} className={makeClassName('type', className)}>
 		<img
 			src={`/images/types/${formatFileName(type.name)}.png?ver=${IMG_VERSION}`}
 			onError={e => {
@@ -19,6 +19,6 @@ const Type = ({ type, className }) => (
 			height="20"
 		/>
 		<span className="sr-only">{type.nom || type.name}</span>
-	</Link>
+	</q>
 );
 export default Type;

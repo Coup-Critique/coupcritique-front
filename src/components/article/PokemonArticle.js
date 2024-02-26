@@ -167,7 +167,7 @@ const PokemonArticle = props => {
 				color="blue"
 				content="Voir les capacités du Pokémon"
 				className="mb-4"
-				as={Link}
+				as="a"
 				href={`/entity/moves/pokemon/${pokemon.id}`}
 				icon="search"
 			/>

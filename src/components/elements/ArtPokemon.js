@@ -1,11 +1,11 @@
 // modules
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { Loader } from 'semantic-ui-react';
 import { DEFAULT_POKEMON_PICTURE } from '@/constants';
 import { ART_ITM, ART_PKM, IMG_VERSION } from '@/constants/img';
 import { formatFileName } from '@/functions';
-// import Image from 'next/image';
+import Image from 'next/image';
 
 const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
 	const getImgPath = name => {
@@ -29,7 +29,7 @@ const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
 
 	if (!image) return <Loader active size="big" />;
 	return (
-		<img
+		<Image
 			src={image}
 			onError={e => {
 				e.target.onerror = null;
@@ -46,10 +46,10 @@ const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
 
 const ArtPokemon = ({ linked, ...props }) =>
 	linked ? (
-		<Link href={`/entity/pokemons/${props.pokemon.id}`}>
+		<a href={`/entity/pokemons/${props.pokemon.id}`}>
 			<ArtPokemonImg {...props} />
 			<span className="sr-only">{props.pokemon.nom || props.pokemon.name}</span>
-		</Link>
+		</a>
 	) : (
 		<ArtPokemonImg {...props} />
 	);

@@ -1,14 +1,13 @@
 // modules
 import { useState, useEffect } from 'react';
-import useFetch, { FILE_TYPE } from '@/hooks/useFetch';
-
-// components
-import { Button, Form, Message } from 'semantic-ui-react';
-import { POST, PUT } from '@/constants/methods';
 import { useDispatch } from 'react-redux';
+// import Link from 'next/link';
+import { Button, Form, Message } from 'semantic-ui-react';
+// components
+import useFetch, { FILE_TYPE } from '@/hooks/useFetch';
+import { POST, PUT } from '@/constants/methods';
 import { addMessage } from '@/reducers/messages';
 import MultiImageField from '@/components/fields/MultiImageField';
-import Link from 'next/link';
 import Wysiwyg from '@/components/Wysiwyg';
 import { buildFieldsMessage } from '@/functions';
 import useSaveToStorage from '@/hooks/useSaveToStorage';
@@ -145,7 +144,7 @@ const FormTournament = ({ handleSubmited, tournament = {} }) => {
 					disabled={loading}
 				/>
 				<Button
-					as={Link}
+					as="a"
 					href={'/entity/tournaments/' + (tournament.id || '')}
 					color="grey"
 					content="Annuler"

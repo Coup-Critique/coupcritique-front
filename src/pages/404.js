@@ -1,6 +1,5 @@
 // modules
-
-import Link from 'next/link';
+// import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 import PageWrapper from '@/components/PageWrapper';
 // components
@@ -12,10 +11,10 @@ const Page404 = () => (
 		nofollow
 	>
 		<p>La page que vous recherchez n'existe pas.</p>
-		<Link href="/" className="btn btn-primary">
+		<a href="/" className="btn btn-primary">
 			<Icon name="home" />
 			Accueil
-		</Link>
+		</a>
 	</PageWrapper>
 );
 export default Page404;

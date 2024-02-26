@@ -1,13 +1,13 @@
 // modules
 
-import Link from 'next/link';
+// import Link from 'next/link';
 import { ART_ITM, IMG_VERSION } from '@/constants/img';
 import { formatFileName } from '@/functions';
-// import Image from 'next/image';
+import Image from 'next/image';
 
 // Not exportable
 const ArtItemImgTag = item => (
-	<img
+	<Image
 		src={`/images/items/${formatFileName(item.name)}.png?ver=${IMG_VERSION}`}
 		onError={e => {
 			e.target.onerror = null;
@@ -22,10 +22,10 @@ const ArtItemImgTag = item => (
 
 const ArtItem = ({ item, linked = false }) =>
 	linked ? (
-		<Link href={`/entity/items/${item.id}`}>
+		<a href={`/entity/items/${item.id}`}>
 			<ArtItemImgTag {...item} />
 			<span className="sr-only">{item.nom || item.name}</span>
-		</Link>
+		</a>
 	) : (
 		<ArtItemImgTag {...item} />
 	);

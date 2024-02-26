@@ -9,7 +9,8 @@
 		"no-mixed-spaces-and-tabs": 0,
 		"no-case-declarations": 0,
 		"no-misleading-character-class": 0,
-		"@next/next/no-img-element": "off"
+		"@next/next/no-img-element": "off",
+		"@next/next/no-html-link-for-pages": "off"
 	},
 	"env": {
 		"browser": true,

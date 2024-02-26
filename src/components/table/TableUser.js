@@ -83,20 +83,20 @@ const TableUser = ({
 								<Profile user={user} hideName />
 							</td>
 							<td className="text-break">
-								<Link href={`/entity/users/${user.id}`}>
+								<a href={`/entity/users/${user.id}`}>
 									{user.username}
-								</Link>
+								</a>
 							</td>
 							{isModo && ownUser.is_admin && <td>{user.email}</td>}
 							<td className="text-break">
-								<Link href={`/entity/users/${user.id}`}>
+								<a href={`/entity/users/${user.id}`}>
 									{user.discord_name}
-								</Link>
+								</a>
 							</td>
 							<td className="text-break">
-								<Link href={`/entity/users/${user.id}`}>
+								<a href={`/entity/users/${user.id}`}>
 									{user.showdown_name}
-								</Link>
+								</a>
 							</td>
 							{isModo && (
 								<>

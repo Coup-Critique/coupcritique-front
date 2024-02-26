@@ -1,6 +1,5 @@
 // modules
-
-import Link from 'next/link';
+// import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 import { entityToEntities } from '@/constants/entities';
 import { makeClassName } from '@/functions';
@@ -59,16 +58,16 @@ const Notification = ({ notification }) => {
 							height={32}
 						/>
 					)}
-					<Link href={link} className="extended-link">
+					<a href={link} className="extended-link">
 						{notification.subject || ''}
-					</Link>
+					</a>
 				</div>
 			)}
 			{!!notification.content && (
 				<p className="content">
-					<Link href={link} className="extended-link">
+					<a href={link} className="extended-link">
 						{notification.content}
-					</Link>
+					</a>
 				</p>
 			)}
 		</ScrollReveal>
