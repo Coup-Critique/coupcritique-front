@@ -447,13 +447,7 @@ th.table-team-instance {
 		transform: translate(50%, 25%);
 		margin: 0;
 		z-index: 2;
-		font-size: 1.15em;
-		height: 1em;
-		width: 1em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border-radius: 100%;
+		// plus see .profile.avatar
 
 		&::before {
 			margin-top: rem(2px);
@@ -519,8 +513,6 @@ th.table-team-instance {
 	img.u-badge {
 		padding: rem(3px);
 	}
-
-
 
 	&:not(.no-link) {
 		.picture::after {
@@ -597,6 +589,24 @@ th.table-team-instance {
 			display: block;
 			margin-top: 0.5em;
 		}
+	}
+}
+
+.profile,
+.ui.comments .comment .profile.avatar {
+	.u-badge {
+		margin: 0;
+		font-size: 1.15em;
+		height: 1em;
+		width: 1em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 100%;
+	}
+
+	img.u-badge {
+		padding: rem(3px);
 	}
 }
 
