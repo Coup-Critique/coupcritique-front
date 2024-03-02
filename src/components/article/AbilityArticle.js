@@ -1,11 +1,9 @@
 // modules
-import { useEffect, useState } from 'react';
-import { formateName, getMetaName, getName } from '@/functions';
+import { getMetaName, getName } from '@/functions';
 // hooks
 import Description from '@/components/elements/Description';
 import GenSelector from '@/components/GenSelector';
 // components
-import GoBackButton from '@/components/GoBackButton';
 import PageWrapper from '@/components/PageWrapper';
 import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
 import useStoreQuery from '@/hooks/useStoreQuery';

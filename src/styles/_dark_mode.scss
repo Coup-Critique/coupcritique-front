@@ -427,6 +427,10 @@
 				border-color: $dark-element;
 			}
 		}
+
+		&.table-stat tbody tr {
+			background-color: transparent;
+		}
 	}
 
 	// Message

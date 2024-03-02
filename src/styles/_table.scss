@@ -165,6 +165,10 @@ table.table {
 			}
 		}
 
+		tbody tr {
+			background-color: transparent;
+		}
+
 		tbody:last-child tr:last-child td {
 			border-bottom: 0;
 		}

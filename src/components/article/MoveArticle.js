@@ -1,8 +1,5 @@
 // modules
-import { useState } from 'react';
-import { formateName, getMetaName, getName } from '@/functions';
-// components
-import GoBackButton from '@/components/GoBackButton';
+import { getMetaName, getName } from '@/functions';
 import PageWrapper from '@/components/PageWrapper';
 import Description from '@/components/elements/Description';
 import Type from '@/components/elements/Type';

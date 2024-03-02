@@ -1,5 +1,4 @@
 // modules
-import { useEffect, useState } from 'react';
 import { Icon, Loader } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 // components
@@ -9,7 +8,6 @@ import UserBanButton from '@/components/actions/UserBanButton';
 import UserModoButton from '@/components/actions/UserModoButton';
 // constant
 import { MONTHS } from '@/constants';
-import GoBackButton from '@/components/GoBackButton';
 import useTableFetch from '@/hooks/useTableFetch';
 import UserTiperButton from '@/components/actions/UserTiperButton';
 import useStateProps from '@/hooks/useStateProps';

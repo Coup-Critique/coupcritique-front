@@ -18,7 +18,6 @@ import WeaknessesPopup from '@/components/elements/WeaknessesPopup';
 import Description from '@/components/elements/Description';
 import UsageStats from '@/components/elements/UsageStats';
 import GenSelector from '@/components/GenSelector';
-import GoBackButton from '@/components/GoBackButton';
 import SectionAds from '@/components/sections/SectionAds';
 // functions
 import useTableFetch from '@/hooks/useTableFetch';

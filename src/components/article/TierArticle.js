@@ -1,15 +1,12 @@
 // modules
-import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'semantic-ui-react';
-// components
 import Description from '@/components/elements/Description';
 import PageWrapper from '@/components/PageWrapper';
 import TablePokemonTierUsage from '@/components/table/TablePokemonTierUsage';
 import TablePokemon from '@/components/table/TablePokemon';
 import Resource from '@/components/elements/Resource';
 import GenSelector from '@/components/GenSelector';
-import GoBackButton from '@/components/GoBackButton';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import useStateProps from '@/hooks/useStateProps';
 import useStateWithGen from '@/hooks/useStateWithGen';

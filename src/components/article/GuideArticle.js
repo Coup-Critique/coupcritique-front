@@ -1,5 +1,5 @@
 // modules
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -7,7 +7,6 @@ import Slider from 'react-slick';
 import { Button } from 'semantic-ui-react';
 // components
 import PageWrapper from '@/components/PageWrapper';
-import GoBackButton from '@/components/GoBackButton';
 import useFetch from '@/hooks/useFetch';
 import Tag from '@/components/elements/Tag';
 import ScrollReveal from '@/components/ScrollReveal';

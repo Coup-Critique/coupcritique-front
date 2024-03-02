@@ -1,17 +1,11 @@
 // modules
-import { useEffect, useState } from 'react';
-import { Loader } from 'semantic-ui-react';
-// components
 import PageWrapper from '@/components/PageWrapper';
 import ArtItem from '@/components/elements/ArtItem';
-import GoBackButton from '@/components/GoBackButton';
-import useFetch from '@/hooks/useFetch';
-import { formateName, formatFileName, getMetaName, getName } from '@/functions';
+import { formatFileName, getMetaName, getName } from '@/functions';
 import Description from '@/components/elements/Description';
 import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
 import GenSelector from '@/components/GenSelector';
 import useStoreQuery from '@/hooks/useStoreQuery';
-import { useGetParam } from '@/hooks/useGetParams';
 import useStateProps from '@/hooks/useStateProps';
 import useStateWithGen from '@/hooks/useStateWithGen';
 

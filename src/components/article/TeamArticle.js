@@ -1,9 +1,8 @@
 // modules
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { Button } from 'semantic-ui-react';
+import Link from 'next/link';
 // components
 import PageWrapper from '@/components/PageWrapper';
 import PokemonInstance from '@/components/elements/PokemonInstance';
@@ -11,7 +10,6 @@ import Export from '@/components/actions/Export';
 import CertificationButton from '@/components/actions/CertificationButton';
 import TeamBanButton from '@/components/actions/TeamBanButton';
 import DeleteAction from '@/components/actions/DeleteAction';
-import GoBackButton from '@/components/GoBackButton';
 import TeamTopButton from '@/components/actions/TeamTopButton';
 // import ScrollReveal from '@/components/ScrollReveal';
 import SectionAds from '@/components/sections/SectionAds';

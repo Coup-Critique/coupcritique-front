@@ -9,7 +9,8 @@ import { formatFileName, makeClassName } from '@/functions';
 
 const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
 	// TODO faire pareil avec les Items, faire un composant commun.
-	const [loading, setLoading] = useState(false);
+	// const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 
 	const getImgPath = name => {
 		if (!name) {
