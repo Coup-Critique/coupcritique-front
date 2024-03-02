@@ -15,15 +15,14 @@ import ScrollReveal from '@/components/ScrollReveal';
 import CommentArea from '@/components/CommentArea';
 import Tag from '@/components/elements/Tag';
 import SectionAds from '@/components/sections/SectionAds';
-import useStateProps from '@/hooks/useStateProps';
 
 const defaultGoBack = '/entity/tournaments/';
 const TournamentArticle = props => {
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
-	const [tournament, setTournament] = useStateProps(props.tournament || null);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
+	const { tournament } = props;
 
 	useEffect(() => {
 		if (resultDelete?.success) {

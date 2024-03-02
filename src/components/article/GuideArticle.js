@@ -15,21 +15,14 @@ import SectionAds from '@/components/sections/SectionAds';
 import Author from '@/components/elements/Author';
 import { DELETE } from '@/constants/methods';
 import { addMessage } from '@/reducers/messages';
-import useStateProps from '@/hooks/useStateProps';
 
 const defaultGoBack = '/entity/guides/';
-const GuideArticle = ({ result }) => {
+const GuideArticle = props => {
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
-	const [guide, setGuide] = useStateProps(result?.guide || null);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
-
-	useEffect(() => {
-		if (result?.success) {
-			setGuide(result.guide);
-		}
-	}, [result]);
+	const { guide } = props;
 
 	useEffect(() => {
 		if (resultDelete?.success) {
@@ -49,23 +42,25 @@ const GuideArticle = ({ result }) => {
 			metaimage={guide.images.length > 0 && `guides/${guide.images[0]}`}
 			goingBack={defaultGoBack}
 			action={
-				<div>
-					<Button
-						as={Link}
-						href={`/entity/guides/${guide.id}/update`}
-						color="blue"
-						content="Modifier"
-						icon="pencil"
-						className=""
-					/>
-					<Button
-						loading={loadingDelete}
-						onClick={handleDelete}
-						color="red"
-						content="Supprimer"
-						icon="trash alternate"
-					/>
-				</div>
+				user.is_modo && (
+					<div>
+						<Button
+							as={Link}
+							href={`/entity/guides/${guide.id}/update`}
+							color="blue"
+							content="Modifier"
+							icon="pencil"
+							className=""
+						/>
+						<Button
+							loading={loadingDelete}
+							onClick={handleDelete}
+							color="red"
+							content="Supprimer"
+							icon="trash alternate"
+						/>
+					</div>
+				)
 			}
 		>
 			<ScrollReveal animation="zoomIn" earlier>

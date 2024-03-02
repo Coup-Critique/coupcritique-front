@@ -692,8 +692,10 @@ th.table-team-instance {
 						width: rem(50px);
 						height: rem(50px);
 
-						&.icon {
+						i.icon.user {
 							font-size: rem(50px);
+							width: rem(50px);
+							height: rem(50px);
 						}
 					}
 				}

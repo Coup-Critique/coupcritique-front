@@ -15,15 +15,14 @@ import Author from '@/components/elements/Author';
 import useFetch from '@/hooks/useFetch';
 import { DELETE } from '@/constants/methods';
 import { addMessage } from '@/reducers/messages';
-import useStateProps from '@/hooks/useStateProps';
 
 const defaultGoBack = '/entity/actualities/';
 const ActualityArticle = props => {
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
-	const [actuality, setActuality] = useStateProps(props.actuality || null);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
+	const { actuality } = props;
 
 	useEffect(() => {
 		if (resultDelete?.success) {
