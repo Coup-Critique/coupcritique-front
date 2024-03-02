@@ -58,8 +58,7 @@ const UserFormPage = () => {
 		return <Page404 />;
 	}
 	return (
-		<PageWrapper title="Compte utilisateur" nofollow>
-			<GoBackButton />
+		<PageWrapper title="Compte utilisateur" goingBack nofollow>
 			<Grid divided relaxed className="form-columns">
 				<Grid.Column mobile="16" computer="8">
 					<Header textAlign={'center'} as="h2">

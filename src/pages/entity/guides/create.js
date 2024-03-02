@@ -31,7 +31,7 @@ const GuideFormPage = props => {
 		if (!guide_tags.length) {
 			dispatch(setGuideTags(props.tags));
 		}
-	}, []);
+	}, [guide.id]);
 
 	if (user.loading || window === undefined) {
 		return <Loader active={true} inline="centered" />;
