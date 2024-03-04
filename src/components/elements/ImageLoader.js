@@ -5,18 +5,20 @@ import { Loader } from 'semantic-ui-react';
 
 const ImageLoader = ({ src, imgRef, defaultSrc, className, ...props }) => {
 	const ref = useRef();
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(undefined);
 	const [prevSrc] = usePrevious(src);
 
 	useEffect(() => {
 		const img = imgRef?.current || ref.current;
 		if (img && img.complete) {
 			setLoading(false);
+		} else if (loading == undefined) {
+			setLoading(true);
 		}
 	}, []);
 
 	useEffect(() => {
-		if (prevSrc && prevSrc !== src) {
+		if (!loading !== undefined && prevSrc && prevSrc !== src) {
 			setLoading(true);
 		}
 	}, [src]);

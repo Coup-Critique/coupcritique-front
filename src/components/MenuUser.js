@@ -14,9 +14,9 @@ const MenuUser = () => {
 	const notifs = useSelector(state => state.notifs);
 	const [open, setOpen] = useState(false);
 
-	if (user.loading) return <Loader inline active />;
+	if (user.loading && user.id) return <Loader inline active />;
 
-	if (!user.token) return <SignPanel isModal />;
+	if (!user.token) return <SignPanel isModal loading={user.loading} />;
 
 	const handleClose = e => {
 		if (!e.target.classList.contains('dark-mode-checkbox')) {

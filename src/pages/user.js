@@ -51,7 +51,7 @@ const UserFormPage = () => {
 	const handleDelete = e =>
 		deleteUser({ url: 'own-user', method: 'DELETE', token: user.token });
 
-	if (user.loading || window === undefined) {
+	if (user.loading || typeof window === 'undefined') {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id) {

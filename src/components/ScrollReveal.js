@@ -12,10 +12,11 @@ const ScrollReveal = ({
 	const innerRef = useRef(null);
 	const ref = outterRef || innerRef;
 	const unmounted = useRef(false);
-	const [reveal, setReveal] = useState(false);
+	const [reveal, setReveal] = useState(undefined);
 	const [headerHeight, setHeaderHeight] = useState(130);
 
 	useEffect(() => {
+		setReveal(false);
 		return () => (unmounted.current = true);
 	}, []);
 
@@ -58,9 +59,9 @@ const ScrollReveal = ({
 		const viewPortHeight =
 			window.innerHeight || document.documentElement.clientHeight;
 		return (
-			top >= 0
-			&& (bottom - top > window.innerHeight || bottom)
-				<= (viewPortHeight + cropHeight) * (earlier ? 1.25 : 1)
+			top >= 0 &&
+			(bottom - top > window.innerHeight || bottom) <=
+				(viewPortHeight + cropHeight) * (earlier ? 1.25 : 1)
 		);
 	}
 
@@ -69,7 +70,11 @@ const ScrollReveal = ({
 			{...props}
 			className={makeClassName(
 				className,
-				reveal ? `visible animate__animated animate__${animation}` : 'invisible'
+				reveal
+					? `visible animate__animated animate__${animation}`
+					: reveal == false
+					? 'invisible'
+					: ''
 			)}
 			ref={outterRef ? undefined : innerRef}
 		/>
