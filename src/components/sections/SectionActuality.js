@@ -9,9 +9,7 @@ function SectionActuality({ actualities = [] }) {
 		<section className="text-center">
 			<div className="ui container list">
 				<div className="h2-btn">
-					<h2>
-						<Link href="/entity/actualities">Actualités</Link>
-					</h2>
+					<h2>Actualités</h2>
 					<Link href="/entity/actualities" className="btn btn-orange">
 						Voir toutes les actualités
 					</Link>

@@ -5,10 +5,11 @@ const CardCircuit = () => {
 	return (
 		<Card className="padded">
 			<h2>Circuit Compétitif</h2>
-
-			<Link href="/entity/tournaments" className="btn btn-outline">
-				Détails du circuit
-			</Link>
+			<div>
+				<Link href="/entity/tournaments" className="btn btn-orange btn-outline">
+					Détails du circuit
+				</Link>
+			</div>
 		</Card>
 	);
 };

@@ -12,6 +12,7 @@ export const makeClassName = (...classList) =>
 			Object.entries(className).forEach(([key, value]) => {
 				if (value) classList += ' ' + camelToKebab(key);
 			});
+			return classList;
 		}
 		if (!classList) return className;
 		return classList + ' ' + className;

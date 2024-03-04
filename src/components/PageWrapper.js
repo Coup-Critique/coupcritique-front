@@ -11,6 +11,7 @@ const PageWrapper = ({
 	action,
 	goingBack = false,
 	more = false,
+	min = false,
 	metatitle = title,
 	metadescription,
 	metaimage,
@@ -25,7 +26,7 @@ const PageWrapper = ({
 			image={metaimage}
 			nofollow={nofollow}
 		/>
-		<div className={makeClassName('container simple-content', more && 'more')}>
+		<div className={makeClassName('container simple-content', { more, min })}>
 			{!!title && (
 				<div className="title-banner">
 					<h1>

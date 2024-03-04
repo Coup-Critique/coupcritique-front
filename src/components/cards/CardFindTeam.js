@@ -7,9 +7,7 @@ import { Card } from 'semantic-ui-react';
 const CardFindTeam = () => (
 	<Card className="padded">
 		<div className="d-flex justify-content-between flex-wrap mb-4">
-			<h2 className="mb-0">
-				<Link href="/entity/teams">Trouver une équipe</Link>{' '}
-			</h2>
+			<h2 className="mb-0">Trouver une équipe</h2>
 			<Link href={`/entity/teams`} className="btn btn-orange">
 				Je trouve mon équipe
 			</Link>

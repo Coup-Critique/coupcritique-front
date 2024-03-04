@@ -863,6 +863,7 @@ h3,
 .description.wysiwyg-result {
 	overflow: hidden;
 	white-space: normal;
+	font-size: 14px;
 
 	img {
 		height: auto;
@@ -887,6 +888,10 @@ h3,
 		li {
 			list-style-type: disc;
 		}
+	}
+
+	&.framed {
+		padding: 3rem;
 	}
 }
 
@@ -1412,6 +1417,10 @@ ul {
 		font-size: 14px;
 	}
 
+	.description.wysiwyg-result {
+		font-size: 16px;
+	}
+
 	.row .col-custom-md-5 {
 		flex: 0 0 20%;
 		max-width: 20%;
@@ -1431,6 +1440,10 @@ ul {
 @media (min-width: $l) {
 	html {
 		font-size: $font-size;
+	}
+
+	.description.wysiwyg-result {
+		font-size: 18px;
 	}
 
 	.row .col-custom-lg-5 {

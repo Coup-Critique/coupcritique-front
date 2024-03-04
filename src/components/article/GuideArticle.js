@@ -36,6 +36,7 @@ const GuideArticle = props => {
 	if (!guide || !guide.id) return null;
 	return (
 		<PageWrapper
+			min
 			title={guide.title}
 			className="actuality article"
 			metadescription={guide.shortDescription}

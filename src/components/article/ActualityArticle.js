@@ -37,6 +37,7 @@ const ActualityArticle = props => {
 	if (!actuality || !actuality.id) return null;
 	return (
 		<PageWrapper
+			min
 			title={actuality.title}
 			className="actuality article"
 			metadescription={actuality.shortDescription}

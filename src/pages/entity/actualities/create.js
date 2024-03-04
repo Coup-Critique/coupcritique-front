@@ -38,6 +38,7 @@ const ActualityFormPage = ({ actuality, tags, update = false }) => {
 	}
 	return (
 		<PageWrapper
+			min
 			title={
 				update
 					? "Modifier l'actualité " + (actuality ? actuality.title : '')

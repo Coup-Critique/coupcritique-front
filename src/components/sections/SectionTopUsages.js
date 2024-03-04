@@ -12,9 +12,7 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 		<section>
 			<div className="ui container">
 				<div className="h2-btn">
-					<h2>
-						<Link href="/entity/guides">Guides stratégiques</Link>
-					</h2>
+					<h2>Guides stratégiques</h2>
 					<Link href="/entity/guides" className="btn btn-orange">
 						Voir tous les guides
 					</Link>

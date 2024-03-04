@@ -37,6 +37,7 @@ const TournamentArticle = props => {
 	if (!tournament || !tournament.id) return null;
 	return (
 		<PageWrapper
+			min
 			title={tournament.title}
 			className="actuality article"
 			metadescription={tournament.shortDescription}

@@ -26,6 +26,7 @@ const TournamentFormPage = ({ tournament, update = false }) => {
 	}
 	return (
 		<PageWrapper
+			min
 			title={
 				update
 					? 'Modifier le tournoi ' + (tournament ? tournament.title : '')

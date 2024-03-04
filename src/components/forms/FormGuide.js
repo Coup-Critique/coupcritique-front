@@ -1,7 +1,7 @@
 // modules
 import { useState, useEffect } from 'react';
 import useFetch, { FILE_TYPE } from '@/hooks/useFetch';
-
+import { useRouter } from 'next/router';
 // components
 import { Button, Header, Form, Segment, Message, Icon } from 'semantic-ui-react';
 import { POST, PUT } from '@/constants/methods';
@@ -12,7 +12,6 @@ import Wysiwyg from '@/components/Wysiwyg';
 import TagsField from '@/components/fields/TagsField';
 import { buildFieldsMessage } from '@/functions';
 import TiersField from '@/components/fields/TiersField';
-import { useRouter } from 'next/router';
 import useSaveToStorage from '@/hooks/useSaveToStorage';
 
 const FormGuide = ({ handleSubmited, guide = {}, tags = [], tiers, loadingTiers }) => {
@@ -107,6 +106,7 @@ const FormGuide = ({ handleSubmited, guide = {}, tags = [], tiers, loadingTiers 
 
 	const handleCancel = e => {
 		e.preventDefault();
+		voidStorage();
 		router.replace('entity/guides/' + (guide.id || ''));
 	};
 

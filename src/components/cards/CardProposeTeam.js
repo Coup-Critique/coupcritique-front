@@ -10,9 +10,7 @@ const CardProposeTeam = () => {
 
 	return (
 		<Card className="padded">
-			<h2>
-				<Link href="/entity/teams/create">Proposer une équipe</Link>
-			</h2>
+			<h2>Proposer une équipe</h2>
 			<p>
 				Partager vos équipes à la communauté pour
 				<br />

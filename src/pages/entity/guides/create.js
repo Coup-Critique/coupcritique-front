@@ -41,6 +41,7 @@ const GuideFormPage = props => {
 	}
 	return (
 		<PageWrapper
+			min
 			title={
 				update
 					? 'Modifier le guide ' + (guide ? guide.title : '')
