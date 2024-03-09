@@ -4,7 +4,7 @@ import re
 # UNFORTUNATLY NOT WORKS WITH '../' IN subdirectories, but, some Vscode regex can help like : from '@/(../)+([A-Z])' to from '@/components/$2
 
 # The root directory of your project
-root_directory = "./src/"
+root_directory = "./"
 
 # The prefix you want to use for Next.js imports
 next_import_prefix = "@/"
