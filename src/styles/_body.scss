@@ -110,6 +110,10 @@ body {
 	padding-right: 4em !important;
 }
 
+.opacity-0 {
+	opacity: 0;
+}
+
 .clickable {
 	cursor: pointer;
 }
@@ -535,6 +539,24 @@ section {
 
 // -->
 
+i.icon.check.circle {
+	position: relative;
+
+	&::before {
+		content: "\f111";
+		color: white;
+		font-size: 0.8em;
+	}
+
+	&::after {
+		content: "\f058";
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+
 .fake-icon {
 	height: 1em;
 	vertical-align: text-bottom;
@@ -768,17 +790,33 @@ i.icon.link.star.outline:active {
 }
 
 .title-banner {
-	color: white;
-	background: url('/images/backgrounds/bandeau-title-v2.jpg') no-repeat center center $orange;
-	background-size: cover;
-	padding: 2.5rem 0 2.5rem;
-	text-align: center;
+	padding: 1rem 0 1.75rem;
+	margin-bottom: 2rem;
+	text-align: left;
 	word-break: break-word;
 	overflow-wrap: break-word;
+	border-bottom: 1px solid $border-color;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
 
 	h1 {
 		font-weight: $bold;
-		text-transform: uppercase;
+		margin: 0;
+
+		button,
+		.btn,
+		.ui.button {
+			font-size: 1.2rem;
+			padding-top: 0.4em;
+			padding-bottom: 0.4em;
+
+			i.icon {
+				line-height: inherit;
+			}
+		}
 	}
 }
 
@@ -829,6 +867,7 @@ h3,
 .description.wysiwyg-result {
 	overflow: hidden;
 	white-space: normal;
+	font-size: 14px;
 
 	img {
 		height: auto;
@@ -853,6 +892,10 @@ h3,
 		li {
 			list-style-type: disc;
 		}
+	}
+
+	&.framed {
+		padding: 3rem;
 	}
 }
 
@@ -1007,20 +1050,44 @@ ul {
 	}
 }
 
+.card {
+	border-radius: $border-radius;
+	overflow: hidden;
+}
+
+.ui.card {
+	border-radius: $border-radius;
+
+	&.padded {
+		padding: 2rem;
+	}
+}
+
+.col-12 .ui.card {
+	flex-grow: 1;
+}
+
+.col-12 {
+	display: flex;
+	flex-direction: column;
+}
+
 .row>.col-xs-12>.ui.card,
 .row>.col-12>.ui.card {
 	width: 100%;
-	margin-bottom: 30px;
 }
 
 /* Pagination */
 .pagination-wrapper {
-	text-align: center;
-	padding-top: 1.5rem;
+	text-align: right;
 
 	&:not(:last-child) {
 		margin-bottom: 1.5em;
 	}
+}
+
+.table-wrapper+.pagination-wrapper {
+	margin-top: 1.5rem;
 }
 
 .ui.menu.pagination {
@@ -1281,137 +1348,6 @@ ul {
 	margin: 0px 2px;
 }
 
-// Comments
-.ui.comments {
-	max-width: none;
-
-	.comment {
-		margin-top: 0;
-		margin-bottom: 0;
-		padding: 1em 0 1.5em;
-
-		.text {
-			white-space: pre-line;
-		}
-
-		.avatar {
-			width: rem(65px);
-			margin-right: 0.5em;
-
-			.picture {
-				width: rem(65px);
-				height: rem(65px);
-
-				&.icon {
-					font-size: rem(65px);
-				}
-			}
-		}
-
-		>.avatar~.content {
-			margin-left: 0;
-		}
-
-		.text {
-			word-break: break-word;
-			overflow-wrap: break-word;
-			min-width: 10rem;
-		}
-
-		.field {
-			clear: none;
-		}
-
-		textarea,
-		.field textarea {
-			padding: 0.5em;
-		}
-
-		.actions a:hover,
-		.actions a:focus,
-		.actions a:active {
-			color: $blue;
-		}
-
-		.ui.comments {
-			margin-bottom: 0;
-			padding-bottom: 0;
-			padding-top: 1.75em;
-			padding-left: 4em;
-			margin-left: 0;
-
-			.comment {
-				margin-top: 0;
-				margin-bottom: 0;
-				padding-top: 0;
-				padding-bottom: 1.5em;
-
-				&:last-child {
-					padding-bottom: 0;
-				}
-
-				.avatar {
-					width: rem(50px);
-
-					.picture {
-						width: rem(50px);
-						height: rem(50px);
-
-						&.icon {
-							font-size: rem(50px);
-						}
-					}
-				}
-			}
-		}
-
-		.approval {
-			display: flex;
-			justify-content: flex-start;
-			align-items: center;
-			flex-direction: column;
-			margin-right: 0.5em;
-
-			.approval-number {
-				display: inline-block;
-				text-align: center;
-				margin-bottom: 0;
-				font-weight: $bold;
-				color: $grey;
-			}
-
-			i.icon.sort.up,
-			i.icon.sort.down {
-				margin: 0;
-				font-size: 2.5rem;
-				height: 1.25rem;
-				width: 1.5rem;
-				position: relative;
-				overflow: hidden;
-			}
-
-			i.icon.sort.up:before {
-				position: absolute;
-				top: -5px;
-				left: 0;
-				right: 0;
-			}
-
-			i.icon.sort.down:before {
-				position: absolute;
-				bottom: -2px;
-				left: 0;
-				right: 0;
-			}
-		}
-
-		.actions {
-			padding-top: 0.75em;
-			font-weight: $semibold;
-		}
-	}
-}
-
 // Search Result
 .search-result .ui.form {
 	margin-bottom: 1.5625rem;
@@ -1485,6 +1421,10 @@ ul {
 		font-size: 14px;
 	}
 
+	.description.wysiwyg-result {
+		font-size: 16px;
+	}
+
 	.row .col-custom-md-5 {
 		flex: 0 0 20%;
 		max-width: 20%;
@@ -1504,6 +1444,10 @@ ul {
 @media (min-width: $l) {
 	html {
 		font-size: $font-size;
+	}
+
+	.description.wysiwyg-result {
+		font-size: 18px;
 	}
 
 	.row .col-custom-lg-5 {

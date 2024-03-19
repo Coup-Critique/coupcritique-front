@@ -55,8 +55,6 @@ const Notification = ({ notification }) => {
 							user={notification.notifier}
 							className="mr-2"
 							hideName
-							noBadge
-							color="white"
 							width={32}
 							height={32}
 						/>

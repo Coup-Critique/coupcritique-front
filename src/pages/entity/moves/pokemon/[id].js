@@ -33,12 +33,14 @@ const MovePool = ({ pokemon, moves = [], availableGens }) => {
 				pokemon ? pokemonName : ''
 			} avec leur taux d'utilisation. Retrouvez rapidement les données des capacités.`}
 			more
+			goingBack={`/entity/pokemon/${pokemon.id}`}
+			action={
+				<GenSelector
+					availableGens={availableGens}
+					redirectOnChange={`/entity/moves/pokemon/`}
+				/>
+			}
 		>
-			<GoBackButton defaultUrl={`/entity/pokemon/${pokemon.id}`} />
-			<GenSelector
-				availableGens={availableGens}
-				redirectOnChange={`/entity/moves/pokemon/`}
-			/>
 			<SectionAds className="mt-4" />
 			<div id="pagination-scroll-ref">
 				{table.length ? (

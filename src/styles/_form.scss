@@ -173,6 +173,7 @@ textarea {
 	.field.main-search {
 		max-width: 100%;
 		background-color: transparent;
+		border-radius: $border-radius;
 
 		input {
 			border-color: transparent;
@@ -185,10 +186,6 @@ textarea {
 			background-color: transparent;
 			padding: 0 0.9375rem;
 			font-size: 1.15em;
-		}
-
-		.category {
-			border-bottom: solid 1px;
 		}
 
 		.search {

@@ -61,7 +61,7 @@ const Favorite = ({ team, isIcon = false, size = 'large', action = true }) => {
 					title={isFavorite ? 'Retirer des favoris' : 'Mettre en favoris'}
 					className="m-0"
 				/>
-				<div className="mention">
+				<div className="small">
 					{team.countEnjoyers ? counter(team.countEnjoyers) : null}
 				</div>
 			</>

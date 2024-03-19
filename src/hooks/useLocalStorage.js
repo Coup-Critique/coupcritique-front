@@ -3,7 +3,9 @@ export const STORAGE_KEY = 'CoupCritiqueStorage';
 const getStoredItem = (key = STORAGE_KEY) => {
 	if (typeof window === 'undefined') return null;
 	try {
-		return JSON.parse(localStorage.getItem(key));
+		const value = localStorage.getItem(key);
+		if (value == null) return null;
+		return JSON.parse(value);
 	} catch (error) {
 		console.error(error);
 		return null;
@@ -13,10 +15,8 @@ const getStoredItem = (key = STORAGE_KEY) => {
 const setItemToStorage = (value, key = STORAGE_KEY) => {
 	if (typeof window === 'undefined') return;
 	try {
-		localStorage.setItem(
-			key,
-			value === undefined || value === null ? value : JSON.stringify(value)
-		);
+		if (value == null) localStorage.removeItem(key);
+		localStorage.setItem(key, JSON.stringify(value));
 	} catch (error) {
 		console.error(error);
 	}

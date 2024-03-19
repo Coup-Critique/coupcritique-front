@@ -29,9 +29,10 @@
 }
 
 .app.dark-mode,
-.ui.modal.dark-mode {
+.ui.modal.dark-mode,
+.ui.popup.dark-mode {
 	color: white;
-	background-color: $dark-body;
+	background-color: $darker;
 	transition: background-color 0.3s;
 
 	p {
@@ -70,8 +71,21 @@
 		}
 	}
 
-	.title-banner h1 {
-		color: $dark-body;
+	.btn-outline-dark {
+		color: white;
+		border-color: white;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: white;
+			color: $dark-element;
+		}
+	}
+
+	.title-banner {
+		color: white;
+		border-color: white;
 	}
 
 	.ui.header {
@@ -91,7 +105,7 @@
 	}
 
 	.ui.label:not(.red):not(.orange):not(.blue):not(.purple):not(.yellow):not(.green):not(.teal):not(.pink):not(.olive):not(.violet):not(.brown) {
-		background-color: $dark-input !important;
+		background-color: $dark-element;
 		color: white;
 	}
 
@@ -135,12 +149,28 @@
 	}
 
 	.ui.card {
-		background-color: $dark-element;
+		background-color: $dark-body;
 		box-shadow: 0 1px 3px 0 $darker;
+
+		.card {
+			background-color: $dark-element;
+
+			&.outline {
+				background-color: $dark-body;
+				border: 1px solid $dark-element;
+				transition: all .3s;
+
+				&:hover,
+				&:focus,
+				&:active {
+					background-color: $dark-element;
+				}
+			}
+		}
 	}
 
 	.framed {
-		background-color: $dark-element;
+		background-color: $dark-body;
 	}
 
 	.ui.form.framed textarea {
@@ -162,7 +192,7 @@
 		background-color: $darker;
 		transition: background-color 0.3s;
 		box-shadow: none;
-		border-bottom: 1px solid $darker;
+		border-bottom: 2px solid $darker;
 
 		a {
 			color: white;
@@ -361,16 +391,17 @@
 	table.table {
 		color: white;
 
-		tr.not-in {
-			background-color: $dark-element;
+		// tr.not-in {
+		tbody tr {
+			background-color: $dark-body;
 		}
 
 		td {
-			border-color: rgba(255, 255, 255, 0.2);
+			border-color: $darker;
 		}
 
 		tbody:last-child tr:last-child td {
-			border-color: rgba(255, 255, 255, 0.2);
+			border-color: $darker;
 		}
 
 		&.basic {
@@ -378,9 +409,32 @@
 				color: white;
 
 				th {
-					border-color: rgba(255, 255, 255, 0.2);
+					border-color: $darker;
 				}
 			}
+		}
+
+		&.table-one {
+			background-color: $dark-element;
+			border-color: $dark-element;
+
+			td {
+				border-color: $dark-element;
+				border-top-color: $darker;
+			}
+
+			tbody:last-child tr:last-child td {
+				border-color: $dark-element;
+				border-top-color: $darker;
+			}
+
+			&.basic thead tr th {
+				border-color: $dark-element;
+			}
+		}
+
+		&.table-stat tbody tr {
+			background-color: transparent;
 		}
 	}
 
@@ -547,7 +601,7 @@
 			}
 
 			&.active {
-				background-color: darken($dark-body, 5);
+				background-color: $darker;
 			}
 
 			&:not(.active) {
@@ -555,7 +609,7 @@
 				&:hover,
 				&:focus,
 				&:active {
-					background-color: $darker;
+					background-color: darken($dark-body, 5);
 				}
 			}
 		}
@@ -740,10 +794,10 @@
 	}
 
 	.pokemon-instance {
-		background-color: $dark-element;
+		background-color: $dark-body;
 
 		.description {
-			background-color: $dark-body;
+			background-color: $dark-element;
 		}
 	}
 
@@ -845,6 +899,9 @@
 	}
 
 	.ui.form .field.main-search.header-search {
+		background-color: $dark-element;
+		border-radius: $border-radius;
+
 		input {
 			color: rgba(255, 255, 255, 0.9);
 		}
@@ -854,54 +911,39 @@
 		}
 
 		.category {
-			border-bottom: solid 1px white;
+			// border-bottom: solid 1px white;
+			border-bottom: 0;
 		}
 	}
 
 	// Home
 	.home {
-		.banner-title-home {
-			color: $dark-body;
 
-			h1:after {
-				background-color: $dark-body;
-			}
+		.title-section {
 
-			.field.main-search {
-				input {
-					border-color: transparent;
-					background-color: transparent;
-					color: $body-color;
+			// background-color: $darker;
+			.one {
+				color: $darker;
 
-					&::placeholder {
-						/* Chrome, Firefox, Opera, Safari 10.1+ */
-						color: $body-color !important;
-						opacity: 1;
-						/* Firefox */
-					}
-
-					&:-ms-input-placeholder {
-						/* Internet Explorer 10-11 */
-						color: $body-color !important;
-					}
-
-					&::-ms-input-placeholder {
-						/* Microsoft Edge */
-						color: $body-color !important;
-					}
-				}
-
-				.category {
-					border-bottom: solid 1px black;
+				h1 strong {
+					color: white;
 				}
 			}
+
+			// .ui.card {
+			// 	background-color: $dark-body;
+
+			// 	.card {
+			// 		background-color: $dark-element;
+			// 	}
+			// }
 		}
 
-		// .section-tournament+.section-ads {
-		// 	background-color: $dark-element;
-		// }
-		.section-ads {
-			background-color: $dark-element;
+		.field.main-search {
+			input {
+				border-color: transparent;
+				background-color: transparent;
+			}
 		}
 
 		.section-teams {
@@ -963,7 +1005,8 @@
 		// }
 
 		.section-usage {
-			background-color: $dark-element;
+			// background-color: $dark-element;
+			background-color: $darker;
 			background-image: url('/images/fond-guide-strat-black.png');
 		}
 	}

@@ -66,17 +66,18 @@ const GuideList = props => {
 			title="Tous les guides"
 			className="actuality-list"
 			metadescription="Liste des guides sur la stratégie Pokémon et la scène compétitive française. Vous y retrouverez des articles d'aide sur le vocabulaire et les pratiques de la stratégie Pokémon."
+			action={
+				user.is_modo && (
+					<Button
+						as={Link}
+						href="/entity/guides/create"
+						color="orange"
+						content="Ajouter un guide"
+						icon="plus"
+					/>
+				)
+			}
 		>
-			{user.is_modo && (
-				<Button
-					as={Link}
-					href="/entity/guides/create"
-					color="blue"
-					content="Ajouter un guide"
-					icon="plus"
-					className="mb-4"
-				/>
-			)}
 			<SectionAds />
 			<Form onSubmit={handleSubmitFilters} className="mb-4">
 				<DropdownMultipleSelectField

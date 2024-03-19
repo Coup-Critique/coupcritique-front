@@ -31,9 +31,9 @@ const GuideFormPage = props => {
 		if (!guide_tags.length) {
 			dispatch(setGuideTags(props.tags));
 		}
-	}, []);
+	}, [guide.id]);
 
-	if (user.loading || window === undefined) {
+	if (user.loading || typeof window === 'undefined') {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id || !user.is_modo) {
@@ -41,6 +41,7 @@ const GuideFormPage = props => {
 	}
 	return (
 		<PageWrapper
+			min
 			title={
 				update
 					? 'Modifier le guide ' + (guide ? guide.title : '')

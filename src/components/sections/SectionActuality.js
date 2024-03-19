@@ -6,26 +6,24 @@ import ActualityTeaser from '@/components/teasers/ActualityTeaser';
 function SectionActuality({ actualities = [] }) {
 	if (!actualities.length) return null;
 	return (
-		<section className="section-news">
-			<div className="ui container">
-				<h2>
-					<Link href="/entity/actualities">Actualités</Link>
-				</h2>
-				<div className="mb-4">
-					<div className="row">
-						{actualities.map(actuality => (
-							<div
-								key={actuality.id}
-								className="col-12 col-lg-4 d-flex flex-column"
-							>
-								<ActualityTeaser actuality={actuality} />
-							</div>
-						))}
-					</div>
+		<section className="text-center">
+			<div className="ui container list">
+				<div className="h2-btn">
+					<h2>Actualités</h2>
+					<Link href="/entity/actualities" className="btn btn-orange">
+						Voir toutes les actualités
+					</Link>
 				</div>
-				<Link href="/entity/actualities" className="btn btn-light">
-					Voir toutes les actualités
-				</Link>
+				<div className="row">
+					{actualities.map(actuality => (
+						<div
+							key={actuality.id}
+							className="col-12 col-lg-4 d-flex flex-column"
+						>
+							<ActualityTeaser actuality={actuality} />
+						</div>
+					))}
+				</div>
 			</div>
 		</section>
 	);

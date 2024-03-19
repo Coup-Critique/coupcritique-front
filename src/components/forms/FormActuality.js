@@ -1,8 +1,8 @@
 // modules
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 import { Button, Form, Message } from 'semantic-ui-react';
-import Link from 'next/link';
 // components
 import Wysiwyg from '@/components/Wysiwyg';
 import MultiImageField from '@/components/fields/MultiImageField';
@@ -15,6 +15,7 @@ import { buildFieldsMessage } from '@/functions';
 
 const FormActuality = ({ handleSubmited, actuality = {}, tags = [] }) => {
 	const dispatch = useDispatch();
+	const router = useRouter();
 	const [form, setForm] = useState(actuality);
 	const [success, setSuccess] = useState(true);
 	const [message, setMessage] = useState('');
@@ -82,6 +83,12 @@ const FormActuality = ({ handleSubmited, actuality = {}, tags = [] }) => {
 		});
 	};
 
+	const handleCancel = e => {
+		e.preventDefault();
+		voidStorage();
+		router.push('/entity/actualities/' + (actuality.id || ''));
+	};
+
 	const onSubmit = e => {
 		e.preventDefault();
 		load({
@@ -119,7 +126,7 @@ const FormActuality = ({ handleSubmited, actuality = {}, tags = [] }) => {
 				message={message.title}
 			/>
 			<MultiImageField
-				dirName="/images/actualities/"
+				dirName="actualities"
 				files={images}
 				defaultImages={form.images}
 				btnColor="orange"
@@ -162,12 +169,7 @@ const FormActuality = ({ handleSubmited, actuality = {}, tags = [] }) => {
 					content="Valider"
 					disabled={loading}
 				/>
-				<Button
-					as={Link}
-					href={'/entity/actualities/' + (actuality.id || '')}
-					color="grey"
-					content="Annuler"
-				/>
+				<Button onClick={handleCancel} color="grey" content="Annuler" />
 			</div>
 		</Form>
 	);

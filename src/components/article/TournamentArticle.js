@@ -1,5 +1,5 @@
 // modules
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import Slider from 'react-slick';
@@ -7,7 +7,6 @@ import { Button } from 'semantic-ui-react';
 import { formatDate } from '@/functions';
 // components
 import PageWrapper from '@/components/PageWrapper';
-import GoBackButton from '@/components/GoBackButton';
 import useFetch from '@/hooks/useFetch';
 import { DELETE } from '@/constants/methods';
 import { useRouter } from 'next/router';
@@ -16,15 +15,14 @@ import ScrollReveal from '@/components/ScrollReveal';
 import CommentArea from '@/components/CommentArea';
 import Tag from '@/components/elements/Tag';
 import SectionAds from '@/components/sections/SectionAds';
-import useStateProps from '@/hooks/useStateProps';
 
 const defaultGoBack = '/entity/tournaments/';
 const TournamentArticle = props => {
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
-	const [tournament, setTournament] = useStateProps(props.tournament || null);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
+	const { tournament } = props;
 
 	useEffect(() => {
 		if (resultDelete?.success) {
@@ -39,17 +37,17 @@ const TournamentArticle = props => {
 	if (!tournament || !tournament.id) return null;
 	return (
 		<PageWrapper
+			min
 			title={tournament.title}
 			className="actuality article"
 			metadescription={tournament.shortDescription}
 			metaimage={
 				tournament.images.length > 0 && `tournaments/${tournament.images[0]}`
 			}
-		>
-			<div className="mb-3">
-				<GoBackButton defaultUrl={defaultGoBack} />
-				{user.is_modo && (
-					<>
+			goingBack={defaultGoBack}
+			action={
+				user.is_modo && (
+					<div>
 						<Button
 							as={Link}
 							href={`/entity/tournaments/${tournament.id}/update`}
@@ -65,9 +63,10 @@ const TournamentArticle = props => {
 							content="Supprimer"
 							icon="trash alternate"
 						/>
-					</>
-				)}
-			</div>
+					</div>
+				)
+			}
+		>
 			<ScrollReveal animation="zoomIn" earlier>
 				{tournament.images.length > 0 && (
 					<div className="slick-wrapper">
@@ -87,7 +86,7 @@ const TournamentArticle = props => {
 							{tournament.images.map((path, i) => (
 								<div key={i} className="image mb-2">
 									<img
-										src={`/images/tournaments/${path}`}
+										src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/tournaments/${path}`}
 										className="img-fluid"
 										alt="Tournoi"
 										// TODO gerer une taille fixe

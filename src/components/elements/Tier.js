@@ -21,7 +21,7 @@ const Tier = ({
 			className={makeClassName('tier', 'd-inline-block', className)}
 			title=""
 		>
-			<Label color="blue" {...props} className={makeClassName(!noLink && 'link')}>
+			<Label {...props} className={makeClassName(!noLink && 'link')}>
 				{technically
 					? '(' + (tier.shortName || tier.name) + ')'
 					: tier.shortName || tier.name}{' '}

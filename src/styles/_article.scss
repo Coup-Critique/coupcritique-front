@@ -1,5 +1,5 @@
 .article {
-	.certification {
+	.certification:not(.u-badge) {
 		height: rem(35px);
 		width: rem(35px);
 		margin-right: 0.5em;

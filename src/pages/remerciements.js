@@ -1,7 +1,6 @@
 // modules
 
 import { Icon } from 'semantic-ui-react';
-import Profile from '@/components/elements/Profile';
 import PageWrapper from '@/components/PageWrapper';
 // components
 

@@ -1,5 +1,4 @@
 // modules
-import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -19,13 +18,11 @@ import WeaknessesPopup from '@/components/elements/WeaknessesPopup';
 import Description from '@/components/elements/Description';
 import UsageStats from '@/components/elements/UsageStats';
 import GenSelector from '@/components/GenSelector';
-import GoBackButton from '@/components/GoBackButton';
 import SectionAds from '@/components/sections/SectionAds';
 // functions
 import useTableFetch from '@/hooks/useTableFetch';
 import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
-import { formateName, formatFileName, formatNumbers } from '@/functions';
-import useStateProps from '@/hooks/useStateProps';
+import { formatFileName, formatNumbers, getMetaName, getName } from '@/functions';
 import useStateWithGen from '@/hooks/useStateWithGen';
 
 const PokemonArticle = props => {
@@ -57,25 +54,28 @@ const PokemonArticle = props => {
 	const handleChangeForm = (e, { name: id }) => router.push(`/entity/pokemons/${id}`);
 
 	if (!pokemon || !pokemon.id) return null;
-	const name = pokemon.nom || formateName(pokemon.name);
+	const name = getName(pokemon);
+	const metaName = getMetaName(pokemon);
 	return (
 		<PageWrapper
 			more
 			className="pokemon article"
 			title={`Fiche stratégique de ${name}`}
-			metatitle={`Fiche stratégique de : ${name}`}
+			metatitle={`Fiche stratégique de : ${metaName}`}
 			metadescription={
-				`Regarder la fiche stratégique du Pokémon ${name}` +
+				`Regarder la fiche stratégique du Pokémon ${metaName}` +
 				(pokemon.tier.name !== 'Untiered' ? ' en ' + pokemon.tier.name : '') +
 				". Vous y retrouverez ces statisques d'utilisations dans les tiers dans lesquels il est jouable, ainsi que différent set avec lesquels le jouer. Vous pourrez aussi y consulter les équipe certifiées l'incluant, partagée sur le site."
 			}
 			metaimage={`pokemons/${formatFileName(pokemon.name)}.png`}
+			goingBack
+			action={
+				<GenSelector
+					availableGens={availableGens}
+					redirectOnChange="/entity/pokemons/"
+				/>
+			}
 		>
-			<GoBackButton />
-			<GenSelector
-				availableGens={availableGens}
-				redirectOnChange={'/entity/pokemons/'}
-			/>
 			{forms.length > 1 && (
 				<Menu color="orange" inverted className="fake-tab mt-0 mb-4">
 					{forms.map(form => (

@@ -63,12 +63,18 @@ table.table {
 	}
 
 	tbody tr {
+		background-color: rgba(0, 0, 0, 0.05);
+
 		td:first-child {
 			border-left: 1px solid $light-grey-bs;
 		}
 
 		td:last-child {
 			border-right: 1px solid $light-grey-bs;
+		}
+
+		&:first-child td {
+			border-top: 0;
 		}
 	}
 
@@ -103,16 +109,16 @@ table.table {
 		}
 	}
 
+	&.table-one {
+		border-radius: $border-radius;
+	}
+
 	tr.tr-clickable {
 		cursor: pointer;
 
 		.td-action {
 			cursor: default;
 		}
-	}
-
-	tr.not-in {
-		background-color: rgba(0, 0, 0, 0.05);
 	}
 
 	th,
@@ -157,6 +163,10 @@ table.table {
 			&:last-child {
 				border: 0;
 			}
+		}
+
+		tbody tr {
+			background-color: transparent;
 		}
 
 		tbody:last-child tr:last-child td {

@@ -59,12 +59,12 @@ const TablePokemonTierUsage = ({ usages = [], setUsages, tier, query, updateQuer
 				{usages.map((usage, i) => (
 					<tr
 						key={i}
-						className={
-							!tier
-							|| (usage.pokemon.tier && usage.pokemon.tier.id == tier.id)
-								? ''
-								: 'not-in'
-						}
+						// className={
+						// 	!tier
+						// 	|| (usage.pokemon.tier && usage.pokemon.tier.id == tier.id)
+						// 		? ''
+						// 		: 'not-in'
+						// }
 					>
 						<td>
 							{!!usage.percent && (

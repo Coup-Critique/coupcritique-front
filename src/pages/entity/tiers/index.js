@@ -19,8 +19,8 @@ const TierList = props => {
 			more
 			metatitle="Tiers Smogon et des formats officiels Pokémon | Coup Critique Stratégie Pokémon"
 			description="Liste des tiers Smogon et des formats officiels de Pokémon. Retrouvez-y la liste des Pokémon viables dans chaque tier ainsi que des ressources associées."
+			action={<GenSelector />}
 		>
-			<GenSelector />
 			<div id="pagination-scroll-ref">
 				{loading ? (
 					<Loader active inline="centered" />

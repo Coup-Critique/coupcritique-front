@@ -1,8 +1,6 @@
 // modules
-
 import { useGetParam } from '@/hooks/useGetParams';
 import { Loader } from 'semantic-ui-react';
-// components
 import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
 
 const ActualityContainer = ({ Component, ...props }) => {

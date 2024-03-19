@@ -36,8 +36,8 @@ const AdminTeams = () => {
 		handlePage,
 		handleSort,
 	} = useTableFetch('teams', {
-		loadUrl: 'teams/state',
-		defaultQuery: { page: 1, state: null },
+		loadUrl: user.is_modo ? 'teams/state' : null,
+		defaultQuery: { page: 1, state: 'null' },
 	});
 
 	const [checkedTier, setCheckedTier] = useState(query.tier);
@@ -96,7 +96,7 @@ const AdminTeams = () => {
 		[setCheckedTier, setCheckedGen]
 	);
 
-	if (user.loading || window === undefined) {
+	if (user.loading || typeof window === 'undefined') {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id || !user.is_modo) {
@@ -110,7 +110,7 @@ const AdminTeams = () => {
 				value={query.state}
 				onChange={(e, { name, value }) => setQueryParam(name, value)}
 				fields={[
-					{ label: 'Non traitées', value: null },
+					{ label: 'Non traitées', value: 'null' },
 					{ label: 'Non certifiées', value: 'false' },
 					{ label: 'Certifiées', value: 'true' },
 					{ label: 'Bannies', value: 'banned' },

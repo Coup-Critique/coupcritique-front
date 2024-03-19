@@ -39,12 +39,14 @@ const MoveByType = ({ type, moves = [], availableGens }) => {
 				(type ? type.nom || type.name : '')
 			}
 			more
+			goingBack={`/entity/types/${type.id}`}
+			action={
+				<GenSelector
+					availableGens={availableGens}
+					redirectOnChange="/entity/types/"
+				/>
+			}
 		>
-			<GoBackButton defaultUrl={`/entity/types/${type.id}`} />
-			<GenSelector
-				availableGens={availableGens}
-				redirectOnChange={`/entity/types/`}
-			/>
 			<SectionAds className="mt-4" />
 			<div id="pagination-scroll-ref">
 				{table.length ? (

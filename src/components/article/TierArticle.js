@@ -1,15 +1,12 @@
 // modules
-import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'semantic-ui-react';
-// components
 import Description from '@/components/elements/Description';
 import PageWrapper from '@/components/PageWrapper';
 import TablePokemonTierUsage from '@/components/table/TablePokemonTierUsage';
 import TablePokemon from '@/components/table/TablePokemon';
 import Resource from '@/components/elements/Resource';
 import GenSelector from '@/components/GenSelector';
-import GoBackButton from '@/components/GoBackButton';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import useStateProps from '@/hooks/useStateProps';
 import useStateWithGen from '@/hooks/useStateWithGen';
@@ -36,12 +33,14 @@ const TierArticle = props => {
 			className="tier-article"
 			metadescription={`Retrouvez la liste des Pokémon du tier ${tier.name}`}
 			metaimage={`tiers/${tier.gen}-${tier.shortName || tier.name}.png`}
+			goingBack="/entity/tiers/"
+			action={
+				<GenSelector
+					availableGens={props.availableGens}
+					redirectOnChange="/entity/tiers/"
+				/>
+			}
 		>
-			<GoBackButton defaultUrl={'/entity/tiers/'} />
-			<GenSelector
-				availableGens={props.availableGens}
-				redirectOnChange={'/entity/tiers/'}
-			/>
 			<Description
 				entity={tier}
 				keyResult="tier"

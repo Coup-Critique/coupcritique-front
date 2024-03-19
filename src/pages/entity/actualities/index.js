@@ -69,17 +69,18 @@ const ActualityList = props => {
 			title="Toutes les actualités sur la stratégie Pokémon"
 			className="actuality-list"
 			metadescription="Liste d'actualités sur la stratégie Pokémon et la scène compétitive française. Vous y retrouverez des informations sur les événements Smogon ou ceux des formats officiels comme le VGC."
+			action={
+				user.is_modo && (
+					<Button
+						as={Link}
+						href="/entity/actualities/create"
+						color="orange"
+						content="Ajouter une actualité"
+						icon="plus"
+					/>
+				)
+			}
 		>
-			{user.is_modo && (
-				<Button
-					as={Link}
-					href="/entity/actualities/create"
-					color="blue"
-					content="Ajouter une actualité"
-					icon="plus"
-					className="mb-4"
-				/>
-			)}
 			<SectionAds />
 			<Form onSubmit={handleSubmitFilters} className="mb-4">
 				<DropdownMultipleSelectField

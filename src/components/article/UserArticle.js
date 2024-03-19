@@ -1,5 +1,4 @@
 // modules
-import { useEffect, useState } from 'react';
 import { Icon, Loader } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 // components
@@ -9,7 +8,6 @@ import UserBanButton from '@/components/actions/UserBanButton';
 import UserModoButton from '@/components/actions/UserModoButton';
 // constant
 import { MONTHS } from '@/constants/months';
-import GoBackButton from '@/components/GoBackButton';
 import useTableFetch from '@/hooks/useTableFetch';
 import UserTiperButton from '@/components/actions/UserTiperButton';
 import useStateProps from '@/hooks/useStateProps';
@@ -50,17 +48,15 @@ const UserArticle = props => {
 			title="Profil"
 			metatitle={"Profil de l'utilisateur " + user.username}
 			metaimage={user.picture && `users/${user.picture}`}
+			goingBack
 		>
-			<div className="mb-3">
-				<GoBackButton />
-			</div>
 			<div className="row">
 				<div className="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 mb-4">
 					{user.picture ? (
 						// eslint-disable-next-line jsx-a11y/img-redundant-alt
 						<img
 							className={'img-fluid img-profile'}
-							src={`/images/users/${user.picture}`}
+							src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/users/${user.picture}`}
 							alt="Photo de profil"
 							onError={e => {
 								e.target.onerror = null;

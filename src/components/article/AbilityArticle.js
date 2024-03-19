@@ -1,11 +1,9 @@
 // modules
-import { useEffect, useState } from 'react';
-import { formateName } from '@/functions';
+import { getMetaName, getName } from '@/functions';
 // hooks
 import Description from '@/components/elements/Description';
 import GenSelector from '@/components/GenSelector';
 // components
-import GoBackButton from '@/components/GoBackButton';
 import PageWrapper from '@/components/PageWrapper';
 import TablePokemonWithUsages from '@/components/table/TablePokemonWithUsages';
 import useStoreQuery from '@/hooks/useStoreQuery';
@@ -19,19 +17,23 @@ const AbilityArticle = props => {
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery();
 
 	if (!ability || !ability.id) return null;
+	const name = getName(ability);
+	const metaName = getMetaName(ability);
 	return (
 		<PageWrapper
-			title={ability.nom || formateName(ability.name)}
-			metatitle={
-				'Le talent Pokémon : ' + (ability.nom || formateName(ability.name))
+			title={name}
+			metatitle={'Le talent Pokémon : ' + metaName}
+			metadescription={
+				`Visualiser l'utilisation du talent ${metaName}. ` + ability.description
 			}
-			metadescription={ability.description}
+			goingBack
+			action={
+				<GenSelector
+					availableGens={props.availableGens}
+					redirectOnChange="/entity/abilities/"
+				/>
+			}
 		>
-			<GoBackButton />
-			<GenSelector
-				availableGens={props.availableGens}
-				redirectOnChange={'/entity/abilities/'}
-			/>
 			<Description
 				entity={ability}
 				keyResult="ability"

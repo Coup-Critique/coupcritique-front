@@ -1,31 +1,37 @@
-// modules
+import Head from 'next/head';
 
-import { Helmet } from 'react-helmet';
+const defaultTitle = 'Coup Critique | Votre référence en stratégie Pokémon';
+const defaultDescription =
+	"Le site de référence en stratégie Pokémon française. Vous pourrez y trouver et partager des équipes efficaces en combat classé sur des tiers Smogon comme l'OverUsed ou sur console avec le VGC et le BSS.";
+const defaultImage = 'keldeo-landorus.png';
 
-// 2 description conditions for helmet functionment
-const MetaData = ({ title, description, image, nofollow = false }) => (
-	<Helmet>
-		<title data-react-helmet="true">{title}</title>
-		<meta name="title" content={title} data-react-helmet="true" />
-		<meta name="og:title" content={title} data-react-helmet="true" />
+const MetaData = ({
+	title = defaultTitle,
+	description = defaultDescription,
+	image = defaultImage,
+	nofollow = false,
+}) => (
+	<Head>
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="og:title" content={title} />
 		{!!description && (
-			<meta name="description" content={description} data-react-helmet="true" />
-		)}
-		{!!description && (
-			<meta name="og:description" content={description} data-react-helmet="true" />
+			<>
+				<meta name="description" content={description} />
+				<meta name="og:description" content={description} />
+			</>
 		)}
 		{!!image && (
 			<meta
 				property="og:image"
 				content={'https://www.coupcritique.fr/images/' + image}
-				data-react-helmet="true"
 			/>
 		)}
 		{nofollow ? (
-			<meta name="robots" content="noindex, nofollow" data-react-helmet="true" />
+			<meta name="robots" content="noindex, nofollow" />
 		) : (
-			<meta name="robots" content="index, follow" data-react-helmet="true" />
+			<meta name="robots" content="index, follow" />
 		)}
-	</Helmet>
+	</Head>
 );
 export default MetaData;

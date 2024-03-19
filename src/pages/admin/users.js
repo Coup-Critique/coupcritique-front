@@ -19,8 +19,12 @@ const AdminUsers = () => {
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
 
 	useEffect(() => {
-		load({ url: 'users/admin' + (query.search ? `?search=${query.search}` : '') });
-	}, [query.search]);
+		if (user.id && user.is_modo) {
+			load({
+				url: 'users/admin' + (query.search ? `?search=${query.search}` : ''),
+			});
+		}
+	}, [query.search, user.id]);
 
 	useEffect(() => {
 		if (result) {
@@ -36,7 +40,7 @@ const AdminUsers = () => {
 		setQueryParam('search', search);
 	};
 
-	if (user.loading || window === undefined) {
+	if (user.loading || typeof window === 'undefined') {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id || !user.is_modo) {

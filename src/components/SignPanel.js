@@ -8,7 +8,7 @@ import FormSignUp from '@/components/forms/FormSignUp';
 import FormForgottenPassword from '@/components/forms/FormForgottenPassword';
 import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
 
-function SignPanel({ isModal = false }) {
+function SignPanel({ isModal = false, loading = false }) {
 	const [darkMode] = useDarkMode();
 	const [open, setOpen] = useState(false);
 	const [currentActiveIndex, setCurrentActiveIndex] = useState(0);
@@ -64,7 +64,11 @@ function SignPanel({ isModal = false }) {
 				onOpen={() => setOpen(true)}
 				style={{ height: tabHeight }}
 				className={'sign-modal' + (darkMode ? ` ${DARK_MODE_KEY}` : '')}
-				trigger={<Button color="orange">Mon compte</Button>}
+				trigger={
+					<Button color="orange" loading={loading}>
+						Mon compte
+					</Button>
+				}
 			>
 				<Tab
 					id="sign-tab-modaled"

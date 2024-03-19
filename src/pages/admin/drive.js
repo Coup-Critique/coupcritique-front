@@ -23,8 +23,10 @@ const AdminDrive = () => {
 	const [table, page, nbPages, handlePage] = usePager(50, files, query, setQueryParam);
 
 	useEffect(() => {
-		load({ url: 'drive' });
-	}, []);
+		if (user.id && user.is_modo) {
+			load({ url: 'drive' });
+		}
+	}, [user.id]);
 
 	useEffect(() => {
 		if (result) {
@@ -58,7 +60,7 @@ const AdminDrive = () => {
 		setFiles(newFiles);
 	};
 
-	if (user.loading || window === undefined) {
+	if (user.loading || typeof window === 'undefined') {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id || !user.is_modo) {
@@ -68,7 +70,7 @@ const AdminDrive = () => {
 		<PageWrapper title="Drive" more nofollow>
 			<MultiImageField
 				files={files}
-				dirName="/images/drive/"
+				dirName="drive"
 				btnColor="orange"
 				handleChange={handleImages}
 				nbMax={20}
@@ -141,7 +143,9 @@ const ImageCopy = ({ file, handleRemove }) => {
 	};
 
 	const copyPath = e => {
-		copyToClipboard(`https://www.coupcritique.fr/images/drive/${file.filename}`);
+		copyToClipboard(
+			`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/drive/${file.filename}`
+		);
 	};
 
 	const handleDelete = e => {
@@ -169,7 +173,7 @@ const ImageCopy = ({ file, handleRemove }) => {
 						onClick={handleDelete}
 					/>
 					<img
-						src={`/images/drive/${file.filename}`}
+						src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/drive/${file.filename}`}
 						className="img-fluid"
 						alt={file.filename}
 					/>

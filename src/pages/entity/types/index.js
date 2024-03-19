@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Loader } from 'semantic-ui-react';
-//
 import PageWrapper from '@/components/PageWrapper';
 import SectionAds from '@/components/sections/SectionAds';
 import GenSelector from '@/components/GenSelector';
 import Type from '@/components/elements/Type';
-import useFetch, { manageFetch } from '@/hooks/useFetch';
+import { manageFetch } from '@/hooks/useFetch';
+import { getMetaName } from '@/functions';
 
 const TypeList = ({ types }) => (
 	<PageWrapper
 		title="Liste des Types"
 		more
 		metatitle="Types des Pokémon | Coup Critique Stratégie Pokémon"
-		description="Liste des types des Pokémon. Filtrer les Pokémons par leur type."
+		description={`Liste des types des Pokémon : ${types.reduce(
+			(acc, type) => (acc ? `${acc}, ` : '') + getMetaName(type),
+			''
+		)}. Filtrer les Pokémons par leur type.`}
+		action={<GenSelector />}
 	>
-		<GenSelector />
 		<div id="pagination-scroll-ref">
 			{types && types.length ? (
 				<div className="list-type">

@@ -51,15 +51,14 @@ const UserFormPage = () => {
 	const handleDelete = e =>
 		deleteUser({ url: 'own-user', method: 'DELETE', token: user.token });
 
-	if (user.loading || window === undefined) {
+	if (user.loading || typeof window === 'undefined') {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id) {
 		return <Page404 />;
 	}
 	return (
-		<PageWrapper title="Compte utilisateur" nofollow>
-			<GoBackButton />
+		<PageWrapper title="Compte utilisateur" goingBack nofollow>
 			<Grid divided relaxed className="form-columns">
 				<Grid.Column mobile="16" computer="8">
 					<Header textAlign={'center'} as="h2">

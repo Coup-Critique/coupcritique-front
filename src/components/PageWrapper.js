@@ -2,34 +2,44 @@
 
 import { makeClassName } from '@/functions';
 import MetaData from '@/components/MetaData';
+import GoBackButton from './GoBackButton';
 
 const PageWrapper = ({
 	title,
 	className,
 	children,
+	action,
+	goingBack = false,
 	more = false,
+	min = false,
 	metatitle = title,
 	metadescription,
 	metaimage,
 	nofollow,
 }) => (
 	<article className={className}>
-		{!!metatitle && (
-			<MetaData
-				title={`${metatitle} | Coup Critique Stratégie Pokémon`}
-				description={metadescription}
-				image={metaimage}
-				nofollow={nofollow}
-			/>
-		)}
-		{!!title && (
-			<div className="title-banner">
-				<div className="container">
-					<h1>{title}</h1>
+		<MetaData
+			title={
+				metatitle ? `${metatitle} | Coup Critique Stratégie Pokémon` : undefined
+			}
+			description={metadescription}
+			image={metaimage}
+			nofollow={nofollow}
+		/>
+		<div className={makeClassName('container simple-content', { more, min })}>
+			{!!title && (
+				<div className="title-banner">
+					<h1>
+						{goingBack && (
+							<GoBackButton
+								defaultUrl={goingBack === true ? undefined : goingBack}
+							/>
+						)}{' '}
+						{title}
+					</h1>
+					{action}
 				</div>
-			</div>
-		)}
-		<div className={makeClassName('container simple-content', more && 'more')}>
+			)}
 			{children}
 		</div>
 	</article>

@@ -1,45 +1,39 @@
 // modules
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 import Link from 'next/link';
-import { Loader } from 'semantic-ui-react';
 import { DEFAULT_POKEMON_PICTURE } from '@/constants';
 import { ART_ITM, ART_PKM, IMG_VERSION } from '@/constants/img';
 import { formatFileName } from '@/functions';
-// import Image from 'next/image';
+import ImageLoader from './ImageLoader';
+
+const defaultSrc = '/images/picto/circle-question-solid.svg';
 
 const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
-	const getImgPath = name => {
-		if (!name) {
-			return DEFAULT_POKEMON_PICTURE;
-		} else {
-			return (
-				`/images/pokemons/${half ? '220px/' : ''}` +
-				`${formatFileName(name).toLowerCase()}.png?ver=${IMG_VERSION}`
-			);
-		}
-	};
+	const getImgPath = useCallback(
+		name => {
+			if (!name) {
+				return DEFAULT_POKEMON_PICTURE;
+			} else {
+				return (
+					`/images/pokemons/${half ? '220px/' : ''}` +
+					`${formatFileName(name).toLowerCase()}.png?ver=${IMG_VERSION}`
+				);
+			}
+		},
+		[half]
+	);
 
-	const [image, setImage] = useState(getImgPath(pokemon.name));
+	const src = useMemo(() => getImgPath(pokemon.name), [pokemon.name, getImgPath]);
 
-	useEffect(() => {
-		if (pokemon) {
-			setImage(getImgPath(pokemon.name));
-		}
-	}, [pokemon.name]);
-
-	if (!image) return <Loader active size="big" />;
 	return (
-		<img
-			src={image}
-			onError={e => {
-				e.target.onerror = null;
-				e.target.src = '/images/picto/circle-question-solid.svg';
-			}}
+		<ImageLoader
+			src={src}
+			defaultSrc={defaultSrc}
 			alt={`Pokémon ${pokemon.nom || pokemon.name}`}
 			className="art-pokemon img-fluid"
-			ref={imgRef}
 			height={half ? ART_ITM : ART_PKM}
 			width={half ? ART_ITM : ART_PKM}
+			imgRef={imgRef}
 		/>
 	);
 };

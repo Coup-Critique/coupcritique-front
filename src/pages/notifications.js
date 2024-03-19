@@ -40,7 +40,7 @@ const NotificationList = () => {
 		}
 	}, [resultPast]);
 
-	if (user.loading || window === undefined) {
+	if (user.loading || typeof window === 'undefined') {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id) {

@@ -1,20 +1,20 @@
 // modules
 import { useState, useEffect } from 'react';
 import useFetch, { FILE_TYPE } from '@/hooks/useFetch';
-
+import { useRouter } from 'next/router';
 // components
 import { Button, Form, Message } from 'semantic-ui-react';
 import { POST, PUT } from '@/constants/methods';
 import { useDispatch } from 'react-redux';
 import { addMessage } from '@/reducers/messages';
 import MultiImageField from '@/components/fields/MultiImageField';
-import Link from 'next/link';
 import Wysiwyg from '@/components/Wysiwyg';
 import { buildFieldsMessage } from '@/functions';
 import useSaveToStorage from '@/hooks/useSaveToStorage';
 
 const FormTournament = ({ handleSubmited, tournament = {} }) => {
 	const dispatch = useDispatch();
+	const router = useRouter();
 	const [form, setForm] = useState(tournament);
 	const [success, setSuccess] = useState(true);
 	const [message, setMessage] = useState('');
@@ -81,6 +81,12 @@ const FormTournament = ({ handleSubmited, tournament = {} }) => {
 		});
 	};
 
+	const handleCancel = e => {
+		e.preventDefault();
+		voidStorage();
+		router.push('/entity/tournaments/' + (tournament.id || ''));
+	};
+
 	const onSubmit = e => {
 		e.preventDefault();
 		load({
@@ -109,7 +115,7 @@ const FormTournament = ({ handleSubmited, tournament = {} }) => {
 				message={message.title}
 			/>
 			<MultiImageField
-				dirName="/images/tournaments/"
+				dirName="tournaments"
 				files={images}
 				defaultImages={form.images}
 				btnColor="orange"
@@ -144,12 +150,7 @@ const FormTournament = ({ handleSubmited, tournament = {} }) => {
 					content="Valider"
 					disabled={loading}
 				/>
-				<Button
-					as={Link}
-					href={'/entity/tournaments/' + (tournament.id || '')}
-					color="grey"
-					content="Annuler"
-				/>
+				<Button onClick={handleCancel} color="grey" content="Annuler" />
 			</div>
 		</Form>
 	);

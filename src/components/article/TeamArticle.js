@@ -1,9 +1,8 @@
 // modules
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { Button } from 'semantic-ui-react';
+import Link from 'next/link';
 // components
 import PageWrapper from '@/components/PageWrapper';
 import PokemonInstance from '@/components/elements/PokemonInstance';
@@ -11,7 +10,6 @@ import Export from '@/components/actions/Export';
 import CertificationButton from '@/components/actions/CertificationButton';
 import TeamBanButton from '@/components/actions/TeamBanButton';
 import DeleteAction from '@/components/actions/DeleteAction';
-import GoBackButton from '@/components/GoBackButton';
 import TeamTopButton from '@/components/actions/TeamTopButton';
 // import ScrollReveal from '@/components/ScrollReveal';
 import SectionAds from '@/components/sections/SectionAds';
@@ -47,8 +45,8 @@ const TeamArticle = props => {
 			metatitle={"L'équipe " + (team.certified ? 'certifiée ' : '') + team.name}
 			metadescription={team.description}
 			metaimage={`pokemons/${formatFileName(team.pkm_inst_1.pokemon.name)}.png`}
+			goingBack="/entity/teams"
 		>
-			<GoBackButton defaultUrl="/entity/teams" />
 			<TableOneTeam team={team} className="mt-3 mb-4" />
 			<div className="text-center mb-3 btn-wrapper">
 				{(user.id === team.user.id || user.is_modo === true) && (

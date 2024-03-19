@@ -34,7 +34,7 @@ const TeamList = props => {
 		setQueryParam,
 		handlePage,
 		handleSort,
-	} = useTableFetch('teams', { loadUrl: 'teams' }, props.teams);
+	} = useTableFetch('teams', { loadUrl: 'teams' }, props.teams, props.nbPages);
 
 	const tiers = useSelector(state => props.tiers || state.tiers);
 	const tags = useSelector(state => props.tags || state.tags);
@@ -122,8 +122,7 @@ const TeamList = props => {
 			metadescription="Retrouvez des équipes viable en stratégie Pokémon, que ce soit sur le simulateur Pokémon Showdown ou sur console. Choisissez votre tier comme le VGC ou l'Overused et vos critères comme une équipe hyper offense."
 			more
 			className="team-list"
-		>
-			<div className="btn-wrapper text-center mb-4">
+			action={
 				<Button
 					as={Link}
 					href="/entity/teams/create"
@@ -132,7 +131,8 @@ const TeamList = props => {
 					content="Proposer une équipe"
 					size="large"
 				/>
-			</div>
+			}
+		>
 			<SectionAds />
 			<RadioFilterForm
 				name="certified"
@@ -223,11 +223,14 @@ const TeamList = props => {
 };
 
 export async function getServerSideProps() {
+	// TODO prendre en compte la pagination !
+	// Plus le filtre ne fonctionne plus
+	// Plus il faut se login 2 fois...
 	try {
-		const { teams } = await manageFetch(`teams`);
+		const { teams, nbPages } = await manageFetch(`teams`);
 		const { tags } = await manageFetch(`tags`);
 		const { tiers } = await manageFetch(`tiers-select`);
-		return { props: { teams, tags, tiers } };
+		return { props: { teams, tags, tiers, nbPages } };
 	} catch (e) {
 		console.error(e);
 		return { props: { teams: null } };

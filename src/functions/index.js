@@ -1,3 +1,5 @@
+const camelToKebab = str => str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+
 /**
  * @argument {args} classList of [string, array, false, null, undefined]
  * @returns {string}
@@ -6,6 +8,12 @@ export const makeClassName = (...classList) =>
 	classList.reduce((classList, className) => {
 		if (!className) return classList;
 		if (Array.isArray(className)) className = makeClassName(className);
+		if (typeof className === 'object') {
+			Object.entries(className).forEach(([key, value]) => {
+				if (value) classList += ' ' + camelToKebab(key);
+			});
+			return classList;
+		}
 		if (!classList) return className;
 		return classList + ' ' + className;
 	}, '');
@@ -59,6 +67,10 @@ export function formatNumbers(nb, decimals = 2) {
 }
 
 export const formateName = string => string.replace(/[\s-]+/g, ' ');
+
+export const getName = entity => entity.nom || formateName(entity.name);
+export const getMetaName = entity =>
+	(entity.nom ? `${entity.nom} / ` : '') + formateName(entity.name);
 
 // prettier-ignore
 export const formatFileName = string => string

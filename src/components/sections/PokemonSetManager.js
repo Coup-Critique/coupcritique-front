@@ -26,7 +26,7 @@ const PokemonSetManager = props => {
 		if (!Object.keys(tiers).length && props.tiers) {
 			dispatch(setTiers(props.tiers));
 		}
-	}, []);
+	}, [pokemon.id]);
 
 	useEffect(() => {
 		if (result?.success) {
@@ -89,10 +89,10 @@ const PokemonSetManager = props => {
 			return tabs;
 		}, {});
 
-		return Object.entries(tabsByTiers).map(([tierId, underPanes]) => {
+		return Object.entries(tabsByTiers).map(([tierId, underPanes], i) => {
 			let tier = findTier(tierId);
 			return {
-				menuItem: tier ? tier.shortName : '',
+				menuItem: tier ? tier.shortName || tier.name : i + '',
 				render: () => (
 					<Tab.Pane>
 						<Tab panes={underPanes} />

@@ -32,17 +32,14 @@ const ListFavoriteTeam = () => {
 		}
 	}, [user.loading]);
 
-	if (user.loading || window === undefined) {
+	if (user.loading || typeof window === 'undefined') {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id) {
 		return <Page404 />;
 	}
 	return (
-		<PageWrapper title={'Liste des équipes en favoris'} nofollow more>
-			<div className="mb-3">
-				<GoBackButton />
-			</div>
+		<PageWrapper title={'Liste des équipes en favoris'} nofollow more goingBack>
 			<SectionAds />
 			<div id="pagination-scroll-ref">
 				{loading ? (

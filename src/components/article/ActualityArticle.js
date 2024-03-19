@@ -1,5 +1,5 @@
 // modules
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -7,7 +7,6 @@ import { Button } from 'semantic-ui-react';
 import Slider from 'react-slick';
 // components
 import PageWrapper from '@/components/PageWrapper';
-import GoBackButton from '@/components/GoBackButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import Tag from '@/components/elements/Tag';
 import CommentArea from '@/components/CommentArea';
@@ -16,15 +15,14 @@ import Author from '@/components/elements/Author';
 import useFetch from '@/hooks/useFetch';
 import { DELETE } from '@/constants/methods';
 import { addMessage } from '@/reducers/messages';
-import useStateProps from '@/hooks/useStateProps';
 
 const defaultGoBack = '/entity/actualities/';
 const ActualityArticle = props => {
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
-	const [actuality, setActuality] = useStateProps(props.actuality || null);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
+	const { actuality } = props;
 
 	useEffect(() => {
 		if (resultDelete?.success) {
@@ -39,17 +37,17 @@ const ActualityArticle = props => {
 	if (!actuality || !actuality.id) return null;
 	return (
 		<PageWrapper
+			min
 			title={actuality.title}
 			className="actuality article"
 			metadescription={actuality.shortDescription}
 			metaimage={
 				actuality.images.length > 0 && `actualities/${actuality.images[0]}`
 			}
-		>
-			<div className="mb-3">
-				<GoBackButton defaultUrl="/entity/actualities" />
-				{user.is_modo && (
-					<>
+			goingBack="/entity/actualities"
+			action={
+				user.is_modo && (
+					<div>
 						<Button
 							as={Link}
 							href={`/entity/actualities/${actuality.id}/update`}
@@ -65,9 +63,10 @@ const ActualityArticle = props => {
 							content="Supprimer"
 							icon="trash alternate"
 						/>
-					</>
-				)}
-			</div>
+					</div>
+				)
+			}
+		>
 			<ScrollReveal animation="zoomIn" earlier>
 				{actuality.images.length > 0 && (
 					<div className="slick-wrapper">
@@ -87,7 +86,7 @@ const ActualityArticle = props => {
 							{actuality.images.map((path, i) => (
 								<div key={i} className="image mb-2">
 									<img
-										src={`/images/actualities/${path}`}
+										src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/actualities/${path}`}
 										className="img-fluid"
 										alt="Actualité"
 										// TODO gerer une taille fixe

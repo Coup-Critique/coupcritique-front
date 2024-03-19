@@ -1,8 +1,5 @@
 // modules
-import { useState } from 'react';
-import { formateName } from '@/functions';
-// components
-import GoBackButton from '@/components/GoBackButton';
+import { getMetaName, getName } from '@/functions';
 import PageWrapper from '@/components/PageWrapper';
 import Description from '@/components/elements/Description';
 import Type from '@/components/elements/Type';
@@ -20,18 +17,24 @@ const MoveArticle = props => {
 	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery();
 
 	if (!move || !move.id) return null;
+	const name = getName(move);
+	const metaName = getMetaName(move);
 	return (
 		<PageWrapper
-			title={move.nom || formateName(move.name)}
+			title={name}
 			className="article"
-			metatitle={'La capacité Pokémon : ' + (move.nom || formateName(move.name))}
-			metadescription={move.description}
+			metatitle={'La capacité Pokémon : ' + metaName}
+			metadescription={
+				`Visualiser l'utilisation de la capacité ${metaName}. ` + move.description
+			}
+			goingBack
+			action={
+				<GenSelector
+					availableGens={props.availableGens}
+					redirectOnChange="/entity/moves/"
+				/>
+			}
 		>
-			<GoBackButton />
-			<GenSelector
-				availableGens={props.availableGens}
-				redirectOnChange={'/entity/moves/'}
-			/>
 			<div className="d-flex flex-wrap mb-4 justify-content-center">
 				<div className="pl-4 pr-4">
 					<div className="mb-2">
