@@ -1,11 +1,9 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { Button, Form, Loader } from 'semantic-ui-react';
-import useDarkMode from '@/hooks/useDarkMode';
 import useFetch, { manageFetch } from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
-import GuideTeaser from '@/components/teasers/GuideTeaser';
 import PageWrapper from '@/components/PageWrapper';
 import PaginationPrettier from '@/components/PaginationPrettier';
 import useActions from '@/hooks/useActions';
@@ -16,11 +14,11 @@ import FormSearch from '@/components/forms/FormSearch';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import SectionAds from '@/components/sections/SectionAds';
 import useStateProps from '@/hooks/useStateProps';
+import ArticleTeaser from '@/components/teasers/ArticleTeaser';
 
 const defaultArray = [];
 const GuideList = props => {
 	const dispatch = useDispatch();
-	const [darkMode] = useDarkMode();
 	const user = useSelector(state => state.user);
 	const guide_tags = useSelector(state => props.tags || state.guide_tags);
 	const [result, load, loading] = useFetch();
@@ -120,7 +118,7 @@ const GuideList = props => {
 								key={guide.id}
 								className="col-12 col-lg-4 d-flex flex-column"
 							>
-								<GuideTeaser guide={guide} darkMode={darkMode} />
+								<ArticleTeaser article={guide} entityName={'guides'} />
 							</div>
 						))}
 					</div>

@@ -1,5 +1,13 @@
 const camelToKebab = str => str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 
+export const rmUndefined = props => {
+	if (!props) return props;
+	Object.entries(props).forEach(([key, value]) => {
+		if (value === undefined) delete props[key];
+	});
+	return props;
+};
+
 /**
  * @argument {args} classList of [string, array, false, null, undefined]
  * @returns {string}

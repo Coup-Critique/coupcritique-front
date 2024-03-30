@@ -1,14 +1,16 @@
 // modules
 
 // components
-import GuideArticle from '@/components/article/GuideArticle';
+import ArticleArticle from '@/components/article/ArticleArticle';
 import GuideContainer from '@/containers/GuideContainer';
 import { manageFetch } from '@/hooks/useFetch';
 import useNotifChecker from '@/hooks/useNotifChecker';
 
 const GuidePage = ({ guide }) => {
 	useNotifChecker('guide', guide.id);
-	return <GuideContainer Component={GuideArticle} guide={guide} />;
+	return (
+		<GuideContainer Component={ArticleArticle} guide={guide} entityName="guides" />
+	);
 };
 
 export async function getServerSideProps({ query }) {

@@ -5,22 +5,22 @@ import { Loader } from 'semantic-ui-react';
 // components
 import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
 
-const TournamentContainer = ({ Component, ...props }) => {
+const CircuitTourContainer = ({ Component, ...props }) => {
 	const id = useGetParam('id');
-	const [tournament, loading] = useGetEntityWithUser(
+	const [circuitTour, loading] = useGetEntityWithUser(
 		id,
-		'tournament',
-		'tournaments',
-		props.tournament
+		'circuitTour',
+		'circuit-tours',
+		props.circuitTour
 	);
 
 	if (loading) {
 		return <Loader active inline="centered" />;
-	} else if (tournament) {
-		return <Component {...props} article={tournament} tournament={tournament} />;
+	} else if (circuitTour) {
+		return <Component {...props} article={circuitTour} circuitTour={circuitTour} />;
 	} else {
 		return null;
 	}
 };
 
-export default TournamentContainer;
+export default CircuitTourContainer;

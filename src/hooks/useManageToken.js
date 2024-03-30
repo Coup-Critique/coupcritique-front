@@ -53,6 +53,7 @@ const useManageToken = () => {
 		}
 		if (user.token) {
 			loadNotif({ url: 'notifications/count' });
+			// TODO if process.env = dev, don't do it
 			saveInterval(
 				setInterval(() => {
 					if (user.id) {

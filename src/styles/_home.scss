@@ -181,40 +181,6 @@
 		}
 	}
 
-	.banner-title-home {
-		padding-bottom: 0;
-
-		.title-col {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-		}
-
-		.field.main-search {
-			width: 32.8125rem;
-			max-width: 100%;
-
-			input {
-				&::placeholder {
-					/* Chrome, Firefox, Opera, Safari 10.1+ */
-					color: white !important;
-					opacity: 1;
-					/* Firefox */
-				}
-
-				&:-ms-input-placeholder {
-					/* Internet Explorer 10-11 */
-					color: white !important;
-				}
-
-				&::-ms-input-placeholder {
-					/* Microsoft Edge */
-					color: white !important;
-				}
-			}
-		}
-	}
-
 	.h2-btn {
 		display: flex;
 		flex-wrap: wrap;
@@ -503,14 +469,19 @@
 
 	.section-calendar {
 		background-color: black;
+
+		.framed>.inner {
+			overflow: auto;
+			max-width: 100%;
+
+			>.row {
+				min-width: rem(900px);
+			}
+		}
 	}
 }
 
-@media (max-width: $xs - 1px) {
-	.home .banner-title-home .title-col h1 strong {
-		font-size: 3.375rem;
-	}
-}
+@media (max-width: $xs - 1px) {}
 
 @media (max-width: $xl - 1) {
 	.home .section-usage .row>.col-xl-7 {
@@ -526,8 +497,8 @@
 		}
 	}
 
-	.home .banner-title-home .image-col img {
-		display: none;
+	.home .title-section {
+		padding: 4em 1em 2em;
 	}
 }
 
@@ -539,10 +510,6 @@
 		&::after {
 			content: none;
 		}
-	}
-
-	.home .banner-title-home {
-		padding: 0;
 	}
 }
 

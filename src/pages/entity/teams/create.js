@@ -5,7 +5,7 @@ import { Icon, Loader } from 'semantic-ui-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 // components
-import { manageFetch } from '@/hooks/useFetch';
+import useFetch, { manageFetch } from '@/hooks/useFetch';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import FormTeam from '@/components/forms/FormTeam';
 import PageWrapper from '@/components/PageWrapper';
@@ -24,15 +24,37 @@ const TeamFormPage = props => {
 	const tiers = useSelector(state => props.tiers || state.tiers);
 	const tags = useSelector(state => props.tags || state.tags);
 	const { team, update = false } = props;
+	const [resultTiers, loadTiers, loadingTiers] = useFetch();
+	const [resultTags, loadTags, loadingTags] = useFetch();
 
 	useEffect(() => {
 		if (!Object.keys(tiers).length) {
-			dispatch(setTiers(props.tiers));
+			if (props.tiers) {
+				dispatch(setTiers(props.tiers));
+			} else {
+				loadTiers({ url: 'tiers-select' });
+			}
 		}
 		if (!tags.length) {
-			dispatch(setTags(props.tags));
+			if (props.tags) {
+				dispatch(setTags(props.tags));
+			} else {
+				loadTags({ url: 'tags' });
+			}
 		}
 	}, []);
+
+	useEffect(() => {
+		if (resultTiers && resultTiers.success) {
+			dispatch(setTiers(resultTiers.tiers));
+		}
+	}, [resultTiers]);
+
+	useEffect(() => {
+		if (resultTags && resultTags.success) {
+			dispatch(setTags(resultTags.tags));
+		}
+	}, [resultTags]);
 
 	if (user.loading || typeof window === 'undefined') {
 		return <Loader active={true} inline="centered" />;
@@ -90,7 +112,12 @@ const TeamFormPage = props => {
 			) : !user.token ? (
 				<SignPanel />
 			) : (
-				<FormTeam tiers={tiers} tags={tags} defaultValue={team} />
+				<FormTeam
+					tiers={tiers}
+					tags={tags}
+					defaultValue={team}
+					loadingTiers={loadingTiers}
+				/>
 			)}
 		</PageWrapper>
 	);

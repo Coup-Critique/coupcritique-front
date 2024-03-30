@@ -1,10 +1,10 @@
 // modules
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { Loader } from 'semantic-ui-react';
+import { Button, Loader } from 'semantic-ui-react';
 // components
-import FormActuality from '@/components/forms/FormActuality';
+import FormArticle from '@/components/forms/FormArticle';
 import PageWrapper from '@/components/PageWrapper';
 import { manageFetch } from '@/hooks/useFetch';
 import { setActualityTags } from '@/reducers/actuality_tags';
@@ -14,6 +14,7 @@ import useActions from '@/hooks/useActions';
 const ActualityFormPage = ({ actuality, tags, update = false }) => {
 	const dispatch = useDispatch();
 	const router = useRouter();
+	const reinitiRef = useRef();
 	const user = useSelector(state => state.user);
 	const actuality_tags = useSelector(state => state.actuality_tags || tags);
 	const [setTags] = useActions(dispatch, [setActualityTags]);
@@ -30,6 +31,8 @@ const ActualityFormPage = ({ actuality, tags, update = false }) => {
 		);
 	};
 
+	const handleReinit = e => reinitiRef.current.ref.current.click();
+
 	if (user.loading || typeof window === 'undefined') {
 		return <Loader active={true} inline="centered" />;
 	}
@@ -45,11 +48,21 @@ const ActualityFormPage = ({ actuality, tags, update = false }) => {
 					: 'Ajouter une actualité'
 			}
 			nofollow
+			action={
+				<Button
+					icon="refresh"
+					onClick={handleReinit}
+					color="blue"
+					content="Réinitialiser"
+				/>
+			}
 		>
-			<FormActuality
-				actuality={actuality}
+			<FormArticle
+				article={actuality}
+				entityName="actualities"
 				tags={actuality_tags}
 				handleSubmited={goBack}
+				reinitiRef={reinitiRef}
 			/>
 		</PageWrapper>
 	);

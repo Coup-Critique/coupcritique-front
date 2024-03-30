@@ -15,8 +15,11 @@ const getStoredItem = (key = STORAGE_KEY) => {
 const setItemToStorage = (value, key = STORAGE_KEY) => {
 	if (typeof window === 'undefined') return;
 	try {
-		if (value == null) localStorage.removeItem(key);
-		localStorage.setItem(key, JSON.stringify(value));
+		if (value == null) {
+			localStorage.removeItem(key);
+		} else {
+			localStorage.setItem(key, JSON.stringify(value));
+		}
 	} catch (error) {
 		console.error(error);
 	}

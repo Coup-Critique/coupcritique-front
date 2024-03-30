@@ -105,16 +105,22 @@ export const manageFetch = async (url, params) => {
 			process.env.NEXT_PUBLIC_API_URL + `/api/${url}`,
 			params
 		);
-		// console.log('response', response);
-		const responseJson = await response.json();
-		// console.log('responseJson',responseJson);
-		if (response.ok && response.status >= 200 && response.status < 300) {
-			responseJson.success = true;
-			responseJson.code = response.status;
-			return responseJson;
-		} else {
-			throw responseJson;
+		if (response.headers.get('Content-Type') === JSON_TYPE) {
+			// console.log('response', response);
+			const responseJson = await response.json();
+			// console.log('responseJson',responseJson);
+			if (response.ok && response.status >= 200 && response.status < 300) {
+				responseJson.success = true;
+				responseJson.code = response.status;
+				return responseJson;
+			} else {
+				throw responseJson;
+			}
 		}
+		console.error(response);
+		const error = new Error('Erreur : ressource introuvable.');
+		error.code = 404;
+		throw error;
 	} catch (e) {
 		// Set as result
 		if (response && response.code && typeof e === 'object' && !e.code) {

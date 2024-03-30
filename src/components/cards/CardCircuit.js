@@ -6,7 +6,8 @@ const CardCircuit = () => {
 		<Card className="padded">
 			<h2>Circuit Compétitif</h2>
 			<div>
-				<Link href="/entity/tournaments" className="btn btn-orange btn-outline">
+				{/* TODO mettre un teaser du circuit en cours */}
+				<Link href="/entity/circuit-tours" className="btn btn-orange btn-outline">
 					Détails du circuit
 				</Link>
 			</div>

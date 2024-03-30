@@ -3,10 +3,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { Button, Form, Loader } from 'semantic-ui-react';
-import useDarkMode from '@/hooks/useDarkMode';
 import useFetch, { manageFetch } from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
-import ActualityTeaser from '@/components/teasers/ActualityTeaser';
 import PageWrapper from '@/components/PageWrapper';
 import PaginationPrettier from '@/components/PaginationPrettier';
 import { setActualityTags } from '@/reducers/actuality_tags';
@@ -17,13 +15,13 @@ import useStoreQuery from '@/hooks/useStoreQuery';
 import SectionAds from '@/components/sections/SectionAds';
 import FormSearch from '@/components/forms/FormSearch';
 import useStateProps from '@/hooks/useStateProps';
+import ArticleTeaser from '@/components/teasers/ArticleTeaser';
 
 const defaultArray = [];
 const ActualityList = props => {
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
 	const actuality_tags = useSelector(state => props.tags || state.actuality_tags);
-	const [darkMode] = useDarkMode();
 	const [result, load, loading] = useFetch();
 	const [actualities, setActualities] = useStateProps(
 		props.actualities || defaultArray
@@ -123,9 +121,9 @@ const ActualityList = props => {
 								key={actuality.id}
 								className="col-12 col-lg-4 d-flex flex-column"
 							>
-								<ActualityTeaser
-									actuality={actuality}
-									darkMode={darkMode}
+								<ArticleTeaser
+									article={actuality}
+									entityName={'actualities'}
 								/>
 							</div>
 						))}

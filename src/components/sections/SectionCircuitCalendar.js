@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import { Label } from 'semantic-ui-react';
 import { MONTHS_CUT } from '@/constants/months';
-import { makeClassName } from '@/functions';
 
 // const currentMonthIndex = new Date().getMonth();
 // let months = MONTHS_CUT.slice();
@@ -13,11 +12,8 @@ const SectionCircuitCalendar = ({ calendar }) => {
 		<section className="section-calendar">
 			<div className="ui container">
 				<h2 className="mb-4">Calendrier du circuit</h2>
-				<div
-					className="framed pb-1"
-					style={{ marginLeft: '-1em', marginRight: '-1em' }}
-				>
-					<div className="overflow-hidden">
+				<div className="framed pb-1">
+					<div className="inner">
 						<div className="row m-0 mb-3">
 							{MONTHS_CUT.map(month => (
 								<div className="col-1 px-1" key={month}>
@@ -42,11 +38,9 @@ const SectionCircuitCalendar = ({ calendar }) => {
 const LabelPeriod = memo(function LabelPeriod({ tour }) {
 	return (
 		<Label
-			className={makeClassName(
-				'd-block position-absolute text-center',
-				tour.element.color
-			)}
+			className={'d-block position-absolute text-center'}
 			style={{
+				backgroundColor: tour.element.color + ' !important',
 				left: (tour.start * 100) / 12 + '%',
 				width: ((tour.end - tour.start) * 100) / 12 + '%',
 			}}

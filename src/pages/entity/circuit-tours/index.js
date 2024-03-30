@@ -1,51 +1,49 @@
 // modules
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import { Button, Loader } from 'semantic-ui-react';
 // components
-import useDarkMode from '@/hooks/useDarkMode';
 import useFetch, { manageFetch } from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
-import TournamentTeaser from '@/components/teasers/TournamentTeaser';
 import PageWrapper from '@/components/PageWrapper';
 import PaginationPrettier from '@/components/PaginationPrettier';
 import SectionAds from '@/components/sections/SectionAds';
 import useStateProps from '@/hooks/useStateProps';
+import ArticleTeaser from '@/components/teasers/ArticleTeaser';
 
 const defaultArray = [];
-const TournamentList = props => {
+const CircuitList = props => {
 	const user = useSelector(state => state.user);
-	const [darkMode] = useDarkMode();
 	const [result, load, loading] = useFetch();
-	const [tournaments, setTournaments] = useStateProps(
-		props.tournaments || defaultArray
+	const [circuitTours, setCircuitTours] = useStateProps(
+		props.circuitTours || defaultArray
 	);
-	const [table, page, nbPages, handlePage] = usePager(12, tournaments);
+	const [table, page, nbPages, handlePage] = usePager(12, circuitTours);
 
 	useEffect(() => {
-		if (!tournaments.length /*  || Object.keys(query).length > 1 */) {
+		if (!circuitTours.length /*  || Object.keys(query).length > 1 */) {
 			handleLoad();
 		}
 		// }, [query.tags]);
 	}, []);
 
 	useEffect(() => {
-		if (result?.success) setTournaments(result.tournaments);
+		if (result?.success) setCircuitTours(result.circuitTours);
 	}, [result]);
 
-	const handleLoad = () => load({ url: 'tournaments' });
+	const handleLoad = () => load({ url: 'circuitTours' });
 
 	return (
 		<PageWrapper
-			title="Tous les tournois Pokémon"
+			title="Circuit Coupe Critique"
 			className="actuality-list"
-			metadescription="Liste des tournois Pokémon de la scène compétitive française et internationale."
+			metadescription="Liste des tournois du Circuit de la Coupe Critique."
 		>
 			{user.is_modo && (
 				<Button
 					as={Link}
-					href="/entity/tournaments/create"
+					href="/entity/circuit-tours/create"
 					color="blue"
 					content="Ajouter un tournoi"
 					icon="plus"
@@ -65,14 +63,14 @@ const TournamentList = props => {
 					<Loader inline="centered" active />
 				) : table.length > 0 ? (
 					<div className="row">
-						{table.map(tournament => (
+						{table.map(circuitTour => (
 							<div
-								key={tournament.id}
+								key={circuitTour.id}
 								className="col-12 col-lg-4 d-flex flex-column"
 							>
-								<TournamentTeaser
-									tournament={tournament}
-									darkMode={darkMode}
+								<ArticleTeaser
+									article={circuitTour}
+									entityName={'circuit-tours'}
 								/>
 							</div>
 						))}
@@ -95,12 +93,12 @@ const TournamentList = props => {
 
 export async function getServerSideProps() {
 	try {
-		const { tournaments } = await manageFetch(`tournaments`);
-		return { props: { tournaments } };
+		const { circuitTours } = await manageFetch(`circuit-tours`);
+		return { props: { circuitTours } };
 	} catch (e) {
 		console.error(e);
-		return { props: { tournaments: null } };
+		return { props: { circuitTours: null } };
 	}
 }
 
-export default TournamentList;
+export default CircuitList;

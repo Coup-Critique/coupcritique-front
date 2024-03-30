@@ -1,13 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useLocalStorage from '@/hooks/useLocalStorage';
 
 const useSaveToStorage = (entity, callbackEntity) => {
-	const { pathname } = useRouter();
+	const { pathname, query } = useRouter();
 	const { getStoredItem, setItemToStorage } = useLocalStorage();
+	const key = useMemo(
+		() => (query.id ? pathname.replace(`[id]`, query.id) : pathname),
+		[pathname, query]
+	);
 
 	useEffect(() => {
-		const storedActuality = getStoredItem(pathname);
+		const storedActuality = getStoredItem(key);
 		if (storedActuality) {
 			callbackEntity(storedActuality);
 		}
@@ -15,11 +19,11 @@ const useSaveToStorage = (entity, callbackEntity) => {
 
 	useEffect(() => {
 		if (Object.keys(entity).length) {
-			setItemToStorage(entity, pathname);
+			setItemToStorage(entity, key);
 		}
 	}, [entity]);
 
-	const voidStorage = () => setItemToStorage(null, pathname);
+	const voidStorage = () => setItemToStorage(null, key);
 
 	return [voidStorage];
 };
