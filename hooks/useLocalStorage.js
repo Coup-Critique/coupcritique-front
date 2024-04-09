@@ -1,3 +1,4 @@
+'use client';
 export const STORAGE_KEY = 'CoupCritiqueStorage';
 
 const getStoredItem = (key = STORAGE_KEY) => {

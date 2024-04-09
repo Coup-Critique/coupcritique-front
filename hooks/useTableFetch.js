@@ -1,3 +1,4 @@
+'use client';
 // modules
 import { useEffect, useState } from 'react';
 import { objectToGETparams } from '@/functions';

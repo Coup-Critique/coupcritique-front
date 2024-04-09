@@ -1,3 +1,4 @@
+'use client';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDarkModeAction } from '@/reducers/darkMode';

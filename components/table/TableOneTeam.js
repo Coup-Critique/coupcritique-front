@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
+import { useNavigation } from 'next/navigation';
 import Profile from '@/components/elements/Profile';
 import Tier from '@/components/elements/Tier';
 import Tag from '@/components/elements/Tag';
@@ -12,7 +12,7 @@ import Favorite from '@/components/actions/Favorite';
 
 // TODO props link > click on team to go to team page
 const TableOneTeam = ({ team, className, isLink = false }) => {
-	const router = useRouter();
+	const navigation = useNavigation();
 	const user = useSelector(state => state.user);
 	const isUserConnected = !user.loading && user.id;
 	return (
@@ -22,8 +22,9 @@ const TableOneTeam = ({ team, className, isLink = false }) => {
 				isLink && 'clickable',
 				className
 			)}
-			// TODO retirer les onClick router et faire des a href étendus
-			onClick={isLink ? e => router.push(`/entity/teams/${team.id}`) : undefined}
+			onClick={
+				isLink ? e => navigation.navigate(`/entity/teams/${team.id}`) : undefined
+			}
 		>
 			<table className="table table-one basic table-pokemon stackable">
 				<thead>

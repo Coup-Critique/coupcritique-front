@@ -5,6 +5,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'semantic-ui-css/semantic.min.css';
 import 'animate.css';
 import '@/styles/app.scss';
+//
+import { Suspense } from 'react';
+import { useSelector } from 'react-redux';
 // components
 import PwaButton from '@/components/PwaButton';
 import AppProvider from '@/providers/AppProvider';
@@ -15,6 +18,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieModal from '@/components/CookieModal';
 import { makeClassName } from '@/functions';
+import Loading from './loading';
 
 const title = 'Coup Critique | Votre référence en stratégie Pokémon';
 const description =
@@ -22,7 +26,8 @@ const description =
 const image = 'keldeo-landorus.png';
 
 export default function RootLayout({ children }) {
-	const [darkMode] = useDarkMode();
+	useDarkMode();
+	const darkMode = useSelector(state => state.darkMode);
 
 	return (
 		<html lang="fr">
@@ -60,7 +65,7 @@ export default function RootLayout({ children }) {
 					<main>
 						<UserManager />
 						<MessageManager />
-						{children}
+						<Suspense fallback={<Loading />}>{children}</Suspense>
 					</main>
 					<Footer />
 					<CookieModal />

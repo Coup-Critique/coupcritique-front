@@ -1,3 +1,4 @@
+'use client';
 import { Button, Icon } from 'semantic-ui-react';
 
 const PwaButton = () => (

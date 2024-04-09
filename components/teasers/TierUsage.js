@@ -1,5 +1,4 @@
 // modules
-import { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 // components
@@ -9,12 +8,16 @@ import { formateName, formatNumbers } from '@/functions';
 import { ART_ITM } from '@/constants/img';
 
 const TierUsage = ({ usage, tier }) => {
-	const ref = useRef();
+	// const ref = useRef();
 
 	if (!tier) return null;
 	if (!usage) {
 		return (
-			<ScrollReveal className="usage" animation="zoomIn" earlier outterRef={ref}>
+			<ScrollReveal
+				className="usage"
+				animation="zoomIn"
+				earlier /* outterRef={ref} */
+			>
 				<div className="img-wrapper">
 					<Image
 						src={`/images/tiers/${tier.gen}-${
@@ -28,7 +31,7 @@ const TierUsage = ({ usage, tier }) => {
 						className="art-pokemon img-fluid unknown"
 						width={ART_ITM}
 						height={ART_ITM}
-						ref={ref}
+						// ref={ref}
 					/>
 				</div>
 				<h3>
@@ -40,9 +43,9 @@ const TierUsage = ({ usage, tier }) => {
 		);
 	}
 	return (
-		<ScrollReveal className="usage" animation="zoomIn" earlier outterRef={ref}>
+		<ScrollReveal className="usage" animation="zoomIn" earlier /* outterRef={ref} */>
 			<div className="img-wrapper">
-				<ArtPokemon pokemon={usage.pokemon} half imgRef={ref} />
+				<ArtPokemon pokemon={usage.pokemon} half /* imgRef={ref} */ />
 			</div>
 			<h3>
 				<Link href={`/entity/tiers/${tier.id}`}>{tier.name}</Link>

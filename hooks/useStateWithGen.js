@@ -1,3 +1,4 @@
+'use client';
 import { setGenAction } from '@/reducers/gen';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
