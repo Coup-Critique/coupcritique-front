@@ -202,7 +202,9 @@ const TeamList = props => {
 				</div>
 			</Form>
 			<div id="pagination-scroll-ref">
-				{table.length > 0 ? (
+				{loading ? (
+					<Loader active={loading} inline="centered" />
+				) : table.length > 0 ? (
 					<TableTeam
 						teams={table}
 						setTeams={setTable}
@@ -212,8 +214,6 @@ const TeamList = props => {
 						query={query}
 						nbPages={nbPages}
 					/>
-				) : loading ? (
-					<Loader active={loading} inline="centered" />
 				) : (
 					<p>Aucune équipe n'a été trouvée.</p>
 				)}
