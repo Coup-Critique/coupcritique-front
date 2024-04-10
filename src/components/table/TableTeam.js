@@ -82,7 +82,7 @@ const TableTeam = ({
 					{ key: 'date_creation', content: 'Date', sortable: true },
 					{ key: 'name', content: 'Nom', sortable: true },
 					{ key: 'tags', content: 'Catégories', sortable: false },
-					isUserConnected && {
+					{
 						key: 'favoris',
 						content: 'Favoris',
 						sortable: false,

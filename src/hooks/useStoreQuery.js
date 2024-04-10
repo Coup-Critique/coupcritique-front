@@ -48,16 +48,16 @@ const useStoreQuery = (saveQueryToStore = false, defaultValues = { page: 1 }) =>
 		setQueryParamAction,
 	]);
 
-	useEffect(() => {
-		// if (Object.keys(query).length > 1 || query.page != 1) {
-		// 	router.replace(router.pathname + objectToGETparams(query));
-		// }
-		// return () => {
-		// 	if (saveQueryToStore) {
-		// 		dispatch(saveQuery(router.pathname, query));
-		// 	}
-		// };
-	}, [query]);
+	// useEffect(() => {
+	// 	if (Object.keys(query).length > 1 || query.page != 1) {
+	// 		router.replace(router.pathname + objectToGETparams(query));
+	// 	}
+	// return () => {
+	// 	if (saveQueryToStore) {
+	// 		dispatch(saveQuery(router.pathname, query));
+	// 	}
+	// };
+	// }, [query]);
 
 	useEffect(() => {
 		const entityLinks = document.querySelectorAll(
