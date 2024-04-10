@@ -144,7 +144,7 @@
 		}
 	}
 
-	.ui.labeled.button>.button+.label:not(:hover) {
+	.ui.labeled.button > .button + .label:not(:hover) {
 		color: white !important;
 	}
 
@@ -202,7 +202,7 @@
 			color: white !important;
 		}
 
-		>.container-fluid {
+		> .container-fluid {
 			box-shadow: none;
 			background-color: $darker;
 		}
@@ -243,13 +243,13 @@
 				.nav-link:active {
 					color: $orange;
 
-					>span>i.icon,
-					>i.icon {
+					> span > i.icon,
+					> i.icon {
 						color: $orange;
 					}
 
-					>span>svg,
-					>svg {
+					> span > svg,
+					> svg {
 						fill: $orange;
 					}
 				}
@@ -271,11 +271,11 @@
 					&:active {
 						color: $orange;
 
-						>i.icon:not(.caret) {
+						> i.icon:not(.caret) {
 							color: $orange;
 						}
 
-						>svg {
+						> svg {
 							fill: $orange;
 						}
 					}
@@ -346,7 +346,7 @@
 	}
 
 	.ui.list.flex {
-		>.item {
+		> .item {
 			border-bottom: 2px solid $dark-body;
 
 			.header a,
@@ -362,7 +362,7 @@
 		}
 	}
 
-	.row.divided>div:not(:first-child)::before {
+	.row.divided > div:not(:first-child)::before {
 		background-color: $dark-body;
 		width: 3px;
 		left: -1.5px;
@@ -535,30 +535,30 @@
 			}
 
 			.ui.label {
-				background-color: $darker;
+				background-color: $darker !important;
 
 				&:hover,
 				&:focus {
-					background-color: $red;
+					background-color: $red !important;
 				}
 			}
 		}
 
-		>.field+.menu {
+		> .field + .menu {
 			border-color: transparent;
 		}
 
-		&.active>.field+.menu {
+		&.active > .field + .menu {
 			border-top: 1px solid black;
 		}
 
-		&.upward.active>.field+.menu {
+		&.upward.active > .field + .menu {
 			border-top: 0;
 			border-bottom: 1px solid black;
 		}
 	}
 
-	.resource-list>.ui.accordion {
+	.resource-list > .ui.accordion {
 		border-right: 1px solid rgba(255, 255, 255, 0.25);
 
 		&:first-child:last-child {
@@ -677,9 +677,9 @@
 		color: $body-color;
 	}
 
-	.ui.form .inline.field>label,
-	.ui.form .inline.fields .field>label,
-	.ui.form .inline.fields>label {
+	.ui.form .inline.field > label,
+	.ui.form .inline.fields .field > label,
+	.ui.form .inline.fields > label {
 		color: white;
 	}
 
@@ -712,9 +712,9 @@
 		}
 
 		.ui.checkbox label:after,
-		.ui.checkbox input:checked~label:after,
-		.ui.checkbox input:focus~label:after,
-		.ui.checkbox input:checked:focus~label:after {
+		.ui.checkbox input:checked ~ label:after,
+		.ui.checkbox input:focus ~ label:after,
+		.ui.checkbox input:checked:focus ~ label:after {
 			color: white;
 		}
 
@@ -741,7 +741,7 @@
 			}
 		}
 
-		.ui.search>.results {
+		.ui.search > .results {
 			background-color: $dark-input;
 			border-color: $darker;
 			color: white;
@@ -771,8 +771,8 @@
 				}
 			}
 
-			>.message,
-			>.message .header {
+			> .message,
+			> .message .header {
 				color: white;
 			}
 		}
@@ -806,11 +806,11 @@
 		border-color: $dark-element;
 		box-shadow: 0 0 0 0 black;
 
-		>.image {
+		> .image {
 			background-color: rgba(255, 255, 255, 0.075);
 		}
 
-		>.content>a {
+		> .content > a {
 			color: white;
 		}
 	}
@@ -834,7 +834,7 @@
 	}
 
 	.block-picker {
-		>div:last-child {
+		> div:last-child {
 			background-color: $dark-element;
 			box-shadow: $dark-input 0 0 3px 0;
 		}
@@ -1048,9 +1048,9 @@
 
 .ui.modal.dark-mode {
 
-	&>.header,
-	&>.content,
-	&>.actions {
+	& > .header,
+	& > .content,
+	& > .actions {
 		color: white;
 		border-color: $dark-body;
 		background-color: $dark-element;

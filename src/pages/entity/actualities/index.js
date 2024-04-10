@@ -80,7 +80,10 @@ const ActualityList = props => {
 			}
 		>
 			<SectionAds />
-			<Form onSubmit={handleSubmitFilters} className="mb-4">
+			<Form
+				onSubmit={handleSubmitFilters}
+				// className="mb-2 inline d-flex align-items-end"
+			>
 				<DropdownMultipleSelectField
 					label="Catégories"
 					name="tags"
@@ -88,8 +91,15 @@ const ActualityList = props => {
 					options={actuality_tags}
 					value={checkedTags}
 					onChange={(e, { value }) => setCheckedTags(value)}
-				/>
-				<Button color="orange" content="Valider le filtre" type="submit" />
+				>
+					<Button
+						color="orange"
+						className="mb-3 btn-rounded-right"
+						style={{ minHeight: '2.71428571em' }}
+						content="Valider le filtre"
+						type="submit"
+					/>
+				</DropdownMultipleSelectField>
 			</Form>
 			<div className="list-filter">
 				<FormSearch

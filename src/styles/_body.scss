@@ -35,8 +35,8 @@ body {
 	.heading-font {
 		font-family: $headings-font-family;
 
-		>a,
-		>strong {
+		> a,
+		> strong {
 			font-family: $headings-font-family;
 		}
 	}
@@ -132,7 +132,7 @@ body {
 main {
 	position: relative;
 
-	>.ui.loader.inline.active {
+	> .ui.loader.inline.active {
 		margin-top: 1em;
 	}
 }
@@ -265,6 +265,14 @@ section {
 	font-weight: $medium;
 }
 
+.btn.btn-rounded-left {
+	border-radius: 3.125em 0 0 3.125em;
+}
+
+.btn.btn-rounded-right {
+	border-radius: 0 3.125em 3.125em 0;
+}
+
 .btn.btn-padding-reduce {
 	padding-right: 1em;
 	padding-left: 1em;
@@ -276,7 +284,7 @@ section {
 	margin-right: 0;
 }
 
-.ui.button.icon>i.icon {
+.ui.button.icon > i.icon {
 	line-height: 1;
 }
 
@@ -507,18 +515,18 @@ section {
 	padding: 0.6055em 0.3833em 0.4433em 2.5333em !important;
 	border: 0;
 
-	>.icon {
+	> .icon {
 		background-color: rgba(0, 0, 0, 0.25);
 		padding-left: 2px;
 		width: 2.17142857em;
 	}
 }
 
-.ui.labeled.button>.button {
+.ui.labeled.button > .button {
 	border-radius: 3.125em;
 }
 
-.ui.labeled.button>.button+.label {
+.ui.labeled.button > .button + .label {
 	color: #212529 !important;
 	border-radius: 0 3.125em 3.125em 0;
 }
@@ -592,15 +600,15 @@ i.icon.check.circle {
 	font-weight: 500;
 	font-size: 0.85em;
 
-	&:not(.basic){
+	&:not(.basic) {
 		padding: 0.75em 0.5em 0.5em 0.5em;
 	}
 
-	>a {
+	> a {
 		opacity: 1;
 	}
 
-	>span {
+	> span {
 		vertical-align: middle;
 		line-height: 1;
 	}
@@ -656,12 +664,12 @@ i.icon.check.circle {
 		background-color: $red !important;
 	}
 
-	>i.icon:first-child:last-child {
+	> i.icon:first-child:last-child {
 		margin: 0;
 	}
 }
 
-.ui.label>img.img-icon {
+.ui.label > img.img-icon {
 	height: 1.57142857em !important;
 	padding-top: 0.17857143em;
 	padding-bottom: 0.17857143em;
@@ -921,16 +929,16 @@ h3,
 	border-radius: $border-radius;
 }
 
-.container>.framed {
+.container > .framed {
 	margin-top: 0;
 }
 
 .list-filter {
 	margin-bottom: 1.5em;
 
-	>.ui.form,
-	>.field,
-	>.ui.loader {
+	> .ui.form,
+	> .field,
+	> .ui.loader {
 		margin-bottom: 1em;
 
 		&:last-child {
@@ -958,7 +966,7 @@ ul {
 }
 
 .ui.list.flex {
-	>.item {
+	> .item {
 		font-size: 1.15rem;
 		display: flex;
 		align-items: center;
@@ -971,13 +979,13 @@ ul {
 			padding-top: 0;
 		}
 
-		>img:first-child,
-		>i.icon:first-child {
+		> img:first-child,
+		> i.icon:first-child {
 			margin-right: rem(30px);
 		}
 
-		>.header,
-		>.content {
+		> .header,
+		> .content {
 			flex-grow: 1;
 		}
 
@@ -1072,8 +1080,8 @@ ul {
 	flex-direction: column;
 }
 
-.row>.col-xs-12>.ui.card,
-.row>.col-12>.ui.card {
+.row > .col-xs-12 > .ui.card,
+.row > .col-12 > .ui.card {
 	width: 100%;
 }
 
@@ -1086,7 +1094,7 @@ ul {
 	}
 }
 
-.table-wrapper+.pagination-wrapper {
+.table-wrapper + .pagination-wrapper {
 	margin-top: 1.5rem;
 }
 
@@ -1176,12 +1184,12 @@ ul {
 	}
 }
 
-.ui.dropdown.menu-position-right>.menu.transition {
+.ui.dropdown.menu-position-right > .menu.transition {
 	left: auto;
 	right: 0;
 }
 
-.ui.dropdown.button-triggered>i.icon {
+.ui.dropdown.button-triggered > i.icon {
 	display: none;
 }
 
@@ -1201,7 +1209,7 @@ ul {
 // }
 
 .ui.dropdown.field {
-	>.menu {
+	> .menu {
 		overflow-x: hidden;
 		overflow-y: auto;
 		-webkit-backface-visibility: hidden;
@@ -1212,41 +1220,41 @@ ul {
 		min-width: 100%;
 		width: 100%;
 
-		>.row {
+		> .row {
 			margin: 0;
 		}
 	}
 
-	>.field {
+	> .field {
 		margin-bottom: 0;
 	}
 
-	&.required>.menu {
+	&.required > .menu {
 		padding-top: 15px;
 	}
 
-	&.active>.field input {
+	&.active > .field input {
 		border-radius: 0.28571429rem 0.28571429rem 0 0;
 	}
 
-	&.active>.field+.menu {
+	&.active > .field + .menu {
 		border-top: 0;
 		border-radius: 0 0 0.28571429rem 0.28571429rem;
 	}
 
-	&.upward.active>.field input {
+	&.upward.active > .field input {
 		border-radius: 0 0 0.28571429rem 0.28571429rem;
 	}
 
-	&.upward.active>.field+.menu {
+	&.upward.active > .field + .menu {
 		border-radius: 0.28571429rem 0.28571429rem 0 0;
 		border-top: 1px solid $border-color;
 		border-bottom: 0;
 		bottom: calc(100% - 28px);
 	}
 
-	.menu>.row>div {
-		>.header {
+	.menu > .row > div {
+		> .header {
 			padding: 0.78571429rem 1.14285714rem;
 			font-weight: $semibold;
 			text-transform: uppercase;
@@ -1265,7 +1273,7 @@ ul {
 			}
 		}
 
-		>.item {
+		> .item {
 			transition: all 0.3s;
 			position: relative;
 			cursor: pointer;
@@ -1295,7 +1303,7 @@ ul {
 
 // Tab
 .top-tab {
-	>.ui.tab {
+	> .ui.tab {
 		background-color: $light-grey;
 	}
 }
@@ -1317,8 +1325,8 @@ ul {
 	margin: 0;
 }
 
-.ui.menu .item>.sprite img,
-.ui.menu .item>img.sprite {
+.ui.menu .item > .sprite img,
+.ui.menu .item > img.sprite {
 	max-height: rem(30px);
 	max-width: rem(30px);
 	width: auto;
@@ -1489,11 +1497,11 @@ ul {
 	}
 
 	.row.divided {
-		>div:first-child {
+		> div:first-child {
 			padding-right: 5rem;
 		}
 
-		>div:not(:first-child) {
+		> div:not(:first-child) {
 			padding-left: 5rem;
 			position: relative;
 

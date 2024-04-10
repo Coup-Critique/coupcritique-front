@@ -9,6 +9,7 @@ const DropdownMultipleSelectField = ({
 	error,
 	options,
 	className,
+	children,
 	...props
 }) => {
 	const optionsToDropdown = options.map(el => ({
@@ -33,6 +34,7 @@ const DropdownMultipleSelectField = ({
 					{error}
 				</Label>
 			)}
+			{children}
 		</FormField>
 	);
 };
