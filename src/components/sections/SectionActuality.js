@@ -1,13 +1,13 @@
 // modules
 import Link from 'next/link';
 // components
-import ActualityTeaser from '@/components/teasers/ActualityTeaser';
+import ArticleTeaser from '../teasers/ArticleTeaser';
 
 function SectionActuality({ actualities = [] }) {
 	if (!actualities.length) return null;
 	return (
 		<section className="text-center">
-			<div className="ui container list">
+			<div className="ui container">
 				<div className="h2-btn">
 					<h2>Actualités</h2>
 					<Link href="/entity/actualities" className="btn btn-orange">
@@ -20,7 +20,10 @@ function SectionActuality({ actualities = [] }) {
 							key={actuality.id}
 							className="col-12 col-lg-4 d-flex flex-column"
 						>
-							<ActualityTeaser actuality={actuality} />
+							<ArticleTeaser
+								article={actuality}
+								entityName={'actualities'}
+							/>
 						</div>
 					))}
 				</div>

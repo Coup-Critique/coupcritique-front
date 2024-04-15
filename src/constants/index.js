@@ -7,18 +7,3 @@ export const NUMBER_OF_PREVIEWS = 5;
 export const EMAIL_REGEX = new RegExp(
 	/^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/
 );
-
-export const MONTHS = [
-	'janvier',
-	'fevrier',
-	'mars',
-	'avril',
-	'mai',
-	'juin',
-	'juillet',
-	'aout',
-	'septembre',
-	'octobre',
-	'novembre',
-	'decembre',
-];

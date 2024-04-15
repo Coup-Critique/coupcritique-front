@@ -1,32 +1,46 @@
 // modules
 import { useState, useEffect } from 'react';
-import useFetch, { FILE_TYPE } from '@/hooks/useFetch';
-import { useRouter } from 'next/router';
-// components
-import { Button, Form, Message } from 'semantic-ui-react';
-import { POST, PUT } from '@/constants/methods';
 import { useDispatch } from 'react-redux';
-import { addMessage } from '@/reducers/messages';
-import MultiImageField from '@/components/fields/MultiImageField';
+import { useRouter } from 'next/router';
+import { Button, Form, Message } from 'semantic-ui-react';
+// components
 import Wysiwyg from '@/components/Wysiwyg';
-import { buildFieldsMessage } from '@/functions';
+import MultiImageField from '@/components/fields/MultiImageField';
+import TagsField from '@/components/fields/TagsField';
+import useFetch, { FILE_TYPE } from '@/hooks/useFetch';
 import useSaveToStorage from '@/hooks/useSaveToStorage';
+import { POST, PUT } from '@/constants/methods';
+import { addMessage } from '@/reducers/messages';
+import { buildFieldsMessage } from '@/functions';
+import { entitiesToEntity } from '@/constants/entities';
 
-const FormTournament = ({ handleSubmited, tournament = {} }) => {
+const defaultObject = {};
+const defaultArray = [];
+
+const FormArticle = ({
+	handleSubmited,
+	entityName,
+	article = defaultObject,
+	reinitiRef,
+	tags = defaultArray,
+	addtionalFields,
+	addtionalWidths,
+}) => {
 	const dispatch = useDispatch();
 	const router = useRouter();
-	const [form, setForm] = useState(tournament);
+	const [form, setForm] = useState(article);
 	const [success, setSuccess] = useState(true);
 	const [message, setMessage] = useState('');
 	const [result, load, loading] = useFetch();
 	const [resultImages, uploadImages, loadingImages] = useFetch();
-	const [images, setImages] = useState([]);
-	const [defaultWysiwyg, setDefaultWysiwyg] = useState(tournament.description);
+	const [images, setImages] = useState(defaultArray);
+	const [defaultWysiwyg, setDefaultWysiwyg] = useState(article.description);
 	const saveStorage = stored => {
 		setForm(stored);
 		setDefaultWysiwyg(stored.description);
 	};
 	const [voidStorage] = useSaveToStorage(form, saveStorage);
+	const singularEntity = entitiesToEntity[entityName];
 
 	useEffect(() => {
 		if (result) {
@@ -63,6 +77,7 @@ const FormTournament = ({ handleSubmited, tournament = {} }) => {
 	const handleChange = (e, { name, value }) => setForm({ ...form, [name]: value });
 	const handleChangeEditor = value => setForm({ ...form, description: value });
 	const handleImages = (name, value) => setImages(value);
+	const handleChangeTags = (name, tags) => setForm({ ...form, tags });
 
 	const handleRemoveImage = i => {
 		if (form.images[i]) {
@@ -74,25 +89,40 @@ const FormTournament = ({ handleSubmited, tournament = {} }) => {
 
 	const handleUploadImages = (body = images) => {
 		uploadImages({
-			url: `tournaments/${result.tournament.id}/images`,
+			url: `${entityName}/${result[singularEntity].id}/images`,
 			method: POST,
 			body,
 			contentType: FILE_TYPE,
 		});
 	};
 
+	const handleReinit = e => {
+		e.preventDefault();
+		voidStorage();
+		router.reload();
+	};
+
 	const handleCancel = e => {
 		e.preventDefault();
 		voidStorage();
-		router.push('/entity/tournaments/' + (tournament.id || ''));
+		router.push(`/entity/${entityName}/` + (article.id || ''));
 	};
 
 	const onSubmit = e => {
 		e.preventDefault();
 		load({
-			url: tournament.id ? `tournaments/${tournament.id}` : 'tournaments',
-			method: tournament.id ? PUT : POST,
+			url: article.id ? `${entityName}/${article.id}` : entityName,
+			method: article.id ? PUT : POST,
 			body: form,
+		});
+	};
+
+	const getSelectedTags = () => {
+		return tags.map(tag => {
+			if (form.tags.findIndex(articleTag => articleTag.id === tag.id) > -1) {
+				return { ...tag, selected: true };
+			}
+			return tag;
 		});
 	};
 
@@ -108,22 +138,42 @@ const FormTournament = ({ handleSubmited, tournament = {} }) => {
 				name="title"
 				label="Titre"
 				defaultValue={form.title}
-				placeholder={'Entrez le titre du tournoi'}
+				placeholder={"Entrez le titre de l'article"}
 				onChange={handleChange}
 				required
 				maxLength={255}
 				message={message.title}
 			/>
 			<MultiImageField
-				dirName="tournaments"
+				dirName={entityName}
 				files={images}
-				defaultImages={form.images}
+				defaultImages={form.images || defaultArray}
 				btnColor="orange"
 				handleChange={handleImages}
 				nbMax={5 - (form.images ? form.images.length : 0)}
 				disabled={!!form.images && form.images.length > 4}
 				handleRemove={handleRemoveImage}
 			/>
+			{tags.length > 0 && (
+				<TagsField
+					label="Catégories"
+					name="tags"
+					tags={form.tags ? getSelectedTags() : tags}
+					handleChange={handleChangeTags}
+				/>
+			)}
+			{!!addtionalFields && (
+				<Form.Group widths={addtionalWidths}>
+					{addtionalFields.map((field, i) => (
+						<Form.Input
+							key={i}
+							defaultValue={form[field.name]}
+							{...field}
+							onChange={handleChange}
+						/>
+					))}
+				</Form.Group>
+			)}
 			<Form.Input
 				name="shortDescription"
 				label="Description Courte"
@@ -145,14 +195,28 @@ const FormTournament = ({ handleSubmited, tournament = {} }) => {
 			<Message error content={message} />
 			<div className="text-center">
 				<Button
-					color="orange"
 					type="submit"
+					color="orange"
 					content="Valider"
 					disabled={loading}
 				/>
-				<Button onClick={handleCancel} color="grey" content="Annuler" />
+				<Button
+					type="button"
+					onClick={handleCancel}
+					color="grey"
+					content="Annuler"
+				/>
+				<Button
+					ref={reinitiRef}
+					type="button"
+					icon="refresh"
+					onClick={handleReinit}
+					color="blue"
+					content="Réinitialiser"
+					className="d-none"
+				/>
 			</div>
 		</Form>
 	);
 };
-export default FormTournament;
+export default FormArticle;

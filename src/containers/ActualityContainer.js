@@ -15,7 +15,7 @@ const ActualityContainer = ({ Component, ...props }) => {
 	if (loading) {
 		return <Loader active inline="centered" />;
 	} else if (actuality) {
-		return <Component {...props} actuality={actuality} />;
+		return <Component {...props} actuality={actuality} article={actuality} />;
 	} else {
 		return null;
 	}

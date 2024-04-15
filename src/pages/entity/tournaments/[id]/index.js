@@ -1,14 +1,20 @@
 // modules
 
 // components
-import TournamentArticle from '@/components/article/TournamentArticle';
+import ArticleArticle from '@/components/article/ArticleArticle';
 import TournamentContainer from '@/containers/TournamentContainer';
 import { manageFetch } from '@/hooks/useFetch';
 import useNotifChecker from '@/hooks/useNotifChecker';
 
 const TournamentPage = ({ tournament }) => {
 	useNotifChecker('tournament', tournament.id);
-	return <TournamentContainer Component={TournamentArticle} tournament={tournament} />;
+	return (
+		<TournamentContainer
+			Component={ArticleArticle}
+			tournament={tournament}
+			entityName="tournaments"
+		/>
+	);
 };
 
 export async function getServerSideProps({ query }) {

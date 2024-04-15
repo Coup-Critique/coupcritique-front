@@ -4,6 +4,7 @@ import SectionActuality from '@/components/sections/SectionActuality';
 import SectionAdsHome from '@/components/sections/SectionAdsHome';
 import SectionTopUsages from '@/components/sections/SectionTopUsages';
 import SectionWeeklyTeam from '@/components/sections/SectionWeeklyTeam';
+import SectionCircuitCalendar from '@/components/sections/SectionCircuitCalendar';
 import { manageFetch } from '@/hooks/useFetch';
 import CardHomeTitle from '@/components/cards/CardHomeTitle';
 import CardFindTeam from '@/components/cards/CardFindTeam';
@@ -27,10 +28,11 @@ const Home = props => {
 						<CardProposeTeam />
 					</div>
 					<div className="four">
-						<CardCircuit />
+						<CardCircuit currentTour={props.currentTour} />
 					</div>
 				</div>
 			</section>
+			<SectionCircuitCalendar calendar={props.calendar} />
 			<SectionAdsHome />
 			<SectionActuality actualities={props.actualities} />
 			<SectionWeeklyTeam team={props.team} />
@@ -54,6 +56,7 @@ export const getStaticProps = async () => {
 			manageFetch(`tiers/usages/top`),
 			manageFetch(`tiers/usages/top?official=true`),
 			manageFetch(`tiers/usages/top?isDouble=true&official=true`),
+			manageFetch(`circuit-tours/calendar`),
 		]);
 		const { team } = responses[0];
 		const { actualities } = responses[1];
@@ -62,7 +65,16 @@ export const getStaticProps = async () => {
 		const { tier: ou, usage: usageOu } = responses[4];
 		const { tier: bss, usage: usageBss } = responses[5];
 		const { tier: vgc, usage: usageVgc } = responses[6];
-		const props = { actualities, team: team || null, videos, guides, usages: [] };
+		const { calendar, currentTour } = responses[7];
+		const props = {
+			actualities,
+			team: team || null,
+			videos,
+			guides,
+			usages: [],
+			calendar,
+			currentTour,
+		};
 		if (ou) {
 			props.usages.push({ tier: ou, usage: usageOu });
 		}

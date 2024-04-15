@@ -10,7 +10,7 @@ const GuideContainer = ({ Component, ...props }) => {
 	if (loading) {
 		return <Loader active inline="centered" />;
 	} else if (guide) {
-		return <Component {...props} guide={guide} />;
+		return <Component {...props} article={guide} guide={guide} />;
 	} else {
 		return null;
 	}

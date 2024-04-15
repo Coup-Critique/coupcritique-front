@@ -10,6 +10,8 @@ export const entities = {
 	actualities: 'actualities',
 	tournaments: 'tournaments',
 	guides: 'guides',
+	circuitTours: 'circuitTours',
+	'circuit-tours': 'circuit-tours',
 };
 
 export const reloadOnSsr = {
@@ -23,6 +25,9 @@ export const reloadOnSsr = {
 	tournament: true,
 	guides: true,
 	guide: true,
+	circuitTours: true,
+	'circuit-tours': true,
+	circuitTour: true,
 };
 
 export const checkNotif = {
@@ -36,6 +41,9 @@ export const checkNotif = {
 	tournament: true,
 	guides: true,
 	guide: true,
+	circuitTours: true,
+	'circuit-tours': true,
+	circuitTour: true,
 };
 
 export const entitiesToEntity = {
@@ -50,6 +58,8 @@ export const entitiesToEntity = {
 	actualities: 'actuality',
 	tournaments: 'tournament',
 	guides: 'guide',
+	circuitTours: 'circuitTour',
+	'circuit-tours': 'circuitTour',
 };
 
 export const entityToEntities = {
@@ -64,6 +74,8 @@ export const entityToEntities = {
 	actuality: 'actualities',
 	tournament: 'tournaments',
 	guide: 'guides',
+	circuitTour: 'circuitTours',
+	'circuit-tour': 'circuit-tours',
 };
 
 export const entitiesTranslation = {
@@ -76,8 +88,9 @@ export const entitiesTranslation = {
 	tiers: 'tiers',
 	users: 'utilisateurs',
 	actualities: 'actualités',
-	tournaments: 'tournois',
+	tournaments: 'tournoi',
 	guides: 'guides',
+	circuitTours: 'tournoi',
 };
 
 export const entitiesWithGen = {

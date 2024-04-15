@@ -212,9 +212,14 @@ function MenuNavBar({ iconized = false }) {
 					{iconized && <ActualitySVG />} Actualités
 				</ActiveLink>
 			</li>
-			<li className="nav-item d-none d-lg-block">
+			{/* <li className="nav-item d-none d-lg-block">
 				<ActiveLink href="/entity/tournaments" className="nav-link">
 					{iconized && <Icon name="sitemap" />} Tournois
+				</ActiveLink>
+			</li> */}
+			<li className="nav-item d-none d-lg-block">
+				<ActiveLink href="/entity/circuit-tours" className="nav-link">
+					{iconized && <Icon name="sitemap" />} Circuit
 				</ActiveLink>
 			</li>
 			{user.is_modo === true && (

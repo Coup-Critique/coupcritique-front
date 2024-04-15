@@ -104,8 +104,13 @@
 		}
 	}
 
-	.ui.label:not(.orange):not(.red):not(.blue):not(.green):not(.yellow):not(.black) {
+	.ui.label:not(.red):not(.orange):not(.blue):not(.purple):not(.yellow):not(.green):not(.teal):not(.pink):not(.olive):not(.violet):not(.brown) {
 		background-color: $dark-element;
+		color: white;
+	}
+
+	.framed .ui.label:not(.red):not(.orange):not(.blue):not(.purple):not(.yellow):not(.green):not(.teal):not(.pink):not(.olive):not(.violet):not(.brown) {
+		background-color: $dark-body !important;
 		color: white;
 	}
 
@@ -684,10 +689,6 @@
 		}
 
 		.field {
-			.ui.input.labeled .ui.label:not(.red):not(.orange):not(.blue) {
-				background-color: $dark-input !important;
-			}
-
 			.ui.input.labeled.right .ui.label {
 				border-left: 2px solid $dark-body;
 			}

@@ -34,7 +34,7 @@ const useGetEntityWithUser = (id, key, loadUrl, ssrEntity) => {
 
 	useEffect(() => {
 		// gen comes from id
-		if (!user.loading && (!entityLoaded || reloadOnSsr[key])) {
+		if (!user.loading && id && (!entityLoaded || reloadOnSsr[key])) {
 			load({ url: `${loadUrl}/${id}` });
 		}
 	}, [id, user.loading, user.id]);

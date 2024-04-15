@@ -1,5 +1,6 @@
 import PokemonArticle from '@/components/article/PokemonArticle';
 import gens from '@/constants/gens';
+import { rmUndefined } from '@/functions';
 import { manageFetch } from '@/hooks/useFetch';
 import { Loader } from 'semantic-ui-react';
 
@@ -51,7 +52,7 @@ export const getStaticProps = async ({ params }) => {
 		const { pokemon, usages, weaknesses, availableGens, inherit } = response;
 		const { tiers } = await manageFetch('tiers-select');
 		return {
-			props: {
+			props: rmUndefined({
 				pokemon,
 				mainPokemon: inherit ? pokemon.base_form : pokemon,
 				forms: pokemon ? makeForms(pokemon) : [],
@@ -60,7 +61,7 @@ export const getStaticProps = async ({ params }) => {
 				usages,
 				availableGens,
 				tiers,
-			},
+			}),
 		};
 	} catch (e) {
 		console.error(e);

@@ -1,28 +1,30 @@
 // modules
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Slider from 'react-slick';
 import { Button } from 'semantic-ui-react';
-import { formatDate } from '@/functions';
+import Slider from 'react-slick';
 // components
 import PageWrapper from '@/components/PageWrapper';
+import ScrollReveal from '@/components/ScrollReveal';
+import Tag from '@/components/elements/Tag';
+import CommentArea from '@/components/CommentArea';
+import SectionAds from '@/components/sections/SectionAds';
+import Author from '@/components/elements/Author';
 import useFetch from '@/hooks/useFetch';
 import { DELETE } from '@/constants/methods';
-import { useRouter } from 'next/router';
 import { addMessage } from '@/reducers/messages';
-import ScrollReveal from '@/components/ScrollReveal';
-import CommentArea from '@/components/CommentArea';
-import Tag from '@/components/elements/Tag';
-import SectionAds from '@/components/sections/SectionAds';
+import { entitiesToEntity } from '@/constants/entities';
 
-const defaultGoBack = '/entity/tournaments/';
-const TournamentArticle = props => {
+const ArticleArticle = props => {
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
-	const { tournament } = props;
+	const { article, entityName } = props;
+	const defaultGoBack = `/entity/${entityName}/`;
+	const singularEntity = entitiesToEntity[entityName];
 
 	useEffect(() => {
 		if (resultDelete?.success) {
@@ -32,25 +34,25 @@ const TournamentArticle = props => {
 	}, [resultDelete]);
 
 	const handleDelete = e =>
-		loadDelete({ url: `tournaments/${tournament.id}`, method: DELETE });
+		loadDelete({ url: `${entityName}/${article.id}`, method: DELETE });
 
-	if (!tournament || !tournament.id) return null;
+	const hasImage = article.images?.length > 0;
+
+	if (!article || !article.id) return null;
 	return (
 		<PageWrapper
 			min
-			title={tournament.title}
+			title={article.title}
 			className="actuality article"
-			metadescription={tournament.shortDescription}
-			metaimage={
-				tournament.images.length > 0 && `tournaments/${tournament.images[0]}`
-			}
+			metadescription={article.shortDescription}
+			metaimage={hasImage && `${entityName}/${article.images[0]}`}
 			goingBack={defaultGoBack}
 			action={
 				user.is_modo && (
 					<div>
 						<Button
 							as={Link}
-							href={`/entity/tournaments/${tournament.id}/update`}
+							href={`/entity/${entityName}/${article.id}/update`}
 							color="blue"
 							content="Modifier"
 							icon="pencil"
@@ -68,13 +70,13 @@ const TournamentArticle = props => {
 			}
 		>
 			<ScrollReveal animation="zoomIn" earlier>
-				{tournament.images.length > 0 && (
+				{hasImage && (
 					<div className="slick-wrapper">
 						<Slider
 							infinite
 							dots
 							speed={500}
-							slidesToShow={tournament.images.length > 1 ? 2 : 1}
+							slidesToShow={article.images.length > 1 ? 2 : 1}
 							slidesToScroll={1}
 							responsive={[
 								{
@@ -83,12 +85,12 @@ const TournamentArticle = props => {
 								},
 							]}
 						>
-							{tournament.images.map((path, i) => (
+							{article.images.map((path, i) => (
 								<div key={i} className="image mb-2">
 									<img
-										src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/tournaments/${path}`}
+										src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/${entityName}/${path}`}
 										className="img-fluid"
-										alt="Tournoi"
+										alt="Actualité"
 										// TODO gerer une taille fixe
 									/>
 								</div>
@@ -98,26 +100,26 @@ const TournamentArticle = props => {
 				)}
 			</ScrollReveal>
 			<ScrollReveal animation="zoomIn" earlier>
-				{tournament.tags.length > 0 && (
+				{article.tags.length > 0 && (
 					<div className="text-center">
-						{tournament.tags.map((tag, i) => (
+						{article.tags.map((tag, i) => (
 							<Tag key={i} tag={tag} />
 						))}
 					</div>
 				)}
-				{/* not display the author */}
-				<p className="date">{formatDate(tournament.date_creation)}</p>
+				<div className="flex justify-content-between">
+					<Author entity={article} />
+				</div>
 				<div
-					className="description framed wysiwyg-result"
+					className="description framed wysiwyg-result mt-1"
 					dangerouslySetInnerHTML={{
-						__html:
-							tournament.parsedDescription || tournament.shortDescription,
+						__html: article.parsedDescription || article.shortDescription,
 					}}
 				/>
 			</ScrollReveal>
 			<SectionAds />
-			<CommentArea entity={tournament} entityName="tournament" />
+			<CommentArea entity={article} entityName={singularEntity} />
 		</PageWrapper>
 	);
 };
-export default TournamentArticle;
+export default ArticleArticle;
