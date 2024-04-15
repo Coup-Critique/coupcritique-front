@@ -5,7 +5,7 @@ import { Button, Card, Icon } from 'semantic-ui-react';
 // functions
 import TierUsage from '@/components/teasers/TierUsage';
 import Video from '@/components/elements/Video';
-import GuideTeaserEnhanced from '@/components/teasers/GuideTeaserEnhanced';
+import ArticleRowTeaser from '@/components/teasers/ArticleRowTeaser';
 
 const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 	<>
@@ -24,7 +24,11 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 							className="col-12 col-sm-4 d-flex justify-content-center mb-4"
 						>
 							<Card className="padded pb-4">
-								<GuideTeaserEnhanced key={guide.id} guide={guide} />
+								<ArticleRowTeaser
+									key={guide.id}
+									article={guide}
+									entityName="guides"
+								/>
 							</Card>
 						</div>
 					))}

@@ -107,9 +107,11 @@ const ArticleArticle = props => {
 						))}
 					</div>
 				)}
-				<Author entity={article} />
+				<div className="flex justify-content-between">
+					<Author entity={article} />
+				</div>
 				<div
-					className="description framed wysiwyg-result"
+					className="description framed wysiwyg-result mt-1"
 					dangerouslySetInnerHTML={{
 						__html: article.parsedDescription || article.shortDescription,
 					}}

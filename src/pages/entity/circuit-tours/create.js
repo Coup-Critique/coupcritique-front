@@ -2,12 +2,18 @@
 
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { Button, Loader } from 'semantic-ui-react';
+import { Button, Loader, Placeholder } from 'semantic-ui-react';
 // components
 import Page404 from '@/pages/404';
 import FormArticle from '@/components/forms/FormArticle';
 import PageWrapper from '@/components/PageWrapper';
 import { useRef } from 'react';
+
+const addtionalFields = [
+	{ name: 'startDate', type: 'date', label: 'Date de début' },
+	{ name: 'endDate', type: 'date', label: 'Date de fin' },
+	{ name: 'color', placeholder: '#000000', label: 'Couleur' },
+];
 
 const CircuitTourFormPage = ({ circuitTour, update = false }) => {
 	const router = useRouter();
@@ -31,7 +37,7 @@ const CircuitTourFormPage = ({ circuitTour, update = false }) => {
 			title={
 				update
 					? 'Modifier le tournoi ' + (circuitTour ? circuitTour.title : '')
-					: 'Ajouter une tournoi'
+					: 'Ajouter un tournoi'
 			}
 			action={
 				<Button
@@ -48,6 +54,8 @@ const CircuitTourFormPage = ({ circuitTour, update = false }) => {
 				article={circuitTour}
 				handleSubmited={goBack}
 				reinitiRef={reinitiRef}
+				addtionalFields={addtionalFields}
+				addtionalWidths={3}
 			/>
 		</PageWrapper>
 	);

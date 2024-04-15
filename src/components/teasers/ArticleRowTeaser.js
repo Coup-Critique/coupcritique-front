@@ -5,43 +5,43 @@ import { formatDate } from '@/functions';
 import ScrollReveal from '@/components/ScrollReveal';
 import Tag from '@/components/elements/Tag';
 
-const GuideTeaserEnhanced = ({ guide }) => (
+const ArticleRowTeaser = ({ article, entityName }) => (
 	<ScrollReveal className="guide-teaser-enhanced" animation="zoomIn" earlier>
 		<div className="row mb-3">
 			<div className="col-12 col-lg-6">
-				<Link href={`/entity/guides/${guide.id}`}>
+				<Link href={`/entity/${entityName}/${article.id}`}>
 					<img
 						className="img-fluid d-block mb-2"
 						src={
-							guide.images && guide.images.length
-								? `${process.env.NEXT_PUBLIC_API_URL}/images/uploads/guides/375px/${guide.images[0]}`
+							article.images && article.images.length
+								? `${process.env.NEXT_PUBLIC_API_URL}/images/uploads/${entityName}/375px/${article.images[0]}`
 								: '/images/default_actuality_colored.jpg'
 						}
 						onError={e => {
 							e.target.onerror = null;
 							e.target.src = '/images/default_actuality_colored.jpg';
 						}}
-						alt={guide.alt}
+						alt={article.alt}
 					/>
-					<span className="sr-only">
-						Illustration du guide&nbsp;: {guide.title}
-					</span>
+					<span className="sr-only">Illustration&nbsp;: {article.title}</span>
 				</Link>
 			</div>
 			<div className="col-12 col-lg-6">
 				<h4>
-					<Link href={`/entity/guides/${guide.id}`}>{guide.title}</Link>
+					<Link href={`/entity/${entityName}/${article.id}`}>
+						{article.title}
+					</Link>
 				</h4>
 				<h5>
-					{guide.user.username} - {formatDate(guide.date_creation)}
+					{article.user.username} - {formatDate(article.date_creation)}
 				</h5>
 			</div>
 		</div>
 		<div>
-			{guide.tags.map((guideTag, i) => (
-				<Tag key={i} tag={guideTag} />
+			{article.tags.map((tag, i) => (
+				<Tag key={i} tag={tag} />
 			))}
 		</div>
 	</ScrollReveal>
 );
-export default GuideTeaserEnhanced;
+export default ArticleRowTeaser;

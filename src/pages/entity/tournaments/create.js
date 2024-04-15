@@ -34,7 +34,7 @@ const TournamentFormPage = ({ tournament, update = false }) => {
 			title={
 				update
 					? 'Modifier le tournoi ' + (tournament ? tournament.title : '')
-					: 'Ajouter une tournoi'
+					: 'Ajouter un tournoi'
 			}
 			nofollow
 			action={

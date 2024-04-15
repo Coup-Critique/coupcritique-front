@@ -23,6 +23,8 @@ const FormArticle = ({
 	article = defaultObject,
 	reinitiRef,
 	tags = defaultArray,
+	addtionalFields,
+	addtionalWidths,
 }) => {
 	const dispatch = useDispatch();
 	const router = useRouter();
@@ -159,6 +161,18 @@ const FormArticle = ({
 					tags={form.tags ? getSelectedTags() : tags}
 					handleChange={handleChangeTags}
 				/>
+			)}
+			{!!addtionalFields && (
+				<Form.Group widths={addtionalWidths}>
+					{addtionalFields.map((field, i) => (
+						<Form.Input
+							key={i}
+							defaultValue={form[field.name]}
+							{...field}
+							onChange={handleChange}
+						/>
+					))}
+				</Form.Group>
 			)}
 			<Form.Input
 				name="shortDescription"
