@@ -104,15 +104,19 @@
 		}
 	}
 
-	.ui.label:not(.red):not(.orange):not(.blue):not(.purple):not(.yellow):not(.green):not(.teal):not(.pink):not(.olive):not(.violet):not(.brown) {
+	.ui.label:not(.red):not(.orange):not(.blue):not(.purple):not(.yellow):not(.green):not(.teal):not(.pink):not(.olive):not(.violet):not(.brown):not(.colored) {
 		background-color: $dark-element;
 		color: white;
 	}
 
-	.framed .ui.label:not(.red):not(.orange):not(.blue):not(.purple):not(.yellow):not(.green):not(.teal):not(.pink):not(.olive):not(.violet):not(.brown) {
-		background-color: $dark-body !important;
+	.ui.label.colored {
 		color: white;
 	}
+
+	// .framed .ui.label:not(.red):not(.orange):not(.blue):not(.purple):not(.yellow):not(.green):not(.teal):not(.pink):not(.olive):not(.violet):not(.brown) {
+	// 	background-color: $dark-body !important;
+	// 	color: white;
+	// }
 
 	.ui.label.black {
 		background-color: black !important;

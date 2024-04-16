@@ -37,7 +37,7 @@ textarea {
 .ui.form {
 	font-size: 1em;
 
-	.field>label {
+	.field > label {
 		font-size: 1em;
 	}
 
@@ -82,32 +82,32 @@ textarea {
 		padding: 0.67857143em 1em;
 	}
 
-	>.ui.dropdown,
-	.ui.segment>.ui.dropdown {
+	> .ui.dropdown,
+	.ui.segment > .ui.dropdown {
 		width: 100%;
 	}
 
-	.ui.input.icon.labeled>i.icon {
+	.ui.input.icon.labeled > i.icon {
 		right: 2.666em;
 	}
 
-	.ui.input.labeled.right>.ui.label {
+	.ui.input.labeled.right > .ui.label {
 		border-radius: 0 $border-radius $border-radius 0;
 	}
 
-	.ui.input.labeled.left>.ui.label+.ui.label {
+	.ui.input.labeled.left > .ui.label + .ui.label {
 		border-radius: 0;
 
-		+input {
+		+ input {
 			border-radius: 0 $border-radius $border-radius 0;
 		}
 	}
 
-	.ui.dropdown.active .ui.input.labeled.right>.ui.label {
+	.ui.dropdown.active .ui.input.labeled.right > .ui.label {
 		border-radius: 0 $border-radius 0 0;
 	}
 
-	.ui.input.labeled>.ui.label:not(.basic) {
+	.ui.input.labeled > .ui.label:not(.basic) {
 		padding-top: 0.95em;
 
 		i.icon {
@@ -158,13 +158,13 @@ textarea {
 		line-height: 1;
 	}
 
-	>.field:first-child>.ui,
-	>.field:first-child>select,
-	>.field:first-child>input {
+	> .field:first-child > .ui,
+	> .field:first-child > select,
+	> .field:first-child > input {
 		border-radius: 0.28571429rem 0 0 0.28571429rem;
 	}
 
-	>.ui.button:last-child {
+	> .ui.button:last-child {
 		border-radius: 0 0.28571429rem 0.28571429rem 0;
 	}
 }
@@ -331,7 +331,7 @@ textarea {
 	.fields {
 		margin-bottom: 0.5rem;
 
-		>label {
+		> label {
 			font-size: 1rem;
 			margin-bottom: 0.5rem;
 		}
@@ -376,6 +376,7 @@ textarea {
 
 	.field {
 		margin: 0;
+		z-index: 3;
 	}
 
 	.ui.label.file-annotation {
@@ -425,6 +426,7 @@ textarea {
 		left: 0;
 		bottom: 0;
 		margin: 0 auto;
+		z-index: 2;
 	}
 
 	&.has-source {

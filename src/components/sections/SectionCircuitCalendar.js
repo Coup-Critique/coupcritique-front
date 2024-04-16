@@ -38,9 +38,9 @@ const SectionCircuitCalendar = ({ calendar }) => {
 const LabelPeriod = memo(function LabelPeriod({ tour }) {
 	return (
 		<Label
-			className={'d-block position-absolute text-center'}
+			className={'d-block position-absolute text-center colored'}
 			style={{
-				backgroundColor: tour.element.color + ' !important',
+				backgroundColor: tour.element.color,
 				left: (tour.start * 100) / 12 + '%',
 				width: ((tour.end - tour.start) * 100) / 12 + '%',
 			}}
