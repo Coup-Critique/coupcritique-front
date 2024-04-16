@@ -32,24 +32,25 @@ const CircuitList = props => {
 		if (result?.success) setCircuitTours(result.circuitTours);
 	}, [result]);
 
-	const handleLoad = () => load({ url: 'circuitTours' });
+	const handleLoad = () => load({ url: 'circuit-tours' });
 
 	return (
 		<PageWrapper
 			title="Circuit Coupe Critique"
 			className="actuality-list"
 			metadescription="Liste des tournois du Circuit de la Coupe Critique."
+			action={
+				user.is_modo && (
+					<Button
+						as={Link}
+						href="/entity/circuit-tours/create"
+						color="blue"
+						content="Ajouter un tournoi"
+						icon="plus"
+					/>
+				)
+			}
 		>
-			{user.is_modo && (
-				<Button
-					as={Link}
-					href="/entity/circuit-tours/create"
-					color="blue"
-					content="Ajouter un tournoi"
-					icon="plus"
-					className="mb-4"
-				/>
-			)}
 			<SectionAds />
 			{nbPages > 1 && (
 				<PaginationPrettier
