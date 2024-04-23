@@ -51,7 +51,7 @@ const PokemonInstanceSet = ({ pokemonSet, tiers, handleUpdate, handleRemove, gen
 		let evs = '';
 
 		const addEv = ev => {
-			if (evs) evs += ' / ';
+			if (evs) evs += ' /\u00A0';
 			evs += ev;
 		};
 
@@ -80,7 +80,7 @@ const PokemonInstanceSet = ({ pokemonSet, tiers, handleUpdate, handleRemove, gen
 		let ivs = '';
 
 		const addIv = iv => {
-			if (ivs) ivs += ' / ';
+			if (ivs) ivs += ' /\u00A0';
 			ivs += iv;
 		};
 
@@ -143,7 +143,7 @@ const PokemonInstanceSet = ({ pokemonSet, tiers, handleUpdate, handleRemove, gen
 										</span>{' '}
 										{pokemonSet.teras_set.length > 0 ? (
 											pokemonSet.teras_set.map(({ tera }, i) => (
-												<span key={i}>
+												<span key={i} className="nowrap">
 													<Slash i={i} mr="0" />{' '}
 													<IconType
 														type={tera}
@@ -164,7 +164,7 @@ const PokemonInstanceSet = ({ pokemonSet, tiers, handleUpdate, handleRemove, gen
 									<span className="attribute">Objets&nbsp;:</span>{' '}
 									{pokemonSet.items_set.length > 0 ? (
 										pokemonSet.items_set.map(({ item }, i) => (
-											<span key={i}>
+											<span key={i} className="nowrap">
 												<Slash i={i} mr="0" />{' '}
 												<SpriteItem item={item} noPopup />{' '}
 												<Item item={item} />
@@ -179,7 +179,7 @@ const PokemonInstanceSet = ({ pokemonSet, tiers, handleUpdate, handleRemove, gen
 										<span className="attribute">Talent&nbsp;:</span>{' '}
 										{pokemonSet.abilities_set.map(
 											({ ability }, i) => (
-												<span key={i}>
+												<span key={i} className="nowrap">
 													<Slash i={i} />{' '}
 													<Ability ability={ability} />
 												</span>
@@ -193,7 +193,7 @@ const PokemonInstanceSet = ({ pokemonSet, tiers, handleUpdate, handleRemove, gen
 										{pokemonSet.natures_set.length > 0
 											? pokemonSet.natures_set.map(
 													({ nature }, i) => (
-														<span key={i}>
+														<span key={i} className="nowrap">
 															<Slash i={i} />{' '}
 															<span>
 																{nature.nom ||
@@ -230,7 +230,7 @@ const PokemonInstanceSet = ({ pokemonSet, tiers, handleUpdate, handleRemove, gen
 								<ul className="moves">
 									<li>
 										{pokemonSet.moves_set_1.map(({ move }, i) => (
-											<span key={i}>
+											<span key={i} className="nowrap">
 												<Slash i={i} /> <Move move={move} />
 											</span>
 										))}
@@ -238,7 +238,7 @@ const PokemonInstanceSet = ({ pokemonSet, tiers, handleUpdate, handleRemove, gen
 									{pokemonSet.moves_set_2.length > 0 && (
 										<li>
 											{pokemonSet.moves_set_2.map(({ move }, i) => (
-												<span key={i}>
+												<span key={i} className="nowrap">
 													<Slash i={i} /> <Move move={move} />
 												</span>
 											))}
@@ -247,7 +247,7 @@ const PokemonInstanceSet = ({ pokemonSet, tiers, handleUpdate, handleRemove, gen
 									{pokemonSet.moves_set_3.length > 0 && (
 										<li>
 											{pokemonSet.moves_set_3.map(({ move }, i) => (
-												<span key={i}>
+												<span key={i} className="nowrap">
 													<Slash i={i} /> <Move move={move} />
 												</span>
 											))}
@@ -256,7 +256,7 @@ const PokemonInstanceSet = ({ pokemonSet, tiers, handleUpdate, handleRemove, gen
 									{pokemonSet.moves_set_4.length > 0 && (
 										<li>
 											{pokemonSet.moves_set_4.map(({ move }, i) => (
-												<span key={i}>
+												<span key={i} className="nowrap">
 													<Slash i={i} /> <Move move={move} />
 												</span>
 											))}

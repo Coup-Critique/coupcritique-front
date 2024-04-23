@@ -32,9 +32,9 @@ const Home = props => {
 					</div>
 				</div>
 			</section>
-			<SectionCircuitCalendar calendar={props.calendar} />
 			<SectionAdsHome />
 			<SectionActuality actualities={props.actualities} />
+			<SectionCircuitCalendar calendar={props.calendar} />
 			<SectionWeeklyTeam team={props.team} />
 			<SectionAdsHome />
 			<SectionTopUsages

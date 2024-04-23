@@ -51,7 +51,7 @@ const PokemonArticle = props => {
 		}
 	);
 
-	const handleChangeForm = (e, { name: id }) => router.push(`/entity/pokemons/${id}`);
+	// const handleChangeForm = (e, { name: id }) => router.push(`/entity/pokemons/${id}`);
 
 	if (!pokemon || !pokemon.id) return null;
 	const name = getName(pokemon);
@@ -83,13 +83,15 @@ const PokemonArticle = props => {
 							key={form.id}
 							name={form.id.toString()}
 							active={form.id === pokemon.id}
+							to={`/entity/pokemons/${form.id}`}
+							as={Link}
 							content={
 								<>
 									<SpritePokemon pokemon={form} noLink />
 									{form.nom || form.name}
 								</>
 							}
-							onClick={handleChangeForm}
+							// onClick={handleChangeForm}
 						/>
 					))}
 				</Menu>

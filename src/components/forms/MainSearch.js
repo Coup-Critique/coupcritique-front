@@ -13,6 +13,7 @@ import { formateName } from '@/functions';
 import { NUMBER_OF_PREVIEWS } from '@/constants/index';
 
 const MainSearch = ({
+	innerRef,
 	messageGiven,
 	pageResultUrl = '/search/',
 	placeholder = 'Recherche Pokémon, objet, talent, tier...',
@@ -111,6 +112,7 @@ const MainSearch = ({
 					value={isUserSearch ? string : string || chosen_search}
 					loading={loading}
 					input={{
+						ref: innerRef,
 						icon: null,
 						placeholder,
 						action: {

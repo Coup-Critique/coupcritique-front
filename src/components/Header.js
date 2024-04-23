@@ -11,12 +11,14 @@ import ShowdownIconHoverable from '@/components/actions/ShowdownIconHoverable';
 import MenuNavBar from '@/components/MenuNavBar';
 import MenuUser from '@/components/MenuUser';
 import CopyMail from '@/components/actions/CopyMail';
+import useCtrlF from '@/hooks/useCtrlF';
 // import Image from 'next/image';
 
 function Header() {
 	const user = useSelector(state => state.user);
 	const notifs = useSelector(state => state.notifs);
 	const [darkMode] = useDarkMode();
+	const ref = useCtrlF();
 
 	return (
 		<header>
@@ -51,6 +53,7 @@ function Header() {
 						<div className="inner-header-bottom">
 							<div className="d-flex">
 								<MainSearch
+									innerRef={ref}
 									size="mini"
 									styleClass="header-search"
 									isHeader
