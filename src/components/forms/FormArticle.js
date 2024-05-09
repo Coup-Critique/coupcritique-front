@@ -20,6 +20,7 @@ const defaultArray = [];
 const FormArticle = ({
 	handleSubmited,
 	entityName,
+	path = entityName,
 	article = defaultObject,
 	reinitiRef,
 	tags = defaultArray,
@@ -105,7 +106,7 @@ const FormArticle = ({
 	const handleCancel = e => {
 		e.preventDefault();
 		voidStorage();
-		router.push(`/entity/${entityName}/` + (article.id || ''));
+		router.push(`/entity/${path}/` + (article.id || ''));
 	};
 
 	const onSubmit = e => {

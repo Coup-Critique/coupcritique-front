@@ -29,13 +29,13 @@ const VideoList = props => {
 	}, [checkedTags, selectedAuthor]);
 
 	useEffect(() => {
-		if (result?.success) setVideos(result.videos);
+		if (result?.success) setVideos(result.circuitVideos);
 	}, [result]);
 
 	const handleLoad = () =>
 		load({
 			url:
-				'videos' +
+				'circuit-videos' +
 				objectToGETparams({
 					tags: checkedTags,
 					author: selectedAuthor,
@@ -73,6 +73,7 @@ const VideoList = props => {
 					handleCancel={handleCancel}
 					tags={tags}
 					handleSubmited={handleSubmited}
+					loadUrl="circuit-videos"
 				/>
 			)}
 			<Form onSubmit={handleLoad} className="mb-4">
@@ -143,9 +144,9 @@ const VideoList = props => {
 
 export async function getServerSideProps() {
 	try {
-		const { videos } = await manageFetch(`videos`);
+		const { circuitVideos } = await manageFetch(`circuit-videos`);
 		const { tags } = await manageFetch(`video_tags`);
-		const { authors } = await manageFetch(`videos/authors`);
+		const { authors } = await manageFetch(`circuit-videos/authors`);
 		let options = [{ key: 0, value: null, text: '\u00A0' }];
 		if (authors) {
 			authors.map((author, index) => {
@@ -158,7 +159,7 @@ export async function getServerSideProps() {
 		}
 		return {
 			props: {
-				videos,
+				videos: circuitVideos,
 				tags,
 				authors: options,
 			},

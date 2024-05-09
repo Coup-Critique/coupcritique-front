@@ -17,10 +17,15 @@ import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSel
 import SectionAds from '@/components/sections/SectionAds';
 import useTableFetch from '@/hooks/useTableFetch';
 
+// initQuery
+// query.tags
+// 	? Array.isArray(query.tags)
+// 		? query.tags
+// 		: query.tags.split(',')
+// 	: defaultArray
+
 const defaultArray = [];
 const TeamList = props => {
-	const dispatch = useDispatch();
-	const filterRef = useRef();
 	const searchRef = useRef();
 
 	const {
@@ -36,85 +41,48 @@ const TeamList = props => {
 		handleSort,
 	} = useTableFetch('teams', { loadUrl: 'teams' }, props.teams, props.nbPages);
 
-	const tiers = useSelector(state => props.tiers || state.tiers);
-	const tags = useSelector(state => props.tags || state.tags);
-	const [setTiers, setTags] = useActions(dispatch, [setTiersAction, setTagsAction]);
-	const [checkedGen, setCheckedGen] = useState(query.gen);
-	const [checkedTier, setCheckedTier] = useState(query.tier);
-	const [checkedTags, setCheckedTags] = useState(
-		query.tags
-			? Array.isArray(query.tags)
-				? query.tags
-				: query.tags.split(',')
-			: defaultArray
-	);
-	const [certified, setCertified] = useState(query.certified);
-	// const [displayFilters, setDisplayFilters] = useState(false);
-
-	useEffect(() => {
-		if (props.tiers?.length) {
-			setTiers(props.tiers);
-		}
-		if (props.tags?.length) {
-			setTags(props.tags);
-		}
-	}, []);
-
-	useEffect(() => {
-		if (query.tier !== checkedTier) {
-			setCheckedTier(query.tier);
-		}
-	}, [query.tier]);
-
-	useEffect(() => {
-		if (!query.tags && checkedTags.length) {
-			setCheckedTags(defaultArray);
-		}
-	}, [query.tags]);
-
-	const handleSubmitFilters = e => {
-		e.preventDefault();
-		setQuery({
-			...query,
-			certified,
-			tier: checkedTier,
-			gen: checkedGen,
-			tags: checkedTags,
-			page: 1,
-		});
-		if (searchRef.current) {
-			searchRef.current.ref.current.click();
-		}
-	};
+	// const tiers = useSelector(state => props.tiers || state.tiers);
+	// const tags = useSelector(state => props.tags || state.tags);
+	const { tiers, tags } = props;
 
 	const handleSearch = search => {
 		setQueryParam('search', search);
-		if (filterRef.current) {
-			filterRef.current.ref.current.click();
-		}
 	};
 
 	const handleTier = useCallback(
 		(tierId, gen) => {
-			setCheckedTier(tierId);
-			setCheckedGen(gen);
+			setQuery({
+				...query,
+				tier: tierId,
+				gen: gen,
+				page: 1,
+			});
+			if (searchRef.current) {
+				searchRef.current.ref.current.click();
+			}
 		},
-		[setCheckedTier, setCheckedGen]
+		[setQuery]
 	);
 
 	const handleTags = useCallback(
-		(e, { value }) => setCheckedTags(value),
-		[setCheckedTags]
+		(e, { value }) => {
+			setQueryParam('tags', value);
+			if (searchRef.current) {
+				searchRef.current.ref.current.click();
+			}
+		},
+		[setQueryParam]
 	);
 
-	const handleReset = e => {
-		e.preventDefault();
-		setCertified('');
-		setCheckedTier(undefined);
-		setCheckedGen(undefined);
-		setCheckedTags(defaultArray);
-		setQuery({ page: 1 });
-	};
+	const handleCertified = useCallback(
+		(e, { value }) => {
+			setQueryParam('certified', value);
+			if (searchRef.current) {
+				searchRef.current.ref.current.click();
+			}
+		},
+		[setQueryParam]
+	);
 
 	return (
 		<PageWrapper
@@ -137,8 +105,8 @@ const TeamList = props => {
 			<RadioFilterForm
 				name="certified"
 				label="Filtrer par"
-				value={certified || ''}
-				onChange={(e, { value }) => setCertified(value)}
+				value={query.certified || ''}
+				onChange={handleCertified}
 				fields={[
 					{ label: 'Toutes', value: '' },
 					{ label: 'Certifiées', value: '1' },
@@ -146,13 +114,13 @@ const TeamList = props => {
 					{ label: "Code d'emprunt", value: 'team_id' },
 				]}
 			/>
-			<Form onSubmit={handleSubmitFilters} className="list-filter">
+			<Form className="list-filter">
 				<div className="d-flex mb-4">
 					<TiersField
 						label="Tier"
 						tiers={tiers}
-						currentTier={checkedTier}
-						currentGen={checkedGen}
+						currentTier={query.tier}
+						currentGen={query.gen}
 						handleChange={handleTier}
 						className="flex-grow-1"
 					/>
@@ -164,7 +132,7 @@ const TeamList = props => {
 							name="tags"
 							className="flex-grow-1"
 							options={tags}
-							value={checkedTags}
+							value={query.tags || []}
 							onChange={handleTags}
 						/>
 					</div>
@@ -184,21 +152,6 @@ const TeamList = props => {
 							des virgules.
 						</em>
 					</div>
-				</div>
-				<div>
-					<Button
-						color="orange"
-						content="Valider le filtre"
-						type="submit"
-						ref={filterRef}
-					/>
-					<Button
-						color="blue"
-						icon="refresh"
-						content="Réinitialiser le filtre"
-						onClick={handleReset}
-						className="ml-2"
-					/>
 				</div>
 			</Form>
 			<div id="pagination-scroll-ref">

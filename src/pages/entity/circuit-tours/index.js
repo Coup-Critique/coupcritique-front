@@ -1,92 +1,98 @@
 // modules
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import Link from 'next/link';
-import { Button, Loader } from 'semantic-ui-react';
+import { Button, Segment } from 'semantic-ui-react';
 // components
-import useFetch, { manageFetch } from '@/hooks/useFetch';
-import usePager from '@/hooks/usePager';
+import { manageFetch } from '@/hooks/useFetch';
 import PageWrapper from '@/components/PageWrapper';
-import PaginationPrettier from '@/components/PaginationPrettier';
 import SectionAds from '@/components/sections/SectionAds';
-import useStateProps from '@/hooks/useStateProps';
 import ArticleTeaser from '@/components/teasers/ArticleTeaser';
+import CircuitCalendar from '@/components/CircuitCalendar';
+import Link from 'next/link';
+import Video from '@/components/elements/Video';
 
-const defaultArray = [];
-const CircuitList = props => {
-	const user = useSelector(state => state.user);
-	const [result, load, loading] = useFetch();
-	const [circuitTours, setCircuitTours] = useStateProps(
-		props.circuitTours || defaultArray
-	);
-	const [table, page, nbPages, handlePage] = usePager(12, circuitTours);
-
-	useEffect(() => {
-		if (!circuitTours.length /*  || Object.keys(query).length > 1 */) {
-			handleLoad();
-		}
-		// }, [query.tags]);
-	}, []);
-
-	useEffect(() => {
-		if (result?.success) setCircuitTours(result.circuitTours);
-	}, [result]);
-
-	const handleLoad = () => load({ url: 'circuit-tours' });
-
+const CircuitHome = props => {
 	return (
 		<PageWrapper
-			title="Circuit Coupe Critique"
+			title="Rejoignez le Circuit Compétitif de 2024 : la Coupe Critique"
 			className="actuality-list"
 			metadescription="Liste des tournois du Circuit de la Coupe Critique."
-			action={
-				user.is_modo && (
-					<Button
-						as={Link}
-						href="/entity/circuit-tours/create"
-						color="blue"
-						content="Ajouter un tournoi"
-						icon="plus"
-					/>
-				)
-			}
 		>
+			<h4 className="description framed">
+				CashPrize total du Circuit : 4000&nbsp;€
+			</h4>
 			<SectionAds />
-			{nbPages > 1 && (
-				<PaginationPrettier
-					activePage={page}
-					totalPages={nbPages}
-					onPageChange={handlePage}
-				/>
-			)}
-			<div id="pagination-scroll-ref">
-				{loading ? (
-					<Loader inline="centered" active />
-				) : table.length > 0 ? (
+			<div className="row mb-5">
+				<div className="col-12 col-lg-4">
+					<h3>Notre dernier tournoi</h3>
+					{props.currentTour && (
+						<ArticleTeaser
+							article={props.currentTour}
+							entityName="circuit-tours"
+						/>
+					)}
+					<div className="text-center">
+						<Button
+							as="a"
+							href="https://discord.gg/UNn4Se3ZKM"
+							target="_blank"
+							rel="noreferrer nofollow"
+							color="violet"
+							content="S'inscrire aux tournois sur Discord"
+							icon="discord"
+						/>
+					</div>
+				</div>
+				<div className="col-12 col-lg-8"></div>
+			</div>
+			<div className="mb-5">
+				<CircuitCalendar calendar={props.calendar} toList />
+			</div>
+			<div className="row">
+				<div className="col-12 col-lg-6">
+					<h2>Derniers articles du Circuit</h2>
 					<div className="row">
-						{table.map(circuitTour => (
-							<div
-								key={circuitTour.id}
-								className="col-12 col-lg-4 d-flex flex-column"
-							>
+						{props.circuitArticles.map(article => (
+							<div key={article.id} className="col-12 col-lg-6">
 								<ArticleTeaser
-									article={circuitTour}
-									entityName={'circuit-tours'}
+									article={article}
+									entityName="circuit-articles"
+									path="circuit-tours/articles"
 								/>
 							</div>
 						))}
 					</div>
-				) : (
-					<p>Aucun tournoi disponible.</p>
-				)}
+					<div className="text-center">
+						<Link
+							href={'/entity/circuit-tours/articles'}
+							className="btn btn-orange"
+						>
+							Voir tous les articles
+						</Link>
+					</div>
+				</div>
+				<div className="col-12 col-lg-6 pl-4">
+					<Segment className="grow py-3 px-4">
+						{/* <div className="row">
+							<div className="col-12 col-lg-6"> */}
+						<h2>Analyse en vidéo</h2>
+						<div className="mb-4">
+							{!!props.circuitVideos &&
+								props.circuitVideos.map(video => (
+									<Video key={video.id} video={video} short />
+								))}
+						</div>
+						<div className="text-center">
+							<Link
+								href={`/entity/circuit-tours/videos`}
+								className="btn btn-orange"
+							>
+								Voir toutes les videos
+							</Link>
+						</div>
+						{/* </div>
+						</div> */}
+					</Segment>
+				</div>
 			</div>
-			{nbPages > 1 && (
-				<PaginationPrettier
-					activePage={page}
-					totalPages={nbPages}
-					onPageChange={handlePage}
-				/>
-			)}
 			<SectionAds />
 		</PageWrapper>
 	);
@@ -94,12 +100,14 @@ const CircuitList = props => {
 
 export async function getServerSideProps() {
 	try {
-		const { circuitTours } = await manageFetch(`circuit-tours`);
-		return { props: { circuitTours } };
+		const { calendar, currentTour } = await manageFetch(`circuit-tours/calendar`);
+		const { circuitArticles } = await manageFetch(`circuit-articles?maxLength=2`);
+		const { circuitVideos } = await manageFetch(`circuit-videos?maxLength=2`);
+		return { props: { calendar, currentTour, circuitArticles, circuitVideos } };
 	} catch (e) {
 		console.error(e);
-		return { props: { circuitTours: null } };
+		return { props: { circuitArticles: [] } };
 	}
 }
 
-export default CircuitList;
+export default CircuitHome;

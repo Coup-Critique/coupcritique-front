@@ -27,8 +27,8 @@ const TiersField = ({
 				control="select"
 			>
 				{!required && <option value={0} />}
-				{!!tiers[fixedGen]
-					&& tiers[fixedGen].map(
+				{!!tiers[fixedGen] &&
+					tiers[fixedGen].map(
 						tier =>
 							tier.playable && (
 								<option key={tier.id} value={tier.id}>
@@ -38,8 +38,8 @@ const TiersField = ({
 					)}
 				{tiers[0].map(
 					tier =>
-						tier.playable
-						&& tier.gen === fixedGen && (
+						tier.playable &&
+						tier.gen === fixedGen && (
 							<option key={tier.id} value={tier.id}>
 								{tier.name}
 							</option>
@@ -50,9 +50,9 @@ const TiersField = ({
 	}
 
 	const currentTierValue =
-		(tiers[currentGen] && tiers[currentGen].find(tier => tier.id == currentTier))
-		|| tiers[0].find(tier => tier.id == currentTier)
-		|| null;
+		(tiers[currentGen] && tiers[currentGen].find(tier => tier.id == currentTier)) ||
+		tiers[0].find(tier => tier.id == currentTier) ||
+		null;
 
 	return (
 		<Dropdown
@@ -64,8 +64,6 @@ const TiersField = ({
 				<FormInput
 					name="tier"
 					icon
-					labelPosition="right"
-					action
 					value={
 						currentTierValue
 							? `[GEN${currentTierValue.gen}] ${currentTierValue.name}`
@@ -79,20 +77,18 @@ const TiersField = ({
 				>
 					<input disabled />
 					<Icon name="dropdown" />
-					<Label
-						color="red"
-						className="clickable close"
-						icon="close"
-						title="vider"
-						onClick={e => {
-							e.preventDefault();
-							handleChange(undefined, undefined);
-						}}
-					/>
 				</FormInput>
 			}
 		>
 			<Dropdown.Menu>
+				{(!!currentGen || !!currentTier) && (
+					<Dropdown.Item
+						content="Vider"
+						icon="times"
+						onClick={e => handleChange(undefined, undefined)}
+						className="activable m-0"
+					/>
+				)}
 				<div className="row">
 					{Object.entries(tiers)
 						.sort(([gen1], [gen2]) => {
@@ -124,16 +120,16 @@ const TiersField = ({
 											key={tier.id}
 											value={tier.id}
 											text={
-												(tier.shortName || tier.name)
-												+ (gen == '0'
-													? ' '
-													  + gens[gens.length - tier.gen]?.name
+												(tier.shortName || tier.name) +
+												(gen == '0'
+													? ' ' +
+													  gens[gens.length - tier.gen]?.name
 													: '')
 											}
 											onClick={e => handleChange(tier.id, tier.gen)}
 											className={
-												currentGen === tier.gen
-												&& currentTier === tier.id
+												currentGen === tier.gen &&
+												currentTier === tier.id
 													? 'active'
 													: undefined
 											}

@@ -83,7 +83,7 @@ const PokemonArticle = props => {
 							key={form.id}
 							name={form.id.toString()}
 							active={form.id === pokemon.id}
-							to={`/entity/pokemons/${form.id}`}
+							href={`/entity/pokemons/${form.id}`}
 							as={Link}
 							content={
 								<>

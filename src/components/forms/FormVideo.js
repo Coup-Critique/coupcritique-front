@@ -15,7 +15,13 @@ const youtubeBeRegex = /^https:\/\/youtu.be\/([a-zA-Z0-9_-]+)$/;
 const youtubeEmbedRegex = /^https:\/\/www.youtube.com\/embed\/([a-zA-Z0-9_-]+)$/;
 
 const defaultArray = [];
-const FormVideo = ({ handleCancel, handleSubmited, video = {}, tags = defaultArray }) => {
+const FormVideo = ({
+	handleCancel,
+	handleSubmited,
+	video = {},
+	loadUrl = 'videos',
+	tags = defaultArray,
+}) => {
 	const dispatch = useDispatch();
 	const [form, setForm] = useState(video);
 	const [selectedTags, setSelectedTags] = useState(video.tags || defaultArray);
@@ -50,7 +56,7 @@ const FormVideo = ({ handleCancel, handleSubmited, video = {}, tags = defaultArr
 
 		if (youtubeEmbedRegex.test(url)) {
 			load({
-				url: video.id ? `videos/${video.id}` : 'videos',
+				url: video.id ? `${loadUrl}/${video.id}` : loadUrl,
 				method: video.id ? PUT : POST,
 				body: {
 					...form,

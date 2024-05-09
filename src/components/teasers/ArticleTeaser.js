@@ -7,11 +7,17 @@ import ScrollReveal from '@/components/ScrollReveal';
 import Tag from '@/components/elements/Tag';
 import Author from '../elements/Author';
 
-const ArticleTeaser = ({ article, entityName, TitleAs = 'h3', btnProps = {} }) => (
+const ArticleTeaser = ({
+	article,
+	entityName,
+	path = entityName,
+	TitleAs = 'h3',
+	btnProps = {},
+}) => (
 	<ScrollReveal className="ui card actuality-teaser" animation="zoomIn" earlier>
 		<Card.Content>
 			<div className="image mb-4">
-				<Link href={`/entity/${entityName}/${article.id}`}>
+				<Link href={`/entity/${path}/${article.id}`}>
 					<img
 						className="img-fluid"
 						src={
@@ -30,7 +36,7 @@ const ArticleTeaser = ({ article, entityName, TitleAs = 'h3', btnProps = {} }) =
 				</Link>
 			</div>
 			<TitleAs>
-				<Link href={`/entity/${entityName}/${article.id}`}>{article.title}</Link>
+				<Link href={`/entity/${path}/${article.id}`}>{article.title}</Link>
 			</TitleAs>
 			{article.tags.length > 0 && (
 				<div className="mb-2">
@@ -48,7 +54,7 @@ const ArticleTeaser = ({ article, entityName, TitleAs = 'h3', btnProps = {} }) =
 			<Link
 				className="underline"
 				{...btnProps}
-				href={`/entity/${entityName}/${article.id}`}
+				href={`/entity/${path}/${article.id}`}
 			>
 				Lire la suite
 			</Link>

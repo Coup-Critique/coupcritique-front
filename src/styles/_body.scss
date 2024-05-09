@@ -828,6 +828,21 @@ i.icon.link.star.outline:active {
 	}
 }
 
+.h2-btn,
+.home .h2-btn {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin-bottom: 2rem;
+	padding: 0 0.5em;
+
+	h2 {
+		margin-bottom: 0;
+	}
+}
+
+
 h2,
 .h2 {
 	margin-bottom: 1.5rem;
@@ -1253,24 +1268,27 @@ ul {
 		bottom: calc(100% - 28px);
 	}
 
+	.menu > .header,
+	.menu > .row > div > .header {
+		font-weight: $semibold;
+		padding: 0.78571429rem 1.14285714rem;
+
+		&.activable {
+			cursor: pointer;
+
+			&:hover,
+			&:focus,
+			&:active,
+			&.active {
+				background: rgba(0, 0, 0, 0.05);
+			}
+		}
+	}
+
 	.menu > .row > div {
 		> .header {
-			padding: 0.78571429rem 1.14285714rem;
-			font-weight: $semibold;
-			text-transform: uppercase;
 			// border-top: 1px solid $border-color;
 			border-bottom: 1px solid $border-color;
-
-			&.activable {
-				cursor: pointer;
-
-				&:hover,
-				&:focus,
-				&:active,
-				&.active {
-					background: rgba(0, 0, 0, 0.05);
-				}
-			}
 		}
 
 		> .item {

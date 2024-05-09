@@ -22,8 +22,8 @@ const ArticleArticle = props => {
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
-	const { article, entityName } = props;
-	const defaultGoBack = `/entity/${entityName}/`;
+	const { article, entityName, path = entityName } = props;
+	const defaultGoBack = `/entity/${path}/`;
 	const singularEntity = entitiesToEntity[entityName];
 
 	useEffect(() => {
@@ -48,25 +48,36 @@ const ArticleArticle = props => {
 			metaimage={hasImage && `${entityName}/${article.images[0]}`}
 			goingBack={defaultGoBack}
 			action={
-				user.is_modo && (
-					<div>
+				<div>
+					{user.is_modo && (
+						<>
+							<Button
+								as={Link}
+								href={`/entity/${path}/${article.id}/update`}
+								color="blue"
+								content="Modifier"
+								icon="pencil"
+								className="mr-2"
+							/>
+							<Button
+								loading={loadingDelete}
+								onClick={handleDelete}
+								color="red"
+								content="Supprimer"
+								icon="trash alternate"
+								className="mr-2"
+							/>
+						</>
+					)}
+					{!!article.results && (
 						<Button
 							as={Link}
-							href={`/entity/${entityName}/${article.id}/update`}
-							color="blue"
-							content="Modifier"
-							icon="pencil"
-							className="mr-2"
+							href={`/entity/${path}/${article.id}/result`}
+							color="orange"
+							content="Voir les résultats"
 						/>
-						<Button
-							loading={loadingDelete}
-							onClick={handleDelete}
-							color="red"
-							content="Supprimer"
-							icon="trash alternate"
-						/>
-					</div>
-				)
+					)}
+				</div>
 			}
 		>
 			<ScrollReveal animation="zoomIn" earlier>

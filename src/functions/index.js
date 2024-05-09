@@ -74,6 +74,19 @@ export function formatNumbers(nb, decimals = 2) {
 	return nb.replace(/\s+/g, '\u00A0');
 }
 
+export function formatPrices(price, decimal = true) {
+	const nbDigit = decimal ? 2 : 0;
+	// prevent from -0,00 for very small negative values
+	if (price > -0.005 && price < 0.005) price = 0;
+	price = new Intl.NumberFormat('fr-FR', {
+		minimumFractionDigits: nbDigit,
+		maximumFractionDigits: nbDigit,
+	}).format(price);
+	// firefox blankspace bug
+	price = price.replace(/\s+/g, '\u00A0');
+	return price + '\u00A0€';
+}
+
 export const formateName = string => string.replace(/[\s-]+/g, ' ');
 
 export const getName = entity => entity.nom || formateName(entity.name);

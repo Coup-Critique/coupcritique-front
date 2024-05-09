@@ -479,6 +479,10 @@
 
 	// Dropdown
 	.ui.dropdown {
+		.menu > .header {
+			color: white;
+		}
+
 		.menu.transition {
 			background-color: $dark-element;
 			border: 1px solid black;

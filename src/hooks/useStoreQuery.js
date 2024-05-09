@@ -11,20 +11,6 @@ import queryReducer, {
 } from '@/reducers/state/queryReducer';
 import useActions from '@/hooks/useActions';
 
-const parseUrlQuery = queryParams =>
-	queryParams
-		? queryParams
-				.substring(1) // removes "?"
-				.split('&')
-				.reduce((paramsObject, param) => {
-					const [key, value] = param.split('=');
-					if (key && value) {
-						paramsObject[key] = decodeURIComponent(value);
-					}
-					return paramsObject;
-				}, {})
-		: null;
-
 /**
  *
  * @param {*} entity
@@ -32,14 +18,14 @@ const parseUrlQuery = queryParams =>
  * @param {...args} params (initQuery additionnals params)
  * @returns
  */
-const useStoreQuery = (saveQueryToStore = false, defaultValues = { page: 1 }) => {
+const useStoreQuery = ({ defaultValues = { page: 1 }, saveQueryToStore = false }) => {
 	// const dispatch = useDispatch();
 	const router = useRouter();
+	const urlQuery = router.query;
 	// const storedQuery = useSelector(state => state.queries[router.pathname] || {});
-	// const urlQuery = useSearchParams();
 	const [query, dispatchQuery] = useReducer(queryReducer, {
 		...defaultValues,
-		// ...urlQuery,
+		...urlQuery,
 		// ...storedQuery,
 	});
 	const [setQuery, updateQuery, setQueryParam] = useActions(dispatchQuery, [
