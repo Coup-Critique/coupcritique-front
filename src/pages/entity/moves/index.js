@@ -10,7 +10,9 @@ import { manageFetch } from '@/hooks/useFetch';
 
 const MovesList = props => {
 	const [moves, setMoves, loading] = useFetchListByGen('moves', props.moves);
-	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
+	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery({
+		saveQueryToStore: true,
+	});
 
 	return (
 		<PageWrapper

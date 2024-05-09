@@ -21,7 +21,9 @@ const GuideList = props => {
 	const [result, load, loading] = useFetch();
 	const [guides, setGuides] = useStateProps(props.guides || defaultArray);
 	const [table, page, nbPages, handlePage] = usePager(12, guides);
-	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
+	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery({
+		saveQueryToStore: true,
+	});
 
 	useEffect(() => {
 		if (!guides.length || Object.keys(query).length > 1) {

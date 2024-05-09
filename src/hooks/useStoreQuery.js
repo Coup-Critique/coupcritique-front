@@ -11,20 +11,14 @@ import queryReducer, {
 } from '@/reducers/state/queryReducer';
 import useActions from '@/hooks/useActions';
 
-/**
- *
- * @param {*} entity
- * @param {*} initQuery
- * @param {...args} params (initQuery additionnals params)
- * @returns
- */
-const useStoreQuery = ({ defaultValues = { page: 1 }, saveQueryToStore = false }) => {
+// TODO Ne pas passer par le store mais par le LocalStorage
+const useStoreQuery = ({ defaultQuery = { page: 1 }, saveQueryToStore = false }) => {
 	// const dispatch = useDispatch();
 	const router = useRouter();
 	const urlQuery = router.query;
 	// const storedQuery = useSelector(state => state.queries[router.pathname] || {});
 	const [query, dispatchQuery] = useReducer(queryReducer, {
-		...defaultValues,
+		...defaultQuery,
 		...urlQuery,
 		// ...storedQuery,
 	});
@@ -58,7 +52,7 @@ const useStoreQuery = ({ defaultValues = { page: 1 }, saveQueryToStore = false }
 			);
 	}, []);
 
-	const resetQuery = e => setQuery(defaultValues);
+	const resetQuery = e => setQuery(defaultQuery);
 
 	return [query, setQuery, updateQuery, setQueryParam];
 };

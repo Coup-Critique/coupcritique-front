@@ -16,7 +16,9 @@ import useStateProps from '@/hooks/useStateProps';
 
 const MovePool = ({ pokemon, moves = [], availableGens }) => {
 	const [table, setTable] = useStateProps(moves);
-	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
+	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery({
+		saveQueryToStore: true,
+	});
 
 	if (!pokemon) return null;
 	const pokemonName = pokemon.nom || formateName(pokemon.name);

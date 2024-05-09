@@ -1,5 +1,4 @@
 // modules
-import { useEffect } from 'react';
 import { Loader } from 'semantic-ui-react';
 // components
 import PageWrapper from '@/components/PageWrapper';
@@ -14,7 +13,9 @@ const PokemonList = props => {
 		'pokemons',
 		props.pokemons
 	);
-	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
+	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery({
+		saveQueryToStore: true,
+	});
 
 	return (
 		<PageWrapper

@@ -14,7 +14,9 @@ import useStateProps from '@/hooks/useStateProps';
 
 const MoveByType = ({ type, moves = [], availableGens }) => {
 	const [table, setTable] = useStateProps(moves);
-	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
+	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery({
+		saveQueryToStore: true,
+	});
 
 	if (!type) return null;
 	return (

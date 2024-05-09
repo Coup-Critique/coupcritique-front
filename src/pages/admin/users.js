@@ -16,7 +16,9 @@ const AdminUsers = () => {
 	const user = useSelector(state => state.user);
 	const [result, load, loading] = useFetch();
 	const [table, setTable] = useState(defaultArray);
-	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
+	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery({
+		saveQueryToStore: true,
+	});
 
 	useEffect(() => {
 		if (user.id && user.is_modo) {

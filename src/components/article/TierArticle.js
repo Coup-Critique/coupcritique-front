@@ -23,7 +23,9 @@ const TierArticle = props => {
 	const [usagesTechnically, setUsagesTechnically] = useStateProps(
 		props.usagesTechnically || defaultArray
 	);
-	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
+	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery({
+		saveQueryToStore: true,
+	});
 
 	if (!tier) return null;
 	return (

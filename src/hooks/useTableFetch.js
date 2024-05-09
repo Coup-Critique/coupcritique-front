@@ -22,10 +22,10 @@ const useTableFetch = (entityName, parameters = {}, defaultValue, nbPagesGiven =
 	const [table, setTable] = useState(defaultValue || defaultArray);
 	const [nbPages, setNbPages] = useState(nbPagesGiven);
 
-	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(
+	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery({
 		saveQueryToStore,
-		defaultQuery
-	);
+		defaultQuery,
+	});
 
 	useEffect(() => {
 		if (

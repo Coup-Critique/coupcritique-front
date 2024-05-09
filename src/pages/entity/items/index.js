@@ -12,7 +12,9 @@ import useStoreQuery from '@/hooks/useStoreQuery';
 
 const ItemsList = props => {
 	const [items, setItems, loading] = useFetchListByGen('items', props.items);
-	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
+	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery({
+		saveQueryToStore: true,
+	});
 
 	return (
 		<PageWrapper

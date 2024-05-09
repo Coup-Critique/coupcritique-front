@@ -13,7 +13,9 @@ const AbilitiesList = props => {
 		'abilities',
 		props.abilities
 	);
-	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
+	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery({
+		saveQueryToStore: true,
+	});
 
 	return (
 		<PageWrapper

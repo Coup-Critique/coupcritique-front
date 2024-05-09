@@ -23,7 +23,9 @@ const ActualityList = props => {
 	const [actualities, setActualities] = useStateProps(
 		props.actualities || defaultArray
 	);
-	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery(true);
+	const [query, setQuery, updateQuery, setQueryParam] = useStoreQuery({
+		saveQueryToStore: true,
+	});
 	const [table, page, nbPages, handlePage] = usePager(24, actualities);
 
 	useEffect(() => {
