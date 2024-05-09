@@ -12,7 +12,7 @@ import queryReducer, {
 import useActions from '@/hooks/useActions';
 
 // TODO Ne pas passer par le store mais par le LocalStorage
-const useStoreQuery = ({ defaultQuery = { page: 1 }, saveQueryToStore = false }) => {
+const useStoreQuery = ({ defaultQuery = { page: 1 }, saveQueryToStore = false } = {}) => {
 	// const dispatch = useDispatch();
 	const router = useRouter();
 	const urlQuery = router.query;
