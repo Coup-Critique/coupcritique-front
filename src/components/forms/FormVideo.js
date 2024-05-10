@@ -20,6 +20,7 @@ const FormVideo = ({
 	handleSubmited,
 	video = {},
 	loadUrl = 'videos',
+	addtionalFields,
 	tags = defaultArray,
 }) => {
 	const dispatch = useDispatch();
@@ -118,6 +119,15 @@ const FormVideo = ({
 					handleChange={handleChangeTags}
 				/>
 			)}
+			{!!addtionalFields &&
+				addtionalFields.map((field, i) => (
+					<Form.Input
+						key={i}
+						defaultValue={form[field.name]}
+						{...field}
+						onChange={handleChange}
+					/>
+				))}
 			<Form.TextArea
 				name="description"
 				label="Description"

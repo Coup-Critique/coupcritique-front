@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { Label } from 'semantic-ui-react';
 import { MONTHS_CUT } from '@/constants/months';
 import Link from 'next/link';
+import SpritePokemon from './elements/SpritePokemon';
 
 // const currentMonthIndex = new Date().getMonth();
 // let months = MONTHS_CUT.slice();
@@ -20,7 +21,7 @@ const CircuitCalendar = ({ calendar, toList = false }) => {
 					Voir tous les tournois
 				</Link>
 			</div>
-			<div className="framed pb-1">
+			<div className="calendar framed pb-1">
 				<div className="inner">
 					<div className="row m-0 mb-3">
 						{MONTHS_CUT.map(month => (
@@ -54,6 +55,14 @@ const LabelPeriod = memo(function LabelPeriod({ tour }) {
 			as={Link}
 			href={`/entity/circuit-tours/${tour.element.id}`}
 		>
+			{!!tour.element.pokemon && (
+				<SpritePokemon
+					noLink={true}
+					pokemon={tour.element.pokemon}
+					width={20}
+					height={20}
+				/>
+			)}{' '}
 			{tour.element.title}
 		</Label>
 	);

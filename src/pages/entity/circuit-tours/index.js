@@ -8,8 +8,12 @@ import ArticleTeaser from '@/components/teasers/ArticleTeaser';
 import CircuitCalendar from '@/components/CircuitCalendar';
 import Link from 'next/link';
 import Video from '@/components/elements/Video';
+import VideoEmbed from '@/components/elements/VideoEmbed';
+import { useSelector } from 'react-redux';
+import Player from '@/components/elements/Player';
 
 const CircuitHome = props => {
+	const cookie = useSelector(state => state.cookie);
 	return (
 		<PageWrapper
 			title="Rejoignez le Circuit Compétitif de 2024 : la Coupe Critique"
@@ -41,7 +45,29 @@ const CircuitHome = props => {
 						/>
 					</div>
 				</div>
-				<div className="col-12 col-lg-8"></div>
+				<div className="col-12 col-lg-8">
+					<Segment padded>
+						<div>
+							<h3>Le Podium</h3>
+							<div className="row">
+								{props.players.map(player => (
+									<div key={player.id} className="col-12 col-lg-4">
+										<Player player={player} />
+									</div>
+								))}
+							</div>
+							<h3>Trailer du Circuit</h3>
+							<div className="row">
+								<div className="col-12 col-lg-6">
+									<VideoEmbed
+										url="https://www.youtube.com/embed/hDwO5bg64_8"
+										cookie={cookie.youtube}
+									/>
+								</div>
+							</div>
+						</div>
+					</Segment>
+				</div>
 			</div>
 			<div className="mb-5">
 				<CircuitCalendar calendar={props.calendar} toList />
@@ -103,7 +129,16 @@ export async function getServerSideProps() {
 		const { calendar, currentTour } = await manageFetch(`circuit-tours/calendar`);
 		const { circuitArticles } = await manageFetch(`circuit-articles?maxLength=2`);
 		const { circuitVideos } = await manageFetch(`circuit-videos?maxLength=2`);
-		return { props: { calendar, currentTour, circuitArticles, circuitVideos } };
+		const { players = [] } = await manageFetch(`players/top`);
+		return {
+			props: {
+				calendar,
+				currentTour,
+				circuitArticles,
+				circuitVideos,
+				players: players.map((player, i) => ({ ...player, rank: i + 1 })),
+			},
+		};
 	} catch (e) {
 		console.error(e);
 		return { props: { circuitArticles: [] } };

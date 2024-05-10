@@ -1,18 +1,29 @@
 // modules
-
+import { useMemo, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { Button, Loader, Placeholder } from 'semantic-ui-react';
+import { Button, Loader } from 'semantic-ui-react';
 // components
 import Page404 from '@/pages/404';
 import FormArticle from '@/components/forms/FormArticle';
 import PageWrapper from '@/components/PageWrapper';
-import { useRef } from 'react';
+
+const addtionalFields = [
+	{ name: 'tour', placeholder: 'Nom du tournoi', label: 'Tournoi du Circuit' },
+];
 
 const CircuitArticleFormPage = ({ circuitArticle, update = false }) => {
 	const router = useRouter();
 	const reinitiRef = useRef();
 	const user = useSelector(state => state.user);
+	// init values
+	const article = useMemo(
+		() =>
+			circuitArticle
+				? { ...circuitArticle, tour: circuitArticle.tour?.name }
+				: undefined,
+		[circuitArticle]
+	);
 
 	const goBack = () => {
 		router.replace(
@@ -48,10 +59,10 @@ const CircuitArticleFormPage = ({ circuitArticle, update = false }) => {
 			<FormArticle
 				entityName="circuit-articles"
 				path="circuit-tours/articles"
-				article={circuitArticle}
+				article={article}
 				handleSubmited={goBack}
 				reinitiRef={reinitiRef}
-				addtionalWidths={3}
+				addtionalFields={addtionalFields}
 			/>
 		</PageWrapper>
 	);

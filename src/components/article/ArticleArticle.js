@@ -22,7 +22,7 @@ const ArticleArticle = props => {
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
-	const { article, entityName, path = entityName } = props;
+	const { article, entityName, link, path = entityName } = props;
 	const defaultGoBack = `/entity/${path}/`;
 	const singularEntity = entitiesToEntity[entityName];
 
@@ -118,7 +118,12 @@ const ArticleArticle = props => {
 						))}
 					</div>
 				)}
-				<div className="flex justify-content-between">
+				<div className={link ? 'd-flex justify-content-between' : undefined}>
+					{!!link && (
+						<p className="date mb-2">
+							<Link {...link} />
+						</p>
+					)}
 					<Author entity={article} />
 				</div>
 				<div

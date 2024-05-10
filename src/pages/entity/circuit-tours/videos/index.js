@@ -12,6 +12,10 @@ import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSel
 import { objectToGETparams } from '@/functions';
 import SectionAds from '@/components/sections/SectionAds';
 
+const addtionalFields = [
+	{ name: 'tour', placeholder: 'Nom du tournoi', label: 'Tournoi du Circuit' },
+];
+
 const VideoList = props => {
 	const { tags, authors } = props;
 	const user = useSelector(state => state.user);
@@ -74,6 +78,7 @@ const VideoList = props => {
 					tags={tags}
 					handleSubmited={handleSubmited}
 					loadUrl="circuit-videos"
+					addtionalFields={addtionalFields}
 				/>
 			)}
 			<Form onSubmit={handleLoad} className="mb-4">

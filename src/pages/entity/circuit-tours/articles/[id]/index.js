@@ -14,6 +14,13 @@ const CircuitArticlePage = ({ circuitArticle }) => {
 			circuitArticle={circuitArticle}
 			entityName="circuit-articles"
 			path="circuit-tours/articles"
+			link={
+				// prettier-ignore
+				circuitArticle.tour ? {
+					href: `/entity/circuit-tours/${circuitArticle.tour.id}`,
+					children: "Tournoi : " +circuitArticle.tour.title,
+				} : undefined
+			}
 		/>
 	);
 };

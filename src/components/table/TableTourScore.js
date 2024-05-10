@@ -5,7 +5,7 @@ import { Icon } from 'semantic-ui-react';
 const cols = [
 	{ key: 'p', content: 'Joueur' },
 	{ key: 'rank', content: 'Rang' },
-	{ key: 'sum', content: 'Score' },
+	{ key: 'sum', content: 'Points' },
 	{ key: 'prize', content: 'Prix' },
 	{ key: 'a', content: 'Ultime adversaire' },
 ];

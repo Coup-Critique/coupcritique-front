@@ -127,6 +127,7 @@ const FormArticle = ({
 		});
 	};
 
+	const AdditionalFields = addtionalWidths ? Form.Group : Form.Field;
 	return (
 		<Form
 			error={!success}
@@ -164,7 +165,7 @@ const FormArticle = ({
 				/>
 			)}
 			{!!addtionalFields && (
-				<Form.Group widths={addtionalWidths}>
+				<AdditionalFields widths={addtionalWidths}>
 					{addtionalFields.map((field, i) => (
 						<Form.Input
 							key={i}
@@ -173,7 +174,7 @@ const FormArticle = ({
 							onChange={handleChange}
 						/>
 					))}
-				</Form.Group>
+				</AdditionalFields>
 			)}
 			<Form.Input
 				name="shortDescription"
