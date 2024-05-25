@@ -8,7 +8,7 @@ import Tag from '@/components/elements/Tag';
 const ArticleRowTeaser = ({ article, entityName }) => (
 	<ScrollReveal className="guide-teaser-enhanced" animation="zoomIn" earlier>
 		<div className="row mb-3">
-			<div className="col-12 col-lg-6">
+			<div className="col-12 col-xl-6">
 				<Link href={`/entity/${entityName}/${article.id}`}>
 					<img
 						className="img-fluid d-block mb-2"
@@ -26,7 +26,7 @@ const ArticleRowTeaser = ({ article, entityName }) => (
 					<span className="sr-only">Illustration&nbsp;: {article.title}</span>
 				</Link>
 			</div>
-			<div className="col-12 col-lg-6">
+			<div className="col-12 col-xl-6">
 				<h4>
 					<Link href={`/entity/${entityName}/${article.id}`}>
 						{article.title}

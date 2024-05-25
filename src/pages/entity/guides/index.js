@@ -13,6 +13,7 @@ import useStoreQuery from '@/hooks/useStoreQuery';
 import SectionAds from '@/components/sections/SectionAds';
 import useStateProps from '@/hooks/useStateProps';
 import ArticleTeaser from '@/components/teasers/ArticleTeaser';
+import ThreeCol from '@/components/columns/ThreeCol';
 
 const defaultArray = [];
 const GuideList = props => {
@@ -101,12 +102,9 @@ const GuideList = props => {
 				) : table.length > 0 ? (
 					<div className="row">
 						{table.map(guide => (
-							<div
-								key={guide.id}
-								className="col-12 col-lg-4 d-flex flex-column"
-							>
+							<ThreeCol key={guide.id}>
 								<ArticleTeaser article={guide} entityName={'guides'} />
-							</div>
+							</ThreeCol>
 						))}
 					</div>
 				) : (

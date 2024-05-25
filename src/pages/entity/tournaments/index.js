@@ -11,6 +11,7 @@ import PaginationPrettier from '@/components/PaginationPrettier';
 import SectionAds from '@/components/sections/SectionAds';
 import useStateProps from '@/hooks/useStateProps';
 import ArticleTeaser from '@/components/teasers/ArticleTeaser';
+import ThreeCol from '@/components/columns/ThreeCol';
 
 const defaultArray = [];
 const TournamentList = props => {
@@ -65,15 +66,12 @@ const TournamentList = props => {
 				) : table.length > 0 ? (
 					<div className="row">
 						{table.map(tournament => (
-							<div
-								key={tournament.id}
-								className="col-12 col-lg-4 d-flex flex-column"
-							>
+							<ThreeCol key={tournament.id}>
 								<ArticleTeaser
 									article={tournament}
 									entityName={'tournaments'}
 								/>
-							</div>
+							</ThreeCol>
 						))}
 					</div>
 				) : (

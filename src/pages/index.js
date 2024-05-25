@@ -28,7 +28,7 @@ const Home = props => {
 						<CardProposeTeam />
 					</div>
 					<div className="four">
-						<CardCircuit currentTour={props.currentTour} />
+						<CardCircuit currentTours={props.currentTours} />
 					</div>
 				</div>
 			</section>
@@ -65,7 +65,7 @@ export const getStaticProps = async () => {
 		const { tier: ou, usage: usageOu } = responses[4];
 		const { tier: bss, usage: usageBss } = responses[5];
 		const { tier: vgc, usage: usageVgc } = responses[6];
-		const { calendar, currentTour } = responses[7];
+		const { calendar, currentTours } = responses[7];
 		const props = {
 			actualities,
 			team: team || null,
@@ -73,7 +73,7 @@ export const getStaticProps = async () => {
 			guides,
 			usages: [],
 			calendar,
-			currentTour,
+			currentTours,
 		};
 		if (ou) {
 			props.usages.push({ tier: ou, usage: usageOu });

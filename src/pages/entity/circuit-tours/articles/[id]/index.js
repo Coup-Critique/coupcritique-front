@@ -18,7 +18,7 @@ const CircuitArticlePage = ({ circuitArticle }) => {
 				// prettier-ignore
 				circuitArticle.tour ? {
 					href: `/entity/circuit-tours/${circuitArticle.tour.id}`,
-					children: "Tournoi : " +circuitArticle.tour.title,
+					children: "Tournoi : " + circuitArticle.tour.title,
 				} : undefined
 			}
 		/>

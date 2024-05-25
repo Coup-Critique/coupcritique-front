@@ -72,10 +72,10 @@ const Video = ({
 			earlier
 		>
 			<div className="row mb-3">
-				<div className="col-12 col-lg-6">
+				<div className={`col-12 col-${short ? 'xl' : 'lg'}-6`}>
 					{!wait && <VideoEmbed url={video.url} cookie={cookie.youtube} />}
 				</div>
-				<div className="col-12 col-lg-6">
+				<div className={`col-12 col-${short ? 'xl' : 'lg'}-6`}>
 					<h4>
 						<a href={video.url} target="_blank" rel="nofollow noreferrer">
 							{video.title}

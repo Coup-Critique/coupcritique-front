@@ -6,6 +6,8 @@ import { Button, Card, Icon } from 'semantic-ui-react';
 import TierUsage from '@/components/teasers/TierUsage';
 import Video from '@/components/elements/Video';
 import ArticleRowTeaser from '@/components/teasers/ArticleRowTeaser';
+import ReduceCol from '../columns/ReduceCol';
+import { makeClassName } from '@/functions';
 
 const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 	<>
@@ -18,11 +20,8 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 					</Link>
 				</div>
 				<div className="row">
-					{guides.map(guide => (
-						<div
-							key={guide.id}
-							className="col-12 col-sm-4 d-flex justify-content-center mb-4"
-						>
+					{guides.map((guide, i) => (
+						<ReduceCol key={guide.id} i={i}>
 							<Card className="padded pb-4">
 								<ArticleRowTeaser
 									key={guide.id}
@@ -30,7 +29,7 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 									entityName="guides"
 								/>
 							</Card>
-						</div>
+						</ReduceCol>
 					))}
 				</div>
 			</div>
@@ -61,9 +60,19 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 					<div className="col-12 col-xl-5">
 						<Card className="padded">
 							<h2 className="text-left">Dernière vidéo</h2>
-							{videos.map(video => (
-								<Video key={video.id} video={video} short />
-							))}
+							<div className="row">
+								{videos.map((video, i) => (
+									<div
+										className={makeClassName(
+											'col-12 col-sm-6 col-xl-12 flex-column',
+											i > 0 && 'd-none d-sm-flex'
+										)}
+										key={video.id}
+									>
+										<Video video={video} short />
+									</div>
+								))}
+							</div>
 							<div className="text-center">
 								<Link href={`/videos`} className="btn btn-orange">
 									Voir toutes les videos

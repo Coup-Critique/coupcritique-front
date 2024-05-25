@@ -25,7 +25,7 @@ const TierUsage = ({ usage, tier }) => {
 							e.target.src = '/images/picto/circle-question-solid.svg';
 						}}
 						alt={tier.name}
-						className="art-pokemon img-fluid unknown"
+						className="art-pokemon img-fluid"
 						width={ART_ITM}
 						height={ART_ITM}
 						ref={ref}

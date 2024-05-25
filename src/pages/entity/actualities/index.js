@@ -14,6 +14,7 @@ import SectionAds from '@/components/sections/SectionAds';
 import FormSearch from '@/components/forms/FormSearch';
 import useStateProps from '@/hooks/useStateProps';
 import ArticleTeaser from '@/components/teasers/ArticleTeaser';
+import ThreeCol from '@/components/columns/ThreeCol';
 
 const defaultArray = [];
 const ActualityList = props => {
@@ -104,15 +105,12 @@ const ActualityList = props => {
 				) : table.length > 0 ? (
 					<div className="row">
 						{table.map(actuality => (
-							<div
-								key={actuality.id}
-								className="col-12 col-lg-4 d-flex flex-column"
-							>
+							<ThreeCol key={actuality.id}>
 								<ArticleTeaser
 									article={actuality}
 									entityName={'actualities'}
 								/>
-							</div>
+							</ThreeCol>
 						))}
 					</div>
 				) : (

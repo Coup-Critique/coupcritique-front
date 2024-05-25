@@ -11,6 +11,7 @@ import PaginationPrettier from '@/components/PaginationPrettier';
 import SectionAds from '@/components/sections/SectionAds';
 import useStateProps from '@/hooks/useStateProps';
 import ArticleTeaser from '@/components/teasers/ArticleTeaser';
+import ThreeCol from '@/components/columns/ThreeCol';
 
 const defaultArray = [];
 const CircuitList = props => {
@@ -65,15 +66,12 @@ const CircuitList = props => {
 				) : table.length > 0 ? (
 					<div className="row">
 						{table.map(circuitTour => (
-							<div
-								key={circuitTour.id}
-								className="col-12 col-lg-4 d-flex flex-column"
-							>
+							<ThreeCol key={circuitTour.id}>
 								<ArticleTeaser
 									article={circuitTour}
 									entityName={'circuit-tours'}
 								/>
-							</div>
+							</ThreeCol>
 						))}
 					</div>
 				) : (

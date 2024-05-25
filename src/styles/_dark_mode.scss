@@ -173,6 +173,19 @@
 		}
 	}
 
+	.ui.segment:not(.basic) .ui.card {
+		background-color: black;
+
+		.card {
+			background-color: $dark-body;
+
+			&.outline {
+				background-color: $dark-element;
+				border: 1px solid $dark-body;
+			}
+		}
+	}
+
 	.framed {
 		background-color: $dark-body;
 	}

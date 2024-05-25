@@ -18,11 +18,11 @@ import { addMessage } from '@/reducers/messages';
 import { entitiesToEntity } from '@/constants/entities';
 
 const ArticleArticle = props => {
+	const { article, entityName, link, path = entityName, actions, children } = props;
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const user = useSelector(state => state.user);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
-	const { article, entityName, link, path = entityName } = props;
 	const defaultGoBack = `/entity/${path}/`;
 	const singularEntity = entitiesToEntity[entityName];
 
@@ -69,14 +69,7 @@ const ArticleArticle = props => {
 							/>
 						</>
 					)}
-					{!!article.results && (
-						<Button
-							as={Link}
-							href={`/entity/${path}/${article.id}/result`}
-							color="orange"
-							content="Voir les résultats"
-						/>
-					)}
+					{actions}
 				</div>
 			}
 		>
@@ -133,6 +126,7 @@ const ArticleArticle = props => {
 					}}
 				/>
 			</ScrollReveal>
+			{children}
 			<SectionAds />
 			<CommentArea entity={article} entityName={singularEntity} />
 		</PageWrapper>

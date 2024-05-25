@@ -2,6 +2,7 @@
 import Link from 'next/link';
 // components
 import ArticleTeaser from '../teasers/ArticleTeaser';
+import ReduceCol from '../columns/ReduceCol';
 
 function SectionActuality({ actualities = [] }) {
 	if (!actualities.length) return null;
@@ -15,16 +16,13 @@ function SectionActuality({ actualities = [] }) {
 					</Link>
 				</div>
 				<div className="row">
-					{actualities.map(actuality => (
-						<div
-							key={actuality.id}
-							className="col-12 col-lg-4 d-flex flex-column"
-						>
+					{actualities.map((actuality, i) => (
+						<ReduceCol key={actuality.id} i={i}>
 							<ArticleTeaser
 								article={actuality}
 								entityName={'actualities'}
 							/>
-						</div>
+						</ReduceCol>
 					))}
 				</div>
 			</div>
