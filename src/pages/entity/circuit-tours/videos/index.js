@@ -16,7 +16,7 @@ const addtionalFields = [
 	{ name: 'tour', placeholder: 'Nom du tournoi', label: 'Tournoi du Circuit' },
 ];
 
-const VideoList = props => {
+const CircuitVideoList = props => {
 	const { tags, authors } = props;
 	const user = useSelector(state => state.user);
 	const [result, load, loading] = useFetch();
@@ -175,4 +175,4 @@ export async function getServerSideProps() {
 	}
 }
 
-export default VideoList;
+export default CircuitVideoList;
