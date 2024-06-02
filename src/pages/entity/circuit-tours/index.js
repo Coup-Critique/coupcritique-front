@@ -26,15 +26,15 @@ const CircuitHome = props => {
 			</h4>
 			<SectionAds />
 			<div className="row mb-4">
-				<div className="col-12 col-lg-4 mb-4">
-					<h3>Notre dernier tournoi</h3>
+				<div className="col-12 col-lg-8 mb-4">
+					<h3>Nos derniers tournois</h3>
 					<div className="row">
 						{props.currentTours.map((tour, i) => (
 							<div
 								key={tour.id}
 								className={makeClassName(
-									'col-12 col-sm-6 col-lg-12 align-items-center',
-									i > 0 && 'd-none d-sm-flex d-lg-none'
+									'col-12 col-sm-6 align-items-center',
+									i > 0 && 'd-none d-sm-flex'
 								)}
 							>
 								<ArticleTeaser
@@ -56,26 +56,36 @@ const CircuitHome = props => {
 						/>
 					</div>
 				</div>
-				<div className="col-12 col-lg-8 mb-4">
-					<Segment padded className="flex-grow-1">
-						<div>
+				<div className="col-12 col-lg-4 mb-4">
+					<Segment padded>
+						<div className="mb-4">
 							<h3>Le Podium</h3>
-							<div className="row">
+							<div className="row mb-4">
 								{props.players.map(player => (
 									<div key={player.id} className="col-12 col-lg-4">
 										<Player player={player} />
 									</div>
 								))}
 							</div>
-							<h3>Trailer du Circuit</h3>
-							<div className="row">
-								<div className="col-12 col-lg-6">
-									<VideoEmbed
-										url="https://www.youtube.com/embed/hDwO5bg64_8"
-										cookie={cookie.youtube}
-									/>
-								</div>
+							<div className="text-center">
+								<Link
+									href={`/entity/circuit-tours/ranking`}
+									className="btn btn-orange"
+								>
+									Voir le classement complet
+								</Link>
 							</div>
+						</div>
+						<div>
+							<h3>Trailer du Circuit</h3>
+							{/* <div className="row"> */}
+							{/* <div className="col-12 col-lg-6"> */}
+							<VideoEmbed
+								url="https://www.youtube.com/embed/hDwO5bg64_8"
+								cookie={cookie.youtube}
+							/>
+							{/* </div> */}
+							{/* </div> */}
 						</div>
 					</Segment>
 				</div>

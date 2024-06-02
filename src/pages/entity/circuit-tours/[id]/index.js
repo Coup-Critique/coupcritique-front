@@ -17,14 +17,14 @@ const CircuitTourPage = ({ circuitTour, circuitArticles, circuitVideos }) => {
 			circuitTour={circuitTour}
 			entityName="circuit-tours"
 			actions={
-				<>
+				!!circuitTour.results && (
 					<Button
 						as={Link}
 						href={`/entity/circuit-tours/${circuitTour.id}/result`}
 						color="orange"
 						content="Voir les résultats"
 					/>
-				</>
+				)
 			}
 		>
 			<div className="row">
@@ -65,7 +65,7 @@ const CircuitTourPage = ({ circuitTour, circuitArticles, circuitVideos }) => {
 								href={`/entity/circuit-tours/videos/tours/${circuitTour.id}`}
 								className="btn btn-orange"
 							>
-								Voir toutes les videos
+								Voir toutes les videos du tour
 							</Link>
 						</div>
 					</Segment>

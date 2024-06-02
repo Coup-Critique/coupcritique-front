@@ -23,6 +23,7 @@ const Page = ({ circuitTour }) => {
 	const hasImage = circuitTour.images?.length > 0;
 
 	const tabs = useMemo(() => {
+		if (!circuitTour.results) return [];
 		const tabs = [
 			{
 				menuItem: 'Scores',
@@ -54,7 +55,11 @@ const Page = ({ circuitTour }) => {
 			metaimage={hasImage && `circuit-tours/${circuitTour.images[0]}`}
 			goingBack={`/entity/circuit-tours/${circuitTour.id}`}
 		>
-			<Tab panes={tabs} />
+			{tabs.length > 0 ? (
+				<Tab panes={tabs} />
+			) : (
+				<p>Les résultats ne sont pas encore disponibles.</p>
+			)}
 		</PageWrapper>
 	);
 };
