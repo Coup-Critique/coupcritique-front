@@ -5,9 +5,10 @@ import { manageFetch } from '@/hooks/useFetch';
 // TODO ajouter une props tour
 const CircuitVideoListByTour = props => <CircuitVideoList {...props} />;
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ query }) {
+	const { tid } = query;
 	try {
-		const { circuitVideos } = await manageFetch(`circuit-videos`);
+		const { circuitVideos } = await manageFetch(`circuit-videos/tour/${tid}`);
 		const { tags } = await manageFetch(`video_tags`);
 		const { authors } = await manageFetch(`circuit-videos/authors`);
 		let options = [{ key: 0, value: null, text: '\u00A0' }];

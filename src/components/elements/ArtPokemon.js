@@ -6,7 +6,7 @@ import { ART_ITM, ART_PKM, IMG_VERSION } from '@/constants/img';
 import { formatFileName } from '@/functions';
 import ImageLoader from './ImageLoader';
 
-const defaultSrc = '/images/picto/circle-question-solid.svg';
+export const defaultSrc = '/images/picto/circle-question-solid.svg';
 
 const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
 	const getImgPath = useCallback(

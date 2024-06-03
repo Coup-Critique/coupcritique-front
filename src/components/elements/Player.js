@@ -1,8 +1,12 @@
+import { defaultSrc } from './ArtPokemon';
+import ImageLoader from './ImageLoader';
+
 const Player = ({ player }) => {
 	return (
 		<div className="text-center">
-			<img
+			<ImageLoader
 				src={`/images/uploads/players/${player.showdown_name}.png`}
+				defaultSrc={defaultSrc}
 				alt={player.showdown_name}
 				height={80}
 				width={80}

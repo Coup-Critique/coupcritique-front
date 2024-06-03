@@ -44,7 +44,7 @@ const CircuitTourPage = ({ circuitTour, circuitArticles, circuitVideos }) => {
 					</div>
 					<div className="text-center">
 						<Link
-							href={`/entity/circuit-tours/articles/tours/${circuitTour.id}`}
+							href={`/entity/circuit-tours/articles/tour/${circuitTour.id}`}
 							className="btn btn-orange"
 						>
 							Voir tous les articles du tour
@@ -62,7 +62,7 @@ const CircuitTourPage = ({ circuitTour, circuitArticles, circuitVideos }) => {
 						</div>
 						<div className="text-center">
 							<Link
-								href={`/entity/circuit-tours/videos/tours/${circuitTour.id}`}
+								href={`/entity/circuit-tours/videos/tour/${circuitTour.id}`}
 								className="btn btn-orange"
 							>
 								Voir toutes les videos du tour
@@ -79,7 +79,13 @@ export async function getServerSideProps({ query }) {
 	const { id } = query;
 	try {
 		const { circuitTour } = await manageFetch(`circuit-tours/${id}`);
-		return { props: { circuitTour } };
+		const { circuitArticles } = await manageFetch(
+			`circuit-articles/tour/${id}?maxLength=2`
+		);
+		const { circuitVideos } = await manageFetch(
+			`circuit-videos/tour/${id}?maxLength=2`
+		);
+		return { props: { circuitTour, circuitArticles, circuitVideos } };
 	} catch (e) {
 		console.error(e);
 		return { props: { circuitTour: null } };

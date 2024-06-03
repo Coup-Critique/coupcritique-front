@@ -11,6 +11,7 @@ import PaginationPrettier from '@/components/PaginationPrettier';
 import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSelectField';
 import { objectToGETparams } from '@/functions';
 import SectionAds from '@/components/sections/SectionAds';
+import { POST } from '@/constants/methods';
 
 const addtionalFields = [
 	{ name: 'tour', placeholder: 'Nom du tournoi', label: 'Tournoi du Circuit' },
@@ -38,6 +39,7 @@ const CircuitVideoList = props => {
 
 	const handleLoad = () =>
 		load({
+			methode: POST,
 			url:
 				'circuit-videos' +
 				objectToGETparams({

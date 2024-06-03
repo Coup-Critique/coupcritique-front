@@ -7,9 +7,10 @@ import CircuitArticleList from '../..';
 // TODO ajouter une props tour
 const CircuitArticleListByTour = props => <CircuitArticleList {...props} />;
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ query }) {
+	const { tid } = query;
 	try {
-		const { circuitArticles } = await manageFetch(`circuit-articles`);
+		const { circuitArticles } = await manageFetch(`circuit-articles/tour/${tid}`);
 		return { props: { circuitArticles } };
 	} catch (e) {
 		console.error(e);
