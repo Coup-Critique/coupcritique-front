@@ -53,7 +53,7 @@ const TablePokemon = ({
 			<TableBase
 				className={'table-pokemon table-sticky'}
 				cols={[
-					' ',
+					{ key: 'pokedex', content: '', sortable: true },
 					{ key: 'nom', content: 'Pokémon', sortable: true },
 					{ key: 'type_1', content: 'Type', sortable: true },
 					gen > 2 && { key: 'ability', content: 'Talent', sortable: false },

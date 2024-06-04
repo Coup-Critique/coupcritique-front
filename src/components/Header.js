@@ -51,7 +51,7 @@ function Header() {
 				<div className="header-bottom">
 					<div className="container-fluid">
 						<div className="inner-header-bottom">
-							<div className="d-flex">
+							<div className="d-flex flex-wrap justify-content-center">
 								<MainSearch
 									innerRef={ref}
 									size="mini"
