@@ -47,7 +47,7 @@ const NotificationList = () => {
 		return <Page404 />;
 	}
 	return (
-		<PageWrapper title="Vos notifications">
+		<PageWrapper title="Vos notifications" goingBack>
 			{user.loading || loading ? (
 				<Loader active inline="centered" />
 			) : notifications.length ? (

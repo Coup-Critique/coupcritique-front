@@ -103,7 +103,7 @@ const AdminTeams = () => {
 		return <Page404 />;
 	}
 	return (
-		<PageWrapper title="Équipe" className="team-list" more nofollow>
+		<PageWrapper title="Équipe" className="team-list" more nofollow goingBack>
 			<RadioFilterForm
 				name="state"
 				label="Filtrer par"

@@ -23,6 +23,7 @@ const AbilitiesList = props => {
 			more
 			metatitle="Talents des Pokémons | Coup Critique Stratégie Pokémon"
 			metadescription="Liste des talents dans Pokémon. Accédez la liste des Pokémon possédant chaque capacité spéciale avec son taux d'utilisation."
+			goingBack
 		>
 			<GenSelector />
 			<div id="pagination-scroll-ref">

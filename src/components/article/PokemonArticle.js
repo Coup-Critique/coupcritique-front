@@ -68,7 +68,7 @@ const PokemonArticle = props => {
 				". Vous y retrouverez ces statisques d'utilisations dans les tiers dans lesquels il est jouable, ainsi que différent set avec lesquels le jouer. Vous pourrez aussi y consulter les équipe certifiées l'incluant, partagée sur le site."
 			}
 			metaimage={`pokemons/${formatFileName(pokemon.name)}.png`}
-			goingBack
+			goingBack="/entity/pokemons/"
 			action={
 				<GenSelector
 					availableGens={availableGens}

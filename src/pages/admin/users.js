@@ -49,7 +49,7 @@ const AdminUsers = () => {
 		return <Page404 />;
 	}
 	return (
-		<PageWrapper title="Utilisateurs" more nofollow>
+		<PageWrapper title="Utilisateurs" more nofollow goingBack>
 			<div className="list-filter">
 				<FormSearch
 					placeholder={'Rechercher'}

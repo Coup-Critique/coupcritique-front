@@ -26,7 +26,7 @@ const AbilityArticle = props => {
 			metadescription={
 				`Visualiser l'utilisation du talent ${metaName}. ` + ability.description
 			}
-			goingBack
+			goingBack="/entity/abilities/"
 			action={
 				<GenSelector
 					availableGens={props.availableGens}

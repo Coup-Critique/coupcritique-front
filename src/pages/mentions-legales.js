@@ -8,6 +8,7 @@ const LegalNotices = () => (
 	<PageWrapper
 		title="Mentions Légales"
 		metadescription="Mentions légales du site coupcritique.fr"
+		goingBack
 	>
 		<h2>I - Identification</h2>
 		<p>

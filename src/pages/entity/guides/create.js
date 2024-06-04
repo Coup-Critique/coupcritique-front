@@ -32,9 +32,10 @@ const GuideFormPage = props => {
 		}
 	}, [guide.id]);
 
-	const goBack = () => {
-		router.replace(update ? `/entity/guides/${guide.id}` : '/entity/guides');
-	};
+
+	const defaultGoBack =update ? `/entity/guides/${guide.id}` : '/entity/guides';
+
+	const goBack = () => router.replace(defaultGoBack);
 
 	const handleReinit = e => reinitiRef.current.ref.current.click();
 
@@ -52,6 +53,7 @@ const GuideFormPage = props => {
 					? 'Modifier le guide ' + (guide ? guide.title : '')
 					: 'Ajouter un guide'
 			}
+			goingBack={defaultGoBack}
 			action={
 				<Button
 					icon="refresh"

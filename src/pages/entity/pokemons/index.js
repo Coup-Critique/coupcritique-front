@@ -24,6 +24,7 @@ const PokemonList = props => {
 			metatitle="Pokedex | Coup Critique Stratégie Pokémon"
 			description="Liste de Pokémon dans l'ordre du Pokédex avec toutes leurs formes. Accédez à leur fiche stratégique. Retrouvez rapidement les informations concernant leur tier ou statistiques."
 			action={<GenSelector />}
+			goingBack
 		>
 			<div id="pagination-scroll-ref">
 				{loading ? (

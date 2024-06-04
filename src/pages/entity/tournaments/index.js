@@ -40,6 +40,7 @@ const TournamentList = props => {
 			title="Tous les tournois Pokémon"
 			className="actuality-list"
 			metadescription="Liste des tournois Pokémon de la scène compétitive française et internationale."
+			goingBack
 			action={
 				user.is_modo && (
 					<Button

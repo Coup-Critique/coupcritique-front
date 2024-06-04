@@ -63,6 +63,7 @@ const SearchResult = ({ isUser = false }) => {
 			nofollow
 			className="search-result"
 			more
+			goingBack
 		>
 			{!isUser && <GenSelector />}
 			<div id="pagination-scroll-ref">

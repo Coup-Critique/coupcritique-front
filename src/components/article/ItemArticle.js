@@ -27,7 +27,7 @@ const ItemArticle = props => {
 				`Visualiser l'utilisation de l'objet ${metaName}. ` + item.description
 			}
 			metaimage={`items/${formatFileName(item.name)}.png`}
-			goingBack
+			goingBack="/entity/items/"
 			action={
 				<GenSelector
 					availableGens={props.availableGens}

@@ -31,7 +31,7 @@ const TypeArticle = props => {
 				`Visualiser la liste des Pokémon du type ${metaName}. Ainsi que ces faiblesses et résistences. ` +
 				type.description
 			}
-			goingBack
+			goingBack="/entity/types/"
 			action={
 				<GenSelector
 					availableGens={props.availableGens}

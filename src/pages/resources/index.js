@@ -43,6 +43,7 @@ const ResourcesPage = () => {
 			title="Liste des liens utiles sur la stratégie Pokémon"
 			metatitle="Retrouvez de nombreuses ressources sur la stratégie Pokémon comme les Viability ranking, les Speed tier ou encore les Rôle compendium"
 			more
+			goingBack
 			action={
 				(user.is_admin || user.is_modo) && (
 					<Button

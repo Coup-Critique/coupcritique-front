@@ -23,6 +23,7 @@ const ItemsList = props => {
 			metatitle="Objets tenus par les Pokémons | Coup Critique Stratégie Pokémon"
 			metadescription="Liste des objet portable en combat par les Pokémon. Accédez la liste des Pokémon  utilisant chaque objet avec son taux d'utilisation."
 			action={<GenSelector />}
+			goingBack
 		>
 			<div id="pagination-scroll-ref">
 				{loading ? (

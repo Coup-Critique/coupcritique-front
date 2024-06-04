@@ -57,6 +57,7 @@ const VideoList = props => {
 			title="Liste des Vidéos"
 			metadescription="Liste de vidéos sur la stratégie Pokémon qui pourrait vous faire progresser."
 			className="video-list"
+			goingBack
 			action={
 				user.is_modo && (
 					<Button

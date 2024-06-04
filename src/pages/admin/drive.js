@@ -67,7 +67,7 @@ const AdminDrive = () => {
 		return <Page404 />;
 	}
 	return (
-		<PageWrapper title="Drive" more nofollow>
+		<PageWrapper title="Drive" more nofollow goingBack>
 			<MultiImageField
 				files={files}
 				dirName="drive"

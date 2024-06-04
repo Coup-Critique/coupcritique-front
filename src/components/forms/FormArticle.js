@@ -106,7 +106,7 @@ const FormArticle = ({
 	const handleCancel = e => {
 		e.preventDefault();
 		voidStorage();
-		router.push(`/entity/${path}/` + (article.id || ''));
+		router.back();
 	};
 
 	const onSubmit = e => {

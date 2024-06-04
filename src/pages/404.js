@@ -10,6 +10,7 @@ const Page404 = () => (
 		title={'Erreur\u00A0: Page 404'}
 		metadescription="Cette page n'exite pas ou plus."
 		nofollow
+		goingBack
 	>
 		<p>La page que vous recherchez n'existe pas.</p>
 		<Link href="/" className="btn btn-primary">

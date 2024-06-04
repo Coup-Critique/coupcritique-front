@@ -45,6 +45,7 @@ const GuideList = props => {
 			title="Tous les guides"
 			className="actuality-list"
 			metadescription="Liste des guides sur la stratégie Pokémon et la scène compétitive française. Vous y retrouverez des articles d'aide sur le vocabulaire et les pratiques de la stratégie Pokémon."
+			goingBack
 			action={
 				user.is_modo && (
 					<Button

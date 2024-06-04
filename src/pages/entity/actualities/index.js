@@ -48,6 +48,7 @@ const ActualityList = props => {
 			title="Toutes les actualités sur la stratégie Pokémon"
 			className="actuality-list"
 			metadescription="Liste d'actualités sur la stratégie Pokémon et la scène compétitive française. Vous y retrouverez des informations sur les événements Smogon ou ceux des formats officiels comme le VGC."
+			goingBack="/"
 			action={
 				user.is_modo && (
 					<Button

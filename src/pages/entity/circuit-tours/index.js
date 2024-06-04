@@ -20,6 +20,7 @@ const CircuitHome = props => {
 			title="Rejoignez le Circuit Compétitif de 2024 : la Coupe Critique"
 			className="actuality-list"
 			metadescription="Liste des tournois du Circuit de la Coupe Critique."
+			goingBack="/"
 		>
 			<h4 className="description framed">
 				CashPrize total du Circuit : 4000&nbsp;€

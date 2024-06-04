@@ -25,11 +25,11 @@ const ActualityFormPage = ({ actuality, tags, update = false }) => {
 		}
 	}, []);
 
-	const goBack = () => {
-		router.replace(
-			update ? `/entity/actualities/${actuality.id}` : '/entity/actualities'
-		);
-	};
+	const defaultGoBack = update
+		? `/entity/actualities/${actuality.id}`
+		: '/entity/actualities';
+
+	const goBack = () => router.replace(defaultGoBack);
 
 	const handleReinit = e => reinitiRef.current.ref.current.click();
 
@@ -48,6 +48,7 @@ const ActualityFormPage = ({ actuality, tags, update = false }) => {
 					: 'Ajouter une actualité'
 			}
 			nofollow
+			goingBack={defaultGoBack}
 			action={
 				<Button
 					icon="refresh"

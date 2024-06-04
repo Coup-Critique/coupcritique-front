@@ -7,6 +7,7 @@ const CGU = () => (
 	<PageWrapper
 		title="Conditions Générales d'Utilisation"
 		metadescription="Conditions générales d'utilisation du site coupcritique.fr."
+		goingBack
 	>
 		<h2>Article 1er</h2>
 		<p>

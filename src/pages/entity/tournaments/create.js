@@ -14,11 +14,11 @@ const TournamentFormPage = ({ tournament, update = false }) => {
 	const reinitiRef = useRef();
 	const user = useSelector(state => state.user);
 
-	const goBack = () => {
-		router.replace(
-			update ? `/entity/tournaments/${tournament.id}` : '/entity/tournaments'
-		);
-	};
+	const defaultGoBack = update
+		? `/entity/tournaments/${tournament.id}`
+		: '/entity/tournaments';
+
+	const goBack = () => router.replace(defaultGoBack);
 
 	const handleReinit = e => reinitiRef.current.ref.current.click();
 
@@ -37,6 +37,7 @@ const TournamentFormPage = ({ tournament, update = false }) => {
 					: 'Ajouter un tournoi'
 			}
 			nofollow
+			goingBack={defaultGoBack}
 			action={
 				<Button
 					icon="refresh"

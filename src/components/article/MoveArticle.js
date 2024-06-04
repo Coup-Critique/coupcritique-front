@@ -27,7 +27,7 @@ const MoveArticle = props => {
 			metadescription={
 				`Visualiser l'utilisation de la capacité ${metaName}. ` + move.description
 			}
-			goingBack
+			goingBack="/entity/moves/"
 			action={
 				<GenSelector
 					availableGens={props.availableGens}

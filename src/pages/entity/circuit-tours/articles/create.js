@@ -25,11 +25,10 @@ const CircuitArticleFormPage = ({ circuitArticle, update = false }) => {
 		[circuitArticle]
 	);
 
-	const goBack = () => {
-		router.replace(
-			'/entity/circuit-tours/articles' + (update ? `/${circuitArticle.id}` : '')
-		);
-	};
+	const defaultGoBack =
+		'/entity/circuit-tours/articles' + (update ? `/${circuitArticle.id}` : '');
+
+	const goBack = () => router.replace(defaultGoBack);
 
 	const handleReinit = e => reinitiRef.current.ref.current.click();
 
@@ -46,6 +45,7 @@ const CircuitArticleFormPage = ({ circuitArticle, update = false }) => {
 					? "Modifier l'article " + (circuitArticle ? circuitArticle.title : '')
 					: 'Ajouter un article'
 			}
+			goingBack={defaultGoBack}
 			action={
 				<Button
 					icon="refresh"

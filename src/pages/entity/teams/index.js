@@ -90,6 +90,7 @@ const TeamList = props => {
 			metadescription="Retrouvez des équipes viable en stratégie Pokémon, que ce soit sur le simulateur Pokémon Showdown ou sur console. Choisissez votre tier comme le VGC ou l'Overused et vos critères comme une équipe hyper offense."
 			more
 			className="team-list"
+			goingBack
 			action={
 				<Button
 					as={Link}

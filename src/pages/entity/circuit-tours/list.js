@@ -40,6 +40,7 @@ const CircuitList = props => {
 			title="Circuit Coupe Critique"
 			className="actuality-list"
 			metadescription="Liste des tournois du Circuit de la Coupe Critique."
+			goingBack="/entity/circuit-tours"
 			action={
 				user.is_modo && (
 					<Button

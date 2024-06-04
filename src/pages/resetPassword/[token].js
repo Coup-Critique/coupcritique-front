@@ -62,7 +62,7 @@ const ResetForgottenPassword = () => {
 	}, [result]);
 
 	return (
-		<PageWrapper title={'Mot de passe oublié'} className="page-reset-password">
+		<PageWrapper title={'Mot de passe oublié'} className="page-reset-password" goingBack>
 			{result &&
 				(!result.success ? (
 					<p

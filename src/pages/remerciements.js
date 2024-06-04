@@ -9,6 +9,7 @@ const Thanks = () => {
 		<PageWrapper
 			title="Remerciements"
 			metadescription="Remerciements aux personnes ayant participé à la construction du site coupcritique.fr."
+			goingBack
 		>
 			<div className="mb-5">
 				<h4>

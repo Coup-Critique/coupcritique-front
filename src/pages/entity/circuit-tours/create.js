@@ -20,9 +20,9 @@ const CircuitTourFormPage = ({ circuitTour, update = false }) => {
 	const reinitiRef = useRef();
 	const user = useSelector(state => state.user);
 
-	const goBack = () => {
-		router.replace('/entity/circuit-tours' + (update ? `/${circuitTour.id}` : ''));
-	};
+	const defaultGoBack = '/entity/circuit-tours' + (update ? `/${circuitTour.id}` : '');
+
+	const goBack = () => router.replace(defaultGoBack);
 
 	const handleReinit = e => reinitiRef.current.ref.current.click();
 
@@ -39,6 +39,7 @@ const CircuitTourFormPage = ({ circuitTour, update = false }) => {
 					? 'Modifier le tournoi ' + (circuitTour ? circuitTour.title : '')
 					: 'Ajouter un tournoi'
 			}
+			goingBack={defaultGoBack}
 			action={
 				<Button
 					icon="refresh"

@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import useDarkMode from '@/hooks/useDarkMode';
 
-const GoBackButton = ({ callback, defaultUrl }) => {
+const GoBackButton = ({ callback, defaultUrl = '/' }) => {
 	const router = useRouter();
 	const [darkMode] = useDarkMode();
 
@@ -10,7 +10,11 @@ const GoBackButton = ({ callback, defaultUrl }) => {
 		if (callback) {
 			callback();
 		}
-		router.back();
+		if (history.length > 2) {
+			router.back();
+		} else {
+			router.replace(defaultUrl);
+		}
 	};
 
 	return (
