@@ -7,6 +7,7 @@ import { formatFileName, makeClassName } from '@/functions';
 
 const SpritePokemonImg = ({ pokemon, ...props }) => (
 	<img
+		key={pokemon.id}
 		src={`/images/pokemons/sprites/${formatFileName(
 			pokemon.name
 		)}.png?ver=${IMG_VERSION}`}

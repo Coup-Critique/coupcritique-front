@@ -30,6 +30,7 @@ const Profile = ({
 				<div className={makeClassName('picture', badge?.color)}>
 					{user.picture ? (
 						<img
+							key={user.id}
 							/* eslint-disable-next-line jsx-a11y/img-redundant-alt */
 							src={`${
 								process.env.NEXT_PUBLIC_API_URL

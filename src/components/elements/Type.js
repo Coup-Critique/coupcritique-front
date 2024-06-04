@@ -8,6 +8,7 @@ import { formatFileName, makeClassName } from '@/functions';
 const Type = ({ type, className }) => (
 	<Link href={`/entity/types/${type.id}`} className={makeClassName('type', className)}>
 		<img
+			key={type.id}
 			src={`/images/types/${formatFileName(type.name)}.png?ver=${IMG_VERSION}`}
 			onError={e => {
 				e.target.onerror = null;

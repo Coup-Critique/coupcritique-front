@@ -35,6 +35,7 @@ const SpriteItem = ({ item, noPopup = false }) =>
 const InnerImg = ({ item }) => (
 	<>
 		<img
+			key={item.id}
 			src={`/images/items/sprites/${formatFileName(
 				item.name
 			)}.png?ver=${IMG_VERSION}`}
