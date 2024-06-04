@@ -18,7 +18,7 @@ import Page404 from '@/pages/404';
 const defaultGoBack = '/entity/teams/';
 const TeamFormPage = props => {
 	const dispatch = useDispatch();
-	const { pathname } = useRouter();
+	const { pathname, query } = useRouter();
 	const { setItemToStorage } = useLocalStorage();
 	const user = useSelector(state => state.user);
 	const tiers = useSelector(state => props.tiers || state.tiers);
@@ -75,7 +75,10 @@ const TeamFormPage = props => {
 		>
 			<div className="mb-3">
 				<GoBackButton
-					callback={() => setItemToStorage(null, pathname)}
+					callback={() => {
+						const storageKey = `form_${pathname.replace(`[id]`, query.id)}`;
+						setItemToStorage(null, storageKey);
+					}}
 					defaultUrl={defaultGoBack}
 				/>
 			</div>

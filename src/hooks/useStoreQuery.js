@@ -1,43 +1,35 @@
 import { useEffect, useReducer } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { useSearchParams } from 'next/navigation';
-// import { saveQuery } from '@/reducers/queries';
-import { objectToGETparams } from '@/functions';
 import queryReducer, {
 	setQueryAction,
 	setQueryParamAction,
 	updateQueryAction,
 } from '@/reducers/state/queryReducer';
 import useActions from '@/hooks/useActions';
+import useLocalStorage from './useLocalStorage';
 
-// TODO Ne pas passer par le store mais par le LocalStorage
 const useStoreQuery = ({ defaultQuery = { page: 1 }, saveQueryToStore = false } = {}) => {
-	// const dispatch = useDispatch();
 	const router = useRouter();
 	const urlQuery = router.query;
-	// const storedQuery = useSelector(state => state.queries[router.pathname] || {});
-	const [query, dispatchQuery] = useReducer(queryReducer, {
-		...defaultQuery,
+	const { getStoredItem, setItemToStorage } = useLocalStorage();
+	const [query, dispatchQuery] = useReducer(queryReducer, defaultQuery, query => ({
+		...query,
 		...urlQuery,
-		// ...storedQuery,
-	});
+		...getStoredItem('query_' + router.pathname),
+	}));
 	const [setQuery, updateQuery, setQueryParam] = useActions(dispatchQuery, [
 		setQueryAction,
 		updateQueryAction,
 		setQueryParamAction,
 	]);
 
-	// useEffect(() => {
-	// 	if (Object.keys(query).length > 1 || query.page != 1) {
-	// 		router.replace(router.pathname + objectToGETparams(query));
-	// 	}
-	// return () => {
-	// 	if (saveQueryToStore) {
-	// 		dispatch(saveQuery(router.pathname, query));
-	// 	}
-	// };
-	// }, [query]);
+	useEffect(() => {
+		return () => {
+			if (saveQueryToStore) {
+				setItemToStorage('query_' + router.pathname, query);
+			}
+		};
+	}, [query]);
 
 	useEffect(() => {
 		const entityLinks = document.querySelectorAll(

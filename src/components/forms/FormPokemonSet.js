@@ -1,10 +1,10 @@
 // modules
-import { useState, useEffect, useReducer, useCallback } from 'react';
+import { useState, useEffect, useReducer, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Form, Button, Message } from 'semantic-ui-react';
 import { Koffing } from 'koffing';
-// 
+//
 import TiersField from '@/components/fields/TiersField';
 import usePrevious from '@/hooks/usePrevious';
 import useLocalStorage from '@/hooks/useLocalStorage';
@@ -118,8 +118,9 @@ const FormPokemonSet = ({
 	const [success, setSuccess] = useState(true);
 	const [message, setMessage] = useState({});
 	const [prevTier, prevExport] = usePrevious(pokemonSet.tier, pokemonSet.export);
-	const [storageKey] = useState(
-		pathname + (defaultValue.id ? `/${defaultValue.id}` : '')
+	const storageKey = useMemo(
+		'form_' + (pathname + (defaultValue.id ? `/${defaultValue.id}` : '')),
+		[defaultValue.id, pathname]
 	);
 
 	useEffect(() => {

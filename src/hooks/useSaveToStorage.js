@@ -5,13 +5,13 @@ import useLocalStorage from '@/hooks/useLocalStorage';
 const useSaveToStorage = (entity, callbackEntity) => {
 	const { pathname, query } = useRouter();
 	const { getStoredItem, setItemToStorage } = useLocalStorage();
-	const key = useMemo(
-		() => (query.id ? pathname.replace(`[id]`, query.id) : pathname),
-		[pathname, query]
+	const storageKey = useMemo(
+		() => `form_${pathname.replace(`[id]`, query.id)}`,
+		[pathname, query.id]
 	);
 
 	useEffect(() => {
-		const storedActuality = getStoredItem(key);
+		const storedActuality = getStoredItem(storageKey);
 		if (storedActuality) {
 			callbackEntity(storedActuality);
 		}
@@ -19,11 +19,11 @@ const useSaveToStorage = (entity, callbackEntity) => {
 
 	useEffect(() => {
 		if (Object.keys(entity).length) {
-			setItemToStorage(entity, key);
+			setItemToStorage(entity, storageKey);
 		}
 	}, [entity]);
 
-	const voidStorage = () => setItemToStorage(null, key);
+	const voidStorage = () => setItemToStorage(null, storageKey);
 
 	return [voidStorage];
 };
