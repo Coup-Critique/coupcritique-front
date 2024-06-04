@@ -15,7 +15,6 @@ const useStoreQuery = ({ defaultQuery = { page: 1 }, saveQueryToStore = false } 
 	const [query, dispatchQuery] = useReducer(queryReducer, defaultQuery, query => ({
 		...query,
 		...urlQuery,
-		...getStoredItem('query_' + router.pathname),
 	}));
 	const [setQuery, updateQuery, setQueryParam] = useActions(dispatchQuery, [
 		setQueryAction,
@@ -24,11 +23,18 @@ const useStoreQuery = ({ defaultQuery = { page: 1 }, saveQueryToStore = false } 
 	]);
 
 	useEffect(() => {
-		return () => {
-			if (saveQueryToStore) {
-				setItemToStorage('query_' + router.pathname, query);
-			}
-		};
+		if (saveQueryToStore) {
+			setQuery({
+				...query,
+				...getStoredItem('query_' + router.pathname),
+			});
+		}
+	}, []);
+
+	useEffect(() => {
+		if (saveQueryToStore) {
+			setItemToStorage(query, 'query_' + router.pathname);
+		}
 	}, [query]);
 
 	useEffect(() => {
