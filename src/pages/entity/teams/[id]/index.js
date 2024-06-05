@@ -5,7 +5,7 @@ import { manageFetch } from '@/hooks/useFetch';
 import { rmUndefined } from '@/functions';
 
 const TeamPage = ({ team }) => {
-	useNotifChecker('team', team.id);
+	useNotifChecker('team', team?.id);
 	return <TeamContainer Component={TeamArticle} team={team} />;
 };
 

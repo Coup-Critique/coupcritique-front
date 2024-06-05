@@ -5,6 +5,17 @@ import { makeClassName } from '@/functions';
 // import Image from 'next/image';
 
 const Certification = ({ team = {}, userId, className, big = false }) => {
+	if (team.banned && team.certified) {
+		return (
+			<img
+				className={makeClassName('picto certification', className)}
+				src={`/images/picto/certified-red.svg`}
+				alt="certifiée"
+				width="25"
+				height="25"
+			/>
+		);
+	}
 	if (team.banned) {
 		return (
 			<Icon
