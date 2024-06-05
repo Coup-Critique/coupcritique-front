@@ -5,7 +5,7 @@ import ActiveLink from '@/components/ActiveLink';
 import { Dropdown, Loader } from 'semantic-ui-react';
 import useLogout from '@/hooks/useLogout';
 import Profile from '@/components/elements/Profile';
-import DarkModeToggle from '@/components/fields/DarkModeToggle';
+// import DarkModeToggle from '@/components/fields/DarkModeToggle';
 import SignPanel from '@/components/SignPanel';
 
 const MenuUser = () => {
@@ -19,14 +19,14 @@ const MenuUser = () => {
 	if (!user.token) return <SignPanel isModal loading={user.loading} />;
 
 	const handleClose = e => {
-		if (!e.target.classList.contains('dark-mode-checkbox')) {
-			setOpen(false);
-		}
+		// if (!e.target.classList.contains('dark-mode-checkbox')) {
+		setOpen(false);
+		// }
 	};
 	const handleBlurClose = e => {
-		if (!e.relatedTarget || e.relatedTarget.type !== 'checkbox') {
+		// if (!e.relatedTarget || e.relatedTarget.type !== 'checkbox') {
 			setOpen(false);
-		}
+		// }
 	};
 
 	return (
@@ -51,9 +51,9 @@ const MenuUser = () => {
 			onBlur={handleBlurClose}
 		>
 			<Dropdown.Menu>
-				<Dropdown.Item className="position-relative">
+				{/* <Dropdown.Item className="position-relative">
 					<DarkModeToggle />
-				</Dropdown.Item>
+				</Dropdown.Item> */}
 				<ActiveLink exact role="option" className="item" href="/user">
 					Mon Compte
 				</ActiveLink>

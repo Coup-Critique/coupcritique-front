@@ -1,7 +1,7 @@
 // modules
 
 import Link from 'next/link';
-import DarkModeToggle from '@/components/fields/DarkModeToggle';
+// import DarkModeToggle from '@/components/fields/DarkModeToggle';
 import MenuNavBar from '@/components/MenuNavBar';
 // // import Image from 'next/image';
 
@@ -21,11 +21,11 @@ const Footer = () => (
 				<span className="sr-only">Coup Critique</span>
 			</Link>
 			<div className="footer-content">
-				<div className="dark-mode-toggle-wrapper">
+				{/* <div className="dark-mode-toggle-wrapper">
 					<div className="position-relative d-inline-block">
 						<DarkModeToggle />
 					</div>
-				</div>
+				</div> */}
 				<nav className="navbar menu">
 					<ul className="navbar-nav">
 						<li className="nav-item">

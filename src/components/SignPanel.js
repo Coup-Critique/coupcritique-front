@@ -1,15 +1,15 @@
 // modules
 import { useState, useEffect, useCallback } from 'react';
-
+import { useSelector } from 'react-redux';
 // components
 import { Button, Modal, Tab } from 'semantic-ui-react';
 import FormSignIn from '@/components/forms/FormSignIn';
 import FormSignUp from '@/components/forms/FormSignUp';
 import FormForgottenPassword from '@/components/forms/FormForgottenPassword';
-import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
+import { makeClassName } from '@/functions';
 
 function SignPanel({ isModal = false, loading = false }) {
-	const [darkMode] = useDarkMode();
+	const darkMode = useSelector(state => state.darkMode);
 	const [open, setOpen] = useState(false);
 	const [currentActiveIndex, setCurrentActiveIndex] = useState(0);
 	const [tabHeight, setTabHeight] = useState('');
@@ -63,7 +63,7 @@ function SignPanel({ isModal = false, loading = false }) {
 				onClose={() => setOpen(false)}
 				onOpen={() => setOpen(true)}
 				style={{ height: tabHeight }}
-				className={'sign-modal' + (darkMode ? ` ${DARK_MODE_KEY}` : '')}
+				className={makeClassName('sign-modal', darkMode && 'dark-mode')}
 				trigger={
 					<Button color="orange" loading={loading}>
 						Mon compte

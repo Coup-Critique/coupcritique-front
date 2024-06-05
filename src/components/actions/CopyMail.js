@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Icon, Popup } from 'semantic-ui-react';
 import { copyToClipboard, makeClassName } from '@/functions/index';
-import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
+import { useSelector } from 'react-redux';
 
 const TIMEOUT_LENGTH = 2000; // en milliseconde
 
 const CopyMail = ({ className, popupClassName }) => {
 	const [notCopied, setNotCopied] = useState(true);
 	const [popupOpened, setPopupOpened] = useState(false);
-	const [darkMode] = useDarkMode();
+	const darkMode = useSelector(state => state.darkMode);
 	let timer;
 
 	const handleOpen = e => {
@@ -33,7 +33,7 @@ const CopyMail = ({ className, popupClassName }) => {
 
 	return (
 		<Popup
-			className={makeClassName(popupClassName, darkMode && DARK_MODE_KEY)}
+			className={makeClassName(popupClassName, darkMode && 'dark-mode')}
 			wide
 			content={
 				<span className="text-warning">

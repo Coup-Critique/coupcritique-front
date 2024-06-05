@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
 import { Button } from 'semantic-ui-react';
-import useDarkMode from '@/hooks/useDarkMode';
+import { useSelector } from 'react-redux';
 
 const GoBackButton = ({ callback, defaultUrl = '/' }) => {
 	const router = useRouter();
-	const [darkMode] = useDarkMode();
+	const darkMode = useSelector(state => state.darkMode);
 
 	const goBack = () => {
 		if (callback) {

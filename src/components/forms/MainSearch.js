@@ -8,8 +8,7 @@ import { Form, Label, Loader, Search } from 'semantic-ui-react';
 import { setChosenSearch } from '@/reducers/search';
 // hooks
 import useFetch from '@/hooks/useFetch';
-import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
-import { formateName } from '@/functions';
+import { formateName, makeClassName } from '@/functions';
 import { NUMBER_OF_PREVIEWS } from '@/constants/index';
 
 const MainSearch = ({
@@ -24,7 +23,7 @@ const MainSearch = ({
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const [result, load, loading] = useFetch(false);
-	const [darkMode] = useDarkMode();
+	const darkMode = useSelector(state => state.darkMode);
 	const { chosen_search } = useSelector(state => state.search);
 	const [string, setString] = useState(chosen_search);
 	const [message, setMessage] = useState(messageGiven);
@@ -105,7 +104,11 @@ const MainSearch = ({
 	return (
 		<Form className="inline" onSubmit={onSubmit} size={size}>
 			<Form.Field
-				className={`main-search ${styleClass} ${darkMode ? DARK_MODE_KEY : ''}`}
+				className={makeClassName(
+					'main-search',
+					styleClass,
+					darkMode && 'dark-mode'
+				)}
 			>
 				<Search
 					category

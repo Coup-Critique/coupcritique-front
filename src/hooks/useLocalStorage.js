@@ -4,6 +4,10 @@ const getStoredItem = (key = STORAGE_KEY) => {
 	if (typeof window === 'undefined') return null;
 	try {
 		const value = localStorage.getItem(key);
+		if (value == 'null' || value == 'undefined') {
+			localStorage.removeItem(key);
+			return null;
+		}
 		if (value == null) return null;
 		return JSON.parse(value);
 	} catch (error) {

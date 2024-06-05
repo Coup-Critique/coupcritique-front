@@ -1,9 +1,12 @@
-
 import { Checkbox } from 'semantic-ui-react';
-import useDarkMode from '@/hooks/useDarkMode';
+import { useDispatch, useSelector } from 'react-redux';
+import useActions from '@/hooks/useActions';
+import { setDarkModeAction } from '@/reducers/darkMode';
 
 const DarkModeToggle = () => {
-	const [darkMode, setDarkMode] = useDarkMode();
+	const dispatch = useDispatch();
+	const darkMode = useSelector(state => state.darkMode);
+	const [setDarkMode] = useActions(dispatch, [setDarkModeAction]);
 
 	const handleToggle = e => {
 		e.preventDefault();

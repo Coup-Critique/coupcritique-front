@@ -1,10 +1,9 @@
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import useDarkMode from '@/hooks/useDarkMode';
 import useDoubleAdds from '@/hooks/useDoubleAdds';
 
 const SectionAds = () => {
-	const [darkMode] = useDarkMode();
+	const darkMode = useSelector(state => state.darkMode);
 	const { googleAds } = useSelector(state => state.cookie);
 	const { ref1, ref2, display1, display2 } = useDoubleAdds(darkMode);
 

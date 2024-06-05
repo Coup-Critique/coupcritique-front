@@ -4,7 +4,6 @@ import { setDarkModeAction } from '@/reducers/darkMode';
 import useActions from '@/hooks/useActions';
 import usePrevious from '@/hooks/usePrevious';
 import useLocalStorage from '@/hooks/useLocalStorage';
-import { singletonHook } from 'react-singleton-hook';
 
 export const DARK_MODE_KEY = 'dark-mode';
 
@@ -33,8 +32,4 @@ const useDarkMode = () => {
 	return [darkMode, setDarkMode];
 };
 
-export default singletonHook(
-	[true, () => console.error('useDarkMode is not ready')],
-	useDarkMode
-);
-// export default useDarkMode;
+export default useDarkMode;

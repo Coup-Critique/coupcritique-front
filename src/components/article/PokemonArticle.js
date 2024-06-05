@@ -21,14 +21,13 @@ import GenSelector from '@/components/GenSelector';
 import SectionAds from '@/components/sections/SectionAds';
 // functions
 import useTableFetch from '@/hooks/useTableFetch';
-import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
 import { formatFileName, formatNumbers, getMetaName, getName } from '@/functions';
 import useStateWithGen from '@/hooks/useStateWithGen';
 
 const PokemonArticle = props => {
 	const router = useRouter();
 	const gen = useSelector(state => state.gen);
-	const [darkMode] = useDarkMode();
+	const darkMode = useSelector(state => state.darkMode);
 	const [pokemon, setPokemon] = useStateWithGen(props.pokemon || null);
 	// prettier-ignore
 	const { usage, usages, availableGens, weaknesses, pokemonSets, forms, mainPokemon } = props;
@@ -110,7 +109,7 @@ const PokemonArticle = props => {
 						on="hover"
 						basic
 						position="bottom left"
-						className={darkMode ? DARK_MODE_KEY : undefined}
+						className={darkMode ? 'dark-mode' : undefined}
 						disabled={!weaknesses || !weaknesses.length}
 						hoverable
 						content={<WeaknessesPopup weaknesses={weaknesses} />}

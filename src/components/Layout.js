@@ -3,16 +3,16 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieModal from '@/components/CookieModal';
 import MessageManager from '@/components/MessageManager';
-import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
 import useManageToken from '@/hooks/useManageToken';
 import { makeClassName } from '@/functions';
+import { useSelector } from 'react-redux';
 
 const Layout = ({ children }) => {
-	const [darkMode] = useDarkMode();
+	const darkMode = useSelector(state => state.darkMode);
 	useManageToken();
 
 	return (
-		<div className={makeClassName('app', darkMode && DARK_MODE_KEY)}>
+		<div className={makeClassName('app', darkMode && 'dark-mode')}>
 			<Head>
 				{/* Here due to next */}
 				<meta name="viewport" content="width=device-width, initial-scale=1" />

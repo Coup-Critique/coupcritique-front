@@ -2,12 +2,12 @@
 import { useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 //  custom
-import useDarkMode from '@/hooks/useDarkMode';
 import { Segment } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';
+import { useSelector } from 'react-redux';
 
 const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) => {
-	const darkMode = useDarkMode();
+	const darkMode = useSelector(state => state.darkMode);
 	const editorRef = useRef(null);
 	const [loading, setLoading] = useState(true);
 	const [height, setHeight] = useState(window.innerHeight - 52 - 42); // - header height - padding

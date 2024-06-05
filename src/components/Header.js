@@ -2,11 +2,10 @@
 
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
-import { Icon, Button, IconGroup } from 'semantic-ui-react';
+import { Icon, IconGroup } from 'semantic-ui-react';
 // components
 import MainSearch from '@/components/forms/MainSearch';
 // hooks
-import useDarkMode from '@/hooks/useDarkMode';
 import ShowdownIconHoverable from '@/components/actions/ShowdownIconHoverable';
 import MenuNavBar from '@/components/MenuNavBar';
 import MenuUser from '@/components/MenuUser';
@@ -17,7 +16,7 @@ import useCtrlF from '@/hooks/useCtrlF';
 function Header() {
 	const user = useSelector(state => state.user);
 	const notifs = useSelector(state => state.notifs);
-	const [darkMode] = useDarkMode();
+	const darkMode = useSelector(state => state.darkMode);
 	const ref = useCtrlF();
 
 	return (

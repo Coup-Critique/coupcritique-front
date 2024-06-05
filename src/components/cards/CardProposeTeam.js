@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Card, Icon } from 'semantic-ui-react';
-import useDarkMode from '@/hooks/useDarkMode';
+import { Card } from 'semantic-ui-react';
 import ScrollReveal from '@/components/ScrollReveal';
+import { useSelector } from 'react-redux';
 
 const CardProposeTeam = () => {
 	const router = useRouter();
-	const [darkMode] = useDarkMode();
+	const darkMode = useSelector(state => state.darkMode);
 
 	return (
 		<Card className="padded">

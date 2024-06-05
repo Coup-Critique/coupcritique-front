@@ -1,12 +1,12 @@
 // modules
 import { useState } from 'react';
 import { makeClassName } from '@/functions';
-import useDarkMode from '@/hooks/useDarkMode';
+import { useSelector } from 'react-redux';
 // import Image from 'next/image';
 
 const ShowdownIconHoverable = ({ linkProps, className, hoverColor = 'orange' }) => {
 	const [hover, setHover] = useState(false);
-	const [darkMode] = useDarkMode();
+	const darkMode = useSelector(state => state.darkMode);
 
 	return (
 		<a

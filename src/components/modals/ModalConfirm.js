@@ -2,8 +2,8 @@
 import { useEffect, useState } from 'react';
 // components
 import { Button, Modal } from 'semantic-ui-react';
-import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
 import { makeClassName } from '@/functions';
+import { useSelector } from 'react-redux';
 
 function ModalConfirm({
 	// title,
@@ -14,7 +14,7 @@ function ModalConfirm({
 	children,
 	handleStopClick,
 }) {
-	const [darkMode] = useDarkMode();
+	const darkMode = useSelector(state => state.darkMode);
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
@@ -43,7 +43,7 @@ function ModalConfirm({
 			onOpen={handleOpen}
 			open={open}
 			trigger={trigger}
-			className={makeClassName(darkMode && DARK_MODE_KEY, className)}
+			className={makeClassName(darkMode && 'dark-mode', className)}
 		>
 			{/* {!!title && <Modal.Header>{title}</Modal.Header>} */}
 			<Modal.Content className="font-weight-bold">{children}</Modal.Content>

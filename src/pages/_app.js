@@ -10,7 +10,6 @@ import { Provider } from 'react-redux';
 import Router from 'next/router';
 import { Loader } from 'semantic-ui-react';
 //
-import { SingletonHooksContainer } from 'react-singleton-hook';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import reducerCombiner from '@/reducers';
 import Layout from '@/components/Layout';
@@ -18,6 +17,8 @@ import Layout from '@/components/Layout';
 export default function App({ Component, pageProps }) {
 	const store = legacy_createStore(reducerCombiner);
 	const [loading, setLoading] = useState(false);
+
+	// loading on page change
 	useEffect(() => {
 		const start = () => setLoading(true);
 		const end = () => setLoading(false);
@@ -41,7 +42,6 @@ export default function App({ Component, pageProps }) {
 						<Component {...pageProps} />
 					)}
 				</Layout>
-				<SingletonHooksContainer />
 			</ErrorBoundary>
 		</Provider>
 	);

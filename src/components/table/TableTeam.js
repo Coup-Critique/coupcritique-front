@@ -22,7 +22,6 @@ import { INSTANCES_KEYS } from '@/constants/team';
 import Favorite from '@/components/actions/Favorite';
 import PaginationPrettier from '@/components/PaginationPrettier';
 import useClick from '@/hooks/useClick';
-import useDarkMode, { DARK_MODE_KEY } from '@/hooks/useDarkMode';
 import DeleteAction from '@/components/actions/DeleteAction';
 import SectionAds from '@/components/sections/SectionAds';
 
@@ -39,7 +38,7 @@ const TableTeam = ({
 	nbPages,
 }) => {
 	const user = useSelector(state => state.user);
-	const [darkMode] = useDarkMode();
+	const darkMode = useSelector(state => state.darkMode);
 
 	const handleUpdate = (i, team) => {
 		const nextTeams = teams.slice();
@@ -187,7 +186,7 @@ const RowTeam = ({
 							on="click"
 							className={makeClassName(
 								'tag-popup',
-								darkMode && DARK_MODE_KEY
+								darkMode && 'dark-mode'
 							)}
 							trigger={
 								<Label
