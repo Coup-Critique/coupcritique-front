@@ -17,14 +17,14 @@ const SectionWeeklyTeam = props => {
 			setTeam(result.team);
 		}
 	}, [result]);
-	
+
 	return (
 		<section className="section-weekly-team">
 			<div className="ui container">
 				<h2>Équipe de la semaine</h2>
 				<div className="top-team">
 					{team ? (
-						<TableOneTeam reverse team={team} isLink />
+						<TableOneTeam reverse team={team} isLink art />
 					) : (
 						<p>Équipe indisponible.</p>
 					)}

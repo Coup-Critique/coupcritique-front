@@ -82,7 +82,7 @@
 			}
 
 			.two {
-				.ui.card .card>a {
+				.ui.card .card > a {
 					display: flex;
 					align-items: flex-end;
 					justify-content: space-between;
@@ -180,7 +180,7 @@
 			}
 		}
 	}
-	
+
 	.section-ads {
 		padding: 0;
 
@@ -389,12 +389,23 @@
 		}
 
 		.top-team {
-			>h3 {
+			> h3 {
 				margin-bottom: 1em;
 			}
 
 			p {
 				margin-bottom: 1em;
+			}
+
+			.img-wrapper {
+				display: inline-block;
+			}
+
+			.art-pokemon {
+				display: inline-block;
+				width: rem(100px);
+				height: rem(100px);
+				margin-bottom: 0.5rem;
 			}
 		}
 	}
@@ -457,11 +468,11 @@
 	.section-calendar {
 		background-color: black;
 
-		.framed>.inner {
+		.framed > .inner {
 			overflow: auto;
 			max-width: 100%;
 
-			>.row {
+			> .row {
 				min-width: rem(900px);
 			}
 		}
@@ -471,7 +482,7 @@
 @media (max-width: $xs - 1px) {}
 
 @media (max-width: $xl - 1) {
-	.home .section-usage .row>.col-xl-7 {
+	.home .section-usage .row > .col-xl-7 {
 		margin-bottom: 2.5rem;
 	}
 

@@ -24,7 +24,7 @@ const ImageLoader = ({ src, imgRef, defaultSrc, className, ...props }) => {
 	}, [src]);
 
 	return (
-		<div className="position-relative">
+		<div className="img-wrapper position-relative">
 			{loading && <Loader active size="big" />}
 			{/* eslint-disable-next-line jsx-a11y/alt-text */}
 			<img

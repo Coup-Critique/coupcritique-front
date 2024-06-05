@@ -41,9 +41,7 @@ const TierUsage = ({ usage, tier }) => {
 	}
 	return (
 		<ScrollReveal className="usage" animation="zoomIn" earlier outterRef={ref}>
-			<div className="img-wrapper">
-				<ArtPokemon pokemon={usage.pokemon} half imgRef={ref} />
-			</div>
+			<ArtPokemon pokemon={usage.pokemon} half imgRef={ref} />
 			<h3>
 				<Link href={`/entity/tiers/${tier.id}`}>{tier.name}</Link>
 			</h3>

@@ -55,14 +55,6 @@ const LabelPeriod = memo(function LabelPeriod({ tour }) {
 			as={Link}
 			href={`/entity/circuit-tours/${tour.element.id}`}
 		>
-			{!!tour.element.pokemon && (
-				<SpritePokemon
-					noLink={true}
-					pokemon={tour.element.pokemon}
-					width={20}
-					height={20}
-				/>
-			)}{' '}
 			{tour.element.title}
 		</Label>
 	);

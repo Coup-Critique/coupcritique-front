@@ -9,9 +9,10 @@ import SpritePokemon from '@/components/elements/SpritePokemon';
 import { INSTANCES_KEYS } from '@/constants/team';
 import { makeClassName } from '@/functions';
 import Favorite from '@/components/actions/Favorite';
+import ArtPokemon from '../elements/ArtPokemon';
 
 // TODO props link > click on team to go to team page
-const TableOneTeam = ({ team, className, isLink = false }) => {
+const TableOneTeam = ({ team, className, isLink = false, art = false }) => {
 	const router = useRouter();
 	const user = useSelector(state => state.user);
 	const isUserConnected = !user.loading && user.id;
@@ -50,9 +51,22 @@ const TableOneTeam = ({ team, className, isLink = false }) => {
 						<td className="list nowrap">
 							{
 								// prettier-ignore
-								INSTANCES_KEYS.map(key => !!team[key] && (
-									<SpritePokemon key={key} pokemon={team[key].pokemon} noLink={isLink}/>
-								))
+								INSTANCES_KEYS.map(
+									key => !!team[key] && (art ? (
+										<ArtPokemon
+											key={key}
+											pokemon={team[key].pokemon}
+											linked={!isLink}
+											half
+										/>
+									) : (
+										<SpritePokemon
+											key={key}
+											pokemon={team[key].pokemon}
+											noLink={isLink}
+										/>
+									))
+								)
 							}
 						</td>
 						<td>
