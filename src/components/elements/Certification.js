@@ -10,7 +10,7 @@ const Certification = ({ team = {}, userId, className, big = false }) => {
 			<img
 				className={makeClassName('picto certification', className)}
 				src={`/images/picto/certified-red.svg`}
-				alt="certifiée"
+				alt="certifiée et bannie"
 				width="25"
 				height="25"
 			/>
@@ -18,12 +18,7 @@ const Certification = ({ team = {}, userId, className, big = false }) => {
 	}
 	if (team.banned) {
 		return (
-			<Icon
-				color="red"
-				name="ban"
-				title="Equipe bannie"
-				size={big ? 'big' : 'large'}
-			/>
+			<Icon color="red" name="ban" title="bannie" size={big ? 'big' : 'large'} />
 		);
 	}
 	if (team.certified) {
