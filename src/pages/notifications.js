@@ -51,7 +51,7 @@ const NotificationList = () => {
 			{user.loading || loading ? (
 				<Loader active inline="centered" />
 			) : notifications.length ? (
-				<div className="list-notification">
+				<div className="list-notification mb-5">
 					{notifications.map(notification => (
 						<Notification key={notification.id} notification={notification} />
 					))}

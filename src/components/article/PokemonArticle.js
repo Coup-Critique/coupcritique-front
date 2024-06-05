@@ -77,7 +77,11 @@ const PokemonArticle = props => {
 			}
 		>
 			{forms.length > 1 && (
-				<Menu color="orange" inverted className="fake-tab mt-0 mb-4">
+				<Menu
+					color="orange"
+					inverted
+					className="fake-tab mt-0 mb-4 d-inline-flex"
+				>
 					{forms.map(form => (
 						<Menu.Item
 							key={form.id}
@@ -97,10 +101,10 @@ const PokemonArticle = props => {
 				</Menu>
 			)}
 			<div className="row">
-				<div className="col-12 col-md-6 col-lg-5 mb-4 vertically-centered">
+				<div className="col-12 col-md-6 col-lg-5 mb-4">
 					<ArtPokemon pokemon={pokemon} />
 				</div>
-				<div className="col-12 col-md-6 col-lg-3 mb-4 vertically-centered">
+				<div className="col-12 col-md-6 col-lg-3 mb-4">
 					<div className="font-weight-medium">Type&nbsp;:</div>
 					<Popup
 						on="hover"
@@ -158,7 +162,7 @@ const PokemonArticle = props => {
 							<EvolutionTree pokemon={pokemon.base_form} />
 						)}
 				</div>
-				<div className="col-12 col-lg-4 col-xl-3 mb-4 vertically-centered">
+				<div className="col-12 col-lg-4 col-xl-3 mb-4">
 					<div className="font-weight-medium">Statistiques&nbsp;:</div>
 					<TableStat pokemon={pokemon} />
 				</div>

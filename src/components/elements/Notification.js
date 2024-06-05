@@ -53,7 +53,7 @@ const Notification = ({ notification }) => {
 					{!!notification.notifier && (
 						<Profile
 							user={notification.notifier}
-							className="mr-2"
+							className="mr-3"
 							hideName
 							width={32}
 							height={32}

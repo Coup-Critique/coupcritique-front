@@ -64,8 +64,8 @@ const SearchResult = ({ isUser = false }) => {
 			className="search-result"
 			more
 			goingBack
+			action={!isUser && <GenSelector />}
 		>
-			{!isUser && <GenSelector />}
 			<div id="pagination-scroll-ref">
 				{/* At least one of the 5 entities should have a result */}
 				{loading ? (
