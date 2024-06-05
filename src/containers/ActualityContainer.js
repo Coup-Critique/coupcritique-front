@@ -2,6 +2,7 @@
 import { useGetParam } from '@/hooks/useGetParams';
 import { Loader } from 'semantic-ui-react';
 import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
+import Page404 from '@/pages/404';
 
 const ActualityContainer = ({ Component, ...props }) => {
 	const id = useGetParam('id');
@@ -17,7 +18,7 @@ const ActualityContainer = ({ Component, ...props }) => {
 	} else if (actuality) {
 		return <Component {...props} actuality={actuality} article={actuality} />;
 	} else {
-		return null;
+		return <Page404 />;
 	}
 };
 
