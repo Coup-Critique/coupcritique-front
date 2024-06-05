@@ -63,7 +63,7 @@ const CircuitHome = props => {
 							<h3>Le Podium</h3>
 							<div className="row mb-4">
 								{props.players.map(player => (
-									<div key={player.id} className="col-12 col-lg-4">
+									<div key={player.id} className="col-4">
 										<Player player={player} />
 									</div>
 								))}

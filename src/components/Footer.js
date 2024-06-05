@@ -48,13 +48,11 @@ const Footer = () => (
 								Guides stratégiques
 							</Link>
 						</li>
-						{
-							<li className="nav-item">
-								<Link href="/entity/tournaments" className="nav-link">
-									Tournois
-								</Link>
-							</li>
-						}
+						{/* <li className="nav-item">
+							<Link href="/entity/tournaments" className="nav-link">
+								Tournois
+							</Link>
+						</li> */}
 						<li className="nav-item">
 							<Link href="/entity/actualities" className="nav-link">
 								Actualités
@@ -65,7 +63,8 @@ const Footer = () => (
 				<div className="footer-bottom">
 					<Link href="/remerciements">Remerciements</Link> -{' '}
 					<Link href="/mentions-legales">Mentions légales</Link> -{' '}
-					<Link href="/cgu">CGU</Link> - Tous droits réservés - Coup Critique 2020
+					<Link href="/cgu">CGU</Link> - Tous droits réservés - Coup Critique
+					2020
 				</div>
 			</div>
 		</div>

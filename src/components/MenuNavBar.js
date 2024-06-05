@@ -169,14 +169,14 @@ function MenuNavBar({ iconized = false }) {
 							content={
 								iconized ? (
 									<>
-										<Icon name="sitemap" /> Tournois
+										<Icon name="sitemap" /> Circuit
 									</>
 								) : (
-									'Tournois'
+									'Circuit'
 								)
 							}
 							as={ActiveLink}
-							href="/entity/tournaments"
+							href="/entity/circuit-tours"
 						/>
 						<Dropdown.Item
 							content={
