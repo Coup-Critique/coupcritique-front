@@ -48,11 +48,11 @@ const Footer = () => (
 								Guides stratégiques
 							</Link>
 						</li>
-						{/* <li className="nav-item">
-							<Link href="/entity/tournaments" className="nav-link">
-								Tournois
+						<li className="nav-item">
+							<Link href="/entity/circuit-tours" className="nav-link">
+								Circuit
 							</Link>
-						</li> */}
+						</li>
 						<li className="nav-item">
 							<Link href="/entity/actualities" className="nav-link">
 								Actualités
