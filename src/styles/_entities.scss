@@ -111,6 +111,14 @@ table.table {
 	}
 }
 
+.pokemon-sprite {
+	background-image: url('/images/pokemon-sprites.png');
+}
+
+.item-sprite {
+	background-image: url('/images/item-sprites.png');
+}
+
 .sprite,
 .move {
 	display: inline-block;

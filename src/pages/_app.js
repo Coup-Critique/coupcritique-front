@@ -3,6 +3,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'semantic-ui-css/semantic.min.css';
 import 'animate.css';
 import '@/styles/app.scss';
+import '@/styles/pokemon-sprites.css';
+import '@/styles/item-sprites.css';
 //
 import { useEffect, useState } from 'react';
 import { legacy_createStore } from 'redux';

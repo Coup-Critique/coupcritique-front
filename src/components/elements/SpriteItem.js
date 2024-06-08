@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Popup } from 'semantic-ui-react';
-import { IMG_VERSION, SPRITE_ITM } from '@/constants/img';
+import { SPRITE_ITM } from '@/constants/img';
 import { formatFileName } from '@/functions';
 // import Image from 'next/image';
 
@@ -36,15 +36,9 @@ const InnerImg = ({ item }) => (
 	<>
 		<img
 			key={item.id}
-			src={`/images/items/sprites/${formatFileName(
-				item.name
-			)}.png?ver=${IMG_VERSION}`}
-			onError={e => {
-				e.target.onerror = null;
-				e.target.src = `/images/items/sprites/unknown.png`;
-			}}
+			src={`/images/transparent.png`}
 			alt={`Objet ${item.nom || item.name}`}
-			className="link"
+			className={`link item-${formatFileName(item.name)}`}
 			width={SPRITE_ITM}
 			height={SPRITE_ITM}
 		/>

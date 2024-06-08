@@ -1,23 +1,18 @@
 // modules
 
 import Link from 'next/link';
-import { IMG_VERSION, SPRITE_PKM } from '@/constants/img';
+import { SPRITE_PKM } from '@/constants/img';
 import { formatFileName, makeClassName } from '@/functions';
 // import Image from 'next/image';
 
-const SpritePokemonImg = ({ pokemon, ...props }) => (
+const SpritePokemonImg = ({ pokemon, className, ...props }) => (
 	<img
 		key={pokemon.id}
-		src={`/images/pokemons/sprites/${formatFileName(
-			pokemon.name
-		)}.png?ver=${IMG_VERSION}`}
-		onError={e => {
-			e.target.onerror = null;
-			e.target.src = `/images/items/sprites/unknown.png`;
-		}}
+		src={`/images/transparent.png`}
 		alt={`Pokémon ${pokemon.nom || pokemon.name}`}
 		width={SPRITE_PKM}
 		height={SPRITE_PKM}
+		className={`link pokemon-sprite pokemon-${formatFileName(pokemon.name)}`}
 		{...props}
 	/>
 );
