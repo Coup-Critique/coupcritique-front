@@ -90,6 +90,24 @@ export const entityToEntities = {
 	'circuit-article': 'circuit-articles',
 };
 
+export const entityToPath = {
+	pokemon: 'pokemons',
+	move: 'moves',
+	ability: 'abilities',
+	item: 'items',
+	type: 'types',
+	team: 'teams',
+	tier: 'tiers',
+	user: 'users',
+	actuality: 'actualities',
+	tournament: 'tournaments',
+	guide: 'guides',
+	circuitTour: 'circuit-tours',
+	'circuit-tour': 'circuit-tours',
+	circuitArticle: 'circuit-tours/articles',
+	'circuit-article': 'circuit-tours/articles',
+};
+
 export const entitiesTranslation = {
 	pokemons: 'pokémon',
 	moves: 'capacités',

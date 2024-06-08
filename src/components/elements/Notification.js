@@ -2,14 +2,14 @@
 
 import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
-import { entityToEntities } from '@/constants/entities';
+import { entityToPath } from '@/constants/entities';
 import { makeClassName } from '@/functions';
 import ScrollReveal from '@/components/ScrollReveal';
 import Profile from '@/components/elements/Profile';
 // import Image from 'next/image';
 
 const Notification = ({ notification }) => {
-	const link = `/entity/${entityToEntities[notification.entityName]}/${
+	const link = `/entity/${entityToPath[notification.entityName]}/${
 		notification.entityId
 	}`;
 	return (
@@ -20,17 +20,17 @@ const Notification = ({ notification }) => {
 			)}
 			animation="zoomIn"
 		>
-			{(!!notification.subject
-				|| !!notification.notifier
-				|| !!notification.icon) && (
+			{(!!notification.subject ||
+				!!notification.notifier ||
+				!!notification.icon) && (
 				<div
 					className={makeClassName(
 						'subject d-flex wrap align-items-end',
 						!!notification.content && 'mb-2'
 					)}
 				>
-					{!!notification.icon
-						&& (notification.icon === 'comment' ? (
+					{!!notification.icon &&
+						(notification.icon === 'comment' ? (
 							<div className="fake-icon-circle mr-2">
 								<img
 									className="fake-icon"
