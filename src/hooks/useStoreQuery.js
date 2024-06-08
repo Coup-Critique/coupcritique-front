@@ -7,6 +7,7 @@ import queryReducer, {
 } from '@/reducers/state/queryReducer';
 import useActions from '@/hooks/useActions';
 import useLocalStorage from './useLocalStorage';
+import { objectCompare } from '@/functions';
 
 const useStoreQuery = ({ defaultQuery = { page: 1 }, saveQueryToStore = false } = {}) => {
 	const router = useRouter();
@@ -24,16 +25,23 @@ const useStoreQuery = ({ defaultQuery = { page: 1 }, saveQueryToStore = false } 
 
 	useEffect(() => {
 		if (saveQueryToStore) {
-			setQuery({
-				...query,
-				...getStoredItem('query_' + router.pathname),
-			});
+			const storedQuery = getStoredItem('query_' + router.pathname);
+			if (storedQuery && objectCompare(storedQuery, query) === false) {
+				setQuery({
+					...query,
+					...getStoredItem('query_' + router.pathname),
+				});
+			}
 		}
 	}, []);
 
 	useEffect(() => {
 		if (saveQueryToStore) {
-			setItemToStorage(query, 'query_' + router.pathname);
+			if (objectCompare(query, defaultQuery) === true) {
+				setItemToStorage(null, 'query_' + router.pathname);
+			} else {
+				setItemToStorage(query, 'query_' + router.pathname);
+			}
 		}
 	}, [query]);
 

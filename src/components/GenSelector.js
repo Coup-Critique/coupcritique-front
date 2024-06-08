@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Button, Dropdown, Icon, Label } from 'semantic-ui-react';
-import gens from '@/constants/gens';
+import gens, { lastGen } from '@/constants/gens';
 import { setGenAction } from '@/reducers/gen';
 import useLocalStorage, { STORAGE_KEY } from '@/hooks/useLocalStorage';
 
@@ -22,7 +22,7 @@ const GenSelector = ({ availableGens, redirectOnChange }) => {
 	const genIndex = genOptions.length - gen;
 
 	useEffect(() => {
-		const storedGen = getStoredItem(STORAGE_KEY + '-gen');
+		const storedGen = getStoredItem(STORAGE_KEY + '-gen') || lastGen;
 		if (storedGen != gen) {
 			dispatch(setGenAction(storedGen));
 		}

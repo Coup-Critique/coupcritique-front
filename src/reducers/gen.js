@@ -8,7 +8,11 @@ export const setGenAction = gen => ({ type: SET_GEN, gen });
 const genReducer = (state = lastGen, action) => {
 	switch (action.type) {
 		case SET_GEN:
-			localStorage.setItem(STORAGE_KEY + '-gen', action.gen);
+			if (action.gen) {
+				localStorage.setItem(STORAGE_KEY + '-gen', action.gen);
+			} else {
+				localStorage.removeItem(STORAGE_KEY + '-gen');
+			}
 			return action.gen || state;
 
 		default:
