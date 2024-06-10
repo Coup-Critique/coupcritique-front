@@ -119,7 +119,7 @@ const FormPokemonSet = ({
 	const [message, setMessage] = useState({});
 	const [prevTier, prevExport] = usePrevious(pokemonSet.tier, pokemonSet.export);
 	const storageKey = useMemo(
-		'form_' + (pathname + (defaultValue.id ? `/${defaultValue.id}` : '')),
+		() => 'form_' + (pathname + (defaultValue.id ? `/${defaultValue.id}` : '')),
 		[defaultValue.id, pathname]
 	);
 

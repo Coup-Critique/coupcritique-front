@@ -13,6 +13,8 @@ import { setTiers as _setTiers } from '@/reducers/tiers';
 import Page404 from '@/pages/404';
 import useActions from '@/hooks/useActions';
 
+const defaultObject = {};
+
 const GuideFormPage = props => {
 	const dispatch = useDispatch();
 	const router = useRouter();
@@ -20,7 +22,7 @@ const GuideFormPage = props => {
 	const user = useSelector(state => state.user);
 	const guide_tags = useSelector(state => props.tags || state.guide_tags);
 	const tiers = useSelector(state => props.tiers || state.tiers);
-	const { guide, update = false } = props;
+	const { guide = defaultObject, update = false } = props;
 	const [setTiers, setTags] = useActions(dispatch, [_setTiers, setGuideTags]);
 
 	useEffect(() => {
@@ -32,8 +34,7 @@ const GuideFormPage = props => {
 		}
 	}, [guide.id]);
 
-
-	const defaultGoBack =update ? `/entity/guides/${guide.id}` : '/entity/guides';
+	const defaultGoBack = update ? `/entity/guides/${guide.id}` : '/entity/guides';
 
 	const goBack = () => router.replace(defaultGoBack);
 
