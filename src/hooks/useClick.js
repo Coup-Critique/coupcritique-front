@@ -9,14 +9,14 @@ const useClick = to => {
 	const handleClick = e => {
 		if (stopClick) return;
 		if (
-			e.target.localName === 'a'
-			|| e.target.localName === 'i'
-			|| e.target.localName === 'button'
-			|| e.target.localName === 'input'
-			|| e.target.localName === 'label'
-			|| e.target.classList.contains('link')
-			|| e.target.classList.contains('action-icon')
-			|| e.target.classList.contains('td-action')
+			e.target.localName === 'a' ||
+			e.target.localName === 'i' ||
+			e.target.localName === 'button' ||
+			e.target.localName === 'input' ||
+			e.target.localName === 'label' ||
+			e.target.classList.contains('link') ||
+			e.target.classList.contains('action-icon') ||
+			e.target.classList.contains('td-action')
 		) {
 			return null;
 		}

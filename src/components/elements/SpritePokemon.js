@@ -5,14 +5,17 @@ import { SPRITE_PKM } from '@/constants/img';
 import { formatFileName, makeClassName } from '@/functions';
 // import Image from 'next/image';
 
-const SpritePokemonImg = ({ pokemon, className, ...props }) => (
+const SpritePokemonImg = ({ pokemon, className, noLink = false, ...props }) => (
 	<img
 		key={pokemon.id}
 		src={`/images/transparent.png`}
 		alt={`Pokémon ${pokemon.nom || pokemon.name}`}
 		width={SPRITE_PKM}
 		height={SPRITE_PKM}
-		className={`link pokemon-sprite pokemon-${formatFileName(pokemon.name)}`}
+		className={makeClassName(
+			`pokemon-sprite pokemon-${formatFileName(pokemon.name)}`,
+			!noLink && 'link'
+		)}
 		{...props}
 	/>
 );
@@ -23,6 +26,7 @@ const SpritePokemon = ({ pokemon, noLink = false, className, style, ...props }) 
 			pokemon={pokemon}
 			className={makeClassName('sprite', className)}
 			style={style}
+			noLink={noLink}
 			{...props}
 		/>
 	) : (
