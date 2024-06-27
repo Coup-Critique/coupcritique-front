@@ -25,22 +25,22 @@ const DescriptionJsoned = ({ description, json, className, handleUpdate }) => {
 				if (value.displayName) {
 					acc[key] = (
 						<>
-							<Pokemon pokemon={value} /> <SpritePokemon pokemon={value} />
+							<Pokemon pokemon={value} /> <SpritePokemon ownPath pokemon={value} />
 						</>
 					);
 				} else {
-					acc[key] = <SpritePokemon pokemon={value} />;
+					acc[key] = <SpritePokemon ownPath pokemon={value} />;
 				}
 				break;
 			case 'Item':
 				if (value.displayName) {
 					acc[key] = (
 						<>
-							<Item item={value} /> <SpriteItem item={value} />
+							<Item item={value} /> <SpriteItem ownPath item={value} />
 						</>
 					);
 				} else {
-					acc[key] = <SpriteItem item={value} />;
+					acc[key] = <SpriteItem ownPath item={value} />;
 				}
 				break;
 			case 'Ability':

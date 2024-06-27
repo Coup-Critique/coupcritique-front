@@ -868,19 +868,6 @@ h3,
 			text-decoration: underline;
 		}
 	}
-
-	.sprite img {
-		max-height: 1.75em !important;
-		max-width: 1.75em !important;
-		vertical-align: sub;
-		margin-left: 0.25em;
-	}
-
-	.type img {
-		max-height: 1em !important;
-		max-width: 5em !important;
-		vertical-align: text-bottom;
-	}
 }
 
 .description.wysiwyg-result {
@@ -1337,16 +1324,6 @@ ul {
 	width: 100%;
 	max-width: 100%;
 	margin: 0;
-}
-
-.ui.menu .item > .sprite img,
-.ui.menu .item > img.sprite {
-	max-height: rem(30px);
-	max-width: rem(30px);
-	width: auto;
-	margin-top: -0.72857143em;
-	margin-bottom: -0.72857143em;
-	margin-right: 0.5em;
 }
 
 .ui.inverted.blue.menu,

@@ -2,18 +2,18 @@
 
 import Link from 'next/link';
 import { Popup } from 'semantic-ui-react';
-import { SPRITE_ITM } from '@/constants/img';
-import { formatFileName } from '@/functions';
+import { IMG_VERSION, SPRITE_ITM } from '@/constants/img';
+import { formatFileName, makeClassName } from '@/functions';
 // import Image from 'next/image';
 
-const SpriteItem = ({ item, noPopup = false }) =>
+const SpriteItem = ({ item, ownPath = false, noPopup = false }) =>
 	noPopup || !item.description ? (
 		<Link
 			href={`/entity/items/${item.id}`}
 			className="sprite"
 			title={item.nom || item.name}
 		>
-			<InnerImg item={item} />
+			<InnerImg item={item} ownPath={ownPath} />
 		</Link>
 	) : (
 		<Popup
@@ -26,19 +26,29 @@ const SpriteItem = ({ item, noPopup = false }) =>
 			content={(item.nom || item.name) + ' : ' + item.description.split('\n')[0]}
 			trigger={
 				<Link href={`/entity/items/${item.id}`} className="sprite">
-					<InnerImg item={item} />
+					<InnerImg item={item} ownPath={ownPath} />
 				</Link>
 			}
 		/>
 	);
 
-const InnerImg = ({ item }) => (
+const InnerImg = ({ item, ownPath, className }) => (
 	<>
 		<img
 			key={item.id}
-			src={`/images/transparent.png`}
+			src={
+				ownPath
+					? `/images/items/sprites/${formatFileName(
+							item.name
+					  )}.png?ver=${IMG_VERSION}`
+					: `/images/transparent.png`
+			}
 			alt={`Objet ${item.nom || item.name}`}
-			className={`link item-${formatFileName(item.name)}`}
+			className={makeClassName(
+				'link',
+				className,
+				!ownPath && `item-sprite item-${formatFileName(item.name)}`
+			)}
 			width={SPRITE_ITM}
 			height={SPRITE_ITM}
 		/>

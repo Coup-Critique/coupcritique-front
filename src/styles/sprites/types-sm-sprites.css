@@ -1,0 +1,82 @@
+@media (max-width: 991px) {
+	.type-bug {
+		background-position: -0px -0px;
+	}
+
+	.type-dark {
+		background-position: -75px -0px;
+	}
+
+	.type-dragon {
+		background-position: -150px -0px;
+	}
+
+	.type-electric {
+		background-position: -225px -0px;
+	}
+
+	.type-fairy {
+		background-position: -300px -0px;
+	}
+
+	.type-fighting {
+		background-position: -0px -15px;
+	}
+
+	.type-fire {
+		background-position: -75px -15px;
+	}
+
+	.type-flying {
+		background-position: -150px -15px;
+	}
+
+	.type-ghost {
+		background-position: -225px -15px;
+	}
+
+	.type-grass {
+		background-position: -300px -15px;
+	}
+
+	.type-ground {
+		background-position: -0px -30px;
+	}
+
+	.type-ice {
+		background-position: -75px -30px;
+	}
+
+	.type-normal {
+		background-position: -150px -30px;
+	}
+
+	.type-poison {
+		background-position: -225px -30px;
+	}
+
+	.type-psychic {
+		background-position: -300px -30px;
+	}
+
+	.type-rock {
+		background-position: -0px -45px;
+	}
+
+	.type-steel {
+		background-position: -75px -45px;
+	}
+
+	.type-stellar {
+		background-position: -150px -45px;
+	}
+
+	.type-unknown {
+		background-position: -225px -45px;
+	}
+
+	.type-water {
+		background-position: -300px -45px;
+	}
+
+}

@@ -1,0 +1,169 @@
+.pokemon-sprite {
+    background-image: url('/images/sprites/pokemons-sprites.png');
+}
+
+.item-sprite {
+    background-image: url('/images/sprites/items-sprites.png');
+}
+
+.type-sprite {
+    background-image: url('/images/sprites/types-sprites.png');
+}
+
+.type-icon-sprite {
+    background-image: url('/images/sprites/types-icons-sprites.png');
+}
+
+.type-tera-sprite {
+    background-image: url('/images/sprites/types-tera-sprites.png');
+}
+
+.sprite,
+.move {
+    display: inline-block;
+}
+
+.move a:not(.icon-type) {
+    vertical-align: middle;
+}
+
+.type:not(.article) {
+    margin-right: 0.1em;
+
+    img {
+        max-height: 1.25rem;
+        max-width: 6.25rem;
+    }
+}
+
+a.type {
+    display: inline-block;
+}
+
+.icon-type {
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    display: inline-block;
+    line-height: 1;
+
+    img {
+        width: 1.25rem;
+        height: 1.25rem;
+        vertical-align: middle;
+    }
+
+    &.tera img {
+        width: rem(25px);
+        height: rem(25px);
+    }
+}
+
+// .sprite.small img,
+// img.sprite.small {
+//     max-height: 30px;
+//     max-width: 30px;
+// }
+
+// .pokemon-sprite.small {
+//     background-image: url('/images/sprites/pokemons-sm-sprites.png');
+// }
+
+// .item-sprite.small {
+//     background-image: url('/images/sprites/items-sm-sprites.png');
+// }
+
+.list .sprite {
+    margin: 0 0.25rem 0.125rem;
+}
+
+.description.json,
+.description.wysiwyg-result {
+
+    .sprite img {
+        max-height: 30px !important;
+        max-width: 30px !important;
+        vertical-align: sub;
+        margin-left: 0.25em;
+    }
+
+    .pokemon-sprite {
+        background-image: url('/images/sprites/pokemons-sm-sprites.png');
+    }
+
+    .item-sprite {
+        background-image: url('/images/sprites/items-sm-sprites.png');
+    }
+
+    .type img {
+        max-height: 1em !important;
+        max-width: 5em !important;
+        vertical-align: text-bottom;
+    }
+}
+
+.ui.menu .item {
+
+    > .sprite img,
+    .ui.menu .item > img.sprite {
+        max-height: 30px;
+        max-width: 30px;
+        width: auto;
+        margin-top: -0.72857143em;
+        margin-bottom: -0.72857143em;
+        margin-right: 0.5em;
+    }
+
+    // .pokemon-sprite {
+    //     background-image: url('/images/sprites/pokemons-sm-sprites.png');
+    // }
+
+    // .item-sprite {
+    //     background-image: url('/images/sprites/items-sm-sprites.png');
+    // }
+}
+
+@media (max-width: $l) {
+
+    .sprite img,
+    img.sprite {
+        max-width: 30px;
+        max-height: 30px;
+    }
+
+    .type img.type-sprite {
+        max-height: 15px;
+        max-width: 75px;
+    }
+
+    .icon-type {
+        img.type-icon-sprite {
+            width: 15px;
+            height: 15px;
+        }
+
+        &.tera img.type-tera-sprite {
+            width: 21px;
+            height: 21px;
+        }
+    }
+
+    .pokemon-sprite {
+        background-image: url('/images/sprites/pokemons-sm-sprites.png');
+    }
+
+    .item-sprite {
+        background-image: url('/images/sprites/items-sm-sprites.png');
+    }
+
+    .type-sprite {
+        background-image: url('/images/sprites/types-sm-sprites.png');
+    }
+
+    .type-icon-sprite {
+        background-image: url('/images/sprites/types-icons-sm-sprites.png');
+    }
+
+    .type-tera-sprite {
+        background-image: url('/images/sprites/types-tera-sm-sprites.png');
+    }
+}

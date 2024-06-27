@@ -3,8 +3,16 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'semantic-ui-css/semantic.min.css';
 import 'animate.css';
 import '@/styles/app.scss';
-import '@/styles/pokemon-sprites.css';
-import '@/styles/item-sprites.css';
+import '@/styles/sprites/pokemons-sprites.css';
+import '@/styles/sprites/pokemons-sm-sprites.css';
+import '@/styles/sprites/items-sprites.css';
+import '@/styles/sprites/items-sm-sprites.css';
+import '@/styles/sprites/types-sprites.css';
+import '@/styles/sprites/types-sm-sprites.css';
+import '@/styles/sprites/types-icons-sprites.css';
+import '@/styles/sprites/types-icons-sm-sprites.css';
+import '@/styles/sprites/types-tera-sprites.css';
+import '@/styles/sprites/types-tera-sm-sprites.css';
 //
 import { useEffect, useState } from 'react';
 import { legacy_createStore } from 'redux';

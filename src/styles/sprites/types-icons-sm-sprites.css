@@ -1,0 +1,82 @@
+@media (max-width: 991px) {
+	.type-icon-bug {
+		background-position: -0px -0px;
+	}
+
+	.type-icon-dark {
+		background-position: -15px -0px;
+	}
+
+	.type-icon-dragon {
+		background-position: -30px -0px;
+	}
+
+	.type-icon-electric {
+		background-position: -45px -0px;
+	}
+
+	.type-icon-fairy {
+		background-position: -60px -0px;
+	}
+
+	.type-icon-fighting {
+		background-position: -0px -15px;
+	}
+
+	.type-icon-fire {
+		background-position: -15px -15px;
+	}
+
+	.type-icon-flying {
+		background-position: -30px -15px;
+	}
+
+	.type-icon-ghost {
+		background-position: -45px -15px;
+	}
+
+	.type-icon-grass {
+		background-position: -60px -15px;
+	}
+
+	.type-icon-ground {
+		background-position: -0px -30px;
+	}
+
+	.type-icon-ice {
+		background-position: -15px -30px;
+	}
+
+	.type-icon-normal {
+		background-position: -30px -30px;
+	}
+
+	.type-icon-poison {
+		background-position: -45px -30px;
+	}
+
+	.type-icon-psychic {
+		background-position: -60px -30px;
+	}
+
+	.type-icon-rock {
+		background-position: -0px -45px;
+	}
+
+	.type-icon-steel {
+		background-position: -15px -45px;
+	}
+
+	.type-icon-stellar {
+		background-position: -30px -45px;
+	}
+
+	.type-icon-unknown {
+		background-position: -45px -45px;
+	}
+
+	.type-icon-water {
+		background-position: -60px -45px;
+	}
+
+}

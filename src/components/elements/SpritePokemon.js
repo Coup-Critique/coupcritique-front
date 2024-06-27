@@ -1,19 +1,31 @@
 // modules
-
 import Link from 'next/link';
-import { SPRITE_PKM } from '@/constants/img';
+import { IMG_VERSION, SPRITE_PKM } from '@/constants/img';
 import { formatFileName, makeClassName } from '@/functions';
 // import Image from 'next/image';
 
-const SpritePokemonImg = ({ pokemon, className, noLink = false, ...props }) => (
+const SpritePokemonImg = ({
+	pokemon,
+	className,
+	ownPath = false,
+	noLink = false,
+	...props
+}) => (
 	<img
 		key={pokemon.id}
-		src={`/images/transparent.png`}
+		src={
+			ownPath
+				? `/images/pokemons/sprites/${formatFileName(
+						pokemon.name
+				  )}.png?ver=${IMG_VERSION}`
+				: `/images/transparent.png`
+		}
 		alt={`Pokémon ${pokemon.nom || pokemon.name}`}
 		width={SPRITE_PKM}
 		height={SPRITE_PKM}
 		className={makeClassName(
-			`pokemon-sprite pokemon-${formatFileName(pokemon.name)}`,
+			className,
+			!ownPath && `pokemon-sprite pokemon-${formatFileName(pokemon.name)}`,
 			!noLink && 'link'
 		)}
 		{...props}
