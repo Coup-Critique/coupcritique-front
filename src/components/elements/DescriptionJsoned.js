@@ -25,7 +25,8 @@ const DescriptionJsoned = ({ description, json, className, handleUpdate }) => {
 				if (value.displayName) {
 					acc[key] = (
 						<>
-							<Pokemon pokemon={value} /> <SpritePokemon ownPath pokemon={value} />
+							<Pokemon pokemon={value} />{' '}
+							<SpritePokemon ownPath pokemon={value} />
 						</>
 					);
 				} else {
@@ -50,7 +51,7 @@ const DescriptionJsoned = ({ description, json, className, handleUpdate }) => {
 				acc[key] = <Move move={value} />;
 				break;
 			case 'Type':
-				acc[key] = <Type type={value} />;
+				acc[key] = <Type ownPath type={value} />;
 				break;
 		}
 		return acc;
