@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { formatDate } from '@/functions';
 import ScrollReveal from '@/components/ScrollReveal';
 import Tag from '@/components/elements/Tag';
+import Author from '../elements/Author';
 
 const ArticleRowTeaser = ({ article, entityName }) => (
 	<ScrollReveal className="guide-teaser-enhanced" animation="zoomIn" earlier>
@@ -32,9 +33,7 @@ const ArticleRowTeaser = ({ article, entityName }) => (
 						{article.title}
 					</Link>
 				</h4>
-				<h5>
-					{article.user.username} - {formatDate(article.date_creation)}
-				</h5>
+				<Author entity={article} />
 			</div>
 		</div>
 		<div>

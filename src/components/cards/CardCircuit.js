@@ -7,7 +7,14 @@ import { makeClassName } from '@/functions';
 const CardCircuit = ({ currentTours }) => {
 	return (
 		<Card className="padded">
-			<h2>Circuit Compétitif</h2>
+			<h2 className="sr-only">Circuit Compétitif</h2>
+			<img
+				className="img-fluid mr-lg-0 ml-lg-0 mb-4"
+				width={345}
+				height={84}
+				alt="Circuit Compétitif"
+				src="/images/logo_circuit.png"
+			/>
 			<div>
 				<div className="row">
 					{currentTours.map((tour, i) => (

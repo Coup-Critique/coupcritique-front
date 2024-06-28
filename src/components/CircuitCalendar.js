@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { Label } from 'semantic-ui-react';
 import { MONTHS_CUT } from '@/constants/months';
 import Link from 'next/link';
-import SpritePokemon from './elements/SpritePokemon';
+// import SpritePokemon from './elements/SpritePokemon';
 
 // const currentMonthIndex = new Date().getMonth();
 // let months = MONTHS_CUT.slice();
@@ -13,7 +13,7 @@ const CircuitCalendar = ({ calendar, toList = false }) => {
 	return (
 		<>
 			<div className="h2-btn">
-				<h2>Calendrier de la Coupe Critique</h2>
+				<h2>Calendrier du Circuit Compétitif Coup Critique</h2>
 				<Link
 					href={'/entity/circuit-tours' + (toList ? '/list' : '')}
 					className="btn btn-orange"
@@ -21,7 +21,7 @@ const CircuitCalendar = ({ calendar, toList = false }) => {
 					Voir tous les tournois
 				</Link>
 			</div>
-			<div className="calendar framed pb-1">
+			<div className="calendar framed mt-0 pb-1">
 				<div className="inner">
 					<div className="row m-0 mb-3">
 						{MONTHS_CUT.map(month => (

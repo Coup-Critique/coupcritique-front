@@ -17,17 +17,24 @@ const CircuitHome = props => {
 	const cookie = useSelector(state => state.cookie);
 	return (
 		<PageWrapper
-			title="Rejoignez le Circuit Compétitif de 2024 : la Coupe Critique"
+			title="Rejoignez le Circuit Compétitif Coup Critique de 2024"
 			className="actuality-list"
-			metadescription="Liste des tournois du Circuit de la Coupe Critique."
+			metadescription="Liste des tournois du Circuit Compétitif Coup Critique."
 			goingBack="/"
 		>
+			<img
+				className="img-fluid mb-4"
+				width={841}
+				height={168}
+				alt="Circuit Compétitif"
+				src="/images/logo_circuit.png"
+			/>
 			<h4 className="description framed">
 				CashPrize total du Circuit : 4000&nbsp;€
 			</h4>
 			<SectionAds />
 			<div className="row mb-4">
-				<div className="col-12 col-lg-8 mb-4">
+				<div className="col-12 col-lg-8 mb-3">
 					<h3>Nos derniers tournois</h3>
 					<div className="row">
 						{props.currentTours.map((tour, i) => (
@@ -54,7 +61,14 @@ const CircuitHome = props => {
 							color="violet"
 							content="S'inscrire aux tournois sur Discord"
 							icon="discord"
-						/>
+							className="mb-3"
+						/>{' '}
+						<Link
+							href="/entity/circuit-tours/list"
+							className="btn btn-orange mb-3"
+						>
+							Voir tous les tournois
+						</Link>
 					</div>
 				</div>
 				<div className="col-12 col-lg-4 mb-4">

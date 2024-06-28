@@ -37,9 +37,9 @@ const CircuitArticleList = props => {
 
 	return (
 		<PageWrapper
-			title="Les articles de la Coupe Critique"
+			title="Les articles du Circuit Compétitif Coup Critique"
 			className="actuality-list"
-			metadescription="Liste des articles du Circuit de la Coupe Critique."
+			metadescription="Liste des articles du Circuit Compétitif Coup Critique."
 			goingBack="/entity/circuit-tours"
 			action={
 				user.is_modo && (
