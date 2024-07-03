@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Card, Button } from 'semantic-ui-react';
-import { formatDate } from '@/functions';
+import { formatDate, makeClassName } from '@/functions';
 import ScrollReveal from '@/components/ScrollReveal';
 import Tag from '@/components/elements/Tag';
 import Author from '../elements/Author';
@@ -13,8 +13,13 @@ const ArticleTeaser = ({
 	path = entityName,
 	TitleAs = 'h3',
 	btnProps = {},
+	noCover = false,
 }) => (
-	<ScrollReveal className="ui card actuality-teaser" animation="zoomIn" earlier>
+	<ScrollReveal
+		className={makeClassName('ui card article-teaser', noCover && 'no-cover')}
+		animation="zoomIn"
+		earlier
+	>
 		<Card.Content>
 			<div className="image mb-4">
 				<Link href={`/entity/${path}/${article.id}`}>

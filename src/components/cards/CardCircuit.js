@@ -25,7 +25,11 @@ const CardCircuit = ({ currentTours }) => {
 								i > 0 && 'd-none d-sm-flex d-xl-none'
 							)}
 						>
-							<ArticleRowTeaser article={tour} entityName="circuit-tours" />
+							<ArticleRowTeaser
+								article={tour}
+								entityName="circuit-tours"
+								noCover
+							/>
 						</div>
 					))}
 				</div>

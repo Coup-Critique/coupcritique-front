@@ -22,16 +22,25 @@ const CircuitHome = props => {
 			metadescription="Liste des tournois du Circuit Compétitif Coup Critique."
 			goingBack="/"
 		>
-			<img
-				className="img-fluid mb-4"
-				width={841}
-				height={168}
-				alt="Circuit Compétitif"
-				src="/images/logo_circuit.png"
-			/>
-			<h4 className="description framed">
-				CashPrize total du Circuit : 4000&nbsp;€
-			</h4>
+			<div className="description framed">
+				<div className="row">
+					<div className="col-12 col-lg-6">
+						<img
+							// className="img-fluid mb-4"
+							width={654}
+							height={131}
+							alt="Circuit Compétitif"
+							src="/images/logo_circuit.png"
+						/>
+					</div>
+					<div className="col-12 col-lg-6 d-flex justify-content-center align-items-center">
+						<h2>
+							CashPrize total du Circuit :{' '}
+							<b className="text-gold">4000&nbsp;€</b>
+						</h2>
+					</div>
+				</div>
+			</div>
 			<SectionAds />
 			<div className="row mb-4">
 				<div className="col-12 col-lg-8 mb-3">
@@ -48,6 +57,7 @@ const CircuitHome = props => {
 								<ArticleTeaser
 									article={tour}
 									entityName="circuit-tours"
+									noCover
 								/>
 							</div>
 						))}
