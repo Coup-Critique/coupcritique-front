@@ -45,7 +45,7 @@ const CircuitTourPage = ({ circuitTour, circuitArticles, circuitVideos }) => {
 					<div className="text-center">
 						<Link
 							href={`/entity/circuit-tours/articles/tour/${circuitTour.id}`}
-							className="btn btn-orange"
+							className="btn btn-orange inverted"
 						>
 							Voir tous les articles du tour
 						</Link>
@@ -63,7 +63,7 @@ const CircuitTourPage = ({ circuitTour, circuitArticles, circuitVideos }) => {
 						<div className="text-center">
 							<Link
 								href={`/entity/circuit-tours/videos/tour/${circuitTour.id}`}
-								className="btn btn-orange"
+								className="btn btn-orange inverted"
 							>
 								Voir toutes les videos du tour
 							</Link>
