@@ -177,6 +177,15 @@
 				.three {
 					grid-column: 3/5;
 				}
+
+				.col-home-xxl-12 {
+					flex: 0 0 100%;
+					max-width: 100%;
+				}
+
+				.d-home-xxl-none {
+					display: none !important;
+				}
 			}
 		}
 	}
