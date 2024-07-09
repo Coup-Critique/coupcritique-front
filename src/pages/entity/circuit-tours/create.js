@@ -13,6 +13,7 @@ const addtionalFields = [
 	{ name: 'startDate', type: 'date', label: 'Date de début' },
 	{ name: 'endDate', type: 'date', label: 'Date de fin' },
 	{ name: 'color', placeholder: '#000000', label: 'Couleur' },
+	{ name: 'cashprize', placeholder: 'Montant', label: 'Cash Prize', icon: 'euro sign', type: 'number'},
 ];
 
 const CircuitTourFormPage = ({ circuitTour, update = false }) => {
@@ -56,7 +57,7 @@ const CircuitTourFormPage = ({ circuitTour, update = false }) => {
 				handleSubmited={goBack}
 				reinitiRef={reinitiRef}
 				addtionalFields={addtionalFields}
-				addtionalWidths={3}
+				addtionalWidths={4}
 			/>
 		</PageWrapper>
 	);

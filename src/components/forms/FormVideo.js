@@ -42,7 +42,8 @@ const FormVideo = ({
 		}
 	}, [result]);
 
-	const handleChange = (e, { name, value }) => setForm({ ...form, [name]: value });
+	const handleChange = (e, { name, value }) =>
+		setForm(form => ({ ...form, [name]: value }));
 	const handleChangeTags = (name, tags) => setSelectedTags(tags);
 
 	const onSubmit = e => {

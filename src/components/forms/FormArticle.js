@@ -75,10 +75,13 @@ const FormArticle = ({
 		}
 	}, [resultImages]);
 
-	const handleChange = (e, { name, value }) => setForm({ ...form, [name]: value });
-	const handleChangeEditor = value => setForm({ ...form, description: value });
+	const handleChange = (e, { name, value, type }) => {
+		if (type === 'number') value = Number(value);
+		setForm(form => ({ ...form, [name]: value }));
+	};
+	const handleChangeEditor = value => setForm(form => ({ ...form, description: value }));
 	const handleImages = (name, value) => setImages(value);
-	const handleChangeTags = (name, tags) => setForm({ ...form, tags });
+	const handleChangeTags = (name, tags) => setForm(form => ({ ...form, tags }));
 
 	const handleRemoveImage = i => {
 		if (form.images[i]) {

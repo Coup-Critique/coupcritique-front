@@ -47,10 +47,11 @@ const FormResource = ({ handleCancel, handleSubmited, resource = {} }) => {
 		}
 	}, [result]);
 
-	const handleChange = (e, { name, value }) => setForm({ ...form, [name]: value });
+	const handleChange = (e, { name, value }) =>
+		setForm(form => ({ ...form, [name]: value }));
 
 	const handleTier = (tierId, gen) =>
-		setForm({ ...form, gen: parseInt(gen), tier: { id: tierId } });
+		setForm(form => ({ ...form, gen: parseInt(gen), tier: { id: tierId } }));
 
 	const onSubmit = e => {
 		e.preventDefault();

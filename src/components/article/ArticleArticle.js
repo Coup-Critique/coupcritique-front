@@ -119,12 +119,21 @@ const ArticleArticle = props => {
 					)}
 					<Author entity={article} />
 				</div>
-				<div
-					className="description framed wysiwyg-result mt-1"
-					dangerouslySetInnerHTML={{
-						__html: article.parsedDescription || article.shortDescription,
-					}}
-				/>
+				<div className="description framed wysiwyg-result mt-1">
+					{article.cashprize ? (
+						<div
+							className="text-orange font-italic font-weight-bold text-right"
+							style={{ marginTop: '-1.5em', marginBottom: '1.5em' }}
+						>
+							CashPrize&nbsp;: {article.cashprize} €
+						</div>
+					) : null}
+					<div
+						dangerouslySetInnerHTML={{
+							__html: article.parsedDescription || article.shortDescription,
+						}}
+					/>
+				</div>
 			</ScrollReveal>
 			{children}
 			<SectionAds />

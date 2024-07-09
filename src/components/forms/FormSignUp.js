@@ -42,7 +42,7 @@ const FormSignUp = ({ triggerHeight }) => {
 	}, [message]);
 
 	const handleChange = (e, { name, value }) =>
-		setFormUser({ ...formUser, [name]: value });
+		setFormUser(form => ({ ...formUser, [name]: value }));
 
 	const handleCgu = e => {
 		e.preventDefault();
@@ -183,8 +183,8 @@ const FormSignUp = ({ triggerHeight }) => {
 					/>
 					<label htmlFor="cguAccepted" onClick={handleCgu}>
 						J’ai pris connaissance des{' '}
-						<Link href="/cgu">conditions générales d'utilisation</Link> du site
-						coupcritique.fr
+						<Link href="/cgu">conditions générales d'utilisation</Link> du
+						site coupcritique.fr
 					</label>
 				</div>
 			</div>

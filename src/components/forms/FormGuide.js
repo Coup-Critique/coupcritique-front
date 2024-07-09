@@ -66,32 +66,32 @@ const FormGuide = ({ handleSubmited, guide = {}, tags = [], tiers, loadingTiers 
 		}
 	}, [resultImages]);
 
-	const handleChange = (e, { name, value }) => setForm({ ...form, [name]: value });
-	const handleChangeEditor = value => setForm({ ...form, description: value });
+	const handleChange = (e, { name, value }) => setForm(form => ({ ...form, [name]: value }));
+	const handleChangeEditor = value => setForm(form => ({ ...form, description: value }));
 	const handleImages = (name, value) => setImages(value);
-	const handleChangeTags = (name, tags) => setForm({ ...form, tags });
+	const handleChangeTags = (name, tags) => setForm(form => ({ ...form, tags }));
 
 	const handleAddResource = (e, value) => {
 		e.preventDefault();
-		setForm({ ...form, resource: value ? guide.resource : null });
+		setForm(form => ({ ...form, resource: value ? guide.resource : null }));
 		setAddResource(value);
 	};
 
 	const handleChangeResource = (e, { name, value }) =>
-		setForm({ ...form, resource: { ...form.resource, [name]: value } });
+		setForm(form => ({ ...form, resource: { ...form.resource, [name]: value } }));
 
 	const handleTier = (tierId, gen) => {
-		setForm({
+		setForm(form => ({
 			...form,
 			resource: { ...form.resource, gen: parseInt(gen), tier: { id: tierId } },
-		});
+		}));
 	};
 
 	const handleRemoveImage = i => {
 		if (form.images[i]) {
 			const images = form.images.slice();
 			images.splice(i, 1);
-			setForm({ ...form, images });
+			setForm(form => ({ ...form, images }));
 		}
 	};
 
