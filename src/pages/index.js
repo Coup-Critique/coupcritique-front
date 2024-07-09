@@ -46,7 +46,7 @@ const Home = props => {
 	);
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 	try {
 		const responses = await Promise.all([
 			manageFetch(`teams/top`),
