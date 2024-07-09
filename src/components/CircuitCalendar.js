@@ -16,7 +16,7 @@ const CircuitCalendar = ({ calendar, toList = false }) => {
 				<h2>Calendrier du Circuit Compétitif Coup Critique</h2>
 				<Link
 					href={'/entity/circuit-tours' + (toList ? '/list' : '')}
-					className="btn btn-orange"
+					className="btn btn-orange inverted"
 				>
 					Voir tous les tournois
 				</Link>

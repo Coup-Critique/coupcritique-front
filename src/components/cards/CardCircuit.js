@@ -7,14 +7,16 @@ import { makeClassName } from '@/functions';
 const CardCircuit = ({ currentTours }) => {
 	return (
 		<Card className="padded">
-			<h2 className="sr-only">Circuit Compétitif</h2>
-			<img
-				className="img-fluid mr-lg-0 ml-lg-0 mb-4"
-				width={345}
-				height={84}
-				alt="Circuit Compétitif"
-				src="/images/logo_circuit.png"
-			/>
+			<Link href="/entity/circuit-tours">
+				<h2 className="sr-only">Circuit Compétitif</h2>
+				<img
+					className="img-fluid mr-lg-0 ml-lg-0 mb-4"
+					width={345}
+					height={84}
+					alt="Circuit Compétitif"
+					src="/images/logo_circuit.png"
+				/>
+			</Link>
 			<div>
 				<div className="row">
 					{currentTours.map((tour, i) => (
@@ -33,7 +35,10 @@ const CardCircuit = ({ currentTours }) => {
 						</div>
 					))}
 				</div>
-				<Link href="/entity/circuit-tours" className="btn btn-orange btn-outline">
+				<Link
+					href="/entity/circuit-tours"
+					className="btn btn-orange btn-outline inverted"
+				>
 					Détails du circuit
 				</Link>
 			</div>

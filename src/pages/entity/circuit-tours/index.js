@@ -22,22 +22,32 @@ const CircuitHome = props => {
 			metadescription="Liste des tournois du Circuit Compétitif Coup Critique."
 			goingBack="/"
 		>
-			<div className="description framed">
+			<div className="description framed pt-4 pl-4 pr-4 pb-0">
 				<div className="row">
-					<div className="col-12 col-lg-6">
+					<div className="col-12 col-xl-6 mb-4">
 						<img
-							// className="img-fluid mb-4"
 							width={654}
 							height={131}
 							alt="Circuit Compétitif"
 							src="/images/logo_circuit.png"
+							className="img-fluid"
 						/>
 					</div>
-					<div className="col-12 col-lg-6 d-flex justify-content-center align-items-center">
-						<h2>
+					<div className="col-12 col-xl-6 d-flex mb-4 justify-content-center align-items-center">
+						<h2 className="text-center">
 							CashPrize total du Circuit :{' '}
 							<b className="text-gold">4000&nbsp;€</b>
 						</h2>
+						<Button
+							size="large"
+							color="red"
+							as="a"
+							href="https://www.paypal.com/donate/?hosted_button_id=BF3YGL7JGDLVU"
+							target="_blank"
+							rel="noreferrer nofollow"
+						>
+							Contribuer
+						</Button>
 					</div>
 				</div>
 			</div>
@@ -75,7 +85,7 @@ const CircuitHome = props => {
 						/>{' '}
 						<Link
 							href="/entity/circuit-tours/list"
-							className="btn btn-orange mb-3"
+							className="btn btn-orange inverted mb-3"
 						>
 							Voir tous les tournois
 						</Link>
@@ -95,7 +105,7 @@ const CircuitHome = props => {
 							<div className="text-center">
 								<Link
 									href={`/entity/circuit-tours/ranking`}
-									className="btn btn-orange"
+									className="btn btn-orange inverted"
 								>
 									Voir le classement complet
 								</Link>
@@ -142,7 +152,7 @@ const CircuitHome = props => {
 						<div className="text-center">
 							<Link
 								href={'/entity/circuit-tours/articles'}
-								className="btn btn-orange"
+								className="btn btn-orange inverted"
 							>
 								Voir tous les articles
 							</Link>
@@ -170,7 +180,7 @@ const CircuitHome = props => {
 						<div className="text-center">
 							<Link
 								href={`/entity/circuit-tours/videos`}
-								className="btn btn-orange"
+								className="btn btn-orange inverted"
 							>
 								Voir toutes les videos
 							</Link>

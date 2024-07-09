@@ -11,7 +11,7 @@ function SectionActuality({ actualities = [] }) {
 			<div className="ui container">
 				<div className="h2-btn">
 					<h2>Actualités</h2>
-					<Link href="/entity/actualities" className="btn btn-orange">
+					<Link href="/entity/actualities" className="btn btn-orange inverted">
 						Voir toutes les actualités
 					</Link>
 				</div>

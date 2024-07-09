@@ -15,7 +15,7 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 			<div className="ui container">
 				<div className="h2-btn">
 					<h2>Guides stratégiques</h2>
-					<Link href="/entity/guides" className="btn btn-orange">
+					<Link href="/entity/guides" className="btn btn-orange inverted">
 						Voir tous les guides
 					</Link>
 				</div>
@@ -51,7 +51,10 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 								))}
 							</div>
 							<div>
-								<Link href={`/entity/tiers`} className="btn btn-orange">
+								<Link
+									href={`/entity/tiers`}
+									className="btn btn-orange inverted"
+								>
 									Voir les usages
 								</Link>
 							</div>
@@ -74,7 +77,10 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 								))}
 							</div>
 							<div className="text-center">
-								<Link href={`/videos`} className="btn btn-orange">
+								<Link
+									href={`/videos`}
+									className="btn btn-orange inverted"
+								>
 									Voir toutes les videos
 								</Link>
 							</div>
