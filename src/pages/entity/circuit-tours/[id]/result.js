@@ -29,7 +29,7 @@ const Page = ({ circuitTour }) => {
 				menuItem: 'Scores',
 				render: () => (
 					<Tab.Pane>
-						<TableTourScore scores={circuitTour.scores} />
+						<TableTourScore scores={circuitTour.scores} circuitTour={circuitTour} />
 					</Tab.Pane>
 				),
 			},

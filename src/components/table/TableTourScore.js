@@ -10,7 +10,7 @@ const cols = [
 	{ key: 'prize', content: 'Prix' },
 	// { key: 'a', content: 'Ultime adversaire' },
 ];
-const TableTourScore = ({ scores }) => {
+const TableTourScore = ({ scores, circuitTour }) => {
 	return (
 		<TableBase cols={cols}>
 			<tbody>
@@ -21,7 +21,12 @@ const TableTourScore = ({ scores }) => {
 						</td>
 						<td>
 							{score.player}{' '}
-							{score.rank == 1 && <Icon name="winner" color="yellow" />}
+							{score.rank == 1 && (
+								<Icon
+									name="winner"
+									style={{ color: circuitTour.color }}
+								/>
+							)}
 						</td>
 						<td>{score.rank}</td>
 						<td>{score.sum}</td>

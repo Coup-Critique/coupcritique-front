@@ -32,7 +32,16 @@ const TableTourRanking = ({ players, circuitTours }) => {
 							const score = player.scores[tour.id];
 							return (
 								<td key={tour.id}>
-									{score.rank} &nbsp; ({score.sum}&nbsp;pt)
+									{score.rank}{' '}
+									{score.rank == 1 ? (
+										<Icon
+											name="winner"
+											style={{ color: tour.color }}
+										/>
+									) : (
+										'\u00A0'
+									)}{' '}
+									({score.sum}&nbsp;pt)
 								</td>
 							);
 						})}
