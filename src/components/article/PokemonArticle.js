@@ -90,7 +90,11 @@ const PokemonArticle = props => {
 							as={Link}
 							content={
 								<>
-									<SpritePokemon pokemon={form} noLink />
+									<SpritePokemon
+										pokemon={form}
+										noLink
+										className="small"
+									/>
 									{form.nom || form.name}
 								</>
 							}

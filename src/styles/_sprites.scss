@@ -58,19 +58,19 @@ a.type {
     }
 }
 
-// .sprite.small img,
-// img.sprite.small {
-//     max-height: 30px;
-//     max-width: 30px;
-// }
+.sprite.small img,
+img.sprite.small {
+    max-height: 30px;
+    max-width: 30px;
+}
 
-// .pokemon-sprite.small {
-//     background-image: url('/images/sprites/pokemons-sm-sprites.png');
-// }
+.pokemon-sprite.small {
+    background-image: url('/images/sprites/pokemons-sm-sprites.png');
+}
 
-// .item-sprite.small {
-//     background-image: url('/images/sprites/items-sm-sprites.png');
-// }
+.item-sprite.small {
+    background-image: url('/images/sprites/items-sm-sprites.png');
+}
 
 .list .sprite {
     margin: 0 0.25rem 0.125rem;
@@ -104,22 +104,13 @@ a.type {
 .ui.menu .item {
 
     > .sprite img,
+    > img.sprite,
     .ui.menu .item > img.sprite {
-        max-height: 30px;
-        max-width: 30px;
         width: auto;
         margin-top: -0.72857143em;
         margin-bottom: -0.72857143em;
         margin-right: 0.5em;
     }
-
-    // .pokemon-sprite {
-    //     background-image: url('/images/sprites/pokemons-sm-sprites.png');
-    // }
-
-    // .item-sprite {
-    //     background-image: url('/images/sprites/items-sm-sprites.png');
-    // }
 }
 
 @media (max-width: $l) {

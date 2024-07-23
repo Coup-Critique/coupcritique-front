@@ -5,6 +5,7 @@ import 'animate.css';
 import '@/styles/app.scss';
 import '@/styles/sprites/pokemons-sprites.css';
 import '@/styles/sprites/pokemons-sm-sprites.css';
+import '@/styles/sprites/pokemons-sprites-small-class.css';
 import '@/styles/sprites/items-sprites.css';
 import '@/styles/sprites/items-sm-sprites.css';
 import '@/styles/sprites/types-sprites.css';
