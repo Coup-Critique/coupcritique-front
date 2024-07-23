@@ -16,6 +16,7 @@ import useFetch from '@/hooks/useFetch';
 import { DELETE } from '@/constants/methods';
 import { addMessage } from '@/reducers/messages';
 import { entitiesToEntity } from '@/constants/entities';
+import { formatPrices } from '@/functions';
 
 const ArticleArticle = props => {
 	const { article, entityName, link, path = entityName, actions, children } = props;
@@ -125,7 +126,7 @@ const ArticleArticle = props => {
 							className="text-orange font-italic font-weight-bold text-right"
 							style={{ marginTop: '-1.5em', marginBottom: '1.5em' }}
 						>
-							CashPrize&nbsp;: {article.cashprize} €
+							Cash prize&nbsp;: {formatPrices(article.cashprize)}
 						</div>
 					) : null}
 					<div

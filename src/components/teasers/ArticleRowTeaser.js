@@ -1,7 +1,7 @@
 // modules
 
 import Link from 'next/link';
-import { formatDate, makeClassName } from '@/functions';
+import { formatDate, formatPrices, makeClassName } from '@/functions';
 import ScrollReveal from '@/components/ScrollReveal';
 import Tag from '@/components/elements/Tag';
 import Author from '../elements/Author';
@@ -48,6 +48,11 @@ const ArticleRowTeaser = ({ article, entityName, noCover = false }) => (
 					</Link>
 				</h4>
 				<Author entity={article} />
+				{article.cashprize && (
+					<p className="text-orange font-weight-bold d-none d-xl-block">
+						Cash prize&nbsp;: {formatPrices(article.cashprize)}
+					</p>
+				)}
 			</div>
 		</div>
 		<div>

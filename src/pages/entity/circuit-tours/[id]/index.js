@@ -17,7 +17,7 @@ const CircuitTourPage = ({ circuitTour, circuitArticles, circuitVideos }) => {
 			circuitTour={circuitTour}
 			entityName="circuit-tours"
 			actions={
-				!!circuitTour.results && (
+				!!circuitTour.rounds && (
 					<Button
 						as={Link}
 						href={`/entity/circuit-tours/${circuitTour.id}/result`}

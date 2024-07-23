@@ -7,7 +7,7 @@ import TableTourScore from '@/components/table/TableTourScore';
 import CircuitTourContainer from '@/containers/CircuitTourContainer';
 import { manageFetch } from '@/hooks/useFetch';
 import { useMemo } from 'react';
-import { Tab } from 'semantic-ui-react';
+import { Divider, Tab } from 'semantic-ui-react';
 
 const CircuitTourResult = ({ circuitTour }) => {
 	return (
@@ -23,7 +23,7 @@ const Page = ({ circuitTour }) => {
 	const hasImage = circuitTour.images?.length > 0;
 
 	const tabs = useMemo(() => {
-		if (!circuitTour.results) return [];
+		if (!circuitTour.rounds) return [];
 		const tabs = [
 			{
 				menuItem: 'Scores',
@@ -34,18 +34,33 @@ const Page = ({ circuitTour }) => {
 				),
 			},
 		];
-		for (let i = 0; i < circuitTour.results.length; i++) {
+		for (let i = 0; i < circuitTour.rounds.length; i++) {
+			const { W, L } = circuitTour.rounds[i];
 			tabs.push({
 				menuItem: 'Round ' + (i + 1),
 				render: () => (
 					<Tab.Pane>
-						<TableTourResult results={circuitTour.results[i]} />
+						{W.length > 0 && (
+							<>
+								<h3>Winner Bracket</h3>
+								<TableTourResult rounds={W} />
+							</>
+						)}
+						{W.length > 0 && L.length > 0 && (
+							<div className="mt-4 mb-4" style={{ height: '1px' }}></div>
+						)}
+						{L.length > 0 && (
+							<>
+								<h3>Loser Bracket</h3>
+								<TableTourResult rounds={L} />
+							</>
+						)}
 					</Tab.Pane>
 				),
 			});
 		}
 		return tabs;
-	}, [circuitTour.results]);
+	}, [circuitTour.rounds]);
 
 	return (
 		<PageWrapper

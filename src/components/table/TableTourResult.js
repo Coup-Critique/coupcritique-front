@@ -1,30 +1,41 @@
+import Player from '../elements/Player';
 import { TableBase } from './Table';
 
-const TableTourResult = ({ results }) => {
+const TableTourResult = ({ rounds }) => {
 	return (
 		<TableBase
 			cols={[
-				{ key: 'p1', content: 'Joueur 1' },
+				{ key: 'p1', content: 'Joueur 1', colSpan: 2 },
 				{
-					key: 'r',
+					key: 'result',
 					content: 'Résultat',
 				},
-				{ key: 'p2', content: 'Joueur 2' },
+				{ key: 'p2', content: 'Joueur 2', colSpan: 2 },
 			]}
 		>
 			<tbody>
-				{results.map((result, i) => (
+				{rounds.map((round, i) => (
 					<tr key={i}>
-						<td
-							className={result.w === result.p1 ? 'text-green' : 'text-red'}
-						>
-							{result.p1}
+						<td>
+							<Player showdown_name={round.p1} />
 						</td>
-						<td>{result.r}</td>
 						<td
-							className={result.w === result.p2 ? 'text-green' : 'text-red'}
+							className={
+								round.winner === round.p1 ? 'text-green' : 'text-red'
+							}
 						>
-							{result.p2}
+							{round.p1}
+						</td>
+						<td>{round.result}</td>
+						<td
+							className={
+								round.winner === round.p2 ? 'text-green' : 'text-red'
+							}
+						>
+							{round.p2}
+						</td>
+						<td>
+							<Player showdown_name={round.p2} />
 						</td>
 					</tr>
 				))}

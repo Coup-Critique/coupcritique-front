@@ -35,8 +35,8 @@ const CircuitHome = props => {
 					</div>
 					<div className="col-12 col-xl-6 d-flex mb-4 justify-content-center align-items-center">
 						<h2 className="text-center">
-							CashPrize total du Circuit :{' '}
-							<b className="text-gold">4000&nbsp;€</b>
+							Cash prize total du Circuit :{' '}
+							<b className="text-gold">4&nbsp;000&nbsp;€</b>
 						</h2>
 						<Button
 							size="large"
@@ -98,7 +98,15 @@ const CircuitHome = props => {
 							<div className="row mb-4">
 								{props.players.map(player => (
 									<div key={player.id} className="col-4">
-										<Player player={player} />
+										<div className="text-center">
+											<Player
+												showdown_name={player.showdown_name}
+												height={80}
+												width={80}
+											/>
+											<h5>{player.showdown_name}</h5>
+											<p>{player.points}&nbsp;pts</p>
+										</div>
 									</div>
 								))}
 							</div>

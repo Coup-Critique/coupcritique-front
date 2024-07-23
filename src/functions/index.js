@@ -96,7 +96,7 @@ export function formatNumbers(nb, decimals = 2) {
 	return nb.replace(/\s+/g, '\u00A0');
 }
 
-export function formatPrices(price, decimal = true) {
+export function formatPrices(price, decimal = false) {
 	const nbDigit = decimal ? 2 : 0;
 	// prevent from -0,00 for very small negative values
 	if (price > -0.005 && price < 0.005) price = 0;
