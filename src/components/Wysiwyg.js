@@ -22,9 +22,8 @@ const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) =>
 					style={{ height }}
 				/>
 				<Message warning>
-					Nous avons un problème avec l'éditeur de contenu, en cette période.
-					Nous sommes désolé du dérangement, en cas de besoin d'ici la fin du
-					mois, veillez nous contacter au 01 45 01 60 50.
+					L'éditeur est arrivé au bout de son crédit d'utilisation, veuillez
+					pinguer Azeralt sur Discord.
 				</Message>
 			</>
 		);
@@ -32,7 +31,7 @@ const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) =>
 	return (
 		<Segment basic className={makeClassName('p-0', className)} loading={loading}>
 			<Editor
-				apiKey={process.env.NEXT_TINY_MCE_KEY}
+				apiKey={process.env.NEXT_PUBLIC_TINY_MCE_KEY}
 				onInit={(evt, editor) => {
 					setLoading(false);
 					editorRef.current = editor;
