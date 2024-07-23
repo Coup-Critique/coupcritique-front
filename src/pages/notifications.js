@@ -9,7 +9,7 @@ import PaginationPrettier from '@/components/PaginationPrettier';
 import usePager from '@/hooks/usePager';
 import useFetch from '@/hooks/useFetch';
 import { setNotifAction } from '@/reducers/notifs';
-import Page404 from './404';
+import LoadingPage from './loading';
 
 const NotificationList = () => {
 	const dispatch = useDispatch();

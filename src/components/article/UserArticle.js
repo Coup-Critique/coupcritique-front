@@ -11,6 +11,7 @@ import { MONTHS } from '@/constants/months';
 import useTableFetch from '@/hooks/useTableFetch';
 import UserTiperButton from '@/components/actions/UserTiperButton';
 import useStateProps from '@/hooks/useStateProps';
+import TableTourRanking from '../table/TableTourRanking';
 
 const defaultValue = {};
 const UserArticle = props => {
@@ -120,6 +121,15 @@ const UserArticle = props => {
 					</div>
 				</div>
 			</div>
+			{!!props.players && (
+				<div className="mb-4">
+					<h3 className="ui header">Résultats sur le Circuit</h3>
+					<TableTourRanking
+						players={props.players}
+						circuitTours={props.circuitTours}
+					/>
+				</div>
+			)}
 			<div id="pagination-scroll-ref">
 				{loading ? (
 					<Loader active inline="centered" />

@@ -13,7 +13,8 @@ export async function getServerSideProps({ query }) {
 	try {
 		const { user, nbComments } = await manageFetch(`users/${id}`);
 		const { teams } = await manageFetch(`teams/user/${user.id}`);
-		return { props: rmUndefined({ user, nbComments, teams }) };
+		const { players, circuitTours } = await manageFetch(`players/user/${user.id}`);
+		return { props: rmUndefined({ user, nbComments, teams, players, circuitTours }) };
 	} catch (e) {
 		console.error(e);
 		return { props: { user: null } };
