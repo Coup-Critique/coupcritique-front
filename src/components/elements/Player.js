@@ -7,8 +7,8 @@ const Player = ({ showdown_name, ...props }) => {
 			src={`/images/uploads/players/${showdown_name}.png`}
 			defaultSrc={defaultSrc}
 			alt={showdown_name}
-			height={40}
-			width={40}
+			height={48}
+			width={48}
 			{...props}
 		/>
 	);

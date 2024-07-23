@@ -9,10 +9,8 @@ const CircuitRanking = ({ players, circuitTours }) => {
 	return (
 		<PageWrapper
 			min
-			title={'Classement général du Circuit Compétitif Coup Critique'}
-			metadescription={
-				'Classement général du Circuit Compétitif Coup Critique de 2024.'
-			}
+			title={'Classement général du Circuit Compétitif'}
+			metadescription={'Classement général du Circuit Compétitif de 2024.'}
 			goingBack={`/entity/circuit-tours`}
 		>
 			{players.length > 0 ? (

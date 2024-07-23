@@ -16,7 +16,7 @@ const TableTourScore = ({ scores }) => {
 			<tbody>
 				{scores.map((score, i) => (
 					<tr key={i}>
-						<td>
+						<td className="py-1">
 							<Player showdown_name={score.player} />
 						</td>
 						<td>

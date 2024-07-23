@@ -1,13 +1,13 @@
 // modules
-
+import Link from 'next/link';
+import { Tab } from 'semantic-ui-react';
+import { useMemo } from 'react';
 // components
 import PageWrapper from '@/components/PageWrapper';
 import TableTourResult from '@/components/table/TableTourResult';
 import TableTourScore from '@/components/table/TableTourScore';
 import CircuitTourContainer from '@/containers/CircuitTourContainer';
 import { manageFetch } from '@/hooks/useFetch';
-import { useMemo } from 'react';
-import { Divider, Tab } from 'semantic-ui-react';
 
 const CircuitTourResult = ({ circuitTour }) => {
 	return (
@@ -69,6 +69,14 @@ const Page = ({ circuitTour }) => {
 			metadescription={circuitTour.shortDescription}
 			metaimage={hasImage && `circuit-tours/${circuitTour.images[0]}`}
 			goingBack={`/entity/circuit-tours/${circuitTour.id}`}
+			action={
+				<Link
+					href={`/entity/circuit-tours/ranking`}
+					className="btn btn-orange inverted"
+				>
+					Voir le classement complet
+				</Link>
+			}
 		>
 			{tabs.length > 0 ? (
 				<Tab panes={tabs} />

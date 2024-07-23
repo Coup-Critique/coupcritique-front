@@ -18,7 +18,7 @@ const TableTourRanking = ({ players, circuitTours }) => {
 				{players.map((player, i) => (
 					<tr key={i}>
 						<td>{player.rank}</td>
-						<td>
+						<td className="py-1">
 							<Player showdown_name={player.showdown_name} />
 						</td>
 						<td>{player.showdown_name}</td>
