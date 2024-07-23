@@ -2,7 +2,7 @@
 import { useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 //  custom
-import { Segment } from 'semantic-ui-react';
+import { FormTextArea, Message, Segment } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';
 import { useSelector } from 'react-redux';
 
@@ -10,15 +10,33 @@ const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) =>
 	const darkMode = useSelector(state => state.darkMode);
 	const editorRef = useRef(null);
 	const [loading, setLoading] = useState(true);
+	const [readOnly, setReadOnly] = useState(false);
 	const [height, setHeight] = useState(window.innerHeight - 52 - 42); // - header height - padding
 
+	if (readOnly) {
+		return (
+			<>
+				<FormTextArea
+					value={defaultValue}
+					onChange={e => handleChange(e.target.value)}
+					style={{ height }}
+				/>
+				<Message warning>
+					Nous avons un problème avec l'éditeur de contenu, en cette période.
+					Nous sommes désolé du dérangement, en cas de besoin d'ici la fin du
+					mois, veillez nous contacter au 01 45 01 60 50.
+				</Message>
+			</>
+		);
+	}
 	return (
 		<Segment basic className={makeClassName('p-0', className)} loading={loading}>
 			<Editor
-				apiKey="o573yhhnwulhygskzy14u3gic8yzvzzi3h2ofbtivev4qgmt"
+				apiKey={process.env.NEXT_TINY_MCE_KEY}
 				onInit={(evt, editor) => {
 					setLoading(false);
 					editorRef.current = editor;
+					setReadOnly(editor.readonly);
 				}}
 				initialValue={defaultValue}
 				onEditorChange={(value, editor) => handleChange(value)}
