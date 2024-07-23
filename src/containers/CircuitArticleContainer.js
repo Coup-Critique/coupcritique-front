@@ -4,7 +4,7 @@ import { useGetParam } from '@/hooks/useGetParams';
 import { Loader } from 'semantic-ui-react';
 // components
 import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
-import Page404 from '@/pages/404';
+import LoadingPage from '@/pages/loading';
 
 const CircuitArticleContainer = ({ Component, ...props }) => {
 	const id = useGetParam('id');
@@ -26,7 +26,7 @@ const CircuitArticleContainer = ({ Component, ...props }) => {
 			/>
 		);
 	} else {
-		return <Page404 />;
+		return <LoadingPage />;
 	}
 };
 

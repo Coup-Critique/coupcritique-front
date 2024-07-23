@@ -13,7 +13,7 @@ import SignPanel from '@/components/SignPanel';
 import GoBackButton from '@/components/GoBackButton';
 import { setTiers } from '@/reducers/tiers';
 import { setTags } from '@/reducers/tags';
-import Page404 from '@/pages/404';
+import LoadingPage from '@/pages/loading';
 
 const defaultGoBack = '/entity/teams/';
 const TeamFormPage = props => {
@@ -60,7 +60,7 @@ const TeamFormPage = props => {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (update && team && team.user.id !== user.id && !user.is_modo) {
-		return <Page404 />;
+		return <LoadingPage />;
 	}
 	return (
 		<PageWrapper

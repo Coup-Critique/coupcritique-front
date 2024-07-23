@@ -12,7 +12,7 @@ import TableTeam from '@/components/table/TableTeam';
 import { setTiers as setTiersAction } from '@/reducers/tiers';
 import FormSearch from '@/components/forms/FormSearch';
 import useTableFetch from '@/hooks/useTableFetch';
-import Page404 from '@/pages/404';
+import LoadingPage from '@/pages/loading';
 
 const AdminTeams = () => {
 	const dispatch = useDispatch();
@@ -100,7 +100,7 @@ const AdminTeams = () => {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id || !user.is_modo) {
-		return <Page404 />;
+		return <LoadingPage />;
 	}
 	return (
 		<PageWrapper title="Équipe" className="team-list" more nofollow goingBack>

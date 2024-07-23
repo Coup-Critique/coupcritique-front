@@ -2,7 +2,7 @@
 import { useGetParam } from '@/hooks/useGetParams';
 import { Loader } from 'semantic-ui-react';
 import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
-import Page404 from '@/pages/404';
+import LoadingPage from '@/pages/loading';
 
 const GuideContainer = ({ Component, ...props }) => {
 	const id = useGetParam('id');
@@ -13,7 +13,7 @@ const GuideContainer = ({ Component, ...props }) => {
 	} else if (guide) {
 		return <Component {...props} article={guide} guide={guide} />;
 	} else {
-		return <Page404 />;
+		return <LoadingPage />;
 	}
 };
 

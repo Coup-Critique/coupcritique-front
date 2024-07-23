@@ -4,7 +4,7 @@ import { useGetParam } from '@/hooks/useGetParams';
 import { Loader } from 'semantic-ui-react';
 // components
 import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
-import Page404 from '@/pages/404';
+import LoadingPage from '@/pages/loading';
 
 const TournamentContainer = ({ Component, ...props }) => {
 	const id = useGetParam('id');
@@ -20,7 +20,7 @@ const TournamentContainer = ({ Component, ...props }) => {
 	} else if (tournament) {
 		return <Component {...props} article={tournament} tournament={tournament} />;
 	} else {
-		return <Page404 />;
+		return <LoadingPage />;
 	}
 };
 

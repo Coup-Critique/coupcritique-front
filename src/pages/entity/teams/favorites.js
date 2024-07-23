@@ -8,7 +8,7 @@ import PageWrapper from '@/components/PageWrapper';
 import TableTeam from '@/components/table/TableTeam';
 import SectionAds from '@/components/sections/SectionAds';
 import useTableFetch from '@/hooks/useTableFetch';
-import Page404 from '@/pages/404';
+import LoadingPage from '@/pages/loading';
 
 const ListFavoriteTeam = () => {
 	const user = useSelector(state => state.user);
@@ -36,7 +36,7 @@ const ListFavoriteTeam = () => {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id) {
-		return <Page404 />;
+		return <LoadingPage />;
 	}
 	return (
 		<PageWrapper title={'Liste des équipes en favoris'} nofollow more goingBack>

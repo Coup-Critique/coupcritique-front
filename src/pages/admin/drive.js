@@ -10,7 +10,7 @@ import useStoreQuery from '@/hooks/useStoreQuery';
 import MultiImageField from '@/components/fields/MultiImageField';
 import PageWrapper from '@/components/PageWrapper';
 import PaginationPrettier from '@/components/PaginationPrettier';
-import Page404 from '@/pages/404';
+import LoadingPage from '@/pages/loading';
 // components
 
 const defaultArray = [];
@@ -64,7 +64,7 @@ const AdminDrive = () => {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id || !user.is_modo) {
-		return <Page404 />;
+		return <LoadingPage />;
 	}
 	return (
 		<PageWrapper title="Drive" more nofollow goingBack>

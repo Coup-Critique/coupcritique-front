@@ -8,7 +8,7 @@ import FormArticle from '@/components/forms/FormArticle';
 import PageWrapper from '@/components/PageWrapper';
 import { manageFetch } from '@/hooks/useFetch';
 import { setActualityTags } from '@/reducers/actuality_tags';
-import Page404 from '@/pages/404';
+import LoadingPage from '@/pages/loading';
 import useActions from '@/hooks/useActions';
 
 const ActualityFormPage = ({ actuality, tags, update = false }) => {
@@ -37,7 +37,7 @@ const ActualityFormPage = ({ actuality, tags, update = false }) => {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id || !user.is_modo) {
-		return <Page404 />;
+		return <LoadingPage />;
 	}
 	return (
 		<PageWrapper

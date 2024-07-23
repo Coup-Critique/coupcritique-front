@@ -44,7 +44,7 @@ const NotificationList = () => {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id) {
-		return <Page404 />;
+		return <LoadingPage />;
 	}
 	return (
 		<PageWrapper title="Vos notifications" goingBack>

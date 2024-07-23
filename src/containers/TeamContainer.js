@@ -4,7 +4,7 @@ import { useGetParam } from '@/hooks/useGetParams';
 import { Loader } from 'semantic-ui-react';
 // components
 import useGetEntityWithUser from '@/hooks/useGetEntityWithUser';
-import Page404 from '@/pages/404';
+import LoadingPage from '@/pages/loading';
 
 const TeamContainer = ({ Component, ...props }) => {
 	const id = useGetParam('id');
@@ -15,7 +15,7 @@ const TeamContainer = ({ Component, ...props }) => {
 	} else if (team) {
 		return <Component {...props} team={team} />;
 	} else {
-		return <Page404 />;
+		return <LoadingPage />;
 	}
 };
 

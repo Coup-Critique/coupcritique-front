@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Button, Loader } from 'semantic-ui-react';
 // components
-import Page404 from '@/pages/404';
+import LoadingPage from '@/pages/loading';
 import PageWrapper from '@/components/PageWrapper';
 import FormArticle from '@/components/forms/FormArticle';
 import { useRef } from 'react';
@@ -26,7 +26,7 @@ const TournamentFormPage = ({ tournament, update = false }) => {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id || !user.is_modo) {
-		return <Page404 />;
+		return <LoadingPage />;
 	}
 	return (
 		<PageWrapper

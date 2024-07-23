@@ -17,7 +17,7 @@ import useTableFetch from '@/hooks/useTableFetch';
 import ModalConfirm from '@/components/modals/ModalConfirm';
 import useNotifChecker from '@/hooks/useNotifChecker';
 import { useGetParam } from '@/hooks/useGetParams';
-import Page404 from '@/pages/404';
+import LoadingPage from '@/pages/loading';
 
 // Own User
 const UserFormPage = () => {
@@ -55,7 +55,7 @@ const UserFormPage = () => {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id) {
-		return <Page404 />;
+		return <LoadingPage />;
 	}
 	return (
 		<PageWrapper title="Compte utilisateur" goingBack nofollow>

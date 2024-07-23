@@ -8,7 +8,7 @@ import useStoreQuery from '@/hooks/useStoreQuery';
 import FormSearch from '@/components/forms/FormSearch';
 import PageWrapper from '@/components/PageWrapper';
 import TableUser from '@/components/table/TableUser';
-import Page404 from '@/pages/404';
+import LoadingPage from '@/pages/loading';
 // components
 
 const defaultArray = [];
@@ -46,7 +46,7 @@ const AdminUsers = () => {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id || !user.is_modo) {
-		return <Page404 />;
+		return <LoadingPage />;
 	}
 	return (
 		<PageWrapper title="Utilisateurs" more nofollow goingBack>

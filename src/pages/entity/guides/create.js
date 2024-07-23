@@ -10,7 +10,7 @@ import { manageFetch } from '@/hooks/useFetch';
 //reducers
 import { setGuideTags } from '@/reducers/guide_tags';
 import { setTiers as _setTiers } from '@/reducers/tiers';
-import Page404 from '@/pages/404';
+import LoadingPage from '@/pages/loading';
 import useActions from '@/hooks/useActions';
 
 const defaultObject = {};
@@ -44,7 +44,7 @@ const GuideFormPage = props => {
 		return <Loader active={true} inline="centered" />;
 	}
 	if (!user.id || !user.is_modo) {
-		return <Page404 />;
+		return <LoadingPage />;
 	}
 	return (
 		<PageWrapper
