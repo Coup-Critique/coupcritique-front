@@ -8,6 +8,7 @@ import TableTourResult from '@/components/table/TableTourResult';
 import TableTourScore from '@/components/table/TableTourScore';
 import CircuitTourContainer from '@/containers/CircuitTourContainer';
 import { manageFetch } from '@/hooks/useFetch';
+import { makeClassName } from '@/functions';
 
 const CircuitTourResult = ({ circuitTour }) => {
 	return (
@@ -24,41 +25,46 @@ const Page = ({ circuitTour }) => {
 
 	const tabs = useMemo(() => {
 		if (!circuitTour.rounds) return [];
-		const tabs = [
-			{
+		const tabs = [];
+		if (circuitTour.scores) {
+			tabs.push({
 				menuItem: 'Scores',
 				render: () => (
 					<Tab.Pane>
-						<TableTourScore scores={circuitTour.scores} circuitTour={circuitTour} />
-					</Tab.Pane>
-				),
-			},
-		];
-		for (let i = 0; i < circuitTour.rounds.length; i++) {
-			const { W, L } = circuitTour.rounds[i];
-			tabs.push({
-				menuItem: 'Round ' + (i + 1),
-				render: () => (
-					<Tab.Pane>
-						{W.length > 0 && (
-							<>
-								<h3>Winner Bracket</h3>
-								<TableTourResult rounds={W} />
-							</>
-						)}
-						{W.length > 0 && L.length > 0 && (
-							<div className="mt-4 mb-4" style={{ height: '1px' }}></div>
-						)}
-						{L.length > 0 && (
-							<>
-								<h3>Loser Bracket</h3>
-								<TableTourResult rounds={L} />
-							</>
-						)}
+						<TableTourScore
+							scores={circuitTour.scores}
+							circuitTour={circuitTour}
+						/>
 					</Tab.Pane>
 				),
 			});
 		}
+		Object.entries(circuitTour.rounds)
+			.reverse()
+			.forEach(([round, brackets]) => {
+				const entries = Object.entries(brackets);
+				tabs.push({
+					menuItem: isNaN(round) ? round : 'Round ' + round,
+					render: () => (
+						<Tab.Pane>
+							<div className="row">
+								{entries.map(([bracket, values]) => (
+									<div
+										className={makeClassName(
+											'col-12',
+											entries.length > 1 && 'col-xl-6'
+										)}
+										key={bracket}
+									>
+										<h3>{bracket}</h3>
+										<TableTourResult rounds={values} />
+									</div>
+								))}
+							</div>
+						</Tab.Pane>
+					),
+				});
+			});
 		return tabs;
 	}, [circuitTour.rounds]);
 
@@ -77,6 +83,7 @@ const Page = ({ circuitTour }) => {
 					Voir le classement complet
 				</Link>
 			}
+			more
 		>
 			{tabs.length > 0 ? (
 				<Tab panes={tabs} />
