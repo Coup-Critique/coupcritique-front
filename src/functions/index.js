@@ -139,14 +139,23 @@ export const isToday = someDate => {
 	);
 };
 
-/**
- * @param {string} url
- * @return {string}
- */
-export const formatUrlIntoYoutubeEmbed = (url, isVideoUrl = false) =>
-	isVideoUrl
-		? `https://www.youtube.com/embed/${url.split('be/')[1]}`
-		: `https://www.youtube.com/embed/${url.split('?v=')[1]}`;
+// prettier-ignore
+export const youtubeWatchRegex = /^https:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)$/;
+export const youtubeEmbedRegex = /^https:\/\/www.youtube.com\/embed\/([a-zA-Z0-9_-]+)$/;
+export const youtubeBeRegex = /^https:\/\/youtu.be\/([a-zA-Z0-9_-]+)$/;
+
+export const getYoutubeId = url => {
+	url = url.split('&')[0];
+
+	let youtube_id = url.match(youtubeEmbedRegex)?.[1];
+	if (!youtube_id) {
+		youtube_id = url.match(youtubeWatchRegex)?.[1];
+		if (!youtube_id) {
+			youtube_id = url.match(youtubeBeRegex)?.[1];
+		}
+	}
+	return youtube_id;
+};
 
 export function scrollToTopAnimate() {
 	window.scrollTo({ behavior: 'smooth', left: 0, top: 0 });

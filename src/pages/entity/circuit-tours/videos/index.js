@@ -132,6 +132,7 @@ const CircuitVideoList = props => {
 							setDisplayForm={setDisplayForm}
 							displayForm={displayForm}
 							handleLoad={handleLoad}
+							loadUrl="circuit-videos"
 						/>
 					))
 				) : (

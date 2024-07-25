@@ -55,6 +55,7 @@ const ScrollReveal = ({
 	};
 
 	function isInViewport(el, cropHeight = headerHeight) {
+		if (!el) return false;
 		const { top, bottom } = el.getBoundingClientRect();
 		const viewPortHeight =
 			window.innerHeight || document.documentElement.clientHeight;

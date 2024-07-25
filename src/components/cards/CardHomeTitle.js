@@ -1,7 +1,8 @@
 // components
+import Image from 'next/image';
+import { Card } from 'semantic-ui-react';
 import MainSearch from '@/components/forms/MainSearch';
 import ScrollReveal from '@/components/ScrollReveal';
-import { Card } from 'semantic-ui-react';
 
 const CardHomeTitle = () => (
 	<Card className="padded">
@@ -15,7 +16,7 @@ const CardHomeTitle = () => (
 		</h1>
 		<MainSearch />
 		<ScrollReveal
-			Tag="img"
+			Tag={Image}
 			className="main-img img-fluid"
 			animation="zoomIn"
 			src="/images/keldeo-landorus.png"

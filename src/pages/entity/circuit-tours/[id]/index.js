@@ -54,7 +54,7 @@ const CircuitTourPage = ({ circuitTour, circuitArticles, circuitVideos }) => {
 				<div className="col-12 col-lg-6 pl-4">
 					<Segment className="grow py-3 px-4">
 						<h2>Analyse en vidéo</h2>
-						<div className="mb-4">
+						<div className="mb-2">
 							{!!circuitVideos &&
 								circuitVideos.map(video => (
 									<Video key={video.id} video={video} short />

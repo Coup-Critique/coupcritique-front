@@ -7,12 +7,8 @@ import { Button, Form, Message } from 'semantic-ui-react';
 import { POST, PUT } from '@/constants/methods';
 import { useDispatch } from 'react-redux';
 import { addMessage } from '@/reducers/messages';
-import { formatUrlIntoYoutubeEmbed } from '@/functions';
+import { getYoutubeId, youtubeEmbedRegex } from '@/functions';
 import TagsField from '@/components/fields/TagsField';
-
-const youtubeWatchRegex = /^https:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)$/;
-const youtubeBeRegex = /^https:\/\/youtu.be\/([a-zA-Z0-9_-]+)$/;
-const youtubeEmbedRegex = /^https:\/\/www.youtube.com\/embed\/([a-zA-Z0-9_-]+)$/;
 
 const defaultArray = [];
 const FormVideo = ({
@@ -44,17 +40,13 @@ const FormVideo = ({
 
 	const handleChange = (e, { name, value }) =>
 		setForm(form => ({ ...form, [name]: value }));
+
 	const handleChangeTags = (name, tags) => setSelectedTags(tags);
 
 	const onSubmit = e => {
 		e.preventDefault();
-		let url = form.url.split('&')[0];
-
-		if (youtubeWatchRegex.test(url)) {
-			url = formatUrlIntoYoutubeEmbed(url);
-		} else if (youtubeBeRegex.test(url)) {
-			url = formatUrlIntoYoutubeEmbed(url, true);
-		}
+		let youtube_id = getYoutubeId(form.url);
+		let url = 'https://www.youtube.com/embed/' + youtube_id;
 
 		if (youtubeEmbedRegex.test(url)) {
 			load({
@@ -64,6 +56,7 @@ const FormVideo = ({
 					...form,
 					tags: selectedTags,
 					url,
+					youtube_id,
 				},
 			});
 		} else {
@@ -85,7 +78,7 @@ const FormVideo = ({
 	};
 
 	return (
-		<Form error={!success} success={success} onSubmit={onSubmit} className="mb-4">
+		<Form error={!success} success={success} onSubmit={onSubmit} className="mb-5">
 			<Form.Input
 				name="url"
 				label="Url"

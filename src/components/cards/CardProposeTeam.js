@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Card } from 'semantic-ui-react';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -23,7 +24,7 @@ const CardProposeTeam = () => {
 			</div>
 			<div className="img-wrapper">
 				<ScrollReveal
-					Tag="img"
+					Tag={Image}
 					className="img-fluid clickable main-img"
 					animation="zoomIn"
 					src={`/images/propose-team${darkMode ? '-black' : ''}.png`}

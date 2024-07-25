@@ -1,9 +1,9 @@
 // modules
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Loader } from 'semantic-ui-react';
 import { DELETE } from '@/constants/methods';
-import { formatDate, makeClassName } from '@/functions';
+import { formatDate, makeClassName, youtubeEmbedRegex } from '@/functions';
 import useFetch from '@/hooks/useFetch';
 import FormVideo from '@/components/forms/FormVideo';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -18,15 +18,17 @@ const Video = ({
 	short = false,
 	setDisplayForm,
 	displayForm,
+	loadUrl = 'videos',
 }) => {
 	const cookie = useSelector(state => state.cookie);
 	const [isUpdate, setIsUpdate] = useState(false);
-	const [wait, setWait] = useState(true);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
 
-	useEffect(() => {
-		setWait(false);
-	}, []);
+	const youtube_id = useMemo(() => {
+		if (!video) return null;
+		if (video.youtube_id) return video.youtube_id;
+		return video.url.match(youtubeEmbedRegex)?.[1];
+	}, [video]);
 
 	useEffect(() => {
 		if (resultDelete?.success) {
@@ -36,7 +38,7 @@ const Video = ({
 
 	const handleDelete = () => {
 		loadDelete({
-			url: `videos/${video.id}`,
+			url: `${loadUrl}/${video.id}`,
 			method: DELETE,
 		});
 	};
@@ -62,22 +64,27 @@ const Video = ({
 				handleSubmited={handleSubmited}
 				handleCancel={handleCancel}
 				tags={tags}
+				loadUrl={loadUrl}
 			/>
 		);
 	}
 	return (
 		<ScrollReveal
-			className={makeClassName('video mb-3', short && 'short')}
+			className={makeClassName('video', short ? 'short mb-3' : 'mb-5')}
 			animation="zoomIn"
 			earlier
 		>
 			<div className="row mb-3">
 				<div className={`col-12 col-${short ? 'xl' : 'lg'}-6`}>
-					{!wait && <VideoEmbed url={video.url} cookie={cookie.youtube} />}
+					<VideoEmbed youtube_id={youtube_id} cookie={cookie.youtube} />
 				</div>
 				<div className={`col-12 col-${short ? 'xl' : 'lg'}-6`}>
 					<h4>
-						<a href={video.url} target="_blank" rel="nofollow noreferrer">
+						<a
+							href={`https://www.youtube.com/watch?v=${youtube_id}`}
+							target="_blank"
+							rel="nofollow noreferrer"
+						>
 							{video.title}
 						</a>
 					</h4>
@@ -87,31 +94,31 @@ const Video = ({
 					{!short && <p className="description">{video.description}</p>}
 				</div>
 			</div>
-			<div>
+			<div className="d-flex align-items-center">
 				{video.tags.map((tag, i) => (
 					<Tag key={i} tag={tag} />
 				))}
+				{isAdmin &&
+					(loadingDelete ? (
+						<Loader inline="centered" active size="tiny" />
+					) : (
+						<>
+							<Button
+								color="blue"
+								content={'Modifier'}
+								icon="pencil"
+								onClick={() => handleIsUpdate(true)}
+								className="ml-3 mr-2"
+							/>
+							<Button
+								color="red"
+								content={'Supprimer'}
+								icon="trash"
+								onClick={handleDelete}
+							/>
+						</>
+					))}
 			</div>
-			{isAdmin &&
-				(loadingDelete ? (
-					<Loader inline="centered" active size="tiny" />
-				) : (
-					<div>
-						<Button
-							color="blue"
-							content={'Modifier'}
-							icon="pencil"
-							onClick={() => handleIsUpdate(true)}
-							className="mr-2"
-						/>
-						<Button
-							color="red"
-							content={'Supprimer'}
-							icon="trash"
-							onClick={handleDelete}
-						/>
-					</div>
-				))}
 		</ScrollReveal>
 	);
 };

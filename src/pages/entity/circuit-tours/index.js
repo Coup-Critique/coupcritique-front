@@ -124,7 +124,7 @@ const CircuitHome = props => {
 							{/* <div className="row"> */}
 							{/* <div className="col-12 col-lg-6"> */}
 							<VideoEmbed
-								url="https://www.youtube.com/embed/hDwO5bg64_8"
+								youtube_id="hDwO5bg64_8"
 								cookie={cookie.youtube}
 							/>
 							{/* </div> */}
@@ -170,7 +170,7 @@ const CircuitHome = props => {
 				<div className="col-12 col-lg-6 pl-4 mb-5">
 					<Segment className="flex-grow-1 py-3 px-4">
 						<h2>Analyse en vidéo</h2>
-						<div className="row mb-4">
+						<div className="row mb-2">
 							{!!props.circuitVideos &&
 								props.circuitVideos.map((video, i) => (
 									<div

@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import { memo } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Card } from 'semantic-ui-react';
 import ArticleRowTeaser from '../teasers/ArticleRowTeaser';
 import { makeClassName } from '@/functions';
@@ -9,7 +10,7 @@ const CardCircuit = ({ currentTours }) => {
 		<Card className="padded">
 			<Link href="/entity/circuit-tours">
 				<h2 className="sr-only">Circuit Compétitif</h2>
-				<img
+				<Image
 					className="img-fluid mr-lg-0 ml-lg-0 mb-4"
 					width={345}
 					height={84}

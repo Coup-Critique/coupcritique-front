@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import ScrollReveal from '../ScrollReveal';
+import Image from 'next/image';
+import { Card } from 'semantic-ui-react';
 import { IMG_VERSION } from '@/constants/img';
 import { lastGen } from '@/constants/gens';
-import { Card } from 'semantic-ui-react';
+import ScrollReveal from '../ScrollReveal';
 
 const CardFindTeam = () => (
 	<Card className="padded">
@@ -18,7 +19,7 @@ const CardFindTeam = () => (
 				<div className="card outline">
 					<Link href={`/entity/teams?tags=1`} title="équipes Hyper Offense">
 						<ScrollReveal
-							Tag="img"
+							Tag={Image}
 							className="img-fluid"
 							animation="zoomIn"
 							src={`/images/ho.png?ver=${IMG_VERSION}`}
@@ -37,7 +38,7 @@ const CardFindTeam = () => (
 						title="équipes OverUsed"
 					>
 						<ScrollReveal
-							Tag="img"
+							Tag={Image}
 							className="img-fluid"
 							animation="zoomIn"
 							src={`/images/ou.png?ver=${IMG_VERSION}`}
@@ -53,7 +54,7 @@ const CardFindTeam = () => (
 				<div className="card outline">
 					<Link href={`/entity/teams?tier=176&gen=${lastGen}`} title="équipes">
 						<ScrollReveal
-							Tag="img"
+							Tag={Image}
 							className="img-fluid"
 							animation="zoomIn"
 							src={`/images/vgc.png?ver=${IMG_VERSION}`}
