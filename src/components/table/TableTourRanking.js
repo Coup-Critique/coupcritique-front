@@ -2,11 +2,12 @@ import { formatPrices } from '@/functions';
 import { TableBase } from './Table';
 import { Icon } from 'semantic-ui-react';
 import Player from '../elements/Player';
+import Link from 'next/link';
 
 const TableTourRanking = ({ players, circuitTours }) => {
 	const cols = [
 		{ key: 'rank', content: 'Rang' },
-		{ key: 'showdown_name', content: 'Joueur', colSpan: 2 },
+		{ key: 'name', content: 'Joueur', colSpan: 2 },
 		{ key: 'points', content: 'Points' },
 		{ key: 'prize', content: 'Prix' },
 		// { key: 'country', content: 'Pays' },
@@ -19,9 +20,26 @@ const TableTourRanking = ({ players, circuitTours }) => {
 					<tr key={i}>
 						<td>{player.rank}</td>
 						<td className="py-1">
-							<Player showdown_name={player.showdown_name} />
+							{player.user ? (
+								<Link href={`/entity/users/${player.user.id}`}>
+									<Player name={player.name} />
+									<span className="sr-only">
+										{player.user.username}
+									</span>
+								</Link>
+							) : (
+								<Player name={player.name} />
+							)}
 						</td>
-						<td>{player.showdown_name}</td>
+						<td>
+							{player.user ? (
+								<Link href={`/entity/users/${player.user.id}`}>
+									{player.name}
+								</Link>
+							) : (
+								player.name
+							)}
+						</td>
 						<td>{player.points}</td>
 						<td>{player.prize ? formatPrices(player.prize) : '\u00A0'}</td>
 						{/* <td>{player.country}</td> */}

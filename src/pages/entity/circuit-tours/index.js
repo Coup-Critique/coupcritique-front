@@ -100,11 +100,11 @@ const CircuitHome = props => {
 									<div key={player.id} className="col-4">
 										<div className="text-center">
 											<Player
-												showdown_name={player.showdown_name}
+												name={player.name}
 												height={80}
 												width={80}
 											/>
-											<h5>{player.showdown_name}</h5>
+											<h5>{player.name}</h5>
 											<p>{player.points}&nbsp;pts</p>
 										</div>
 									</div>

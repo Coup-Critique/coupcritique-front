@@ -1,12 +1,13 @@
 import { defaultSrc } from './ArtPokemon';
 import ImageLoader from './ImageLoader';
 
-const Player = ({ showdown_name, ...props }) => {
+const Player = ({ name, ...props }) => {
+	if (!name) return null;
 	return (
 		<ImageLoader
-			src={`/images/uploads/players/${showdown_name}.png`}
+			src={`/images/uploads/players/${name}.png`}
 			defaultSrc={defaultSrc}
-			alt={showdown_name}
+			alt={name}
 			height={48}
 			width={48}
 			{...props}

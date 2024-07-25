@@ -17,7 +17,7 @@ const TableTourResult = ({ rounds }) => {
 				{rounds.map((round, i) => (
 					<tr key={i}>
 						<td className="py-1">
-							<Player showdown_name={round.player1} />
+							<Player name={round.player1} />
 						</td>
 						<td
 							className={
@@ -35,7 +35,7 @@ const TableTourResult = ({ rounds }) => {
 							{round.player2}
 						</td>
 						<td className="py-1">
-							<Player showdown_name={round.player2} />
+							<Player name={round.player2} />
 						</td>
 					</tr>
 				))}

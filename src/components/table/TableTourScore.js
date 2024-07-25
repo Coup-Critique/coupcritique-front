@@ -17,7 +17,7 @@ const TableTourScore = ({ scores, circuitTour }) => {
 				{scores.map((score, i) => (
 					<tr key={i}>
 						<td className="py-1">
-							<Player showdown_name={score.player} />
+							<Player name={score.player} />
 						</td>
 						<td>
 							{score.player}{' '}
