@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { Label } from 'semantic-ui-react';
 import { MONTHS_CUT } from '@/constants/months';
 import Link from 'next/link';
+import LinkButton from './buttons/LinkButton';
 // import SpritePokemon from './elements/SpritePokemon';
 
 // const currentMonthIndex = new Date().getMonth();
@@ -9,17 +10,18 @@ import Link from 'next/link';
 // let firstPart = months.splice(0, currentMonthIndex);
 // months = months.concat(firstPart);
 
-const CircuitCalendar = ({ calendar, toList = false }) => {
+const CircuitCalendar = memo(function CircuitCalendar({ calendar, toList = false }) {
 	return (
 		<>
 			<div className="h2-btn">
 				<h2>Calendrier du Circuit Compétitif Coup Critique</h2>
-				<Link
+				<LinkButton
 					href={'/entity/circuit-tours' + (toList ? '/list' : '')}
-					className="btn btn-orange inverted"
+					color="orange"
+					inverted
 				>
 					Voir tous les tournois
-				</Link>
+				</LinkButton>
 			</div>
 			<div className="calendar framed mt-0 pb-1">
 				<div className="inner">
@@ -41,7 +43,7 @@ const CircuitCalendar = ({ calendar, toList = false }) => {
 			</div>
 		</>
 	);
-};
+});
 
 const LabelPeriod = memo(function LabelPeriod({ tour }) {
 	return (

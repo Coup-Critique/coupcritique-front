@@ -23,6 +23,7 @@ const GoBackButton = ({ callback, defaultUrl = '/' }) => {
 			inverted
 			icon="arrow left"
 			onClick={goBack}
+			aria-label="Revenir à la page précédente"
 		/>
 	);
 };

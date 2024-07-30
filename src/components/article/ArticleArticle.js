@@ -2,9 +2,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { Button } from 'semantic-ui-react';
-import Slider from 'react-slick';
+import { Button, Loader } from 'semantic-ui-react';
 // components
 import PageWrapper from '@/components/PageWrapper';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -17,6 +17,11 @@ import { DELETE } from '@/constants/methods';
 import { addMessage } from '@/reducers/messages';
 import { entitiesToEntity } from '@/constants/entities';
 import { formatPrices } from '@/functions';
+
+const Slider = dynamic(() => import('react-slick'), {
+	loading: () => <Loader active inline="centered" />,
+	ssr: false,
+});
 
 const ArticleArticle = props => {
 	const { article, entityName, link, path = entityName, actions, children } = props;
@@ -75,34 +80,42 @@ const ArticleArticle = props => {
 			}
 		>
 			<ScrollReveal animation="zoomIn" earlier>
-				{hasImage && (
-					<div className="slick-wrapper">
-						<Slider
-							infinite
-							dots
-							speed={500}
-							slidesToShow={article.images.length > 1 ? 2 : 1}
-							slidesToScroll={1}
-							responsive={[
-								{
-									breakpoint: 576,
-									settings: { slidesToShow: 1 },
-								},
-							]}
-						>
+				{hasImage &&
+					(article.images > 2 ? (
+						<div className="slick-wrapper">
 							{article.images.map((path, i) => (
-								<div key={i} className="image mb-2">
-									<img
-										src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/${entityName}/${path}`}
-										className="img-fluid"
-										alt="Actualité"
-										// TODO gerer une taille fixe
-									/>
-								</div>
+								<ArticleImage
+									key={i}
+									entityName={entityName}
+									path={path}
+								/>
 							))}
-						</Slider>
-					</div>
-				)}
+						</div>
+					) : (
+						<div className="slick-wrapper">
+							<Slider
+								infinite
+								dots
+								speed={500}
+								slidesToShow={article.images.length > 1 ? 2 : 1}
+								slidesToScroll={1}
+								responsive={[
+									{
+										breakpoint: 576,
+										settings: { slidesToShow: 1 },
+									},
+								]}
+							>
+								{article.images.map((path, i) => (
+									<ArticleImage
+										key={i}
+										entityName={entityName}
+										path={path}
+									/>
+								))}
+							</Slider>
+						</div>
+					))}
 			</ScrollReveal>
 			<ScrollReveal animation="zoomIn" earlier>
 				{article.tags.length > 0 && (
@@ -142,4 +155,16 @@ const ArticleArticle = props => {
 		</PageWrapper>
 	);
 };
+
+const ArticleImage = ({ entityName, path }) => (
+	<div className="image mb-2">
+		<img
+			src={`${process.env.NEXT_PUBLIC_API_URL}/images/uploads/${entityName}/${path}`}
+			className="img-fluid"
+			alt="Illustration de l'Actualité"
+			// TODO gerer une taille fixe
+		/>
+	</div>
+);
+
 export default ArticleArticle;

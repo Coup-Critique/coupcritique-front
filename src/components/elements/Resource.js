@@ -1,10 +1,14 @@
 // modules
 import { useState } from 'react';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Loader } from 'semantic-ui-react';
 import DeleteAction from '@/components/actions/DeleteAction';
-import FormResource from '@/components/forms/FormResource';
 import Tier from '@/components/elements/Tier';
-// import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+const FormResource = dynamic(() => import('@/components/forms/FormResource'), {
+	loading: () => <Loader active inline="centered" />,
+	ssr: false,
+});
 
 const Resource = ({
 	resource,

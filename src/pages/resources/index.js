@@ -5,9 +5,15 @@ import { Button, Loader, Accordion, Label, Segment } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';
 import useFetch from '@/hooks/useFetch';
 import Resource from '@/components/elements/Resource';
-import FormResource from '@/components/forms/FormResource';
 import PageWrapper from '@/components/PageWrapper';
 import SectionAds from '@/components/sections/SectionAds';
+
+import dynamic from 'next/dynamic';
+
+const FormResource = dynamic(() => import('@/components/forms/FormResource'), {
+	loading: () => <Loader active inline="centered" />,
+	ssr: false,
+});
 
 const ResourcesPage = () => {
 	const user = useSelector(state => state.user);

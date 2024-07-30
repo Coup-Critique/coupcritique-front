@@ -62,7 +62,11 @@ const ResetForgottenPassword = () => {
 	}, [result]);
 
 	return (
-		<PageWrapper title={'Mot de passe oublié'} className="page-reset-password" goingBack>
+		<PageWrapper
+			title={'Mot de passe oublié'}
+			className="page-reset-password"
+			goingBack
+		>
 			{result &&
 				(!result.success ? (
 					<p
@@ -91,7 +95,11 @@ const ResetForgottenPassword = () => {
 						<Message error content={message.form} />
 						<Message success content={message.form} />
 						<div className="text-center">
-							<Button color="orange" type="submit">
+							<Button
+								aria-label="Valider la modification du mot de passe"
+								color="orange"
+								type="submit"
+							>
 								Soumettre
 							</Button>
 						</div>

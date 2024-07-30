@@ -12,6 +12,8 @@ import VideoEmbed from '@/components/elements/VideoEmbed';
 import { useSelector } from 'react-redux';
 import Player from '@/components/elements/Player';
 import { makeClassName } from '@/functions';
+import Image from 'next/image';
+import LinkButton from '@/components/buttons/LinkButton';
 
 const CircuitHome = props => {
 	const cookie = useSelector(state => state.cookie);
@@ -25,7 +27,7 @@ const CircuitHome = props => {
 			<div className="description framed pt-4 pl-4 pr-4 pb-0">
 				<div className="row">
 					<div className="col-12 col-xl-6 mb-4">
-						<img
+						<Image
 							width={654}
 							height={131}
 							alt="Circuit Compétitif"
@@ -83,12 +85,14 @@ const CircuitHome = props => {
 							icon="discord"
 							className="mb-3"
 						/>{' '}
-						<Link
+						<LinkButton
 							href="/entity/circuit-tours/list"
-							className="btn btn-orange inverted mb-3"
+							color="orange"
+							inverted
+							className="mb-3"
 						>
 							Voir tous les tournois
-						</Link>
+						</LinkButton>
 					</div>
 				</div>
 				<div className="col-12 col-lg-4 mb-4">
@@ -111,12 +115,13 @@ const CircuitHome = props => {
 								))}
 							</div>
 							<div className="text-center">
-								<Link
+								<LinkButton
 									href={`/entity/circuit-tours/ranking`}
-									className="btn btn-orange inverted"
+									color="orange"
+									inverted
 								>
 									Voir le classement complet
-								</Link>
+								</LinkButton>
 							</div>
 						</div>
 						<div>
@@ -158,12 +163,13 @@ const CircuitHome = props => {
 							))}
 						</div>
 						<div className="text-center">
-							<Link
+							<LinkButton
 								href={'/entity/circuit-tours/articles'}
-								className="btn btn-orange inverted"
+								color="orange"
+								inverted
 							>
 								Voir tous les articles
-							</Link>
+							</LinkButton>
 						</div>
 					</Segment>
 				</div>
@@ -186,12 +192,13 @@ const CircuitHome = props => {
 								))}
 						</div>
 						<div className="text-center">
-							<Link
+							<LinkButton
 								href={`/entity/circuit-tours/videos`}
-								className="btn btn-orange inverted"
+								color="orange"
+								inverted
 							>
 								Voir toutes les videos
-							</Link>
+							</LinkButton>
 						</div>
 					</Segment>
 				</div>

@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { Card } from 'semantic-ui-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useSelector } from 'react-redux';
+import LinkButton from '../buttons/LinkButton';
 
 const CardProposeTeam = () => {
 	const router = useRouter();
@@ -18,9 +19,9 @@ const CardProposeTeam = () => {
 				avoir des avis dessus ou aider les débutants
 			</p>
 			<div>
-				<Link href="/entity/teams/create" className="btn btn-orange">
+				<LinkButton href="/entity/teams/create" color="orange">
 					Proposer mon équipe
-				</Link>
+				</LinkButton>
 			</div>
 			<div className="img-wrapper">
 				<ScrollReveal

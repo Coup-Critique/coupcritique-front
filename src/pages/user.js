@@ -82,6 +82,7 @@ const UserFormPage = () => {
 						// onClick={handleDelete}
 						loading={loadingDelete}
 						size="tiny"
+						aria-label="Supprimer votre compte"
 					>
 						<Icon name="trash alternate" /> Supprimer votre compte
 					</Button>

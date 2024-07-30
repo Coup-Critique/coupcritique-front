@@ -3,7 +3,6 @@ import { useState, useEffect, useReducer, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Form, Button, Message } from 'semantic-ui-react';
-import { Koffing } from 'koffing';
 //
 import TiersField from '@/components/fields/TiersField';
 import usePrevious from '@/hooks/usePrevious';
@@ -236,14 +235,15 @@ const FormPokemonSet = ({
 	);
 
 	// only when export is submitting
-	const onCheckExport = e => {
+	const onCheckExport = async e => {
 		if (!loadingExport) {
 			if (!pokemonSet.export) {
 				setMessage({ export: "L'export est requis" });
 				return;
 			}
-			const parsedExport = Koffing.parse(pokemonSet.export);
 			e.preventDefault();
+			const Koffing = await import('koffing').default;
+			const parsedExport = Koffing.parse(pokemonSet.export);
 			if (
 				parsedExport.teams &&
 				parsedExport.teams[0] &&

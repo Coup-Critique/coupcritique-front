@@ -131,7 +131,7 @@ const FormSignUp = ({ triggerHeight }) => {
 					<img
 						className="img-fluid img-icon"
 						src="/images/picto/showdown-export.svg"
-						alt="showdown export icon"
+						alt="Icon de Pokemon Showdown"
 						width={21}
 						height={19}
 					/>
@@ -214,7 +214,12 @@ const FormSignUp = ({ triggerHeight }) => {
 				</Link>
 			</p>
 			<div className="text-center">
-				<Button color="orange" type="submit" disabled={loading}>
+				<Button
+					aria-label="S'inscrire"
+					color="orange"
+					type="submit"
+					disabled={loading}
+				>
 					Valider
 				</Button>
 			</div>

@@ -12,6 +12,7 @@ import useTableFetch from '@/hooks/useTableFetch';
 import UserTiperButton from '@/components/actions/UserTiperButton';
 import useStateProps from '@/hooks/useStateProps';
 import TableTourRanking from '../table/TableTourRanking';
+// import Image from 'next/image';
 
 const defaultValue = {};
 const UserArticle = props => {

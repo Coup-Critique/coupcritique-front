@@ -4,9 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Icon, Loader, Tab } from 'semantic-ui-react';
 // custom
 import PokemonInstanceSet from '@/components/elements/PokemonInstanceSet';
-import FormPokemonSet from '@/components/forms/FormPokemonSet';
 import useFetch from '@/hooks/useFetch';
 import { setTiers } from '@/reducers/tiers';
+import dynamic from 'next/dynamic';
+
+const FormPokemonSet = dynamic(() => import('@/components/forms/FormPokemonSet'), {
+	loading: () => <Loader active inline="centered" />,
+	ssr: false,
+});
 
 const defaultArray = [];
 const PokemonSetManager = props => {

@@ -1,4 +1,4 @@
-
+import Image from 'next/image';
 import { Button, Icon } from 'semantic-ui-react';
 
 const PwaButton = () => (
@@ -6,10 +6,12 @@ const PwaButton = () => (
 		<div className="inner-pwa-popup">
 			<div className="logo-zone">
 				<div className="app-icon">
-					<img
+					<Image
 						className="img-fluid"
-						alt="CoupCritique"
+						alt="Logo de Coup Critique"
 						src="/images/coupcritique-72.png"
+						width={72}
+						height={72}
 					/>
 				</div>
 				<span className="brand-text">CoupCritique</span>
@@ -20,6 +22,7 @@ const PwaButton = () => (
 				color="orange"
 				icon="home"
 				content="Ajouter à l'écran d'accueil"
+				aria-label="Ajouter l'application à l'écran d'accueil"
 				className="ui button icon orange text-uppercase"
 			/>
 			<div className="blank-block">

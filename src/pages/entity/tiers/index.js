@@ -10,6 +10,7 @@ import GenSelector from '@/components/GenSelector';
 import { ART_ITM } from '@/constants/img';
 import { manageFetch } from '@/hooks/useFetch';
 import useFetchListByGen from '@/hooks/useFetchListByGen';
+import Image from 'next/image';
 
 const TierList = props => {
 	const [tiers, setTiers, loading] = useFetchListByGen('tiers', props.tiers);
@@ -34,7 +35,7 @@ const TierList = props => {
 								animation="zoomIn"
 							>
 								<Link className="image" href={`/entity/tiers/${tier.id}`}>
-									<img
+									<Image
 										src={`/images/tiers/${tier.gen}-${
 											tier.shortName || tier.name
 										}.png`}

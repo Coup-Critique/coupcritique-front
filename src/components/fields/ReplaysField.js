@@ -62,6 +62,7 @@ const ReplaysField = ({ name = 'replays', value, message, handleChange }) => {
 			<Button
 				icon="plus"
 				content="Ajouter un replay"
+				aria-label="Ajouter un replay"
 				color="blue"
 				onClick={addReplay}
 				disabled={value.length > 4}

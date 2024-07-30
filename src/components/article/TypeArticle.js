@@ -42,6 +42,7 @@ const TypeArticle = props => {
 			<Button
 				color="blue"
 				content="Voir les capacités du Type"
+				aria-label="Voir les capacités du Type"
 				className="mb-4"
 				as={Link}
 				href={`/entity/moves/type/${type.id}`}

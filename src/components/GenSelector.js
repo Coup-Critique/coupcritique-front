@@ -58,6 +58,7 @@ const GenSelector = ({ availableGens, redirectOnChange }) => {
 			value={gen}
 			className="menu-position-right button-triggered"
 			upward={false}
+			aria-label="Sélectionner une génération"
 		/>
 	);
 };

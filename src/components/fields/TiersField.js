@@ -60,6 +60,7 @@ const TiersField = ({
 			icon={null}
 			floating={false}
 			upward={false}
+			aria-label="Sélectionner un tier et une génération"
 			trigger={
 				<FormInput
 					name="tier"
@@ -87,6 +88,7 @@ const TiersField = ({
 						icon="times"
 						onClick={e => handleChange(undefined, undefined)}
 						className="activable m-0"
+						role="option"
 					/>
 				)}
 				<div className="row">
@@ -110,6 +112,12 @@ const TiersField = ({
 										gen && gen != '0' && 'activable',
 										currentGen === gen && !currentTier && 'active'
 									)}
+									role="option"
+									aria-selected={
+										currentGen === gen && !currentTier
+											? 'true'
+											: 'false'
+									}
 								/>
 								{tiers.map(tier => {
 									const oldOfficial =
@@ -132,6 +140,12 @@ const TiersField = ({
 												currentTier === tier.id
 													? 'active'
 													: undefined
+											}
+											aria-selected={
+												currentGen === tier.gen &&
+												currentTier === tier.id
+													? 'true'
+													: 'false'
 											}
 										/>
 									);

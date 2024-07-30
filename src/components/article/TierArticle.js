@@ -62,6 +62,7 @@ const TierArticle = props => {
 			<Button
 				color="blue"
 				content="Voir les équipes du tiers"
+				aria-label="Voir les équipes du tiers"
 				// className="mb-4"
 				as={Link}
 				href={`/entity/teams?tier=${tier.id}&gen=${tier.gen}`}

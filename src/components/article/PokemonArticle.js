@@ -173,6 +173,9 @@ const PokemonArticle = props => {
 			<Button
 				color="blue"
 				content="Voir les capacités du Pokémon"
+				aria-label={`Voir les capacités du Pokémon ${
+					pokemon.nom || pokemon.name
+				}`}
 				className="mb-4"
 				as={Link}
 				href={`/entity/moves/pokemon/${pokemon.id}`}

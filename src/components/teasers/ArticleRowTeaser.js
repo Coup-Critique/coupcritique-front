@@ -31,7 +31,7 @@ const ArticleRowTeaser = ({ article, entityName, noCover = false }) => (
 							e.target.onerror = null;
 							e.target.src = '/images/default_actuality_colored.jpg';
 						}}
-						alt={article.alt}
+						alt={article.alt || "Illustration de l'article"}
 					/>
 					<span className="sr-only">Illustration&nbsp;: {article.title}</span>
 				</Link>

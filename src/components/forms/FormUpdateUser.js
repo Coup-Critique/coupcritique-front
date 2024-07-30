@@ -173,7 +173,7 @@ const FormUpdateUser = () => {
 					<img
 						className="img-fluid img-icon"
 						src="/images/picto/showdown-export.svg"
-						alt="showdown export icon"
+						alt="Icon de Pokemon Showdown"
 						width={21}
 						height={19}
 					/>
@@ -187,7 +187,12 @@ const FormUpdateUser = () => {
 			<Message success content={message.form} />
 			<Message error content={message.form} />
 			<div className="text-center">
-				<Button color="orange" type="submit" disabled={loading}>
+				<Button
+					aria-label="Valider les modifications de votre profil"
+					color="orange"
+					type="submit"
+					disabled={loading}
+				>
 					Valider
 				</Button>
 			</div>

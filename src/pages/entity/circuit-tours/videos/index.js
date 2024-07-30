@@ -104,6 +104,7 @@ const CircuitVideoList = props => {
 								clearable
 								selection
 								label="Auteur"
+								aria-label="Sélectionner un auteur"
 								placeholder="Sélectionner un auteur"
 								options={authors}
 								onChange={(e, { value }) => setSelectedAuthor(value)}

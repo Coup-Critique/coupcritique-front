@@ -66,12 +66,13 @@ const Export = ({ content, className }) => {
 							className="export-btn"
 							onClick={getTeamExport}
 							color="blue"
+							aria-label="Exporter l'équipe pour Pokemon Showdown"
 						>
 							Export
 							<img
 								className="fake-icon right"
 								src="/images/picto/showdown-export-white.svg"
-								alt="showdown export icon"
+								alt="Icon de Pokemon Showdown"
 								width="17"
 								height="16"
 							/>

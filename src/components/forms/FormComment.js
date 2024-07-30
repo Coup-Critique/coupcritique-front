@@ -98,7 +98,12 @@ const FormComment = ({
 						/>
 						<Message success content={message.form} className="text" />
 						<Message error content={message.form} className="text" />
-						<Button content="Valider" icon="check" color="green" />
+						<Button
+							aria-label="Valider le commentaire"
+							content="Valider"
+							icon="check"
+							color="green"
+						/>
 					</Form>
 				</SemanticComment.Content>
 			</div>

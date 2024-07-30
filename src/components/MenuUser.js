@@ -6,7 +6,7 @@ import { Dropdown, Loader } from 'semantic-ui-react';
 import useLogout from '@/hooks/useLogout';
 import Profile from '@/components/elements/Profile';
 // import DarkModeToggle from '@/components/fields/DarkModeToggle';
-import SignPanel from '@/components/SignPanel';
+import SignModal from '@/components/modals/SignModal';
 
 const MenuUser = () => {
 	const logout = useLogout();
@@ -16,7 +16,7 @@ const MenuUser = () => {
 
 	if (user.loading && user.id) return <Loader inline active />;
 
-	if (!user.token) return <SignPanel isModal loading={user.loading} />;
+	if (!user.token) return <SignModal loading={user.loading} />;
 
 	const handleClose = e => {
 		// if (!e.target.classList.contains('dark-mode-checkbox')) {
@@ -25,7 +25,7 @@ const MenuUser = () => {
 	};
 	const handleBlurClose = e => {
 		// if (!e.relatedTarget || e.relatedTarget.type !== 'checkbox') {
-			setOpen(false);
+		setOpen(false);
 		// }
 	};
 
@@ -49,6 +49,7 @@ const MenuUser = () => {
 			onClose={handleClose}
 			closeOnBlur={false}
 			onBlur={handleBlurClose}
+			aria-label="Menu Utilisateur"
 		>
 			<Dropdown.Menu>
 				{/* <Dropdown.Item className="position-relative">

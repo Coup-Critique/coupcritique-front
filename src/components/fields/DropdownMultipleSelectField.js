@@ -5,6 +5,8 @@ import { FormField, Label, Dropdown } from 'semantic-ui-react';
 // controlled
 const DropdownMultipleSelectField = ({
 	label,
+	name,
+	placeholder,
 	value = [],
 	error,
 	options,
@@ -27,6 +29,9 @@ const DropdownMultipleSelectField = ({
 				options={optionsToDropdown}
 				value={value}
 				error={!!error}
+				name={name}
+				placeholder={placeholder}
+				aria-label={placeholder || 'Sélectionner des ' + label}
 				{...props}
 			/>
 			{!!error && (

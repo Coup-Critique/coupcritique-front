@@ -4,14 +4,15 @@ import { Card } from 'semantic-ui-react';
 import { IMG_VERSION } from '@/constants/img';
 import { lastGen } from '@/constants/gens';
 import ScrollReveal from '../ScrollReveal';
+import LinkButton from '../buttons/LinkButton';
 
 const CardFindTeam = () => (
 	<Card className="padded">
 		<div className="d-flex justify-content-between flex-wrap">
 			<h2 className="mb-4">Trouver une équipe</h2>
-			<Link href={`/entity/teams`} className="btn btn-orange mb-4">
+			<LinkButton href={`/entity/teams`} color="orange" className="mb-4">
 				Je trouve mon équipe
-			</Link>
+			</LinkButton>
 		</div>
 		<p>Chercher une équipe par style de jeu, tier ou Pokémon</p>
 		<div className="row">
@@ -23,7 +24,7 @@ const CardFindTeam = () => (
 							className="img-fluid"
 							animation="zoomIn"
 							src={`/images/ho.png?ver=${IMG_VERSION}`}
-							alt="Tag : Hyper Offense"
+							alt="Des pokémon représentant le tag Hyper Offense"
 							width="236"
 							height="200"
 						/>
@@ -42,7 +43,7 @@ const CardFindTeam = () => (
 							className="img-fluid"
 							animation="zoomIn"
 							src={`/images/ou.png?ver=${IMG_VERSION}`}
-							alt="Tier : OverUsed"
+							alt="Des pokémon représentant le tier OverUsed"
 							width="230"
 							height="200"
 						/>
@@ -58,7 +59,7 @@ const CardFindTeam = () => (
 							className="img-fluid"
 							animation="zoomIn"
 							src={`/images/vgc.png?ver=${IMG_VERSION}`}
-							alt="Tier : VGC"
+							alt="Des pokémon représentant le tier VGC"
 							width="236"
 							height="200"
 						/>

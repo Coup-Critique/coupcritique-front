@@ -80,6 +80,7 @@ const PageError = ({ clearError }) => {
 					onClick={handleRefresh}
 					icon="refresh"
 					content="Rafraîchir la page"
+					arial-label="Rafraîchir la page"
 				/>
 			</div>
 			<div className="mb-1_5">
@@ -90,6 +91,7 @@ const PageError = ({ clearError }) => {
 					icon="left arrow"
 					basic
 					content="Revenir en arrière"
+					area-label="Revenir en arrière"
 				/>
 			</div>
 			<div>
@@ -101,6 +103,7 @@ const PageError = ({ clearError }) => {
 					basic
 					size="mini"
 					content="Se déconnecter"
+					area-label="Se déconnecter"
 				/>
 			</div>
 		</PageWrapper>

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Icon, Loader } from 'semantic-ui-react';
 import PageWrapper from '@/components/PageWrapper';
+import LinkButton from '@/components/buttons/LinkButton';
 // components
 
 const LoadingPage = () => (
@@ -13,10 +14,7 @@ const LoadingPage = () => (
 		goingBack
 	>
 		<Loader active inline="centered" />
-		<Link href="/" className="btn btn-primary">
-			<Icon name="home" />
-			Accueil
-		</Link>
+		<LinkButton color="primary" href="/" label="Accueil" icon="home" />
 	</PageWrapper>
 );
 export default LoadingPage;

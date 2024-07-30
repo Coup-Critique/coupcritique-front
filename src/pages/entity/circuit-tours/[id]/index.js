@@ -8,6 +8,7 @@ import { manageFetch } from '@/hooks/useFetch';
 import useNotifChecker from '@/hooks/useNotifChecker';
 import ArticleTeaser from '@/components/teasers/ArticleTeaser';
 import Video from '@/components/elements/Video';
+import LinkButton from '@/components/buttons/LinkButton';
 
 const CircuitTourPage = ({ circuitTour, circuitArticles, circuitVideos }) => {
 	useNotifChecker('circuitTour', circuitTour.id);
@@ -43,12 +44,13 @@ const CircuitTourPage = ({ circuitTour, circuitArticles, circuitVideos }) => {
 							))}
 					</div>
 					<div className="text-center">
-						<Link
+						<LinkButton
 							href={`/entity/circuit-tours/articles/tour/${circuitTour.id}`}
-							className="btn btn-orange inverted"
+							color="orange"
+							inverted
 						>
 							Voir tous les articles du tour
-						</Link>
+						</LinkButton>
 					</div>
 				</div>
 				<div className="col-12 col-lg-6 pl-4">
@@ -61,12 +63,13 @@ const CircuitTourPage = ({ circuitTour, circuitArticles, circuitVideos }) => {
 								))}
 						</div>
 						<div className="text-center">
-							<Link
+							<LinkButton
 								href={`/entity/circuit-tours/videos/tour/${circuitTour.id}`}
-								className="btn btn-orange inverted"
+								color="orange"
+								inverted
 							>
 								Voir toutes les videos du tour
-							</Link>
+							</LinkButton>
 						</div>
 					</Segment>
 				</div>

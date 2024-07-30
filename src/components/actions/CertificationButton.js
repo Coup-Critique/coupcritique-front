@@ -57,6 +57,7 @@ const CertificationButton = ({ isIcon = false, team = {}, handleCertif }) => {
 					color="green"
 					icon="check circle"
 					content="Certifier"
+					aria-label="Certifier l'équipe"
 					onClick={e => handleLoad(true)}
 					loading={loading}
 				/>
@@ -66,6 +67,7 @@ const CertificationButton = ({ isIcon = false, team = {}, handleCertif }) => {
 					color="red"
 					icon="x"
 					content="Rejeter la certif"
+					aria-label="Rejeter la certification de l'équipe'"
 					onClick={e => handleLoad(false)}
 					loading={loading}
 				/>

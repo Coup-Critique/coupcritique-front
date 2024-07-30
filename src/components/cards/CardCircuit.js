@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Card } from 'semantic-ui-react';
 import ArticleRowTeaser from '../teasers/ArticleRowTeaser';
 import { makeClassName } from '@/functions';
+import LinkButton from '../buttons/LinkButton';
 
 const CardCircuit = ({ currentTours }) => {
 	return (
@@ -14,7 +15,7 @@ const CardCircuit = ({ currentTours }) => {
 					className="img-fluid mr-lg-0 ml-lg-0 mb-4"
 					width={345}
 					height={84}
-					alt="Circuit Compétitif"
+					alt="Logo du circuit"
 					src="/images/logo_circuit.png"
 				/>
 			</Link>
@@ -36,12 +37,9 @@ const CardCircuit = ({ currentTours }) => {
 						</div>
 					))}
 				</div>
-				<Link
-					href="/entity/circuit-tours"
-					className="btn btn-orange btn-outline inverted"
-				>
+				<LinkButton href="/entity/circuit-tours" color="orange" outline inverted>
 					Détails du circuit
-				</Link>
+				</LinkButton>
 			</div>
 		</Card>
 	);

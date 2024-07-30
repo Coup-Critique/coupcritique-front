@@ -2,13 +2,18 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
-import { Comment as SemanticComment, Icon } from 'semantic-ui-react';
+import { Comment as SemanticComment, Icon, Loader } from 'semantic-ui-react';
 // custom
-import Profile, { ProfileBadge } from '@/components/elements/Profile';
-import FormComment from '@/components/forms/FormComment';
+import Profile from '@/components/elements/Profile';
 import ApproveComment from '@/components/actions/ApproveComment';
 import { formatDate } from '@/functions';
 import DeleteAction from '@/components/actions/DeleteAction';
+import dynamic from 'next/dynamic';
+
+const FormComment = dynamic(() => import('@/components/forms/FormComment'), {
+	loading: () => <Loader active inline="centered" />,
+	ssr: false,
+});
 
 const Comment = ({ comment, isReply = false, handleUpdate, baseEntity }) => {
 	const user = useSelector(state => state.user);

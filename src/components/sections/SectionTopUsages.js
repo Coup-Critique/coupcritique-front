@@ -8,6 +8,7 @@ import Video from '@/components/elements/Video';
 import ArticleRowTeaser from '@/components/teasers/ArticleRowTeaser';
 import ReduceCol from '../columns/ReduceCol';
 import { makeClassName } from '@/functions';
+import LinkButton from '../buttons/LinkButton';
 
 const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 	<>
@@ -15,9 +16,9 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 			<div className="ui container">
 				<div className="h2-btn">
 					<h2>Guides stratégiques</h2>
-					<Link href="/entity/guides" className="btn btn-orange inverted">
+					<LinkButton href="/entity/guides" color="orange" inverted>
 						Voir tous les guides
-					</Link>
+					</LinkButton>
 				</div>
 				<div className="row">
 					{guides.map((guide, i) => (
@@ -51,12 +52,13 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 								))}
 							</div>
 							<div>
-								<Link
+								<LinkButton
 									href={`/entity/tiers`}
-									className="btn btn-orange inverted"
+									color="orange"
+									inverted
 								>
 									Voir les usages
-								</Link>
+								</LinkButton>
 							</div>
 						</Card>
 					</div>
@@ -77,12 +79,9 @@ const SectionTopUsages = ({ usages = [], guides = [], videos = [] }) => (
 								))}
 							</div>
 							<div className="text-center">
-								<Link
-									href={`/videos`}
-									className="btn btn-orange inverted"
-								>
+								<LinkButton href={`/videos`} color="orange" inverted>
 									Voir toutes les videos
-								</Link>
+								</LinkButton>
 							</div>
 						</Card>
 					</div>

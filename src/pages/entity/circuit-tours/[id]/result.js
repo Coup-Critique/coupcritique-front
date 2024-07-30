@@ -9,6 +9,7 @@ import TableTourScore from '@/components/table/TableTourScore';
 import CircuitTourContainer from '@/containers/CircuitTourContainer';
 import { manageFetch } from '@/hooks/useFetch';
 import { makeClassName } from '@/functions';
+import LinkButton from '@/components/buttons/LinkButton';
 
 const CircuitTourResult = ({ circuitTour }) => {
 	return (
@@ -76,12 +77,13 @@ const Page = ({ circuitTour }) => {
 			metaimage={hasImage && `circuit-tours/${circuitTour.images[0]}`}
 			goingBack={`/entity/circuit-tours/${circuitTour.id}`}
 			action={
-				<Link
+				<LinkButton
 					href={`/entity/circuit-tours/ranking`}
-					className="btn btn-orange inverted"
+					color="orange"
+					inverted
 				>
 					Voir le classement complet
-				</Link>
+				</LinkButton>
 			}
 			more
 		>

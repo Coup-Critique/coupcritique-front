@@ -48,8 +48,17 @@ function ModalConfirm({
 			{/* {!!title && <Modal.Header>{title}</Modal.Header>} */}
 			<Modal.Content className="font-weight-bold">{children}</Modal.Content>
 			<Modal.Actions>
-				<Button {...confirmButtonProps} onClick={handleConfirmBuffer} />
-				<Button color="grey" content="Annuler" onClick={handleClose} />
+				<Button
+					{...confirmButtonProps}
+					aria-label={confirmButtonProps.content}
+					onClick={handleConfirmBuffer}
+				/>
+				<Button
+					aria-label="Annuler et fermer cette fenêtre flottante"
+					color="grey"
+					content="Annuler"
+					onClick={handleClose}
+				/>
 			</Modal.Actions>
 		</Modal>
 	);

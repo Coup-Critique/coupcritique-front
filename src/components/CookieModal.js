@@ -80,6 +80,8 @@ const CookieModal = () => {
 						<div className="col-xl-6 text-center text-xl-right">
 							<button
 								type="button"
+								role="button"
+								aria-label="Accepter tous les cookies"
 								id="accept-all"
 								className="btn btn-orange btn-cookie-consent mr-1"
 								onClick={acceptAll}
@@ -88,6 +90,8 @@ const CookieModal = () => {
 							</button>
 							<button
 								type="button"
+								role="button"
+								aria-label="Voir les cookies en détail"
 								id="display-cookie-modal"
 								className="btn btn-secondary mr-1"
 								onClick={handleOpen}
@@ -96,6 +100,8 @@ const CookieModal = () => {
 							</button>
 							<button
 								type="button"
+								role="button"
+								aria-label="Refuser tous les cookies"
 								id="reject-all"
 								className="btn btn-secondary btn-cookie-consent"
 								onClick={rejectAll}
@@ -120,10 +126,11 @@ const CookieModal = () => {
 						<h4>Gestion de vos préférences pour tous les services</h4>
 						<button
 							type="button"
+							role="button"
 							id="close-cookie-modal"
 							className="close"
 							data-dismiss="modal"
-							aria-label="Close"
+							aria-label="Fermer la fenêtre"
 							onClick={handleClose}
 						>
 							<span aria-hidden="true" className="text-white">
@@ -247,6 +254,8 @@ const CookieModal = () => {
 						<div className="d-flex">
 							<button
 								type="button"
+								role="button"
+								aria-label="Accepter tous les cookies"
 								id="accept-all-modal"
 								className="btn btn-orange btn-cookie-consent"
 								onClick={acceptAll}
@@ -255,6 +264,8 @@ const CookieModal = () => {
 							</button>
 							<button
 								type="button"
+								role="button"
+								aria-label="Accepter les cookies pré-sélectionnés et nécessaire au bon fonctionnement du site"
 								id="accept-some-modal"
 								className="btn btn-secondary btn-cookie-consent"
 								onClick={acceptSome}
@@ -263,6 +274,8 @@ const CookieModal = () => {
 							</button>
 							<button
 								type="button"
+								role="button"
+								aria-label="Refuser tous les cookies"
 								id="reject-all-modal"
 								className="btn btn-secondary btn-cookie-consent"
 								onClick={rejectAll}

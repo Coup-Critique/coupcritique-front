@@ -11,6 +11,8 @@ import MenuNavBar from '@/components/MenuNavBar';
 import MenuUser from '@/components/MenuUser';
 import CopyMail from '@/components/actions/CopyMail';
 import useCtrlF from '@/hooks/useCtrlF';
+import Image from 'next/image';
+import ExtLinkButton from './buttons/ExtLinkButton';
 // import Image from 'next/image';
 
 function Header() {
@@ -24,7 +26,7 @@ function Header() {
 			<div className="header-top">
 				<div className="container-fluid">
 					<Link href="/" className="brand">
-						<img
+						<Image
 							src={`/images/coupcritique${darkMode ? '-white' : ''}.svg`}
 							alt="Logo de Coup Critique"
 							// className="d-none d-sm-block"
@@ -115,14 +117,12 @@ function Header() {
 									className="m-0"
 								/>
 							</div>
-							<a
-								className="btn btn-outline-dark btn-padding-reduce mb-2 ml-2"
+							<ExtLinkButton
+								className="btn-outline-dark btn-padding-reduce mb-2 ml-2"
 								href="https://fr.tipeee.com/redemption/"
-								target="_blank"
-								rel="nofollow noreferrer"
 							>
 								Soutenir
-							</a>
+							</ExtLinkButton>
 						</div>
 					</div>
 				</div>

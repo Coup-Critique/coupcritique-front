@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 import PageWrapper from '@/components/PageWrapper';
+import LinkButton from '@/components/buttons/LinkButton';
 // components
 
 const Page404 = () => (
@@ -13,10 +14,7 @@ const Page404 = () => (
 		goingBack
 	>
 		<p>La page que vous recherchez n'existe pas.</p>
-		<Link href="/" className="btn btn-primary">
-			<Icon name="home" />
-			Accueil
-		</Link>
+		<LinkButton color="primary" href="/" label="Accueil" icon="home" />
 	</PageWrapper>
 );
 export default Page404;

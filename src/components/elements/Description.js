@@ -1,9 +1,14 @@
 // modules
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Button, Icon } from 'semantic-ui-react';
-import FormDescription from '@/components/forms/FormDescription';
+import { Button, Icon, Loader } from 'semantic-ui-react';
 import DescriptionJsoned from '@/components/elements/DescriptionJsoned';
+import dynamic from 'next/dynamic';
+
+const FormDescription = dynamic(() => import('@/components/forms/FormDescription'), {
+	loading: () => <Loader active inline="centered" />,
+	ssr: false,
+});
 
 const Description = ({ entity, json = false, ...props }) => {
 	const [updating, setUpdating] = useState(false);
@@ -29,6 +34,7 @@ const Description = ({ entity, json = false, ...props }) => {
 					color="blue"
 					icon="plus"
 					content="Ajouter une description"
+					area-label="Ajouter une description"
 					onClick={handleModify}
 					className="btn-descr"
 				/>

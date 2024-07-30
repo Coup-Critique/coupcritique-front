@@ -19,7 +19,7 @@ const ShowdownIconHoverable = ({ linkProps, className, hoverColor = 'orange' }) 
 				src={`/images/picto/showdown-export-${
 					hover ? hoverColor : darkMode ? 'white' : 'black'
 				}.svg`}
-				alt="Pokemon Showdown Icon"
+				alt="Icon de Pokemon Showdown"
 				width="19"
 				height="18"
 			/>

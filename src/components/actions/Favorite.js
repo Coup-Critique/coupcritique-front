@@ -72,6 +72,9 @@ const Favorite = ({ team, isIcon = false, size = 'large', action = true }) => {
 			color="yellow"
 			icon={isFavorite ? 'star' : 'star outline'}
 			content={isFavorite ? 'Retirer des favoris' : 'Mettre en favoris'}
+			aria-label={
+				isFavorite ? "Retirer l'équipe des favoris" : "Mettre l'équipe en favoris"
+			}
 			onClick={action ? handleFavorite : undefined}
 			loading={loadingFavorite}
 		/>

@@ -5,10 +5,15 @@ import { Button, Loader } from 'semantic-ui-react';
 import { DELETE } from '@/constants/methods';
 import { formatDate, makeClassName, youtubeEmbedRegex } from '@/functions';
 import useFetch from '@/hooks/useFetch';
-import FormVideo from '@/components/forms/FormVideo';
 import ScrollReveal from '@/components/ScrollReveal';
 import VideoEmbed from '@/components/elements/VideoEmbed';
 import Tag from '@/components/elements/Tag';
+import dynamic from 'next/dynamic';
+
+const FormVideo = dynamic(() => import('@/components/forms/FormVideo'), {
+	loading: () => <Loader active inline="centered" />,
+	ssr: false,
+});
 
 const Video = ({
 	video,

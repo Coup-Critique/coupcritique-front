@@ -93,7 +93,12 @@ const FormPassword = () => {
 			<Message error content={message.form} />
 			<Message success content={message.form} />
 			<div className="text-center">
-				<Button color="orange" type="submit" disabled={loading}>
+				<Button
+					aria-label="Valider le changement de mot de passe"
+					color="orange"
+					type="submit"
+					disabled={loading}
+				>
 					Valider
 				</Button>
 			</div>

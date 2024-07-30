@@ -1,7 +1,7 @@
 // modules
 import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Button } from 'semantic-ui-react';
+import { Button, Loader } from 'semantic-ui-react';
 // components
 import SpriteItem from '@/components/elements/SpriteItem';
 import Ability from '@/components/elements/Ability';
@@ -9,12 +9,17 @@ import Move from '@/components/elements/Move';
 import Item from '@/components/elements/Item';
 import Author from '@/components/elements/Author';
 import Export from '@/components/actions/Export';
-import FormPokemonSet from '@/components/forms/FormPokemonSet';
 import DescriptionJsoned from '@/components/elements/DescriptionJsoned';
 import IconType from '@/components/elements/IconType';
 import useFetch from '@/hooks/useFetch';
 import { DELETE } from '@/constants/methods';
 import { capitalize } from '@/functions';
+import dynamic from 'next/dynamic';
+
+const FormPokemonSet = dynamic(() => import('@/components/forms/FormPokemonSet'), {
+	loading: () => <Loader active inline="centered" />,
+	ssr: false,
+});
 
 const natureKeys = ['atk', 'def', 'spa', 'spd', 'spe'];
 

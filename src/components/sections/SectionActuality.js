@@ -3,6 +3,7 @@ import Link from 'next/link';
 // components
 import ArticleTeaser from '../teasers/ArticleTeaser';
 import ReduceCol from '../columns/ReduceCol';
+import LinkButton from '../buttons/LinkButton';
 
 function SectionActuality({ actualities = [] }) {
 	if (!actualities.length) return null;
@@ -11,9 +12,9 @@ function SectionActuality({ actualities = [] }) {
 			<div className="ui container">
 				<div className="h2-btn">
 					<h2>Actualités</h2>
-					<Link href="/entity/actualities" className="btn btn-orange inverted">
+					<LinkButton href="/entity/actualities" color="orange" inverted>
 						Voir toutes les actualités
-					</Link>
+					</LinkButton>
 				</div>
 				<div className="row">
 					{actualities.map((actuality, i) => (

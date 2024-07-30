@@ -1,10 +1,14 @@
 // modules
 import { useRef, useState } from 'react';
-import { Editor } from '@tinymce/tinymce-react';
+import dynamic from 'next/dynamic';
 //  custom
-import { FormTextArea, Message, Segment } from 'semantic-ui-react';
+import { FormTextArea, Loader, Message, Segment } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';
 import { useSelector } from 'react-redux';
+
+const { Editor } = dynamic(() => import('@tinymce/tinymce-react'), {
+	loading: () => <Loader active inline="centered" />,
+});
 
 const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) => {
 	const darkMode = useSelector(state => state.darkMode);

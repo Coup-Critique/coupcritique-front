@@ -39,6 +39,7 @@ function MenuNavBar({ iconized = false }) {
 						)
 					}
 					className="nav-link"
+					aria-label="Sous menu Stratégie"
 				>
 					<Dropdown.Menu>
 						<Dropdown.Item
@@ -135,6 +136,7 @@ function MenuNavBar({ iconized = false }) {
 						)
 					}
 					className="nav-link"
+					aria-label="Sous menu Ressources"
 				>
 					<Dropdown.Menu>
 						<Dropdown.Item
@@ -236,6 +238,7 @@ function MenuNavBar({ iconized = false }) {
 						}
 						icon={iconized ? null : undefined}
 						className="nav-link"
+						aria-label="Sous menu Admin"
 					>
 						<Dropdown.Menu>
 							<Dropdown.Item

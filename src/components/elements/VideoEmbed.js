@@ -1,5 +1,6 @@
 // modules
 
+import Image from 'next/image';
 import { useMemo, useState } from 'react';
 
 const VideoEmbed = ({ youtube_id, cookie = false }) => {
@@ -26,8 +27,8 @@ const VideoEmbed = ({ youtube_id, cookie = false }) => {
 		</div>
 	) : (
 		<div className="pre-video-wrapper" onClick={() => setClicked(true)}>
-			<img
-				src={`http://img.youtube.com/vi/${youtube_id}/sddefault.jpg`}
+			<Image
+				src={`https://img.youtube.com/vi/${youtube_id}/sddefault.jpg`}
 				alt="YouTube video player"
 				height="405"
 				width="540"

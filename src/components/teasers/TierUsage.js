@@ -7,6 +7,7 @@ import ArtPokemon from '@/components/elements/ArtPokemon';
 import ScrollReveal from '@/components/ScrollReveal';
 import { formateName, formatNumbers } from '@/functions';
 import { ART_ITM } from '@/constants/img';
+import Image from 'next/image';
 
 const TierUsage = ({ usage, tier }) => {
 	const ref = useRef();
@@ -16,7 +17,7 @@ const TierUsage = ({ usage, tier }) => {
 		return (
 			<ScrollReveal className="usage" animation="zoomIn" earlier outterRef={ref}>
 				<div className="img-wrapper">
-					<img
+					<Image
 						src={`/images/tiers/${tier.gen}-${
 							tier.shortName || tier.name
 						}.png`}

@@ -62,7 +62,12 @@ const FormForgottenPassword = ({ triggerHeight }) => {
 				content={message && <p dangerouslySetInnerHTML={{ __html: message }} />}
 			/>
 			<div className="text-center">
-				<Button color="orange" type="submit" disabled={loading}>
+				<Button
+					aria-label="Envoyer un email de réinitialisation de mot de passe"
+					color="orange"
+					type="submit"
+					disabled={loading}
+				>
 					Envoyer
 				</Button>
 			</div>

@@ -362,12 +362,18 @@ const FormTeam = ({ tiers = {}, tags = [], loadingTiers = false, defaultValue })
 						disabled={loadingTeam}
 						icon={defaultValue ? 'save' : undefined}
 						content={defaultValue ? 'Valider' : 'Publier'}
+						aria-label={
+							defaultValue
+								? 'Valider les modifications'
+								: "Publier l'équipe"
+						}
 					/>
 				) : (
 					<Button
 						color="green"
 						onClick={onCheckExport}
 						disabled={loadingExport}
+						aria-label="Vérifier l'export de l'équipe"
 					>
 						Vérifier l'export
 					</Button>

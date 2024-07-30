@@ -1,11 +1,12 @@
 // modules
 
 import Link from 'next/link';
-import { Card, Button } from 'semantic-ui-react';
-import { formatDate, makeClassName } from '@/functions';
+import { Card } from 'semantic-ui-react';
+import { makeClassName } from '@/functions';
 import ScrollReveal from '@/components/ScrollReveal';
 import Tag from '@/components/elements/Tag';
 import Author from '../elements/Author';
+// import Image from 'next/image';
 
 const ArticleTeaser = ({
 	article,
@@ -34,7 +35,7 @@ const ArticleTeaser = ({
 							e.target.onerror = null;
 							e.target.src = '/images/default_actuality_colored.jpg';
 						}}
-						alt={article.alt}
+						alt={article.alt || "Illustration de l'article"}
 						// TODO gerer une taille fixe
 					/>
 					<span className="sr-only">Illustration : {article.title}</span>

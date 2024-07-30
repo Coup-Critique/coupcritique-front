@@ -101,7 +101,12 @@ const FormSignIn = ({ triggerHeight }) => {
 				}
 			/>
 			<div className="text-center">
-				<Button color="orange" type="submit" disabled={loading}>
+				<Button
+					aria-label="Se connecter"
+					color="orange"
+					type="submit"
+					disabled={loading}
+				>
 					Valider
 				</Button>
 			</div>

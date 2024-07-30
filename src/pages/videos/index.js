@@ -1,16 +1,21 @@
 // module
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Button, Dropdown, Form, Loader } from 'semantic-ui-react';
 import useFetch, { manageFetch } from '@/hooks/useFetch';
 import usePager from '@/hooks/usePager';
 import Video from '@/components/elements/Video';
-import FormVideo from '@/components/forms/FormVideo';
 import PageWrapper from '@/components/PageWrapper';
 import PaginationPrettier from '@/components/PaginationPrettier';
 import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSelectField';
 import { objectToGETparams } from '@/functions';
 import SectionAds from '@/components/sections/SectionAds';
+import dynamic from 'next/dynamic';
+
+const FormVideo = dynamic(() => import('@/components/forms/FormVideo'), {
+	loading: () => <Loader active inline="centered" />,
+	ssr: false,
+});
 
 const VideoList = props => {
 	const { tags, authors } = props;
@@ -97,6 +102,7 @@ const VideoList = props => {
 								selection
 								label="Auteur"
 								placeholder="Sélectionner un auteur"
+								aria-label="Sélectionner un auteur"
 								options={authors}
 								onChange={(e, { value }) => setSelectedAuthor(value)}
 							/>
