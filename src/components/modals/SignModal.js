@@ -11,7 +11,7 @@ const SignTab = dynamic(() => import('@/components/SignTab'), {
 	ssr: false,
 });
 
-function SignPanel({ loading = false }) {
+function SignModal({ loading = false }) {
 	const darkMode = useSelector(state => state.darkMode);
 	const [open, setOpen] = useState(false);
 	const [currentActiveIndex, setCurrentActiveIndex] = useState(0);
@@ -63,4 +63,4 @@ function SignPanel({ loading = false }) {
 		</Modal>
 	);
 }
-export default SignPanel;
+export default SignModal;

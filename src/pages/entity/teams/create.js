@@ -9,7 +9,7 @@ import useFetch, { manageFetch } from '@/hooks/useFetch';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import FormTeam from '@/components/forms/FormTeam';
 import PageWrapper from '@/components/PageWrapper';
-import SignPanel from '@/components/SignPanel';
+import SignModal from '@/components/SignModal';
 import GoBackButton from '@/components/GoBackButton';
 import { setTiers } from '@/reducers/tiers';
 import { setTags } from '@/reducers/tags';
@@ -113,7 +113,7 @@ const TeamFormPage = props => {
 			{user.loading ? (
 				<Loader active={true} inline="centered" />
 			) : !user.token ? (
-				<SignPanel />
+				<SignModal />
 			) : (
 				<FormTeam
 					tiers={tiers}
