@@ -9,7 +9,7 @@ import useFetch, { manageFetch } from '@/hooks/useFetch';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import FormTeam from '@/components/forms/FormTeam';
 import PageWrapper from '@/components/PageWrapper';
-import SignModal from '@/components/SignModal';
+import SignModal from '@/components/modals/SignModal';
 import GoBackButton from '@/components/GoBackButton';
 import { setTiers } from '@/reducers/tiers';
 import { setTags } from '@/reducers/tags';
