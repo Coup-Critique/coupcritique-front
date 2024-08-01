@@ -5,7 +5,7 @@ const Player = ({ name, ...props }) => {
 	if (!name) return null;
 	return (
 		<ImageLoader
-			src={`/images/uploads/players/${name}.png`}
+			src={`/images/players/${name}.png`}
 			defaultSrc={defaultSrc}
 			alt={name}
 			height={48}

@@ -41,7 +41,7 @@ export default function Document() {
 					strategy="afterInteractive"
 					nonce={nonce}
 				/>
-				<Script src="/scripts/init-sw.js" nonce={nonce} />
+				<Script src="/scripts/sw.js" nonce={nonce} />
 				{/* Separated in 2 scripts because it should be defer */}
 				<Script src="/scripts/pwa-button.js" defer nonce={nonce} />
 			</body>
