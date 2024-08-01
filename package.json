@@ -14,7 +14,7 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"push": "npm version patch && node ./publishVersion.js && git add public/meta.json && git commit -nm 'bump public version' && git push"
+		"push": "npm version patch && node ./publishVersion.js && git add ./public/meta.json && git commit -nm \"bump public version\" && git push"
 	},
 	"dependencies": {
 		"@tinymce/tinymce-react": "^4.3.0",
