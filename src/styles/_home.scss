@@ -74,6 +74,14 @@
 					background-size: cover;
 					overflow: visible;
 					z-index: 2;
+
+					@media (max-width: $l - 1) {
+						background: url('/images/backgrounds/bandeau-home-v3.jpg') no-repeat center;
+					}
+
+					@media (max-width: $sm - 1) {
+						background: url('/images/backgrounds/bandeau-home-v4.jpg') no-repeat center;
+					}
 				}
 
 				.main-img {
