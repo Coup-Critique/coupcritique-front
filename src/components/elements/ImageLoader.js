@@ -8,6 +8,7 @@ const ImageLoader = ({ src, imgRef, defaultSrc, className, ...props }) => {
 	const ref = useRef();
 	const [loading, setLoading] = useState(undefined);
 	const [prevSrc] = usePrevious(src);
+	const [innerSrc, setInnerSrc] = useState(src);
 
 	useEffect(() => {
 		const img = imgRef?.current || ref.current;
@@ -21,6 +22,7 @@ const ImageLoader = ({ src, imgRef, defaultSrc, className, ...props }) => {
 	useEffect(() => {
 		if (!loading !== undefined && prevSrc && prevSrc !== src) {
 			setLoading(true);
+			setInnerSrc(src);
 		}
 	}, [src]);
 
@@ -30,13 +32,13 @@ const ImageLoader = ({ src, imgRef, defaultSrc, className, ...props }) => {
 			{/* eslint-disable-next-line jsx-a11y/alt-text */}
 			<Image
 				{...props}
-				src={src}
+				src={innerSrc}
 				ref={imgRef || ref}
 				className={makeClassName(className, loading && 'opacity-0')}
 				onLoad={e => setLoading(false)}
 				onError={e => {
 					e.target.onerror = null;
-					e.target.src = defaultSrc;
+					setInnerSrc(defaultSrc);
 					setLoading(false);
 				}}
 			/>
