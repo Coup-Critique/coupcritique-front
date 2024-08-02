@@ -1,7 +1,7 @@
 import Player from '../elements/Player';
 import { TableBase } from './Table';
 
-const TableTourResult = ({ rounds }) => {
+const TableTourRounds = ({ rounds }) => {
 	return (
 		<TableBase
 			cols={[
@@ -44,4 +44,4 @@ const TableTourResult = ({ rounds }) => {
 	);
 };
 
-export default TableTourResult;
+export default TableTourRounds;

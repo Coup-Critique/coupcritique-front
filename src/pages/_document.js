@@ -24,8 +24,18 @@ export default function Document() {
 					crossOrigin="use-crendentials"
 				/>
 				<link rel="apple-touch-icon" href="/logo192.png" />
+				<Script src="/scripts/sw.js" nonce={nonce} />
+				{/* Separated in 2 scripts because it should be defer */}
+				<Script src="/scripts/pwa-button.js" defer nonce={nonce} />
 				<Script
 					src="/scripts/matomo.js"
+					strategy="afterInteractive"
+					nonce={nonce}
+				/>
+				<Script
+					async
+					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4492453388939100"
+					crossorigin="anonymous"
 					strategy="afterInteractive"
 					nonce={nonce}
 				/>
@@ -34,16 +44,6 @@ export default function Document() {
 				<Main />
 				<PwaButton />
 				<NextScript nonce={nonce} />
-				<Script
-					async
-					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4492453388939100"
-					crossorigin="anonymous"
-					strategy="afterInteractive"
-					nonce={nonce}
-				/>
-				<Script src="/scripts/sw.js" nonce={nonce} />
-				{/* Separated in 2 scripts because it should be defer */}
-				<Script src="/scripts/pwa-button.js" defer nonce={nonce} />
 			</body>
 		</Html>
 	);

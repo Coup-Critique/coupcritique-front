@@ -4,12 +4,13 @@ import { Tab } from 'semantic-ui-react';
 import { useMemo } from 'react';
 // components
 import PageWrapper from '@/components/PageWrapper';
-import TableTourResult from '@/components/table/TableTourResult';
+import TableTourRounds from '@/components/table/TableTourRounds';
 import TableTourScore from '@/components/table/TableTourScore';
 import CircuitTourContainer from '@/containers/CircuitTourContainer';
 import { manageFetch } from '@/hooks/useFetch';
 import { makeClassName } from '@/functions';
 import LinkButton from '@/components/buttons/LinkButton';
+import TableTourCycles from '@/components/table/TableTourCycles';
 
 const CircuitTourResult = ({ circuitTour }) => {
 	return (
@@ -25,7 +26,7 @@ const Page = ({ circuitTour }) => {
 	const hasImage = circuitTour.images?.length > 0;
 
 	const tabs = useMemo(() => {
-		if (!circuitTour.rounds) return [];
+		if (!circuitTour.rounds && !circuitTour.cycles) return [];
 		const tabs = [];
 		if (circuitTour.scores) {
 			tabs.push({
@@ -40,32 +41,54 @@ const Page = ({ circuitTour }) => {
 				),
 			});
 		}
-		Object.entries(circuitTour.rounds)
-			.reverse()
-			.forEach(([round, brackets]) => {
-				const entries = Object.entries(brackets);
-				tabs.push({
-					menuItem: isNaN(round) ? round : 'Round ' + round,
-					render: () => (
-						<Tab.Pane>
-							<div className="row">
-								{entries.map(([bracket, values]) => (
-									<div
-										className={makeClassName(
-											'col-12',
-											entries.length > 1 && 'col-xl-6'
-										)}
-										key={bracket}
-									>
-										<h3>{bracket}</h3>
-										<TableTourResult rounds={values} />
-									</div>
-								))}
-							</div>
-						</Tab.Pane>
-					),
+		if (circuitTour.cycles) {
+			Object.entries(circuitTour.cycles)
+				.reverse()
+				.forEach(([cycle, values]) => {
+					tabs.push({
+						menuItem: isNaN(cycle) ? cycle : 'Cycle ' + cycle,
+						render: () => (
+							<Tab.Pane>
+								<TableTourCycles
+									cycles={values}
+									circuitTour={circuitTour}
+								/>
+							</Tab.Pane>
+						),
+					});
 				});
-			});
+		}
+		if (circuitTour.rounds) {
+			Object.entries(circuitTour.rounds)
+				.reverse()
+				.forEach(([round, brackets]) => {
+					const entries = Object.entries(brackets);
+					tabs.push({
+						menuItem: isNaN(round) ? round : 'Round ' + round,
+						render: () => (
+							<Tab.Pane>
+								<div className="row">
+									{entries.map(([bracket, values]) => (
+										<div
+											className={makeClassName(
+												'col-12',
+												entries.length > 1 && 'col-xl-6'
+											)}
+											key={bracket}
+										>
+											<h3>{bracket}</h3>
+											<TableTourRounds
+												rounds={values}
+												circuitTour={circuitTour}
+											/>
+										</div>
+									))}
+								</div>
+							</Tab.Pane>
+						),
+					});
+				});
+		}
 		return tabs;
 	}, [circuitTour.rounds]);
 
