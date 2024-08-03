@@ -3,7 +3,10 @@
 import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';
+import { useEffect, useState } from 'react';
 // import Image from 'next/image';
+
+const defaultSrc = '/images/picto/user-circle-solid-white.svg';
 
 const Profile = ({
 	user,
@@ -17,7 +20,13 @@ const Profile = ({
 	width = 50,
 	height = 50,
 }) => {
+	const [imgError, setImgError] = useState(false);
 	const badge = getBadge(user);
+
+	useEffect(() => {
+		setImgError(false);
+	}, [user.id]);
+
 	return (
 		<div
 			className={makeClassName(
@@ -32,15 +41,18 @@ const Profile = ({
 						<img
 							key={user.id}
 							/* eslint-disable-next-line jsx-a11y/img-redundant-alt */
-							src={`${
-								process.env.NEXT_PUBLIC_API_URL
-							}/images/uploads/users/${big ? '' : '200px/'}${user.picture}`}
+							src={
+								imgError
+									? process.env.NEXT_PUBLIC_API_URL +
+									  `/images/uploads/users/${big ? '' : '200px/'}` +
+									  user.picture
+									: defaultSrc
+							}
 							alt={`Photo de profil de ${user.username}`}
 							onError={e => {
 								e.target.onerror = null;
-								e.target.src =
-									'/images/picto/user-circle-solid-white.svg';
-								// e.target.src = `/images/picto/user-circle-solid-${color}.svg`;
+								e.target.src = defaultSrc;
+								setImgError(true);
 							}}
 							width={width}
 							height={height}
@@ -55,7 +67,7 @@ const Profile = ({
 							'u-badge picto certification',
 							badge.color
 						)}
-						src={`/images/picto/certified-white.svg`}
+						src={defaultSrc}
 						alt="certifiée"
 						title={badge.title}
 						width="10"

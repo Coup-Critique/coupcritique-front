@@ -4,7 +4,9 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { Loader } from 'semantic-ui-react';
 
-const ImageLoader = ({ src, imgRef, defaultSrc, className, ...props }) => {
+export const noSrc = '/images/picto/circle-question-solid.svg';
+
+const ImageLoader = ({ src, imgRef, defaultSrc = noSrc, className, ...props }) => {
 	const ref = useRef();
 	const [loading, setLoading] = useState(undefined);
 	const [prevSrc] = usePrevious(src);

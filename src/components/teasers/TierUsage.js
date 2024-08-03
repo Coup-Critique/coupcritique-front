@@ -7,7 +7,7 @@ import ArtPokemon from '@/components/elements/ArtPokemon';
 import ScrollReveal from '@/components/ScrollReveal';
 import { formateName, formatNumbers } from '@/functions';
 import { ART_ITM } from '@/constants/img';
-import Image from 'next/image';
+import ImageLoader from '../elements/ImageLoader';
 
 const TierUsage = ({ usage, tier }) => {
 	const ref = useRef();
@@ -17,14 +17,10 @@ const TierUsage = ({ usage, tier }) => {
 		return (
 			<ScrollReveal className="usage" animation="zoomIn" earlier outterRef={ref}>
 				<div className="img-wrapper">
-					<Image
+					<ImageLoader
 						src={`/images/tiers/${tier.gen}-${
 							tier.shortName || tier.name
 						}.png`}
-						onError={e => {
-							e.target.onerror = null;
-							e.target.src = '/images/picto/circle-question-solid.svg';
-						}}
 						alt={tier.name}
 						className="art-pokemon img-fluid"
 						width={ART_ITM}
