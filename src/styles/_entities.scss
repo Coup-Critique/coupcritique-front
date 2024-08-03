@@ -1100,12 +1100,12 @@ a.date:focus {
 .ui.card.article-teaser.no-cover {
 
 	.image {
-		height: rem(250px);
 		aspect-ratio: inherit;
 		aspect-ratio: initial;
 		display: block;
 		margin: 0;
 		position: relative;
+		height: rem(250px);
 		max-width: 100%;
 
 		img {
@@ -1179,9 +1179,16 @@ a.date:focus {
 .article-row-teaser.no-cover {
 	img {
 		width: auto;
-		height: rem(125px);
 		aspect-ratio: initial;
 		object-fit: initial;
+	}
+}
+
+.article-row-teaser.no-cover-height {
+	img {
+		height: rem(125px);
+		width: auto;
+		margin-left: 0;
 	}
 }
 

@@ -71,6 +71,7 @@ const CircuitList = props => {
 								<ArticleTeaser
 									article={circuitTour}
 									entityName={'circuit-tours'}
+									noCover
 								/>
 							</ThreeCol>
 						))}
