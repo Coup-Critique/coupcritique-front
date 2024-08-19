@@ -22,24 +22,27 @@ const ScrollReveal = ({
 
 	useEffect(() => {
 		if (!unmounted.current && ref.current && !reveal) {
-			let headerHeight = document.getElementsByTagName('header')[0].offsetHeight;
-			setHeaderHeight(headerHeight);
-			if (isInViewport(ref.current, headerHeight)) {
-				if (Tag === 'img') {
-					if (ref.current.complete) {
-						setReveal(true);
+			let header = document.getElementsByTagName('header')[0];
+			if (header) {
+				let headerHeight = header.offsetHeight;
+				setHeaderHeight(headerHeight);
+				if (isInViewport(ref.current, headerHeight)) {
+					if (Tag === 'img') {
+						if (ref.current.complete) {
+							setReveal(true);
+						} else {
+							ref.current.onload = () => setReveal(true);
+						}
 					} else {
-						ref.current.onload = () => setReveal(true);
+						setTimeout(() => {
+							if (!unmounted.current) {
+								setReveal(true);
+							}
+						}, 200);
 					}
 				} else {
-					setTimeout(() => {
-						if (!unmounted.current) {
-							setReveal(true);
-						}
-					}, 200);
+					document.addEventListener('scroll', handleScroll, { passive: true });
 				}
-			} else {
-				document.addEventListener('scroll', handleScroll, { passive: true });
 			}
 		}
 		return () => {

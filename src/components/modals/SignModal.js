@@ -25,7 +25,10 @@ function SignModal({ loading = false }) {
 
 	useEffect(() => {
 		if (open) {
-			setTabHeight(`${document.getElementById('sign-tab-modaled').offsetHeight}px`);
+			const signTab = document.getElementById('sign-tab-modaled');
+			if (signTab) {
+				setTabHeight(`${signTab.offsetHeight}px`);
+			}
 		}
 	}, [currentActiveIndex, heightChanged, open]);
 
@@ -49,7 +52,8 @@ function SignModal({ loading = false }) {
 					color="orange"
 					loading={loading}
 				>
-					Mon compte
+					<span className="d-none d-sm-block">Mon compte</span>
+					<span className="d-sm-none">Compte</span>
 				</Button>
 			}
 		>

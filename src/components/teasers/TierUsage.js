@@ -25,7 +25,7 @@ const TierUsage = ({ usage, tier }) => {
 						className="art-pokemon img-fluid"
 						width={ART_ITM}
 						height={ART_ITM}
-						ref={ref}
+						imgRef={ref}
 					/>
 				</div>
 				<h3>
