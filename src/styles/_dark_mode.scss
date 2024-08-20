@@ -835,6 +835,10 @@
 		> .content > a {
 			color: white;
 		}
+
+		.ui.label:not(.red):not(.orange):not(.blue):not(.purple):not(.yellow):not(.green):not(.teal):not(.pink):not(.olive):not(.violet):not(.brown):not(.colored) {
+			background-color: $dark-body;
+		}
 	}
 
 	.slick-dots {
