@@ -242,7 +242,7 @@ const FormPokemonSet = ({
 				return;
 			}
 			e.preventDefault();
-			const Koffing = await import('koffing').default;
+			const { Koffing } = await import('koffing');
 			const parsedExport = Koffing.parse(pokemonSet.export);
 			if (
 				parsedExport.teams &&

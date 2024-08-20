@@ -1,14 +1,12 @@
 // modules
 import { useRef, useState } from 'react';
-import dynamic from 'next/dynamic';
+import { Editor } from '@tinymce/tinymce-react';
 //  custom
 import { FormTextArea, Loader, Message, Segment } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';
 import { useSelector } from 'react-redux';
 
-const TinyMce = dynamic(() => import('@tinymce/tinymce-react'), {
-	loading: () => <Loader active inline="centered" />,
-});
+// dynamic load Wysiwyg if not on the page by default
 
 const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) => {
 	const darkMode = useSelector(state => state.darkMode);
@@ -34,7 +32,7 @@ const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) =>
 	}
 	return (
 		<Segment basic className={makeClassName('p-0', className)} loading={loading}>
-			<TinyMce.Editor
+			<Editor
 				apiKey={process.env.NEXT_PUBLIC_TINY_MCE_KEY}
 				onInit={(evt, editor) => {
 					setLoading(false);

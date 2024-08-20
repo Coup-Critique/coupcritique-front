@@ -16,6 +16,7 @@ import TiersField from '@/components/fields/TiersField';
 import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSelectField';
 import SectionAds from '@/components/sections/SectionAds';
 import useTableFetch from '@/hooks/useTableFetch';
+import useHash from '@/hooks/useHash';
 
 // initQuery
 // query.tags
@@ -27,6 +28,7 @@ import useTableFetch from '@/hooks/useTableFetch';
 const defaultArray = [];
 const TeamList = props => {
 	const searchRef = useRef();
+	const hash = useHash();
 
 	const {
 		table,
@@ -133,7 +135,7 @@ const TeamList = props => {
 							name="tags"
 							className="flex-grow-1"
 							options={tags}
-							value={query.tags || []}
+							value={query.tags || defaultArray}
 							onChange={handleTags}
 						/>
 					</div>

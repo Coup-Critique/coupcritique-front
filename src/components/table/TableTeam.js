@@ -141,12 +141,18 @@ const RowTeam = ({
 	const linkTo = `/entity/teams/${team.id}`;
 	const [handleClick, handleStopClick] = useClick(linkTo);
 
+	const linkClick = e => {
+		e.preventDefault();
+		router.push({ pathname: linkTo, query: { from: router.pathname } });
+	};
+
 	const handleModify = e => router.push(`/entity/teams/${team.id}/update`);
 
 	const handleValue = (name, value) => handleUpdate(index, { ...team, [name]: value });
 
 	return (
 		<tr
+			id={'team-' + team.id}
 			className={makeClassName('tr-clickable', className)}
 			title={"L'équipe " + team.name}
 			onClick={handleClick}
@@ -172,7 +178,9 @@ const RowTeam = ({
 			)}
 			<td>{formatDate(team.date_creation)}</td>
 			<td className="text-left text-break">
-				<Link href={linkTo}>{team.name}</Link>
+				<Link href={linkTo} onClick={linkClick}>
+					{team.name}
+				</Link>
 			</td>
 			<td className="list nowrap">
 				{team.tags.length > 2 ? (

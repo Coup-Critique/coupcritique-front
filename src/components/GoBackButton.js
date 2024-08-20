@@ -9,11 +9,12 @@ const GoBackButton = ({ callback, defaultUrl = '/' }) => {
 	const goBack = () => {
 		if (callback) {
 			callback();
-		}
-		if (history.length > 2) {
-			router.back();
 		} else {
-			router.replace(defaultUrl);
+			if (history.length > 2) {
+				router.back();
+			} else {
+				router.replace(defaultUrl);
+			}
 		}
 	};
 

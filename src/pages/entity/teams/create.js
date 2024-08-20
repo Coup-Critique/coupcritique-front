@@ -17,7 +17,8 @@ import LoadingPage from '@/pages/loading';
 const defaultGoBack = '/entity/teams/';
 const TeamFormPage = props => {
 	const dispatch = useDispatch();
-	const { pathname, query } = useRouter();
+	const router = useRouter();
+	const { pathname, query } = router;
 	const { setItemToStorage } = useLocalStorage();
 	const user = useSelector(state => state.user);
 	const tiers = useSelector(state => props.tiers || state.tiers);
@@ -59,6 +60,11 @@ const TeamFormPage = props => {
 	const goBack = () => {
 		const storageKey = `form_${pathname.replace(`[id]`, query.id)}`;
 		setItemToStorage(null, storageKey);
+		if (history.length > 2) {
+			router.back();
+		} else {
+			router.replace(defaultGoBack);
+		}
 	};
 
 	if (user.loading || typeof window === 'undefined') {

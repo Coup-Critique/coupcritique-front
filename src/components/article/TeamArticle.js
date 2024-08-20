@@ -45,7 +45,12 @@ const TeamArticle = props => {
 			metatitle={"L'équipe " + (team.certified ? 'certifiée ' : '') + team.name}
 			metadescription={team.description}
 			metaimage={`pokemons/${formatFileName(team.pkm_inst_1.pokemon.name)}.png`}
-			goingBack="/entity/teams"
+			goingBack={'/entity/teams#' + team.id}
+			goBack={
+				router.query.from
+					? () => router.replace(router.query.from + '#team-' + team.id)
+					: null
+			}
 		>
 			<TableOneTeam team={team} className="mt-3 mb-4" />
 			<div className="text-center mb-3 btn-wrapper">

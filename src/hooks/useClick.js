@@ -23,7 +23,7 @@ const useClick = to => {
 		if (e.ctrlKey) {
 			window.open(to, '_blank');
 		} else {
-			router.push(to);
+			router.push({ pathname: to, query: { from: router.pathname } });
 		}
 	};
 

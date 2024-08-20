@@ -10,7 +10,7 @@ const PageWrapper = ({
 	children,
 	action,
 	goingBack = false,
-	goBackCallback,
+	goBack,
 	more = false,
 	min = false,
 	metatitle = title,
@@ -34,7 +34,7 @@ const PageWrapper = ({
 						{goingBack && (
 							<GoBackButton
 								defaultUrl={goingBack === true ? undefined : goingBack}
-								callback={goBackCallback}
+								callback={goBack}
 							/>
 						)}{' '}
 						{title}
