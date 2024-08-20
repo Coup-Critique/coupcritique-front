@@ -10,7 +10,6 @@ import useLocalStorage from '@/hooks/useLocalStorage';
 import FormTeam from '@/components/forms/FormTeam';
 import PageWrapper from '@/components/PageWrapper';
 import SignModal from '@/components/modals/SignModal';
-import GoBackButton from '@/components/GoBackButton';
 import { setTiers } from '@/reducers/tiers';
 import { setTags } from '@/reducers/tags';
 import LoadingPage from '@/pages/loading';
@@ -56,6 +55,12 @@ const TeamFormPage = props => {
 		}
 	}, [resultTags]);
 
+	// TODO rather make a cancel button and keep local storage on go back
+	const goBack = () => {
+		const storageKey = `form_${pathname.replace(`[id]`, query.id)}`;
+		setItemToStorage(null, storageKey);
+	};
+
 	if (user.loading || typeof window === 'undefined') {
 		return <Loader active={true} inline="centered" />;
 	}
@@ -72,16 +77,9 @@ const TeamFormPage = props => {
 			metadescription="Proposez des équipes Pokémon stratégiques à la communauté, échangez avec d'autres membres dans les commentaires et ayez peut-être la chance de la voir se faire certifier."
 			nofollow={update}
 			className="form-propose-team-page"
+			goingBack={defaultGoBack}
+			goBackCallback={goBack}
 		>
-			<div className="mb-3">
-				<GoBackButton
-					callback={() => {
-						const storageKey = `form_${pathname.replace(`[id]`, query.id)}`;
-						setItemToStorage(null, storageKey);
-					}}
-					defaultUrl={defaultGoBack}
-				/>
-			</div>
 			{!update && (
 				<p className="description framed">
 					<b>Vous ne pouvez proposer qu'une seule équipe par tier à la fois</b>,

@@ -1,18 +1,12 @@
-// modules
-import { useEffect, useState } from 'react';
-// hooks
-import { manageFetch } from '@/hooks/useFetch';
-// functions
-import { formateName } from '@/functions';
-// components
 import PageWrapper from '@/components/PageWrapper';
 import GenSelector from '@/components/GenSelector';
-import useStoreQuery from '@/hooks/useStoreQuery';
-import GoBackButton from '@/components/GoBackButton';
 import SectionAds from '@/components/sections/SectionAds';
 import TableMoveUsage from '@/components/table/TableMoveUsage';
-import gens from '@/constants/gens';
 import useStateProps from '@/hooks/useStateProps';
+import useStoreQuery from '@/hooks/useStoreQuery';
+import { manageFetch } from '@/hooks/useFetch';
+import { formateName } from '@/functions';
+import gens from '@/constants/gens';
 
 const MovePool = ({ pokemon, moves = [], availableGens }) => {
 	const [table, setTable] = useStateProps(moves);

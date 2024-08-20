@@ -56,7 +56,7 @@ const MenuUser = () => {
 					<DarkModeToggle />
 				</Dropdown.Item> */}
 				<ActiveLink exact role="option" className="item" href="/user">
-					<span className="d-none d-sm-block">Mon</span> Compte
+					Mon Compte
 				</ActiveLink>
 				<ActiveLink
 					exact

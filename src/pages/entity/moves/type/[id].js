@@ -1,11 +1,8 @@
 // modules
-import { useState } from 'react';
 import { Loader } from 'semantic-ui-react';
-// components
 import PageWrapper from '@/components/PageWrapper';
 import GenSelector from '@/components/GenSelector';
 import useStoreQuery from '@/hooks/useStoreQuery';
-import GoBackButton from '@/components/GoBackButton';
 import SectionAds from '@/components/sections/SectionAds';
 import TableMove from '@/components/table/TableMove';
 import { manageFetch } from '@/hooks/useFetch';

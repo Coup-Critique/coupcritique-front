@@ -6,7 +6,7 @@ import { FormTextArea, Loader, Message, Segment } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';
 import { useSelector } from 'react-redux';
 
-const { Editor } = dynamic(() => import('@tinymce/tinymce-react'), {
+const TinyMce = dynamic(() => import('@tinymce/tinymce-react'), {
 	loading: () => <Loader active inline="centered" />,
 });
 
@@ -34,7 +34,7 @@ const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) =>
 	}
 	return (
 		<Segment basic className={makeClassName('p-0', className)} loading={loading}>
-			<Editor
+			<TinyMce.Editor
 				apiKey={process.env.NEXT_PUBLIC_TINY_MCE_KEY}
 				onInit={(evt, editor) => {
 					setLoading(false);

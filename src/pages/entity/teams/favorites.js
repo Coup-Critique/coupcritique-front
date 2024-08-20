@@ -2,8 +2,6 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Loader } from 'semantic-ui-react';
-//
-import GoBackButton from '@/components/GoBackButton';
 import PageWrapper from '@/components/PageWrapper';
 import TableTeam from '@/components/table/TableTeam';
 import SectionAds from '@/components/sections/SectionAds';
