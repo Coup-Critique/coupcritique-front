@@ -13,7 +13,9 @@ const useHash = () => {
 	useEffect(() => {
 		const hash = getHash();
 		setHash(hash);
-		document.getElementById(hash).scrollIntoView();
+		if (hash) {
+			document.getElementById(hash).scrollIntoView();
+		}
 	}, [params]);
 
 	return hash;
