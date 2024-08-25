@@ -94,7 +94,7 @@ const Page = ({ circuitTour }) => {
 
 	return (
 		<PageWrapper
-			min
+			more
 			title={'Résultat du ' + circuitTour.title}
 			metadescription={circuitTour.shortDescription}
 			metaimage={hasImage && `circuit-tours/${circuitTour.images[0]}`}
@@ -108,7 +108,6 @@ const Page = ({ circuitTour }) => {
 					Voir le classement complet
 				</LinkButton>
 			}
-			more
 		>
 			{tabs.length > 0 ? (
 				<Tab panes={tabs} />

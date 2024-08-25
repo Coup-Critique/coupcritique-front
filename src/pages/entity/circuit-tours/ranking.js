@@ -8,7 +8,7 @@ import { manageFetch } from '@/hooks/useFetch';
 const CircuitRanking = ({ players, circuitTours }) => {
 	return (
 		<PageWrapper
-			min
+			more
 			title={'Classement général du Circuit Compétitif'}
 			metadescription={'Classement général du Circuit Compétitif de 2024.'}
 			goingBack={`/entity/circuit-tours`}
