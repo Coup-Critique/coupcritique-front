@@ -6,7 +6,7 @@ import { Button, Loader } from 'semantic-ui-react';
 // components
 import FormGuide from '@/components/forms/FormGuide';
 import PageWrapper from '@/components/PageWrapper';
-import { manageFetch } from '@/hooks/useFetch';
+import useFetch, { manageFetch } from '@/hooks/useFetch';
 //reducers
 import { setGuideTags } from '@/reducers/guide_tags';
 import { setTiers as _setTiers } from '@/reducers/tiers';
@@ -24,15 +24,37 @@ const GuideFormPage = props => {
 	const tiers = useSelector(state => props.tiers || state.tiers);
 	const { guide = defaultObject, update = false } = props;
 	const [setTiers, setTags] = useActions(dispatch, [_setTiers, setGuideTags]);
+	const [resultTiers, loadTiers, loadingTiers] = useFetch();
+	const [resultTags, loadTags, loadingTags] = useFetch();
 
 	useEffect(() => {
 		if (!Object.keys(tiers).length) {
-			setTiers(props.tiers);
+			if (props.tiers) {
+				dispatch(setTiers(props.tiers));
+			} else {
+				loadTiers({ url: 'tiers-select' });
+			}
 		}
 		if (!guide_tags.length) {
-			setTags(props.tags);
+			if (props.tags) {
+				dispatch(setTags(props.tags));
+			} else {
+				loadTags({ url: 'tags' });
+			}
 		}
 	}, [guide.id]);
+
+	useEffect(() => {
+		if (resultTiers && resultTiers.success) {
+			dispatch(setTiers(resultTiers.tiers));
+		}
+	}, [resultTiers]);
+
+	useEffect(() => {
+		if (resultTags && resultTags.success) {
+			dispatch(setTags(resultTags.tags));
+		}
+	}, [resultTags]);
 
 	const defaultGoBack = update ? `/entity/guides/${guide.id}` : '/entity/guides';
 
@@ -68,6 +90,7 @@ const GuideFormPage = props => {
 				guide={guide}
 				tags={guide_tags}
 				tiers={tiers}
+				loadingTiers={loadingTiers}
 				handleSubmited={goBack}
 				reinitiRef={reinitiRef}
 			/>

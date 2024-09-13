@@ -7,10 +7,10 @@ export const setTiers = tiers => ({
 });
 export const removeTiers = () => ({ type: REMOVE_TIERS });
 
-const reducer = (state = {}, action) => {
+const reducer = (state = [], action) => {
 	switch (action.type) {
 		case SET_TIERS:
-			return action.tiers;
+			return action.tiers || state;
 
 		case REMOVE_TIERS:
 			return [];
