@@ -79,7 +79,8 @@ const FormArticle = ({
 		if (type === 'number') value = Number(value);
 		setForm(form => ({ ...form, [name]: value }));
 	};
-	const handleChangeEditor = value => setForm(form => ({ ...form, description: value }));
+	const handleChangeEditor = value =>
+		setForm(form => ({ ...form, description: value }));
 	const handleImages = (name, value) => setImages(value);
 	const handleChangeTags = (name, tags) => setForm(form => ({ ...form, tags }));
 
@@ -196,6 +197,7 @@ const FormArticle = ({
 					handleChange={handleChangeEditor}
 					className="mb-0"
 				/>
+				<Message error content={message.description} />
 			</Form.Field>
 			<Message error content={message} />
 			<div className="text-center">

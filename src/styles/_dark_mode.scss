@@ -1072,6 +1072,28 @@
 	}
 }
 
+.app.dark-mode .description.wysiwyg-result,
+.description.wysiwyg-result.dark-mode {
+	font-weight: 200;
+
+	blockquote {
+		border-left-color: $light-grey;
+	}
+
+	.mce-accordion {
+		background-color: $dark-element;
+
+		summary,
+		.mce-accordion-summary {
+			background-color: $darker;
+		}
+	}
+}
+
+.framed.dark-mode {
+	background-color: $dark-element;
+}
+
 .ui.modal.dark-mode {
 
 	& > .header,

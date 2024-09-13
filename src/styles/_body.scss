@@ -891,7 +891,8 @@ h3,
 	img {
 		height: auto;
 		max-width: 100% !important;
-		max-height: 500px !important;
+		// max-height: 500px !important;
+		vertical-align: sub;
 	}
 
 	blockquote {
@@ -1427,16 +1428,6 @@ ul {
 .animate__animated:not(:last-child) p:last-child {
 	margin-bottom: 1.5em;
 }
-
-// .ad-wrapper>div {
-// 	width: auto !important;
-// 	height: auto !important;
-// 	min-width: 1px !important;
-// }
-
-// .ads-row {
-// 	margin-bottom: 1.5rem;
-// }
 
 @media (max-width: $xs - 1) {
 	.description {

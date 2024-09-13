@@ -66,8 +66,10 @@ const FormGuide = ({ handleSubmited, guide = {}, tags = [], tiers, loadingTiers 
 		}
 	}, [resultImages]);
 
-	const handleChange = (e, { name, value }) => setForm(form => ({ ...form, [name]: value }));
-	const handleChangeEditor = value => setForm(form => ({ ...form, description: value }));
+	const handleChange = (e, { name, value }) =>
+		setForm(form => ({ ...form, [name]: value }));
+	const handleChangeEditor = value =>
+		setForm(form => ({ ...form, description: value }));
 	const handleImages = (name, value) => setImages(value);
 	const handleChangeTags = (name, tags) => setForm(form => ({ ...form, tags }));
 
@@ -232,8 +234,8 @@ const FormGuide = ({ handleSubmited, guide = {}, tags = [], tiers, loadingTiers 
 					handleChange={handleChangeEditor}
 					className="mb-0"
 				/>
+				<Message error content={message.description} />
 			</Form.Field>
-			<Message error content={message.description} />
 			<div className="text-center">
 				<Button
 					color="orange"

@@ -53,11 +53,18 @@ const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) =>
 					relative_urls: false,
 					convert_urls: false,
 					remove_script_host: false,
+					skin: darkMode ? 'oxide-dark' : 'oxide',
+					// content_css: manifest['build/app.css'],
+					content_css: darkMode ? 'dark' : 'default',
+					body_class: makeClassName(
+						'app m-0 description framed wysiwyg-result overflow-auto',
+						darkMode && 'dark-mode'
+					),
 					block_formats: 'Paragraphe=p; Titre 2=h2; Titre 3=h3; Titre 4=h4;',
 					plugins: [
 						// 'print',
 						// 'preview',
-						'paste',
+						// 'paste',
 						'importcss',
 						'searchreplace',
 						'autolink',
@@ -72,9 +79,9 @@ const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) =>
 						'link',
 						'codesample',
 						'table',
-						'charmap',
+						// 'charmap',
 						// 'hr',
-						'pagebreak',
+						// 'pagebreak',
 						'nonbreaking',
 						// 'anchor',
 						// 'toc',
@@ -83,22 +90,38 @@ const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) =>
 						'lists',
 						// 'imagetools',
 						// 'textpattern',
-						'noneditable',
+						// 'noneditable',
 						'help',
-						'charmap',
 						'quickbars',
 						// 'emoticons',
-						// 'wordcount',
+						// 'wordcount'',
+						'accordion',
 					],
 					toolbar:
-						'undo redo variables blocks | bold italic underline strikethrough forecolor backcolor removeformat | divided alignleft aligncenter alignright alignjustify | blockquote outdent indent numlist bullist | pagebreak | link charmap image table | code fullscreen',
+						'undo redo blocks | bold italic underline strikethrough forecolor backcolor removeformat | divided alignleft aligncenter alignright alignjustify | blockquote outdent indent numlist bullist | link image accordion table | code fullscreen',
 					quickbars_selection_toolbar:
 						'bold italic quicklink h2 h3 h4 | alignleft aligncenter alignright alignjustify',
-					quickbars_insert_toolbar: 'variables link divided quicktable',
-					content_style:
-						'body { font-family:Helvetica,Arial,sans-serif; font-size:14px } table td p{ margin: 0px } p + p { margin-top: 0px}',
-					skin: darkMode ? 'oxide-dark' : 'oxide',
-					content_css: darkMode ? 'dark' : 'default',
+					quickbars_insert_toolbar: 'link divided quicktable',
+					setup: editor => {
+						editor.ui.registry.addButton('divided', {
+							tooltip: 'Insérer 2 bloques horizontaux',
+							icon: 'flip-horizontally',
+							onAction: () => {
+								editor.execCommand(
+									'mceInsertContent',
+									false,
+									`<table style="border: 0px solid white; width: 100%">
+										<tbody>
+											<tr>
+												<td style="border: 0px solid white; text-align: left; padding: 0;">Écrire à gauche</td>
+												<td style="border: 0px solid white; text-align: right; padding: 0;">Écrire à droite</td>
+											</tr>
+										</tobdy>
+									</table>`
+								);
+							},
+						});
+					},
 				}}
 			/>
 		</Segment>
