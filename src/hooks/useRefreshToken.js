@@ -71,12 +71,13 @@ const useRefreshToken = result => {
 		}
 	}, [result]);
 
+	// useMangaToken replaced it
 	// Update Local Storage when token is updated
-	useEffect(() => {
-		if (user.token) {
-			setItemToStorage(user);
-		}
-	}, [user.token, user.refreshToken]);
+	// useEffect(() => {
+	// 	if (user.token) {
+	// 		setItemToStorage(user);
+	// 	}
+	// }, [user.token, user.refreshToken]);
 
 	useEffect(() => {
 		if (orderRemoveMessage) {

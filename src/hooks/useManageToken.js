@@ -45,7 +45,7 @@ const useManageToken = () => {
 			// TODO update only if token change
 			setItemToStorage(user);
 		}
-	}, [user.token, user.loading]);
+	}, [user]);
 
 	useEffect(() => {
 		if (interval) {

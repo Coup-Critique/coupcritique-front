@@ -69,9 +69,7 @@ const FormUpdateUser = () => {
 		if (resultPicture) {
 			setSuccess(result.success);
 			if (resultPicture.success) {
-				dispatch(
-					setUserPicture('/images/uploads/users/200px/' + resultPicture.picture)
-				);
+				dispatch(setUserPicture(resultPicture.picture));
 			} else {
 				setMessage({ picture: resultPicture.message });
 			}
