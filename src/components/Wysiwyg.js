@@ -1,5 +1,5 @@
 // modules
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 //  custom
 import { FormTextArea, Loader, Message, Segment } from 'semantic-ui-react';
@@ -14,6 +14,16 @@ const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) =>
 	const [loading, setLoading] = useState(true);
 	const [readOnly, setReadOnly] = useState(false);
 	const [height, setHeight] = useState(window.innerHeight - 52 - 42); // - header height - padding
+	const [cssPath, setCssPath] = useState(null);
+
+	useEffect(() => {
+		const stylesheet = document.querySelector('head link[rel="stylesheet"]');
+		if (stylesheet) {
+			setCssPath(stylesheet.href);
+		} else {
+			setCssPath('dark');
+		}
+	}, []);
 
 	if (readOnly) {
 		return (
@@ -30,6 +40,7 @@ const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) =>
 			</>
 		);
 	}
+	// if (!cssPath) return <Loader active inline="centered" />;
 	return (
 		<Segment basic className={makeClassName('p-0', className)} loading={loading}>
 			<Editor
@@ -54,8 +65,8 @@ const Wysiwyg = ({ defaultValue, handleChange, disabled = false, className }) =>
 					convert_urls: false,
 					remove_script_host: false,
 					skin: darkMode ? 'oxide-dark' : 'oxide',
-					// content_css: manifest['build/app.css'],
-					content_css: darkMode ? 'dark' : 'default',
+					content_css: cssPath,
+					// content_css: darkMode ? 'dark' : 'default',
 					body_class: makeClassName(
 						'app m-0 description framed wysiwyg-result overflow-auto',
 						darkMode && 'dark-mode'
