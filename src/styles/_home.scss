@@ -91,6 +91,7 @@
 
 			.two {
 				.ui.card .card > a {
+					flex-grow: 1;
 					display: flex;
 					align-items: flex-end;
 					justify-content: space-between;
@@ -165,6 +166,16 @@
 						bottom: rem(-80px);
 					}
 				}
+
+				.two {
+					.ui.card .card {
+						min-height: rem(100px);
+
+						> a img {
+							max-width: 70%;
+						}
+					}
+				}
 			}
 		}
 
@@ -180,6 +191,12 @@
 
 				.two {
 					grid-column: 3/6;
+
+					.ui.card .card {
+						> a img {
+							max-width: 75%;
+						}
+					}
 				}
 
 				.three {

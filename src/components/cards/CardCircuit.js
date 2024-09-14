@@ -25,7 +25,7 @@ const CardCircuit = ({ currentTours }) => {
 						<div
 							key={tour.id}
 							className={makeClassName(
-								'col-12 col-sm-6 col-home-xxl-12 align-items-center',
+								'col-12 col-sm-6 col-home-xxl-12 align-items-center align-items-sm-start',
 								i > 0 && 'd-none d-sm-flex d-home-xxl-none'
 							)}
 						>
