@@ -28,10 +28,9 @@ const ArticleRowTeaser = ({ article, entityName, noCover = false }) => {
 		>
 			<div className="row mb-3">
 				<div
-					className={makeClassName(
-						'col-12',
-						noCover ? 'col-xl-5 px-2' : 'col-xl-6'
-					)}
+					className={
+						noCover ? 'col-5 col-lg-12 col-xl-5 px-2' : 'col-12 col-xl-6'
+					}
 				>
 					<Link href={`/entity/${entityName}/${article.id}`}>
 						<img
@@ -54,10 +53,9 @@ const ArticleRowTeaser = ({ article, entityName, noCover = false }) => {
 					</Link>
 				</div>
 				<div
-					className={makeClassName(
-						'col-12',
-						noCover ? 'col-xl-7 px-2' : 'col-xl-6'
-					)}
+					className={
+						noCover ? 'col-7 col-lg-12 col-xl-7 px-2' : 'col-12 col-xl-6'
+					}
 				>
 					<h4>
 						<Link href={`/entity/${entityName}/${article.id}`}>
@@ -66,7 +64,7 @@ const ArticleRowTeaser = ({ article, entityName, noCover = false }) => {
 					</h4>
 					<Author entity={article} />
 					{article.cashprize && (
-						<p className="text-orange font-weight-bold d-none d-xl-block">
+						<p className="text-orange font-weight-bold d-lg-none d-xl-block">
 							Cash prize&nbsp;: {formatPrices(article.cashprize)}
 						</p>
 					)}
