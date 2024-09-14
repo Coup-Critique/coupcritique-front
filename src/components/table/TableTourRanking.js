@@ -50,7 +50,7 @@ const TableTourRanking = ({ players, circuitTours }) => {
 							const score = player.scores[tour.id];
 							return (
 								<td key={tour.id}>
-									{score.rank}{' '}
+									{score.sum}{' '}
 									{score.rank == 1 ? (
 										<Icon
 											name="winner"
@@ -59,7 +59,7 @@ const TableTourRanking = ({ players, circuitTours }) => {
 									) : (
 										'\u00A0'
 									)}{' '}
-									({score.sum}&nbsp;pt)
+									{!!score.rank && `#${score.rank}`}
 								</td>
 							);
 						})}
