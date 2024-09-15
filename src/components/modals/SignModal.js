@@ -47,14 +47,17 @@ function SignModal({ loading = false }) {
 			style={{ height: tabHeight }}
 			className={makeClassName('sign-modal', darkMode && 'dark-mode')}
 			trigger={
-				<Button
-					aria-label="Ouvrir le panneau de connexion, d'inscription ou de mot de passe oublié"
-					color="orange"
-					loading={loading}
-				>
-					<span className="d-none d-sm-block">Mon compte</span>
-					<span className="d-sm-none">Compte</span>
-				</Button>
+				loading ? (
+					<Loader active inline="centered" />
+				) : (
+					<Button
+						aria-label="Ouvrir le panneau de connexion, d'inscription ou de mot de passe oublié"
+						color="orange"
+					>
+						<span className="d-none d-sm-block">Mon compte</span>
+						<span className="d-sm-none">Compte</span>
+					</Button>
+				)
 			}
 		>
 			{open && (
