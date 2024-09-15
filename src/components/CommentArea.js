@@ -77,7 +77,7 @@ const CommentArea = ({ entity, entityName }) => {
 			) : (
 				<p>Il n'y aucun commentaire sur cette actualité pour l'instant.</p>
 			),
-		[comments, entityName, handleUpdateComment]
+		[table, entityName, handleUpdateComment]
 	);
 
 	return (

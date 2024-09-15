@@ -14,7 +14,8 @@ body {
 
 // Font Familly
 body,
-body * {
+body *,
+.ui.accordion .title:not(.ui) {
 	font-family: $font-family;
 }
 
