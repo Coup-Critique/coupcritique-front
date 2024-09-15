@@ -1,6 +1,6 @@
 {
 	"name": "coupcritique-front",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"devDependencies": {
 		"eslint": "^8.56.0",
 		"eslint-config-next": "^13.2.4",
