@@ -82,9 +82,9 @@ const TableTeam = ({
 					{ key: 'name', content: 'Nom', sortable: true },
 					{ key: 'tags', content: 'Catégories', sortable: false },
 					{
-						key: 'favoris',
+						key: 'countEnjoyers',
 						content: 'Favoris',
-						sortable: false,
+						sortable: true,
 					},
 					(deletable || isModo) && 'Action',
 				]}
