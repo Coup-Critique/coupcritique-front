@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Profile from '@/components/elements/Profile';
@@ -49,25 +49,33 @@ const TableOneTeam = ({ team, className, isLink = false, art = false }) => {
 							/>
 						</td>
 						<td className="list nowrap">
-							{
-								// prettier-ignore
-								INSTANCES_KEYS.map(
-									key => !!team[key] && (art ? (
-										<ArtPokemon
-											key={key}
-											pokemon={team[key].pokemon}
-											linked={!isLink}
-											half
-										/>
-									) : (
-										<SpritePokemon
-											key={key}
-											pokemon={team[key].pokemon}
-											noLink={isLink}
-										/>
-									))
-								)
-							}
+							<div className="team-grid">
+								{INSTANCES_KEYS.map(
+									key =>
+										!!team[key] &&
+										(art ? (
+											<Fragment key={key}>
+												<SpritePokemon
+													pokemon={team[key].pokemon}
+													noLink={isLink}
+													className="d-md-none"
+												/>
+												<ArtPokemon
+													pokemon={team[key].pokemon}
+													linked={!isLink}
+													half
+													wrapperClassName="d-none d-md-block"
+												/>
+											</Fragment>
+										) : (
+											<SpritePokemon
+												key={key}
+												pokemon={team[key].pokemon}
+												noLink={isLink}
+											/>
+										))
+								)}
+							</div>
 						</td>
 						<td>
 							<Tier tier={team.tier} noLink={isLink} />

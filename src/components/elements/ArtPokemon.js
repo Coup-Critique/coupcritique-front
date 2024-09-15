@@ -3,12 +3,12 @@ import { useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { DEFAULT_POKEMON_PICTURE } from '@/constants';
 import { ART_ITM, ART_PKM, IMG_VERSION } from '@/constants/img';
-import { formatFileName } from '@/functions';
+import { formatFileName, makeClassName } from '@/functions';
 import ImageLoader from './ImageLoader';
 
 export const defaultSrc = '/images/picto/circle-question-solid.svg';
 
-const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
+const ArtPokemonImg = ({ pokemon, half, imgRef, className, wrapperClassName }) => {
 	const getImgPath = useCallback(
 		name => {
 			if (!name) {
@@ -30,7 +30,8 @@ const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
 			src={src}
 			defaultSrc={defaultSrc}
 			alt={`Pokémon ${pokemon.nom || pokemon.name}`}
-			className="art-pokemon img-fluid"
+			wrapperClassName={wrapperClassName}
+			className={makeClassName('art-pokemon img-fluid', className)}
 			height={half ? ART_ITM : ART_PKM}
 			width={half ? ART_ITM : ART_PKM}
 			imgRef={imgRef}
@@ -38,13 +39,13 @@ const ArtPokemonImg = ({ pokemon, half, imgRef }) => {
 	);
 };
 
-const ArtPokemon = ({ linked, ...props }) =>
+const ArtPokemon = ({ linked, wrapperClassName, ...props }) =>
 	linked ? (
-		<Link href={`/entity/pokemons/${props.pokemon.id}`}>
+		<Link href={`/entity/pokemons/${props.pokemon.id}`} className={wrapperClassName}>
 			<ArtPokemonImg {...props} />
 			<span className="sr-only">{props.pokemon.nom || props.pokemon.name}</span>
 		</Link>
 	) : (
-		<ArtPokemonImg {...props} />
+		<ArtPokemonImg {...props} wrapperClassName={wrapperClassName} />
 	);
 export default ArtPokemon;

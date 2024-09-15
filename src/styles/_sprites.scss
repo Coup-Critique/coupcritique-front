@@ -1,5 +1,6 @@
 .pokemon-sprite {
     background-image: url('/images/sprites/pokemons-sprites.png');
+    background-size: $pokemons-sprite-size;
 }
 
 .item-sprite {
@@ -60,17 +61,18 @@ a.type {
 
 .sprite.small img,
 img.sprite.small {
-    max-height: 30px;
-    max-width: 30px;
+    max-height: 32px;
+    max-width: 32px;
 }
 
 .pokemon-sprite.small {
-    background-image: url('/images/sprites/pokemons-sm-sprites.png');
+    // background-image: url('/images/sprites/pokemons-sm-sprites.png');
+    background-size: $pokemons-sprite-size / 2;
 }
 
-.item-sprite.small {
-    background-image: url('/images/sprites/items-sm-sprites.png');
-}
+// .item-sprite.small {
+//     background-image: url('/images/sprites/items-sm-sprites.png');
+// }
 
 .list .sprite {
     margin: 0 0.25rem 0.125rem;
@@ -80,19 +82,20 @@ img.sprite.small {
 .description.wysiwyg-result {
 
     .sprite img {
-        max-height: 30px !important;
-        max-width: 30px !important;
+        max-height: 32px !important;
+        max-width: 32px !important;
         vertical-align: sub;
         margin-left: 0.25em;
     }
 
     .pokemon-sprite {
-        background-image: url('/images/sprites/pokemons-sm-sprites.png');
+        // background-image: url('/images/sprites/pokemons-sm-sprites.png');
+        background-size: $pokemons-sprite-size / 2;
     }
 
-    .item-sprite {
-        background-image: url('/images/sprites/items-sm-sprites.png');
-    }
+    // .item-sprite {
+    //     background-image: url('/images/sprites/items-sm-sprites.png');
+    // }
 
     .type img {
         max-height: 1em !important;
@@ -113,12 +116,12 @@ img.sprite.small {
     }
 }
 
-@media (max-width: $l) {
+@media (max-width: $l - 1px) {
 
     .sprite img,
     img.sprite {
-        max-width: 30px;
-        max-height: 30px;
+        max-width: 32px;
+        max-height: 32px;
     }
 
     .type img.type-sprite {
@@ -139,12 +142,13 @@ img.sprite.small {
     }
 
     .pokemon-sprite {
-        background-image: url('/images/sprites/pokemons-sm-sprites.png');
+        // background-image: url('/images/sprites/pokemons-sm-sprites.png');
+        background-size: $pokemons-sprite-size / 2;
     }
 
-    .item-sprite {
-        background-image: url('/images/sprites/items-sm-sprites.png');
-    }
+    // .item-sprite {
+    //     background-image: url('/images/sprites/items-sm-sprites.png');
+    // }
 
     .type-sprite {
         background-image: url('/images/sprites/types-sm-sprites.png');

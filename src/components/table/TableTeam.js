@@ -69,7 +69,12 @@ const TableTeam = ({
 			<TableBase
 				className="table-pokemon table-team"
 				cols={[
-					{ key: 'certified', content: 'Certif', sortable: true },
+					{
+						key: 'certified',
+						content: 'Certif',
+						sortable: true,
+						className: 'pr-0',
+					},
 					{ key: 'tier', content: 'Tier', sortable: true },
 					{
 						key: 'pkm_inst',
@@ -79,12 +84,17 @@ const TableTeam = ({
 					},
 					!hideUser && { key: 'user', content: 'Utilisateur', sortable: true },
 					{ key: 'date_creation', content: 'Date', sortable: true },
-					{ key: 'name', content: 'Nom', sortable: true },
-					{ key: 'tags', content: 'Catégories', sortable: false },
 					{
-						key: 'favoris',
+						key: 'name',
+						content: 'Nom',
+						sortable: true,
+						className: 'd-none d-md-table-cell',
+					},
+					{ key: 'tags', content: 'Catégories', sortable: false, className: 'd-none d-md-table-cell' },
+					{
+						key: 'countEnjoyers',
 						content: 'Favoris',
-						sortable: false,
+						sortable: true,
 					},
 					(deletable || isModo) && 'Action',
 				]}
@@ -157,19 +167,25 @@ const RowTeam = ({
 			title={"L'équipe " + team.name}
 			onClick={handleClick}
 		>
-			<td>
+			<td className="pr-0">
 				<Certification className="img-fluid" team={team} userId={user.id} />
 			</td>
 			<td>
 				<Tier tier={team.tier} />
 			</td>
 			<td className="list nowrap">
-				{
-					// prettier-ignore
-					INSTANCES_KEYS.map(key => !!team[key] && (
-						<SpritePokemon key={key} pokemon={team[key].pokemon} noLink/>
-					))
-				}
+				<div className="team-grid">
+					{INSTANCES_KEYS.map(
+						key =>
+							!!team[key] && (
+								<SpritePokemon
+									key={key}
+									pokemon={team[key].pokemon}
+									noLink
+								/>
+							)
+					)}
+				</div>
 			</td>
 			{!hideUser && (
 				<td className="text-left">
@@ -177,12 +193,12 @@ const RowTeam = ({
 				</td>
 			)}
 			<td>{formatDate(team.date_creation)}</td>
-			<td className="text-left text-break">
+			<td className="text-left text-break d-none d-md-table-cell">
 				<Link href={linkTo} onClick={linkClick}>
 					{team.name}
 				</Link>
 			</td>
-			<td className="list nowrap">
+			<td className="list nowrap d-none d-md-table-cell">
 				{team.tags.length > 2 ? (
 					<>
 						<Tag tag={team.tags[0]} />
