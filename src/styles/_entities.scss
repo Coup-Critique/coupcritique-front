@@ -820,7 +820,19 @@ th.table-team-instance {
 	padding-top: 0;
 }
 
+.table-team.table .team-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
 
+@media (max-width: $l - 1px) {
+
+	.table-team.table tr th,
+	.table-team.table tr td {
+		padding-left: 0.5rem;
+		padding-right: 0.5rem;
+	}
+}
 
 @media (min-width: $s) {
 	.table.table-one .team-grid {
@@ -831,6 +843,18 @@ th.table-team-instance {
 
 @media (min-width: 1350px) {
 	.table.table-one .team-grid {
+		grid-template-columns: repeat(6, 1fr);
+	}
+}
+
+@media (min-width: $l) {
+	.table.table-one .team-grid {
+		grid-template-columns: repeat(6, 1fr);
+	}
+}
+
+@media (min-width: $xxl) {
+	.table-team.table .team-grid {
 		grid-template-columns: repeat(6, 1fr);
 	}
 }

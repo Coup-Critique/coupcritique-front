@@ -14,7 +14,7 @@ const useHash = () => {
 		const hash = getHash();
 		setHash(hash);
 		if (hash) {
-			document.getElementById(hash).scrollIntoView();
+			document.getElementById(hash)?.scrollIntoView();
 		}
 	}, [params]);
 
