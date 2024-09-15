@@ -6,7 +6,14 @@ import { Loader } from 'semantic-ui-react';
 
 export const noSrc = '/images/picto/circle-question-solid.svg';
 
-const ImageLoader = ({ src, imgRef, defaultSrc = noSrc, className, ...props }) => {
+const ImageLoader = ({
+	src,
+	imgRef,
+	defaultSrc = noSrc,
+	className,
+	wrapperClassName,
+	...props
+}) => {
 	const ref = useRef();
 	const [loading, setLoading] = useState(undefined);
 	const [prevSrc] = usePrevious(src);
@@ -29,7 +36,7 @@ const ImageLoader = ({ src, imgRef, defaultSrc = noSrc, className, ...props }) =
 	}, [src]);
 
 	return (
-		<div className="img-wrapper position-relative">
+		<div className={makeClassName('img-wrapper position-relative', wrapperClassName)}>
 			{loading && <Loader active size="big" />}
 			{/* eslint-disable-next-line jsx-a11y/alt-text */}
 			<Image

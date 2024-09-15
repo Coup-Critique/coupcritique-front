@@ -820,6 +820,21 @@ th.table-team-instance {
 	padding-top: 0;
 }
 
+
+
+@media (min-width: $s) {
+	.table.table-one .team-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (min-width: 1350px) {
+	.table.table-one .team-grid {
+		grid-template-columns: repeat(6, 1fr);
+	}
+}
+
 .article.type .pagination-wrapper {
 	padding-top: 0;
 }

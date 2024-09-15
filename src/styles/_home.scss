@@ -438,8 +438,8 @@
 
 			.art-pokemon {
 				display: inline-block;
-				width: rem(100px);
-				height: rem(100px);
+				max-width: rem(100px);
+				max-height: rem(100px);
 				margin-bottom: 0.5rem;
 			}
 		}
