@@ -847,7 +847,7 @@ th.table-team-instance {
 	}
 }
 
-@media (min-width: $l) {
+@media (min-width: 1125px) {
 	.table.table-one .team-grid {
 		grid-template-columns: repeat(6, 1fr);
 	}
