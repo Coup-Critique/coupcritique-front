@@ -28,8 +28,9 @@ const useStoreQuery = ({ defaultQuery = { page: 1 }, saveQueryToStore = false } 
 			const storedItem = getStoredItem('query_' + router.pathname);
 			if (storedItem) {
 				const timeDiff = (Date.now() - storedItem.timestamp) / 3600000;
-				if (
-					timeDiff < 1 &&
+				if (timeDiff >= 1) {
+					setItemToStorage(null, 'query_' + router.pathname);
+				} else if (
 					storedItem.query &&
 					objectCompare(storedItem.query, query) === false
 				) {
