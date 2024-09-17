@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 const TablePokemon = ({
 	pokemons = [],
 	setPokemons,
+	ogTable,
 	query,
 	updateQuery,
 	setQueryParam,
@@ -25,10 +26,12 @@ const TablePokemon = ({
 		query,
 		setQueryParam
 	);
-	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter(
-		pokemons,
-		setPokemons,
-		{
+	// console.log(pokemons[0], table[0]);
+	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter({
+		table: pokemons,
+		handleTable: setPokemons,
+		ogTable,
+		surfaceSort: {
 			nom: ({ nom, name }) => nom || name,
 			type_1: ({ type_1 }) => type_1.nom || type_1.name,
 			tier: ({ tier }) =>
@@ -36,10 +39,9 @@ const TablePokemon = ({
 					? tier.sortOrder || (tier.name === 'Untiered' ? null : tier.name)
 					: null,
 		},
-		undefined,
 		query,
-		updateQuery
-	);
+		updateQuery,
+	});
 
 	return (
 		<>

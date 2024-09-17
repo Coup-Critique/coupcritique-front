@@ -1,5 +1,3 @@
-import { makeTimeId } from '@/functions';
-
 export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
 
@@ -35,7 +33,7 @@ const reducer = (state = {}, action) => {
 			}
 			nextState = {
 				...state,
-				[makeTimeId()]: {
+				[Date.now()]: {
 					value: action.message,
 					type: action.messageType,
 					length: action.length,

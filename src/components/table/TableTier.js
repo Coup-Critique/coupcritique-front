@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import useTableSorter from '@/hooks/useTableSorter';
 import { TableBase } from '@/components/table/Table';
@@ -6,11 +5,12 @@ import { TableBase } from '@/components/table/Table';
 /**
  * Only used on research page
  */
-const TableTier = ({ tiers = [], setTiers }) => {
-	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter(
-		tiers,
-		setTiers
-	);
+const TableTier = ({ tiers = [], setTiers, ogTable }) => {
+	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter({
+		table: tiers,
+		handleTable: setTiers,
+		ogTable,
+	});
 
 	return (
 		<TableBase

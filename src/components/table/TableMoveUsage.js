@@ -1,6 +1,6 @@
 // module
 
-import { TableBase, colorOddRows } from '@/components/table/Table';
+import { DESC, TableBase, colorOddRows } from '@/components/table/Table';
 import Type from '@/components/elements/Type';
 import Tier from '@/components/elements/Tier';
 import useTableSorter from '@/hooks/useTableSorter';
@@ -14,6 +14,7 @@ const TableMoveUsage = ({
 	tier,
 	moves = [],
 	setMoves,
+	ogTable,
 	usageKey,
 	query,
 	updateQuery,
@@ -23,10 +24,11 @@ const TableMoveUsage = ({
 	const usageKeyBss = usageKey + 'Bss';
 
 	const [table, page, nbPages, handlePage] = usePager(50, moves, query, setQueryParam);
-	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter(
-		moves,
-		setMoves,
-		{
+	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter({
+		table: moves,
+		handleTable: setMoves,
+		ogTable,
+		surfaceSort: {
 			nom: ({ nom, name }) => nom || name,
 			type: ({ type }) => type.nom || type.name,
 			power: ({ power }) => power || 0,
@@ -38,10 +40,9 @@ const TableMoveUsage = ({
 			percentVgc: move => (move[usageKeyVgc] ? move[usageKeyVgc].percent : null),
 			percentBss: move => (move[usageKeyBss] ? move[usageKeyBss].percent : null),
 		},
-		undefined,
 		query,
-		updateQuery
-	);
+		updateQuery,
+	});
 
 	return (
 		<>
@@ -64,8 +65,8 @@ const TableMoveUsage = ({
 					{
 						key: 'percent',
 						content:
-							'Usage '
-							+ (!tier || tier.name === 'Untiered'
+							'Usage ' +
+							(!tier || tier.name === 'Untiered'
 								? '-'
 								: tier.shortName || tier.name),
 						sortable: true,

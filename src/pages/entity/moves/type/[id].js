@@ -52,6 +52,7 @@ const MoveByType = ({ type, moves = [], availableGens }) => {
 					<TableMove
 						moves={table}
 						setMoves={setTable}
+						ogTable={moves}
 						query={query}
 						updateQuery={updateQuery}
 						setQueryParam={setQueryParam}

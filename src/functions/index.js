@@ -170,25 +170,6 @@ export function buildFormData(data) {
 	Object.entries(data).map(([key, value]) => formData.append(key, value));
 	return formData;
 }
-
-/**
- * Make an id from time, unique each day, removed into 3s
- * @return {string}
- */
-export function makeTimeId() {
-	const date = new Date();
-	let h = date.getHours();
-	if (h < 10) h = '0' + h;
-	let m = date.getMinutes();
-	if (m < 10) m = '0' + m;
-	let s = date.getSeconds();
-	if (s < 10) s = '0' + s;
-	let ms = date.getMilliseconds();
-	if (ms < 10) ms = '0' + ms;
-	if (ms < 100) ms = '0' + ms;
-	return `${h}${m}${s}${ms}`;
-}
-
 /**
  * copy text sent as param to clipboard
  * @param {string} content

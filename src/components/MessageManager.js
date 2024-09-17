@@ -1,5 +1,5 @@
 // modules
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeMessage } from '@/reducers/messages';
 
@@ -21,6 +21,7 @@ function messageReducer(state, action) {
 
 function MessageManager() {
 	const dispatch = useDispatch();
+	const unmounted = useRef(false);
 	const messages = useSelector(state => state.messages);
 	const [displayed, dispatchState] = useReducer(messageReducer, {});
 
@@ -30,10 +31,16 @@ function MessageManager() {
 				dispatchState({ type: ADD, key, value });
 				setTimeout(() => {
 					dispatch(removeMessage(key));
-					dispatchState({ type: REMOVE, key });
+					if (!unmounted.current) {
+						dispatchState({ type: REMOVE, key });
+					}
 				}, Math.ceil(value.length / 20) * 1000);
 			}
 		});
+
+		return () => {
+			unmounted.current = true;
+		};
 	}, [messages]);
 
 	// TODO make a success value object

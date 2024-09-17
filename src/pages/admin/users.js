@@ -65,6 +65,7 @@ const AdminUsers = () => {
 					<TableUser
 						users={table}
 						setUsers={setTable}
+						ogTable={result.users}
 						isModo
 						query={query}
 						updateQuery={updateQuery}

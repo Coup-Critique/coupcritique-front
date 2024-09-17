@@ -33,6 +33,7 @@ const AbilitiesList = props => {
 					<TableAbility
 						abilities={abilities}
 						setAbilities={setAbilities}
+						ogTable={props.abilities}
 						query={query}
 						updateQuery={updateQuery}
 						setQueryParam={setQueryParam}

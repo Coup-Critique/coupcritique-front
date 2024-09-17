@@ -43,6 +43,7 @@ const MovePool = ({ pokemon, moves = [], availableGens }) => {
 					<TableMoveUsage
 						tier={pokemon?.tier}
 						moves={table}
+						ogTable={moves}
 						setMoves={setTable}
 						usageKey="usageMove"
 						query={query}

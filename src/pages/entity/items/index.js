@@ -32,6 +32,7 @@ const ItemsList = props => {
 					<TableItem
 						items={items}
 						setItems={setItems}
+						ogTable={props.items}
 						query={query}
 						updateQuery={updateQuery}
 						setQueryParam={setQueryParam}

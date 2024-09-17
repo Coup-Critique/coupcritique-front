@@ -73,6 +73,7 @@ const TierArticle = props => {
 					<TablePokemon
 						pokemons={pokemons}
 						setPokemons={setPokemons}
+						ogTable={props.pokemons}
 						query={query}
 						updateQuery={updateQuery}
 						setQueryParam={setQueryParam}
@@ -82,6 +83,7 @@ const TierArticle = props => {
 					<TablePokemonTierUsage
 						tier={tier}
 						usages={usages}
+						ogTable={props.usages}
 						setUsages={setUsages}
 						query={query}
 						updateQuery={updateQuery}
@@ -98,6 +100,7 @@ const TierArticle = props => {
 					<TablePokemon
 						pokemons={pokemonsTechnically}
 						setPokemons={setPokemonsTechnically}
+						ogTable={props.pokemonsTechnically}
 					/>
 				</div>
 			)}
@@ -107,13 +110,18 @@ const TierArticle = props => {
 					<TablePokemonTierUsage
 						usages={usagesTechnically}
 						setUsages={setUsagesTechnically}
+						ogTable={props.usagesTechnically}
 					/>
 				</div>
 			)}
 			{pokemonsBl.length > 0 && (
 				<div className="mt-6">
 					<h3>Pokémon Border Line (bannis du tier inférieur)&nbsp;:</h3>
-					<TablePokemon pokemons={pokemonsBl} setPokemons={setPokemonsBl} />
+					<TablePokemon
+						pokemons={pokemonsBl}
+						setPokemons={setPokemonsBl}
+						ogTable={props.pokemonsBl}
+					/>
 				</div>
 			)}
 		</PageWrapper>

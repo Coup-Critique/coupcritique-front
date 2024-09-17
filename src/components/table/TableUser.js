@@ -19,6 +19,7 @@ import UserTiperButton from '@/components/actions/UserTiperButton';
 const TableUser = ({
 	users = [],
 	setUsers,
+	ogTable,
 	isModo = false,
 	query,
 	updateQuery,
@@ -27,14 +28,13 @@ const TableUser = ({
 	const [table, page, nbPages, handlePage] = usePager(50, users, query, setQueryParam);
 	const ownUser = useSelector(state => state.user);
 
-	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter(
-		users,
-		setUsers,
-		undefined,
-		undefined,
+	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter({
+		table: users,
+		handleTable: setUsers,
+		ogTable,
 		query,
-		updateQuery
-	);
+		updateQuery,
+	});
 
 	const handleValue = (i, name, value) => {
 		const nextUsers = users.slice();
@@ -56,8 +56,8 @@ const TableUser = ({
 				cols={[
 					'Picture',
 					{ key: 'username', content: 'Username', sortable: true },
-					isModo
-						&& ownUser.is_admin && {
+					isModo &&
+						ownUser.is_admin && {
 							key: 'email',
 							content: 'Email',
 							sortable: true,
