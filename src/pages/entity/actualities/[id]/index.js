@@ -6,6 +6,7 @@ import ActualityContainer from '@/containers/ActualityContainer';
 import { rmUndefined } from '@/functions';
 import { manageFetch } from '@/hooks/useFetch';
 import useNotifChecker from '@/hooks/useNotifChecker';
+import { redirect404 } from '@/pages/404';
 
 const ActualityPage = ({ actuality }) => {
 	useNotifChecker('actuality', actuality.id);
@@ -19,7 +20,7 @@ export async function getServerSideProps({ query }) {
 		return { props: rmUndefined({ actuality }) };
 	} catch (e) {
 		console.error(e);
-		return { props: { actuality: null } };
+		return redirect404;
 	}
 }
 

@@ -1,6 +1,6 @@
 // module
 
-import { TableBase } from '@/components/table/Table';
+import { DESC, TableBase } from '@/components/table/Table';
 import SpritePokemon from '@/components/elements/SpritePokemon';
 import Pokemon from '@/components/elements/Pokemon';
 import Type from '@/components/elements/Type';
@@ -9,17 +9,25 @@ import Tier from '@/components/elements/Tier';
 import { formatNumbers } from '@/functions';
 import useTableSorter from '@/hooks/useTableSorter';
 
-const TablePokemonTierUsage = ({ usages = [], setUsages, tier, query, updateQuery }) => {
-	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter(
-		usages,
-		setUsages,
-		{
+const TablePokemonTierUsage = ({
+	usages = [],
+	setUsages,
+	tier,
+	query,
+	updateQuery,
+	ogTable,
+}) => {
+	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter({
+		table: usages,
+		handleTable: setUsages,
+		ogTable,
+		surfaceSort: {
 			pokemon: ({ pokemon }) => pokemon.nom || pokemon.name,
 			type_1: ({ pokemon }) => pokemon.type_1.nom || pokemon.type_1.name,
 			tier: ({ pokemon }) =>
 				pokemon.tier
-					? pokemon.tier.sortOrder
-					  || (pokemon.tier.name === 'Untiered' ? null : pokemon.tier.name)
+					? pokemon.tier.sortOrder ||
+					  (pokemon.tier.name === 'Untiered' ? null : pokemon.tier.name)
 					: null,
 			hp: ({ pokemon }) => pokemon.hp,
 			atk: ({ pokemon }) => pokemon.atk,
@@ -28,10 +36,9 @@ const TablePokemonTierUsage = ({ usages = [], setUsages, tier, query, updateQuer
 			spd: ({ pokemon }) => pokemon.spd,
 			spe: ({ pokemon }) => pokemon.spe,
 		},
-		undefined,
 		query,
-		updateQuery
-	);
+		updateQuery,
+	});
 
 	return (
 		<TableBase

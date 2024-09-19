@@ -21,7 +21,9 @@ const FormSearch = ({
 		if (e.keyCode !== 13) return; // 13 = enter
 		e.preventDefault();
 		e.stopPropagation();
-		onClick(e);
+		if (searchRef.current && searchRef.current.ref.current) {
+			searchRef.current.ref.current.click();
+		}
 	};
 
 	useEffect(() => {

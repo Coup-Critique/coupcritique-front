@@ -1,6 +1,6 @@
 // module
 
-import { TableBase, colorOddRows } from '@/components/table/Table';
+import { DESC, TableBase, colorOddRows } from '@/components/table/Table';
 import SpritePokemon from '@/components/elements/SpritePokemon';
 import Pokemon from '@/components/elements/Pokemon';
 import Type from '@/components/elements/Type';
@@ -13,6 +13,7 @@ import usePager from '@/hooks/usePager';
 const TablePokemonWithUsages = ({
 	pokemons = [],
 	setPokemons,
+	ogTable,
 	usageKey,
 	query,
 	updateQuery,
@@ -27,10 +28,11 @@ const TablePokemonWithUsages = ({
 		query,
 		setQueryParam
 	);
-	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter(
-		pokemons,
-		setPokemons,
-		{
+	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter({
+		table: pokemons,
+		handleTable: setPokemons,
+		ogTable,
+		surfaceSort: {
 			nom: ({ nom, name }) => nom || name,
 			type_1: ({ type_1 }) => type_1.nom || type_1.name,
 			tier: ({ tier }) =>
@@ -43,10 +45,9 @@ const TablePokemonWithUsages = ({
 			percentBss: pokemon =>
 				pokemon[usageKeyBss] ? pokemon[usageKeyBss].percent : null,
 		},
-		undefined,
 		query,
-		updateQuery
-	);
+		updateQuery,
+	});
 
 	return (
 		<>

@@ -60,11 +60,24 @@ const useTableFetch = (entityName, parameters = {}, defaultValue, nbPagesGiven =
 
 	const handleSort = order => {
 		if (order && updateQuery) {
-			updateQuery({
-				order,
-				orderDirection:
-					order === query.order && query.orderDirection === ASC ? DESC : ASC,
-			});
+			if (order === query.order) {
+				if (query.orderDirection === DESC) {
+					updateQuery({
+						order: undefined,
+						orderDirection: undefined,
+					});
+				} else {
+					updateQuery({
+						order,
+						orderDirection: query.orderDirection === ASC ? DESC : ASC,
+					});
+				}
+			} else {
+				updateQuery({
+					order,
+					orderDirection: ASC,
+				});
+			}
 		}
 	};
 

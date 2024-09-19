@@ -1,5 +1,4 @@
 // modules
-import Link from 'next/link';
 import { Tab } from 'semantic-ui-react';
 import { useMemo } from 'react';
 // components
@@ -11,6 +10,7 @@ import { manageFetch } from '@/hooks/useFetch';
 import { makeClassName } from '@/functions';
 import LinkButton from '@/components/buttons/LinkButton';
 import TableTourCycles from '@/components/table/TableTourCycles';
+import { redirect404 } from '@/pages/404';
 
 const CircuitTourResult = ({ circuitTour }) => {
 	return (
@@ -125,7 +125,7 @@ export async function getServerSideProps({ query }) {
 		return { props: { circuitTour } };
 	} catch (e) {
 		console.error(e);
-		return { props: { circuitTour: null } };
+		return redirect404;
 	}
 }
 

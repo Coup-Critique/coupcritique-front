@@ -4,6 +4,7 @@ import AbilityArticle from '@/components/article/AbilityArticle';
 import gens from '@/constants/gens';
 import { manageFetch } from '@/hooks/useFetch';
 import { Loader } from 'semantic-ui-react';
+import { redirect404 } from '@/pages/404';
 
 const AbilityPage = props =>
 	props.ability ? <AbilityArticle {...props} /> : <Loader active inline="centered" />;
@@ -33,7 +34,7 @@ export const getStaticProps = async ({ params }) => {
 		return { props: { ability, pokemons, availableGens } };
 	} catch (e) {
 		console.error(e);
-		return { props: { ability: null } };
+		return redirect404;
 	}
 };
 

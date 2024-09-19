@@ -82,6 +82,7 @@ const MoveArticle = props => {
 					<TablePokemonWithUsages
 						pokemons={pokemons}
 						setPokemons={setPokemons}
+						ogTable={props.pokemons}
 						usageKey="usageMove"
 						query={query}
 						updateQuery={updateQuery}

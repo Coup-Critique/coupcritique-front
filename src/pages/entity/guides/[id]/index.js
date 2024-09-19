@@ -5,6 +5,7 @@ import ArticleArticle from '@/components/article/ArticleArticle';
 import GuideContainer from '@/containers/GuideContainer';
 import { manageFetch } from '@/hooks/useFetch';
 import useNotifChecker from '@/hooks/useNotifChecker';
+import { redirect404 } from '@/pages/404';
 
 const GuidePage = ({ guide }) => {
 	useNotifChecker('guide', guide.id);
@@ -20,7 +21,7 @@ export async function getServerSideProps({ query }) {
 		return { props: { guide } };
 	} catch (e) {
 		console.error(e);
-		return { props: { guide: null } };
+		return redirect404;
 	}
 }
 

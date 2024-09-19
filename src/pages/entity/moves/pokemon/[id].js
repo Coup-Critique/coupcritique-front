@@ -7,6 +7,7 @@ import useStoreQuery from '@/hooks/useStoreQuery';
 import { manageFetch } from '@/hooks/useFetch';
 import { formateName } from '@/functions';
 import gens from '@/constants/gens';
+import { redirect404 } from '@/pages/404';
 
 const MovePool = ({ pokemon, moves = [], availableGens }) => {
 	const [table, setTable] = useStateProps(moves);
@@ -43,6 +44,7 @@ const MovePool = ({ pokemon, moves = [], availableGens }) => {
 					<TableMoveUsage
 						tier={pokemon?.tier}
 						moves={table}
+						ogTable={moves}
 						setMoves={setTable}
 						usageKey="usageMove"
 						query={query}
@@ -86,7 +88,7 @@ export const getStaticProps = async ({ params }) => {
 		return { props: { moves, pokemon, availableGens } };
 	} catch (e) {
 		console.error(e);
-		return { props: { pokemon: null } };
+		return redirect404;
 	}
 };
 

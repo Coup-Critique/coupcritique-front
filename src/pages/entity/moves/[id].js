@@ -2,6 +2,7 @@ import MoveArticle from '@/components/article/MoveArticle';
 import gens from '@/constants/gens';
 import { manageFetch } from '@/hooks/useFetch';
 import { Loader } from 'semantic-ui-react';
+import { redirect404 } from '@/pages/404';
 
 const MovePage = props =>
 	props.move ? <MoveArticle {...props} /> : <Loader active inline="centered" />;
@@ -31,7 +32,7 @@ export const getStaticProps = async ({ params }) => {
 		return { props: { move, pokemons, availableGens } };
 	} catch (e) {
 		console.error(e);
-		return { props: { move: null } };
+		return redirect404;
 	}
 };
 

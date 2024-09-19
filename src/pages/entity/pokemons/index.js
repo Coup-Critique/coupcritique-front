@@ -33,6 +33,7 @@ const PokemonList = props => {
 					<TablePokemon
 						pokemons={pokemons}
 						setPokemons={setPokemons}
+						ogTable={props.pokemons}
 						query={query}
 						updateQuery={updateQuery}
 						setQueryParam={setQueryParam}

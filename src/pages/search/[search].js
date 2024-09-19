@@ -81,31 +81,53 @@ const SearchResult = ({ isUser = false }) => {
 						users?.length ? (
 							<Fragment>
 								{types?.length > 0 && (
-									<TableType types={types} setTypes={setTypes} />
+									<TableType
+										types={types}
+										setTypes={setTypes}
+										ogTable={result.types}
+									/>
 								)}
 								{users?.length > 0 && (
-									<TableUser users={users} setUsers={setUsers} />
+									<TableUser
+										users={users}
+										setUsers={setUsers}
+										ogTable={result.users}
+									/>
 								)}
 								{tiers?.length > 0 && (
-									<TableTier tiers={tiers} setTiers={setTiers} />
+									<TableTier
+										tiers={tiers}
+										setTiers={setTiers}
+										ogTable={result.tiers}
+									/>
 								)}
 								{pokemons?.length > 0 && (
 									<TablePokemon
 										pokemons={pokemons}
 										setPokemons={setPokemons}
+										ogTable={result.pokemons}
 									/>
 								)}
 								{abilities?.length > 0 && (
 									<TableAbility
 										abilities={abilities}
 										setAbilities={setAbilities}
+										ogTable={result.abilities}
 									/>
 								)}
 								{moves?.length > 0 && (
-									<TableMove moves={moves} setMoves={setMoves} />
+									<TableMove
+										moves={moves}
+										setMoves={setMoves}
+										ogTable={result.moves}
+									/>
 								)}
 								{items?.length > 0 && (
-									<TableItem items={items} setItems={setItems} />
+									<TableItem
+										items={items}
+										setItems={setItems}
+										ogTable={result.items}
+									/>
 								)}
 							</Fragment>
 						) : (

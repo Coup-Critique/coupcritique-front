@@ -8,6 +8,7 @@ import TableMove from '@/components/table/TableMove';
 import { manageFetch } from '@/hooks/useFetch';
 import gens from '@/constants/gens';
 import useStateProps from '@/hooks/useStateProps';
+import { redirect404 } from '@/pages/404';
 
 const MoveByType = ({ type, moves = [], availableGens }) => {
 	const [table, setTable] = useStateProps(moves);
@@ -52,6 +53,7 @@ const MoveByType = ({ type, moves = [], availableGens }) => {
 					<TableMove
 						moves={table}
 						setMoves={setTable}
+						ogTable={moves}
 						query={query}
 						updateQuery={updateQuery}
 						setQueryParam={setQueryParam}
@@ -87,7 +89,7 @@ export const getStaticProps = async ({ params }) => {
 		return { props: { moves, type, availableGens } };
 	} catch (e) {
 		console.error(e);
-		return { props: { type: null } };
+		return redirect404;
 	}
 };
 

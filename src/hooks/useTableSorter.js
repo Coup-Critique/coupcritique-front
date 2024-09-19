@@ -31,23 +31,27 @@ export function compareValues(v1, v2, ascending = true) {
 	}
 }
 
-const useTableSorter = (
+const defaultOrder = { key: '', orderDirection: ASC };
+const useTableSorter = ({
 	table,
 	handleTable,
+	ogTable,
 	surfaceSort = {},
 	deepSort = {},
 	query = null,
-	updateQuery = null
-) => {
+	updateQuery = null,
+}) => {
 	const defaultValue =
 		query && query.key
 			? { key: query.key, orderDirection: query.orderDirection }
-			: { key: '', orderDirection: ASC };
+			: defaultOrder;
 	const [order, setOrder] = useState(defaultValue);
 
 	useEffect(() => {
-		setOrder(defaultValue);
-		handleSortTable(table, defaultValue);
+		if (defaultValue.key) {
+			setOrder(defaultValue);
+			handleSortTable(table, defaultValue);
+		}
 	}, [defaultValue.key, defaultValue.orderDirection]);
 
 	const handleSortTable = (tableToSort, orderGiven = order) => {
@@ -69,17 +73,31 @@ const useTableSorter = (
 	const handleSort = (key, tableGiven = table) => {
 		let nextOrder = order;
 		if (key) {
-			nextOrder = {
-				key,
-				orderDirection:
-					key === order.key && order.orderDirection === ASC ? DESC : ASC,
-			};
-			setOrder(nextOrder);
-			if (updateQuery) {
-				updateQuery(nextOrder);
+			if (key === order.key) {
+				if (order.orderDirection == DESC) {
+					nextOrder = defaultOrder;
+					handleTable(ogTable);
+					setOrderBuffer(nextOrder);
+					return;
+				}
+
+				nextOrder = {
+					key,
+					orderDirection: order.orderDirection === ASC ? DESC : ASC,
+				};
+			} else {
+				nextOrder = { key, orderDirection: ASC };
 			}
+			setOrderBuffer(nextOrder);
 		}
 		handleSortTable(tableGiven, nextOrder);
+	};
+
+	const setOrderBuffer = order => {
+		setOrder(order);
+		if (updateQuery) {
+			updateQuery(order);
+		}
 	};
 
 	// prettier-ignore
