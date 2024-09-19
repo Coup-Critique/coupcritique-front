@@ -6,6 +6,13 @@ import PageWrapper from '@/components/PageWrapper';
 import LinkButton from '@/components/buttons/LinkButton';
 // components
 
+export const redirect404 = {
+	redirect: {
+		destination: '/404',
+		permanent: true,
+	},
+};
+
 const Page404 = () => (
 	<PageWrapper
 		title={'Erreur\u00A0: Page 404'}

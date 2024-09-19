@@ -98,7 +98,7 @@ export async function getServerSideProps() {
 		return { props: { circuitArticles } };
 	} catch (e) {
 		console.error(e);
-		return { props: { circuitArticles: null } };
+		return { props: { circuitArticles: [] } };
 	}
 }
 

@@ -5,6 +5,7 @@ import UserArticle from '@/components/article/UserArticle';
 import UserContainer from '@/containers/UserContainer';
 import { rmUndefined } from '@/functions';
 import { manageFetch } from '@/hooks/useFetch';
+import { redirect404 } from '@/pages/404';
 
 const UserPage = props => <UserContainer {...props} Component={UserArticle} />;
 
@@ -17,7 +18,7 @@ export async function getServerSideProps({ query }) {
 		return { props: rmUndefined({ user, nbComments, teams, players, circuitTours }) };
 	} catch (e) {
 		console.error(e);
-		return { props: { user: null } };
+		return redirect404;
 	}
 }
 

@@ -5,6 +5,7 @@ import ArticleArticle from '@/components/article/ArticleArticle';
 import TournamentContainer from '@/containers/TournamentContainer';
 import { manageFetch } from '@/hooks/useFetch';
 import useNotifChecker from '@/hooks/useNotifChecker';
+import { redirect404 } from '@/pages/404';
 
 const TournamentPage = ({ tournament }) => {
 	useNotifChecker('tournament', tournament.id);
@@ -24,7 +25,7 @@ export async function getServerSideProps({ query }) {
 		return { props: { tournament } };
 	} catch (e) {
 		console.error(e);
-		return { props: { tournament: null } };
+		return redirect404;
 	}
 }
 

@@ -5,6 +5,7 @@ import ArticleArticle from '@/components/article/ArticleArticle';
 import CircuitArticleContainer from '@/containers/CircuitArticleContainer';
 import { manageFetch } from '@/hooks/useFetch';
 import useNotifChecker from '@/hooks/useNotifChecker';
+import { redirect404 } from '@/pages/404';
 
 const CircuitArticlePage = ({ circuitArticle }) => {
 	useNotifChecker('circuitArticle', circuitArticle.id);
@@ -32,7 +33,7 @@ export async function getServerSideProps({ query }) {
 		return { props: { circuitArticle } };
 	} catch (e) {
 		console.error(e);
-		return { props: { circuitArticle: null } };
+		return redirect404;
 	}
 }
 

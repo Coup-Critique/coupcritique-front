@@ -17,6 +17,7 @@ import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSel
 import SectionAds from '@/components/sections/SectionAds';
 import useTableFetch from '@/hooks/useTableFetch';
 import useHash from '@/hooks/useHash';
+import { redirect404 } from '@/pages/404';
 
 // initQuery
 // query.tags
@@ -189,7 +190,7 @@ export async function getServerSideProps() {
 		return { props: { teams, tags, tiers, nbPages } };
 	} catch (e) {
 		console.error(e);
-		return { props: { teams: null } };
+		return redirect404;
 	}
 }
 

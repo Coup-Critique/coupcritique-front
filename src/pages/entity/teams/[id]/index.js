@@ -3,6 +3,7 @@ import TeamContainer from '@/containers/TeamContainer';
 import useNotifChecker from '@/hooks/useNotifChecker';
 import { manageFetch } from '@/hooks/useFetch';
 import { rmUndefined } from '@/functions';
+import { redirect404 } from '@/pages/404';
 
 const TeamPage = ({ team }) => {
 	useNotifChecker('team', team?.id);
@@ -16,7 +17,7 @@ export async function getServerSideProps({ query }) {
 		return { props: rmUndefined({ team }) };
 	} catch (e) {
 		console.error(e);
-		return { props: { team: null } };
+		return redirect404;
 	}
 }
 
