@@ -29,7 +29,7 @@ import { redirect404 } from '@/pages/404';
 const defaultArray = [];
 const TeamList = props => {
 	const searchRef = useRef();
-	const hash = useHash();
+	const [hash, removeHash] = useHash();
 
 	const {
 		table,
@@ -43,6 +43,13 @@ const TeamList = props => {
 		handlePage,
 		handleSort,
 	} = useTableFetch('teams', { loadUrl: 'teams' }, props.teams, props.nbPages);
+
+	useEffect(() => {
+		if (hash && table.length > 0) {
+			document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+			removeHash();
+		}
+	}, [table]);
 
 	// const tiers = useSelector(state => props.tiers || state.tiers);
 	// const tags = useSelector(state => props.tags || state.tags);

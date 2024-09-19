@@ -10,6 +10,11 @@ const useHash = () => {
 	const [hash, setHash] = useState();
 	const params = useParams();
 
+	const removeHash = () => {
+		setHash(undefined);
+		window.location.hash = '';
+	};
+
 	useEffect(() => {
 		const hash = getHash();
 		setHash(hash);
@@ -18,7 +23,7 @@ const useHash = () => {
 		}
 	}, [params]);
 
-	return hash;
+	return [hash, removeHash];
 };
 
 export default useHash;

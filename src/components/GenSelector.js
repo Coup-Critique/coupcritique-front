@@ -36,10 +36,14 @@ const GenSelector = ({ availableGens, redirectOnChange }) => {
 		}
 	}, [availableGens]);
 
-	const onChange = (e, { value }) =>
-		redirectOnChange
-			? router.push(redirectOnChange + availableGens[value])
-			: dispatch(setGenAction(value));
+	const onChange = (e, { value }) => {
+		if (redirectOnChange) {
+			dispatch(setGenAction(value));
+			router.push(redirectOnChange + availableGens[value]);
+		} else {
+			dispatch(setGenAction(value));
+		}
+	};
 
 	return (
 		<Dropdown
