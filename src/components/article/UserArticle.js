@@ -1,5 +1,5 @@
 // modules
-import { Icon, Loader } from 'semantic-ui-react';
+import { Button, Form, Icon, Loader } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 // components
 import PageWrapper from '@/components/PageWrapper';
@@ -12,6 +12,17 @@ import useTableFetch from '@/hooks/useTableFetch';
 import UserTiperButton from '@/components/actions/UserTiperButton';
 import useStateProps from '@/hooks/useStateProps';
 import TableTourRanking from '../table/TableTourRanking';
+import {
+	badgeIsAdmin,
+	badgeIsCertified,
+	badgeIsContentCreator,
+	badgeIsModo,
+	badgeIsTiper,
+	badgeIsWeeker,
+	badgeIsWinner,
+} from '@/constants/badges';
+import { capitalize } from '@/functions';
+import { useState } from 'react';
 // import Image from 'next/image';
 
 const defaultValue = {};
@@ -53,7 +64,8 @@ const UserArticle = props => {
 			goingBack
 		>
 			<div className="row">
-				<div className="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 mb-4">
+				{/* <div className="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 mb-4"> */}
+				<div className="col-12 col-sm-6 col-md-5 col-lg-l-3 mb-4">
 					{user.picture ? (
 						// eslint-disable-next-line jsx-a11y/img-redundant-alt
 						<img
@@ -70,7 +82,8 @@ const UserArticle = props => {
 						<Icon name="user circle" size="massive" />
 					)}
 				</div>
-				<div className="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9 mb-4">
+				{/* <div className="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9 mb-4"> */}
+				<div className="col-12 col-sm-6 col-md-7 col-lg-4 mb-4">
 					<h2>{user.username}</h2>
 					<div className="user-info">
 						<p>Membre depuis&nbsp;: {user_date}</p>
@@ -79,20 +92,66 @@ const UserArticle = props => {
 						{!!user.showdown_name && (
 							<p>Showdown&nbsp;: {user.showdown_name}</p>
 						)}
+						{user.is_admin ? (
+							<p>
+								Rôle&nbsp;: <Icon {...badgeIsAdmin} />{' '}
+								{capitalize(badgeIsAdmin.title)}
+							</p>
+						) : (
+							user.is_modo && (
+								<p>
+									Rôle&nbsp;: <Icon {...badgeIsModo} />{' '}
+									{capitalize(badgeIsModo.title)}
+								</p>
+							)
+						)}
+						<p>
+							Badges&nbsp;{''}
+							{user.is_content_creator && (
+								<>
+									<Icon {...badgeIsContentCreator} />{' '}
+									{capitalize(badgeIsContentCreator.title)}
+								</>
+							)}{' '}
+							{user.is_winner && (
+								<>
+									<Icon {...badgeIsWinner} />{' '}
+									{capitalize(badgeIsWinner.title)}
+								</>
+							)}{' '}
+							{user.is_weeker && (
+								<>
+									<Icon {...badgeIsWeeker} />{' '}
+									{capitalize(badgeIsWeeker.title)}
+								</>
+							)}{' '}
+							{user.is_certified && (
+								<>
+									<Icon {...badgeIsCertified} />{' '}
+									{capitalize(badgeIsCertified.title)}
+								</>
+							)}{' '}
+							{user.is_tiper && (
+								<>
+									<Icon {...badgeIsTiper} />{' '}
+									{capitalize(badgeIsTiper.title)}
+								</>
+							)}{' '}
+							{/* {user.is_subscriber && (
+								<>
+									<Icon {...badgeIsSubscriber} />{' '}
+									{capitalize(badgeIsSubscriber.title)}
+								</>
+							)}{' '} */}
+						</p>
+						{!!user.is_tiper && (
+							<p>
+								<Icon name="gratipay" color="red" /> Contributeur
+							</p>
+						)}
 						{ownUser.is_modo && (
 							<>
-								{user.is_admin ? (
-									<p>
-										Rôle&nbsp;:{' '}
-										<Icon name="chess queen" color="purple" />{' '}
-										Administrateur
-									</p>
-								) : user.is_modo ? (
-									<p>
-										Rôle&nbsp;: <Icon name="gem" color="violet" />{' '}
-										Modérateur
-									</p>
-								) : (
+								{!user.is_modo && (
 									<p>
 										<UserBanButton
 											user={user}
@@ -114,12 +173,10 @@ const UserArticle = props => {
 								</p>
 							</>
 						)}
-						{!!user.is_tiper && (
-							<p>
-								<Icon name="gratipay" color="red" /> Contributeur
-							</p>
-						)}
 					</div>
+				</div>
+				<div className="col-12 col-lg-5 mb-4">
+					{/* <UserBiography user={user} /> */}
 				</div>
 			</div>
 			{!!props.players && (
@@ -155,4 +212,42 @@ const UserArticle = props => {
 		</PageWrapper>
 	);
 };
+
+// const UserBiography = ({ user }) => {
+// 	const ownUser = useSelector(state => state.user);
+// 	const [updating, setUpdating] = useState(false);
+
+// 	const handleUpdate = e => {
+// 		setUpdating(false);
+// 	};
+
+// 	const handleCancel = e => {
+// 		e.preventDefault();
+// 		setUpdating(false);
+// 	};
+
+// 	return (
+// 		<>
+// 			<h3 className="ui header">Bio&nbsp;:</h3>
+// 			{updating ? (
+// 				<Form />
+// 			) : (
+// 				<>
+// 					{user && <p>{user.biography}</p>}
+// 					{ownUser.id == user.id && (
+// 						<Button
+// 							color="blue"
+// 							icon="pencil"
+// 							content="Modifier sa bio"
+// 							area-label="Modifier sa bio"
+// 							onClick={handleUpdate}
+// 							className="btn-descr"
+// 						/>
+// 					)}
+// 				</>
+// 			)}
+// 		</>
+// 	);
+// };
+
 export default UserArticle;

@@ -9,6 +9,7 @@ import { TableBase, colorOddRows } from '@/components/table/Table';
 const TableAbility = ({
 	abilities = [],
 	setAbilities,
+	ogTable,
 	query,
 	updateQuery,
 	setQueryParam,
@@ -19,14 +20,14 @@ const TableAbility = ({
 		query,
 		setQueryParam
 	);
-	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter(
-		abilities,
-		setAbilities,
-		{ nom: ({ nom, name }) => nom || name },
-		undefined,
+	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter({
+		table: abilities,
+		handleTable: setAbilities,
+		ogTable,
+		surfaceSort: { nom: ({ nom, name }) => nom || name },
 		query,
-		updateQuery
-	);
+		updateQuery,
+	});
 
 	return (
 		<>

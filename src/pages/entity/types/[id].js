@@ -2,6 +2,7 @@ import TypeArticle from '@/components/article/TypeArticle';
 import gens from '@/constants/gens';
 import { manageFetch } from '@/hooks/useFetch';
 import { Loader } from 'semantic-ui-react';
+import { redirect404 } from '@/pages/404';
 
 const TypePage = props =>
 	props.type ? <TypeArticle {...props} /> : <Loader active inline="centered" />;
@@ -31,7 +32,7 @@ export const getStaticProps = async ({ params }) => {
 		return { props: { type, weaknesses, efficiencies, pokemons, availableGens } };
 	} catch (e) {
 		console.error(e);
-		return { props: { type: null } };
+		return redirect404;
 	}
 };
 

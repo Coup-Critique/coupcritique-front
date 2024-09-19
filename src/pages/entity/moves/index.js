@@ -30,6 +30,7 @@ const MovesList = props => {
 					<TableMove
 						moves={moves}
 						setMoves={setMoves}
+						ogTable={props.moves}
 						query={query}
 						updateQuery={updateQuery}
 						setQueryParam={setQueryParam}

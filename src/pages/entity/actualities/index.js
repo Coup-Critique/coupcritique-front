@@ -137,7 +137,7 @@ export async function getServerSideProps() {
 		return { props: { actualities, tags } };
 	} catch (e) {
 		console.error(e);
-		return { props: { actualities: null } };
+		return { props: { actualities: [] } };
 	}
 }
 

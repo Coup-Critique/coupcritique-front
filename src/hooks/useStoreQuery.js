@@ -12,7 +12,7 @@ import { objectCompare } from '@/functions';
 const useStoreQuery = ({ defaultQuery = { page: 1 }, saveQueryToStore = false } = {}) => {
 	const router = useRouter();
 	const urlQuery = router.query;
-	// const { getStoredItem, setItemToStorage } = useLocalStorage();
+	const { getStoredItem, setItemToStorage } = useLocalStorage();
 	const [query, dispatchQuery] = useReducer(queryReducer, defaultQuery, query => ({
 		...query,
 		...urlQuery,
@@ -23,27 +23,38 @@ const useStoreQuery = ({ defaultQuery = { page: 1 }, saveQueryToStore = false } 
 		setQueryParamAction,
 	]);
 
-	// useEffect(() => {
-	// 	if (saveQueryToStore) {
-	// 		const storedQuery = getStoredItem('query_' + router.pathname);
-	// 		if (storedQuery && objectCompare(storedQuery, query) === false) {
-	// 			setQuery({
-	// 				...query,
-	// 				...getStoredItem('query_' + router.pathname),
-	// 			});
-	// 		}
-	// 	}
-	// }, []);
+	useEffect(() => {
+		if (saveQueryToStore) {
+			const storedItem = getStoredItem('query_' + router.pathname);
+			if (storedItem) {
+				const timeDiff = (Date.now() - storedItem.timestamp) / 3600000;
+				if (timeDiff >= 1) {
+					setItemToStorage(null, 'query_' + router.pathname);
+				} else if (
+					storedItem.query &&
+					objectCompare(storedItem.query, query) === false
+				) {
+					setQuery({
+						...query,
+						...storedItem.query,
+					});
+				}
+			}
+		}
+	}, []);
 
-	// useEffect(() => {
-	// 	if (saveQueryToStore) {
-	// 		if (objectCompare(query, defaultQuery) === true) {
-	// 			setItemToStorage(null, 'query_' + router.pathname);
-	// 		} else {
-	// 			setItemToStorage(query, 'query_' + router.pathname);
-	// 		}
-	// 	}
-	// }, [query]);
+	useEffect(() => {
+		if (saveQueryToStore) {
+			if (objectCompare(query, defaultQuery) === true) {
+				setItemToStorage(null, 'query_' + router.pathname);
+			} else {
+				setItemToStorage(
+					{ query, timestamp: Date.now() },
+					'query_' + router.pathname
+				);
+			}
+		}
+	}, [query]);
 
 	useEffect(() => {
 		const entityLinks = document.querySelectorAll(

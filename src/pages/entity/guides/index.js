@@ -131,7 +131,7 @@ export async function getServerSideProps() {
 		return { props: { guides, tags } };
 	} catch (e) {
 		console.error(e);
-		return { props: { guides: null } };
+		return { props: { guides: [] } };
 	}
 }
 

@@ -12,6 +12,7 @@ import SectionAds from '@/components/sections/SectionAds';
 import useStateProps from '@/hooks/useStateProps';
 import ArticleTeaser from '@/components/teasers/ArticleTeaser';
 import ThreeCol from '@/components/columns/ThreeCol';
+import { redirect404 } from '@/pages/404';
 
 const defaultArray = [];
 const TournamentList = props => {
@@ -97,7 +98,7 @@ export async function getServerSideProps() {
 		return { props: { tournaments } };
 	} catch (e) {
 		console.error(e);
-		return { props: { tournaments: null } };
+		return { props: { tournaments: [] } };
 	}
 }
 

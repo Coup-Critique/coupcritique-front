@@ -3,6 +3,7 @@
 // custom
 import { manageFetch } from '@/hooks/useFetch';
 import CircuitArticleList from '../..';
+import { redirect404 } from '@/pages/404';
 
 // TODO ajouter une props tour
 const CircuitArticleListByTour = props => <CircuitArticleList {...props} />;
@@ -14,7 +15,7 @@ export async function getServerSideProps({ query }) {
 		return { props: { circuitArticles } };
 	} catch (e) {
 		console.error(e);
-		return { props: { circuitArticles: null } };
+		return redirect404;
 	}
 }
 

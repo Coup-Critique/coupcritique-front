@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Icon } from 'semantic-ui-react';
 import { makeClassName } from '@/functions';
 import { useEffect, useState } from 'react';
+import { badgeIsAdmin, badgeIsCertified, badgeIsContentCreator, badgeIsModo, badgeIsTiper, badgeIsWeeker } from '@/constants/badges';
 // import Image from 'next/image';
 
 const defaultSrc = '/images/picto/user-circle-solid-white.svg';
@@ -35,7 +36,7 @@ const Profile = ({
 				className
 			)}
 		>
-			<div className="position-relative" title="">
+			<div className="position-relative" title={badge?.title || ''}>
 				<div className={makeClassName('picture', badge?.color)}>
 					{user.picture ? (
 						<img
@@ -96,31 +97,27 @@ const Profile = ({
 	);
 };
 
-const getBadge = user => {
+export const getBadge = user => {
 	if (user.is_admin) {
-		return { name: 'chess queen', color: 'purple', title: 'administrateur' };
-	}
-	if (user.is_modo) {
-		return { name: 'gem', color: 'violet', title: 'modérateur' };
+		return badgeIsAdmin;
 	}
 	if (user.is_content_creator) {
-		return { name: 'video camera', color: 'purple', title: 'créateur de contenu' };
+		return badgeIsContentCreator;
 	}
 	if (user.is_winner) {
-		return { name: 'trophy', color: 'gold', title: 'vainqueur de tournois' };
+		return badgeIsContentCreator
 	}
 	if (user.is_weeker) {
-		return { name: 'star', color: 'blue', title: 'a posté une équipe de la semaine' };
+		return badgeIsWeeker;
+	}
+	if (user.is_modo) {
+		return badgeIsModo;
 	}
 	if (user.is_certified) {
-		return {
-			name: 'certified',
-			color: 'green',
-			title: 'a posté une équipe certifiée',
-		};
+		return badgeIsCertified;
 	}
 	if (user.is_tiper) {
-		return { name: 'heart', color: 'red', title: 'tiper' };
+		return badgeIsTiper;
 	}
 	// if (user.is_subsciber) {
 	// 	return { name:"twitch", color:"purple", title:"sub", };

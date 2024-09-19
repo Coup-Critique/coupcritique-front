@@ -50,6 +50,7 @@ const ItemArticle = props => {
 						pokemons={pokemons}
 						setPokemons={setPokemons}
 						usageKey="usageItem"
+						ogTable={props.pokemons}
 						query={query}
 						updateQuery={updateQuery}
 						setQueryParam={setQueryParam}

@@ -10,19 +10,21 @@ import usePager from '@/hooks/usePager';
 import PaginationPrettier from '@/components/PaginationPrettier';
 import SectionAds from '@/components/sections/SectionAds';
 
-const TableMove = ({ moves = [], setMoves, query, updateQuery, setQueryParam }) => {
+const TableMove = ({ moves = [], setMoves, query, updateQuery, setQueryParam, ogTable }) => {
 	const [table, page, nbPages, handlePage] = usePager(100, moves, query, setQueryParam);
 	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter(
-		moves,
-		setMoves,
 		{
-			nom: ({ nom, name }) => nom || name,
-			type: ({ type }) => type.nom || type.name,
-			power: ({ power }) => power || 0,
-		},
-		undefined,
-		query,
-		updateQuery
+			table: moves,
+			handleTable: setMoves,
+			ogTable,
+			surfaceSort: {
+				nom: ({ nom, name }) => nom || name,
+				type: ({ type }) => type.nom || type.name,
+				power: ({ power }) => power || 0,
+			},
+			query,
+			updateQuery
+		}
 	);
 
 	return (

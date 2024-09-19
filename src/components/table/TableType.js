@@ -1,17 +1,14 @@
-
 import useTableSorter from '@/hooks/useTableSorter';
 import Type from '@/components/elements/Type';
 import { TableBase } from '@/components/table/Table';
 
-/**
- * @deprecated
- */
-const TableType = ({ types = [], setTypes }) => {
-	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter(
-		types,
-		setTypes,
-		{ nom: ({ nom, name }) => nom || name }
-	);
+const TableType = ({ types = [], setTypes, ogTable }) => {
+	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter({
+		table: types,
+		handleTable: setTypes,
+		ogTable,
+		surfaceSort: { nom: ({ nom, name }) => nom || name },
+	});
 
 	return (
 		<TableBase

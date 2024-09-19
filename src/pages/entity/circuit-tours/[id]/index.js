@@ -9,6 +9,7 @@ import useNotifChecker from '@/hooks/useNotifChecker';
 import ArticleTeaser from '@/components/teasers/ArticleTeaser';
 import Video from '@/components/elements/Video';
 import LinkButton from '@/components/buttons/LinkButton';
+import { redirect404 } from '@/pages/404';
 
 const CircuitTourPage = ({ circuitTour, circuitArticles, circuitVideos }) => {
 	useNotifChecker('circuitTour', circuitTour.id);
@@ -91,7 +92,7 @@ export async function getServerSideProps({ query }) {
 		return { props: { circuitTour, circuitArticles, circuitVideos } };
 	} catch (e) {
 		console.error(e);
-		return { props: { circuitTour: null } };
+		return redirect404;
 	}
 }
 

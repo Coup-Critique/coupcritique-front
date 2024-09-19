@@ -5,6 +5,7 @@ import TierArticle from '@/components/article/TierArticle';
 import gens from '@/constants/gens';
 import { manageFetch } from '@/hooks/useFetch';
 import { Loader } from 'semantic-ui-react';
+import { redirect404 } from '@/pages/404';
 
 const TierPage = props =>
 	props.tier ? <TierArticle {...props} /> : <Loader active inline="centered" />;
@@ -42,7 +43,7 @@ export const getStaticProps = async ({ params }) => {
 		};
 	} catch (e) {
 		console.error(e);
-		return { props: { tier: null } };
+		return redirect404;
 	}
 };
 

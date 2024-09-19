@@ -98,7 +98,7 @@ export async function getServerSideProps() {
 		return { props: { circuitTours } };
 	} catch (e) {
 		console.error(e);
-		return { props: { circuitTours: null } };
+		return { props: { circuitTours: [] } };
 	}
 }
 

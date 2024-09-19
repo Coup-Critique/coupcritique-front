@@ -7,16 +7,23 @@ import useTableSorter from '@/hooks/useTableSorter';
 import usePager from '@/hooks/usePager';
 import PaginationPrettier from '@/components/PaginationPrettier';
 
-const TableItem = ({ items = [], setItems, query, updateQuery, setQueryParam }) => {
+const TableItem = ({
+	items = [],
+	setItems,
+	query,
+	updateQuery,
+	setQueryParam,
+	ogTable,
+}) => {
 	const [table, page, nbPages, handlePage] = usePager(100, items, query, setQueryParam);
-	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter(
-		items,
-		setItems,
-		{ nom: ({ nom, name }) => nom || name },
-		undefined,
+	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter({
+		table: items,
+		handleTable: setItems,
+		ogTable,
+		surfaceSort: { nom: ({ nom, name }) => nom || name },
 		query,
-		updateQuery
-	);
+		updateQuery,
+	});
 
 	return (
 		<>

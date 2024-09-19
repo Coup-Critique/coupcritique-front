@@ -45,6 +45,7 @@ const AbilityArticle = props => {
 					<TablePokemonWithUsages
 						pokemons={pokemons}
 						setPokemons={setPokemons}
+						ogTable={props.pokemons}
 						usageKey="usageAbility"
 						query={query}
 						updateQuery={updateQuery}

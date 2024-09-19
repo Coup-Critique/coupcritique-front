@@ -3,6 +3,7 @@ import gens from '@/constants/gens';
 import { rmUndefined } from '@/functions';
 import { manageFetch } from '@/hooks/useFetch';
 import { Loader } from 'semantic-ui-react';
+import { redirect404 } from '@/pages/404';
 
 const PokemonPage = props =>
 	props.pokemon ? <PokemonArticle {...props} /> : <Loader active inline="centered" />;
@@ -65,7 +66,7 @@ export const getStaticProps = async ({ params }) => {
 		};
 	} catch (e) {
 		console.error(e);
-		return { props: { pokemon: null } };
+		return redirect404;
 	}
 };
 

@@ -1,5 +1,6 @@
 import { manageFetch } from '@/hooks/useFetch';
 import TeamArticle from '@/components/article/TeamArticle';
+import { redirect404 } from '@/pages/404';
 
 const TopWeek = ({ team }) => <TeamArticle team={team} />;
 
@@ -9,7 +10,7 @@ export async function getServerSideProps() {
 		return { props: { team } };
 	} catch (e) {
 		console.error(e);
-		return { props: { team: null } };
+		return redirect404;
 	}
 }
 
