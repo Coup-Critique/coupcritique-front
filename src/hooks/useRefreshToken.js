@@ -95,7 +95,7 @@ const useRefreshToken = result => {
 	const addConnectionMessage = () => {
 		dispatch(
 			addMessage(
-				'<div class="ui active inline loader"></div> Reconnexion',
+				'<div class="ui active inline loader tiny"></div> Reconnexion',
 				'warning',
 				'Reconnexion'.length
 			)
