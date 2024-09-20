@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { objectToGETparams } from '@/functions';
 
 /* eslint-disable default-case */
 const useClick = to => {
@@ -21,9 +22,12 @@ const useClick = to => {
 			return null;
 		}
 		if (e.ctrlKey) {
-			window.open(to, '_blank');
+			window.open(
+				typeof to === 'object' ? to.pathname + objectToGETparams(to.query) : to,
+				'_blank'
+			);
 		} else {
-			router.push({ pathname: to, query: { from: router.pathname } });
+			router.push(to);
 		}
 	};
 

@@ -24,6 +24,7 @@ import PaginationPrettier from '@/components/PaginationPrettier';
 import useClick from '@/hooks/useClick';
 import DeleteAction from '@/components/actions/DeleteAction';
 import SectionAds from '@/components/sections/SectionAds';
+import { useMemo } from 'react';
 
 const TableTeam = ({
 	teams = [],
@@ -90,7 +91,12 @@ const TableTeam = ({
 						sortable: true,
 						className: 'd-none d-md-table-cell',
 					},
-					{ key: 'tags', content: 'Catégories', sortable: false, className: 'd-none d-md-table-cell' },
+					{
+						key: 'tags',
+						content: 'Catégories',
+						sortable: false,
+						className: 'd-none d-md-table-cell',
+					},
 					{
 						key: 'countEnjoyers',
 						content: 'Favoris',
@@ -148,13 +154,14 @@ const RowTeam = ({
 	isUserConnected,
 }) => {
 	const router = useRouter();
-	const linkTo = `/entity/teams/${team.id}`;
+	const linkTo = useMemo(
+		() => ({
+			pathname: `/entity/teams/${team.id}`,
+			query: { from: router.asPath.split('#')[0].split('?')[0] },
+		}),
+		[router.asPath, team.id]
+	);
 	const [handleClick, handleStopClick] = useClick(linkTo);
-
-	const linkClick = e => {
-		e.preventDefault();
-		router.push({ pathname: linkTo, query: { from: router.pathname } });
-	};
 
 	const handleModify = e => router.push(`/entity/teams/${team.id}/update`);
 
@@ -194,9 +201,7 @@ const RowTeam = ({
 			)}
 			<td>{formatDate(team.date_creation)}</td>
 			<td className="text-left text-break d-none d-md-table-cell">
-				<Link href={linkTo} onClick={linkClick}>
-					{team.name}
-				</Link>
+				<Link href={linkTo}>{team.name}</Link>
 			</td>
 			<td className="list nowrap d-none d-md-table-cell">
 				{team.tags.length > 2 ? (

@@ -1027,11 +1027,11 @@ li.resource {
 
 .actuality {
 	.image {
-		max-height: rem(300px);
+		max-height: rem(400px);
 		max-width: 100%;
 
 		img {
-			max-height: rem(300px);
+			max-height: rem(400px);
 			max-width: 100%;
 			height: auto;
 			width: auto;
@@ -1093,7 +1093,7 @@ a.date:focus {
 
 	.image {
 		// height: rem(250px);
-		aspect-ratio: 1310 / 735;
+		aspect-ratio: 450 / 300;
 		display: flex;
 		justify-content: center;
 		align-items: center;
