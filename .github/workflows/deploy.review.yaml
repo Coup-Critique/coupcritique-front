@@ -30,15 +30,6 @@ jobs:
     - name: Build website
       run: npm run build && rm -r node_modules
 
-    - name: Install SSH Key
-      uses: shimataro/ssh-key-action@v2
-      with:
-        key: ${{ secrets.PRIVATE_KEY_REVIEW }}
-        known_hosts: "unnecessary"
-
-    - name: Adding host to known hosts
-      run: ssh-keyscan -H ${{ secrets.HOST_REVIEW }} >> ~/.ssh/known_hosts
-
     - name: 'Create private key file'
       run: echo "${{ secrets.PRIVATE_KEY_REVIEW }}" > ./private_key && chmod 600 ./private_key
 
@@ -52,7 +43,7 @@ jobs:
     - run: DISPLAY=1 SSH_ASKPASS='./passphrase_script.sh' ssh-add ./private_key < /dev/null
 
     - name: Copy files to host
-      run: rsync -avz -e 'ssh -p ${{ secrets.PORT_REVIEW }}' . ${{ secrets.USERNAME_REVIEW }}@${{ secrets.HOST_REVIEW }}:${{ secrets.REMOTE_PATH }}/coupcritique-front
+      run: rsync -avz -e 'ssh -o StrictHostKeyChecking=accept-new -p ${{ secrets.PORT_REVIEW }}' . ${{ secrets.USERNAME_REVIEW }}@${{ secrets.HOST_REVIEW }}:${{ secrets.REMOTE_PATH }}/coupcritique-front
 
     - name: Restart PM2
       run: >
