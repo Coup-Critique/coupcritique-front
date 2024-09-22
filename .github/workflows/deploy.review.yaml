@@ -39,4 +39,3 @@ jobs:
       run: >
         ssh -p ${{ secrets.PORT_REVIEW }} ${{ secrets.USERNAME_REVIEW }}@${{ secrets.HOST_REVIEW }} -o StrictHostKeyChecking=no
         "cd ${{ secrets.REMOTE_PATH }}/coupcritique-front && npm ci && npm run build && pm2 restart next"
-
