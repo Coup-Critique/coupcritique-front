@@ -42,7 +42,8 @@ jobs:
     - run: ssh-agent -a $SSH_AUTH_SOCK > /dev/null
     - run: DISPLAY=1 SSH_ASKPASS='./passphrase_script.sh' ssh-add ./private_key < /dev/null
 
-    - run: rsync -avz . ${{ secrets.USERNAME_REVIEW }}@${{ secrets.HOST_REVIEW }}:${{ secrets.REMOTE_PATH }}/coupcritique-front
+    - name: Copy files to host
+      run: rsync -avz -e 'ssh -p ${{ secrets.PORT_REVIEW }}' . ${{ secrets.USERNAME_REVIEW }}@${{ secrets.HOST_REVIEW }}:${{ secrets.REMOTE_PATH }}/coupcritique-front
 
     - name: Restart PM2
       run: >
