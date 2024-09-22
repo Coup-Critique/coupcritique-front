@@ -43,7 +43,7 @@ jobs:
     - run: DISPLAY=1 SSH_ASKPASS='./passphrase_script.sh' ssh-add ./private_key < /dev/null
 
     - name: Copy files to host
-      run: rsync -avz -e 'ssh -o StrictHostKeyChecking=accept-new -p ${{ secrets.PORT_REVIEW }}' ./next ./node_modules ${{ secrets.USERNAME_REVIEW }}@${{ secrets.HOST_REVIEW }}:${{ secrets.REMOTE_PATH }}/coupcritique-front/.next
+      run: rsync -avz -e 'ssh -o StrictHostKeyChecking=accept-new -p ${{ secrets.PORT_REVIEW }}' ./.next ./node_modules ${{ secrets.USERNAME_REVIEW }}@${{ secrets.HOST_REVIEW }}:${{ secrets.REMOTE_PATH }}/coupcritique-front/.next
 
     - name: Restart PM2
       run: >
