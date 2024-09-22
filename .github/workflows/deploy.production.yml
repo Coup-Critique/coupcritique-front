@@ -34,7 +34,7 @@ jobs:
         ssh -p ${{ secrets.PORT }} ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no
         "cd ${{ secrets.REMOTE_PATH }}/coupcritique-front-build && 
         git pull https://Coup-Critique:${{ secrets.GITHUB_TOKEN }}@github.com/Coup-Critique/coupcritique-front.git main &&
-        npm run build"
+        npm ci && npm run build"
 
     - name: Override actual build directory
       run: >
