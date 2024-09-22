@@ -12,10 +12,32 @@ jobs:
   deploy-review:
     name: Deploying to review environment
     runs-on: ubuntu-latest
+    env: 
+      NEXT_PUBLIC_API_URL: ${{ secrets.REVIEW_API_URL }}
     steps:
     - uses: actions/checkout@master
       with:
             ref: ${{ github.ref }}
+
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+            node-version: '20.x'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build website
+      run: npm run build && rm -r node_modules
+
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_KEY }}
+        known_hosts: 'unnecessary'
+
+    - name: Adding host to known hosts
+      run: ssh-keyscan -H ${{ secrets.HOST_REVIEW }} >> ~/.ssh/known_hosts
 
     - name: 'Create private key file'
       run: echo "${{ secrets.PRIVATE_KEY_REVIEW }}" > ./private_key && chmod 600 ./private_key
@@ -29,13 +51,9 @@ jobs:
     - run: ssh-agent -a $SSH_AUTH_SOCK > /dev/null
     - run: DISPLAY=1 SSH_ASKPASS='./passphrase_script.sh' ssh-add ./private_key < /dev/null
 
-    - name: Executing git pull to remote
-      run: >
-        ssh -p ${{ secrets.PORT_REVIEW }} ${{ secrets.USERNAME_REVIEW }}@${{ secrets.HOST_REVIEW }} -o StrictHostKeyChecking=no
-        "cd ${{ secrets.REMOTE_PATH }}/coupcritique-front && 
-        git pull https://Coup-Critique:${{ secrets.GITHUB_TOKEN }}@github.com/Coup-Critique/coupcritique-front.git main"
+    - run: rsync -avz . ${{ secrets.USERNAME_REVIEW }}@${{ secrets.HOST_REVIEW }}:${{ secrets.REMOTE_PATH }}/coupcritique-front
 
-    - name: Execute deployment tasks
+    - name: Restart PM2
       run: >
         ssh -p ${{ secrets.PORT_REVIEW }} ${{ secrets.USERNAME_REVIEW }}@${{ secrets.HOST_REVIEW }} -o StrictHostKeyChecking=no
-        "cd ${{ secrets.REMOTE_PATH }}/coupcritique-front && npm ci && npm run build && pm2 restart next"
+        "cd ${{ secrets.REMOTE_PATH }}/coupcritique-front && pm2 reload all"
