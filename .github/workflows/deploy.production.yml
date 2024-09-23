@@ -29,13 +29,14 @@ jobs:
     - run: ssh-agent -a $SSH_AUTH_SOCK > /dev/null
     - run: DISPLAY=1 SSH_ASKPASS='./passphrase_script.sh' ssh-add ./private_key < /dev/null
 
-    - name: Executing git pull to remote
+    - name: Executing git pull to remote build directory and run build command
       run: >
         ssh -p ${{ secrets.PORT }} ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no
-        "cd ${{ secrets.REMOTE_PATH_REVIEW }}/ && 
-        git pull https://Coup-Critique:${{ secrets.GITHUB_TOKEN }}@github.com/Coup-Critique/coupcritique-front.git main"
+        "cd ${{ secrets.REMOTE_PATH }}/coupcritique-front-build && 
+        git pull https://Coup-Critique:${{ secrets.GITHUB_TOKEN }}@github.com/Coup-Critique/coupcritique-front.git main &&
+        npm ci && npm run build"
 
-    - name: Execute deployment tasks
+    - name: Override actual build directory
       run: >
         ssh -p ${{ secrets.PORT }} ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no
-        "cd ${{ secrets.REMOTE_PATH }}/ && npm run build && pm2 restart next"
+        "cd ${{ secrets.REMOTE_PATH }}/coupcritique-front && cp -r ${{ secrets.REMOTE_PATH }}/coupcritique-front-build/.next . && pm2 restart next"
