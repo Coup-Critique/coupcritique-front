@@ -23,7 +23,7 @@ export const badgeIsWinner = {
 };
 
 export const badgeIsCertified = {
-	name: 'certified',
+	name: 'check',
 	color: 'green',
 	title: 'a posté une équipe certifiée',
 };
@@ -35,9 +35,9 @@ export const badgeIsWeeker = {
 };
 
 export const badgeIsTiper = {
-	name: 'heart',
+	name: 'gratipay',
 	color: 'red',
-	title: 'donnateur',
+	title: 'contributeur',
 };
 
 export const badgeIsSubscriber = {

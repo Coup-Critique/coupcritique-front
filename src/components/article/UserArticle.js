@@ -106,24 +106,24 @@ const UserArticle = props => {
 							)
 						)}
 						<p>
-							Badges&nbsp;{''}
+							Badges&nbsp;:{''}
 							{user.is_content_creator && (
-								<>
+								<span className="d-inline-block mr-1">
 									<Icon {...badgeIsContentCreator} />{' '}
 									{capitalize(badgeIsContentCreator.title)}
-								</>
+								</span>
 							)}{' '}
 							{user.is_winner && (
-								<>
+								<span className="d-inline-block mr-1">
 									<Icon {...badgeIsWinner} />{' '}
 									{capitalize(badgeIsWinner.title)}
-								</>
+								</span>
 							)}{' '}
 							{user.is_weeker && (
-								<>
+								<span className="d-inline-block mr-1">
 									<Icon {...badgeIsWeeker} />{' '}
 									{capitalize(badgeIsWeeker.title)}
-								</>
+								</span>
 							)}{' '}
 							{user.is_certified && (
 								<>
@@ -132,23 +132,18 @@ const UserArticle = props => {
 								</>
 							)}{' '}
 							{user.is_tiper && (
-								<>
+								<span className="d-inline-block mr-1">
 									<Icon {...badgeIsTiper} />{' '}
 									{capitalize(badgeIsTiper.title)}
-								</>
+								</span>
 							)}{' '}
 							{/* {user.is_subscriber && (
-								<>
+								<span className="d-inline-block mr-1">
 									<Icon {...badgeIsSubscriber} />{' '}
 									{capitalize(badgeIsSubscriber.title)}
-								</>
+								</span>
 							)}{' '} */}
 						</p>
-						{!!user.is_tiper && (
-							<p>
-								<Icon name="gratipay" color="red" /> Contributeur
-							</p>
-						)}
 						{ownUser.is_modo && (
 							<>
 								{!user.is_modo && (
