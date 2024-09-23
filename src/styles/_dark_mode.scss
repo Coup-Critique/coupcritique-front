@@ -1140,3 +1140,29 @@
 		box-shadow: 1px -1px 0 0 black;
 	}
 }
+
+
+.ui.popup.popup-badge.inverted {
+	background-color: $dark-body;
+	border-color: $dark-body;
+
+	&:before {
+		background-color: $dark-body !important;
+	}
+
+	&.top:before {
+		box-shadow: -1px 1px 0 0 $dark-body;
+	}
+
+	&.right:before {
+		box-shadow: 1px 1px 0 0 $dark-body;
+	}
+
+	&.bottom:before {
+		box-shadow: -1px -1px 0 0 $dark-body;
+	}
+
+	&.left:before {
+		box-shadow: 1px -1px 0 0 $dark-body;
+	}
+}
