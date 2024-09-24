@@ -13,7 +13,6 @@ import UserTiperButton from '@/components/actions/UserTiperButton';
 import useStateProps from '@/hooks/useStateProps';
 import TableTourRanking from '../table/TableTourRanking';
 import {
-	badgeIsAdmin,
 	badgeIsCertified,
 	badgeIsContentCreator,
 	badgeIsModo,
@@ -23,6 +22,7 @@ import {
 } from '@/constants/badges';
 import { capitalize } from '@/functions';
 import { useState } from 'react';
+import Badge from '../elements/Badge';
 // import Image from 'next/image';
 
 const defaultValue = {};
@@ -65,7 +65,7 @@ const UserArticle = props => {
 		>
 			<div className="row">
 				{/* <div className="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 mb-4"> */}
-				<div className="col-12 col-sm-6 col-md-5 col-lg-l-3 mb-4">
+				<div className="col-12 col-sm-6 col-md-5 col-lg-3 mb-4">
 					{user.picture ? (
 						// eslint-disable-next-line jsx-a11y/img-redundant-alt
 						<img
@@ -83,71 +83,24 @@ const UserArticle = props => {
 					)}
 				</div>
 				{/* <div className="col-12 col-sm-6 col-md-7 col-lg-8 col-xl-9 mb-4"> */}
-				<div className="col-12 col-sm-6 col-md-7 col-lg-4 mb-4">
-					<h2>{user.username}</h2>
+				<div className="col-12 col-sm-6 col-md-7 col-lg-9 mb-4">
+					<h2>
+						{user.username} {user.is_modo && <Badge badge={badgeIsModo} size="small"/>}
+						{user.is_content_creator && (
+							<Badge badge={badgeIsContentCreator} size="small"/>
+						)}
+						{user.is_winner && <Badge badge={badgeIsWinner} size="small"/>}
+						{user.is_weeker && <Badge badge={badgeIsWeeker} size="small"/>}
+						{user.is_certified && <Badge badge={badgeIsCertified} size="small"/>}
+						{user.is_tiper && <Badge badge={badgeIsTiper} size="small"/>}
+						{/* {user.is_subscriber && <Badge badge={badgeIsSubscriber} size="small"/>} */}
+					</h2>
 					<div className="user-info">
 						<p>Membre depuis&nbsp;: {user_date}</p>
 						<p>Nombre de commentaires&nbsp;: {props.nbComments}</p>
 						{!!user.discord_name && <p>Discord&nbsp;: {user.discord_name}</p>}
 						{!!user.showdown_name && (
 							<p>Showdown&nbsp;: {user.showdown_name}</p>
-						)}
-						{user.is_admin ? (
-							<p>
-								Rôle&nbsp;: <Icon {...badgeIsAdmin} />{' '}
-								{capitalize(badgeIsAdmin.title)}
-							</p>
-						) : (
-							user.is_modo && (
-								<p>
-									Rôle&nbsp;: <Icon {...badgeIsModo} />{' '}
-									{capitalize(badgeIsModo.title)}
-								</p>
-							)
-						)}
-						<p>
-							Badges&nbsp;{''}
-							{user.is_content_creator && (
-								<>
-									<Icon {...badgeIsContentCreator} />{' '}
-									{capitalize(badgeIsContentCreator.title)}
-								</>
-							)}{' '}
-							{user.is_winner && (
-								<>
-									<Icon {...badgeIsWinner} />{' '}
-									{capitalize(badgeIsWinner.title)}
-								</>
-							)}{' '}
-							{user.is_weeker && (
-								<>
-									<Icon {...badgeIsWeeker} />{' '}
-									{capitalize(badgeIsWeeker.title)}
-								</>
-							)}{' '}
-							{user.is_certified && (
-								<>
-									<Icon {...badgeIsCertified} />{' '}
-									{capitalize(badgeIsCertified.title)}
-								</>
-							)}{' '}
-							{user.is_tiper && (
-								<>
-									<Icon {...badgeIsTiper} />{' '}
-									{capitalize(badgeIsTiper.title)}
-								</>
-							)}{' '}
-							{/* {user.is_subscriber && (
-								<>
-									<Icon {...badgeIsSubscriber} />{' '}
-									{capitalize(badgeIsSubscriber.title)}
-								</>
-							)}{' '} */}
-						</p>
-						{!!user.is_tiper && (
-							<p>
-								<Icon name="gratipay" color="red" /> Contributeur
-							</p>
 						)}
 						{ownUser.is_modo && (
 							<>

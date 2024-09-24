@@ -98,9 +98,9 @@ const Profile = ({
 };
 
 export const getBadge = user => {
-	if (user.is_admin) {
-		return badgeIsAdmin;
-	}
+	// if (user.is_admin) {
+	// 	return badgeIsAdmin;
+	// }
 	if (user.is_content_creator) {
 		return badgeIsContentCreator;
 	}

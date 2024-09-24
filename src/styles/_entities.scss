@@ -303,6 +303,15 @@ th.table-team-instance {
 	}
 }
 
+i.icon.trophy.yellow {
+	color: $gold !important;
+
+	&.circular {
+		color: white !important;
+		background-color: $gold !important;
+	}
+}
+
 .profile {
 	vertical-align: middle;
 	position: relative;
@@ -370,7 +379,7 @@ th.table-team-instance {
 			box-shadow: 0 0 0 3px $pink;
 		}
 
-		&.gold {
+		&.yellow {
 			box-shadow: 0 0 0 3px $gold;
 		}
 
@@ -454,7 +463,7 @@ th.table-team-instance {
 			background-color: $pink;
 		}
 
-		&.gold {
+		&.yellow {
 			color: white !important;
 			background-color: $gold;
 		}
