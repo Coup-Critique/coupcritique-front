@@ -84,7 +84,7 @@ const TeamFormPage = props => {
 			nofollow={update}
 			className="form-propose-team-page"
 			goingBack={defaultGoBack}
-			goBackCallback={goBack}
+			goBack={goBack}
 		>
 			{!update && (
 				<p className="description framed">
