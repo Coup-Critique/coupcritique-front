@@ -13,6 +13,7 @@ import { setTiers as setTiersAction } from '@/reducers/tiers';
 import FormSearch from '@/components/forms/FormSearch';
 import useTableFetch from '@/hooks/useTableFetch';
 import LoadingPage from '@/pages/loading';
+import useHash from '@/hooks/useHash';
 
 const AdminTeams = () => {
 	const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const AdminTeams = () => {
 	const tiers = useSelector(state => state.tiers);
 	const filterRef = useRef();
 	const searchRef = useRef();
+	const [hash, removeHash] = useHash();
 
 	const [resultTiers, loadTiers, loadingTiers] = useFetch();
 	const [setTiers] = useActions(dispatch, [setTiersAction]);
@@ -42,6 +44,13 @@ const AdminTeams = () => {
 
 	const [checkedTier, setCheckedTier] = useState(query.tier);
 	const [checkedGen, setCheckedGen] = useState(query.gen);
+	
+	useEffect(() => {
+		if (hash && table.length > 0) {
+			document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+			removeHash();
+		}
+	}, [table]);
 
 	useEffect(() => {
 		if (!Object.keys(tiers).length) {
