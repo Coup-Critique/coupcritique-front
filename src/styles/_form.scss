@@ -339,12 +339,16 @@ textarea {
 }
 
 .instance-field {
-	margin-bottom: 2em;
+	// margin-bottom: 2em;
 	background-color: $light-grey;
 	padding: 1.875rem;
+	display: flex;
+	flex-direction: column;
+	border-radius: $border-radius;
 
 	.pokemon-instance {
 		padding: 0;
+		margin-bottom: 1rem;
 
 		a {
 			pointer-events: none;
