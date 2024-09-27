@@ -61,7 +61,7 @@ const AdminUsers = () => {
 			<div id="pagination-scroll-ref">
 				{loading ? (
 					<Loader active={loading} inline="centered" />
-				) : (
+				) : table.length > 0 ? (
 					<TableUser
 						users={table}
 						setUsers={setTable}
@@ -71,6 +71,8 @@ const AdminUsers = () => {
 						updateQuery={updateQuery}
 						setQueryParam={setQueryParam}
 					/>
+				) : (
+					<p>Aucun utilisateur trouvé.</p>
 				)}
 			</div>
 		</PageWrapper>
