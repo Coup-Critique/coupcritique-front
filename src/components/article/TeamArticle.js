@@ -108,11 +108,11 @@ const TeamArticle = props => {
 				</div>
 			</div>
 			<p className="description framed">{team.description}</p>
-			<div className="row">
+			<div className="team-instance-grid">
 				{INSTANCES_KEYS.map(
 					// prettier-ignore
 					key => !!team[key] && (
-						<div key={key} className='col-12 col-sm-6 col-xl-12 vertically-centered'>
+						<div key={key} className='vertically-centered'>
 							<PokemonInstance instance={team[key]} gen={team.gen} tier={team.tier}/>
 						</div>
 					)

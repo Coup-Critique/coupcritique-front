@@ -255,7 +255,7 @@ th.table-team-instance {
 .pokemon-instance {
 	background-color: $light-grey;
 	padding: 0.9375rem;
-	margin-bottom: 2em;
+	// margin-bottom: 2em;
 	overflow: auto;
 	border-radius: $border-radius;
 
@@ -290,7 +290,7 @@ th.table-team-instance {
 }
 
 .pokemon-instance-teaser {
-	margin-bottom: 2em;
+	margin-bottom: 1em;
 	display: flex;
 	flex-direction: column;
 
@@ -868,6 +868,32 @@ i.icon.trophy.yellow {
 	}
 }
 
+.team-instance-grid {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: 1em;
+}
+
+@media (min-width: $s) and (max-width: $xl - 1px) {
+	.team-instance-grid {
+		grid-template-columns: repeat(2, 1fr);
+		width: 100vw;
+		padding: 0 1.5em;
+		position: relative;
+		left: calc(-50vw + 50% - 0.25em);
+	}
+}
+
+@media (min-width: 1900px) {
+	.team-instance-grid {
+		grid-template-columns: repeat(2, 1fr);
+		width: 100vw;
+		padding: 0 1.5em;
+		position: relative;
+		left: calc(-50vw + 50% - 0.25em);
+	}
+}
+
 .article.type .pagination-wrapper {
 	padding-top: 0;
 }
@@ -1285,13 +1311,13 @@ a.date:focus {
 		width: 12.25em;
 	}
 
-	.col-sm-6 .pokemon-instance table.table.table-inst-stat .progress {
+	.team-instance-grid .pokemon-instance table.table.table-inst-stat .progress {
 		width: 6.25em;
 	}
 }
 
 @media (min-width: $s) and (max-width: $m - 1px) {
-	.col-sm-6 .pokemon-instance table.table.table-inst-stat .progress {
+	.team-instance-grid .pokemon-instance table.table.table-inst-stat .progress {
 		display: none;
 	}
 }
