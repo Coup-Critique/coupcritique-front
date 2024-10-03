@@ -6,24 +6,24 @@ export const badgeIsAdmin = {
 
 export const badgeIsModo = {
 	name: 'gem',
-	color: 'violet',
+	color: 'purple',
 	title: 'modérateur',
 };
 
 export const badgeIsContentCreator = {
 	name: 'video camera',
-	color: 'purple',
+	color: 'red',
 	title: 'créateur de contenu',
 };
 
 export const badgeIsWinner = {
 	name: 'trophy',
-	color: 'gold',
+	color: 'yellow',
 	title: 'vainqueur de tournois',
 };
 
 export const badgeIsCertified = {
-	name: 'certified',
+	name: 'check',
 	color: 'green',
 	title: 'a posté une équipe certifiée',
 };
@@ -37,7 +37,7 @@ export const badgeIsWeeker = {
 export const badgeIsTiper = {
 	name: 'heart',
 	color: 'red',
-	title: 'donnateur',
+	title: 'contributeur',
 };
 
 export const badgeIsSubscriber = {

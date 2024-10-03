@@ -335,23 +335,27 @@ const FormTeam = ({ tiers = {}, tags = [], loadingTiers = false, defaultValue })
 				required
 				disabled={!!defaultValue && defaultValue.certified}
 			/>
+
 			{message.export &&
 				Array.isArray(message.export) &&
 				message.export.map((e, i) => <Message key={i} error content={e} />)}
-			{
-				// prettier-ignore
-				exportChecked && INSTANCES_KEYS.map( key => !!team[key] && (
-					<InstanceField
-						key={key}
-						instance={team[key]}
-						tier={tier}
-						onChange={(e, input) => handleChangeObject(e, input, key)}
-						gen={team.gen}
-						required
-						message={message[key]}
-					/>
-				))
-			}
+
+			<div className="team-instance-grid">
+				{
+					// prettier-ignore
+					exportChecked && INSTANCES_KEYS.map( key => !!team[key] && (
+						<InstanceField
+							key={key}
+							instance={team[key]}
+							tier={tier}
+							onChange={(e, input) => handleChangeObject(e, input, key)}
+							gen={team.gen}
+							required
+							message={message[key]}
+						/>
+					))
+				}
+			</div>
 			<Message success content={message.form} />
 			<Message error content={message.form} />
 			<div className="text-center">
