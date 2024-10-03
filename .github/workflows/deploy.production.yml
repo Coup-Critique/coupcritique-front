@@ -39,4 +39,5 @@ jobs:
     - name: Override actual build directory
       run: >
         ssh -p ${{ secrets.PORT }} ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no
-        "cd ${{ secrets.REMOTE_PATH }}/coupcritique-front && cp -r ${{ secrets.REMOTE_PATH }}/coupcritique-front-build/.next . && pm2 restart next"
+        "cd ${{ secrets.REMOTE_PATH }}/coupcritique-front && git pull https://Coup-Critique:${{ secrets.GITHUB_TOKEN }}@github.com/Coup-Critique/coupcritique-front.git main && 
+         cp -r ${{ secrets.REMOTE_PATH }}/coupcritique-front-build/.next . && pm2 restart next"
