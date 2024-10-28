@@ -30,8 +30,14 @@ export default function App({ Component, pageProps }) {
 
 	// loading on page change
 	useEffect(() => {
-		const start = () => setLoading(true);
-		const end = () => setLoading(false);
+		const start = () => {
+			console.log('loading page start');
+			setLoading(true);
+		};
+		const end = () => {
+			console.log('loading page end');
+			setLoading(false);
+		};
 		Router.events.on('routeChangeStart', start);
 		Router.events.on('routeChangeComplete', end);
 		Router.events.on('routeChangeError', end);
