@@ -1,11 +1,9 @@
 import { memo } from 'react';
-import { useSelector } from 'react-redux';
 import { makeClassName } from '@/functions';
 import useDoubleAdds from '@/hooks/useDoubleAdds';
 
 const SectionAdsHome = () => {
-	const { googleAds } = useSelector(state => state.cookie);
-	const { ref1, ref2, display1, display2 } = useDoubleAdds();
+	const { googleAds, ref1, ref2, display1, display2 } = useDoubleAdds();
 
 	if (!googleAds) return null;
 	return (

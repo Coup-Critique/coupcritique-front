@@ -4,8 +4,7 @@ import useDoubleAdds from '@/hooks/useDoubleAdds';
 
 const SectionAds = () => {
 	const darkMode = useSelector(state => state.darkMode);
-	const { googleAds } = useSelector(state => state.cookie);
-	const { ref1, ref2, display1, display2 } = useDoubleAdds(darkMode);
+	const { googleAds, ref1, ref2, display1, display2 } = useDoubleAdds(darkMode);
 
 	if (!googleAds) return null;
 	return (
@@ -56,4 +55,4 @@ const WhiteAdSense = ({ adRef, display }) => (
 	></ins>
 );
 
-export default memo(SectionAds, () => true);
+export default SectionAds;

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import useCookies from './useCookies';
 
 const LATENCE = 3000;
 const initAd = () => {
@@ -10,8 +10,9 @@ const initAd = () => {
 	window.adsbygoogle.push({});
 	window.adsbygoogle.push({});
 };
-const useDoubleAdds = recharger => {
-	const { googleAds } = useSelector(state => state.cookie);
+
+const useDoubleAdds = reload => {
+	const { googleAds } = useCookies();
 	const ref1 = useRef();
 	const ref2 = useRef();
 	const [display1, setDisplay1] = useState(true);
@@ -32,7 +33,7 @@ const useDoubleAdds = recharger => {
 				console.error(e);
 			}
 		}
-	}, [googleAds, recharger]);
+	}, [googleAds, reload]);
 
 	const checkDisplay2 = () => {
 		if (ref2.current && !ref2.current.hasChildNodes()) {
@@ -48,9 +49,9 @@ const useDoubleAdds = recharger => {
 				console.error(e);
 			}
 		}
-	}, [googleAds, recharger]);
+	}, [googleAds, reload]);
 
-	return { ref1, ref2, display1, display2 };
+	return { googleAds, ref1, ref2, display1, display2 };
 };
 
 export default useDoubleAdds;
