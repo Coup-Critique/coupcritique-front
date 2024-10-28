@@ -32,7 +32,7 @@ jobs:
     - name: Executing git pull to remote
       run: >
         ssh -p ${{ secrets.PORT_REVIEW }} ${{ secrets.USERNAME_REVIEW }}@${{ secrets.HOST_REVIEW }} -o StrictHostKeyChecking=no
-        "cd ${{ secrets.REMOTE_PATH }}/coupcritique-front && 
+        "cd ${{ secrets.REMOTE_PATH }}/coupcritique-front-test && 
         git pull https://Coup-Critique:${{ secrets.GITHUB_TOKEN }}@github.com/Coup-Critique/coupcritique-front.git main"
 
     - name: Execute deployment tasks
