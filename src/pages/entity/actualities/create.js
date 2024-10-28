@@ -6,24 +6,35 @@ import { Button, Loader } from 'semantic-ui-react';
 // components
 import FormArticle from '@/components/forms/FormArticle';
 import PageWrapper from '@/components/PageWrapper';
-import { manageFetch } from '@/hooks/useFetch';
+import useFetch, { manageFetch } from '@/hooks/useFetch';
 import { setActualityTags } from '@/reducers/actuality_tags';
 import LoadingPage from '@/pages/loading';
 import useActions from '@/hooks/useActions';
 
-const ActualityFormPage = ({ actuality, tags, update = false }) => {
+const defaultObject = {};
+
+const ActualityFormPage = ({ actuality = defaultObject, tags, update = false }) => {
 	const dispatch = useDispatch();
 	const router = useRouter();
 	const reinitiRef = useRef();
 	const user = useSelector(state => state.user);
 	const actuality_tags = useSelector(state => state.actuality_tags || tags);
 	const [setTags] = useActions(dispatch, [setActualityTags]);
+	const [resultTags, loadTags, loadingTags] = useFetch();
 
 	useEffect(() => {
 		if (tags?.length) {
 			setTags(tags);
+		} else {
+			loadTags({ url: 'actuality_tags' });
 		}
-	}, []);
+	}, [actuality.id]);
+
+	useEffect(() => {
+		if (resultTags && resultTags.success) {
+			dispatch(setTags(resultTags.tags));
+		}
+	}, [resultTags]);
 
 	const defaultGoBack = update
 		? `/entity/actualities/${actuality.id}`

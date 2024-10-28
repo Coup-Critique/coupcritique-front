@@ -5,12 +5,25 @@ import { makeClassName } from '@/functions';
 // import Image from 'next/image';
 
 const Certification = ({ team = {}, userId, className, big = false }) => {
+	if (team.top_week) {
+		return (
+			<img
+				className={makeClassName('picto certification', className)}
+				src={`/images/picto/top-week.svg`}
+				alt="top week"
+				title="Est ou a été l'équipe de la semaine"
+				width="25"
+				height="25"
+			/>
+		);
+	}
 	if (team.banned && team.certified) {
 		return (
 			<img
 				className={makeClassName('picto certification', className)}
 				src={`/images/picto/certified-red.svg`}
-				alt="certifiée et bannie"
+				alt="certifiée puis bannie"
+				title="Équipe certifiée puis bannie"
 				width="25"
 				height="25"
 			/>
@@ -18,7 +31,12 @@ const Certification = ({ team = {}, userId, className, big = false }) => {
 	}
 	if (team.banned) {
 		return (
-			<Icon color="red" name="ban" title="bannie" size={big ? 'big' : 'large'} />
+			<Icon
+				color="red"
+				name="ban"
+				title="Équipe bannie"
+				size={big ? 'big' : 'large'}
+			/>
 		);
 	}
 	if (team.certified) {
@@ -27,6 +45,7 @@ const Certification = ({ team = {}, userId, className, big = false }) => {
 				className={makeClassName('picto certification', className)}
 				src={`/images/picto/certified.svg`}
 				alt="certifiée"
+				title="Équipe certifiée"
 				width="25"
 				height="25"
 			/>

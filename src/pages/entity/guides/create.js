@@ -39,7 +39,7 @@ const GuideFormPage = props => {
 			if (props.tags) {
 				dispatch(setTags(props.tags));
 			} else {
-				loadTags({ url: 'tags' });
+				loadTags({ url: 'guide_tags' });
 			}
 		}
 	}, [guide.id]);

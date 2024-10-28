@@ -79,9 +79,12 @@ const FormArticle = ({
 		if (type === 'number') value = Number(value);
 		setForm(form => ({ ...form, [name]: value }));
 	};
+	
 	const handleChangeEditor = value =>
 		setForm(form => ({ ...form, description: value }));
+	
 	const handleImages = (name, value) => setImages(value);
+
 	const handleChangeTags = (name, tags) => setForm(form => ({ ...form, tags }));
 
 	const handleRemoveImage = i => {
