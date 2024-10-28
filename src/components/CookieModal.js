@@ -1,61 +1,61 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import { makeClassName } from '@/functions';
 import { getCookie, setCookie } from '@/functions/cookie';
-import useActions from '@/hooks/useActions';
-import { setCookieAction } from '@/reducers/cookie';
+import useCookies, { googleAdsCookieKey, youtubeCookieKey } from '@/hooks/useCookies';
 
 const CookieModal = () => {
-	const dispatch = useDispatch();
-	const [storeCookie] = useActions(dispatch, [setCookieAction]);
-	const cookie = useSelector(state => state.cookie);
+	const { youtube, googleAds, storeCookie } = useCookies();
 	const [open, setOpen] = useState(false);
 	const [openBand, setOpenBand] = useState(false);
-	const [checkedYtb, setCheckedYtb] = useState(cookie.youtube);
-	const [checkedGAds, setCheckedGAds] = useState(cookie.googleAds);
+	const [checkedYtb, setCheckedYtb] = useState(youtube);
+	const [checkedGAds, setCheckedGAds] = useState(googleAds);
 
 	const handleOpen = e => setOpen(true);
 	const handleClose = e => setOpen(false);
 
-	const acceptAll = e => {
-		setOpen(false);
+	const closeBand = () => {
+		if (open) {
+			setOpen(false);
+		}
 		setOpenBand(false);
-		setCookie('accept-youtube-cookie', 'true');
-		setCookie('accept-google-ads-cookie', 'true');
-		storeCookie({ youtube: true });
-		storeCookie({ youtube: true, googleAds: true });
+	};
+
+	const acceptAll = e => {
+		closeBand();
+		setCookie(youtubeCookieKey, 'true'); // string
+		setCookie(googleAdsCookieKey, 'true'); // string
+		storeCookie('youtube', true);
+		storeCookie('googleAds', true);
 	};
 
 	const rejectAll = e => {
-		setOpen(false);
-		setOpenBand(false);
-		setCookie('accept-youtube-cookie', 'false');
-		setCookie('accept-google-ads-cookie', 'false');
-		storeCookie({ youtube: false });
-		storeCookie({ youtube: false, googleAds: false });
+		closeBand();
+		setCookie(youtubeCookieKey, 'false'); // string
+		setCookie(googleAdsCookieKey, 'false'); // string
+		storeCookie('youtube', false);
+		storeCookie('googleAds', false);
 	};
 
 	const acceptSome = e => {
-		setOpen(false);
-		setOpenBand(false);
-		setCookie('accept-youtube-cookie', `${checkedYtb}`);
-		setCookie('accept-google-ads-cookie', `${checkedGAds}`);
-		storeCookie({ youtube: checkedYtb });
-		storeCookie({ youtube: checkedYtb, googleAds: checkedGAds });
+		closeBand();
+		setCookie(youtubeCookieKey, `${checkedYtb}`); // boolean toString
+		setCookie(googleAdsCookieKey, `${checkedGAds}`); // boolean toString
+		storeCookie('youtube', checkedYtb);
+		storeCookie('googleAds', checkedGAds);
 	};
 
 	const handleChangeYtb = e => setCheckedYtb(!checkedYtb);
 	const handleChangeGAds = e => setCheckedGAds(!checkedGAds);
 
 	useEffect(() => {
-		const youtube = getCookie('accept-youtube-cookie');
-		const googleAds = getCookie('accept-google-ads-cookie');
-		setCheckedYtb(youtube);
-		setCheckedGAds(googleAds);
-		storeCookie({ youtube });
-		storeCookie({ youtube, googleAds });
-		if (youtube === undefined || googleAds === undefined) {
+		// here to avoid reopen band while page change is loading and store is being reinitialized
+		const youtubeValue = getCookie(youtubeCookieKey);
+		const googleAdsValue = getCookie(googleAdsCookieKey);
+
+		setCheckedYtb(youtubeValue);
+		setCheckedGAds(googleAdsValue);
+		if (youtubeValue === undefined || googleAdsValue === undefined) {
 			setOpenBand(true);
 		}
 	}, []);

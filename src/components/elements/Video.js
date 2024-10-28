@@ -25,7 +25,7 @@ const Video = ({
 	displayForm,
 	loadUrl = 'videos',
 }) => {
-	const cookie = useSelector(state => state.cookie);
+	const cookie = useSelector(state => state.cookie); // place useCookies(); at the page.js
 	const [isUpdate, setIsUpdate] = useState(false);
 	const [resultDelete, loadDelete, loadingDelete] = useFetch();
 

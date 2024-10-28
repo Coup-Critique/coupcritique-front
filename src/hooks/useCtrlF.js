@@ -13,7 +13,8 @@ const useCtrlF = () => {
 	};
 
 	useEffect(() => {
-		if (RegExp('actualities|guides|circuit|resouces').test(pathname)) {
+		// exclusions de certains groupes de pages et précisément de la page /teams grâce au $ = fin de string
+		if (RegExp('actualities|guides|circuit|resouces|admin|teams$').test(pathname)) {
 			document.removeEventListener('keydown', handleKeyDown);
 		} else {
 			document.addEventListener('keydown', handleKeyDown);

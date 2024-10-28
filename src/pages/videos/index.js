@@ -11,6 +11,7 @@ import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSel
 import { objectToGETparams } from '@/functions';
 import SectionAds from '@/components/sections/SectionAds';
 import dynamic from 'next/dynamic';
+import useCookies from '@/hooks/useCookies';
 
 const FormVideo = dynamic(() => import('@/components/forms/FormVideo'), {
 	loading: () => <Loader active inline="centered" />,
@@ -26,6 +27,7 @@ const VideoList = props => {
 	const [checkedTags, setCheckedTags] = useState();
 	const [table, page, nbPages, handlePage] = usePager(10, videos);
 	const [displayForm, setDisplayForm] = useState(false);
+	useCookies();
 
 	useEffect(() => {
 		if (checkedTags || selectedAuthor) {
