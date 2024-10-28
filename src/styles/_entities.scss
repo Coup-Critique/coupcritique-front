@@ -872,6 +872,7 @@ i.icon.trophy.yellow {
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);
 	gap: 1em;
+	margin-bottom: 1em;
 }
 
 @media (min-width: $s) and (max-width: $xl - 1px) {
