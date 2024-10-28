@@ -21,7 +21,6 @@ const FormVideo = ({
 }) => {
 	const dispatch = useDispatch();
 	const [form, setForm] = useState(video);
-	const [selectedTags, setSelectedTags] = useState(video.tags || defaultArray);
 	const [success, setSuccess] = useState(true);
 	const [message, setMessage] = useState('');
 	const [result, load, loading] = useFetch();
@@ -41,7 +40,7 @@ const FormVideo = ({
 	const handleChange = (e, { name, value }) =>
 		setForm(form => ({ ...form, [name]: value }));
 
-	const handleChangeTags = (name, tags) => setSelectedTags(tags);
+	const handleChangeTags = (name, tags) => setForm(form => ({ ...form, tags }));
 
 	const onSubmit = e => {
 		e.preventDefault();
@@ -54,7 +53,6 @@ const FormVideo = ({
 				method: video.id ? PUT : POST,
 				body: {
 					...form,
-					tags: selectedTags,
 					url,
 					youtube_id,
 				},
@@ -70,7 +68,7 @@ const FormVideo = ({
 
 	const getSelectedTags = () => {
 		return tags.map(tag => {
-			if (video.tags.findIndex(videoTag => videoTag.id === tag.id) > -1) {
+			if (form.tags.findIndex(videoTag => videoTag.id === tag.id) > -1) {
 				return { ...tag, selected: true };
 			}
 			return tag;
@@ -82,7 +80,7 @@ const FormVideo = ({
 			<Form.Input
 				name="url"
 				label="Url"
-				defaultValue={video.url}
+				defaultValue={form.url}
 				placeholder={"Entrez l'url de la video"}
 				onChange={handleChange}
 				required
@@ -90,7 +88,7 @@ const FormVideo = ({
 			<Form.Input
 				name="title"
 				label="Titre"
-				defaultValue={video.title}
+				defaultValue={form.title}
 				placeholder={'Entrez le titre de la video'}
 				onChange={handleChange}
 				maxLength="128"
@@ -99,7 +97,7 @@ const FormVideo = ({
 			<Form.Input
 				name="author"
 				label="Auteur"
-				defaultValue={video.author}
+				defaultValue={form.author}
 				placeholder={"Entrez l'auteur de la video"}
 				onChange={handleChange}
 				maxLength="128"
@@ -109,7 +107,7 @@ const FormVideo = ({
 				<TagsField
 					label="Catégories"
 					name="tags"
-					tags={video.tags ? getSelectedTags() : tags}
+					tags={form.tags ? getSelectedTags() : tags}
 					handleChange={handleChangeTags}
 				/>
 			)}
@@ -126,7 +124,7 @@ const FormVideo = ({
 				name="description"
 				label="Description"
 				rows="5"
-				defaultValue={video.description}
+				defaultValue={form.description}
 				placeholder={'Entrez une petite description de la video'}
 				onChange={handleChange}
 				maxLength="600"
