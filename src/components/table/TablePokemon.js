@@ -26,7 +26,6 @@ const TablePokemon = ({
 		query,
 		setQueryParam
 	);
-	// console.log(pokemons[0], table[0]);
 	const [handleSort, { key: sortedCol, orderDirection }] = useTableSorter({
 		table: pokemons,
 		handleTable: setPokemons,

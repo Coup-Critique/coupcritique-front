@@ -10,8 +10,10 @@ import ArticleTeaser from '@/components/teasers/ArticleTeaser';
 import Video from '@/components/elements/Video';
 import LinkButton from '@/components/buttons/LinkButton';
 import { redirect404 } from '@/pages/404';
+import useCookies from '@/hooks/useCookies';
 
 const CircuitTourPage = ({ circuitTour, circuitArticles, circuitVideos }) => {
+	useCookies(); // for videos
 	useNotifChecker('circuitTour', circuitTour.id);
 	return (
 		<CircuitTourContainer

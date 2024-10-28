@@ -14,9 +14,10 @@ import Player from '@/components/elements/Player';
 import { makeClassName } from '@/functions';
 import Image from 'next/image';
 import LinkButton from '@/components/buttons/LinkButton';
+import useCookies from '@/hooks/useCookies';
 
 const CircuitHome = props => {
-	const cookie = useSelector(state => state.cookie);
+	const { youtube } = useCookies();
 	return (
 		<PageWrapper
 			title="Rejoignez le Circuit Compétitif Coup Critique de 2024"
@@ -128,10 +129,7 @@ const CircuitHome = props => {
 							<h3>Trailer du Circuit</h3>
 							{/* <div className="row"> */}
 							{/* <div className="col-12 col-lg-6"> */}
-							<VideoEmbed
-								youtube_id="hDwO5bg64_8"
-								cookie={cookie.youtube}
-							/>
+							<VideoEmbed youtube_id="hDwO5bg64_8" cookie={youtube} />
 							{/* </div> */}
 							{/* </div> */}
 						</div>

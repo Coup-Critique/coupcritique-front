@@ -12,6 +12,7 @@ import DropdownMultipleSelectField from '@/components/fields/DropdownMultipleSel
 import { objectToGETparams } from '@/functions';
 import SectionAds from '@/components/sections/SectionAds';
 import { POST } from '@/constants/methods';
+import useCookies from '@/hooks/useCookies';
 
 const addtionalFields = [
 	{ name: 'tour', placeholder: 'Nom du tournoi', label: 'Tournoi du Circuit' },
@@ -26,6 +27,7 @@ const CircuitVideoList = props => {
 	const [checkedTags, setCheckedTags] = useState();
 	const [table, page, nbPages, handlePage] = usePager(10, videos);
 	const [displayForm, setDisplayForm] = useState(false);
+	useCookies();
 
 	useEffect(() => {
 		if (checkedTags || selectedAuthor) {
