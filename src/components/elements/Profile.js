@@ -107,11 +107,11 @@ export const getBadge = user => {
 	if (user.is_winner) {
 		return badgeIsContentCreator
 	}
-	if (user.is_weeker) {
-		return badgeIsWeeker;
-	}
 	if (user.is_modo) {
 		return badgeIsModo;
+	}
+	if (user.is_weeker) {
+		return badgeIsWeeker;
 	}
 	if (user.is_certified) {
 		return badgeIsCertified;
