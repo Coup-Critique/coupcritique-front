@@ -5,6 +5,7 @@ import { objectToGETparams } from '@/functions';
 import useStoreQuery from '@/hooks/useStoreQuery';
 import { ASC, DESC } from '@/components/table/Table';
 import useFetch from '@/hooks/useFetch';
+import usePrevious from './usePrevious';
 
 /**
  *
@@ -26,11 +27,16 @@ const useTableFetch = (entityName, parameters = {}, defaultValue, nbPagesGiven =
 		saveQueryToStore,
 		defaultQuery,
 	});
+	const [prevQuery] = usePrevious(query);
 
 	useEffect(() => {
+		// prettier-ignore
 		if (
-			loadUrl !== null &&
-			(!defaultValue || Object.keys(query).length > 1 || query.page > 1)
+			loadUrl !== null && (
+				!defaultValue
+				|| Object.keys(query).length > 1 
+				|| query.page != prevQuery.page
+			)
 		) {
 			handleLoad();
 		}
@@ -88,6 +94,7 @@ const useTableFetch = (entityName, parameters = {}, defaultValue, nbPagesGiven =
 		// if (scrollRef && window.scrollY > scrollRef.offsetTop) {
 		// 	scrollRef.scrollIntoView({ behavior: 'instant' });
 		// }
+
 		if (query) {
 			setQueryParam('page', activePage);
 		}
