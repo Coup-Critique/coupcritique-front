@@ -3,16 +3,16 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { Message, Form, Button } from 'semantic-ui-react';
 //
-import { useGetParam } from '@/hooks/useGetParams';
 import { PUT } from '@/constants/methods';
 import useFetch from '@/hooks/useFetch';
 import PageWrapper from '@/components/PageWrapper';
 import { addMessage } from '@/reducers/messages';
+import { redirect404 } from '../404';
+import { rmUndefined } from '@/functions';
 
-const ResetForgottenPassword = () => {
+const ResetForgottenPassword = ({ token }) => {
 	const dispatch = useDispatch();
 	const router = useRouter();
-	const token = useGetParam('token');
 	const [result, load] = useFetch();
 	const [success, setSuccess] = useState(true);
 	const [new_password, setNewPassword] = useState('');
@@ -108,5 +108,15 @@ const ResetForgottenPassword = () => {
 		</PageWrapper>
 	);
 };
+
+export async function getServerSideProps({ query }) {
+	const { token } = query;
+	try {
+		return { props: rmUndefined({ token }) };
+	} catch (e) {
+		console.error(e);
+		return redirect404;
+	}
+}
 
 export default ResetForgottenPassword;
