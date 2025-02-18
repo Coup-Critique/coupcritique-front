@@ -50,7 +50,7 @@ export const getStaticProps = async ({ params }) => {
 	const { id } = params;
 	try {
 		const response = await manageFetch(`pokemons/${id}`);
-		const { pokemon, usages, weaknesses, availableGens, inherit } = response;
+		const { pokemon, usages, weaknesses, availableGens, inherit, redirectedGen, redirectedId } = response;
 		const { tiers } = await manageFetch('tiers-select');
 		return {
 			props: rmUndefined({
@@ -62,6 +62,8 @@ export const getStaticProps = async ({ params }) => {
 				usages,
 				availableGens,
 				tiers,
+				redirectedGen,
+				redirectedId,
 			}),
 		};
 	} catch (e) {

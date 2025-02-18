@@ -2,7 +2,7 @@
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { Button, Loader, Menu, Popup } from 'semantic-ui-react';
+import { Button, Loader, Menu, Popup, Segment } from 'semantic-ui-react';
 // components
 import PageWrapper from '@/components/PageWrapper';
 import ArtPokemon from '@/components/elements/ArtPokemon';
@@ -45,7 +45,7 @@ const PokemonArticle = props => {
 	} = useTableFetch(
 		'teams', 
 		{ 
-			loadUrl: pokemon ? `teams/certified/pokemons/${mainPokemon.id}` : null,
+			loadUrl: pokemon ? `teams/certified/pokemons/${props.redirectedId || mainPokemon.id}` : null,
 			saveQueryToStore: false,
 		}
 	);
@@ -170,24 +170,35 @@ const PokemonArticle = props => {
 					<TableStat pokemon={pokemon} />
 				</div>
 			</div>
-			<Button
-				color="blue"
-				content="Voir les capacités du Pokémon"
-				aria-label={`Voir les capacités du Pokémon ${
-					pokemon.nom || pokemon.name
-				}`}
-				className="mb-4"
-				as={Link}
-				href={`/entity/moves/pokemon/${pokemon.id}`}
-				icon="search"
-			/>
-			<Description
-				json
-				entity={pokemon}
-				keyResult="pokemon"
-				putUrl={`pokemons/${pokemon.id}`}
-				handleUpdate={setPokemon}
-			/>
+			<div className="mb-3">
+				<Button
+					color="blue"
+					content="Voir les capacités du Pokémon"
+					aria-label={`Voir les capacités du Pokémon ${
+						pokemon.nom || pokemon.name
+					}`}
+					className="mb-4"
+					as={Link}
+					href={`/entity/moves/pokemon/${pokemon.id}`}
+					icon="search"
+				/>
+				<Description
+					json
+					entity={pokemon}
+					keyResult="pokemon"
+					putUrl={`pokemons/${pokemon.id}`}
+					handleUpdate={setPokemon}
+				/>
+			</div>
+			{!!props.redirectedGen && (
+				<Segment
+					inverted
+					size="large"
+					color="orange"
+					className="mb-4 font-weight-bold"
+					content={`Le Pokémon n'est pas disponible dans cette génération. Vous visualisez ici les statistiques d'utilisation de la dernière génération dans laquelle ce Pokémon était disponible : ${props.redirectedGen}G`}
+				/>
+			)}
 			<section>
 				<h2>Statistiques d'utilisation de {name}</h2>
 				<UsageStats usages={usages} />
@@ -198,6 +209,8 @@ const PokemonArticle = props => {
 					pokemon={mainPokemon}
 					pokemonSets={pokemonSets}
 					tiers={props.tiers}
+					redirectedId={props.redirectedId}
+					redirectedGen={props.redirectedGen}
 				/>
 			</section>
 			<SectionAds />
