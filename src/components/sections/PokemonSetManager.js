@@ -26,12 +26,12 @@ const PokemonSetManager = props => {
 
 	useEffect(() => {
 		if (!pokemonSets.length) {
-			load({ url: `pokemon_set/${pokemon.id}` });
+			load({ url: `pokemon_set/${props.redirectedId || pokemon.id}` });
 		}
 		if (!Object.keys(tiers).length && props.tiers) {
 			dispatch(setTiers(props.tiers));
 		}
-	}, [pokemon.id]);
+	}, [pokemon.id, props.redirectedId]);
 
 	useEffect(() => {
 		if (result?.success) {
@@ -70,6 +70,7 @@ const PokemonSetManager = props => {
 
 	const findTier = tierId =>
 		tiers[gen].find(tier => tier.id == tierId) ||
+		tiers[props.redirectedGen].find(tier => tier.id == tierId) ||
 		tiers[0].find(tier => tier.id == tierId);
 
 	const panes = useMemo(() => {
