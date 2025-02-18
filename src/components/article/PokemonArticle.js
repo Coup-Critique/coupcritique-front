@@ -170,14 +170,13 @@ const PokemonArticle = props => {
 					<TableStat pokemon={pokemon} />
 				</div>
 			</div>
-			<div className="mb-3">
+			<div className="mb-4">
 				<Button
 					color="blue"
 					content="Voir les capacités du Pokémon"
 					aria-label={`Voir les capacités du Pokémon ${
 						pokemon.nom || pokemon.name
 					}`}
-					className="mb-4"
 					as={Link}
 					href={`/entity/moves/pokemon/${pokemon.id}`}
 					icon="search"

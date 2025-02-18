@@ -37,6 +37,12 @@ export const objectToGETparams = object =>
 		return `${params}${params ? '&' : '?'}${key}=${encodeURIComponent(value)}`;
 	}, '');
 
+export const arrayCompare = (a, b) => {
+	if (!a && !b) return true;
+	if (!Array.isArray(a) || !Array.isArray(b)) return false;
+	return a.length === b.length && a.every((v, i) => v === b[i]);
+};
+
 export function objectCompare(object1, object2) {
 	if (object1 == null && object2 == null) {
 		return true;

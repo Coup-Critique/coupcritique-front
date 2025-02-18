@@ -68,18 +68,14 @@ const PokemonSetManager = props => {
 		if (firstItem) firstItem.click();
 	};
 
-	const findTier = tierId =>
-		tiers[gen].find(tier => tier.id == tierId) ||
-		tiers[props.redirectedGen].find(tier => tier.id == tierId) ||
-		tiers[0].find(tier => tier.id == tierId);
-
 	const panes = useMemo(() => {
 		if (!Object.keys(tiers).length) return [];
 
 		const tabsByTiers = pokemonSets.reduce((tabs, pokemonSet, i) => {
-			if (!tabs[pokemonSet.tier.id]) tabs[pokemonSet.tier.id] = [];
-			tabs[pokemonSet.tier.id].push({
-				menuItem: pokemonSet.name || `Set ${tabs[pokemonSet.tier.id].length + 1}`,
+			const tierName = pokemonSet.tier.shortName || pokemonSet.tier.name;
+			if (!tabs[tierName]) tabs[tierName] = [];
+			tabs[tierName].push({
+				menuItem: pokemonSet.name || `Set ${tabs[tierName].length + 1}`,
 				render: () => (
 					<Tab.Pane>
 						<PokemonInstanceSet
@@ -95,10 +91,9 @@ const PokemonSetManager = props => {
 			return tabs;
 		}, {});
 
-		return Object.entries(tabsByTiers).map(([tierId, underPanes], i) => {
-			let tier = findTier(tierId);
+		return Object.entries(tabsByTiers).map(([tierName, underPanes], i) => {
 			return {
-				menuItem: tier ? tier.shortName || tier.name : i + '',
+				menuItem: tierName || i + '',
 				render: () => (
 					<Tab.Pane>
 						<Tab panes={underPanes} />

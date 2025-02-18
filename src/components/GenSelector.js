@@ -6,6 +6,7 @@ import { Button, Dropdown, Icon, Label } from 'semantic-ui-react';
 import gens, { lastGen } from '@/constants/gens';
 import { setGenAction } from '@/reducers/gen';
 import useLocalStorage, { STORAGE_KEY } from '@/hooks/useLocalStorage';
+import { arrayCompare } from '@/functions';
 
 const genOptions = gens.map(({ value, name }) => ({
 	key: value,
@@ -30,11 +31,19 @@ const GenSelector = ({ availableGens, redirectOnChange }) => {
 
 	useEffect(() => {
 		if (availableGens) {
-			setOptions(genOptions.filter(({ value }) => value in availableGens));
+			const filteredOptions = genOptions.filter(
+				({ value }) => value in availableGens
+			);
+			if (!arrayCompare(filteredOptions, options)) {
+				setOptions(filteredOptions);
+			}
+			if (!(gen in availableGens)) {
+				dispatch(setGenAction(lastGen));
+			}
 		} else if (options !== genOptions) {
 			setOptions(genOptions);
 		}
-	}, [availableGens]);
+	}, [gen, availableGens]);
 
 	const onChange = (e, { value }) => {
 		if (redirectOnChange) {
